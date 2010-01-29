@@ -6,18 +6,17 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>com.nsfw.enterprises</groupId>
+		<groupId>com.nsfwenterprises</groupId>
 		<artifactId>Biz360</artifactId>
 		<version>1.0-SNAPSHOT</version>
-    <relativePath>../pom.xml</relativePath>
+		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-    <groupId>com.nsfw.enterprises.biz360</groupId>
-    <artifactId>party</artifactId>
-    <version>1.0-SNAPSHOT</version>
-    <packaging>jar</packaging>
-    <name>Party Model</name>
-    <inceptionYear>20010</inceptionYear>
+	<groupId>com.nsfwenterprises.biz360</groupId>
+	<artifactId>model-utils</artifactId>
+	<version>1.0-SNAPSHOT</version>
+	<packaging>jar</packaging>
+	<name>Utilities for the Models</name>
+	<inceptionYear>2010</inceptionYear>
     
-
 </project>
