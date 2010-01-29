@@ -1,1 +1,9 @@
 *~
+*.jar
+*.class
+target/
+.metadata
+*tar.gz
+.classpath
+.project
+.settings/
