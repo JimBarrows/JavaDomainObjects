@@ -50,20 +50,21 @@
 
   
  	<modules>
-<!--		<module>Accounting</module>
-		<module>Agreement</module>
+<!--		
 		<module>Ecommerce</module>
-		<module>HumanResources</module>
-		<module>Invoice</module>
-		<module>Order</module>
-		<module>Party</module>
-		<module>Product</module>
-		<module>Shipment</module>
-		<module>Utils</module>
-		<module>WorkEffort</module>
+				
+		
 -->
-		<module>party-model</module>
+		<module>accounting-model</module>
+		<module>agreement-model</module>
+		<module>invoice-model</module>
 		<module>model-utils</module>
+		<module>order-model</module>
+		<module>party-model</module>
+		<module>product-model</module>
+		<module>shipment-model</module>
+		<module>humanresources-model</module>
+		<module>workeffort-model</module>
 	</modules>
 	<build>
 	<plugins>
