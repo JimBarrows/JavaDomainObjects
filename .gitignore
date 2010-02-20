@@ -1,6 +1,9 @@
 *~
 *.jar
 *.class
+*.iml
+*.ipr
+*.iws
 target/
 .metadata
 *tar.gz
