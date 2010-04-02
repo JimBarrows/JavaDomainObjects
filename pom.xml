@@ -59,7 +59,7 @@
 
         <module>agreement-model</module>
 
-        <module>e-commerce-model</module>
+        <module>ecommerce-model</module>
 
         <module>humanresources-model</module>
         <module>humanresourses-invoice-model</module>
