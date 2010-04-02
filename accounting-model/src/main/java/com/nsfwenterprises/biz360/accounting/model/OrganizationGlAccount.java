@@ -12,8 +12,6 @@ import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 import com.nsfwenterprises.biz360.party.model.role.BillToCustomer;
 import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
 import com.nsfwenterprises.biz360.party.model.role.Supplier;
-import com.nsfwenterprises.biz360.product.model.Product;
-import com.nsfwenterprises.biz360.product.model.category.ProductCategory;
 
 @Entity
 public class OrganizationGlAccount extends BaseDateRangeModel {
@@ -31,11 +29,7 @@ public class OrganizationGlAccount extends BaseDateRangeModel {
 	
 	private InternalOrganization internalOrganizationFor;
 	
-	private BillToCustomer referencingBillToCustomer;
-		
-	private Product referencingProduct;
-		
-	private ProductCategory referencingProductCategory;
+	private BillToCustomer referencingBillToCustomer;	
 		
 	private Supplier referencingSupplier;
 
@@ -64,13 +58,7 @@ public class OrganizationGlAccount extends BaseDateRangeModel {
 		return referencingBillToCustomer;
 	}
 
-	public Product getReferencingProduct() {
-		return referencingProduct;
-	}
 
-	public ProductCategory getReferencingProductCategory() {
-		return referencingProductCategory;
-	}
 
 	public Supplier getReferencingSupplier() {
 		return referencingSupplier;
@@ -103,14 +91,7 @@ public class OrganizationGlAccount extends BaseDateRangeModel {
 		this.referencingBillToCustomer = referencingBillToCustomer;
 	}
 
-	public void setReferencingProduct(Product referencingProduct) {
-		this.referencingProduct = referencingProduct;
-	}
-
-	public void setReferencingProductCategory(
-			ProductCategory referencingProductCategory) {
-		this.referencingProductCategory = referencingProductCategory;
-	}
+	
 
 	public void setReferencingSupplier(Supplier referencingSupplier) {
 		this.referencingSupplier = referencingSupplier;

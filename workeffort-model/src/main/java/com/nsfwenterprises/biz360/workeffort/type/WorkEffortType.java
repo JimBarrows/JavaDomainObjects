@@ -26,8 +26,6 @@ public class WorkEffortType extends BaseType {
 	
 	private List<WorkEffortGoodStandard> goodStandardNeeds;
 	
-	private List<WorkEffortSkill> skillNeeds;
-	
 	private int standardWorkHours;
 	
 	private DeliverableType usedToProduceDeliverable;
@@ -49,10 +47,6 @@ public class WorkEffortType extends BaseType {
 		return goodStandardNeeds;
 	}
 
-	@OneToMany
-	public List<WorkEffortSkill> getSkillNeeds() {
-		return skillNeeds;
-	}
 
 	public int getStandardWorkHours() {
 		return standardWorkHours;
@@ -83,10 +77,6 @@ public class WorkEffortType extends BaseType {
 
 	public void setGoodStandardNeeds(List<WorkEffortGoodStandard> goodStandardNeeds) {
 		this.goodStandardNeeds = goodStandardNeeds;
-	}
-
-	public void setSkillNeeds(List<WorkEffortSkill> skillNeeds) {
-		this.skillNeeds = skillNeeds;
 	}
 
 	public void setStandardWorkHours(int standardWorkHours) {

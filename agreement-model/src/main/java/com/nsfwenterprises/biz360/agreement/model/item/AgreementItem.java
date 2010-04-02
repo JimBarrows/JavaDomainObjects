@@ -7,6 +7,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import com.nsfwenterprises.biz360.product.model.Product;
 import org.hibernate.validator.Min;
 
 import com.nsfwenterprises.biz360.agreement.model.Addendum;
@@ -14,7 +15,6 @@ import com.nsfwenterprises.biz360.agreement.model.Agreement;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.party.model.Organization;
 import com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundary;
-import com.nsfwenterprises.biz360.product.model.Product;
 
 @Entity
 public class AgreementItem extends BasePersistentModel {

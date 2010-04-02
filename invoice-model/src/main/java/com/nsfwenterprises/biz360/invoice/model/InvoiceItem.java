@@ -17,7 +17,6 @@ import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.product.model.Product;
 import com.nsfwenterprises.biz360.product.model.feature.ProductFeature;
 import com.nsfwenterprises.biz360.product.model.storage.SerializedInventoryItem;
-import com.nsfwenterprises.biz360.shipment.model.ShipmentItem;
 import com.nsfwenterprises.biz360.workeffort.timetracking.TimeEntry;
 
 @Entity
@@ -34,7 +33,7 @@ public class InvoiceItem extends BasePersistentModel {
 	
 	private List<OrderItemBilling> billingForOrderItem;
 	
-	private List<ShipmentItem> billingForShipmentItem;
+
 	
 	private List<TimeEntry> billingForTimeEntry;
 	
@@ -72,11 +71,6 @@ public class InvoiceItem extends BasePersistentModel {
 	@OneToMany
 	public List<OrderItemBilling> getBillingForOrderItem() {
 		return billingForOrderItem;
-	}
-
-	@OneToMany
-	public List<ShipmentItem> getBillingForShipmentItem() {
-		return billingForShipmentItem;
 	}
 
 	@OneToMany
@@ -147,10 +141,6 @@ public class InvoiceItem extends BasePersistentModel {
 
 	public void setBillingForOrderItem(List<OrderItemBilling> billingForOrderItem) {
 		this.billingForOrderItem = billingForOrderItem;
-	}
-
-	public void setBillingForShipmentItem(List<ShipmentItem> billingFor) {
-		this.billingForShipmentItem = billingFor;
 	}
 
 	public void setBillingForTimeEntry(List<TimeEntry> billingForTimeEntry) {

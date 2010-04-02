@@ -6,20 +6,16 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>com.nsfwenterprises</groupId>
+		<groupId>com.nsfwenterprises.biz360</groupId>
 		<artifactId>Biz360</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.nsfwenterprises.biz360</groupId>
 	<artifactId>invoice-model</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>jar</packaging>
 	<name>Invoice Model</name>
-	<inceptionYear>20010</inceptionYear>
-
-	
 
 	<dependencies>
                 <dependency>

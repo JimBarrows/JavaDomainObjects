@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project 
-  xmlns="http://maven.apache.org/POM/4.0.0" 
-  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
-  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project
+        xmlns="http://maven.apache.org/POM/4.0.0"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.nsfwenterprises</groupId>
+	<groupId>com.nsfwenterprises.biz360</groupId>
 	<artifactId>Biz360</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<name>Biz 360 Master</name>
@@ -50,21 +50,32 @@
 
   
  	<modules>
-<!--		
-		<module>Ecommerce</module>
-				
-		
--->
+
+
 		<module>accounting-model</module>
-		<module>agreement-model</module>
+        <module>accounting-invoice-model</module>
+        <module>accounting-order-model</module>
+        <module>accounting-product-model</module>
+
+        <module>agreement-model</module>
+
+        <module>e-commerce-model</module>
+
+        <module>humanresources-model</module>
+        <module>humanresourses-invoice-model</module>
+
 		<module>invoice-model</module>
+        <module>invoice-shipment</module>
+
 		<module>model-utils</module>
 		<module>order-model</module>
 		<module>party-model</module>
 		<module>product-model</module>
 		<module>shipment-model</module>
-		<module>humanresources-model</module>
+
 		<module>workeffort-model</module>
+        <module>workeffort-humanresources-model</module>
+
 	</modules>
 	<build>
 	<plugins>
@@ -101,11 +112,30 @@
 			<version>1.0</version>
 		</dependency>
 
-		<dependency>
-			<groupId>org.apache.derby</groupId>
-			<artifactId>derby</artifactId>
-     			<version>10.4.2.0</version>
-			<optional>true</optional>
+		
+
+        <dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.2.1.ga</version>
+			<scope>test</scope>
+			<exclusions>
+				<exclusion>
+					<groupId>javax.transaction</groupId>
+					<artifactId>jta</artifactId>
+				</exclusion>
+                <exclusion>
+                    <groupId>org.slf4j</groupId>
+                    <artifactId>slf4j-log4j12</artifactId>
+                </exclusion>
+			</exclusions>
+		</dependency>
+
+        <dependency>
+			<groupId>geronimo-spec</groupId>
+			<artifactId>geronimo-spec-jta</artifactId>
+			<version>1.0.1B-rc4</version>
+			<scope>provided</scope>
 		</dependency>
     
    		<dependency>
@@ -114,5 +144,10 @@
 			<version>4.4</version>
 			<scope>test</scope>
 		</dependency>
+
+        <dependency><groupId>org.dbunit</groupId><artifactId>dbunit</artifactId><version>2.2</version></dependency>
+        
+        <dependency><groupId>org.slf4j</groupId><artifactId>slf4j-api</artifactId><version>1.5.10</version></dependency>
+        <dependency><groupId>org.slf4j</groupId><artifactId>slf4j-log4j12</artifactId><version>1.5.10</version></dependency><dependency><groupId>hsqldb</groupId><artifactId>hsqldb</artifactId><version>1.8.0.7</version></dependency>
 	</dependencies>
 </project>

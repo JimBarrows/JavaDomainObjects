@@ -8,7 +8,6 @@ import javax.persistence.OneToMany;
 
 import com.nsfwenterprises.biz360.humanresoures.model.position.Position;
 import com.nsfwenterprises.biz360.humanresoures.model.position.salary.PayHistory;
-import com.nsfwenterprises.biz360.invoice.model.payment.Paycheck;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 import com.nsfwenterprises.biz360.party.model.role.Employee;
 import com.nsfwenterprises.biz360.party.model.role.Manager;
@@ -23,7 +22,7 @@ public class PerformanceReview extends BaseDateRangeModel {
 	
 	private PayHistory affecting;
 	
-	private Paycheck bonus;
+	
 	
 	private String comments;
 	
@@ -38,11 +37,6 @@ public class PerformanceReview extends BaseDateRangeModel {
 	@ManyToOne
 	public PayHistory getAffecting() {
 		return affecting;
-	}
-
-	@ManyToOne
-	public Paycheck getBonus() {
-		return bonus;
 	}
 
 	public String getComments() {
@@ -69,10 +63,6 @@ public class PerformanceReview extends BaseDateRangeModel {
 
 	public void setAffecting(PayHistory affecting) {
 		this.affecting = affecting;
-	}
-
-	public void setBonus(Paycheck bonus) {
-		this.bonus = bonus;
 	}
 
 	public void setComments(String comments) {

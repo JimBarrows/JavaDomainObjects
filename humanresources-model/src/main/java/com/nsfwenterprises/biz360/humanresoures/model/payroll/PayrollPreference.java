@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import com.nsfwenterprises.biz360.accounting.model.asset.PeriodType;
-import com.nsfwenterprises.biz360.invoice.model.payment.PaymentMethodType;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 import com.nsfwenterprises.biz360.party.model.role.Employee;
 import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
@@ -29,7 +28,7 @@ public class PayrollPreference extends BaseDateRangeModel {
 	
 	private InternalOrganization forInternalOrganization;
 	
-	private PaymentMethodType paymentMethodType;
+
 	
 	private int percentage;
 	
@@ -57,10 +56,6 @@ public class PayrollPreference extends BaseDateRangeModel {
 
 	public InternalOrganization getForInternalOrganization() {
 		return forInternalOrganization;
-	}
-
-	public PaymentMethodType getPaymentMethodType() {
-		return paymentMethodType;
 	}
 
 	public int getPercentage() {
@@ -99,10 +94,6 @@ public class PayrollPreference extends BaseDateRangeModel {
 	public void setForInternalOrganization(
 			InternalOrganization forInternalOrganization) {
 		this.forInternalOrganization = forInternalOrganization;
-	}
-
-	public void setPaymentMethodType(PaymentMethodType paymentMethodType) {
-		this.paymentMethodType = paymentMethodType;
 	}
 
 	public void setPercentage(int percentage) {

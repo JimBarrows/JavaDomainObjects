@@ -10,7 +10,6 @@ import javax.persistence.OneToMany;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.party.model.Party;
 import com.nsfwenterprises.biz360.party.model.facility.Facility;
-import com.nsfwenterprises.biz360.workeffort.rate.WorkEffortAssignmentRate;
 
 @Entity
 public class WorkEffortPartyAssignment extends BasePersistentModel {
@@ -28,7 +27,7 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 	
 	private WorkEffortRoleType describedBy;
 
-	private List<WorkEffortAssignmentRate> rateOf;
+	
 
 	@ManyToOne
 	public Party getAssigned() {
@@ -50,11 +49,6 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 		return describedBy;
 	}
 
-	@OneToMany
-	public List<WorkEffortAssignmentRate> getRateOf() {
-		return rateOf;
-	}
-
 	public void setAssigned(Party assigned) {
 		this.assigned = assigned;
 	}
@@ -71,9 +65,4 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 		this.describedBy = describedBy;
 	}
 	
-	public void setRateOf(List<WorkEffortAssignmentRate> rateOf) {
-		this.rateOf = rateOf;
-	}
-	
-
 }

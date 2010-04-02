@@ -46,7 +46,7 @@ public class Requirement extends BasePersistentModel {
 
 	private List<Requirement> subRequirements = new ArrayList<Requirement>();
 
-	@OneToMany
+    @OneToMany
 	public List<OrderRequirementCommitment> getCommitmentOf() {
 		return commitmentOf;
 	}

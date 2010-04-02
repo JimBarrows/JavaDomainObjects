@@ -6,24 +6,23 @@
 	<modelVersion>4.0.0</modelVersion>
 	
 	<parent>
-		<groupId>com.nsfwenterprises</groupId>
+		<groupId>com.nsfwenterprises.biz360</groupId>
 		<artifactId>Biz360</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>../pom.xml</relativePath>
 	</parent>
 
-	<groupId>com.nsfwenterprises.biz360</groupId>
 	<artifactId>agreement-model</artifactId>
-	<version>1.0-SNAPSHOT</version>
-	<packaging>jar</packaging>
-	<name>Agreement Model</name>
-	<inceptionYear>20010</inceptionYear>
 
-	
+	<version>1.0-SNAPSHOT</version>
+
+	<packaging>jar</packaging>
+
+	<name>Agreement Model</name>
 
 	<dependencies>
-                <dependency>
-                        <groupId>com.nsfwenterprises.biz360</groupId>
+       <dependency>
+           <groupId>com.nsfwenterprises.biz360</groupId>
                         <artifactId>model-utils</artifactId>
                         <version>1.0-SNAPSHOT</version>
                 </dependency>
@@ -32,6 +31,7 @@
                         <artifactId>party-model</artifactId>
                         <version>1.0-SNAPSHOT</version>
                 </dependency>
+        <dependency><groupId>com.nsfwenterprises.biz360</groupId><artifactId>product-model</artifactId><version>1.0-SNAPSHOT</version></dependency>
 	</dependencies>
     
 </project>

@@ -8,11 +8,9 @@ import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.nsfwenterprises.biz360.budget.model.allocation.PaymentBudgetAllocation;
-import com.nsfwenterprises.biz360.budget.model.allocation.RequirementBudgetAllocation;
 import com.nsfwenterprises.biz360.budget.model.revision.BudgetRevisionImpact;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
-import com.nsfwenterprises.biz360.order.model.OrderItem;
+
 
 @Entity
 public class BudgetItem extends BasePersistentModel {
@@ -30,15 +28,9 @@ public class BudgetItem extends BasePersistentModel {
 	
 	private String justification;
 	
-	private List<RequirementBudgetAllocation> providesFundingVia;
-	
 	private String purpose;
 	
 	private BudgetItemType type;
-	
-	private List<OrderItem> usedToBuy;
-	
-	private List<PaymentBudgetAllocation> usedToPay;
 
 	@OneToMany
 	public List<BudgetRevisionImpact> getAffectedBy() {
@@ -58,11 +50,6 @@ public class BudgetItem extends BasePersistentModel {
 		return justification;
 	}
 
-	@OneToMany
-	public List<RequirementBudgetAllocation> getProvidesFundingVia() {
-		return providesFundingVia;
-	}
-
 	public String getPurpose() {
 		return purpose;
 	}
@@ -70,16 +57,6 @@ public class BudgetItem extends BasePersistentModel {
 	@ManyToOne
 	public BudgetItemType getType() {
 		return type;
-	}
-
-	@OneToMany
-	public List<OrderItem> getUsedToBuy() {
-		return usedToBuy;
-	}
-
-	@OneToMany
-	public List<PaymentBudgetAllocation> getUsedToPay() {
-		return usedToPay;
 	}
 
 	public void setAffectedBy(List<BudgetRevisionImpact> affectedBy) {
@@ -98,25 +75,12 @@ public class BudgetItem extends BasePersistentModel {
 		this.justification = justification;
 	}
 
-	public void setProvidesFundingVia(
-			List<RequirementBudgetAllocation> providesFundingVia) {
-		this.providesFundingVia = providesFundingVia;
-	}
-
 	public void setPurpose(String purpose) {
 		this.purpose = purpose;
 	}
 
 	public void setType(BudgetItemType type) {
 		this.type = type;
-	}
-
-	public void setUsedToBuy(List<OrderItem> usedToBuy) {
-		this.usedToBuy = usedToBuy;
-	}
-
-	public void setUsedToPay(List<PaymentBudgetAllocation> usedToPay) {
-		this.usedToPay = usedToPay;
 	}
 
 }
