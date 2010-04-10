@@ -1,14 +1,16 @@
-package com.bizondemand.biz360.accounting_budgting.model.accounting
+package com.bizondemand.biz360.accounting_budgeting.model.accounting
 
 import java.math.BigDecimal
 import java.math.BigDecimal._
 import scala.collection.mutable._
-import org.joda.time.Duration
+import org.joda.time._
 import com.bizondemand.biz360.model._
 
-case class OrganizationGLAccount( duration:Duration, 
+case class OrganizationGLAccount( dateRange:DateRange, 
 		glAccount:GeneralLedgerAccount ) {
-	
+
+	def this(glAccount:GeneralLedgerAccount) = this(new DateRange, glAccount)
+
 	val total :Money = USDollar(BigDecimal.ZERO)	
 
 	val transactionDetails = new HashSet[TransactionDetail]  
