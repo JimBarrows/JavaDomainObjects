@@ -1,4 +1,4 @@
-package com.bizondemand.biz360.accounting_budgeting.model.accounting
+package package com.bizondemand.biz360.accounting.model
 
 import scala.collection.mutable._
 import org.joda.time.LocalDate

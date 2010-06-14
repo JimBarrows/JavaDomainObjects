@@ -1,4 +1,4 @@
-package com.bizondemand.biz360.accounting_budgeting.model.accounting
+package com.bizondemand.biz360.accounting.model
 
 import org.joda.time.Duration
 import org.joda.time.Period

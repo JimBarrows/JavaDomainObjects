@@ -1,4 +1,4 @@
-package com.bizondemand.biz360.accounting_budgeting.model.accounting
+package com.bizondemand.biz360.accounting.model
 
 import java.math.BigDecimal
 import java.math.BigDecimal._
