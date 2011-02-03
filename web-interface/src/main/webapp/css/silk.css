@@ -1,0 +1,15 @@
+.add {
+	background-image:url(/img/silk/add.png) !important;
+}
+.delete {
+	background-image:url(/img/silk/delete.png) !important;
+}
+.option {
+	background-image:url(/img/silk/plugin.png) !important;
+}
+.remove {
+ 	background-image:url(/img/silk/delete.png) !important;
+}
+.save {
+ 	background-image:url(/img/silk/save.png) !important;
+}
