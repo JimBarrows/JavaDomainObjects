@@ -9,6 +9,7 @@ import http._
 import sitemap._
 import Loc._
 
+import _root_.code.snippet._
 
 /**
  * A class that's instantiated early and run.  It allows the application
@@ -32,13 +33,19 @@ class Boot {
     // each page, just comment this line out.
     LiftRules.setSiteMap(SiteMap(entries:_*))
 
+    LiftRules.statelessDispatchTable.append( BusinessRest)
+
+    LiftRules.autoIncludeAjax = _ => false
+    LiftRules.autoIncludeComet = _ => false
+    LiftRules.enableLiftGC = false
+
     //Show the spinny image when an Ajax call starts
-    LiftRules.ajaxStart =
-      Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
+//    LiftRules.ajaxStart =
+ //     Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
     
     // Make the spinny image go away when it ends
-    LiftRules.ajaxEnd =
-      Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
+  //  LiftRules.ajaxEnd =
+   //   Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
 
     // Force the request to be UTF-8
     LiftRules.early.append(_.setCharacterEncoding("UTF-8"))

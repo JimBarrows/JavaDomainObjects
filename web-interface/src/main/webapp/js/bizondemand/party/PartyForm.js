@@ -1,5 +1,5 @@
 Ext.namespace('BizOnDemand.Party');
-BizOnDemand.Party.PartyForm = Ext.extend(Ext.BaseForm, {
+BizOnDemand.Party.PartyForm = Ext.extend(BizOnDemand.Utils.BaseForm, {
 
 //    ,constructor:function(config) {
 //        // constructor pre-processing - configure listeners here

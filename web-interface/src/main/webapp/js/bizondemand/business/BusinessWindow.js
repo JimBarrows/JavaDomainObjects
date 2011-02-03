@@ -28,34 +28,33 @@ BizOnDemand.Business.BusinessWindow = Ext.extend(Ext.Window, {
       ,height: 300
 			,title: 'Business'
       ,items: [{
-				region:'center'
-				,xtype:'treepanel'
+				xtype:'treepanel'
+				,region : 'center'
 				,useArrows: true
 				,autoScroll: true
 				,animate: true
 				,enableDD: true
-				,containerScroll: true
-				,border: false
-				,loader: new Ext.tree.TreeLoader()
-				,rootVisible: false
-				,root: new Ext.tree.AsyncTreeNode(
-					{
-						text: 'Business Organization' 
+				,width: 200
+				,loader: new Ext.tree.TreeLoader()				
+				,root: new Ext.tree.AsyncTreeNode({
+					expanded: true
+					,children: [{
+							text:'Menu option 1'
+							,leaf: false
+							,children: [{text: 'suboption 1'}]
+						},{
+							text: 'Menu option2'
+							,leaf:false
+							,children: [{text: 'suboption 2'}]
+						}]
+				})
+				,rootVisible: true
+				,listeners: {
+					click: function(n){
+						Ext.Msg.alert('Navigation Tree Click','you clicked');
 					}
-				)
-				,tbar: {
-					items:[
-						{
-							text:'Add'
-							,iconCls: 'add'
-						}
-						,'-'
-						,{
-							text:'Delete'
-							,iconCls: 'delete'
-						}
-					]
 				}
+				
 			}]
 		};
 
@@ -74,10 +73,6 @@ BizOnDemand.Business.BusinessWindow = Ext.extend(Ext.Window, {
   ,onRender: function() {
 
 		BizOnDemand.Business.BusinessWindow.superclass.onRender.apply(this, arguments);
-
-	}
-
-	,beforeshow: function( ) {
 
 	}
 
