@@ -39,6 +39,8 @@ class Boot {
     LiftRules.autoIncludeComet = _ => false
     LiftRules.enableLiftGC = false
 
+    LiftRules.useXhtmlMimeType = false
+
     //Show the spinny image when an Ajax call starts
 //    LiftRules.ajaxStart =
  //     Full(() => LiftRules.jsArtifacts.show("ajax-loader").cmd)
@@ -48,7 +50,7 @@ class Boot {
    //   Full(() => LiftRules.jsArtifacts.hide("ajax-loader").cmd)
 
     // Force the request to be UTF-8
-    LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
+//    LiftRules.early.append(_.setCharacterEncoding("UTF-8"))
 
   }
 }

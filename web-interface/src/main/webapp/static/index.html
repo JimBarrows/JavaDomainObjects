@@ -1,25 +1,18 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
-<html >
-  <head>
-  	<meta content="text/html; charset=UTF-8" http-equiv="content-type" />
-  	 <link rel="stylesheet" href="css/extjs/reset-min.css" type="text/css"/>
-  	<link rel="stylesheet" href="css/extjs/ext-all.css" type="text/css"/>
-  	<link rel="stylesheet" href="css/extjs/ux/gridfilters/GridFilters.css" type="text/css"/>
-		<link rel="stylesheet" href="css/extjs/ux/gridfilters/RangeMenu.css" type="text/css"/>
-		<link rel="stylesheet" href="css/extjs/bizondemand.css" type="text/css"/>
-		<link rel="stylesheet" href="css/silk_sprite.css" type="text/css"/>
-		<link rel="stylesheet" href="css/silk.css" type="text/css"/>
-		
-		<script type="text/javascript" src="js/extjs/adapter/ext-base-debug.js"></script>
-		<script type="text/javascript" src="js/extjs/ext-all-debug.js"></script>
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"> 
+<html xmlns="http://www.w3.org/1999/xhtml"> 
+<head> 
+  	<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  	<link type="text/css" href="js/extjs/resources/css/reset-min.css" rel="stylesheet" /> 
+  	<link type="text/css" href="js/extjs/resources/css/ext-all.css" rel="stylesheet" /> 
 
+		<script src="js/extjs/adapter/ext/ext-base-debug.js" type="text/javascript"></script> 
+		<script src="js/extjs/ext-all-debug.js" type="text/javascript"></script> 
 
-  	<title>Home</title>
-  	
-  </head>
-  <body>
+</head> 
+<body> 
     
-    <script language="JavaScript">
+   <script language="JavaScript"> 
     Ext.onReady( function(){
 			var tree = new Ext.tree.TreePanel({
     renderTo: 'tree-div',
@@ -30,21 +23,34 @@
     containerScroll: true,
     border: false,
     // auto create TreeLoader
-    dataUrl: '/organization.json',
-
+    //dataUrl: 'http://localhost:8080/organization.json',
+ 
     root: {
         nodeType: 'async',
         text: 'Ext JS',
         draggable: false,
         id: 'source'
+        ,children: [{
+                text: 'Menu Option 1',
+                leaf: true
+            }, {
+                text: 'Menu Option 2',
+                leaf: true
+            }, {
+                text: 'Menu Option 3',
+                leaf: true
+            }]
+ 
     }
 });
-
+ 
 tree.getRootNode().expand();
 });
 		</script>	
-    <div id="tree-div"/>
-  </body>
-</html>
-
-
+    <div id="tree-div"></div> 
+    
+  
+	
+</body> 
+</html>  
+  
