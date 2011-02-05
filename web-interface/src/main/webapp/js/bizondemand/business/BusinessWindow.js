@@ -35,19 +35,13 @@ BizOnDemand.Business.BusinessWindow = Ext.extend(Ext.Window, {
 				,animate: true
 				,enableDD: true
 				,width: 200
-				,loader: new Ext.tree.TreeLoader()				
-				,root: new Ext.tree.AsyncTreeNode({
-					expanded: true
-					,children: [{
-							text:'Menu option 1'
-							,leaf: false
-							,children: [{text: 'suboption 1'}]
-						},{
-							text: 'Menu option2'
-							,leaf:false
-							,children: [{text: 'suboption 2'}]
-						}]
-				})
+				,dataUrl:'organisation.json'				
+				,root:{
+        nodeType: 'async',
+        text: 'Ext JS',
+        draggable: false,
+        id: 'source'
+    }
 				,rootVisible: true
 				,listeners: {
 					click: function(n){

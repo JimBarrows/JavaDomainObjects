@@ -11,7 +11,7 @@ import net.liftweb.json.JsonAST._
 object BusinessRest extends RestHelper {
 	
 	serve {
-		case Req( "organization" ::Nil, "json", PostRequest) => {
+		case Req( "organisation" ::Nil, "json", PostRequest) => {
 			println("YAY")
 			JsRaw("""
 			[{
