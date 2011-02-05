@@ -33,7 +33,7 @@ class Boot {
     // each page, just comment this line out.
     LiftRules.setSiteMap(SiteMap(entries:_*))
 
-    LiftRules.statelessDispatchTable.append( BusinessRest)
+    LiftRules.dispatch.append( BusinessRest)
 
     LiftRules.autoIncludeAjax = _ => false
     LiftRules.autoIncludeComet = _ => false
