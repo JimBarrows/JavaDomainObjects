@@ -9,7 +9,7 @@ BizOnDemand.Utils.BaseForm = Ext.extend(Ext.FormPanel, {
         Ext.apply(this, config);
         Ext.apply(this.initialConfig, config);
  
-        Utils.BaseForm.superclass.initComponent.apply(this, arguments);
+        BizOnDemand.Utils.BaseForm.superclass.initComponent.apply(this, arguments);
  
         // after parent code here, e.g. install event handlers
         // this.on('beforerender', function(dis) {
@@ -19,7 +19,7 @@ BizOnDemand.Utils.BaseForm = Ext.extend(Ext.FormPanel, {
  
     ,onRender: function() {
  
-        Utils.BaseForm.superclass.onRender.apply(this, arguments);
+        BizOnDemand.Utils.BaseForm.superclass.onRender.apply(this, arguments);
  
 	}
  

@@ -3,15 +3,42 @@
 <html xmlns="http://www.w3.org/1999/xhtml"> 
 <head> 
   	<meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  	<!-- EXTJS -->
   	<link type="text/css" href="js/extjs/resources/css/reset-min.css" rel="stylesheet" /> 
   	<link type="text/css" href="js/extjs/resources/css/ext-all.css" rel="stylesheet" /> 
-
 		<script src="js/extjs/adapter/ext/ext-base-debug.js" type="text/javascript"></script> 
-		<script src="js/extjs/ext-all-debug.js" type="text/javascript"></script> 
-		<script src="js/bizondemand/tree.js" type="text/javascript"></script>
+		<script src="js/extjs/ext-all-debug.js" type="text/javascript"></script>
+		
+		<!-- EXTJS plugins -->
+		<script src="js/extjs/ux/gridfilters/Filter.js" type="text/javascript"></script>
+		<script src="js/extjs/ux/gridfilters/GridFilters.js" type="text/javascript"></script>
+		<script src="js/extjs/ux/gridfilters/BooleanFilter.js" type="text/javascript"></script>
+		<script src="js/extjs/ux/gridfilters/DateFilter.js" type="text/javascript"></script>
+		<script src="js/extjs/ux/gridfilters/ListFilter.js" type="text/javascript"></script>
+		<script src="js/extjs/ux/gridfilters/ListMenu.js" type="text/javascript"></script>
+		<script src="js/extjs/ux/gridfilters/NumericFilter.js" type="text/javascript"></script>
+		<script src="js/extjs/ux/gridfilters/RangeMenu.js" type="text/javascript"></script>
+		<script src="js/extjs/ux/gridfilters/StringFilter.js" type="text/javascript"></script>
+				
+		<!-- Application -->
+		<script src="js/bizondemand/customisations.js" type="text/javascript" ></script>
+		<script src="js/bizondemand/utils/BaseForm.js" type="text/javascript" ></script>
+		<script src="js/bizondemand/business/BusinessWindow.js" type="text/javascript" ></script>
+		<script src="js/bizondemand/party/PartyForm.js" type="text/javascript" ></script>
+		<script src="js/bizondemand/party/PartyWindow.js" type="text/javascript" ></script>
+		<script src="js/bizondemand/products/Goods.js" type="text/javascript" ></script>
+		<script src="js/bizondemand/products/Services.js" type="text/javascript" ></script>
+		<script src="js/bizondemand/products/Products.js" type="text/javascript" ></script>
+		<script src="js/bizondemand/bizondemand.js" type="text/javascript" ></script>
+		<script type="text/javascript" >
+			Ext.onReady( function() {
+					new BizOnDemand.Desktop();
+			});
+		</script>
+
 </head> 
 <body> 
-	<div id="tree-div"></div> 
+	
 </body> 
 </html>  
   
