@@ -39,7 +39,7 @@ class Boot {
     LiftRules.autoIncludeComet = _ => false
     LiftRules.enableLiftGC = false
 
-    LiftRules.useXhtmlMimeType = false
+//    LiftRules.useXhtmlMimeType = false
 
     //Show the spinny image when an Ajax call starts
 //    LiftRules.ajaxStart =
