@@ -1,69 +1,14 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:lift="http://liftweb.net/">
   <head>
     <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <meta name="description" content="" />
-    <meta name="keywords" content="" />
-    <link rel="stylesheet" href="/css/extjs/reset-min.css" type="text/css"/>
-  	<link rel="stylesheet" href="/css/extjs/ext-all.css" type="text/css"/>
-  	<link rel="stylesheet" href="/css/extjs/ux/gridfilters/GridFilters.css" type="text/css"/>
-		<link rel="stylesheet" href="/css/extjs/ux/gridfilters/RangeMenu.css" type="text/css"/>
-		<link rel="stylesheet" href="/css/extjs/bizondemand.css" type="text/css"/>
-		<link rel="stylesheet" href="/css/silk_sprite.css" type="text/css"/>
-		<link rel="stylesheet" href="/css/silk.css" type="text/css"/>
-		
-		<script type="text/javascript" src="/js/extjs/adapter/ext-base-debug.js"></script>
-		<script type="text/javascript" src="/js/extjs/ext-all-debug.js"></script>
-
-	<!-- Grid Filter Plugin -->
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/RangeMenu.js"></script>
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/ListMenu.js"></script>
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/GridFilters.js"></script>
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/Filter.js"></script>
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/BooleanFilter.js"></script>
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/DateFilter.js"></script>
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/ListFilter.js"></script>
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/NumericFilter.js"></script>
-	<script type="text/javascript" src="/js/extjs/ux/gridfilters/StringFilter.js"></script>
-
-	<script type="text/javascript" src="/js/bizondemand/customizations.js"></script>
-	<script type="text/javascript" src="/js/bizondemand/bizondemand.js"></script>
-	<script type="text/javascript" src="/js/bizondemand/utils/BaseForm.js"></script>
-	<!-- Party -->
-	<script type="text/javascript" src="/js/bizondemand/party/PartyWindow.js"></script>
-	<script type="text/javascript" src="/js/bizondemand/party/PartyForm.js"></script>
-	<!-- Business organization -->
-	<script type="text/javascript" src="/js/bizondemand/business/BusinessWindow.js"></script>
-	<!-- Products -->
-	<script type="text/javascript" src="/js/bizondemand/products/Products.js"></script>
-	<script type="text/javascript" src="/js/bizondemand/products/Goods.js"></script>
-	<script type="text/javascript" src="/js/bizondemand/products/Services.js"></script>
-
-
-	
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" /> 
+  	<title class="lift:business.name"></title>
+  	<!-- EXTJS -->
+  	<link type="text/css" href="js/extjs/resources/css/reset-min.css" rel="stylesheet" /> 
+  	<link type="text/css" href="js/extjs/resources/css/ext-all.css" rel="stylesheet" /> 
+		<script src="js/extjs/adapter/ext/ext-base-debug.js" type="text/javascript"></script> 
+		<script src="js/extjs/ext-all-debug.js" type="text/javascript"></script>
     <title><span class="lift:Menu.title">code:app:0.1-SNAPSHOT</span></title>
-
-		<script language="JavaScript">
-			var tree = new Ext.tree.TreePanel({
-    renderTo: 'tree-div',
-    useArrows: true,
-    autoScroll: true,
-    animate: true,
-    enableDD: true,
-    containerScroll: true,
-    border: false,
-    // auto create TreeLoader
-    dataUrl: '/organization.json',
-
-    root: {
-        nodeType: 'async',
-        text: 'Ext JS',
-        draggable: false,
-        id: 'source'
-    }
-});
-
-tree.getRootNode().expand();
-		</script>	
   </head>
   <body>
     <div id="content">The main content will get bound here</div>

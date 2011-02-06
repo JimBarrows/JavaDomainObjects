@@ -10,6 +10,8 @@ import net.liftweb.http.rest._
 import net.liftweb.json._
 import net.liftweb.json.Serialization.{read,write}
 import code.lib.TreeNode
+import _root_.com.nsfwenterprises.biz360.party.Party
+import code.model.Model
 
 object BusinessRest extends RestHelper {
 	
@@ -26,5 +28,12 @@ object BusinessRest extends RestHelper {
 				case _ => JsRaw("")
 			}
 		}
+
+		case Req( "business" :: "parent" :: _, "json", GetRequest) => {
+			Model.createNamedQuery[Party]("findBusiness").getResultList().first
+			JsRaw("")
+
+		}
 	}
+
 }
