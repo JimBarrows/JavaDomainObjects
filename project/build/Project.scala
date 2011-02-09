@@ -38,7 +38,8 @@ class EnterpriseModelProject(info: ProjectInfo) extends ParentProject(info) {
 		"com.h2database" % "h2" % "1.2.138",
 		"org.scala-libs" %% "scalajpa" % "1.2",
 		"org.scala-tools.testing" %% "specs" % "1.6.6" % "test->default",
-		"net.liftweb" %% "lift-webkit" % liftVersion % "compile->default"
+		"net.liftweb" %% "lift-webkit" % liftVersion % "compile->default",
+		"net.liftweb" %% "lift-jpa" % liftVersion
 	) ++ super.libraryDependencies
   
 
