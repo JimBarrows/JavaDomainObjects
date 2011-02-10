@@ -10,13 +10,14 @@ import net.liftweb.http.rest._
 import net.liftweb.json._
 import net.liftweb.json.Serialization.{read,write}
 import code.lib.TreeNode
-import _root_.com.nsfwenterprises.biz360.party.Party
+import bizondemand.party.model.Organization
 import code.model.Model
 
 object BusinessRest extends RestHelper {
 	
+
 	serve {
-		case Req( "organisation" ::  _, "json", PostRequest ) => {
+		case Req( "business" :: "organisation" ::  _, "json", PostRequest ) => {
 			S.param("node") match {
 				case Full("source") => {
 					val list = TreeNode( text="adapter", id="source/adapater",cls="folder", leaf=false) ::
@@ -29,11 +30,16 @@ object BusinessRest extends RestHelper {
 			}
 		}
 
-		case Req( "business" :: "parent" :: _, "json", GetRequest) => {
-			Model.createNamedQuery[Party]("findBusiness").getResultList().first
-			JsRaw("")
-
+		case Req( "business" ::_, "json", PostRequest) => {
+			try {
+				var organization = new Organization()
+				organization.name = param("BizOnDemand.Party.PartyForm.NameField").open_! 
+				println("organization name: " + organization.name)
+				Model.mergeAndFlush(organization)
+			}
+			JsRaw("succes: true")
 		}
+
 	}
 
 }

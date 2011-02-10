@@ -35,7 +35,7 @@ BizOnDemand.Business.BusinessWindow = Ext.extend(Ext.Window, {
 				,animate: true
 				,enableDD: true
 				,width: 200
-				,dataUrl:'organisation.json'				
+				,dataUrl:'business/organisation.json'				
 				,root:{
         nodeType: 'async',
         text: 'Ext JS',
