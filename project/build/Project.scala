@@ -35,6 +35,7 @@ class EnterpriseModelProject(info: ProjectInfo) extends ParentProject(info) {
 		"joda-time" % "joda-time-hibernate" % "1.1",
 		"javax.persistence" % "persistence-api" % "1.0",
 		"geronimo-spec" % "geronimo-spec-jta"  % "1.0-M1",
+		"org.hibernate" % "hibernate-entitymanager" % "3.4.0.GA",
 		"com.h2database" % "h2" % "1.2.138",
 		"org.scala-libs" %% "scalajpa" % "1.2",
 		"org.scala-tools.testing" %% "specs" % "1.6.6" % "test->default",
@@ -44,7 +45,8 @@ class EnterpriseModelProject(info: ProjectInfo) extends ParentProject(info) {
   
 
 
-	lazy val party = project("party", "Party", new Core(_))
+	lazy val model_utils = project("model-utils", "Model Utils", new Core(_))
+	lazy val party = project("party-model", "Party Model", new Core(_))
 	
 	lazy val web_interface = project("web-interface", "Web", new Lift(_), party)
 	
