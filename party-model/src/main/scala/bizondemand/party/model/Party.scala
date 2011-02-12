@@ -1,6 +1,7 @@
 package bizondemand.party.model
 
 import _root_.javax.persistence._
+import java.util.Date
 
 
 /**
@@ -23,8 +24,8 @@ class Party {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	var id: Long = _
 
-//	@OneToMany(mappedBy="roleFor", targetEntity=classOf[PartyRole])
-	//var roles : _root_.java.util.Set[PartyRole] = new _root_.java.util.HashSet[PartyRole]()
+	@OneToMany(mappedBy="roleFor", targetEntity=classOf[PartyRole], cascade=Array(CascadeType.ALL))
+	var roles : _root_.java.util.Set[PartyRole] = new _root_.java.util.HashSet[PartyRole]()
 
 }
 
@@ -54,3 +55,27 @@ class Person extends Party {
 
 	var middleName=""
 }
+
+
+@Entity
+class PartyRole { 
+
+	@Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  var id : Long = _
+
+	@ManyToOne( optional=false)
+	var roleFor: Party = _
+
+	@Column( name="fromDate")
+	@Temporal(TemporalType.DATE)
+	var from: Date = new Date() 
+
+	@Column( name="thruDate")
+	@Temporal(TemporalType.DATE)
+	var thru: Date = _
+
+	@ManyToOne( optional=false)
+	var role: Role = _
+}
+

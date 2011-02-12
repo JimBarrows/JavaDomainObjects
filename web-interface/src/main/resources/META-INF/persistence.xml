@@ -3,6 +3,8 @@
    		<class>bizondemand.party.model.Party</class>
    		<class>bizondemand.party.model.Organization</class>
    		<class>bizondemand.party.model.Person</class>
+   		<class>bizondemand.party.model.PartyRole</class>
+   		<class>bizondemand.party.model.Role</class>
       <properties>
          <property name="hibernate.dialect" value="org.hibernate.dialect.DerbyDialect"/>
          <property name="hibernate.connection.driver_class" value="org.apache.derby.jdbc.EmbeddedDriver"/>
