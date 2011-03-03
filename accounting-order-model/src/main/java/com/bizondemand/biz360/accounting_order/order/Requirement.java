@@ -12,7 +12,11 @@ import java.util.List;
  */
 public class Requirement extends com.nsfwenterprises.biz360.requirement.model.Requirement{
 
-    private List<RequirementBudgetAllocation> allocatedVia = new ArrayList<RequirementBudgetAllocation>();
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<RequirementBudgetAllocation> allocatedVia = new ArrayList<RequirementBudgetAllocation>();
 
     public List<RequirementBudgetAllocation> getAllocatedVia() {
         return allocatedVia;

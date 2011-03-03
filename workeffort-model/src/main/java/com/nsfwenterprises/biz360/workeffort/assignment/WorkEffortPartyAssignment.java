@@ -1,11 +1,8 @@
 package com.nsfwenterprises.biz360.workeffort.assignment;
 
-import java.util.List;
-
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.party.model.Party;

@@ -14,7 +14,12 @@ import java.util.List;
 public class Payment extends com.nsfwenterprises.biz360.invoice.model.payment.Payment{
 
 
- public List<PaymentBudgetAllocation> getBookedAgainst() {
+ /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
+public List<PaymentBudgetAllocation> getBookedAgainst() {
         return bookedAgainst;
     }
 

@@ -11,7 +11,11 @@ import java.util.List;
  */
 public class WorkEffortPartyAssignment extends com.nsfwenterprises.biz360.workeffort.assignment.WorkEffortPartyAssignment{
 
-    private List<WorkEffortAssignmentRate> rateOf;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<WorkEffortAssignmentRate> rateOf;
 
     public List<WorkEffortAssignmentRate> getRateOf() {
         return rateOf;

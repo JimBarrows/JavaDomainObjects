@@ -18,7 +18,23 @@ public class RequirementBudgetAllocation {
 
     private BigDecimal amount;
 
-    public BudgetItem getAllocatedTo() {
+    public Requirement getAllocationOf() {
+		return allocationOf;
+	}
+
+	public void setAllocationOf(Requirement allocationOf) {
+		this.allocationOf = allocationOf;
+	}
+
+	public BigDecimal getAmount() {
+		return amount;
+	}
+
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
+
+	public BudgetItem getAllocatedTo() {
         return allocatedTo;
     }
 

@@ -12,7 +12,11 @@ import java.util.List;
  */
 public class InvoiceItem extends com.nsfwenterprises.biz360.invoice.model.InvoiceItem{
 
-    private List<ShipmentItem> billingForShipmentItem;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<ShipmentItem> billingForShipmentItem;
 
     @OneToMany
 	public List<ShipmentItem> getBillingForShipmentItem() {

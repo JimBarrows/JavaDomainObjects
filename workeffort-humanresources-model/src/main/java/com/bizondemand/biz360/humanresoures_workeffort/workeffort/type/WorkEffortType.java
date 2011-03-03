@@ -10,7 +10,11 @@ import java.util.List;
  */
 public class WorkEffortType extends com.nsfwenterprises.biz360.workeffort.type.WorkEffortType{
 
-    private List<WorkEffortSkill> skillNeeds;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private List<WorkEffortSkill> skillNeeds;
 
     @OneToMany
     public List<WorkEffortSkill> getSkillNeeds() {

@@ -9,7 +9,11 @@ import com.bizondemand.humanresources_invoice.invoice.model.payment.Paycheck;
  */
 public class PerformanceReview extends com.nsfwenterprises.biz360.humanresoures.model.performance.PerformanceReview{
 
-    private Paycheck bonus;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private Paycheck bonus;
 
     public Paycheck getBonus() {
         return bonus;

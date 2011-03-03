@@ -9,5 +9,15 @@ import com.nsfwenterprises.biz360.invoice.model.payment.PaymentMethodType;
  */
 public class PayrollPreference extends com.nsfwenterprises.biz360.humanresoures.model.payroll.PayrollPreference {
 
-    private PaymentMethodType paymentMethodType;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	private PaymentMethodType paymentMethodType;
+	public PaymentMethodType getPaymentMethodType() {
+		return paymentMethodType;
+	}
+	public void setPaymentMethodType(PaymentMethodType paymentMethodType) {
+		this.paymentMethodType = paymentMethodType;
+	}
 }
