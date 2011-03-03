@@ -4,9 +4,9 @@ import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.AssertTrue;
 
-import org.hibernate.validator.AssertTrue;
-import org.hibernate.validator.Range;
+import org.hibernate.validator.constraints.Range;
 
 import com.nsfwenterprises.biz360.budget.model.Budget;
 import com.nsfwenterprises.biz360.budget.model.BudgetItem;

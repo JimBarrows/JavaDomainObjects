@@ -6,8 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.AssertTrue;
+import javax.validation.constraints.AssertTrue;
 
 import com.nsfwenterprises.biz360.agreement.model.Agreement;
 import com.nsfwenterprises.biz360.agreement.model.item.AgreementItem;

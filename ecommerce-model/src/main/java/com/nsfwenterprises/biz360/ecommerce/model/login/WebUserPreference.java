@@ -22,9 +22,9 @@ public class WebUserPreference extends BasePersistentModel{
 
 	private String value = "default";
 	
-	public setValue(String newValue) { this.value = newValue;}
+	public void setValue(String newValue) { this.value = newValue;}
 
-	public getValue() { return value;}
+	public String getValue() { return value;}
 
 	/**
 	 * @return the describedBy

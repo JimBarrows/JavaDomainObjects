@@ -7,9 +7,9 @@ import javax.persistence.Lob;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.NotEmpty;
-import org.hibernate.validator.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 
@@ -25,7 +25,7 @@ public class Addendum extends BasePersistentModel {
 	private String text;
 
 	@Temporal(TemporalType.DATE)
-	@NotNull
+	@javax.validation.constraints.NotNull
 	public Date getCreationDate() {
 		return creationDate;
 	}

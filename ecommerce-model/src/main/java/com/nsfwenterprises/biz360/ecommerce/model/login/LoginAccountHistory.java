@@ -5,11 +5,11 @@ import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
-import com.sun.istack.internal.NotNull;
 
 /**
  * Keep track of when every user logs in,and when they logged out, and what

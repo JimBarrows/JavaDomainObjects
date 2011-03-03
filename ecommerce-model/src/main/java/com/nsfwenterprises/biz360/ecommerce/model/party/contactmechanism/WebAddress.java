@@ -7,8 +7,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
-
-import org.hibernate.validator.AssertTrue;
+import javax.validation.constraints.AssertTrue;
 
 import com.nsfwenterprises.biz360.ecommerce.model.webvisit.Visit;
 

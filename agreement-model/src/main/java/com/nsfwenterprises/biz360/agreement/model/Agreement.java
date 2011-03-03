@@ -11,9 +11,9 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.validation.constraints.NotNull;
 
-import org.hibernate.validator.NotEmpty;
-import org.hibernate.validator.NotNull;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.nsfwenterprises.biz360.agreement.model.item.AgreementItem;
 import com.nsfwenterprises.biz360.agreement.model.term.AgreementTerm;

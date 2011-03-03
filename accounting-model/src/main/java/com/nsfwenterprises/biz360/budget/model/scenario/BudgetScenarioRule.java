@@ -5,7 +5,7 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import org.hibernate.validator.Range;
+import org.hibernate.validator.constraints.Range;
 
 import com.nsfwenterprises.biz360.budget.model.BudgetItemType;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;

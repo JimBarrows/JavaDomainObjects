@@ -1,9 +1,9 @@
 package com.nsfwenterprises.biz360.accounting.model;
 
-import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.Min;
 
-import org.hibernate.validator.Min;
+import org.hibernate.annotations.Entity;
 
 import com.nsfwenterprises.biz360.accounting.model.asset.PeriodType;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;

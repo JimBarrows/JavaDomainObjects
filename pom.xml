@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project
-        xmlns="http://maven.apache.org/POM/4.0.0"
-        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-        xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>com.nsfwenterprises.biz360</groupId>
@@ -12,43 +10,43 @@
 	<packaging>pom</packaging>
 	<url>http://nsfwenterprises.com</url>
 	<licenses>
- 		<license>
+		<license>
 			<name>Apache 2</name>
 			<url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
 			<distribution>repo</distribution>
 			<comments>A business-friendly OSS license</comments>
 		</license>
 	</licenses>
-	
-	 <developers>
-    <developer>
-      <id>Jim.Barrows</id>
-      <name>Jim Barrows</name>
-      <email>Jim.Barrows@gmail.com</email>
-      <url>jamesbarrows.blogspot.com</url>
-      <organization>NSFW Enterprises, LLC</organization>
-      <organizationUrl>http://nsfwenterprises.com</organizationUrl>
-      <roles>
-        <role>architect</role>
-        <role>developer</role>
-      </roles>
-      <timezone>-7</timezone>
-    </developer>
-  </developers>
+
+	<developers>
+		<developer>
+			<id>Jim.Barrows</id>
+			<name>Jim Barrows</name>
+			<email>Jim.Barrows@gmail.com</email>
+			<url>jamesbarrows.blogspot.com</url>
+			<organization>NSFW Enterprises, LLC</organization>
+			<organizationUrl>http://nsfwenterprises.com</organizationUrl>
+			<roles>
+				<role>architect</role>
+				<role>developer</role>
+			</roles>
+			<timezone>-7</timezone>
+		</developer>
+	</developers>
 
 	<issueManagement>
-    <system>Redmine</system>
-    <url>http://nsfwenterprises.com/projects/projects/show/bmp?jump=welcome</url>
-  </issueManagement>
+		<system>Redmine</system>
+		<url>http://nsfwenterprises.com/projects/projects/show/bmp?jump=welcome</url>
+	</issueManagement>
 
 	<scm>
-    <connection>scm:git:ssh://bizondemand.com/var/local/git/biz360.git</connection>
-    <developerConnection>scm:git:ssh://bizondemand.com/var/local/git/biz360.git</developerConnection>
-    <tag>HEAD</tag>
-    <url>ssh://bizondemand.com/var/local/git/biz360.git</url>
-  </scm>
+		<connection>scm:git:ssh://bizondemand.com/var/local/git/biz360.git</connection>
+		<developerConnection>scm:git:ssh://bizondemand.com/var/local/git/biz360.git</developerConnection>
+		<tag>HEAD</tag>
+		<url>ssh://bizondemand.com/var/local/git/biz360.git</url>
+	</scm>
 
-  
+
 	<modules>
 		<module>accounting-model</module>
 		<module>accounting-invoice-model</module>
@@ -69,98 +67,54 @@
 		<module>workeffort-humanresources-model</module>
 	</modules>
 
+	<dependencyManagement>
+		<dependencies>
+			<dependency>
+				<groupId>joda-time</groupId>
+				<artifactId>joda-time-hibernate</artifactId>
+				<version>1.2</version>
+				<type>jar</type>
+				<scope>compile</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-core</artifactId>
+				<version>3.6.1.Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-annotations</artifactId>
+				<version>3.5.6-Final</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-validator</artifactId>
+				<version>4.1.0.Final</version>
+			</dependency>
+		</dependencies>
+	</dependencyManagement>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<scala.version>2.8.1</scala.version>
 	</properties>
 
 	<repositories>
 		<repository>
-			<id>scala-tools</id>
-			<url>http://scala-tools.org/repo-snapshots</url>
-		</repository>
-		<repository>
- 			<id>scala-tools.releases</id>
-			<url>http://scala-tools.org/repo-releases</url>
+			<id>JBoss-Release</id>
+			<name>JBoss Release Repository</name>
+			<url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
 		</repository>
 	</repositories>
 
 	<pluginRepositories>
-		<pluginRepository>
-			<id>scala-tools</id>
-			<url>http://scala-tools.org/repo-snapshots</url>
-		</pluginRepository>
-		<pluginRepository>
-			<id>scala-tools.releases</id>
-			<url>http://scala-tools.org/repo-releases</url>
-		</pluginRepository>
 	</pluginRepositories>
 
 
 	<dependencies>
-
 		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-compiler</artifactId>
-			<version>${scala.version}</version>
-			<scope>test</scope>
+			<groupId>joda-time</groupId>
+			<artifactId>joda-time</artifactId>
+			<version>1.6</version>
 		</dependency>
-
-		<dependency>
-			<groupId>org.scala-lang</groupId>
-			<artifactId>scala-library</artifactId>
-			<version>${scala.version}</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.scala-tools.testing</groupId>
-			<artifactId>specs</artifactId>
-			<version>1.6.0</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>commons-lang</groupId>
-			<artifactId>commons-lang</artifactId>
-			<version>2.3</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-validator</artifactId>
-			<version>3.1.0.GA</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>javax.persistence</groupId>
-			<artifactId>persistence-api</artifactId>
-			<version>1.0</version>
-		</dependency>
-
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-entitymanager</artifactId>
-			<version>3.2.1.ga</version>
-			<scope>test</scope>
-			<exclusions>
-				<exclusion>
-					<groupId>javax.transaction</groupId>
-					<artifactId>jta</artifactId>
-				</exclusion>
-				<exclusion>
-					<groupId>org.slf4j</groupId>
-					<artifactId>slf4j-log4j12</artifactId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-
-		<dependency>
-			<groupId>geronimo-spec</groupId>
-			<artifactId>geronimo-spec-jta</artifactId>
-			<version>1.0.1B-rc4</version>
-			<scope>provided</scope>
-		</dependency>
-    
 		<dependency>
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
@@ -172,8 +126,42 @@
 			<groupId>org.dbunit</groupId>
 			<artifactId>dbunit</artifactId>
 			<version>2.2</version>
+			<scope>test</scope>
 		</dependency>
-        
+		<dependency>
+			<groupId>org.jbehave.web</groupId>
+			<artifactId>jbehave-web-selenium</artifactId>
+			<version>3.1.1</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>3.1.2</version>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-core</artifactId>
+			<version>3.0.5.RELEASE</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-openid</artifactId>
+			<version>3.0.5.RELEASE</version>
+			<type>jar</type>
+			<scope>compile</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -186,57 +174,17 @@
 			<version>1.5.10</version>
 		</dependency>
 
-		<dependency>
-			<groupId>hsqldb</groupId>
-			<artifactId>hsqldb</artifactId>
-			<version>1.8.0.7</version>
-		</dependency>
-
-		<dependency>
-			<groupId>joda-time</groupId>
-			<artifactId>joda-time</artifactId>
-			<version>1.6</version>
-		</dependency>
-
-		<dependency>
-	    <groupId>org.scala-libs</groupId>
-	    <artifactId>jpaextension</artifactId>
-	    <version>0.0.2-SNAPSHOT</version>
-	  </dependency>
 	</dependencies>
 
 	<build>
-		<sourceDirectory>src/main/scala</sourceDirectory>
-		<testSourceDirectory>src/test/scala</testSourceDirectory>
 		<plugins>
- 			<plugin>
-				<groupId>org.apache.maven.plugins</groupId>
-				<artifactId>maven-idea-plugin</artifactId>
-				<configuration>
-					<downloadSources>true</downloadSources>
-				</configuration>
-			</plugin>
 			<plugin>
-				<groupId>org.scala-tools</groupId>
-				<artifactId>maven-scala-plugin</artifactId>
-				<executions>
-					<execution>
-						<goals>
-							<goal>compile</goal>
-							<goal>testCompile</goal>
-						</goals>
-					</execution>
-				</executions>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>2.3.2</version>
 				<configuration>
-					<jvmArgs>
-						<jvmArg>-Xmx1024m</jvmArg>
-					</jvmArgs>
-					<args>
-						<!-- arg>-unchecked</arg -->
-						<arg>-deprecation</arg>
-						<arg>-Xno-varargs-conversion</arg>
-					</args>
-					<scalaVersion>${scala.version}</scalaVersion>
+					<source>1.6</source>
+					<target>1.6</target>
 				</configuration>
 			</plugin>
 		</plugins>

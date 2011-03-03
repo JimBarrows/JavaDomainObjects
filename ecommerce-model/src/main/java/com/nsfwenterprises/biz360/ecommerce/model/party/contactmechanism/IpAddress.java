@@ -2,9 +2,9 @@ package com.nsfwenterprises.biz360.ecommerce.model.party.contactmechanism;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.validation.constraints.Pattern;
 
-import org.hibernate.validator.NotEmpty;
-import org.hibernate.validator.Pattern;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 
@@ -20,7 +20,7 @@ public class IpAddress extends ElectronicAddress {
 	private static final long serialVersionUID = 1L;
 
 	@NotEmpty
-	@Pattern(regex = "[012][012345][012345].[012][012345][012345].[012][012345][012345].[012][012345][012345]")
+	@Pattern(regexp = "[012][012345][012345].[012][012345][012345].[012][012345][012345].[012][012345][012345]")
 	@Override
 	@Column(insertable=false, updatable=false)
 	public String getAddress() {

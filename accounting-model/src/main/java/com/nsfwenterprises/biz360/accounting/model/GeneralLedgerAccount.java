@@ -8,7 +8,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.nsfwenterprises.biz360.budget.model.GlBudgetXref;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;

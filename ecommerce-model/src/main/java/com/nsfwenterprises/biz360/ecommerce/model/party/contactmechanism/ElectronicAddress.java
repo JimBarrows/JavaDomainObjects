@@ -2,7 +2,7 @@ package com.nsfwenterprises.biz360.ecommerce.model.party.contactmechanism;
 
 import javax.persistence.Entity;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.nsfwenterprises.biz360.party.model.contactmechanism.ContactMechanism;
 

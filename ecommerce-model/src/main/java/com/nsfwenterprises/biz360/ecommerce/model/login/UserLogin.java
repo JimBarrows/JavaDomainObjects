@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.nsfwenterprises.biz360.ecommerce.model.party.contactmechanism.WebAddress;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
