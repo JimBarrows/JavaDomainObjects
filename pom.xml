@@ -53,6 +53,7 @@
 		<module>accounting-order-model</module>
 		<module>accounting-product-model</module>
 		<module>agreement-model</module>
+		<module>business-service</module>
 		<module>ecommerce-model</module>
 		<module>humanresources-model</module>
 		<module>humanresourses-invoice-model</module>
@@ -65,7 +66,6 @@
 		<module>shipment-model</module>
 		<module>workeffort-model</module>
 		<module>workeffort-humanresources-model</module>
-		<module>business-service</module>
 	</modules>
 
 	<dependencyManagement>
@@ -97,6 +97,12 @@
 				<artifactId>jersey-server</artifactId>
 				<version>1.5</version>
 			</dependency>
+			<dependency>
+				<groupId>com.sun.jersey</groupId>
+				<artifactId>jersey-json</artifactId>
+				<version>1.5</version>
+				<scope>compile</scope>
+			</dependency>
 		</dependencies>
 	</dependencyManagement>
 	<properties>
@@ -118,8 +124,7 @@
 		<repository>
 			<id>maven-repository.dev.java.net</id>
 			<name>Java.net Maven 1 Repository (legacy)</name>
-			<url>http://download.java.net/maven/1</url>
-			<layout>legacy</layout>
+			<url>http://download.java.net/maven/1</url>			
 		</repository>
 	</repositories>
 

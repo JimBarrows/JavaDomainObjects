@@ -7,7 +7,7 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<groupId>com.nsfwenterprises.biz360</groupId>
-	<artifactId>Business-Services</artifactId>
+	<artifactId>business-service</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<name>Business Services</name>
@@ -16,15 +16,16 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>
-			<scope>compile</scope>
+			<artifactId>jersey-server</artifactId>			
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-json</artifactId>			
 		</dependency>
 		<dependency>
 			<groupId>com.nsfwenterprises.biz360</groupId>
 			<artifactId>party-model</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<type>jar</type>
-			<scope>compile</scope>
+			<version>1.0-SNAPSHOT</version>			
 		</dependency>
 	</dependencies>
 	<build>
@@ -42,6 +43,9 @@
 				<groupId>org.mortbay.jetty</groupId>
 				<artifactId>maven-jetty-plugin</artifactId>
 				<version>6.1.26</version>
+				<configuration>
+					<scanIntervalSeconds>5</scanIntervalSeconds>				
+				</configuration>
 			</plugin>
 		</plugins>
 	</build>
