@@ -2,8 +2,7 @@ package com.nsfwenterprises.biz360.product.model.supplier;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.Min;
+import javax.validation.constraints.Min;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 import com.nsfwenterprises.biz360.party.model.facility.Facility;

@@ -4,9 +4,8 @@ import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.Min;
-import org.hibernate.validator.NotNull;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import com.nsfwenterprises.biz360.invoice.model.InvoiceItem;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;

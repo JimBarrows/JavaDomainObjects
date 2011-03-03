@@ -4,9 +4,8 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
-
-import org.hibernate.validator.NotNull;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 import com.nsfwenterprises.biz360.product.model.Product;

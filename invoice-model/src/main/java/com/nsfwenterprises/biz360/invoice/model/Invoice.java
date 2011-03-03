@@ -7,9 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.hibernate.validator.AssertTrue;
-import org.hibernate.validator.NotNull;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.NotNull;
 
 import com.nsfwenterprises.biz360.invoice.model.billingaccount.BillingAccount;
 import com.nsfwenterprises.biz360.invoice.model.term.InvoiceTerm;

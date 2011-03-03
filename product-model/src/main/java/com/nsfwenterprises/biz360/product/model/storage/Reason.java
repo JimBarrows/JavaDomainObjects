@@ -6,8 +6,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-
-import org.hibernate.validator.NotNull;
+import javax.validation.constraints.NotNull;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 

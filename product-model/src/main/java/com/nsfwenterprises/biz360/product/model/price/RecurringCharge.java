@@ -3,8 +3,7 @@ package com.nsfwenterprises.biz360.product.model.price;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.NotNull;
+import javax.validation.constraints.NotNull;
 
 import com.nsfwenterprises.biz360.product.model.measurement.TimeFrequencyMeasure;
 

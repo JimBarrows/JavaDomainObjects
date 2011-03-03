@@ -2,8 +2,7 @@ package com.nsfwenterprises.biz360.product.model.storage;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-
-import org.hibernate.validator.NotNull;
+import javax.validation.constraints.NotNull;
 
 
 /**

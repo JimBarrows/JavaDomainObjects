@@ -2,8 +2,7 @@ package com.nsfwenterprises.biz360.product.model;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.NotNull;
+import javax.validation.constraints.NotNull;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 

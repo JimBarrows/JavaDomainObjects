@@ -8,8 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import org.hibernate.validator.Min;
+import javax.validation.constraints.Min;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 

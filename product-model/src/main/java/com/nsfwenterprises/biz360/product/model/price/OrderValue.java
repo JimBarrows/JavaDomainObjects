@@ -6,9 +6,8 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
-import org.hibernate.validator.AssertTrue;
-import org.hibernate.validator.Min;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Min;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 

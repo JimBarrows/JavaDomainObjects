@@ -3,8 +3,7 @@ package com.nsfwenterprises.biz360.quote.model;
 import java.math.BigDecimal;
 
 import javax.persistence.Entity;
-
-import org.hibernate.validator.AssertTrue;
+import javax.validation.constraints.AssertTrue;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 

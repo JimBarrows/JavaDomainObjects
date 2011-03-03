@@ -1,6 +1,6 @@
 package com.nsfwenterprises.biz360.product.model.storage;
 
-import org.hibernate.validator.Min;
+import javax.validation.constraints.Min;
 
 
 /**

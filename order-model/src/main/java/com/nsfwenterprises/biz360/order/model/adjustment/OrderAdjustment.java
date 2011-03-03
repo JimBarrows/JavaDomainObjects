@@ -4,11 +4,10 @@ import java.math.BigDecimal;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.AssertTrue;
-import org.hibernate.validator.Max;
-import org.hibernate.validator.Min;
-import org.hibernate.validator.NotNull;
+import javax.validation.constraints.AssertTrue;
+import javax.validation.constraints.Max;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.order.model.Order;

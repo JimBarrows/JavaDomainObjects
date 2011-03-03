@@ -2,8 +2,7 @@ package com.nsfwenterprises.biz360.humanresoures.model.position.type;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.Max;
+import javax.validation.constraints.Max;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 

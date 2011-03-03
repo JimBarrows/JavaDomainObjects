@@ -3,7 +3,7 @@ package com.nsfwenterprises.biz360.shipment.model.receipt;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 

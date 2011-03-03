@@ -2,8 +2,7 @@ package com.nsfwenterprises.biz360.invoice.model.term;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import org.hibernate.validator.AssertTrue;
+import javax.validation.constraints.AssertTrue;
 
 import com.nsfwenterprises.biz360.invoice.model.Invoice;
 import com.nsfwenterprises.biz360.invoice.model.InvoiceItem;

@@ -3,9 +3,8 @@ package com.nsfwenterprises.biz360.product.model.measurement;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
-
-import org.hibernate.validator.NotNull;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 

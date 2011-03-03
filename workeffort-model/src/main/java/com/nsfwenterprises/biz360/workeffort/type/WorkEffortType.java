@@ -5,8 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.hibernate.validator.AssertTrue;
+import javax.validation.constraints.AssertTrue;
 
 import com.nsfwenterprises.biz360.model.BaseType;
 import com.nsfwenterprises.biz360.product.model.Product;

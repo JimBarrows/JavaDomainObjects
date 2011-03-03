@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.validator.Range;
+import org.hibernate.validator.constraints.Range;
 
 import com.nsfwenterprises.biz360.humanresoures.model.position.ValidResponsibility;
 import com.nsfwenterprises.biz360.humanresoures.model.position.salary.PositionTypeRate;

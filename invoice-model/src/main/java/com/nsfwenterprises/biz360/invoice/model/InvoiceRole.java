@@ -4,7 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 
-import org.hibernate.validator.Range;
+import org.hibernate.validator.constraints.Range;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 
