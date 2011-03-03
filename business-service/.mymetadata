@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project-module
+  type="WEB"
+  name="business-service"
+  id="myeclipse.1299134525393"
+  context-root="/Business-Services"
+  j2ee-spec="5.0"
+  archive="business-service.war">
+  <attributes>
+    <attribute name="webrootdir" value="/src/main/webapp" />
+  </attributes>
+</project-module>
+
