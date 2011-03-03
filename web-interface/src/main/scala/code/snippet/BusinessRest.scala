@@ -10,7 +10,8 @@ import net.liftweb.http.rest._
 import net.liftweb.json._
 import net.liftweb.json.Serialization.{read,write}
 import code.lib.TreeNode
-import bizondemand.party.model.{Organization, PartyRole,  Role}
+import bizondemand.party.model.{Organization, PartyRole  }
+import bizondemand.party.model.Role._
 import code.model.Model
 
 object BusinessRest extends RestHelper {
@@ -32,15 +33,14 @@ object BusinessRest extends RestHelper {
 
 		case Req( "business" ::_, "json", PostRequest) => {
 			try {
-				var role = Role( 1, "Internal Organization")
-				role = Model.mergeAndFlush(role)
+				//var role = Model.mergeAndFlush(InternalOrganization)
 
 				var organization = new Organization()
 				organization = Model.mergeAndFlush(organization)
 
 				var partyRole = new PartyRole
 				partyRole.roleFor = organization
-				partyRole.role = role
+				partyRole.role = InternalOrganization
 				organization.roles.add( partyRole)
 				organization.name = param("BizOnDemand.Party.PartyForm.NameField").open_! 
 				println("organization name: " + organization.name)

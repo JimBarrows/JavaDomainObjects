@@ -46,7 +46,7 @@ class EnterpriseModelProject(info: ProjectInfo) extends ParentProject(info) {
 
 
 	lazy val model_utils = project("model-utils", "Model Utils", new Core(_))
-	lazy val party = project("party-model", "Party Model", new Core(_))
+	lazy val party = project("party-model", "Party Model", new Core(_), model_utils)
 	
 	lazy val web_interface = project("web-interface", "Web", new Lift(_), party)
 	
