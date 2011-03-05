@@ -26,13 +26,7 @@
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
-			<artifactId>joda-time-hibernate</artifactId>
-			<exclusions>
-				<exclusion>
-					<artifactId>hibernate</artifactId>
-					<groupId>org.hibernate</groupId>
-				</exclusion>
-			</exclusions>
+			<artifactId>joda-time-hibernate</artifactId>			
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
