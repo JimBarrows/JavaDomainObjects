@@ -1,7 +1,7 @@
 package com.nsfwenterprises.biz360.party.model;
+
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-
 
 /**
  * An organization, such as a family, company, government agency etc.
@@ -10,10 +10,14 @@ import javax.validation.constraints.NotNull;
  * @created 25-Dec-2007 9:54:32 AM
  * @see Data Model Resource Book Volume 1 Figure 3.5, page 82
  */
-@SuppressWarnings("serial")
 @Entity
 public class Organization extends Party {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+	
 	@NotNull
 	private String name;
 	

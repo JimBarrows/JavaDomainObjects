@@ -12,7 +12,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.xml.crypto.Data;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.party.model.communication.CaseRole;
@@ -33,10 +32,14 @@ import com.nsfwenterprises.biz360.party.model.facility.FacilityRole;
  * @see Data Model Resource Book Volume 1 Figure 2.12, page 60
  * @see Data Model Resource Book Volume 1 Figure 2.13, page 64
  */
-@SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Party extends BasePersistentModel implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	/**
 	 * The roles this party plays, or has played, or will play

@@ -13,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.hibernate.annotations.Type;
 import org.joda.time.LocalDate;
 
 /**
@@ -24,11 +25,6 @@ import org.joda.time.LocalDate;
  */
 @MappedSuperclass
 public abstract class BaseDateRangeModel extends BasePersistentModel {
-
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
 
 	private LocalDate from;
 
@@ -42,12 +38,14 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 	public boolean isActive() {
 		LocalDate now = new LocalDate();
 		boolean afterFrom = from.isBefore(now) || from.equals(now);
-		boolean beforeThru = thru == null || thru.isAfter(now) || thru.equals(now);
+		boolean beforeThru = thru == null || thru.isAfter(now)
+				|| thru.equals(now);
 		return afterFrom && beforeThru;
 	}
 
+	@Transient
 	@AssertTrue(message = "Dates are not valid the thru date must be empty, or after the fromdate.")
-	public boolean areDatesValid() {
+	public boolean isDateRangeValid() {
 		if (thru == null) {
 			return true;
 		} else {
@@ -75,7 +73,7 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 				.append(this.from).toHashCode();
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
 	@NotNull
 	@Column(name = "fromDate")
 	public LocalDate getFrom() {
@@ -86,7 +84,7 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 		this.from = from;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	@Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
 	@Column(name = "thruDate")
 	public LocalDate getThru() {
 		return thru;
@@ -95,5 +93,10 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 	public void setThru(LocalDate thru) {
 		this.thru = thru;
 	}
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 }

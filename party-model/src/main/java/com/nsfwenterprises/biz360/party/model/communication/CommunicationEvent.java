@@ -12,6 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
@@ -163,8 +164,9 @@ public class CommunicationEvent extends BasePersistentModel {
 				this.dateTimeEnded).toHashCode();
 	}
 
+	@Transient
 	@AssertTrue
-	public boolean dateRangeIsValid() {
+	public boolean isRangeValid() {
 		if (dateTimeEnded != null) {
 			return true;
 		} else {

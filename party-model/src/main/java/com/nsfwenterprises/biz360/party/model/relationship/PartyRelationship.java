@@ -5,6 +5,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
 import javax.validation.constraints.AssertFalse;
 import javax.xml.crypto.Data;
 
@@ -39,13 +40,15 @@ public class PartyRelationship extends BaseDateRangeModel {
 	
 	private StatusType status;
 	
+	@Transient
 	@AssertFalse
-	public boolean areBothNull() {
+	public boolean isRelationshipRolesNull() {
 		return relationshipFrom ==null || relationshipTo == null;
 	}
 	
+	@Transient
 	@AssertFalse
-	public boolean areBothTheSame() {
+	public boolean isTheRelatinshipToSameParty() {
 		return relationshipFrom.equals(relationshipTo);
 	}	
 	
