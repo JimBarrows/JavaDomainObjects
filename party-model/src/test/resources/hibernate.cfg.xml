@@ -54,8 +54,8 @@
 		<mapping class="com.nsfwenterprises.biz360.party.model.facility.Plant" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.facility.Room" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.facility.Warehouse" />
-		<mapping class="com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundary" />
-		<mapping class="com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundaryType" />
+		<mapping class="com.nsfwenterprises.biz360.party.model.geographic_boundary.GeographicBoundary" />
+		<mapping class="com.nsfwenterprises.biz360.party.model.geographic_boundary.GeographicBoundaryType" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.relationship.CustomerRelationship"/>
 		<mapping class="com.nsfwenterprises.biz360.party.model.relationship.DistributorChannelRelationship"/>
 		<mapping class="com.nsfwenterprises.biz360.party.model.relationship.Employment"/>

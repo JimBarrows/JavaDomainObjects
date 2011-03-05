@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 import com.nsfwenterprises.biz360.party.model.Organization;
-import com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundary;
+import com.nsfwenterprises.biz360.party.model.geographic_boundary.GeographicBoundary;
 import com.nsfwenterprises.biz360.product.model.Product;
 import com.nsfwenterprises.biz360.product.model.feature.ProductFeature;
 

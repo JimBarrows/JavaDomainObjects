@@ -14,7 +14,7 @@ import javax.xml.crypto.Data;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.nsfwenterprises.biz360.party.model.PartyPostalAddress;
-import com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundary;
+import com.nsfwenterprises.biz360.party.model.geographic_boundary.GeographicBoundary;
 
 /** 
  * 

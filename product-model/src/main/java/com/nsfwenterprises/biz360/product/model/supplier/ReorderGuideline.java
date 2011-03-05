@@ -7,7 +7,7 @@ import javax.validation.constraints.Min;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 import com.nsfwenterprises.biz360.party.model.PartyRole;
 import com.nsfwenterprises.biz360.party.model.facility.Facility;
-import com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundary;
+import com.nsfwenterprises.biz360.party.model.geographic_boundary.GeographicBoundary;
 import com.nsfwenterprises.biz360.product.model.Good;
 
 /**

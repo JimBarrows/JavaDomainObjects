@@ -1,9 +1,11 @@
-package com.nsfwenterprises.biz360.party.model.geographicBoundary;
+package com.nsfwenterprises.biz360.party.model.geographic_boundary;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
@@ -11,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
+import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
@@ -30,34 +33,36 @@ import com.nsfwenterprises.biz360.party.model.contactmechanism.PostalAddress;
 @SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(uniqueConstraints = { @UniqueConstraint(columnNames = { "name", "code",
-		"abbreviation" }) })
-public class GeographicBoundary extends BasePersistentModel {
+public class GeographicBoundary {
 
 	private String abbreviation;
 	private List<PostalAddress> boundaryFor = new ArrayList<PostalAddress>();
 	private String code;
-	/**The list of Geographic Boundaries that are contained inside this one.
+	/**
+	 * The list of Geographic Boundaries that are contained inside this one.
 	 * 
 	 */
 	private List<GeographicBoundary> contains = new ArrayList<GeographicBoundary>();
 	private String name;
 	private GeographicBoundaryType type;
-	
-	/**The list of Geographic Boundaries that contain this one.
+
+	/**
+	 * The list of Geographic Boundaries that contain this one.
 	 * 
 	 */
 	private List<GeographicBoundary> within = new ArrayList<GeographicBoundary>();
 
-	/**This adds the boundary to the contains list, and adds this to the within list.
+	/**
+	 * This adds the boundary to the contains list, and adds this to the within
+	 * list.
 	 * 
 	 * @param boundary
 	 */
-	public void add( GeographicBoundary boundary) {
+	public void add(GeographicBoundary boundary) {
 		contains.add(boundary);
 		boundary.getWithin().add(this);
 	}
-	
+
 	public String getAbbreviation() {
 		return abbreviation;
 	}
@@ -119,6 +124,27 @@ public class GeographicBoundary extends BasePersistentModel {
 	public void setWithin(List<GeographicBoundary> within) {
 		this.within = within;
 	}
-	
 
+	protected Long id;
+
+	protected Long version = 0l;
+
+	@Id
+	@GeneratedValue
+	public Long getId() {
+		return id;
+	}
+
+	public void setId(Long id) {
+		this.id = id;
+	}
+
+	@Version
+	public Long getVersion() {
+		return version;
+	}
+
+	public void setVersion(Long version) {
+		this.version = version;
+	}
 }

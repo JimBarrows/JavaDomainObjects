@@ -18,7 +18,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import com.nsfwenterprises.biz360.agreement.model.item.AgreementItem;
 import com.nsfwenterprises.biz360.agreement.model.term.AgreementTerm;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundary;
+import com.nsfwenterprises.biz360.party.model.geographic_boundary.GeographicBoundary;
 import com.nsfwenterprises.biz360.party.model.relationship.PartyRelationship;
 
 @Entity

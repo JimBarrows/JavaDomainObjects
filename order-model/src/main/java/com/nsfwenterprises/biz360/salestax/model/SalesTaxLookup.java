@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundary;
+import com.nsfwenterprises.biz360.party.model.geographic_boundary.GeographicBoundary;
 import com.nsfwenterprises.biz360.product.model.category.ProductCategory;
 
 @Entity

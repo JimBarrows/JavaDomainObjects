@@ -1,4 +1,4 @@
-package com.nsfwenterprises.biz360.party.model.geographicBoundary;
+package com.nsfwenterprises.biz360.party.model.geographic_boundary;
 
 import javax.persistence.Entity;
 

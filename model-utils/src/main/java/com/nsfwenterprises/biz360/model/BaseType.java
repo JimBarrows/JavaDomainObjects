@@ -6,23 +6,19 @@ import javax.persistence.MappedSuperclass;
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
-
-/**There are a lot of user definable type, this is the base class for them all.
+/**
+ * There are a lot of user definable type, this is the base class for them all.
  * 
  * @author Jim Barrows
- *
+ * 
  */
 @MappedSuperclass
 public class BaseType extends BasePersistentModel {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
-	@NotEmpty
-	@Column(nullable = false, unique=true)
 	private String description;
 
+	@NotEmpty
+	@Column(nullable = false, unique = true)
 	public String getDescription() {
 		return description;
 	}
@@ -43,8 +39,7 @@ public class BaseType extends BasePersistentModel {
 		}
 		BaseType rhs = (BaseType) object;
 		return new EqualsBuilder().appendSuper(super.equals(object)).append(
-				this.description, rhs.description)
-				.isEquals();
+				this.description, rhs.description).isEquals();
 	}
 
 	/**
@@ -52,6 +47,10 @@ public class BaseType extends BasePersistentModel {
 	 */
 	public String toString() {
 		return description;
-	}	
+	}
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 }
