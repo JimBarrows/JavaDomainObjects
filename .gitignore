@@ -23,6 +23,7 @@
 .manager
 .metadata
 .mymetadata
+.myhibernatedata
 .project
 .settings
 .svn
