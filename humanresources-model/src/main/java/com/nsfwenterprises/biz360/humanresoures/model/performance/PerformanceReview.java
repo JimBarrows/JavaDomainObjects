@@ -9,8 +9,7 @@ import javax.persistence.OneToMany;
 import com.nsfwenterprises.biz360.humanresoures.model.position.Position;
 import com.nsfwenterprises.biz360.humanresoures.model.position.salary.PayHistory;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.role.Employee;
-import com.nsfwenterprises.biz360.party.model.role.Manager;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class PerformanceReview extends BaseDateRangeModel {
@@ -26,9 +25,9 @@ public class PerformanceReview extends BaseDateRangeModel {
 	
 	private String comments;
 	
-	private Employee forEmployee;
+	private PartyRole forEmployee;
 	
-	private Manager fromManager;
+	private PartyRole fromManager;
 	
 	private List<PerformanceReviewItem> items;
 	
@@ -43,11 +42,11 @@ public class PerformanceReview extends BaseDateRangeModel {
 		return comments;
 	}
 
-	public Employee getForEmployee() {
+	public PartyRole getForEmployee() {
 		return forEmployee;
 	}
 
-	public Manager getFromManager() {
+	public PartyRole getFromManager() {
 		return fromManager;
 	}
 
@@ -69,11 +68,11 @@ public class PerformanceReview extends BaseDateRangeModel {
 		this.comments = comments;
 	}
 
-	public void setForEmployee(Employee forEmployee) {
+	public void setForEmployee(PartyRole forEmployee) {
 		this.forEmployee = forEmployee;
 	}
 
-	public void setFromManager(Manager fromManager) {
+	public void setFromManager(PartyRole fromManager) {
 		this.fromManager = fromManager;
 	}
 

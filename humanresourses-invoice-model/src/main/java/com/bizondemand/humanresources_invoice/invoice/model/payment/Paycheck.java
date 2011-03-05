@@ -7,8 +7,7 @@ import javax.persistence.OneToMany;
 
 import com.bizondemand.humanresources_invoice.humanresources.model.payroll.Deduction;
 import com.nsfwenterprises.biz360.invoice.model.payment.Disbursement;
-import com.nsfwenterprises.biz360.party.model.role.Employee;
-import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class Paycheck extends Disbursement {
@@ -20,20 +19,20 @@ public class Paycheck extends Disbursement {
 	
 	private List<Deduction> deductions;
 	
-	private InternalOrganization issuedFrom;
+	private PartyRole issuedFrom;
 	
-	private Employee issuedTo;
+	private PartyRole issuedTo;
 
 	@OneToMany
 	public List<Deduction> getDeductions() {
 		return deductions;
 	}
 
-	public InternalOrganization getIssuedFrom() {
+	public PartyRole getIssuedFrom() {
 		return issuedFrom;
 	}
 
-	public Employee getIssuedTo() {
+	public PartyRole getIssuedTo() {
 		return issuedTo;
 	}
 
@@ -41,11 +40,11 @@ public class Paycheck extends Disbursement {
 		this.deductions = deductions;
 	}
 
-	public void setIssuedFrom(InternalOrganization issuedFrom) {
+	public void setIssuedFrom(PartyRole issuedFrom) {
 		this.issuedFrom = issuedFrom;
 	}
 
-	public void setIssuedTo(Employee issuedTo) {
+	public void setIssuedTo(PartyRole issuedTo) {
 		this.issuedTo = issuedTo;
 	}
 

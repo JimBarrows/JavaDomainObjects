@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 import com.nsfwenterprises.biz360.party.model.contactmechanism.ContactMechanism;
-import com.nsfwenterprises.biz360.party.model.role.ShipToBuyer;
 
 /**
  * @author Jim
@@ -23,14 +23,14 @@ public class PurchaseOrderItem extends OrderItem {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private ShipToBuyer designatedShipTo;
+	private PartyRole designatedShipTo;
 	
 	private ContactMechanism shipToMechanism;
 	
 	private List<SalesOrderItem> usedToFillfill = new ArrayList<SalesOrderItem>();
 
 	@ManyToOne
-	public ShipToBuyer getDesignatedShipTo() {
+	public PartyRole getDesignatedShipTo() {
 		return designatedShipTo;
 	}
 
@@ -44,7 +44,7 @@ public class PurchaseOrderItem extends OrderItem {
 		return usedToFillfill;
 	}
 
-	public void setDesignatedShipTo(ShipToBuyer requestedShipTo) {
+	public void setDesignatedShipTo(PartyRole requestedShipTo) {
 		this.designatedShipTo = requestedShipTo;
 	}
 

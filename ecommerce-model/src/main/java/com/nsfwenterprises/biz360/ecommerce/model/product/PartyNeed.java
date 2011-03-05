@@ -10,8 +10,8 @@ import javax.persistence.TemporalType;
 
 import com.nsfwenterprises.biz360.ecommerce.model.webvisit.ServerHit;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 import com.nsfwenterprises.biz360.party.model.communication.CommunicationEvent;
-import com.nsfwenterprises.biz360.party.model.role.Consumer;
 import com.nsfwenterprises.biz360.product.model.Product;
 import com.nsfwenterprises.biz360.product.model.category.ProductCategory;
 
@@ -29,7 +29,7 @@ public class PartyNeed extends BasePersistentModel {
 	
 	private ServerHit discoveredViaServerHit;
 	
-	private Consumer forConsumer;
+	private PartyRole forConsumer;
 	
 	private Product forProduct;
 	
@@ -55,7 +55,7 @@ public class PartyNeed extends BasePersistentModel {
 	}
 
 	@ManyToOne
-	public Consumer getForConsumer() {
+	public PartyRole getForConsumer() {
 		return forConsumer;
 	}
 
@@ -92,7 +92,7 @@ public class PartyNeed extends BasePersistentModel {
 		this.discoveredViaServerHit = discoveredViaServerHit;
 	}
 
-	public void setForConsumer(Consumer forConsumer) {
+	public void setForConsumer(PartyRole forConsumer) {
 		this.forConsumer = forConsumer;
 	}
 

@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.validation.constraints.NotNull;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 
@@ -19,14 +20,16 @@ import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class PartyRole extends BaseDateRangeModel {
-	
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = 1L;
+
+	private PartyRoleType type;
+
 	private Party roleFor;
 
-	
+	public PartyRole(PartyRoleType type) {
+		super();
+		this.type = type;
+	}
+
 	@ManyToOne
 	public Party getRoleFor() {
 		return roleFor;
@@ -35,5 +38,16 @@ public class PartyRole extends BaseDateRangeModel {
 	public void setRoleFor(Party roleFor) {
 		this.roleFor = roleFor;
 	}
+	
+	@NotNull
+	@ManyToOne
+	public PartyRoleType getType() {
+		return type;
+	}
 
+	public void setType(PartyRoleType type) {
+		this.type = type;
+	}
+	
+	private static final long serialVersionUID = 1L;
 }

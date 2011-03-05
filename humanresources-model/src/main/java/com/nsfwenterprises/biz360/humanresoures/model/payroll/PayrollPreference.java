@@ -7,8 +7,7 @@ import javax.persistence.ManyToOne;
 
 import com.nsfwenterprises.biz360.accounting.model.asset.PeriodType;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.role.Employee;
-import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class PayrollPreference extends BaseDateRangeModel {
@@ -24,9 +23,9 @@ public class PayrollPreference extends BaseDateRangeModel {
 	
 	private BigDecimal flatAmount;
 	
-	private Employee forEmployee;
+	private PartyRole forEmployee;
 	
-	private InternalOrganization forInternalOrganization;
+	private PartyRole forInternalOrganization;
 	
 
 	
@@ -50,11 +49,11 @@ public class PayrollPreference extends BaseDateRangeModel {
 		return flatAmount;
 	}
 
-	public Employee getForEmployee() {
+	public PartyRole getForEmployee() {
 		return forEmployee;
 	}
 
-	public InternalOrganization getForInternalOrganization() {
+	public PartyRole getForInternalOrganization() {
 		return forInternalOrganization;
 	}
 
@@ -87,12 +86,12 @@ public class PayrollPreference extends BaseDateRangeModel {
 		this.flatAmount = flatAmount;
 	}
 
-	public void setForEmployee(Employee forEmployee) {
+	public void setForEmployee(PartyRole forEmployee) {
 		this.forEmployee = forEmployee;
 	}
 
 	public void setForInternalOrganization(
-			InternalOrganization forInternalOrganization) {
+			PartyRole forInternalOrganization) {
 		this.forInternalOrganization = forInternalOrganization;
 	}
 

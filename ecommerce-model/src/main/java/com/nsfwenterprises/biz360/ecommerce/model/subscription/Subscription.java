@@ -10,7 +10,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import com.nsfwenterprises.biz360.ecommerce.model.party.role.Subscriber;
 import com.nsfwenterprises.biz360.ecommerce.model.product.NeedType;
 import com.nsfwenterprises.biz360.ecommerce.model.product.PartyNeed;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
@@ -55,7 +54,7 @@ public class Subscription extends BasePersistentModel {
 	
 	private Date startDate;
 	
-	private Subscriber subscriber;
+	private PartyRole subscriber;
 	
 	private PartyRole subscriptionFor;
 	
@@ -111,7 +110,7 @@ public class Subscription extends BasePersistentModel {
 	}
 
 	@ManyToOne
-	public Subscriber getSubscriber() {
+	public PartyRole getSubscriber() {
 		return subscriber;
 	}
 
@@ -166,7 +165,7 @@ public class Subscription extends BasePersistentModel {
 		this.startDate = startDate;
 	}
 
-	public void setSubscriber(Subscriber subscriber) {
+	public void setSubscriber(PartyRole subscriber) {
 		this.subscriber = subscriber;
 	}
 

@@ -7,8 +7,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 import com.nsfwenterprises.biz360.party.model.contactmechanism.ContactMechanism;
-import com.nsfwenterprises.biz360.party.model.role.ShipToCustomer;
 
 /**
  * @author Jim
@@ -27,7 +27,7 @@ public class SalesOrderItem extends OrderItem {
 	
 	private ContactMechanism shippedToMechanism;
 	
-	private ShipToCustomer shipToCustomer;	
+	private PartyRole shipToCustomer;	
 
 	@ManyToMany(mappedBy="usedToFillfill")
 	public List<PurchaseOrderItem> getAssociatedWith() {
@@ -41,7 +41,7 @@ public class SalesOrderItem extends OrderItem {
 	}
 
 	@ManyToOne
-	public ShipToCustomer getShipToCustomer() {
+	public PartyRole getShipToCustomer() {
 		return shipToCustomer;
 	}
 
@@ -53,7 +53,7 @@ public class SalesOrderItem extends OrderItem {
 		this.shippedToMechanism = designatedToBeShippedTo;
 	}
 
-	public void setShipToCustomer(ShipToCustomer shipToCustomer) {
+	public void setShipToCustomer(PartyRole shipToCustomer) {
 		this.shipToCustomer = shipToCustomer;
 	}
 

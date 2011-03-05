@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Range;
 import com.nsfwenterprises.biz360.humanresoures.model.position.ValidResponsibility;
 import com.nsfwenterprises.biz360.humanresoures.model.position.salary.PositionTypeRate;
 import com.nsfwenterprises.biz360.model.BaseType;
-import com.nsfwenterprises.biz360.party.model.role.Union;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class PositionType extends BaseType {
@@ -29,7 +29,7 @@ public class PositionType extends BaseType {
 	
 	private List<PositionTypeClass> typeClasses;
 	
-	private Union union;
+	private PartyRole union;
 	
 	private List<ValidResponsibility> validResponsibilities;
 
@@ -53,7 +53,7 @@ public class PositionType extends BaseType {
 	}
 
 	@ManyToOne
-	public Union getUnion() {
+	public PartyRole getUnion() {
 		return union;
 	}
 
@@ -78,7 +78,7 @@ public class PositionType extends BaseType {
 		this.typeClasses = typeClasses;
 	}
 
-	public void setUnion(Union union) {
+	public void setUnion(PartyRole union) {
 		this.union = union;
 	}
 

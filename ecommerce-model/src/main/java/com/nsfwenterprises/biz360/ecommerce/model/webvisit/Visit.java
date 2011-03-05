@@ -10,9 +10,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import com.nsfwenterprises.biz360.ecommerce.model.party.contactmechanism.WebAddress;
-import com.nsfwenterprises.biz360.ecommerce.model.party.role.Visitor;
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.order.model.Order;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class Visit extends BasePersistentModel {
@@ -30,7 +30,7 @@ public class Visit extends BasePersistentModel {
 	
 	private Order resultingIn;
 	
-	private Visitor visitedBy;
+	private PartyRole visitedBy;
 	
 	private Date visitEnd;
 	
@@ -57,7 +57,7 @@ public class Visit extends BasePersistentModel {
 
 
 	@ManyToOne
-	public Visitor getVisitedBy() {
+	public PartyRole getVisitedBy() {
 		return visitedBy;
 	}
 
@@ -87,7 +87,7 @@ public class Visit extends BasePersistentModel {
 		this.resultingIn = resultingIn;
 	}
 
-	public void setVisitedBy(Visitor visitedBy) {
+	public void setVisitedBy(PartyRole visitedBy) {
 		this.visitedBy = visitedBy;
 	}
 

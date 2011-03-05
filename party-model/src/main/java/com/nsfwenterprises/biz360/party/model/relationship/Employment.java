@@ -3,8 +3,7 @@ package com.nsfwenterprises.biz360.party.model.relationship;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import com.nsfwenterprises.biz360.party.model.role.Employee;
-import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class Employment extends PartyRelationship {
@@ -23,13 +22,13 @@ public class Employment extends PartyRelationship {
 		return dueTo;
 	}
 
-	public InternalOrganization getRelationshipFrom() {
-		return (InternalOrganization)super.getRelationshipFrom();
+	public PartyRole getRelationshipFrom() {
+		return (PartyRole)super.getRelationshipFrom();
 	}
 
 
-	public Employee getRelationshipTo() {
-		return (Employee)super.getRelationshipTo();
+	public PartyRole getRelationshipTo() {
+		return (PartyRole)super.getRelationshipTo();
 	}
 
 /*	@ManyToOne
@@ -42,16 +41,12 @@ public class Employment extends PartyRelationship {
 		this.dueTo = dueTo;
 	}
 
-	public void setRelationshipFrom(InternalOrganization relationshipFrom) {
+	public void setRelationshipFrom(PartyRole relationshipFrom) {
 		super.setRelationshipFrom(relationshipFrom);
 	}
 
-	public void setRelationshipTo(Employee relationshipTo) {
+	public void setRelationshipTo(PartyRole relationshipTo) {
 		super.setRelationshipTo(relationshipTo);
 	}
-/*
-	public void setTerminationType(TerminationType terminationType) {
-		this.terminationType = terminationType;
-	}
-*/
+
 }

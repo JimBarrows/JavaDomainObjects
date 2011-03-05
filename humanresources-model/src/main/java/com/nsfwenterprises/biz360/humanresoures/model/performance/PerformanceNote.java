@@ -6,8 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.role.Employee;
-import com.nsfwenterprises.biz360.party.model.role.Manager;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class PerformanceNote extends BaseDateRangeModel {
@@ -21,9 +20,9 @@ public class PerformanceNote extends BaseDateRangeModel {
 	
 	private Date communicationDate;
 	
-	private Employee forEmployee;
+	private PartyRole forEmployee;
 	
-	private Manager fromManger;
+	private PartyRole fromManger;
 	
 	private PerformanceNoteType type;
 
@@ -35,11 +34,11 @@ public class PerformanceNote extends BaseDateRangeModel {
 		return communicationDate;
 	}
 
-	public Employee getForEmployee() {
+	public PartyRole getForEmployee() {
 		return forEmployee;
 	}
 
-	public Manager getFromManger() {
+	public PartyRole getFromManger() {
 		return fromManger;
 	}
 
@@ -56,11 +55,11 @@ public class PerformanceNote extends BaseDateRangeModel {
 		this.communicationDate = communicationDate;
 	}
 
-	public void setForEmployee(Employee forEmployee) {
+	public void setForEmployee(PartyRole forEmployee) {
 		this.forEmployee = forEmployee;
 	}
 
-	public void setFromManger(Manager fromManger) {
+	public void setFromManger(PartyRole fromManger) {
 		this.fromManger = fromManger;
 	}
 

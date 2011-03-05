@@ -7,7 +7,7 @@ import org.hibernate.annotations.Entity;
 
 import com.nsfwenterprises.biz360.accounting.model.asset.PeriodType;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class AccountingPeriod extends BaseDateRangeModel {
@@ -19,7 +19,7 @@ public class AccountingPeriod extends BaseDateRangeModel {
 		
 	private int accountingPeriodNumber;
 	
-	private InternalOrganization accountPeriodFor;
+	private PartyRole accountPeriodFor;
 
 	private PeriodType definedBy;
 
@@ -29,7 +29,7 @@ public class AccountingPeriod extends BaseDateRangeModel {
 	}
 
 	@ManyToOne
-	public InternalOrganization getAccountPeriodFor() {
+	public PartyRole getAccountPeriodFor() {
 		return accountPeriodFor;
 	}
 
@@ -42,7 +42,7 @@ public class AccountingPeriod extends BaseDateRangeModel {
 		this.accountingPeriodNumber = accountingPeriodNumber;
 	}
 
-	public void setAccountPeriodFor(InternalOrganization accountPeriodFor) {
+	public void setAccountPeriodFor(PartyRole accountPeriodFor) {
 		this.accountPeriodFor = accountPeriodFor;
 	}
 

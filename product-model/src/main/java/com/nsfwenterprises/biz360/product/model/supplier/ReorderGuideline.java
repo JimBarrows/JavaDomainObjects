@@ -5,9 +5,9 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 import com.nsfwenterprises.biz360.party.model.facility.Facility;
 import com.nsfwenterprises.biz360.party.model.geographicBoundary.GeographicBoundary;
-import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
 import com.nsfwenterprises.biz360.product.model.Good;
 
 /**
@@ -28,7 +28,7 @@ public class ReorderGuideline extends BaseDateRangeModel {
 	@ManyToOne
 	private GeographicBoundary basedOnGeographicBoundary;
 	@ManyToOne
-	private InternalOrganization basedOnInternalOrganization;
+	private PartyRole basedOnInternalOrganization;
 	@ManyToOne
 	private Good guidelineFor;
 	private long reorderLevel;
@@ -43,7 +43,7 @@ public class ReorderGuideline extends BaseDateRangeModel {
 		return basedOnGeographicBoundary;
 	}
 
-	public InternalOrganization getBasedOnInternalOrganization() {
+	public PartyRole getBasedOnInternalOrganization() {
 		return basedOnInternalOrganization;
 	}
 
@@ -69,7 +69,7 @@ public class ReorderGuideline extends BaseDateRangeModel {
 	}
 
 	public void setBasedOnInternalOrganization(
-			InternalOrganization basedOnInternalOrganization) {
+			PartyRole basedOnInternalOrganization) {
 		this.basedOnInternalOrganization = basedOnInternalOrganization;
 	}
 

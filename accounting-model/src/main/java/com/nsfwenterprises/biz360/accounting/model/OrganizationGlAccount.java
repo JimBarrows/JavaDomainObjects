@@ -9,9 +9,7 @@ import javax.persistence.OneToMany;
 
 import com.nsfwenterprises.biz360.accounting.model.transaction.detail.TransactionDetail;
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.role.BillToCustomer;
-import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
-import com.nsfwenterprises.biz360.party.model.role.Supplier;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class OrganizationGlAccount extends BaseDateRangeModel {
@@ -27,11 +25,11 @@ public class OrganizationGlAccount extends BaseDateRangeModel {
 	
 	private List< TransactionDetail> consistingOf = new ArrayList<TransactionDetail>();
 	
-	private InternalOrganization internalOrganizationFor;
+	private PartyRole internalOrganizationFor;
 	
-	private BillToCustomer referencingBillToCustomer;	
+	private PartyRole referencingBillToCustomer;	
 		
-	private Supplier referencingSupplier;
+	private PartyRole referencingSupplier;
 
 	private OrganizationGlAccount subsidiaryOf;
 
@@ -50,17 +48,17 @@ public class OrganizationGlAccount extends BaseDateRangeModel {
 		return consistingOf;
 	}
 
-	public InternalOrganization getInternalOrganizationFor() {
+	public PartyRole getInternalOrganizationFor() {
 		return internalOrganizationFor;
 	}
 
-	public BillToCustomer getReferencingBillToCustomer() {
+	public PartyRole getReferencingBillToCustomer() {
 		return referencingBillToCustomer;
 	}
 
 
 
-	public Supplier getReferencingSupplier() {
+	public PartyRole getReferencingSupplier() {
 		return referencingSupplier;
 	}
 
@@ -82,18 +80,18 @@ public class OrganizationGlAccount extends BaseDateRangeModel {
 	}
 
 	public void setInternalOrganizationFor(
-			InternalOrganization internalOrganizationFor) {
+			PartyRole internalOrganizationFor) {
 		this.internalOrganizationFor = internalOrganizationFor;
 	}
 
 	public void setReferencingBillToCustomer(
-			BillToCustomer referencingBillToCustomer) {
+			PartyRole referencingBillToCustomer) {
 		this.referencingBillToCustomer = referencingBillToCustomer;
 	}
 
 	
 
-	public void setReferencingSupplier(Supplier referencingSupplier) {
+	public void setReferencingSupplier(PartyRole referencingSupplier) {
 		this.referencingSupplier = referencingSupplier;
 	}
 

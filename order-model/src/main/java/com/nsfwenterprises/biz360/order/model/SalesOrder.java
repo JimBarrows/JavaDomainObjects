@@ -3,10 +3,8 @@ package com.nsfwenterprises.biz360.order.model;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 import com.nsfwenterprises.biz360.party.model.contactmechanism.ContactMechanism;
-import com.nsfwenterprises.biz360.party.model.role.BillToCustomer;
-import com.nsfwenterprises.biz360.party.model.role.InternalOrganization;
-import com.nsfwenterprises.biz360.party.model.role.PlacingCustomer;
 
 /**
  * @author Jim
@@ -21,20 +19,20 @@ public class SalesOrder extends Order {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private BillToCustomer billTo;
+	private PartyRole billTo;
 
 	private ContactMechanism designatedToBeBilledTo;
 
-	private PlacingCustomer placedBy;
+	private PartyRole placedBy;
 
 	private ContactMechanism placedUsingMechanism;
 
-	private InternalOrganization takenBy;
+	private PartyRole takenBy;
 
 	private ContactMechanism takenVia;
 
 	@ManyToOne
-	public BillToCustomer getBillTo() {
+	public PartyRole getBillTo() {
 		return billTo;
 	}
 
@@ -44,7 +42,7 @@ public class SalesOrder extends Order {
 	}
 
 	@ManyToOne
-	public PlacingCustomer getPlacedBy() {
+	public PartyRole getPlacedBy() {
 		return placedBy;
 	}
 
@@ -54,7 +52,7 @@ public class SalesOrder extends Order {
 	}
 
 	@ManyToOne
-	public InternalOrganization getTakenBy() {
+	public PartyRole getTakenBy() {
 		return takenBy;
 	}
 
@@ -63,7 +61,7 @@ public class SalesOrder extends Order {
 		return takenVia;
 	}
 
-	public void setBillTo(BillToCustomer billTo) {
+	public void setBillTo(PartyRole billTo) {
 		this.billTo = billTo;
 	}
 
@@ -72,7 +70,7 @@ public class SalesOrder extends Order {
 		this.designatedToBeBilledTo = designatedToBeBilledTo;
 	}
 
-	public void setPlacedBy(PlacingCustomer placedBy) {
+	public void setPlacedBy(PartyRole placedBy) {
 		this.placedBy = placedBy;
 	}
 
@@ -80,7 +78,7 @@ public class SalesOrder extends Order {
 		this.placedUsingMechanism = placedUsing;
 	}
 
-	public void setTakenBy(InternalOrganization takenBy) {
+	public void setTakenBy(PartyRole takenBy) {
 		this.takenBy = takenBy;
 	}
 

@@ -3,10 +3,8 @@ package com.nsfwenterprises.biz360.order.model;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 import com.nsfwenterprises.biz360.party.model.contactmechanism.ContactMechanism;
-import com.nsfwenterprises.biz360.party.model.role.BillToPurchaser;
-import com.nsfwenterprises.biz360.party.model.role.PlacingBuyer;
-import com.nsfwenterprises.biz360.party.model.role.Supplier;
 
 /**
  * @author Jim
@@ -19,13 +17,13 @@ public class PurchaseOrder extends Order {
 
 	private ContactMechanism billedTo;
 	
-	private PlacingBuyer placedBy;
+	private PartyRole placedBy;
 	
 	private ContactMechanism placedUsing;
 	
-	private BillToPurchaser requestedBillTo;
+	private PartyRole requestedBillTo;
 
-	private Supplier takenBy;
+	private PartyRole takenBy;
 	
 	private ContactMechanism takenVia;
 
@@ -35,7 +33,7 @@ public class PurchaseOrder extends Order {
 	}
 
 	@ManyToOne
-	public PlacingBuyer getPlacedBy() {
+	public PartyRole getPlacedBy() {
 		return placedBy;
 	}
 
@@ -45,12 +43,12 @@ public class PurchaseOrder extends Order {
 	}
 
 	@ManyToOne
-	public BillToPurchaser getRequestedBillTo() {
+	public PartyRole getRequestedBillTo() {
 		return requestedBillTo;
 	}
 
 	@ManyToOne
-	public Supplier getTakenBy() {
+	public PartyRole getTakenBy() {
 		return takenBy;
 	}
 
@@ -63,7 +61,7 @@ public class PurchaseOrder extends Order {
 		this.billedTo = billedTo;
 	}
 
-	public void setPlacedBy(PlacingBuyer placerOf) {
+	public void setPlacedBy(PartyRole placerOf) {
 		this.placedBy = placerOf;
 	}
 
@@ -71,11 +69,11 @@ public class PurchaseOrder extends Order {
 		this.placedUsing = placedUser;
 	}
 
-	public void setRequestedBillTo(BillToPurchaser requestedBillTo) {
+	public void setRequestedBillTo(PartyRole requestedBillTo) {
 		this.requestedBillTo = requestedBillTo;
 	}
 
-	public void setTakenBy(Supplier fullfillerOf) {
+	public void setTakenBy(PartyRole fullfillerOf) {
 		this.takenBy = fullfillerOf;
 	}
 

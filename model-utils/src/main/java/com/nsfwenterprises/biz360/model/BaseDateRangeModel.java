@@ -3,6 +3,8 @@
  */
 package com.nsfwenterprises.biz360.model;
 
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -13,8 +15,6 @@ import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.hibernate.annotations.Type;
-import org.joda.time.LocalDate;
 
 /**
  * Several models are date range sensitive, this base class provides that basic
@@ -26,9 +26,9 @@ import org.joda.time.LocalDate;
 @MappedSuperclass
 public abstract class BaseDateRangeModel extends BasePersistentModel {
 
-	private LocalDate from;
+	private Date from = new Date();
 
-	private LocalDate thru;
+	private Date thru;
 
 	/**
 	 * Determines if a model is active. A model is active if now is after or
@@ -36,9 +36,9 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 	 */
 	@Transient
 	public boolean isActive() {
-		LocalDate now = new LocalDate();
-		boolean afterFrom = from.isBefore(now) || from.equals(now);
-		boolean beforeThru = thru == null || thru.isAfter(now)
+		Date now = new Date();
+		boolean afterFrom = from.before(now) || from.equals(now);
+		boolean beforeThru = thru == null || thru.after(now)
 				|| thru.equals(now);
 		return afterFrom && beforeThru;
 	}
@@ -49,7 +49,7 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 		if (thru == null) {
 			return true;
 		} else {
-			return thru.isAfter(from);
+			return thru.after(from);
 		}
 	}
 
@@ -73,24 +73,24 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 				.append(this.from).toHashCode();
 	}
 
-	@Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
-	@NotNull
 	@Column(name = "fromDate")
-	public LocalDate getFrom() {
+	@Temporal(TemporalType.DATE)
+	@NotNull
+	public Date getFrom() {
 		return from;
 	}
 
-	public void setFrom(LocalDate from) {
+	public void setFrom(Date from) {
 		this.from = from;
 	}
 
-	@Type(type = "org.joda.time.contrib.hibernate.PersistentLocalDate")
 	@Column(name = "thruDate")
-	public LocalDate getThru() {
+	@Temporal(TemporalType.DATE)	
+	public Date getThru() {
 		return thru;
 	}
 
-	public void setThru(LocalDate thru) {
+	public void setThru(Date thru) {
 		this.thru = thru;
 	}
 

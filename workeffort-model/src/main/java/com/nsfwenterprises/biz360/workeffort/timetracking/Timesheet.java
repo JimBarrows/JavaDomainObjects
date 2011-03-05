@@ -7,7 +7,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.role.Worker;
+import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class Timesheet extends BaseDateRangeModel {
@@ -19,7 +19,7 @@ public class Timesheet extends BaseDateRangeModel {
 
 	private List<TimeEntry> entries;
 	
-	private Worker hoursFor;
+	private PartyRole hoursFor;
 	
 	private List<TimesheetRole> involving;
 
@@ -29,7 +29,7 @@ public class Timesheet extends BaseDateRangeModel {
 	}
 
 	@ManyToOne
-	public Worker getHoursFor() {
+	public PartyRole getHoursFor() {
 		return hoursFor;
 	}
 
@@ -42,7 +42,7 @@ public class Timesheet extends BaseDateRangeModel {
 		this.entries = entries;
 	}
 
-	public void setHoursFor(Worker hoursFor) {
+	public void setHoursFor(PartyRole hoursFor) {
 		this.hoursFor = hoursFor;
 	}
 

@@ -19,6 +19,7 @@
 		<!-- Drop and re-create the database schema on startup -->
 		<property name="hbm2ddl.auto">update</property>
 		
+		<mapping class="com.nsfwenterprises.biz360.model.BaseHeirarchicalType" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.Organization" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.Party" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.PartyClassification" />
@@ -26,6 +27,7 @@
 		<mapping class="com.nsfwenterprises.biz360.party.model.PartyContactMechanismPurpose" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.PartyPostalAddress" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.PartyRole" />
+		<mapping class="com.nsfwenterprises.biz360.party.model.PartyRoleType" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.Person" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.communication.Case" />
 		<mapping class="com.nsfwenterprises.biz360.party.model.communication.CaseRole" />
