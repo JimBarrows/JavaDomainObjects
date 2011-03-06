@@ -8,8 +8,11 @@
 			<param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
 		</layout>
 	</appender>
+	<logger name="org.dbunit">
+		<level value="debug"/>
+	</logger>
 	<root>
-		<priority value="info" />
+		<priority value="warn" />
 		<appender-ref ref="console" />
 	</root>
 

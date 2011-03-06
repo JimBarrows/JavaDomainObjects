@@ -1,9 +1,7 @@
 package test.party;
 
-import org.dbunit.DBTestCase;
-import org.dbunit.PropertiesBasedJdbcDatabaseTester;
-import org.dbunit.dataset.IDataSet;
-import org.dbunit.operation.DatabaseOperation;
+import javax.sql.DataSource;
+
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.junit.After;
@@ -12,6 +10,7 @@ import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
@@ -23,7 +22,10 @@ import com.nsfwenterprises.biz360.party.model.PartyRoleType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "party-roles.xml")
-public class PartyRoles extends DBTestCase{
+public class PartyRoles {
+
+	@Autowired
+	private DataSource dataSource;
 
 	private Session session;
 	private Transaction transaction;
@@ -36,7 +38,7 @@ public class PartyRoles extends DBTestCase{
 		organization.addPartyRole(pr);
 		session.save(organization);
 	}
-	
+
 	@Test
 	public void canAddRoleToNewOrganization() {
 		Organization newOrganization = new Organization();
@@ -75,23 +77,7 @@ public class PartyRoles extends DBTestCase{
 	public void tearDown() throws Exception {
 		System.out.println("After Test");
 		transaction.commit();
-		session.close();
+		session.close();		
 	}
-
-	@Override
-	protected IDataSet getDataSet() throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-	
-	protected DatabaseOperation getSetUpOperation() throws Exception
-    {
-        return DatabaseOperation.REFRESH;
-    }
-
-    protected DatabaseOperation getTearDownOperation() throws Exception
-    {
-        return DatabaseOperation.NONE;
-    }
 
 }
