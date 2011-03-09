@@ -3,7 +3,6 @@ package com.nsfwenterprises.biz360.party.model.relationship;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertFalse;
@@ -73,7 +72,7 @@ public class PartyRelationship extends BaseDateRangeModel {
 		return priority;
 	}
 
-	@ManyToOne( optional=false, targetEntity=PartyRole.class)
+	@ManyToOne(optional=false, targetEntity=PartyRole.class)
 	@NotNull
 	protected PartyRole getRelationshipFrom() {
 		return relationshipFrom;
