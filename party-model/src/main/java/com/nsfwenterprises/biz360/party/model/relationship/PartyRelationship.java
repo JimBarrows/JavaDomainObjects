@@ -57,9 +57,9 @@ public class PartyRelationship extends BaseDateRangeModel {
 	}
 	
 	@Transient
-	@AssertFalse
-	public boolean isTheRelatinshipToSameParty() {
-		return relationshipFrom.equals(relationshipTo);
+	@AssertFalse(message="Relationship cannot be to the same party.")
+	public boolean isTheRelationshipToSameParty() {
+		return relationshipFrom.getRoleFor().equals(relationshipTo.getRoleFor());
 	}	
 	
 	@NotEmpty

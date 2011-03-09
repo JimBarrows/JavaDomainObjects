@@ -1,5 +1,8 @@
 package test.party;
 
+import static org.junit.Assert.*;
+import javax.validation.ConstraintViolationException;
+
 import org.hibernate.Transaction;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -19,13 +22,15 @@ public class PartyRelationships  extends BaseModelTest{
 	public void testSave() {
 		//given
 		Party fromParty = new Party();
-		Party toParty = new Party();
 		PartyRoleType fromType = new PartyRoleType("from");
-		PartyRoleType toType = new PartyRoleType("to");
 		PartyRole fromPartyRole = new PartyRole(fromType);
-		PartyRole toPartyRole = new PartyRole(toType);
 		fromParty.addPartyRole(fromPartyRole);
+		
+		Party toParty = new Party();
+		PartyRoleType toType = new PartyRoleType("to");
+		PartyRole toPartyRole = new PartyRole(toType);
 		toParty.addPartyRole(toPartyRole);
+		
 		Transaction transaction = session.beginTransaction();
 		session.save(fromType);
 		session.save(toType);
@@ -41,6 +46,38 @@ public class PartyRelationships  extends BaseModelTest{
 		
 		//then
 		//it works
+	}
+	
+	@Test
+	public void testMustNotBeSameParty() {
+		//given
+		Party fromParty = new Party();
+		PartyRoleType fromType = new PartyRoleType("from");
+		PartyRole fromPartyRole = new PartyRole(fromType);
+		fromParty.addPartyRole(fromPartyRole);
+		
+		PartyRoleType toType = new PartyRoleType("to");
+		PartyRole toPartyRole = new PartyRole(toType);
+		fromParty.addPartyRole(toPartyRole);
+		
+		Transaction transaction = session.beginTransaction();
+		session.save(fromType);
+		session.save(fromParty);
+		transaction.commit();
+		PartyRelationship relationship = new PartyRelationship("test", fromPartyRole, toPartyRole);
+		
+		//when
+		try {
+		transaction = session.beginTransaction();
+		session.save(relationship);
+		transaction.commit();
+		fail("A relationship was to the same party.");
+		
+		//then
+		} catch( ConstraintViolationException cve) {
+			
+		}
+	
 	}
 	
 }
