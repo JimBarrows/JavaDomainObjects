@@ -7,6 +7,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -40,6 +41,16 @@ public class PartyRelationship extends BaseDateRangeModel {
 	
 	private StatusType status;
 	
+	public PartyRelationship() {
+		
+	}
+	
+	public PartyRelationship(String comment, PartyRole from, PartyRole to) {
+		this.comment = comment;
+		relationshipFrom = from;
+		relationshipTo = to;
+	}
+	
 	@Transient
 	@AssertFalse
 	public boolean isRelationshipRolesNull() {
@@ -52,6 +63,54 @@ public class PartyRelationship extends BaseDateRangeModel {
 		return relationshipFrom.equals(relationshipTo);
 	}	
 	
+	@NotEmpty
+	public String getComment() {
+		return comment;
+	}
+
+	@ManyToOne
+	public PriorityType getPriority() {
+		return priority;
+	}
+
+	@ManyToOne( optional=false, targetEntity=PartyRole.class)
+	@NotNull
+	protected PartyRole getRelationshipFrom() {
+		return relationshipFrom;
+	}
+
+	@ManyToOne(optional=false, targetEntity=PartyRole.class)
+	@NotNull
+	protected PartyRole getRelationshipTo() {
+		return relationshipTo;
+	}
+
+	@ManyToOne(targetEntity=StatusType.class)
+	public StatusType getStatus() {
+		return status;
+	}
+
+
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
+
+	public void setPriority(PriorityType priority) {
+		this.priority = priority;
+	}
+
+	protected void setRelationshipFrom(PartyRole relationshipFrom) {
+		this.relationshipFrom = relationshipFrom;
+	}
+
+	protected void setRelationshipTo(PartyRole relationshipTo) {
+		this.relationshipTo = relationshipTo;
+	}
+
+	public void setStatus(StatusType status) {
+		this.status = status;
+	}
+
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
@@ -78,32 +137,7 @@ public class PartyRelationship extends BaseDateRangeModel {
 			return false;
 		return true;
 	}
-
-	@NotEmpty
-	@Lob
-	public String getComment() {
-		return comment;
-	}
-
-	@ManyToOne
-	public PriorityType getPriority() {
-		return priority;
-	}
-
-	@ManyToOne
-	protected PartyRole getRelationshipFrom() {
-		return relationshipFrom;
-	}
-
-	@ManyToOne
-	protected PartyRole getRelationshipTo() {
-		return relationshipTo;
-	}
-
-	public StatusType getStatus() {
-		return status;
-	}
-
+	
 	@Override
 	public int hashCode() {
 		final int prime = 31;
@@ -116,30 +150,4 @@ public class PartyRelationship extends BaseDateRangeModel {
 				+ ((relationshipTo == null) ? 0 : relationshipTo.hashCode());
 		return result;
 	}
-
-	public void setComment(String comment) {
-		this.comment = comment;
-	}
-
-	@ManyToOne
-	public void setPriority(PriorityType priority) {
-		this.priority = priority;
-	}
-
-	protected void setRelationshipFrom(PartyRole relationshipFrom) {
-		this.relationshipFrom = relationshipFrom;
-	}
-
-	protected void setRelationshipTo(PartyRole relationshipTo) {
-		this.relationshipTo = relationshipTo;
-	}
-
-	public void setStatus(StatusType status) {
-		this.status = status;
-	}
-
-	
-
-	
-
 }

@@ -35,5 +35,4 @@ public class Organization extends Party {
 		this.name = name;
 	}
 
-
 }

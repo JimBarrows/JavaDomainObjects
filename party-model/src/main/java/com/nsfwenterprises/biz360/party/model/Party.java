@@ -12,6 +12,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.xml.crypto.Data;
+
+import org.hibernate.annotations.Cascade;
 
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.party.model.communication.CaseRole;
@@ -105,6 +108,11 @@ public class Party extends BasePersistentModel implements Serializable {
 		role.setRoleFor(this);
 	}
 
+	public void removePartyRole(PartyRole role) {
+		actingAs.remove(role);
+		role.setRoleFor(null);
+	}
+
 	public void addWebAddress(PartyContactMechanism partyContactMechanism) {
 		contactedVia.add(partyContactMechanism);
 		partyContactMechanism.setMechanismToContact(this);
@@ -114,7 +122,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the actingAs
 	 */
-	@OneToMany(mappedBy = "roleFor", cascade = ALL)
+	@OneToMany(mappedBy = "roleFor", cascade = ALL, orphanRemoval=true)
 	@OrderBy("from")
 	public List<PartyRole> getActingAs() {
 		return actingAs;
@@ -132,12 +140,12 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the classifiedInto
 	 */
-	@OneToMany(cascade = ALL, mappedBy = "classificationFor")
+	@OneToMany(cascade = ALL, mappedBy = "classificationFor", orphanRemoval=true)
 	public List<PartyClassification> getClassifiedInto() {
 		return classifiedInto;
 	}
 
-	@OneToMany(mappedBy = "mechanismToContact", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "mechanismToContact", cascade = CascadeType.ALL, orphanRemoval=true)
 	@OrderBy("from")
 	public List<PartyContactMechanism> getContactedVia() {
 		return contactedVia;
@@ -164,7 +172,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the residingAt
 	 */
-	@OneToMany(mappedBy = "specifiedFor", cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "specifiedFor", cascade = CascadeType.ALL, orphanRemoval=true)
 	@OrderBy("from")
 	public List<PartyPostalAddress> getResidingAt() {
 		return residingAt;

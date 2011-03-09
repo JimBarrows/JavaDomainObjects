@@ -10,6 +10,10 @@ import com.nsfwenterprises.biz360.model.BaseType;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartyRoleType extends BaseType{
 
+	public PartyRoleType(String description) {
+		this.setDescription(description);
+	}
+
 	/**
 	 * 
 	 */
