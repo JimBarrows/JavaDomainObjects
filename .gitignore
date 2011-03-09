@@ -26,6 +26,7 @@
 .myhibernatedata
 .project
 .settings
+.springBeans
 .svn
 derby.log
 desktop.ini
