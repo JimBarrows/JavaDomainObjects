@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+	<body>
+		<ui:component>
+			<h:form id="classificationListComponentForm">
+			
+				<div class="actionButtons">
+				
+					<s:button id="addClassificationButton"
+						action="#{partyHome.addClassification}" value="Add Classification"
+						 propagation="join">
+						<a:support reRender="classificationTable" event="onclick" />
+					</s:button>
+					<s:button id="createClassificationButton"
+						view="/party/classification/type/form.xhtml" value="Create Classification" propagation="nest">
+						<f:param name="partyTypeId" value="" />
+						<f:param name="returnView" value="/party/form.xhtml" />
+						<a:support reRender="classificationTable" event="onclick" />
+					</s:button>
+				</div>
+				
+				<rich:dataTable id="classificationTable" title="Classification List"
+					value="#{party.classifiedInto}" var="curClassification">
+					
+					<rich:column id="classificationColumn" sortable="true"
+						title="Classification">
+						<f:facet name="header">Classification</f:facet>
+						<s:decorate id="classifciationSelectOneDecoration"
+							template="/layout/cellEdit.xhtml" rendered="#{edit}">
+							<h:selectOneMenu value="#{curClassification.describedBy}"
+								required="true" id="classifciationSelectOne">
+								<s:selectItems value="#{partyTypeListForUserLogin.resultList}"
+									var="partyType" label="#{partyType.description}"
+									noSelectionLabel="Please Select..." />
+								<s:convertEntity />
+							</h:selectOneMenu>
+						</s:decorate>
+						<h:outputText value="#{curClassification.describedBy.description}"
+							rendered="#{not edit}" />
+					</rich:column>
+					
+					<rich:column id="fromColumn" sortable="true" title="From">
+						<f:facet name="header">From</f:facet>
+						<s:decorate id="fromDateDateDecoration"
+							template="/layout/cellEdit.xhtml" rendered="#{edit}">
+							<rich:calendar id="fromDate" value="#{curClassification.from}"
+								required="true" enableManualInput="true" />
+						</s:decorate>
+						<h:outputText value="#{curClassification.from}"
+							rendered="#{not edit}">
+							<f:convertDateTime pattern="MM/dd/ yyyy" />
+						</h:outputText>
+					</rich:column>
+					
+					<rich:column id="toColumn" sortable="true" title="Thru">
+						<f:facet name="header">Thru</f:facet>
+						<s:decorate id="thrueDateDateDecoration"
+							template="/layout/cellEdit.xhtml" rendered="#{edit}">
+							<rich:calendar id="thruDate" value="#{curClassification.thru}"
+								enableManualInput="true" />
+						</s:decorate>
+						<h:outputText value="#{curClassification.thru}"
+							rendered="#{not edit}">
+							<f:convertDateTime pattern="MM/dd/ yyyy" />
+						</h:outputText>
+					</rich:column>
+					
+					<rich:column>
+						<f:facet name="header" />
+						<h:commandButton id="deletePartyClassificationButton"
+							action="#{partyHome.deletePartyClassification( curClassification)}" value="Delete"
+							rendered="#{edit}" immediate="true">
+							<a:support reRender="classificationTable" event="onclick" />
+							<s:conversationId />
+							<s:conversationPropagation type="join"></s:conversationPropagation>
+						</h:commandButton>
+					</rich:column>
+										
+				</rich:dataTable>
+			</h:form>
+		</ui:component>
+	</body>
+</html>

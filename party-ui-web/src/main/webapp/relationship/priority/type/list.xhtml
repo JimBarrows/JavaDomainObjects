@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich">
+	<body>
+		<ui:composition template="/layout/template.xhtml">
+			<ui:define name="body">
+				<rich:panel id="partyRelationshipPriorityTypeListPanel">
+					<f:facet name="header">Priority Type List</f:facet>
+
+					<s:button id="addPriorityTypeButton" view="/party/relationship/priority/type/form.xhtml"
+						value="Add Priority Type">
+						<f:param name="priorityTypeId" value=""/>
+					</s:button>
+					<h:form id="priorityTypeTable">
+						<rich:dataTable id="priorityTypeList" var="priorityType"
+							value="#{priorityTypeListForUserLogin.resultList}" rows="10">
+
+							<rich:column filterBy="#{priorityType.description}" filterEvent="onkeyup" selfSorted="true" sortBy="#{priorityType.description}">
+								<f:facet name="header">Description</f:facet>
+								<s:link id="priorityTypeEditLink" action="editPriorityType" >
+									<h:outputText value="#{priorityType.description}" />
+									<f:param name="priorityTypeId" value="#{priorityType.id}" />
+								</s:link>
+							</rich:column>
+
+							<f:facet name="footer">
+								<rich:datascroller pageIndexVar="pageIndex" pagesVar="pages"
+									for="priorityTypeList" renderIfSinglePage="false">
+									<f:facet name="pages">
+										<h:outputText value="#{pageIndex}/#{pages}" />
+									</f:facet>
+								</rich:datascroller>
+							</f:facet>
+						</rich:dataTable>
+					</h:form>
+					<h:outputText value="No priority types."
+						rendered="#{empty priorityTypeList.resultList}" />
+					<div style="clear: both"/>
+					<s:button id="doneButton" action="done" value="Done">
+					</s:button>
+				</rich:panel>
+			</ui:define>
+		</ui:composition>
+	</body>
+</html>

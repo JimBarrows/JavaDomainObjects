@@ -1,0 +1,68 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+		<title>Little Black Organizer - BETA</title>
+		<link href="${request.contextPath}/stylesheet/theme.css"
+			rel="stylesheet" type="text/css" />
+		<link href="${request.contextPath}/stylesheet/lboCustomizations.css"
+			rel="stylesheet" type="text/css" />
+	</head>
+
+	<body>
+
+		<div id="toolbar">
+			<ui:include src="toolbar.xhtml">
+				<ui:param name="projectName" value="Little Black Organizer - BETA" />
+			</ui:include>
+		</div>
+		<div class="body">
+
+			<h:form id="conversationStackForm">
+				<ui:repeat value="#{conversationStack}" var="entry">
+					<h:outputText value=" | " />
+					<h:commandLink value="#{entry.description}"
+						action="#{entry.select}" />
+				</ui:repeat>
+			</h:form>
+
+			<s:div id="nowHeader">
+				<h:panelGrid columns="2">
+					<h:outputText escape="false" value="#{today}">
+						<s:convertDateTime pattern="EEEEE dd" />
+					</h:outputText>
+					<h:outputText value="#{today}">
+						<s:convertDateTime pattern="MMMM yyyy" />
+					</h:outputText>
+
+				</h:panelGrid>
+			</s:div>
+			<h1>
+				Version: Beta 2
+			</h1>
+
+			<rich:messages id="globalMessageDisplay" globalOnly="true"
+				showSummary="true" styleClass="message" errorClass="errors"
+				ajaxRendered="true" />
+
+			<ui:insert name="body" />
+		</div>
+
+		<div id="footer">
+			<p>
+				Copy right NSFW Enterprises, LLC. All Rights Reserved.
+			</p>
+			<p>
+				Beta Version.
+			</p>
+		</div>
+
+	</body>
+</html>

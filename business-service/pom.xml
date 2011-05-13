@@ -16,16 +16,24 @@
 	<dependencies>
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-server</artifactId>			
+			<artifactId>jersey-server</artifactId>
+			<version>${jersey-version}</version>			
 		</dependency>
 		<dependency>
 			<groupId>com.sun.jersey</groupId>
-			<artifactId>jersey-json</artifactId>			
+			<artifactId>jersey-json</artifactId>
+			<version>${jersey-version}</version>			
 		</dependency>
 		<dependency>
 			<groupId>com.nsfwenterprises.biz360</groupId>
 			<artifactId>party-model</artifactId>
 			<version>1.0-SNAPSHOT</version>			
+		</dependency>
+		<dependency>
+			<groupId>com.sun.jersey</groupId>
+			<artifactId>jersey-client</artifactId>
+			<version>1.6</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -49,5 +57,8 @@
 			</plugin>
 		</plugins>
 	</build>
+	<properties>
+		<jersey-version>1.6</jersey-version>
+	</properties>
 
 </project>

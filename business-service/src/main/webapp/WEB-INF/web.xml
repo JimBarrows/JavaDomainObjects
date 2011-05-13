@@ -11,8 +11,8 @@
   </init-param>
  </servlet>
  <servlet-mapping>
-  <servlet-name>Business-Service</servlet-name>
-  <url-pattern>/*</url-pattern>
+  <servlet-name>Business-Services</servlet-name>
+  <url-pattern>/business-resources</url-pattern>
  </servlet-mapping>
  <welcome-file-list>
   <welcome-file>index.jsp</welcome-file>

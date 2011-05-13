@@ -4,16 +4,18 @@
 		<artifactId>Biz360</artifactId>
 		<groupId>com.nsfwenterprises.biz360</groupId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.bizondemand</groupId>
-	<artifactId>business-ui-web</artifactId>
-	<name>Business UI for Web</name>
+	<groupId>com.nsfwenterprises.biz360</groupId>
+	<artifactId>party-ui-web</artifactId>
+	<name>Web UI for Party Models</name>
 	<version>0.0.1-SNAPSHOT</version>
 	<packaging>war</packaging>
-	<description>	</description>
+	<description></description>
 	<inceptionYear>2011</inceptionYear>
+		<properties>
+		<org.richfaces.bom.version>4.0.0.Final</org.richfaces.bom.version>
+	</properties>
 	<dependencies>
 		<dependency>
 			<groupId>com.nsfwenterprises.biz360</groupId>
@@ -47,7 +49,5 @@
 			</dependency>
 		</dependencies>
 	</dependencyManagement>
-	<properties>
-		<org.richfaces.bom.version>4.0.0.Final</org.richfaces.bom.version>
-	</properties>
+
 </project>

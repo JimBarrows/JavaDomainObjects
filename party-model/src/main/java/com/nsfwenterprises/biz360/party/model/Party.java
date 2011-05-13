@@ -14,8 +14,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.xml.crypto.Data;
 
-import org.hibernate.annotations.Cascade;
-
 import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.party.model.communication.CaseRole;
 import com.nsfwenterprises.biz360.party.model.communication.CommunicationEventRole;

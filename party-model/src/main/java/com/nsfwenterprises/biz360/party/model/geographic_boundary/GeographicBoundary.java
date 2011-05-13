@@ -11,15 +11,12 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
 import com.nsfwenterprises.biz360.party.model.contactmechanism.PostalAddress;
 
 /**
@@ -30,7 +27,6 @@ import com.nsfwenterprises.biz360.party.model.contactmechanism.PostalAddress;
  * @see Data Model Resource Book Volume 1 Figure 2.8, page 50
  * @see Data Model Resource Book Volume 1 Figure 3.5, page 82
  */
-@SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class GeographicBoundary {
