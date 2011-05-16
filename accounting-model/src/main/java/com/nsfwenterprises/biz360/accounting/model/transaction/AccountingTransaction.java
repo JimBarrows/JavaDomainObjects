@@ -22,7 +22,6 @@ public class AccountingTransaction extends BasePersistentModel {
 
 	public AccountingTransaction() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

@@ -69,14 +69,14 @@
 
 								<rich:panel>
 									<f:facet name="header">Addresses</f:facet>
-									<ui:include src="/party/contactMechanism/address/list.xhtml">
+									<ui:include src="/contactMechanism/address/list.xhtml">
 										<ui:param name="edit" value="true" />
 									</ui:include>
 								</rich:panel>
 
 								<rich:panel>
 									<f:facet name="header">Contact Mechanisms</f:facet>
-									<ui:include src="/party/contactMechanism/list.xhtml">
+									<ui:include src="/contactMechanism/list.xhtml">
 										<ui:param name="edit" value="true" />
 									</ui:include>
 								</rich:panel>
@@ -84,13 +84,13 @@
 							</rich:tab>
 							
 							<rich:tab id="rolesTab" label="Roles">
-								<ui:include src="/party/role/list.xhtml">
+								<ui:include src="/role/list.xhtml">
 									<ui:param name="edit" value="true" />
 								</ui:include>
 							</rich:tab>
 
 							<rich:tab id="classificationsTab" label="Classifications">
-								<ui:include src="/party/classification/list.xhtml">
+								<ui:include src="/classification/list.xhtml">
 									<ui:param name="edit" value="true" />
 								</ui:include>
 							</rich:tab>
@@ -129,7 +129,7 @@
 							<rich:tab id="relationshipTab" label="Relationships">
 								<ui:repeat value="#{party.actingAs}" var="curRole">
 									<ui:include
-										src="/party/relationship/partyRelationshipList.xhtml">
+										src="/relationship/partyRelationshipList.xhtml">
 										<ui:param name="role" value="#{curRole}" />
 									</ui:include>
 								</ui:repeat>

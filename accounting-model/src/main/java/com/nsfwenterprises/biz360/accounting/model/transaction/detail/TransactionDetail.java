@@ -17,7 +17,6 @@ public class TransactionDetail extends BasePersistentModel{
 
 	public TransactionDetail() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	/**

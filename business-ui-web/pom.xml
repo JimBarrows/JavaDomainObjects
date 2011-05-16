@@ -10,7 +10,7 @@
 	<groupId>com.bizondemand</groupId>
 	<artifactId>business-ui-web</artifactId>
 	<name>Business UI for Web</name>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 	<description>	</description>
 	<inceptionYear>2011</inceptionYear>
@@ -34,6 +34,11 @@
 			<groupId>com.sun.facelets</groupId>
 			<artifactId>jsf-facelets</artifactId>
 			<version>1.1.14</version>
+		</dependency>
+		<dependency>
+			<groupId>commons-collections</groupId>
+			<artifactId>commons-collections</artifactId>
+			<version>3.2</version>
 		</dependency>
 	</dependencies>
 	<dependencyManagement>

@@ -39,7 +39,6 @@ public class OrganizationWriter implements MessageBodyWriter<Organization> {
 		logger
 				.debug("getSize(Organization, Class<?>, Type, Annotation[], MediaType) - start");
 
-		// TODO Auto-generated method stub
 
 		logger
 				.debug("getSize(Organization, Class<?>, Type, Annotation[], MediaType) - end");
@@ -52,7 +51,6 @@ public class OrganizationWriter implements MessageBodyWriter<Organization> {
 		logger
 				.debug("isWriteable(Class<?>, Type, Annotation[], MediaType) - start");
 
-		// TODO Auto-generated method stub
 
 		logger
 				.debug("isWriteable(Class<?>, Type, Annotation[], MediaType) - end");		

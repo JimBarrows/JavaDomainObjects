@@ -24,7 +24,6 @@ public class ProductRequirement extends Requirement {
 
 	public ProductRequirement() {
 		super();
-		// TODO Auto-generated constructor stub
 	}
 
 	@OneToMany

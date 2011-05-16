@@ -5,17 +5,16 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:s="http://jboss.com/products/seam/taglib"
 	xmlns:rich="http://richfaces.org/rich"
 	xmlns:p="http://jboss.com/products/seam/pdf">
 	<body>
 		<ui:component>
-			<s:div styleClass="adr" rendered="#{not empty address}">
+			<div styleClass="adr" rendered="#{not empty address}">
 				<h:outputText styleClass="type" value="#{address.comment} " />
-				<s:span styleClass="street-address">
+				<span styleClass="street-address">
 					<h:outputText value="#{address.locatedAt.address1}"
 						rendered="#{not empty address.locatedAt.address1}" />					
-				</s:span>
+				</span>
 				<h:outputText styleClass="locality" escape="false"
 					value="&lt;br/&gt;#{address.locatedAt.city.name}"
 					rendered="#{not empty address.locatedAt.city}" />
@@ -26,7 +25,7 @@
 					value="#{address.locatedAt.zipCode.name}"
 					rendered="#{not empty address.locatedAt.zipCode}" />
 
-			</s:div>
+			</div>
 		</ui:component>
 	</body>
 </html>
