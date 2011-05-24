@@ -3,8 +3,8 @@
     xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 
     <managed-bean>
-        <managed-bean-name>richBean</managed-bean-name>
-        <managed-bean-class>com.nsfwenterprises.biz360.RichBean</managed-bean-class>
+        <managed-bean-name>partyListController</managed-bean-name>
+        <managed-bean-class>mbms.party.ui.web.controllers.PartyListController</managed-bean-class>
         <managed-bean-scope>view</managed-bean-scope>
     </managed-bean>
 </faces-config>

@@ -2,6 +2,6 @@
 <html>
 <head></head>
 	<body>
-		<jsp:forward page="/list.xhtml" />
+		<jsp:forward page="/list.jsf" />
 	</body>
 </html>

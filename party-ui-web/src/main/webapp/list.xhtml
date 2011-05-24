@@ -25,8 +25,8 @@
 		</div>
 
 		<rich:dataGrid id="partyDataGrid"
-			value="#{partyListForUserLogin.resultList}" var="curParty"
-			columns="3" elements="9">
+			value="#{partyListController.list}" var="curParty"
+			columns="3" elements="9" rows="#{partyListController.pageSize}">
 
 			<div class="vcard">
 				<span class="fn">
@@ -75,6 +75,9 @@
 					</rich:list>
 				</h:panelGrid>
 			</div>
+			<f:facet name="footer">
+				<rich:dataScroller page="#{partyListController.pageNumber}"></rich:dataScroller>
+			</f:facet>
 		</rich:dataGrid>
 	</ui:define>
 </ui:composition>

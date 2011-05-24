@@ -11,33 +11,31 @@
 		<h:form id="toolbarForm">
 			<rich:toolbar id="mainToolbar">
 				<h:outputText value="#{projectName}:" />
-				<h:link id="homeLink" value="/index.xhtml">
-					<h:outputText value="Home" />
-				</h:link>
+				<h:link id="homeLink" outcome="/index.jsf" value="Home"/>
 				<rich:toolbarGroup id="commontoolbarGroup" location="left"
 					rendered="#{identity.loggedIn}">
-					<h:link id="taskListToolbarLink" value="/task/list.xhtml"
+					<h:link id="taskListToolbarLink" outcome="/task/list.xhtml"
 						rendered="#{identity.loggedIn}">
 						<h:outputText value="Tasks" />
 					</h:link>
-					<h:link id="calendarToolbarLink" value="/calendar/list.xhtml"
+					<h:link id="calendarToolbarLink" outcome="/calendar/list.xhtml"
 						rendered="#{identity.loggedIn}">
 						<h:outputText value="Calendar" />
 					</h:link>
-					<h:link id="contactListToolbarLink" value="/party/list.xhtml"
+					<h:link id="contactListToolbarLink" outcome="/party/list.xhtml"
 						rendered="#{identity.loggedIn}">
 						<h:outputText value="Contact List" />
 					</h:link>
 					<h:link id="relationshipListToolbarLink"
-						value="/party/relationship/list.xhtml"
+						outcome="/party/relationship/list.xhtml"
 						rendered="#{identity.loggedIn}">
 						<h:outputText value="Relationship List" />
 					</h:link>
-					<h:link id="caseListToolbarLink" value="/party/case/list.xhtml">
+					<h:link id="caseListToolbarLink" outcome="/party/case/list.xhtml">
 						<h:outputText value="Case List" />
 					</h:link>
 					<h:link id="communicationEventListToolbarLink"
-						value="/party/communicationEvent/list.xhtml">
+						outcome="/party/communicationEvent/list.xhtml">
 						<h:outputText value="Communication Event List" />
 					</h:link>
 				</rich:toolbarGroup>
@@ -96,15 +94,12 @@
 					<h:outputText id="welcomeMessage"
 						value="Welcome, #{identity.username}!"
 						rendered="#{identity.loggedIn}" />
-					<h:link id="loginLink" value="/login.xhtml"
+					<h:link id="loginLink" outcome="/index.jsf"
 						rendered="#{not identity.loggedIn}">
 						<h:outputText value="Login" />
 					</h:link>
-
-					<h:link id="logoutLink" value="#{loginUtils.logout}"
-						rendered="#{identity.loggedIn}">
-						<h:outputText value="Log Out" />
-					</h:link>
+					<h:link id="logoutLink" outcome="/index.jsf" value="Log Out"
+						rendered="#{identity.loggedIn}"/>
 				</rich:toolbarGroup>
 			</rich:toolbar>
 		</h:form>

@@ -1,4 +1,4 @@
-package com.nsfwenterprises.biz360;
+package mbms.party.ui.web.controllers;
 
 import java.io.Serializable;
 
