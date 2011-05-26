@@ -9,37 +9,16 @@
 <ui:composition template="/layout/template.xhtml">
 	<ui:define name="body">
 		<h1>Contacts</h1>
-		<div class="actionButtons">
-			<!-- 
-					<s:button id="addPersonButton" view="/form.xhtml"
-						value="Add Person" propagation="begin">
-						<f:param name="partyId" value="" />
-						<f:param name="type" value="Person" />
-					</s:button>
-					<s:button id="addOrganizationButton" view="/form.xhtml"
-						value="Add Organization" propagation="begin">
-						<f:param name="type" value="Organization" />
-						<f:param name="partyId" value="" />
-					</s:button>
-					 -->
-		</div>
-
-		<rich:dataGrid id="partyDataGrid"
-			value="#{partyListController.list}" var="curParty"
-			columns="3" elements="9" rows="#{partyListController.pageSize}">
-
-			<div class="vcard">
-				<span class="fn">
-					<!-- <s:link id="partyEditLink"
-								action="/form.xhtml">
-								<s:conversationPropagation type="begin"></s:conversationPropagation>
-								<f:param name="partyId" value="#{curParty.id}" />
-								<h:outputText value="#{curParty.firstName} #{curParty.lastName}"
-									rendered="#{curParty.class.simpleName == 'Person'}" />
-								<h:outputText value="#{curParty.name}"
-									rendered="#{curParty.class.simpleName == 'Organization'}" />
-							</s:link>  -->
-				</span>
+		<div class="actionButtons"></div>
+		<rich:dataGrid id="partyDataGrid" value="#{partyListController.list}"
+			var="curParty" columns="3" elements="9">
+			<rich:panel bodyClass="vcard">
+				<rich:panel bodyClass="fn">
+					<h:outputText value="#{curParty.firstName} #{curParty.lastName}"
+						rendered="#{curParty.class.simpleName == 'Person'}" />
+					<h:outputText value="#{curParty.name}"
+						rendered="#{curParty.class.simpleName == 'Organization'}" />
+				</rich:panel>
 				<h:panelGrid columns="2">
 					<rich:list id="addressList" value="#{curParty.residingAt}"
 						var="address">
@@ -48,38 +27,39 @@
 						</ui:include>
 					</rich:list>
 					<rich:list id="contactMechanismList"
-						value="#{curParty.contactMechanisms}" var="contactMechanism"
+						value="#{curParty.contactedVia}" var="contactMechanism"
 						title="Contact Mechanisms">
-						<!-- 
-								<s:div styleClass="tel"
-									rendered="#{contactMechanism.mechanism.class.simpleName == 'TelecommunicationsNumber'}">
-									<h:outputText styleClass="type"
-										value="#{contactMechanism.comment} " />
-									<h:outputText value="#{contactMechanism.mechanism.areaCode}" />.<h:outputText
-										value="#{contactMechanism.mechanism.contactNumber}" />
-								</s:div>
-								<s:div styleClass="email"
-									rendered="#{contactMechanism.mechanism.class.simpleName == 'EmailAddress'}">
-									<span class="type"><h:outputText
-											value="#{contactMechanism.comment} " /> </span>
-									<h:outputText
-										value="#{contactMechanism.mechanism.emailAddress}" />
-								</s:div>
-								<s:div
-									rendered="#{contactMechanism.mechanism.class.simpleName == 'WebAddress'}">
-									<h:outputText value="#{contactMechanism.comment} " />
-									<h:outputText styleClass="url"
-										value="#{contactMechanism.mechanism.domainName}" />
-								</s:div>
- -->
+
+						<rich:panel bodyClass="tel"
+							rendered="#{contactMechanism.mechanism.class.simpleName == 'TelecommunicationsNumber'}">
+							<h:outputText styleClass="type"
+								value="#{contactMechanism.comment} " />
+							<h:outputText value="#{contactMechanism.mechanism.areaCode}" />
+							.
+							<h:outputText value="#{contactMechanism.mechanism.contactNumber}" />
+						</rich:panel>
+						
+						<rich:panel bodyClass="email"
+							rendered="#{contactMechanism.mechanism.class.simpleName == 'EmailAddress'}">
+							<span class="type"><h:outputText
+									value="#{contactMechanism.comment} " /> </span>
+							<h:outputText value="#{contactMechanism.mechanism.emailAddress}" />
+						</rich:panel>
+						
+						<rich:panel
+							rendered="#{contactMechanism.mechanism.class.simpleName == 'WebAddress'}">
+							<h:outputText value="#{contactMechanism.comment} " />
+							<h:outputText styleClass="url"
+								value="#{contactMechanism.mechanism.domainName}" />
+						</rich:panel>
+
 					</rich:list>
 				</h:panelGrid>
-			</div>
+			</rich:panel>
 			<f:facet name="footer">
-				<rich:dataScroller page="#{partyListController.pageNumber}"></rich:dataScroller>
+				<rich:dataScroller renderIfSinglePage="false" />
 			</f:facet>
 		</rich:dataGrid>
 	</ui:define>
 </ui:composition>
-
 </html>

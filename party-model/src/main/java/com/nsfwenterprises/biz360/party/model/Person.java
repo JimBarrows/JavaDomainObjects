@@ -68,4 +68,11 @@ public class Person extends Party {
 		this.middleName = middleName;
 	}
 
+	@Override
+	public String toString() {
+		return "Person [firstName=" + firstName + ", lastName=" + lastName
+				+ ", middleName=" + middleName + ", id=" + id + ", version="
+				+ version + "]";
+	}
+
 }
