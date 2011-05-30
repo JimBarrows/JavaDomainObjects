@@ -43,8 +43,11 @@ public class PartyListController implements Serializable {
 		p3.setFirstName("p3");
 		p3.setLastName("p3l");
 		Organization o1 = new Organization();
+		o1.setName("01");
 		Organization o2 = new Organization();
+		o2.setName("o2");
 		Organization o3 = new Organization();
+		o3.setName("o3");
 		tempList.add(p1);
 		tempList.add(p2);
 		tempList.add(p3);

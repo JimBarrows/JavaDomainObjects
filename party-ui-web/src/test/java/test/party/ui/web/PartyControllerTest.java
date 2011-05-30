@@ -3,7 +3,6 @@ package test.party.ui.web;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
-import static org.mockito.Mockito.only;
 import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
@@ -62,23 +61,7 @@ public class PartyControllerTest {
 		assertEquals( list, result);
 		verify( partyListServices).list();
 	}
-	
-	@Test
-	public void testListPagination() {
-		//given				
-		List<Party> actualList = list.subList(4, 6);
-		when( partyListServices.list(4,6)).thenReturn(actualList);
-		classUnderTest.setPageSize(2);
-		classUnderTest.setPageNumber(2);
-		//when
-		List<Party> result = classUnderTest.getList();
 		
-		//then
-		verify( partyListServices, only()).list(4,6);
-		
-		assertEquals( 2, result.size());
-		assertEquals( actualList, result);
-	}
 	
 	@Before
 	public void setup() {

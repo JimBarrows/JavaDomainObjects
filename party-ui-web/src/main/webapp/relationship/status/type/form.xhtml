@@ -4,9 +4,7 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:s="http://jboss.com/products/seam/taglib"
-	xmlns:rich="http://richfaces.org/rich">
-	<body>
+	ody>
 		<ui:composition template="/layout/template.xhtml">
 			<ui:define name="body">
 				<h:form id="statusTypeForm">
@@ -30,7 +28,7 @@
 						<div style="clear: both" />
 
 					</rich:panel>
-					<ui:include src="/components/homeButtonsComponent.xhtml">
+					<ui:include src="/components/homeButtons.xhtml">
 						<ui:param name="home" value="#{statusTypeFormController}" />
 					</ui:include>
 				</h:form>

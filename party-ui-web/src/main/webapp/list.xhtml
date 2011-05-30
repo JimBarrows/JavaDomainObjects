@@ -9,15 +9,20 @@
 <ui:composition template="/layout/template.xhtml">
 	<ui:define name="body">
 		<h1>Contacts</h1>
-		<div class="actionButtons"></div>
+		<div class="actionButtons">
+			<h:form>
+				<h:commandButton action="form" value="Add Person" />
+				<h:commandButton action="form" value="Add Organization" />
+			</h:form>
+		</div>
 		<rich:dataGrid id="partyDataGrid" value="#{partyListController.list}"
 			var="curParty" columns="3" elements="9">
 			<rich:panel bodyClass="vcard">
 				<rich:panel bodyClass="fn">
-					<h:outputText value="#{curParty.firstName} #{curParty.lastName}"
-						rendered="#{curParty.class.simpleName == 'Person'}" />
-					<h:outputText value="#{curParty.name}"
-						rendered="#{curParty.class.simpleName == 'Organization'}" />
+					<ui:include src="/components/party/name/view.xhtml">
+						<ui:param name="showPartyName" value="true" />
+						<ui:param name="party" value="#{curParty}" />
+					</ui:include>
 				</rich:panel>
 				<h:panelGrid columns="2">
 					<rich:list id="addressList" value="#{curParty.residingAt}"
@@ -38,14 +43,14 @@
 							.
 							<h:outputText value="#{contactMechanism.mechanism.contactNumber}" />
 						</rich:panel>
-						
+
 						<rich:panel bodyClass="email"
 							rendered="#{contactMechanism.mechanism.class.simpleName == 'EmailAddress'}">
 							<span class="type"><h:outputText
 									value="#{contactMechanism.comment} " /> </span>
 							<h:outputText value="#{contactMechanism.mechanism.emailAddress}" />
 						</rich:panel>
-						
+
 						<rich:panel
 							rendered="#{contactMechanism.mechanism.class.simpleName == 'WebAddress'}">
 							<h:outputText value="#{contactMechanism.comment} " />
