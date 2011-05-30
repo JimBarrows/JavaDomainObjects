@@ -7,6 +7,7 @@
 *.ipr
 *.iws
 *.jar
+*.jsfdia
 *.log
 *.off
 *.old
@@ -40,6 +41,7 @@ rebel.xml
 release.properties
 runner
 src_managed
+Servers/
 target/
 test-output
 tmp*
