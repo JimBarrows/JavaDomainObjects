@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	ns:a="http://richfaces.org/a4j">
+	<body>
+		<ui:component>
+			<div style="clear: both" />
+			<div class="actionButtons">				
+				<h:commandButton id="create" action="#{home.persist}" value="Save"
+					rendered="#{!home.managed}" />
+					
+				<h:commandButton id="update" action="#{home.update}" value="Save"
+					rendered="#{home.managed}" />
+				<h:commandButton id="delete" action="#{home.remove}" value="Delete"
+					rendered="#{home.managed}" />
+				<s:button id="doneAction" value="Done" action="done"
+					rendered="#{ empty originalView}">
+					<f:param name="originalView" value="" />
+				</s:button>
+				<s:button id="doneView" propagation="end" value="Done"
+					view="#{originalView}" rendered="#{ not empty originalView}">
+					<f:param name="originalView" value="" />
+				</s:button>
+			</div>
+		</ui:component>
+	</body>
+</html>
