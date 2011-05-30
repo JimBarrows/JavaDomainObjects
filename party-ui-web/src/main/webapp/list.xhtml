@@ -11,8 +11,8 @@
 		<h1>Contacts</h1>
 		<div class="actionButtons">
 			<h:form>
-				<h:commandButton action="form" value="Add Person" />
-				<h:commandButton action="form" value="Add Organization" />
+				<h:commandButton action="#{partyFormController.addPerson}" value="Add Person" />
+				<h:commandButton action="#{partyFormController.addOrganization}" value="Add Organization" />
 			</h:form>
 		</div>
 		<rich:dataGrid id="partyDataGrid" value="#{partyListController.list}"

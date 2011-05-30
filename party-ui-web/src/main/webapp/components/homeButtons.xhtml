@@ -4,27 +4,22 @@
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
-	ns:a="http://richfaces.org/a4j">
-	<body>
-		<ui:component>
-			<div style="clear: both" />
-			<div class="actionButtons">				
-				<h:commandButton id="create" action="#{home.persist}" value="Save"
-					rendered="#{!home.managed}" />
-					
-				<h:commandButton id="update" action="#{home.update}" value="Save"
-					rendered="#{home.managed}" />
-				<h:commandButton id="delete" action="#{home.remove}" value="Delete"
-					rendered="#{home.managed}" />
-				<s:button id="doneAction" value="Done" action="done"
-					rendered="#{ empty originalView}">
-					<f:param name="originalView" value="" />
-				</s:button>
-				<s:button id="doneView" propagation="end" value="Done"
-					view="#{originalView}" rendered="#{ not empty originalView}">
-					<f:param name="originalView" value="" />
-				</s:button>
-			</div>
-		</ui:component>
-	</body>
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<body>
+	<ui:component>
+		<div style="clear: both" />
+		<div class="actionButtons">
+			<h:commandButton id="create" action="#{home.persist}" value="Save"
+				rendered="#{!home.managed}" />
+			<h:commandButton id="update" action="#{home.update}" value="Save"
+				rendered="#{home.managed}" />
+			<h:commandButton id="delete" action="#{home.remove}" value="Delete"
+				rendered="#{home.managed}" />
+			<h:commandButton id="doneAction" action="#{home.done}" value="Done" immediate="true"
+				rendered="#{ empty originalView}">
+			</h:commandButton>
+		</div>
+	</ui:component>
+</body>
 </html>
