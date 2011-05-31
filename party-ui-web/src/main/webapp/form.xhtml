@@ -44,35 +44,36 @@
 						value="#{partyFormController.party.firstName}" required="true" />
 					<h:outputLabel value="Middle Name" for="personMiddleName" />
 					<h:inputText id="personMiddleName"
-						value="#{partyFormController.party.middleName}"/>
+						value="#{partyFormController.party.middleName}" />
 					<h:outputLabel value="Last Name" for="personLastName" />
 					<h:inputText id="personLastName"
-						value="#{partyFormController.party.lastName}" required="true"/>
+						value="#{partyFormController.party.lastName}" required="true" />
 				</c:if>
 
-				<ui:remove>
-					<rich:tabPanel id="partyFormTabPanel"
-						selectedTab="#{partyTabController.currentTab}"
-						rendered="#{ partyFormController.managed}">
+				<rich:tabPanel id="partyFormTabPanel"
+					selectedTab="#{partyTabController.currentTab}"
+					rendered="#{ partyFormController.managed}">
 
-						<rich:tab id="contactMechanismsTab" label="Contact Methods">
+					<rich:tab id="contactMechanismsTab" label="Contact Methods">
 
-							<rich:panel>
-								<f:facet name="header">Addresses</f:facet>
-								<ui:include src="/contactMechanism/address/list.xhtml">
-									<ui:param name="edit" value="true" />
-								</ui:include>
-							</rich:panel>
+						<rich:panel>
+							<f:facet name="header">Addresses</f:facet>
+							<ui:include src="/contactMechanism/address/list.xhtml">
+								<ui:param name="edit" value="true" />
+							</ui:include>
+						</rich:panel>
 
+						<ui:remove>
 							<rich:panel>
 								<f:facet name="header">Contact Mechanisms</f:facet>
 								<ui:include src="/contactMechanism/list.xhtml">
 									<ui:param name="edit" value="true" />
 								</ui:include>
 							</rich:panel>
+						</ui:remove>
 
-						</rich:tab>
-
+					</rich:tab>
+					<ui:remove>
 						<rich:tab id="rolesTab" label="Roles">
 							<ui:include src="/role/list.xhtml">
 								<ui:param name="edit" value="true" />
@@ -123,9 +124,10 @@
 								</ui:include>
 							</ui:repeat>
 						</rich:tab>
+					</ui:remove>
+				</rich:tabPanel>
 
-					</rich:tabPanel>
-				</ui:remove>
+
 				<ui:include src="/components/homeButtons.xhtml">
 					<ui:param name="home" value="#{partyFormController}" />
 				</ui:include>

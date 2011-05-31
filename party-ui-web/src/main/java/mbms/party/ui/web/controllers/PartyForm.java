@@ -30,6 +30,10 @@ public class PartyForm implements Serializable{
 		return "form";
 	}
 	
+	public void addPostalAddress() {
+		
+	}
+	
 	public String addOrganization() {
 		if (logger.isDebugEnabled()) {
 			logger.debug("addOrganization() - start");

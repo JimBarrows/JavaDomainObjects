@@ -12,6 +12,15 @@
 		<managed-bean-class>mbms.party.ui.web.controllers.PartyForm</managed-bean-class>
 		<managed-bean-scope>session</managed-bean-scope>
 	</managed-bean>
+	<managed-bean>
+		<managed-bean-name>partyTabController</managed-bean-name>
+		<managed-bean-class>mbms.party.ui.web.controllers.TabController</managed-bean-class>
+		<managed-bean-scope>session</managed-bean-scope>
+		<managed-property>
+			<property-name>currentTab</property-name>
+			<value>contactMechanismsTab</value>
+		</managed-property>
+	</managed-bean>
 	<navigation-rule>
 		<from-view-id>/list.xhtml</from-view-id>
 		<navigation-case>
