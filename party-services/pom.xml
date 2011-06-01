@@ -10,11 +10,12 @@
 	<artifactId>party-services</artifactId>
 	<version>1.0-SNAPSHOT</version>
 	<dependencies>
+
 		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>6.0</version>			
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
 		</dependency>
+
 		<dependency>
 			<groupId>com.nsfwenterprises.biz360</groupId>
 			<artifactId>party-model</artifactId>
@@ -26,5 +27,6 @@
 				</exclusion>
 			</exclusions>
 		</dependency>
+		
 	</dependencies>
 </project>

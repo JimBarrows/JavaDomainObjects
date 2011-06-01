@@ -41,4 +41,12 @@ public class PartyCrudServices implements mbms.party.services.PartyCrudServices 
 
 	}
 
+	public PartyCrudServices() {
+		super();
+	}
+
+	public PartyCrudServices(EntityManager em) {
+		super();
+		this.em = em;
+	}
 }
