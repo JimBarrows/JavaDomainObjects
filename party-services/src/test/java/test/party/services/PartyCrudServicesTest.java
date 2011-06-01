@@ -1,10 +1,11 @@
 package test.party.services;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.spy;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import javax.persistence.EntityManager;
 
@@ -13,17 +14,15 @@ import mbms.party.services.implementation.PartyCrudServices;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mock;
 import org.mockito.internal.stubbing.answers.DoesNothing;
 import org.mockito.invocation.InvocationOnMock;
-import org.mockito.runners.MockitoJUnit44Runner;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
 import com.nsfwenterprises.biz360.party.model.Party;
 import com.nsfwenterprises.biz360.party.model.Person;
 
-@RunWith(MockitoJUnit44Runner.class)
+@RunWith(PowerMockRunner.class)
 @PrepareForTest( PartyCrudServices.class)
 public class PartyCrudServicesTest {
 
@@ -88,6 +87,7 @@ public class PartyCrudServicesTest {
 		verify( em).merge(expectedParty);
 	}
 
+	@SuppressWarnings("serial")
 	@Test
 	public void testDelete() {
 		//given

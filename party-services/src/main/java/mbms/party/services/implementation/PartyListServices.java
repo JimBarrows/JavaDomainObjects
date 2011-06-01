@@ -9,7 +9,7 @@ import javax.persistence.PersistenceContext;
 
 import com.nsfwenterprises.biz360.party.model.Party;
 
-/**This class is responsible for returning a list of all parties, either the entire list, or paginated.  It provides no searching, and no sorting capability.
+/**This service returns a list of all parties, either the entire list, or paginated.  It provides no searching, and no sorting capability.
  * 
  * @author jimbarrows
  *
@@ -32,7 +32,7 @@ public class PartyListServices implements mbms.party.services.PartyListServices 
 	public List<Party> list(int from, int through) {
 		if ((through < from) || (from < 0) || (through < 0))
 			throw new IllegalArgumentException(
-					"From must less then through, and both number must be positive");
+					"From must be less then through, and both number must be positive");
 		return em.createNamedQuery("partyList")
 			.setFirstResult(from)
 			.setMaxResults(through - from)
