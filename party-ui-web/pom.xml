@@ -15,6 +15,9 @@
 	<inceptionYear>2011</inceptionYear>
 	<properties>
 		<org.richfaces.bom.version>4.0.0.Final</org.richfaces.bom.version>
+		<powermock.version>1.4.9</powermock.version>
+		<mockito-all.version>1.8.5</mockito-all.version>
+		<jbehave-core.version>3.4.5</jbehave-core.version>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -56,11 +59,25 @@
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
 			<groupId>org.powermock</groupId>
 			<artifactId>powermock-api-mockito</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-all</artifactId>
+			<version>${mockito-all.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<version>${jbehave-core.version}</version>
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
@@ -77,9 +94,19 @@
 	</dependencyManagement>
 	<build>
 		<plugins>
-			<!-- <plugin> <groupId>org.zeroturnaround</groupId> <artifactId>jrebel-maven-plugin</artifactId> 
-				<executions> <execution> <id>generate-rebel-xml</id> <phase>process-resources</phase> 
-				<goals> <goal>generate</goal> </goals> </execution> </executions> </plugin> -->
+			<plugin>
+				<groupId>org.zeroturnaround</groupId>
+				<artifactId>jrebel-maven-plugin</artifactId>
+				<executions>
+					<execution>
+						<id>generate-rebel-xml</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>generate</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 			<plugin>
 				<groupId>org.glassfish.maven.plugin</groupId>
 				<artifactId>maven-glassfish-plugin</artifactId>

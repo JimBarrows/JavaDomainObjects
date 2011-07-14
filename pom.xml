@@ -291,8 +291,3 @@
 	</build>
 
 </project>
-
-java.lang.ClassFormatError: Absent Code attribute in method that is not
-native or abstract in class file javax/persistence/LockModeType
-
-
