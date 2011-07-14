@@ -7,21 +7,40 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
+
+
+/**Every persistent model needs to have an id and version field, this just keeps me from typing it all the time.
+ * Also provides basic equality and hashcode.
+ * @author jimbarrows
+ *
+ */
 @MappedSuperclass
-public abstract class BasePersistentModel implements Serializable{
+public abstract class BasePersistentModel implements Serializable {
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
+
 	protected Long id;
-	
+
 	protected Long version = 0l;
-	
+
 	@Id
 	@GeneratedValue
 	public Long getId() {
 		return id;
+	}
+
+	public BasePersistentModel() {
+		super();
+	}
+
+	public BasePersistentModel(Long id, Long version) {
+		super();
+		this.id = id;
+		this.version = version;
 	}
 
 	public void setId(Long id) {
@@ -39,26 +58,29 @@ public abstract class BasePersistentModel implements Serializable{
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (obj == null)
+		if (obj instanceof BasePersistentModel) {
+			BasePersistentModel rhs = (BasePersistentModel) obj;
+			return new EqualsBuilder().append(this.id, rhs.id)
+					.append(this.version, rhs.version).isEquals();
+		} else {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		final BasePersistentModel other = (BasePersistentModel) obj;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		return true;
+		}
+
 	}
 
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		return result;
+		return new HashCodeBuilder().append(id).append(version).hashCode();
+	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("BasePersistentModel [id=");
+		builder.append(id);
+		builder.append(", version=");
+		builder.append(version);
+		builder.append("]");
+		return builder.toString();
 	}
 }

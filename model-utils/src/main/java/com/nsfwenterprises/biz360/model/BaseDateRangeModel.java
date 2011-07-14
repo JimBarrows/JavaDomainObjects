@@ -3,8 +3,6 @@
  */
 package com.nsfwenterprises.biz360.model;
 
-import java.util.Date;
-
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Temporal;
@@ -15,6 +13,7 @@ import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.joda.time.DateTime;
 
 /**
  * Several models are date range sensitive, this base class provides that basic
@@ -26,9 +25,27 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 @MappedSuperclass
 public abstract class BaseDateRangeModel extends BasePersistentModel {
 
-	private Date from = new Date();
+	private DateTime from = new DateTime();
 
-	private Date thru;
+	private DateTime thru;
+	
+	
+
+	public BaseDateRangeModel() {
+		super();
+	}
+
+	public BaseDateRangeModel(Long id, Long version, DateTime from, DateTime thru) {
+		super(id, version);
+		this.from = from;
+		this.thru = thru;
+	}
+	
+	public BaseDateRangeModel(Long id, Long version, DateTime from) {
+		super(id, version);
+		this.from = from;
+		this.thru = null;
+	}
 
 	/**
 	 * Determines if a model is active. A model is active if now is after or
@@ -36,23 +53,44 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 	 */
 	@Transient
 	public boolean isActive() {
-		Date now = new Date();
-		boolean afterFrom = from.before(now) || from.equals(now);
-		boolean beforeThru = thru == null || thru.after(now)
-				|| thru.equals(now);
-		return afterFrom && beforeThru;
+		return (from.isBeforeNow() || from.isEqualNow()) && (thru == null ? true : (thru.isAfterNow() || thru.isEqualNow()));
 	}
 
 	@Transient
-	@AssertTrue(message = "Dates are not valid the thru date must be empty, or after the fromdate.")
+	@AssertTrue(message = "Dates are not valid the thru date must be empty, or after the from date.")
 	public boolean isDateRangeValid() {
-		if (thru == null) {
-			return true;
+		boolean valid = false;
+		if( from == null) {
+			valid = false;
+		}else if (thru == null) {
+			valid = true;
 		} else {
-			return thru.after(from);
+			valid = thru.isAfter(from);
 		}
+		return valid;
 	}
 
+	@Column(name = "fromDate")
+	@Temporal(TemporalType.DATE)
+	@NotNull
+	public DateTime getFrom() {
+		return from;
+	}
+
+	public void setFrom(DateTime from) {
+		this.from = from;
+	}
+
+	@Column(name = "thruDate")
+	@Temporal(TemporalType.DATE)
+	public DateTime getThru() {
+		return thru;
+	}
+
+	public void setThru(DateTime thru) {
+		this.thru = thru;
+	}
+	
 	/**
 	 * @see java.lang.Object#equals(Object)
 	 */
@@ -61,42 +99,40 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 			return false;
 		}
 		BaseDateRangeModel rhs = (BaseDateRangeModel) object;
-		return new EqualsBuilder().append(this.thru, rhs.thru).append(
-				this.from, rhs.from).isEquals();
+		return new EqualsBuilder().appendSuper(super.equals(rhs))
+				.append(this.thru, rhs.thru).append(this.from, rhs.from)
+				.isEquals();
 	}
 
 	/**
 	 * @see java.lang.Object#hashCode()
 	 */
 	public int hashCode() {
-		return new HashCodeBuilder(1126585775, -1555222427).append(this.thru)
+		return new HashCodeBuilder(1126585775, -1555222427)
+				.appendSuper(super.hashCode()).append(this.thru)
 				.append(this.from).toHashCode();
-	}
-
-	@Column(name = "fromDate")
-	@Temporal(TemporalType.DATE)
-	@NotNull
-	public Date getFrom() {
-		return from;
-	}
-
-	public void setFrom(Date from) {
-		this.from = from;
-	}
-
-	@Column(name = "thruDate")
-	@Temporal(TemporalType.DATE)	
-	public Date getThru() {
-		return thru;
-	}
-
-	public void setThru(Date thru) {
-		this.thru = thru;
 	}
 
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("BaseDateRangeModel [from=");
+		builder.append(from);
+		builder.append(", thru=");
+		builder.append(thru);
+		builder.append(", id=");
+		builder.append(id);
+		builder.append(", version=");
+		builder.append(version);
+		builder.append("]");
+		return builder.toString();
+	}
 
 }
