@@ -14,8 +14,31 @@ public class PartyRoleType extends BaseType{
 		this.setDescription(description);
 	}
 
+	public PartyRoleType() {
+		super();
+	}
+
+	public PartyRoleType(Long id, Long version, String description) {
+		super(id, version, description);
+	}
+	
+	
+
 	/**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("PartyRoleType [description=");
+		builder.append(description);
+		builder.append(", id=");
+		builder.append(id);
+		builder.append(", version=");
+		builder.append(version);
+		builder.append("]");
+		return builder.toString();
+	}
 }

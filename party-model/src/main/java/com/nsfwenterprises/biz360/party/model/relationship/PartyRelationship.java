@@ -6,13 +6,18 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
+import org.apache.commons.lang.builder.EqualsBuilder;
+import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
+import org.joda.time.DateTime;
 
 import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
 import com.nsfwenterprises.biz360.party.model.PartyRole;
+import com.nsfwenterprises.biz360.party.model.PartyRoleType;
 
 /**
  * A relationship is defined by the two parties and their respective roles.
@@ -29,39 +34,91 @@ import com.nsfwenterprises.biz360.party.model.PartyRole;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartyRelationship extends BaseDateRangeModel {
-	
+
+	private RelationshipType type;
+
 	private String comment;
-	
+
 	private PriorityType priority;
-		
+
 	private PartyRole relationshipFrom;
-	
+
 	private PartyRole relationshipTo;
-	
+
 	private StatusType status;
-	
+
 	public PartyRelationship() {
-		
+
 	}
-	
-	public PartyRelationship(String comment, PartyRole from, PartyRole to) {
+
+	public PartyRelationship(RelationshipType type, String comment,
+			PartyRole from, PartyRole to) {
 		this.comment = comment;
 		relationshipFrom = from;
 		relationshipTo = to;
+		this.type = type;
+	}
+
+	public PartyRelationship(Long id, Long version, DateTime from,
+			DateTime thru, RelationshipType type, String comment,
+			PartyRole relationshipFrom, PartyRole relationshipTo) {
+		super(id, version, from, thru);
+		this.type = type;
+		this.comment = comment;
+		this.relationshipFrom = relationshipFrom;
+		this.relationshipTo = relationshipTo;
 	}
 	
+	public PartyRelationship( DateTime from,
+			DateTime thru, RelationshipType type, String comment,
+			PartyRole relationshipFrom, PartyRole relationshipTo) {
+		super(from, thru);
+		this.type = type;
+		this.comment = comment;
+		this.relationshipFrom = relationshipFrom;
+		this.relationshipTo = relationshipTo;
+	}
+
 	@Transient
 	@AssertFalse
 	public boolean isRelationshipRolesNull() {
-		return relationshipFrom ==null || relationshipTo == null;
+		return relationshipFrom == null || relationshipTo == null;
 	}
-	
+
 	@Transient
-	@AssertFalse(message="Relationship cannot be to the same party.")
+	@AssertFalse(message = "Relationship cannot be to the same party.")
 	public boolean isTheRelationshipToSameParty() {
-		return relationshipFrom.getRoleFor().equals(relationshipTo.getRoleFor());
-	}	
-	
+		return relationshipFrom.getRoleFor()
+				.equals(relationshipTo.getRoleFor());
+	}
+
+	@Transient
+	@AssertTrue(message = "The from role, must of the same type as the Realtionship Type from role")
+	public boolean isTheFromRoleSameAsRelationshipoTypeFromRole() {
+		PartyRoleType left = relationshipFrom.getType(); 
+		PartyRoleType right = type.getFromRoleType();
+		return left.equals( right);
+	}
+
+	@Transient
+	@AssertTrue(message = "The to role, must of the same type as the Realtionship Type to role")
+	public boolean isTheToRoleTypeSameAsRelationshipoTypeToRole() {
+		PartyRoleType left = relationshipTo.getType();
+		PartyRoleType right = type.getToRoleType();
+		
+		return left.equals(right);
+	}
+
+	@ManyToOne(optional = false, targetEntity = RelationshipType.class)
+	@NotNull
+	public RelationshipType getType() {
+		return type;
+	}
+
+	public void setType(RelationshipType type) {
+		this.type = type;
+	}
+
 	@NotEmpty
 	public String getComment() {
 		return comment;
@@ -72,23 +129,22 @@ public class PartyRelationship extends BaseDateRangeModel {
 		return priority;
 	}
 
-	@ManyToOne(optional=false, targetEntity=PartyRole.class)
+	@ManyToOne(optional = false, targetEntity = PartyRole.class)
 	@NotNull
 	protected PartyRole getRelationshipFrom() {
 		return relationshipFrom;
 	}
 
-	@ManyToOne(optional=false, targetEntity=PartyRole.class)
+	@ManyToOne(optional = false, targetEntity = PartyRole.class)
 	@NotNull
 	protected PartyRole getRelationshipTo() {
 		return relationshipTo;
 	}
 
-	@ManyToOne(targetEntity=StatusType.class)
+	@ManyToOne(targetEntity = StatusType.class)
 	public StatusType getStatus() {
 		return status;
 	}
-
 
 	public void setComment(String comment) {
 		this.comment = comment;
@@ -112,41 +168,22 @@ public class PartyRelationship extends BaseDateRangeModel {
 
 	@Override
 	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
+
+		if (!(obj instanceof PartyRelationship)) {
 			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		PartyRelationship other = (PartyRelationship) obj;
-		if (comment == null) {
-			if (other.comment != null)
-				return false;
-		} else if (!comment.equals(other.comment))
-			return false;
-		if (relationshipFrom == null) {
-			if (other.relationshipFrom != null)
-				return false;
-		} else if (!relationshipFrom.equals(other.relationshipFrom))
-			return false;
-		if (relationshipTo == null) {
-			if (other.relationshipTo != null)
-				return false;
-		} else if (!relationshipTo.equals(other.relationshipTo))
-			return false;
-		return true;
+		}
+		PartyRelationship rhs = (PartyRelationship) obj;
+		return new EqualsBuilder().appendSuper(super.equals(rhs))
+				.append(type, rhs.type).append(comment, rhs.comment)
+				.append(relationshipFrom, rhs.relationshipFrom)
+				.append(relationshipTo, rhs.relationshipTo).isEquals();
 	}
-	
+
 	@Override
 	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result + ((comment == null) ? 0 : comment.hashCode());
-		result = prime
-				* result
-				+ ((relationshipFrom == null) ? 0 : relationshipFrom.hashCode());
-		result = prime * result
-				+ ((relationshipTo == null) ? 0 : relationshipTo.hashCode());
-		return result;
+		return new HashCodeBuilder().appendSuper(super.hashCode()).append(type)
+				.append(comment).append(relationshipFrom)
+				.append(relationshipTo).toHashCode();
+
 	}
 }

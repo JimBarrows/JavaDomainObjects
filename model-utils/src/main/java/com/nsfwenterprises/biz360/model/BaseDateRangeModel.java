@@ -5,14 +5,13 @@ package com.nsfwenterprises.biz360.model;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 /**
@@ -46,6 +45,17 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 		this.from = from;
 		this.thru = null;
 	}
+	
+	public BaseDateRangeModel( DateTime from) {
+		super();
+		this.from = from;
+		this.thru = null;
+	}
+
+	public BaseDateRangeModel(DateTime from, DateTime thru) {
+		this.from = from;
+		this.thru = thru;
+	}
 
 	/**
 	 * Determines if a model is active. A model is active if now is after or
@@ -71,7 +81,7 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 	}
 
 	@Column(name = "fromDate")
-	@Temporal(TemporalType.DATE)
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	@NotNull
 	public DateTime getFrom() {
 		return from;
@@ -82,7 +92,7 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 	}
 
 	@Column(name = "thruDate")
-	@Temporal(TemporalType.DATE)
+	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	public DateTime getThru() {
 		return thru;
 	}

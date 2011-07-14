@@ -16,10 +16,15 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class BaseType extends BasePersistentModel {
 
 
-	private String description;
+	protected String description;
 
 	public BaseType(Long id, Long version, String description) {
 		super(id, version);
+		this.description = description;
+	}
+	
+	public BaseType(String description) {
+		super();
 		this.description = description;
 	}
 	

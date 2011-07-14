@@ -1,11 +1,12 @@
 package test.party;
 
-import static org.junit.Assert.fail;
+import static org.junit.Assert.*;
 
 import javax.validation.ConstraintViolationException;
 
 import org.hibernate.Transaction;
 import org.joda.time.DateTime;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
@@ -19,74 +20,123 @@ import com.nsfwenterprises.biz360.party.model.relationship.RelationshipType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "party-roles.xml")
-public class PartyRelationshipTest  extends BaseModelTest{
-	
+public class PartyRelationshipTest extends BaseModelTest {
+
+	private Party fromParty;
+	private PartyRoleType fromPartyRoleType;
+	private PartyRole fromPartyRole;
+	private Party toParty;
+	private PartyRoleType toPartyRoleType;
+	private PartyRole toPartyRole;
+	private RelationshipType relationshipType;
+
 	@Test
 	public void testSave() {
-		//given
-		Party fromParty = new Party();
-		PartyRoleType fromType = new PartyRoleType("from");
-		PartyRole fromPartyRole = new PartyRole(fromType);
-		fromParty.addPartyRole(fromPartyRole);
-		
-		Party toParty = new Party();
-		PartyRoleType toType = new PartyRoleType("to");
-		PartyRole toPartyRole = new PartyRole(toType);
-		toParty.addPartyRole(toPartyRole);
-		
-		RelationshipType relationshipType = new RelationshipType(1l, 0l, "test type");
-		
+		// given
+
+		PartyRelationship relationship = new PartyRelationship(new DateTime(),
+				null, relationshipType, "test", fromPartyRole, toPartyRole);
+
+		// when
 		Transaction transaction = session.beginTransaction();
-		session.save(fromType);
-		session.save(toType);
-		session.save(fromParty);
-		session.save(toParty);
-		session.save( relationshipType);
-		transaction.commit();
-		PartyRelationship relationship = new PartyRelationship(1l, 0l, new DateTime(), null, relationshipType, "test", fromPartyRole, toPartyRole);
-		
-		//when
 		transaction = session.beginTransaction();
 		session.save(relationship);
 		transaction.commit();
-		
-		//then
-		//it works
+
+		// then
+		// it works
 	}
-	
+
 	@Test
 	public void testMustNotBeSameParty() {
-		//given
-		Party fromParty = new Party();
-		PartyRoleType fromType = new PartyRoleType("from");
-		PartyRole fromPartyRole = new PartyRole(fromType);
-		fromParty.addPartyRole(fromPartyRole);
-		
-		PartyRoleType toType = new PartyRoleType("to");
-		PartyRole toPartyRole = new PartyRole(toType);
-		fromParty.addPartyRole(toPartyRole);
-		
-		RelationshipType relationshipType = new RelationshipType(1l, 0l, "test type");
-		
+		// given
 		Transaction transaction = session.beginTransaction();
-		session.save(fromType);
+		fromParty.addPartyRole(toPartyRole);
 		session.save(fromParty);
-		session.save( relationshipType);
 		transaction.commit();
-		PartyRelationship relationship = new PartyRelationship(1l, 0l, new DateTime(), null, relationshipType,"test", fromPartyRole, toPartyRole);
-		
-		//when
+		PartyRelationship relationship = new PartyRelationship(1l, 0l,
+				new DateTime(), null, relationshipType, "test", fromPartyRole,
+				toPartyRole);
+
+		// when
 		try {
-		transaction = session.beginTransaction();
-		session.save(relationship);
-		transaction.commit();
-		fail("A relationship was to the same party.");
-		
-		//then
-		} catch( ConstraintViolationException cve) {
-			
+			transaction = session.beginTransaction();
+			session.save(relationship);
+			transaction.commit();
+			fail("A relationship was to the same party.");
+
+			// then
+		} catch (ConstraintViolationException cve) {
+
 		}
-	
+
 	}
-	
+
+	@Test
+	public void partyToRoleTypeMustBeSameAsRelationshipTypeToRole() {
+		// given
+
+		PartyRoleType toPartyRoleTypeForRelationship = new PartyRoleType("foo");
+		RelationshipType relationshipType = new RelationshipType(1l, 0l,
+				"test type", fromPartyRoleType, toPartyRoleTypeForRelationship);
+
+		PartyRelationship relationship = new PartyRelationship(1l, 0l,
+				new DateTime(), null, relationshipType, "test", fromPartyRole,
+				toPartyRole);
+		// when
+		boolean sameType = relationship
+				.isTheToRoleTypeSameAsRelationshipoTypeToRole();
+
+		// then
+		assertFalse(sameType);
+
+	}
+
+	@Test
+	public void partyFromRoleTypeMustBeSameAsRelationshipTypeFromRole() {
+		// given
+		PartyRoleType fromPartyRoleTypeForRelationship = new PartyRoleType(
+				"foo");
+		RelationshipType relationshipType = new RelationshipType(1l, 0l,
+				"test type", fromPartyRoleTypeForRelationship, toPartyRoleType);
+
+		PartyRelationship relationship = new PartyRelationship(1l, 0l,
+				new DateTime(), null, relationshipType, "test", fromPartyRole,
+				toPartyRole);
+		// when
+		boolean sameType = relationship
+				.isTheFromRoleSameAsRelationshipoTypeFromRole();
+
+		// then
+		assertFalse(sameType);
+
+	}
+
+	@Before
+	public void setUp() throws Exception {
+		super.setUp();
+		fromParty = new Party();
+		fromPartyRoleType = new PartyRoleType("from");
+		fromPartyRole = new PartyRole(fromPartyRoleType);
+		fromParty.addPartyRole(fromPartyRole);
+
+		toParty = new Party();
+		toPartyRoleType = new PartyRoleType("to");
+		toPartyRole = new PartyRole(toPartyRoleType);
+		toParty.addPartyRole(toPartyRole);
+
+		relationshipType = new RelationshipType("test type", fromPartyRoleType,
+				toPartyRoleType);
+
+		Transaction transaction = session.beginTransaction();
+		session.save(fromPartyRoleType);
+		session.save(toPartyRoleType);
+		session.save(fromParty);
+		session.save(toParty);
+		transaction.commit();
+		transaction = session.beginTransaction();
+		session.save(relationshipType);
+		transaction.commit();
+	}
+
 }

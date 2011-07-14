@@ -17,6 +17,8 @@
 	<name>Party Model</name>
 	<inceptionYear>20010</inceptionYear>
 
+	<properties>
+	</properties>
 
 	<build>
 		<plugins>
@@ -68,7 +70,6 @@
 		<dependency>
 			<groupId>postgresql</groupId>
 			<artifactId>postgresql</artifactId>
-			<version>9.0-801.jdbc4</version>
 		</dependency>
 		<dependency>
 			<groupId>javassist</groupId>
@@ -80,9 +81,12 @@
 		</dependency>
 		<dependency>
 			<groupId>org.springframework</groupId>
-			<artifactId>spring-jdbc</artifactId>
-			<version>3.0.5.RELEASE</version>
-			<type>jar</type>
+			<artifactId>spring-orm</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 
