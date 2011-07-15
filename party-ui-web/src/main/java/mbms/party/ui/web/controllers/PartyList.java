@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class PartyList {
 
 	@RequestMapping("/")
-	public String welcome() {
-		System.out.println("BOOGER");
+	public String list() {
+		
 		return "list";
 	}
 }
