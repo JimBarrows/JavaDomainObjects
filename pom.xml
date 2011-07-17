@@ -63,8 +63,6 @@
 		<module>accounting-order-model</module>
 		<module>accounting-product-model</module>
 		<module>agreement-model</module>
-		<module>business-service</module>
-		<module>business-ui-web</module>
 		<module>ecommerce-model</module>
 		<module>humanresources-model</module>
 		<module>humanresourses-invoice-model</module>
