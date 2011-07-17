@@ -10,7 +10,7 @@ import mbmp.humanresoures_workeffort.workeffort.rate.WorkEffortAssignmentRate;
  * @version 1.0
  * @created: Apr 2, 2010 10:13:42 AM
  */
-public class WorkEffortPartyAssignment extends com.nsfwenterprises.biz360.workeffort.assignment.WorkEffortPartyAssignment{
+public class WorkEffortPartyAssignment extends mbmp.workeffort.assignment.WorkEffortPartyAssignment{
 
     /**
 	 * 

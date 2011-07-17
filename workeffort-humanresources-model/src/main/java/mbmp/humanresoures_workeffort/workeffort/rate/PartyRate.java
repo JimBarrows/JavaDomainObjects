@@ -5,9 +5,9 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import com.nsfwenterprises.biz360.humanresoures.model.position.salary.RateType;
-import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.Party;
+import mbmp.humanresoures.model.position.salary.RateType;
+import mbmp.model.BaseDateRangeModel;
+import mbmp.party.model.Party;
 
 @Entity
 public class PartyRate extends BaseDateRangeModel {

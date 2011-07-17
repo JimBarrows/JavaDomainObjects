@@ -3,9 +3,9 @@ package mbmp.humanresoures_workeffort.workeffort.rate;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import com.nsfwenterprises.biz360.humanresoures.model.position.salary.RateType;
-import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.workeffort.assignment.WorkEffortPartyAssignment;
+import mbmp.humanresoures.model.position.salary.RateType;
+import mbmp.humanresoures_workeffort.workeffort.assignment.WorkEffortPartyAssignment;
+import mbmp.model.BaseDateRangeModel;
 
 @Entity
 public class WorkEffortAssignmentRate extends BaseDateRangeModel {
