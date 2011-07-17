@@ -8,9 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import mbmp.accounting.model.transaction.detail.TransactionDetail;
-
-import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.PartyRole;
+import mbmp.model.BaseDateRangeModel;
+import mbmp.party.model.PartyRole;
 
 @Entity
 public class OrganizationGlAccount extends BaseDateRangeModel {

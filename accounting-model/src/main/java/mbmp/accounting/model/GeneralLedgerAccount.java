@@ -9,10 +9,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
 import mbmp.budget.model.GlBudgetXref;
+import mbmp.model.BasePersistentModel;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)

@@ -2,7 +2,7 @@ package mbmp.accounting.model.transaction;
 
 import javax.persistence.Entity;
 
-import com.nsfwenterprises.biz360.model.BaseType;
+import mbmp.model.BaseType;
 
 @Entity
 public class AccountingTransactionType extends BaseType {

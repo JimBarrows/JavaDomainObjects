@@ -2,7 +2,7 @@ package mbms.party.services;
 
 import javax.ejb.Remote;
 
-import com.nsfwenterprises.biz360.party.model.Party;
+import mbmp.party.model.Party;
 
 @Remote
 public interface PartyCrudServices {

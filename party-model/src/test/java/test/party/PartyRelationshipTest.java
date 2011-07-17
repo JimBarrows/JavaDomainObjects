@@ -4,6 +4,12 @@ import static org.junit.Assert.*;
 
 import javax.validation.ConstraintViolationException;
 
+import mbmp.party.model.Party;
+import mbmp.party.model.PartyRole;
+import mbmp.party.model.PartyRoleType;
+import mbmp.party.model.relationship.PartyRelationship;
+import mbmp.party.model.relationship.RelationshipType;
+
 import org.hibernate.Transaction;
 import org.joda.time.DateTime;
 import org.junit.Before;
@@ -12,15 +18,10 @@ import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.nsfwenterprises.biz360.party.model.Party;
-import com.nsfwenterprises.biz360.party.model.PartyRole;
-import com.nsfwenterprises.biz360.party.model.PartyRoleType;
-import com.nsfwenterprises.biz360.party.model.relationship.PartyRelationship;
-import com.nsfwenterprises.biz360.party.model.relationship.RelationshipType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "party-roles.xml")
-public class PartyRelationshipTest extends BaseModelTest {
+public class PartyRelationshipTest extends DbTestTemplate {
 
 	private Party fromParty;
 	private PartyRoleType fromPartyRoleType;

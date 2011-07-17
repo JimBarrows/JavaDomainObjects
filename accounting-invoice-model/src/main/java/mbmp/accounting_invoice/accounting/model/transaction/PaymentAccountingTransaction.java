@@ -3,8 +3,8 @@ package mbmp.accounting_invoice.accounting.model.transaction;
 import javax.persistence.Entity;
 import javax.persistence.OneToOne;
 
-import com.nsfwenterprises.biz360.accounting.model.transaction.ExternalAccountingTransaction;
-import com.nsfwenterprises.biz360.invoice.model.payment.Payment;
+import mbmp.accounting.model.transaction.ExternalAccountingTransaction;
+import mbmp.accounting_invoice.invoice.model.payment.Payment;
 
 @Entity
 public class PaymentAccountingTransaction extends

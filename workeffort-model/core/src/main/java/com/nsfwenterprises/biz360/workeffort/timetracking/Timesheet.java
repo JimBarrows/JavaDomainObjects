@@ -1,4 +1,4 @@
-package com.nsfwenterprises.biz360.workeffort.timetracking;
+package mbmp.workeffort.timetracking;
 
 import java.util.List;
 
@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.role.Worker;
+import mbmp.model.BaseDateRangeModel;
+import mbmp.party.model.role.Worker;
 
 @Entity
 public class Timesheet extends BaseDateRangeModel {

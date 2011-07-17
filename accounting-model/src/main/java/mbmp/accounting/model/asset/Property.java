@@ -2,7 +2,7 @@ package mbmp.accounting.model.asset;
 
 import javax.persistence.Entity;
 
-import com.nsfwenterprises.biz360.party.model.contactmechanism.PostalAddress;
+import mbmp.party.model.contactmechanism.PostalAddress;
 
 @Entity
 public class Property extends FixedAsset {

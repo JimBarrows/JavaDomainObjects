@@ -1,19 +1,19 @@
 package mbmp.accounting_invoice.invoice.model.payment;
 
 
+import java.util.List;
+
 import javax.persistence.OneToOne;
 
 import mbmp.accounting_invoice.accounting.model.transaction.PaymentAccountingTransaction;
 import mbmp.accounting_invoice.budget.model.allocation.PaymentBudgetAllocation;
-
-import java.util.List;
 
 /**
  * @author jimbarrows
  * @version 1.0
  * @created: Apr 2, 2010 10:39:18 AM
  */
-public class Payment extends com.nsfwenterprises.biz360.invoice.model.payment.Payment{
+public class Payment extends mbmp.invoice.model.payment.Payment{
 
 
  /**

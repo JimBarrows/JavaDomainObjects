@@ -5,7 +5,7 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
-import com.nsfwenterprises.biz360.model.BaseType;
+import mbmp.model.BaseType;
 
 @Entity
 public class BudgetItemType extends BaseType {

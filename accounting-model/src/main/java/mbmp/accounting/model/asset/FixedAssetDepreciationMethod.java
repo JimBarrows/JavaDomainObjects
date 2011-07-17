@@ -3,7 +3,7 @@ package mbmp.accounting.model.asset;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
+import mbmp.model.BaseDateRangeModel;
 
 @Entity
 public class FixedAssetDepreciationMethod extends BaseDateRangeModel {

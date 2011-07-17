@@ -9,6 +9,8 @@ import static org.mockito.Mockito.when;
 
 import javax.persistence.EntityManager;
 
+import mbmp.party.model.Party;
+import mbmp.party.model.Person;
 import mbms.party.services.implementation.PartyCrudServices;
 
 import org.junit.Before;
@@ -18,9 +20,6 @@ import org.mockito.internal.stubbing.answers.DoesNothing;
 import org.mockito.invocation.InvocationOnMock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-
-import com.nsfwenterprises.biz360.party.model.Party;
-import com.nsfwenterprises.biz360.party.model.Person;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest( PartyCrudServices.class)

@@ -5,7 +5,7 @@ import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
-import com.nsfwenterprises.biz360.party.model.Party;
+import mbmp.party.model.Party;
 
 /**Provides the 4 basic crud services, and not much else.
  * 

@@ -4,11 +4,10 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
 import mbmp.accounting.model.asset.PeriodType;
+import mbmp.model.BaseDateRangeModel;
+import mbmp.party.model.PartyRole;
 
 import org.hibernate.annotations.Entity;
-
-import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
-import com.nsfwenterprises.biz360.party.model.PartyRole;
 
 @Entity
 public class AccountingPeriod extends BaseDateRangeModel {

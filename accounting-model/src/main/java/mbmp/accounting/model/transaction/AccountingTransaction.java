@@ -14,8 +14,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import mbmp.accounting.model.transaction.detail.TransactionDetail;
-
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
+import mbmp.model.BasePersistentModel;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

@@ -15,7 +15,7 @@ import org.hibernate.annotations.Entity;
  * @created: Apr 2, 2010 8:57:30 AM
  */
 @Entity
-public class BudgetItem extends com.nsfwenterprises.biz360.budget.model.BudgetItem {
+public class BudgetItem extends mbmp.budget.model.BudgetItem {
 
     /**
 	 * 

@@ -2,7 +2,7 @@ package mbmp.accounting.model.transaction;
 
 import javax.persistence.Entity;
 
-import com.nsfwenterprises.biz360.party.model.Party;
+import mbmp.party.model.Party;
 
 @Entity
 public class ExternalAccountingTransaction extends AccountingTransaction {

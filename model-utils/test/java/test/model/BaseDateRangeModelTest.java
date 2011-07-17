@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 import org.joda.time.DateTime;
 import org.junit.Test;
 
-import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
+import mbmp.model.BaseDateRangeModel;
 
 
 public class BaseDateRangeModelTest {

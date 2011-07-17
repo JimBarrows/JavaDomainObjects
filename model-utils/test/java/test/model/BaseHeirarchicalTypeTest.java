@@ -6,7 +6,7 @@ import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
 
-import com.nsfwenterprises.biz360.model.BaseHeirarchicalType;
+import mbmp.model.BaseHeirarchicalType;
 
 public class BaseHeirarchicalTypeTest {
 

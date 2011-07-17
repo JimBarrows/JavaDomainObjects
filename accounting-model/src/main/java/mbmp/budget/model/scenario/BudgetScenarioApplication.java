@@ -8,10 +8,9 @@ import javax.validation.constraints.AssertTrue;
 
 import mbmp.budget.model.Budget;
 import mbmp.budget.model.BudgetItem;
+import mbmp.model.BasePersistentModel;
 
 import org.hibernate.validator.constraints.Range;
-
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
 
 @Entity
 public class BudgetScenarioApplication extends BasePersistentModel {

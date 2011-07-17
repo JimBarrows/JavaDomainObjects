@@ -5,12 +5,11 @@ import java.math.BigDecimal;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import com.nsfwenterprises.biz360.budget.model.BudgetItem;
-import com.nsfwenterprises.biz360.invoice.model.payment.Payment;
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
+import mbmp.accounting_invoice.budget.model.BudgetItem;
+import mbmp.accounting_invoice.invoice.model.payment.Payment;
 
 @Entity
-public class PaymentBudgetAllocation extends BasePersistentModel {
+public class PaymentBudgetAllocation extends mbmp.model.BasePersistentModel {
 
 	/**
 	 * 

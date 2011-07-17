@@ -2,9 +2,10 @@ package test.party;
 
 import static org.junit.Assert.*;
 
+import mbmp.party.model.PartyRoleType;
+
 import org.junit.Test;
 
-import com.nsfwenterprises.biz360.party.model.PartyRoleType;
 
 public class PartyRoleTypeTest {
 

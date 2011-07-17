@@ -1,4 +1,4 @@
-package com.nsfwenterprises.biz360.workeffort.assignment;
+package mbmp.workeffort.assignment;
 
 import java.util.List;
 
@@ -7,10 +7,10 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
-import com.nsfwenterprises.biz360.party.model.Party;
-import com.nsfwenterprises.biz360.party.model.facility.Facility;
-import com.nsfwenterprises.biz360.workeffort.rate.WorkEffortAssignmentRate;
+import mbmp.model.BasePersistentModel;
+import mbmp.party.model.Party;
+import mbmp.party.model.facility.Facility;
+import mbmp.workeffort.rate.WorkEffortAssignmentRate;
 
 @Entity
 public class WorkEffortPartyAssignment extends BasePersistentModel {

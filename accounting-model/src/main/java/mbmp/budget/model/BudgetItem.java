@@ -9,8 +9,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import mbmp.budget.model.revision.BudgetRevisionImpact;
-
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
+import mbmp.model.BasePersistentModel;
 
 
 @Entity

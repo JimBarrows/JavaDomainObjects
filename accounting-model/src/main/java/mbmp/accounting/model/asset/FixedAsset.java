@@ -8,7 +8,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
+import mbmp.model.BasePersistentModel;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)

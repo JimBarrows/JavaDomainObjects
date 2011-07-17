@@ -10,8 +10,7 @@ import javax.persistence.OneToMany;
 
 import mbmp.accounting.model.OrganizationGlAccount;
 import mbmp.accounting.model.transaction.AccountingTransaction;
-
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
+import mbmp.model.BasePersistentModel;
 
 @Entity
 public class TransactionDetail extends BasePersistentModel{

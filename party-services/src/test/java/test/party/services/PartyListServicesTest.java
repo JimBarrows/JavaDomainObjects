@@ -1,8 +1,9 @@
 package test.party.services;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.fail;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.spy;
+import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,21 +11,17 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
 
+import mbmp.party.model.Organization;
+import mbmp.party.model.Party;
+import mbmp.party.model.Person;
 import mbms.party.services.implementation.PartyListServices;
 
-import org.apache.commons.lang.math.NumberUtils;
-import org.apache.tomcat.util.IntrospectionUtils;
-import org.hamcrest.object.IsEventFrom;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
-
-import com.nsfwenterprises.biz360.party.model.Organization;
-import com.nsfwenterprises.biz360.party.model.Party;
-import com.nsfwenterprises.biz360.party.model.Person;
 
 @RunWith(PowerMockRunner.class)
 @PrepareForTest(PartyListServices.class)

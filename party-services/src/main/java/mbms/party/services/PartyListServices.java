@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.ejb.Remote;
 
-import com.nsfwenterprises.biz360.party.model.Party;
+import mbmp.party.model.Party;
 
 @Remote
 public interface PartyListServices {

@@ -2,19 +2,20 @@ package test.party;
 
 import static org.junit.Assert.assertFalse;
 
+import mbmp.party.model.Organization;
+import mbmp.party.model.PartyRole;
+import mbmp.party.model.PartyRoleType;
+
 import org.hibernate.Transaction;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import com.nsfwenterprises.biz360.party.model.Organization;
-import com.nsfwenterprises.biz360.party.model.PartyRole;
-import com.nsfwenterprises.biz360.party.model.PartyRoleType;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "party-roles.xml")
-public class PartyRoles extends BaseModelTest {
+public class PartyRoles extends DbTestTemplate {
 
 	@Test
 	public void canAddRoleToExistingOrganization() {

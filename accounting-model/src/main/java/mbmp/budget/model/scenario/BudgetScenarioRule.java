@@ -6,10 +6,9 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import mbmp.budget.model.BudgetItemType;
+import mbmp.model.BasePersistentModel;
 
 import org.hibernate.validator.constraints.Range;
-
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
 
 @Entity
 public class BudgetScenarioRule extends BasePersistentModel {

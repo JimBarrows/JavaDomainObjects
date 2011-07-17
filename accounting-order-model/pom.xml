@@ -5,7 +5,7 @@
 
 	<parent>
 		<artifactId>ModularBusinessManagementPlatform</artifactId>
-		<groupId>ModularBusinessManagementPlatform</groupId>
+		<groupId>mbmp</groupId>
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 

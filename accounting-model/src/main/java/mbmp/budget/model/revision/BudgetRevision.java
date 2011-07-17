@@ -8,8 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import mbmp.budget.model.Budget;
-
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
+import mbmp.model.BasePersistentModel;
 
 @Entity
 public class BudgetRevision extends BasePersistentModel {

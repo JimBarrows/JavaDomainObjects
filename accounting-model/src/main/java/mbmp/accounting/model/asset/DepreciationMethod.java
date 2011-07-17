@@ -2,7 +2,7 @@ package mbmp.accounting.model.asset;
 
 import javax.persistence.Entity;
 
-import com.nsfwenterprises.biz360.model.BasePersistentModel;
+import mbmp.model.BasePersistentModel;
 
 @Entity
 public class DepreciationMethod extends BasePersistentModel {

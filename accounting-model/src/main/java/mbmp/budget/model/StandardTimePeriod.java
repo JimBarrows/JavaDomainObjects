@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import mbmp.accounting.model.asset.PeriodType;
-
-import com.nsfwenterprises.biz360.model.BaseDateRangeModel;
+import mbmp.model.BaseDateRangeModel;
 
 @Entity
 public class StandardTimePeriod extends BaseDateRangeModel {

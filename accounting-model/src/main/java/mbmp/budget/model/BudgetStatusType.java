@@ -2,7 +2,7 @@ package mbmp.budget.model;
 
 import javax.persistence.Entity;
 
-import com.nsfwenterprises.biz360.model.BaseType;
+import mbmp.model.BaseType;
 
 @Entity
 public class BudgetStatusType extends BaseType {

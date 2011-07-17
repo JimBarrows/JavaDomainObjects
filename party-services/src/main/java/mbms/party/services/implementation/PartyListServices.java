@@ -7,7 +7,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
-import com.nsfwenterprises.biz360.party.model.Party;
+import mbmp.party.model.Party;
 
 /**This service returns a list of all parties, either the entire list, or paginated.  It provides no searching, and no sorting capability.
  * 

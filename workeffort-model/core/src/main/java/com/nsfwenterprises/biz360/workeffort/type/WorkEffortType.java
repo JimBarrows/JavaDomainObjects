@@ -1,4 +1,4 @@
-package com.nsfwenterprises.biz360.workeffort.type;
+package mbmp.workeffort.type;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ import javax.persistence.OneToMany;
 
 import org.hibernate.validator.AssertTrue;
 
-import com.nsfwenterprises.biz360.model.BaseType;
-import com.nsfwenterprises.biz360.product.model.Product;
-import com.nsfwenterprises.biz360.workeffort.requirement.DeliverableType;
+import mbmp.model.BaseType;
+import mbmp.product.model.Product;
+import mbmp.workeffort.requirement.DeliverableType;
 
 @Entity
 public class WorkEffortType extends BaseType {
