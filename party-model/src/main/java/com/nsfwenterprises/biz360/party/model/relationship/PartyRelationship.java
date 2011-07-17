@@ -48,11 +48,12 @@ public class PartyRelationship extends BaseDateRangeModel {
 	private StatusType status;
 
 	public PartyRelationship() {
-
+		super();
 	}
 
 	public PartyRelationship(RelationshipType type, String comment,
 			PartyRole from, PartyRole to) {
+		super();
 		this.comment = comment;
 		relationshipFrom = from;
 		relationshipTo = to;
