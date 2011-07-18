@@ -12,10 +12,11 @@
 		<button name="createPerson">Create Person</button>
 		<button name="createOrganization">Create Group</button>
 	</div>
+	<h2>Page Number: ${pageNumber}</h2>
 	<div class="span-6 ">
-		<h2>John Smith</h2>
+		<h2>John Smith 1</h2>
 		<div class="address">
-			123 somewhere street <br />phoenix, az 85037
+			123 somewhere street <br />Phoenix, az 85037
 		</div>
 		<div class="contactMechanism">
 			<div class="phone">602-111-1234</div>
@@ -23,7 +24,7 @@
 		</div>
 	</div>
 	<div class="span-6 ">
-		<h2>John Smith</h2>
+		<h2>John Smith 2</h2>
 		<div class="address">
 			123 somewhere street <br /> phoenix, az 85037
 		</div>
@@ -33,7 +34,7 @@
 		</div>
 	</div>
 	<div class="span-6 ">
-		<h2>John Smith</h2>
+		<h2>John Smith 3</h2>
 		<div class="address">
 			123 somewhere street <br /> phoenix, az 85037
 		</div>
@@ -43,7 +44,7 @@
 		</div>
 	</div>
 	<div class="span-6 last">
-		<h2>John Smith</h2>
+		<h2>John Smith 4</h2>
 		<div class="address">
 			123 somewhere street <br /> phoenix, az 85037
 		</div>
@@ -53,7 +54,7 @@
 		</div>
 	</div>
 	<div class="span-6 ">
-		<h2>John Smith</h2>
+		<h2>John Smith 5</h2>
 		<div class="address">
 			123 somewhere street <br /> phoenix, az 85037
 		</div>
@@ -63,7 +64,7 @@
 		</div>
 	</div>
 	<div class="span-6 ">
-		<h2>John Smith</h2>
+		<h2>John Smith 6</h2>
 		<div class="address">
 			123 somewhere street <br /> phoenix, az 85037
 		</div>

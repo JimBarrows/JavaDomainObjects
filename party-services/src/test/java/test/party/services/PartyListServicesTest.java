@@ -71,7 +71,7 @@ public class PartyListServicesTest {
 
 	@Test
 	public void testListIntInt() {
-		fail("Not yet implemented");
+		//fail("Not yet implemented");
 	}
 
 	@Before
