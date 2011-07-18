@@ -13,64 +13,35 @@
 		<button name="createOrganization">Create Group</button>
 	</div>
 	<h2>Page Number: ${pageNumber}</h2>
-	<div class="span-6 ">
-		<h2>John Smith 1</h2>
-		<div class="address">
-			123 somewhere street <br />Phoenix, az 85037
+
+	<c:forEach items="${partyList }" var="party" varStatus="status">
+		<c:choose>
+			<c:when test="${ (status.count % numberOfColumns) eq 0 }">
+				<c:set var="classes" value="span-6 last"/>
+			</c:when>
+			<c:otherwise>
+				<c:set var="classes" value="span-6"/>
+			</c:otherwise>
+		</c:choose>
+		<div class="${classes } ">
+			<h2>
+				<c:choose>
+					<c:when test="${party.class.simpleName eq 'Person' }">
+						${party.firstName} ${party.middleName } ${party.lastName }
+					</c:when>
+					<c:otherwise>
+						${party.name }
+					</c:otherwise>
+				</c:choose>
+			</h2>
+			<div class="address">
+				123 somewhere street <br />Phoenix, az 85037
+			</div>
+			<div class="contactMechanism">
+				<div class="phone">602-111-1234</div>
+				<div class="emai">John@somewhere.com</div>
+			</div>
 		</div>
-		<div class="contactMechanism">
-			<div class="phone">602-111-1234</div>
-			<div class="emai">John@somewhere.com</div>
-		</div>
-	</div>
-	<div class="span-6 ">
-		<h2>John Smith 2</h2>
-		<div class="address">
-			123 somewhere street <br /> phoenix, az 85037
-		</div>
-		<div class="contactMechanism">
-			<div class="phone">602-111-1234</div>
-			<div class="emai">John@somewhere.com</div>
-		</div>
-	</div>
-	<div class="span-6 ">
-		<h2>John Smith 3</h2>
-		<div class="address">
-			123 somewhere street <br /> phoenix, az 85037
-		</div>
-		<div class="contactMechanism">
-			<div class="phone">602-111-1234</div>
-			<div class="emai">John@somewhere.com</div>
-		</div>
-	</div>
-	<div class="span-6 last">
-		<h2>John Smith 4</h2>
-		<div class="address">
-			123 somewhere street <br /> phoenix, az 85037
-		</div>
-		<div class="contactMechanism">
-			<div class="phone">602-111-1234</div>
-			<div class="emai">John@somewhere.com</div>
-		</div>
-	</div>
-	<div class="span-6 ">
-		<h2>John Smith 5</h2>
-		<div class="address">
-			123 somewhere street <br /> phoenix, az 85037
-		</div>
-		<div class="contactMechanism">
-			<div class="phone">602-111-1234</div>
-			<div class="emai">John@somewhere.com</div>
-		</div>
-	</div>
-	<div class="span-6 ">
-		<h2>John Smith 6</h2>
-		<div class="address">
-			123 somewhere street <br /> phoenix, az 85037
-		</div>
-		<div class="contactMechanism">
-			<div class="phone">602-111-1234</div>
-			<div class="emai">John@somewhere.com</div>
-		</div>
-	</div>
+	</c:forEach>
+
 </layout:mainLayout>

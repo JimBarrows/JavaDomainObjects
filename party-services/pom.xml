@@ -20,12 +20,6 @@
 			<groupId>mbmp</groupId>
 			<artifactId>party-model</artifactId>
 			<version>1.0-SNAPSHOT</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>commons-collections</artifactId>
-					<groupId>commons-collections</groupId>
-				</exclusion>
-			</exclusions>
 		</dependency>
 		
 	</dependencies>
