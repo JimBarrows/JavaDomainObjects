@@ -12,15 +12,29 @@
 		<button name="createPerson">Create Person</button>
 		<button name="createOrganization">Create Group</button>
 	</div>
-	<h2>Page Number: ${pageNumber}</h2>
 
+	<div class="span-1">
+		<c:if test="${pageNumber > 1 }">
+			<c:url var="previousPageUrl" value="/">
+				<c:param name="pageNumber" value="${pageNumber -1 }" />
+			</c:url>
+			<a href="${previousPageUrl }">&lt;&lt;</a>
+		</c:if>
+	</div>
+
+	<div class="push-22 span-1 last">
+		<c:url var="nextPageUrl" value="/">
+			<c:param name="pageNumber" value="${pageNumber +1 }" />
+		</c:url>
+		<a href="${nextPageUrl }">&gt;&gt;</a>
+	</div>
 	<c:forEach items="${partyList }" var="party" varStatus="status">
 		<c:choose>
 			<c:when test="${ (status.count % numberOfColumns) eq 0 }">
-				<c:set var="classes" value="span-6 last"/>
+				<c:set var="classes" value="span-6 last" />
 			</c:when>
 			<c:otherwise>
-				<c:set var="classes" value="span-6"/>
+				<c:set var="classes" value="span-6" />
 			</c:otherwise>
 		</c:choose>
 		<div class="${classes } ">

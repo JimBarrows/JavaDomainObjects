@@ -38,16 +38,13 @@ public class RelationshipType extends BaseType {
 		this.fromRoleType = fromRoleType;
 		this.toRoleType = toRoleType;
 	}
-
-
-	@ManyToOne(optional = false, targetEntity = PartyRoleType.class)
-	@NotNull
+	
 	private PartyRoleType fromRoleType;
 
-	@ManyToOne(optional = false, targetEntity = PartyRoleType.class)
-	@NotNull
 	private PartyRoleType toRoleType;
 
+	@ManyToOne(optional = false, targetEntity = PartyRoleType.class)
+	@NotNull
 	public PartyRoleType getFromRoleType() {
 		return fromRoleType;
 	}
@@ -56,6 +53,8 @@ public class RelationshipType extends BaseType {
 		this.fromRoleType = fromRoleType;
 	}
 
+	@ManyToOne(optional = false, targetEntity = PartyRoleType.class)
+	@NotNull
 	public PartyRoleType getToRoleType() {
 		return toRoleType;
 	}

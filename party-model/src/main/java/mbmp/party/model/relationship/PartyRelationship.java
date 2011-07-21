@@ -1,5 +1,11 @@
 package mbmp.party.model.relationship;
 
+import org.apache.commons.lang.builder.ToStringBuilder;
+import de.jayefem.log4e.MethodParameterStyle;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -34,6 +40,11 @@ import org.joda.time.DateTime;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartyRelationship extends BaseDateRangeModel {
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = LoggerFactory
+			.getLogger(PartyRelationship.class);
 
 	private RelationshipType type;
 
@@ -69,10 +80,10 @@ public class PartyRelationship extends BaseDateRangeModel {
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
 	}
-	
-	public PartyRelationship( DateTime from,
-			DateTime thru, RelationshipType type, String comment,
-			PartyRole relationshipFrom, PartyRole relationshipTo) {
+
+	public PartyRelationship(DateTime from, DateTime thru,
+			RelationshipType type, String comment, PartyRole relationshipFrom,
+			PartyRole relationshipTo) {
 		super(from, thru);
 		this.type = type;
 		this.comment = comment;
@@ -89,6 +100,8 @@ public class PartyRelationship extends BaseDateRangeModel {
 	@Transient
 	@AssertFalse(message = "Relationship cannot be to the same party.")
 	public boolean isTheRelationshipToSameParty() {
+		logger.debug("isTheRelationshipToSameParty() - " + new ToStringBuilder("", MethodParameterStyle.METHOD_PARAMETER_STYLE).append("PartyRole relationshipFrom.roleFor", relationshipFrom.getRoleFor()).append("PartyRole relationshipTo.roleFor", relationshipTo.getRoleFor()).toString()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
+
 		return relationshipFrom.getRoleFor()
 				.equals(relationshipTo.getRoleFor());
 	}
@@ -96,9 +109,9 @@ public class PartyRelationship extends BaseDateRangeModel {
 	@Transient
 	@AssertTrue(message = "The from role, must of the same type as the Realtionship Type from role")
 	public boolean isTheFromRoleSameAsRelationshipoTypeFromRole() {
-		PartyRoleType left = relationshipFrom.getType(); 
+		PartyRoleType left = relationshipFrom.getType();
 		PartyRoleType right = type.getFromRoleType();
-		return left.equals( right);
+		return left.equals(right);
 	}
 
 	@Transient
@@ -106,7 +119,9 @@ public class PartyRelationship extends BaseDateRangeModel {
 	public boolean isTheToRoleTypeSameAsRelationshipoTypeToRole() {
 		PartyRoleType left = relationshipTo.getType();
 		PartyRoleType right = type.getToRoleType();
-		
+
+		logger.debug("isTheToRoleTypeSameAsRelationshipoTypeToRole() - left=" + left + ", right=" + right); //$NON-NLS-1$ //$NON-NLS-2$
+
 		return left.equals(right);
 	}
 

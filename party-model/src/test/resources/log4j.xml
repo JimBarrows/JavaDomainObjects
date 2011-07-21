@@ -8,6 +8,15 @@
 		</layout>
 	</appender>
 	<logger name="org.dbunit">
+		<level value="warn"/>
+	</logger>
+	<logger name="test.utils">
+		<level value="debug"/>
+	</logger>
+	<logger name="test.party">
+		<level value="debug"/>
+	</logger>
+	<logger name="mbmp.party.model.relationship">
 		<level value="debug"/>
 	</logger>
 	<root>

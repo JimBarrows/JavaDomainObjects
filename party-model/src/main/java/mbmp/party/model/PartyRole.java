@@ -25,6 +25,10 @@ public class PartyRole extends BaseDateRangeModel {
 
 	private Party roleFor;
 
+	public PartyRole() {
+		
+	}
+	
 	public PartyRole(PartyRoleType type) {
 		super();
 		this.type = type;

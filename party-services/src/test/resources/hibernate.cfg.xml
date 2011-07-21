@@ -12,7 +12,7 @@
 		<property name="connection.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>		
 		<property name="show_sql">true</property>
-		<property name="hbm2ddl.auto">create-drop</property>
+		<property name="hbm2ddl.auto">update</property>
 		
 		<mapping class="mbmp.model.BaseHeirarchicalType" />
 		<mapping class="mbmp.party.model.Organization" />

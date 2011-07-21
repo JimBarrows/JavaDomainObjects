@@ -1,7 +1,6 @@
 package test.party.services;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.fail;
 import static org.mockito.Mockito.spy;
 import static org.mockito.Mockito.when;
 
@@ -20,11 +19,12 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.Mock;
-import org.powermock.core.classloader.annotations.PrepareForTest;
-import org.powermock.modules.junit4.PowerMockRunner;
+import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-@RunWith(PowerMockRunner.class)
-@PrepareForTest(PartyListServices.class)
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@ContextConfiguration(locations = "/db-setup.xml")
 public class PartyListServicesTest {
 
 	@Mock
@@ -45,7 +45,7 @@ public class PartyListServicesTest {
 		when( query.getResultList()).thenReturn(expectedList);
 		
 		//when
-		List<Party> list = classUnderTest.list();
+		List<Party> list = classUnderTest.list(0, expectedList.size());
 		
 		//then
 		assertEquals( expectedList, list);
@@ -67,11 +67,6 @@ public class PartyListServicesTest {
 			}
 		}
 		return list;
-	}
-
-	@Test
-	public void testListIntInt() {
-		//fail("Not yet implemented");
 	}
 
 	@Before

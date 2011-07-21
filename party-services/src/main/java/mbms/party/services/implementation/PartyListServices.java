@@ -2,12 +2,13 @@ package mbms.party.services.implementation;
 
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.NamedQuery;
 import javax.persistence.PersistenceContext;
 
 import mbmp.party.model.Party;
+
+import org.springframework.stereotype.Service;
 
 /**This service returns a list of all parties, either the entire list, or paginated.  It provides no searching, and no sorting capability.
  * 
@@ -15,7 +16,7 @@ import mbmp.party.model.Party;
  *
  */
 @NamedQuery(name = "partyList", query = "from Party")
-@Stateless
+@Service
 public class PartyListServices implements mbms.party.services.PartyListServices {
 
 	@PersistenceContext
@@ -23,19 +24,13 @@ public class PartyListServices implements mbms.party.services.PartyListServices 
 
 	@SuppressWarnings("unchecked")
 	@Override
-	public List<Party> list() {
-		return em.createNamedQuery("partyList").getResultList();
-	}
-
-	@SuppressWarnings("unchecked")
-	@Override
 	public List<Party> list(int from, int through) {
 		if ((through < from) || (from < 0) || (through < 0))
 			throw new IllegalArgumentException(
-					"From must be less then through, and both number must be positive");
+					"From must be less then through, and both numbers must be positive");
 		return em.createNamedQuery("partyList")
 			.setFirstResult(from)
-			.setMaxResults(through - from)
+			.setMaxResults(through - from + 1)
 			.getResultList();
 	}
 

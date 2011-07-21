@@ -1,5 +1,8 @@
 package mbmp.model;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;
@@ -18,6 +21,11 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  */
 @MappedSuperclass
 public abstract class BasePersistentModel implements Serializable {
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = LoggerFactory.getLogger(BasePersistentModel.class);
+
 	/**
 	 * 
 	 */
@@ -58,14 +66,15 @@ public abstract class BasePersistentModel implements Serializable {
 
 	@Override
 	public boolean equals(Object obj) {
+		boolean equal =false;
 		if (obj instanceof BasePersistentModel) {
 			BasePersistentModel rhs = (BasePersistentModel) obj;
-			return new EqualsBuilder().append(this.id, rhs.id)
+			equal = new EqualsBuilder().append(this.id, rhs.id)
 					.append(this.version, rhs.version).isEquals();
 		} else {
-			return false;
+			equal = false;
 		}
-
+		return equal;
 	}
 
 	@Override
