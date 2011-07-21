@@ -17,7 +17,7 @@ import test.utils.HibernateUtil;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = "/party-roles.xml")
-public class PartyRoles extends DbTestTemplate {
+public class PartyRolesTest extends DbTestTemplate {
 
 	@Test
 	public void canAddRoleToExistingOrganization() {
