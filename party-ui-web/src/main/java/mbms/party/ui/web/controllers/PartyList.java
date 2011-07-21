@@ -40,8 +40,8 @@ public class PartyList {
 
 		int pageSize = numberOfColumns * numberOfRows;
 		int start = pageNumber * pageSize;
-		int end = start + pageSize - 1;
-		List<Party> parties = partyListServices.list(start, end);
+
+		List<Party> parties = partyListServices.list(start, pageSize);
 		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pageNumber", pageNumber + 1); // humans don't
 																// like zero
