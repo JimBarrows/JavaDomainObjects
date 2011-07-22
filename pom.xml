@@ -52,7 +52,6 @@
 		<powermock.version>1.4.9</powermock.version>
 		<postgres-driver.version>9.0-801.jdbc4</postgres-driver.version>
 		<hibernate.version>3.6.4.Final</hibernate.version>
-		<hibernate-annotations.version>3.5.6-Final</hibernate-annotations.version>
 		<hibernate-validator>4.1.0.Final</hibernate-validator>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
 		<jbehave-core.version>3.5-SNAPSHOT</jbehave-core.version>
@@ -129,20 +128,8 @@
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-annotations</artifactId>
-				<version>${hibernate-annotations.version}</version>
-			</dependency>
-			<dependency>
-				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
 				<version>${hibernate-validator}</version>
-			</dependency>
-			<dependency>
-				<groupId>javassist</groupId>
-				<artifactId>javassist</artifactId>
-				<version>3.12.1.GA</version>
-				<type>jar</type>
-				<scope>compile</scope>
 			</dependency>
 			<dependency>
 				<groupId>commons-dbcp</groupId>
@@ -462,69 +449,6 @@
 					<source>1.6</source>
 					<target>1.6</target>
 				</configuration>
-			</plugin>
-			<plugin>
-				<groupId>org.jbehave</groupId>
-				<artifactId>jbehave-maven-plugin</artifactId>
-				<version>${jbehave-core.version}</version>
-				<executions>
-					<execution>
-						<id>unpack-view-resources</id>
-						<phase>process-resources</phase>
-						<goals>
-							<goal>unpack-view-resources</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>embeddable-stories</id>
-						<phase>integration-test</phase>
-						<configuration>
-							<includes>
-								<include>${stories}</include>
-							</includes>
-							<excludes />
-							<generateViewAfterStories>true</generateViewAfterStories>
-							<ignoreFailureInStories>true</ignoreFailureInStories>
-							<ignoreFailureInView>false</ignoreFailureInView>
-							<threads>${threads}</threads>
-							<skip>${skip}</skip>
-							<metaFilters>
-								<metaFilter>${meta.filter}</metaFilter>
-							</metaFilters>
-						</configuration>
-						<goals>
-							<goal>run-stories-as-embeddables</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>map-stories</id>
-						<phase>integration-test</phase>
-						<configuration>
-							<includes>
-								<include>**/*StoryMaps.java</include>
-							</includes>
-							<metaFilters>
-								<metaFilter>+category *</metaFilter>
-								<metaFilter>+color *</metaFilter>
-							</metaFilters>
-						</configuration>
-						<goals>
-							<goal>map-stories-as-embeddables</goal>
-						</goals>
-					</execution>
-					<execution>
-						<id>report-stepdocs</id>
-						<phase>integration-test</phase>
-						<configuration>
-							<includes>
-								<include>${stories}</include>
-							</includes>
-						</configuration>
-						<goals>
-							<goal>report-stepdocs-as-embeddables</goal>
-						</goals>
-					</execution>
-				</executions>
 			</plugin>
 		</plugins>
 	</build>

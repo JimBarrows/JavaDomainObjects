@@ -131,6 +131,69 @@
 					</execution>
 				</executions>
 			</plugin>
+			<plugin>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-maven-plugin</artifactId>
+				<version>${jbehave-core.version}</version>
+				<executions>
+					<execution>
+						<id>unpack-view-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack-view-resources</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>embeddable-stories</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>${stories}</include>
+							</includes>
+							<excludes />
+							<generateViewAfterStories>true</generateViewAfterStories>
+							<ignoreFailureInStories>true</ignoreFailureInStories>
+							<ignoreFailureInView>false</ignoreFailureInView>
+							<threads>${threads}</threads>
+							<skip>${skip}</skip>
+							<metaFilters>
+								<metaFilter>${meta.filter}</metaFilter>
+							</metaFilters>
+						</configuration>
+						<goals>
+							<goal>run-stories-as-embeddables</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>map-stories</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>**/*StoryMaps.java</include>
+							</includes>
+							<metaFilters>
+								<metaFilter>+category *</metaFilter>
+								<metaFilter>+color *</metaFilter>
+							</metaFilters>
+						</configuration>
+						<goals>
+							<goal>map-stories-as-embeddables</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report-stepdocs</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>${stories}</include>
+							</includes>
+						</configuration>
+						<goals>
+							<goal>report-stepdocs-as-embeddables</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 </project>
