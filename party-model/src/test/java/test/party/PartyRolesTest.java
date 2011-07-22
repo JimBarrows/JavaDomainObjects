@@ -34,9 +34,12 @@ public class PartyRolesTest extends DbTestTemplate {
 		
 		PartyRole role = new PartyRole(type);
 		organization.addPartyRole(role );
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 		
 		//when
 		session.save(organization);
+		session.getTransaction().commit();
 		
 		//it should works
 	}
@@ -54,10 +57,12 @@ public class PartyRolesTest extends DbTestTemplate {
 		newOrganization.setName("Test name");
 		PartyRole pr = new PartyRole(type);
 		newOrganization.addPartyRole(pr);
+		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 		
 		//when
 		session.save(newOrganization);
-		
+		session.getTransaction().commit();
 		//then it should work
 	}
 	
@@ -77,6 +82,7 @@ public class PartyRolesTest extends DbTestTemplate {
 		
 		//when
 		session = HibernateUtil.getSessionFactory().getCurrentSession();
+		session.beginTransaction();
 		organization.removePartyRole( role);
 		session.save(organization);
 		session.getTransaction().commit();

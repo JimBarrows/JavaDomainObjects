@@ -19,6 +19,9 @@ import mbmp.party.model.communication.CaseRole;
 import mbmp.party.model.communication.CommunicationEventRole;
 import mbmp.party.model.facility.FacilityRole;
 
+import org.hibernate.annotations.NamedQueries;
+import org.hibernate.annotations.NamedQuery;
+
 /**
  * Represents information on either an organization, or a single person.
  * 
@@ -33,6 +36,8 @@ import mbmp.party.model.facility.FacilityRole;
  * @see Data Model Resource Book Volume 1 Figure 2.12, page 60
  * @see Data Model Resource Book Volume 1 Figure 2.13, page 64
  */
+@NamedQueries({ @NamedQuery(name = "partyList", query = "from Party"),
+	@NamedQuery(name = "partyCount", query = "select count(*) from Party") })
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Party extends BasePersistentModel implements Serializable {
@@ -120,7 +125,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the actingAs
 	 */
-	@OneToMany(mappedBy = "roleFor", cascade = ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "roleFor", cascade = ALL)
 	@OrderBy("from")
 	public List<PartyRole> getActingAs() {
 		return actingAs;
@@ -138,12 +143,12 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the classifiedInto
 	 */
-	@OneToMany(cascade = ALL, mappedBy = "classificationFor", orphanRemoval=true)
+	@OneToMany(cascade = ALL, mappedBy = "classificationFor" )
 	public List<PartyClassification> getClassifiedInto() {
 		return classifiedInto;
 	}
 
-	@OneToMany(mappedBy = "mechanismToContact", cascade = CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "mechanismToContact", cascade = CascadeType.ALL )
 	@OrderBy("from")
 	public List<PartyContactMechanism> getContactedVia() {
 		return contactedVia;
@@ -170,7 +175,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the residingAt
 	 */
-	@OneToMany(mappedBy = "specifiedFor", cascade = CascadeType.ALL, orphanRemoval=true)
+	@OneToMany(mappedBy = "specifiedFor", cascade = CascadeType.ALL )
 	@OrderBy("from")
 	public List<PartyPostalAddress> getResidingAt() {
 		return residingAt;

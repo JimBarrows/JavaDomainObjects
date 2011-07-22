@@ -7,12 +7,20 @@
 			<param name="ConversionPattern" value="%-5p %c{1} - %m%n" />
 		</layout>
 	</appender>
-	<logger name="mbms.party.ui.web.controllers">
+	<logger name="org.dbunit">
+		<level value="warn"/>
+	</logger>
+	<logger name="test.utils">
+		<level value="debug"/>
+	</logger>
+	<logger name="test.party">
+		<level value="debug"/>
+	</logger>
+	<logger name="mbmp.party.model.relationship">
 		<level value="debug"/>
 	</logger>
 	<root>
 		<priority value="warn" />
 		<appender-ref ref="console" />
 	</root>
-
 </log4j:configuration>

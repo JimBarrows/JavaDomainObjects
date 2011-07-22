@@ -2,6 +2,8 @@ package mbms.party.ui.web.controllers;
 
 import java.util.List;
 
+import javax.validation.constraints.Min;
+
 import mbmp.party.model.Party;
 import mbms.party.services.PartyListServices;
 
@@ -25,24 +27,29 @@ public class PartyList {
 	@Autowired
 	private PartyListServices partyListServices;
 
+	public PartyList(PartyListServices partyListServices) {
+		super();
+		this.partyListServices = partyListServices;
+	}
+
+	public PartyList() {
+		super();
+	}
+
 	@RequestMapping("/")
 	public ModelAndView list(
-			@RequestParam(value = "pageNumber", required = false) Integer pageNumber) {
+			@RequestParam(value = "pageNumber", defaultValue = "0") @Min(0) Integer pageNumber) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("list(Integer pageNumber=" + pageNumber + ") - start"); //$NON-NLS-1$ //$NON-NLS-2$
 		}
-
-		if (pageNumber == null) {
-			pageNumber = 0;
-		} else {
-			pageNumber -= 1; // page number is zero offset internally
-		}
+		ModelAndView modelAndView = new ModelAndView();
 
 		int pageSize = numberOfColumns * numberOfRows;
 		int start = pageNumber * pageSize;
-
+		pageNumber = ((pageNumber == 0) ? 0 : pageNumber - 1); // page number is
+																// zero offset
+																// internally
 		List<Party> parties = partyListServices.list(start, pageSize);
-		ModelAndView modelAndView = new ModelAndView();
 		modelAndView.addObject("pageNumber", pageNumber + 1); // humans don't
 																// like zero
 																// offset page
@@ -62,4 +69,5 @@ public class PartyList {
 	 */
 	private static final Logger logger = LoggerFactory
 			.getLogger(PartyList.class);
+
 }
