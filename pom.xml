@@ -55,6 +55,11 @@
 		<hibernate-annotations.version>3.5.6-Final</hibernate-annotations.version>
 		<hibernate-validator>4.1.0.Final</hibernate-validator>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
+		<jbehave-core.version>3.5-SNAPSHOT</jbehave-core.version>
+		<jbehave-web-selenium.version>3.4-SNAPSHOT</jbehave-web-selenium.version>
+		<jbehave-site.version>3.1.1</jbehave-site.version>
+		<selenium-java.version>2.0.0</selenium-java.version>
+		<selenium-support.version>2.0.0</selenium-support.version>
 	</properties>
 
 	<modules>
@@ -321,6 +326,41 @@
 				<version>4.7</version>
 				<scope>test</scope>
 			</dependency>
+
+			<dependency>
+				<groupId>org.jbehave.web</groupId>
+				<artifactId>jbehave-web-selenium</artifactId>
+				<version>${jbehave-web-selenium.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-core</artifactId>
+				<version>${jbehave-core.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-java</artifactId>
+				<version>${selenium-java.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium</groupId>
+				<artifactId>selenium-support</artifactId>
+				<version>${selenium-support.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-spring</artifactId>
+				<version>${jbehave-core.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.site</groupId>
+				<artifactId>jbehave-site-resources</artifactId>
+				<version>${jbehave-site.version}</version>
+			</dependency>
 		</dependencies>
 
 
@@ -352,21 +392,6 @@
 
 
 	<dependencies>
-
-
-		<dependency>
-			<groupId>org.jbehave.web</groupId>
-			<artifactId>jbehave-web-selenium</artifactId>
-			<version>3.1.1</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.jbehave</groupId>
-			<artifactId>jbehave-core</artifactId>
-			<version>3.1.2</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>org.apache.geronimo.specs</groupId>
@@ -438,15 +463,69 @@
 					<target>1.6</target>
 				</configuration>
 			</plugin>
-			<!-- <plugin> <groupId>org.jbehave</groupId> <artifactId>jbehave-maven-plugin</artifactId> 
-				<version>3.1.2</version> <executions> <execution> <id>run-stories-as-embeddables</id> 
-				<phase>integration-test</phase> <configuration> <includes> <include>**/*Stories.java</include> 
-				</includes> <metaFilters> <metaFilter>+author *</metaFilter> <metaFilter>-skip</metaFilter> 
-				</metaFilters> <systemProperties> <property> <name>java.awt.headless</name> 
-				<value>true</value> </property> </systemProperties> <ignoreFailureInStories>true</ignoreFailureInStories> 
-				<ignoreFailureInView>false</ignoreFailureInView> </configuration> <goals> 
-				<goal>run-stories-as-embeddables</goal> </goals> </execution> </executions> 
-				</plugin> -->
+			<plugin>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-maven-plugin</artifactId>
+				<version>${jbehave-core.version}</version>
+				<executions>
+					<execution>
+						<id>unpack-view-resources</id>
+						<phase>process-resources</phase>
+						<goals>
+							<goal>unpack-view-resources</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>embeddable-stories</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>${stories}</include>
+							</includes>
+							<excludes />
+							<generateViewAfterStories>true</generateViewAfterStories>
+							<ignoreFailureInStories>true</ignoreFailureInStories>
+							<ignoreFailureInView>false</ignoreFailureInView>
+							<threads>${threads}</threads>
+							<skip>${skip}</skip>
+							<metaFilters>
+								<metaFilter>${meta.filter}</metaFilter>
+							</metaFilters>
+						</configuration>
+						<goals>
+							<goal>run-stories-as-embeddables</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>map-stories</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>**/*StoryMaps.java</include>
+							</includes>
+							<metaFilters>
+								<metaFilter>+category *</metaFilter>
+								<metaFilter>+color *</metaFilter>
+							</metaFilters>
+						</configuration>
+						<goals>
+							<goal>map-stories-as-embeddables</goal>
+						</goals>
+					</execution>
+					<execution>
+						<id>report-stepdocs</id>
+						<phase>integration-test</phase>
+						<configuration>
+							<includes>
+								<include>${stories}</include>
+							</includes>
+						</configuration>
+						<goals>
+							<goal>report-stepdocs-as-embeddables</goal>
+						</goals>
+					</execution>
+				</executions>
+			</plugin>
 		</plugins>
 	</build>
 
