@@ -33,8 +33,8 @@ import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 @RunWith(SpringAnnotatedEmbedderRunner.class)
 @Configure(using = SeleniumConfiguration.class, pendingStepStrategy = FailingUponPendingStep.class)
 @UsingEmbedder(embedder = Embedder.class, generateViewAfterStories = true, ignoreFailureInStories = true, ignoreFailureInView = false, storyTimeoutInSecs = 100, threads = 1, metaFilters = "-skip")
-@UsingSpring(resources = { "jbehave.xml" })
-public class AnnotatedStores extends InjectableEmbedder{
+@UsingSpring(resources = { "database.xml", "jbehave.xml" })
+public class AnnotatedStories extends InjectableEmbedder{
 	 @Test
 	    public void run() throws Throwable {
 	        CrossReference crossReference = new CrossReference().withJsonOnly().withOutputAfterEachStory(true)

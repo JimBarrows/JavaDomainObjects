@@ -8,4 +8,8 @@
 	<bean id="listSteps" class="test.bdd.steps.ListSteps">
 		<constructor-arg ref="driverProvider" />
 	</bean>
+	
+	<bean id="housekeepingSteps" class="test.bdd.steps.HousekeepingSteps">
+     <constructor-arg ref="driverProvider"/>
+  </bean>  
 </beans>

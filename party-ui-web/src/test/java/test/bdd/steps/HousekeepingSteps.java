@@ -8,12 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import test.utils.DbUtils;
 
-public class Housekeeping extends StepTemplate {
+public class HousekeepingSteps extends StepTemplate {
 
 	@Autowired
 	DbUtils dbUtils;
 	
-	public Housekeeping(WebDriverProvider webDriverProvider) {
+	public HousekeepingSteps(WebDriverProvider webDriverProvider) {
 		super(webDriverProvider);
 	}
 

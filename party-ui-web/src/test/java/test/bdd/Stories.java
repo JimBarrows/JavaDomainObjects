@@ -1,5 +1,8 @@
 package test.bdd;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import java.util.List;
 
 import org.jbehave.core.configuration.Configuration;
@@ -27,8 +30,14 @@ import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 
 public class Stories extends JUnitStories {
+	/**
+	 * Logger for this class
+	 */
+	private static final Logger logger = LoggerFactory.getLogger(Stories.class);
 
 	public Stories() {
+		logger.debug("Stories() - start"); //$NON-NLS-1$
+
 		CrossReference crossReference = new CrossReference().withJsonOnly()
 				.withOutputAfterEachStory(true)
 				.excludingStoriesWithNoExecutedScenarios(true);
@@ -56,13 +65,20 @@ public class Stories extends JUnitStories {
 		useConfiguration(configuration);
 
 		ApplicationContext context = new SpringApplicationContextFactory(
-				"jbehave.xml").createApplicationContext();
+				"database.xml", "jbehave.xml").createApplicationContext();
 		useStepsFactory(new SpringStepsFactory(configuration, context));
+
+		logger.debug("Stories() - end"); //$NON-NLS-1$
 	}
-	
+
 	@Override
-    protected List<String> storyPaths() {
-        return new StoryFinder().findPaths(codeLocationFromClass(this.getClass()).getFile(), asList("**/" + System.getProperty("storyFilter", "*")
-                + ".story"), null);
-    }
+	protected List<String> storyPaths() {
+		logger.debug("storyPaths() - start"); //$NON-NLS-1$
+
+		String file = codeLocationFromClass(this.getClass()).getFile();
+		List<String> list = asList("**/" + System.getProperty("storyFilter", "*") + ".story");
+		List<String> returnList = new StoryFinder().findPaths(file, list, null);
+		logger.debug("storyPaths() - end - return value=" + returnList); //$NON-NLS-1$
+		return returnList;
+	}
 }

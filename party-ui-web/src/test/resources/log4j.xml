@@ -8,16 +8,25 @@
 		</layout>
 	</appender>
 	<logger name="org.dbunit">
-		<level value="warn"/>
+		<level value="warn" />
+	</logger>
+	<logger name="test.bdd">
+		<level value="debug" />
+	</logger>
+	<logger name="test.bdd.steps">
+		<level value="debug" />
+	</logger>
+	<logger name="test.bdd.pages">
+		<level value="debug" />
 	</logger>
 	<logger name="test.utils">
-		<level value="debug"/>
+		<level value="debug" />
 	</logger>
 	<logger name="test.party">
-		<level value="debug"/>
+		<level value="debug" />
 	</logger>
 	<logger name="mbms.party.ui.web.controllers">
-		<level value="debug"/>
+		<level value="debug" />
 	</logger>
 	<root>
 		<priority value="warn" />
