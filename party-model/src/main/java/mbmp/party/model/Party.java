@@ -19,9 +19,6 @@ import mbmp.party.model.communication.CaseRole;
 import mbmp.party.model.communication.CommunicationEventRole;
 import mbmp.party.model.facility.FacilityRole;
 
-import org.hibernate.annotations.NamedQueries;
-import org.hibernate.annotations.NamedQuery;
-
 /**
  * Represents information on either an organization, or a single person.
  * 
@@ -36,8 +33,6 @@ import org.hibernate.annotations.NamedQuery;
  * @see Data Model Resource Book Volume 1 Figure 2.12, page 60
  * @see Data Model Resource Book Volume 1 Figure 2.13, page 64
  */
-@NamedQueries({ @NamedQuery(name = "partyList", query = "from Party"),
-	@NamedQuery(name = "partyCount", query = "select count(*) from Party") })
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Party extends BasePersistentModel implements Serializable {

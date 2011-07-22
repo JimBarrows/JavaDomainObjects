@@ -42,22 +42,26 @@ public class PartyListServices_ListMethod_Test {
 
 	@Mock
 	private org.hibernate.Query query;
+	
+	@Mock
+	private org.hibernate.Transaction transaction;
 
 	@Test
 	public void testList() {
 		//given
 		List<Party> expectedList = createExpectedList();
 		when( sessionFactory.getCurrentSession()).thenReturn(session);
-		when( session.getNamedQuery(anyString())).thenReturn(query);
+		when( session.createQuery(anyString())).thenReturn(query);
 		when( query.setFirstResult(anyInt())).thenReturn(query);
 		when( query.setMaxResults(anyInt())).thenReturn(query);
 		when( query.list()).thenReturn(expectedList);
+		when( session.getTransaction()).thenReturn(transaction);
 		
 		//when
 		List<Party> list = classUnderTest.list(0, expectedList.size());
 		
 		//then
-		verify(session).getNamedQuery("partyList");
+		verify(session).createQuery("from Party");
 		verify(query).setFirstResult(0);
 		verify(query).setMaxResults(expectedList.size());
 		assertEquals( expectedList, list);
