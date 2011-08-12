@@ -1,8 +1,5 @@
 package mbmp.model;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import java.io.Serializable;
 
 import javax.persistence.GeneratedValue;
@@ -21,10 +18,6 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  */
 @MappedSuperclass
 public abstract class BasePersistentModel implements Serializable {
-	/**
-	 * Logger for this class
-	 */
-	private static final Logger logger = LoggerFactory.getLogger(BasePersistentModel.class);
 
 	/**
 	 * 
