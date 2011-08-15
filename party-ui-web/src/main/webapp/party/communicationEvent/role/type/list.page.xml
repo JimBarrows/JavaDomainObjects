@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.1.xsd"
+	view-id="/party/communicationEvent/role/type/list.xhtml">
+	<description>Communication Event Role Management</description>
+	<param name="communicationEventRoleTypeId" value="#{communicationEventRoleTypeHome.id}"
+		converterId="javax.faces.Long" />
+	<navigation>
+		<rule if-outcome="addCommunicationEventRoleType">
+			<begin-conversation nested="true" />
+			<redirect view-id="/account/communicationEventRoleTypeForm.xhtml">
+				<param name="communicationEventRoleTypeId" value="" />
+			</redirect>
+		</rule>
+		<rule if-outcome="editCommunicationEventRoleType">
+			<begin-conversation nested="true" />
+			<redirect view-id="/account/communicationEventRoleTypeForm.xhtml">
+				<param name="communicationEventRoleTypeId" value="#{communicationEventRoleTypeHome.id}"
+					converterId="javax.faces.Long" />
+			</redirect>
+		</rule>
+	</navigation>
+</page>
+

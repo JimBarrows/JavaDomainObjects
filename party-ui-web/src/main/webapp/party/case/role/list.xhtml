@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:p="http://jboss.com/products/seam/pdf">
+	<body>
+		<ui:component>
+			<div class="actionButtons">
+				<h:commandButton id="addCaseRoleButton"
+					action="#{caseHome.addCaseRole}" value="Add Case Role"
+					rendered="#{edit and not showCase}">
+					<a:support reRender="caseRoleListTable" event="onclick" />
+				</h:commandButton>
+				<h:commandButton id="addCaseeButton" action="/party/case/caseForm.xhtml"
+					value="Add Case" rendered="#{edit and showCase}" />
+			</div>
+			<h:form id="caseRoleListTableForm">
+				<rich:dataTable id="caseRoleListTable" title="Case List"
+					value="#{caseRoleList}" var="curCase" rows="10">
+
+					<f:facet name="header">Case List</f:facet>
+
+					<rich:column sortable="true" title="Case" rendered="#{ showCase}">
+						<f:facet name="header">Case</f:facet>
+						<h:outputText value="#{curCase.roleFor.description}"
+							rendered="#{not edit}" />
+						<s:link id="caseRoleEditLink"
+							value="#{curCase.roleFor.description}" view="/caseRoleForm.xhtml"
+							rendered="#{edit}">
+							<f:param name="caseRoleId" value="#{curCase.id}" />
+						</s:link>
+					</rich:column>
+
+					<rich:column sortable="true" title="Role In Case">
+						<f:facet name="header">Role</f:facet>
+						<h:outputText value="#{curCase.describedBy.description}" />
+					</rich:column>
+
+					<rich:column sortable="true" title="Party" rendered="#{ showParty}">
+						<f:facet name="header">Party</f:facet>
+						<h:outputText
+							value="#{curCase.of.firstName} #{curCase.of.lastName}"
+							rendered="#{curCase.of.class.simpleName == 'Person'}" />
+						<h:outputText value="#{curCase.of.name}"
+							rendered="#{curCase.of.class.simpleName == 'Organization'}" />
+					</rich:column>
+					<f:facet name="footer">
+						<rich:datascroller for="caseRoleListTable"
+							pageIndexVar="pageIndex" pagesVar="pages"
+							renderIfSinglePage="false">
+							<f:facet name="pages">
+								<h:outputText value="#{pageIndex}/#{pages}" />
+							</f:facet>
+						</rich:datascroller>
+					</f:facet>
+				</rich:dataTable>
+			</h:form>
+		</ui:component>
+	</body>
+</html>

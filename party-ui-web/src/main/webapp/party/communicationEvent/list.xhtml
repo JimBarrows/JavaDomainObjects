@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+	<body>
+		<f:view>
+			<ui:composition template="/layout/template.xhtml">
+				<ui:define name="body">
+					<h:form id="communicationEventListControles">
+						<h:commandButton id="addCommunicationEventButton"
+							action="/party/communicationEvent/form.xhtml"
+							value="Add Communication Event">
+							<s:conversationPropagation type="join"/>
+							<f:param name="communicationEventId" value="" />
+						</h:commandButton>
+					</h:form>
+					<ui:include src="/party/communicationEvent/table.xhtml">
+						<ui:param name="communicationEventList"
+							value="#{communicationEventListForUserLogin.resultList}" />
+					</ui:include>
+				</ui:define>
+			</ui:composition>
+		</f:view>
+	</body>
+</html>

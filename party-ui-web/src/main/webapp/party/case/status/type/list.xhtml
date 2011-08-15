@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich">
+	<body>
+		<ui:composition template="/layout/template.xhtml">
+			<ui:define name="body">
+				<rich:panel id="partyCaseStatusTypeListPanel">
+					<f:facet name="header">Case Status Type List</f:facet>
+					<s:button id="addCaseStatusTypeButton" action="addCaseStatusType"
+						value="Add Case Status Type">
+						<f:param name="caseStatusTypeId" value="" />
+					</s:button>
+					<h:form id="caseStatusTypeTableForm">						
+						<rich:dataTable id="caseStatusTypeList" var="caseStatusType"
+							value="#{caseStatusTypeListForUserLogin.resultList}" rows="10">
+							<rich:column filterBy="#{caseStatusType.description}" filterEvent="onkeyup" selfSorted="true" sortBy="#{caseStatusType.description}">
+								<f:facet name="header">Status</f:facet>
+								<s:link id="caseStatusTypeEditLink" action="editCaseStatusType">
+									<h:outputText value="#{caseStatusType.description}" />
+									<f:param name="caseStatusTypeId" value="#{caseStatusType.id}" />
+								</s:link>
+							</rich:column>
+
+							<f:facet name="footer">
+								<rich:datascroller pageIndexVar="pageIndex" pagesVar="pages"
+									for="caseStatusTypeList" renderIfSinglePage="false">
+									<f:facet name="pages">
+										<h:outputText value="#{pageIndex}/#{pages}" />
+									</f:facet>
+								</rich:datascroller>
+							</f:facet>
+						</rich:dataTable>
+					</h:form>
+					<h:outputText value="No case status types."
+							rendered="#{empty caseStatusTypeListForUserLogin.resultList}" />
+					<div style="clear:both"/>
+					<s:button id="doneButton" action="done" value="Done">
+					</s:button>
+				</rich:panel>
+			</ui:define>
+		</ui:composition>
+	</body>
+</html>

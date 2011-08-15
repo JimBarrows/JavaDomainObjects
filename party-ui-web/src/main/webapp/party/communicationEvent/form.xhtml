@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+	<body>
+		<f:view>
+			<ui:composition template="/layout/template.xhtml">
+				<ui:define name="body">
+					<h:form id="communicationEventForm">
+						<rich:panel header="Communication Event">
+							<rich:panel>
+								<s:decorate id="startDateCalendarDecoration"
+									template="/layout/edit.xhtml">
+									<ui:define name="label">Date and Time Event Started</ui:define>
+									<rich:calendar id="startDateCalendar" popup="true"
+										showWeeksBar="false"
+										value="#{communicationEvent.dateTimeStarted}"
+										datePattern="dd/MM/yyyy hh:mm a" required="true"
+										enableManualInput="true" showApplyButton="true" />
+								</s:decorate>
+
+								<s:decorate id="endDateCalenderDecoration"
+									template="/layout/edit.xhtml">
+									<ui:define name="label">Date and Time Event Ended</ui:define>
+									<rich:calendar id="endDateCalendar" popup="true"
+										value="#{communicationEvent.dateTimeEnded}"
+										datePattern="dd/MM/yyyy hh:mm a" enableManualInput="true"
+										showApplyButton="true" />
+								</s:decorate>
+
+								<s:decorate id="noteTextAreaDecoration"
+									template="/layout/edit.xhtml">
+									<ui:define name="label">Note</ui:define>
+									<h:inputTextarea id="noteTextAreaDecoration"
+										value="#{communicationEvent.note}" required="true" />
+								</s:decorate>
+
+								<div style="clear: both" />
+							</rich:panel>
+							<rich:panel>
+								<div class="actionButtons">
+
+									<h:commandButton id="addPartyButton"
+										action="#{communicationEventHome.addCommunicationEventRole}"
+										value="Add Party">
+									</h:commandButton>
+
+									<s:button id="createCommunicationEventRoleButton"
+										view="/party/communicationEvent/role/type/form.xhtml" value="Create Role"
+										propagation="nest">
+										<f:param name="communicationEventRoleTypeId" value="" />
+										<f:param name="originalView" value="/party/communicationEvent/form.xhtml" />
+									</s:button>
+								</div>
+								<rich:dataTable id="communicationEventRoleListTable"
+									value="#{communicationEvent.involving}" var="curEventRole">
+									<f:facet name="header">Parties Involved</f:facet>
+
+									<rich:column id="communicationEventRoleColumn">
+
+										<f:facet name="header">Role</f:facet>
+
+										<s:decorate id="communicationEventRoleTypeDecoration"
+											template="/layout/cellEdit.xhtml">
+											<h:selectOneMenu id="communicationEventRoleType"
+												value="#{curEventRole.describedBy}" required="true">
+												<s:selectItems
+													value="#{communicationEventRoleTypeListForUserLogin.resultList}"
+													var="curCommunicationEventRole"
+													label="#{curCommunicationEventRole.description}"
+													noSelectionLabel="Please Select..." />
+												<s:convertEntity />
+											</h:selectOneMenu>
+										</s:decorate>
+
+									</rich:column>
+
+									<rich:column id="communicationEventPartyColumn">
+
+										<f:facet name="header">Party</f:facet>
+
+										<s:decorate id="communicationEventPartyDecoration"
+											template="/layout/cellEdit.xhtml">
+											<h:selectOneMenu id="partySelectOne"
+												value="#{curEventRole.forParty}">
+												<s:selectItems value="#{partyListForUserLogin.resultList}"
+													var="curParty" noSelectionLabel="Please select one."
+													label="#{ labelHelper.getPartyLabel(curParty)}" />
+												<a:support event="onchange"
+													reRender="occursViaSelectOneDecoration" />
+												<s:convertEntity />
+											</h:selectOneMenu>
+										</s:decorate>
+
+									</rich:column>
+								</rich:dataTable>
+								<div style="clear: both" />
+							</rich:panel>
+
+							<rich:panel>
+								<s:decorate id="inTheContextOfSelectOneDecoration"
+									template="/layout/edit.xhtml">
+									<ui:define name="label">In the context of the relationship</ui:define>
+									<h:selectOneMenu id="inTheContextOfSelectOne"
+										value="#{communicationEvent.inTheContextOf}">
+
+										<s:selectItems
+											value="#{partyRelationshipsForUserLoginList.resultList}"
+											var="curRelationship" label="#{curRelationship.comment}"
+											noSelectionLabel="Please Select..." />
+										<s:convertEntity />
+									</h:selectOneMenu>
+								</s:decorate>
+								<s:decorate id="asPartOfDecoration"
+									template="/layout/edit.xhtml">
+									<ui:define name="label">Cases this event is part of:</ui:define>
+									<rich:pickList id="asPartOf"
+										value="#{communicationEvent.asPartOf}"
+										rendered="#{ not empty caseListByUserLogin.resultList}">
+										<s:selectItems value="#{caseListByUserLogin.resultList}"
+											var="curCase" label="#{curCase.description}"
+											noSelectionLabel="No cases to select." />
+										<s:convertEntity />
+									</rich:pickList>
+									<h:outputText value="There are no cases."
+										rendered="#{empty caseListByUserLogin.resultList}" />
+								</s:decorate>
+								<s:decorate id="occursViaSelectOneDecoration"
+									template="/layout/edit.xhtml">
+									<ui:define name="label">Occurs Via</ui:define>
+									<h:selectOneMenu id="occurViaSelectOne"
+										value="#{communicationEvent.occursVia}"
+										disabled="#{empty communicationEvent.involving}">
+										<s:selectItems
+											value="#{communicationEventContactMechanismList.resultList}"
+											var="curCM" label="#{curCM.comment} - "
+											noSelectionLabel="Please Select..."
+											disabled="#{empty communicationEvent.involving}" />
+										<s:convertEntity />
+									</h:selectOneMenu>
+								</s:decorate>
+
+								<div style="clear: both" />
+
+								<ui:include src="/components/homeButtonsComponent.xhtml">
+									<ui:param name="home"
+										value="#{communicationEventFormController}" />
+								</ui:include>
+							</rich:panel>
+						</rich:panel>
+					</h:form>
+				</ui:define>
+			</ui:composition>
+		</f:view>
+	</body>
+</html>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+	<body>
+		<ui:component>
+			<h:form id="toolbarForm">
+			
+				<rich:toolbar id="mainToolbar">
+					<h:outputText value="#{projectName}:" />
+					<h:commandLink id="homeLink"
+						view="#{ identity.loggedIn ? '/summary.xhtml' : '/home.xhtml'}"
+						value="Home" />
+					<rich:toolbarGroup id="commonToolbarGroup" location="left"
+						rendered="#{identity.loggedIn}">
+						<h:commandLink id="taskListToolbarLink"  action="/task/list.xhtml"
+							value="Tasks" rendered="#{identity.loggedIn}" />
+						<h:commandLink id="calendarToolbarLink" value="Calendar"
+							action="/calendar/list.xhtml" rendered="#{identity.loggedIn}" />
+						<h:commandLink id="contactListToolbarLink" value="Contact List"
+							action="/party/list.xhtml" rendered="#{identity.loggedIn}" />
+						<h:commandLink id="relationshipListToolbarLink" value="Relationship List"
+							action="/party/relationship/list.xhtml"
+							rendered="#{identity.loggedIn}" />
+						<h:commandLink id="caseListToolbarLink" value="Case List"
+							action="/party/case/list.xhtml"  />
+						<h:commandLink id="communicationEventListToolbarLink"
+							value="Communication Event List"
+							action="/party/communicationEvent/list.xhtml"
+							 />
+					</rich:toolbarGroup>
+					<rich:toolbarGroup id="accountToolbarGroup"
+						rendered="#{identity.loggedIn}">
+						<rich:dropDownMenu id="accountDropDown"
+							rendered="#{identity.loggedIn}">
+							<f:facet name="label">
+								<h:outputText value="Account" />
+							</f:facet>
+							<rich:menuItem id="myInfoMenuItem" value="My Info" action="myInfo">											
+							</rich:menuItem>
+							<rich:menuItem id="contactRoleMenuItem" value="Contact Roles"
+								action="/party/role/type/list.xhtml" />
+							<rich:menuItem id="contactClassificationsMenuItem"
+								value="Contact Classifications"
+								action="/party/classification/type/list.xhtml" />
+
+							<rich:menuItem id="realtionshipTypesMenuItem"
+								value="Relationship Types"
+								action="/party/relationship/type/list.xhtml" />
+							<rich:menuItem id="relationshipPrioritiesMenuItem"
+								value="Relationship Priorities"
+								action="/party/relationship/priority/type/list.xhtml" />
+							<rich:menuItem id="relationshipStatusesMenuItem"
+								value="Relationship Statuses"
+								action="/party/relationship/status/type/list.xhtml" />
+
+							<rich:menuItem id="caseRolesMenuItem" value="Case Roles"
+								action="/party/case/role/type/list.xhtml"
+								 />
+							<rich:menuItem id="caseStatusesMenuItem" value="Case Statuses"
+								action="/party/case/status/type/list.xhtml"
+								>
+							</rich:menuItem>
+							<rich:menuItem id="communicationEventPurposesMenuItem"
+								value="Communication Event Purposes"
+								action="/party/communicationEvent/purpose/type/list.xhtml" />
+							<rich:menuItem id="communicationEventRolesMenuItem"
+								value="Communication Event Roles"
+								action="/party/communicationEvent/role/type/list.xhtml" />
+							<rich:menuItem id="ticketListMenuItem" value="Ticket List"
+								action="/ticket/list.xhtml" />
+						</rich:dropDownMenu>
+					</rich:toolbarGroup>
+					<rich:toolbarGroup id="adminToolbarGroup" location="right"
+						>
+						<rich:dropDownMenu id="adminDropDown"
+							>
+							<f:facet name="label">
+								<h:outputText value="Admin" />
+							</f:facet>
+							<rich:menuItem id="subscriptionManagementMenuItem"
+								value="Subscription Management"
+								action="/subscription/list.xhtml" />
+							<rich:menuItem id="ticketManagementMenuItem"
+								value="Ticket Management" action="/ticket/creator.xhtml" />
+						</rich:dropDownMenu>
+					</rich:toolbarGroup>
+					<rich:toolbarGroup id="welcomeToolbarGroup" location="right">
+						<h:outputText id="welcomeMessage"
+							value="Welcome, #{identity.username}!"
+							rendered="#{identity.loggedIn}" />
+						<h:commandLink id="loginLink" action="/login.xhtml" value="Login"
+							rendered="#{not identity.loggedIn}" />
+
+						<h:commandLink id="logoutLink" action="#{loginUtils.logout}"
+							value="Log out" rendered="#{identity.loggedIn}" />
+					</rich:toolbarGroup>
+
+				</rich:toolbar>
+			</h:form>
+		</ui:component>
+	</body>
+</html>

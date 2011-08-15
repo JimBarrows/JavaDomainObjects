@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.1.xsd"
+	view-id="/party/case/status/type/list.xhtml">
+	<description>Case Status List</description>
+	<param name="caseStatusTypeId" value="#{caseStatusTypeHome.id}"
+		converterId="javax.faces.Long" />
+	<navigation>
+		<rule if-outcome="addCaseStatusType">
+			<begin-conversation nested="true" />
+			<redirect view-id="/party/case/status/type/form.xhtml">
+				<param name="caseStatusTypeId" value="" />
+			</redirect>
+		</rule>
+		<rule if-outcome="editCaseStatusType">
+			<begin-conversation nested="true" />
+			<redirect view-id="/party/case/status/type/form.xhtml">
+				<param name="caseStatusTypeId" value="#{caseStatusTypeHome.id}"
+					converterId="javax.faces.Long" />
+			</redirect>
+		</rule>
+	</navigation>
+</page>
+

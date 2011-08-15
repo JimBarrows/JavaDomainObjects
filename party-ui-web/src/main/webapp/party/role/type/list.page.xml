@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.1.xsd"
+	view-id="/party/role/type/list.xhtml">
+	<description>Role Type Management</description>
+
+	<param name="roleTypeId" value="#{roleTypeHome.id}" converterId="javax.faces.Long" />
+
+	<navigation>
+		<rule if-outcome="addRoleType">
+			<begin-conversation nested="true" />
+			<redirect view-id="/party/role/type/form.xhtml">
+				<param name="roleTypeId" value="" />
+			</redirect>
+		</rule>
+		<rule if-outcome="editRoleType">
+			<begin-conversation nested="true" />
+			<redirect view-id="/party/role/type/form.xhtml">
+				<param name="roleTypeId" value="#{roleTypeHome.id}"
+					converterId="javax.faces.Long" />
+			</redirect>
+		</rule>
+	</navigation>
+</page>
+

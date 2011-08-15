@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich">
+	<body>
+		<ui:composition template="/layout/template.xhtml">
+			<ui:define name="body">
+				<rich:panel id="contactClassificationListPanel">
+					<f:facet name="header">Contact Classification List</f:facet>
+
+					<s:button id="addPartyTypeButton" view="/party/classification/type/form.xhtml" propagation="join"
+						value="Add Contact Classification">
+						<f:param name="partyTypeId" value="" />
+					</s:button>
+					<h:form id="partyTypeTableForm2">
+						<rich:dataTable id="partyTypeList" var="partyType"
+							value="#{partyTypeListForUserLogin.resultList}" rows="10">
+							<rich:column filterBy="#{partyType.description}"
+								filterEvent="onkeyup" selfSorted="true"
+								sortBy="#{partyType.description}">
+								<f:facet name="header">Description</f:facet>
+								<s:link id="roleTypeEditLink" view="/party/classification/type/form.xhtml" >
+									<h:outputText value="#{partyType.description}" />
+									<f:param name="partyTypeId" value="#{partyType.id}" />
+								</s:link>
+							</rich:column>
+							<f:facet name="footer">
+								<rich:datascroller pageIndexVar="pageIndex" pagesVar="pages"
+									for="partyTypeList" renderIfSinglePage="false">
+									<f:facet name="pages">
+										<h:outputText value="#{pageIndex}/#{pages}" />
+									</f:facet>
+								</rich:datascroller>
+							</f:facet>
+						</rich:dataTable>
+					</h:form>
+					<h:outputText value="No Contact Types."
+						rendered="#{empty partyTypeListForUserLogin.resultList}" />
+					<div style="clear: both" />
+					<s:button id="doneButton" action="done" value="Done" />
+				</rich:panel>
+			</ui:define>
+		</ui:composition>
+	</body>
+</html>
