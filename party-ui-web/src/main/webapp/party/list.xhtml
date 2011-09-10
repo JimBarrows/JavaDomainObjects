@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:a="http://richfaces.org/a4j"
+	xmlns:rich="http://richfaces.org/rich">
+	<body>
+		<f:view>
+			<ui:composition template="/layout/template.xhtml">
+
+				<ui:define name="body">
+					<h1>
+						Contacts
+					</h1>
+					<div class="actionButtons">
+						<s:button id="addPersonButton" view="/party/form.xhtml"
+							value="Add Person" propagation="begin">
+							<f:param name="partyId" value="" />
+							<f:param name="type" value="Person" />
+						</s:button>
+						<s:button id="addOrganizationButton" view="/party/form.xhtml"
+							value="Add Organization" propagation="begin">
+							<f:param name="type" value="Organization" />
+							<f:param name="partyId" value="" />
+						</s:button>
+					</div>
+
+					<rich:dataGrid id="partyDataGrid"
+						value="#{partyListForUserLogin.resultList}" var="curParty"
+						columns="3" elements="9" >
+
+						<div class="vcard">
+							<span class="fn"><s:link id="partyEditLink"
+									action="/party/form.xhtml">
+									<s:conversationPropagation type="begin"></s:conversationPropagation>
+									<f:param name="partyId" value="#{curParty.id}" />
+									<h:outputText value="#{curParty.firstName} #{curParty.lastName}"
+										rendered="#{curParty.class.simpleName == 'Person'}" />
+									<h:outputText value="#{curParty.name}"
+										rendered="#{curParty.class.simpleName == 'Organization'}" />
+								</s:link> </span>
+							<h:panelGrid columns="2">
+								<rich:dataList id="addressList" value="#{curParty.residingAt}"
+									var="address">
+									<ui:include
+										src="/party/contactMechanism/address/addressView.xhtml">
+										<ui:param name="address" value="#{address}"></ui:param>
+									</ui:include>
+								</rich:dataList>
+								<rich:dataList id="contactMechanismList"
+									value="#{curParty.contactMechanisms}" var="contactMechanism"
+									title="Contact Mechanisms">
+									<s:div styleClass="tel"
+										rendered="#{contactMechanism.mechanism.class.simpleName == 'TelecommunicationsNumber'}">
+										<h:outputText styleClass="type"
+											value="#{contactMechanism.comment} " />
+										<h:outputText value="#{contactMechanism.mechanism.areaCode}" />.<h:outputText
+											value="#{contactMechanism.mechanism.contactNumber}" />
+									</s:div>
+									<s:div styleClass="email"
+										rendered="#{contactMechanism.mechanism.class.simpleName == 'EmailAddress'}">
+										<span class="type"><h:outputText
+												value="#{contactMechanism.comment} " /> </span>
+										<h:outputText
+											value="#{contactMechanism.mechanism.emailAddress}" />
+									</s:div>
+									<s:div
+										rendered="#{contactMechanism.mechanism.class.simpleName == 'WebAddress'}">
+										<h:outputText value="#{contactMechanism.comment} " />
+										<h:outputText styleClass="url"
+											value="#{contactMechanism.mechanism.domainName}" />
+									</s:div>
+
+								</rich:dataList>
+							</h:panelGrid>
+						</div>
+					</rich:dataGrid>
+				</ui:define>
+			</ui:composition>
+		</f:view>
+	</body>
+</html>

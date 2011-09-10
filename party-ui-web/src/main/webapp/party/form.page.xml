@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.1.xsd"
+	view-id="/party/form.xhtml">
+	<description>
+		#{partyHome.managed ? 'Update Party' : 'Add Party'}
+	</description>
+	<param name="partyId" value="#{partyHome.id}" converterId="javax.faces.Long" />
+
+	<param name="type" value="#{partyHome.type}" />
+
+	<param name="originalView" />
+	<navigation>
+		<rule if-outcome="cancel">
+			<end-conversation />
+			<redirect view-id="/party/list.xhtml" />
+		</rule>
+		<rule if-outcome="removed">
+			<end-conversation />
+			<redirect view-id="/party/list.xhtml" />
+		</rule>
+		<rule if-outcome="done">
+			<end-conversation />
+			<redirect view-id="/party/list.xhtml" />
+		</rule>
+
+	</navigation>
+</page>
+

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<page xmlns="http://jboss.com/products/seam/pages" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://jboss.com/products/seam/pages http://jboss.com/products/seam/pages-2.1.xsd"
+	view-id="/party/relationship/status/type/list.xhtml">
+	<description>Status Type Management</description>
+
+	<param name="statusTypeId" value="#{statusTypeHome.id}"
+		converterId="javax.faces.Long" />
+
+	<navigation>
+
+	</navigation>
+</page>
+

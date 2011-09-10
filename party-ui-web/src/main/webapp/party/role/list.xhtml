@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:s="http://jboss.com/products/seam/taglib"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a="http://richfaces.org/a4j">
+	<body>
+		<ui:component>
+
+			<h:form id="rolesListComponentForm">
+				<div class="actionButtons">
+					<s:button id="addRoleButton" action="#{partyHome.addRole}"
+						value="Add Role" rendered="#{edit}" propagation="join">
+						<a:support reRender="roleListTable" event="onclick" />
+					</s:button>
+					<s:button id="addRoleTypeButton" view="/party/role/type/form.xhtml"
+						value="Create Role" propagation="nest">
+						<f:param name="roleTypeId" value="" />
+						<f:param name="returnView" value="/party/form.xhtml" />
+						<a:support reRender="roleListTable" event="onclick" />
+					</s:button>
+				</div>
+				<rich:dataTable id="roleListTable" title="Role List"
+					value="#{party.actingAs}" var="curRole">
+					<rich:column sortable="true" title="Roles">
+						<f:facet name="header">Role</f:facet>
+						<s:decorate id="roleSelectOneMenuDecoration"
+							template="/layout/cellEdit.xhtml" rendered="#{edit}">
+							<h:selectOneMenu id="roleSelectOneMenu"
+								value="#{curRole.describedBy}" required="true">
+								<s:selectItems value="#{roleTypeForUserLoginList.resultList}"
+									var="roleType" label="#{roleType.description}"
+									noSelectionLabel="Please Select..." />
+								<s:convertEntity />
+							</h:selectOneMenu>
+						</s:decorate>
+						<h:outputText value="#{curRole.describedBy.description}"
+							rendered="#{ not edit}" />
+					</rich:column>
+					<rich:column sortable="true" title="From">
+						<f:facet name="header">From</f:facet>
+						<s:decorate id="fromDateCalendarDecoration"
+							template="/layout/cellEdit.xhtml" rendered="#{edit}">
+							<rich:calendar id="fromDate" popup="true" value="#{curRole.from}"
+								enableManualInput="true" datePattern="MM/dd/yyyy"
+								required="true" showApplyButton="true" />
+						</s:decorate>
+						<h:outputText value="#{curRole.from}" rendered="#{not edit}">
+							<f:convertDateTime pattern="MM/dd/yyyy" />
+						</h:outputText>
+					</rich:column>
+					<rich:column sortable="true" title="Thru">
+						<f:facet name="header">Thru Hello</f:facet>
+						<s:decorate id="thruDateCalendarDecoration"
+							template="/layout/cellEdit.xhtml" rendered="#{edit}">
+							<rich:calendar id="thruDate" value="#{curRole.thru}" popup="true"
+								datePattern="MM/dd/yyyy" enableManualInput="true" />
+						</s:decorate>
+						<h:outputText value="#{curRole.thru}" rendered="#{not edit}">
+							<f:convertDateTime pattern="MM/dd/yyyy" />
+						</h:outputText>
+					</rich:column>
+					<rich:column>
+
+						<h:commandButton id="deletePartyRoleButton"
+							action="#{partyHome.deletePartyRole( curRole)}" value="End"
+							rendered="#{edit}" immediate="true">
+							<a:support reRender="roleListTable" event="onclick" />
+							<s:conversationId />
+							<s:conversationPropagation type="join"></s:conversationPropagation>
+						</h:commandButton>
+
+					</rich:column>
+				</rich:dataTable>
+			</h:form>
+		</ui:component>
+	</body>
+</html>
