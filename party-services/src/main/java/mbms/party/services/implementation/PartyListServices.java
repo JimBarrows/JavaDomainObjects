@@ -1,6 +1,5 @@
 package mbms.party.services.implementation;
 
-
 import java.util.List;
 
 import mbmp.party.model.Party;
@@ -25,7 +24,8 @@ public class PartyListServices implements mbms.party.services.PartyListServices 
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = LoggerFactory.getLogger(PartyListServices.class);
+	private static final Logger logger = LoggerFactory
+			.getLogger(PartyListServices.class);
 
 	@Autowired
 	private SessionFactory sessionFactory;
@@ -34,13 +34,14 @@ public class PartyListServices implements mbms.party.services.PartyListServices 
 	public long partyCount() {
 		if (logger.isDebugEnabled()) {
 			logger.debug("partyCount() - start"); //$NON-NLS-1$
-	}
+		}
 
 		Session currentSession = sessionFactory.getCurrentSession();
-		long returnlong = (Long) currentSession.createQuery("select count(*) from Party").uniqueResult();
+		long returnlong = (Long) currentSession.createQuery(
+				"select count(*) from Party").uniqueResult();
 		if (logger.isDebugEnabled()) {
 			logger.debug("partyCount() - end - return value=" + returnlong); //$NON-NLS-1$
-	}
+		}
 		return returnlong;
 	}
 
@@ -50,19 +51,20 @@ public class PartyListServices implements mbms.party.services.PartyListServices 
 	public List<Party> list(int firstResult, int maxResults) {
 		if (logger.isDebugEnabled()) {
 			logger.debug("list(int firstResult=" + firstResult + ", int maxResults=" + maxResults + ") - start"); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$
-	}
+		}
 
 		if ((firstResult < 0) || (maxResults <= 0))
 			throw new IllegalArgumentException(
 					"First Result and max results must be positive. Max results cannot be 0");
 		sessionFactory.getCurrentSession().beginTransaction();
-		List<Party> partyList = sessionFactory.getCurrentSession().createQuery("from Party")
-				.setFirstResult(firstResult).setMaxResults(maxResults).list();
+		List<Party> partyList = sessionFactory.getCurrentSession()
+				.createQuery("from Party").setFirstResult(firstResult)
+				.setMaxResults(maxResults).list();
 		sessionFactory.getCurrentSession().getTransaction().commit();
 
 		if (logger.isDebugEnabled()) {
 			logger.debug("list(int firstResult, int maxResults) - end - return value=" + partyList); //$NON-NLS-1$
-	}
+		}
 		return partyList;
 
 	}
