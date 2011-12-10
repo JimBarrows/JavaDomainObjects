@@ -82,6 +82,7 @@
 		<module>workeffort-humanresources-model</module>
 		<module>party-services</module>
 		<module>test-utils</module>
+		<module>MBMS-EAR</module>
 	</modules>
 	<profiles>
 		<profile>

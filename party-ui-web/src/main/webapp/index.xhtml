@@ -5,19 +5,10 @@
 <body>
 <ui:composition template="/templates/template.xhtml">
 
-    <ui:define name="title">RichFaces Sample</ui:define>
+    <ui:define name="title">List</ui:define>
 
     <ui:define name="body">
-        <h:form prependId="false">
-            <h:outputLabel value="Name:" for="nameInput" />
-            <h:inputText id="nameInput" value="#{richBean.name}">
-                <a4j:ajax event="keyup" render="output" />
-            </h:inputText>
-            <h:panelGroup id="output">
-                <h:outputText value="Hello #{richBean.name}!"
-                    rendered="#{not empty richBean.name}" />
-            </h:panelGroup>
-        </h:form>
+        
     </ui:define>
 </ui:composition>
 </body>

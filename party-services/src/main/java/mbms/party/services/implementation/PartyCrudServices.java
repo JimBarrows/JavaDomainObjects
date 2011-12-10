@@ -1,26 +1,45 @@
 package mbms.party.services.implementation;
 
+import java.util.Set;
+
 import javax.ejb.Remove;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.validation.ConstraintViolation;
+import javax.validation.Validation;
+import javax.validation.ValidationException;
+import javax.validation.Validator;
+import javax.validation.ValidatorFactory;
 
 import mbmp.party.model.Party;
 
-/**Provides the 4 basic crud services, and not much else.
+/**
+ * Provides the 4 basic crud services, and not much else.
  * 
  * @author jimbarrows
- *
+ * 
  */
 @Stateless
 public class PartyCrudServices implements mbms.party.services.PartyCrudServices {
 
 	@PersistenceContext
 	private EntityManager em;
-	
+
+	Validator validator;
+	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+
 	@Override
-	public Party create(Party party) {
-		em.persist(party);
+	public Party create(Party party) throws ValidationException{
+
+		validator = factory.getValidator();
+		Set<ConstraintViolation<Party>> violations = validator.validate(party);
+		if (violations.isEmpty()) {
+			em.persist(party);
+		} else {
+			throw new ValidationException();
+		}
+
 		return party;
 	}
 
@@ -30,8 +49,13 @@ public class PartyCrudServices implements mbms.party.services.PartyCrudServices 
 	}
 
 	@Override
-	public Party update(Party party) {
-		return em.merge(party);
+	public Party update(Party party) throws ValidationException{
+		validator = factory.getValidator();
+		Set<ConstraintViolation<Party>> violations = validator.validate(party);
+		if (violations.isEmpty()) {
+			return em.merge(party);
+		}
+		return party;
 	}
 
 	@Remove
