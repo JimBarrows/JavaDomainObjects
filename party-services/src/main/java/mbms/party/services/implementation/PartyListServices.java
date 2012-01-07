@@ -8,9 +8,6 @@ import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
 
 /**
  * This service returns a list of all parties, either the entire list, or
@@ -19,7 +16,7 @@ import org.springframework.transaction.annotation.Transactional;
  * @author jimbarrows
  * 
  */
-@Service
+
 public class PartyListServices implements mbms.party.services.PartyListServices {
 	/**
 	 * Logger for this class
@@ -27,10 +24,8 @@ public class PartyListServices implements mbms.party.services.PartyListServices 
 	private static final Logger logger = LoggerFactory
 			.getLogger(PartyListServices.class);
 
-	@Autowired
 	private SessionFactory sessionFactory;
 
-	@Transactional(readOnly = true)
 	public long partyCount() {
 		if (logger.isDebugEnabled()) {
 			logger.debug("partyCount() - start"); //$NON-NLS-1$
@@ -45,7 +40,6 @@ public class PartyListServices implements mbms.party.services.PartyListServices 
 		return returnlong;
 	}
 
-	@Transactional(readOnly = true)
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Party> list(int firstResult, int maxResults) {

@@ -50,12 +50,11 @@
 				<artifactId>maven-war-plugin</artifactId>
 				<version>2.1.1</version>
 				<configuration>
-					<webResources>
-						<resource>
-							<directory>${basedir}/src/main/java</directory>
-							<targetPath>/WEB-INF/src</targetPath>
-						</resource>
-					</webResources>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+						</manifest>
+					</archive>
 				</configuration>
 			</plugin>
 		</plugins>

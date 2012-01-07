@@ -23,23 +23,23 @@ import mbmp.party.model.Party;
 @Stateless
 public class PartyCrudServices implements mbms.party.services.PartyCrudServices {
 
-	@PersistenceContext
+	@PersistenceContext(name="party-model")
 	private EntityManager em;
 
-	Validator validator;
-	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+//	Validator validator;
+//	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
 
 	@Override
-	public Party create(Party party) throws ValidationException{
+	public Party create(Party party) /*throws ValidationException*/{
 
-		validator = factory.getValidator();
-		Set<ConstraintViolation<Party>> violations = validator.validate(party);
-		if (violations.isEmpty()) {
+//		validator = factory.getValidator();
+//		Set<ConstraintViolation<Party>> violations = validator.validate(party);
+//		if (violations.isEmpty()) {
 			em.persist(party);
-		} else {
-			throw new ValidationException();
-		}
-
+//		} else {
+//			throw new ValidationException();
+//		}
+//
 		return party;
 	}
 
@@ -50,12 +50,12 @@ public class PartyCrudServices implements mbms.party.services.PartyCrudServices 
 
 	@Override
 	public Party update(Party party) throws ValidationException{
-		validator = factory.getValidator();
-		Set<ConstraintViolation<Party>> violations = validator.validate(party);
-		if (violations.isEmpty()) {
+//		validator = factory.getValidator();
+//		Set<ConstraintViolation<Party>> violations = validator.validate(party);
+//		if (violations.isEmpty()) {
 			return em.merge(party);
-		}
-		return party;
+//		}
+//		return party;
 	}
 
 	@Remove

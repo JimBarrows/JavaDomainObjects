@@ -1,3 +1,13 @@
 Manifest-Version: 1.0
-Class-Path: 
+Created-By: Apache Maven
+Built-By: jimbarrows
+Build-Jdk: 1.6.0_26
+Class-Path: richfaces-components-ui-4.0.0-20110322.220419-243.jar rich
+ faces-components-api-4.0.0-20110322.220419-245.jar richfaces-core-api
+ -4.0.0-20110325.220425-386.jar richfaces-core-impl-4.0.0-20110325.220
+ 425-378.jar cssparser-0.9.5.jar sac-1.3.jar guava-r08.jar jsf-api-2.0
+ .4-b09.jar jsf-impl-2.0.4-b09.jar jstl-1.2.jar ehcache-1.6.0.jar user
+ type.jodatime-1.9.jar usertype.spi-1.9.jar commons-lang-2.3.jar slf4j
+ -api-1.5.10.jar slf4j-log4j12-1.5.10.jar log4j-1.2.16.jar commons-col
+ lections-3.2.1.jar javassist-3.12.0.GA.jar
 
