@@ -1,0 +1,5 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven
+Built-By: jimbarrows
+Build-Jdk: 1.6.0_26
+
