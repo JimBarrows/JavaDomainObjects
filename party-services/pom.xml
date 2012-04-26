@@ -8,7 +8,6 @@
 	</parent>
 	<artifactId>party-services</artifactId>
 	<name>Party Servicess</name>
-	<version>1.0-SNAPSHOT</version>
 	<dependencies>
 
 		<dependency>
