@@ -18,7 +18,7 @@ import mbmp.ecommerce.model.party.contactmechanism.WebAddress;
 import mbmp.model.BasePersistentModel;
 import mbmp.party.model.Party;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.NotEmpty;
 
 /**The login for a user also specifies which pages, or web addresses that login may view.
  * 

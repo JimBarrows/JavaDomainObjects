@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 import mbmp.party.model.contactmechanism.ContactMechanism;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.NotEmpty;
 
 /**
  * Responsible for maintaining information about the username, and protocol used

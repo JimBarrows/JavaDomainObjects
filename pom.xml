@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>mbmp</groupId>
@@ -46,44 +47,28 @@
 	</scm>
 
 	<properties>
-		<spring.version>3.0.5.RELEASE</spring.version>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<powermock.version>1.4.9</powermock.version>
 		<postgres-driver.version>9.0-801.jdbc4</postgres-driver.version>
-		<hibernate.version>3.6.4.Final</hibernate.version>
-		<hibernate-validator>4.1.0.Final</hibernate-validator>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
 		<jbehave-core.version>3.5-SNAPSHOT</jbehave-core.version>
 		<jbehave-web-selenium.version>3.4-SNAPSHOT</jbehave-web-selenium.version>
 		<jbehave-site.version>3.1.1</jbehave-site.version>
 		<selenium-java.version>2.0.0</selenium-java.version>
 		<selenium-support.version>2.0.0</selenium-support.version>
+		<hibernate-validator.version>3.1.0.GA</hibernate-validator.version>
+		<hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
+		<hibernate-entitymanager.version>3.4.0.GA</hibernate-entitymanager.version>
 	</properties>
 
 	<modules>
-		<module>accounting-model</module>
-		<module>accounting-invoice-model</module>
-		<module>accounting-order-model</module>
-		<module>accounting-product-model</module>
-		<module>agreement-model</module>
+		<module>all-models</module>
 		<module>ecommerce-model</module>
-		<module>humanresources-model</module>
-		<module>humanresourses-invoice-model</module>
-		<module>invoice-model</module>
-		<module>invoice-shipment</module>
-		<module>model-utils</module>
-		<module>order-model</module>
-		<module>party-model</module>
 		<module>party-ui-web</module>
-		<module>product-model</module>
-		<module>shipment-model</module>
-		<module>workeffort-model</module>
-		<module>workeffort-humanresources-model</module>
 		<module>party-services</module>
 		<module>test-utils</module>
-		<module>MBMS-EAR</module>
-    <module>business-setup-ui</module>
-    <module>business-setup-sevices</module>
+		<module>business-setup-ui</module>
+		<module>business-setup-sevices</module>
 	</modules>
 	<profiles>
 		<profile>
@@ -113,13 +98,18 @@
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-core</artifactId>
-				<version>${hibernate.version}</version>
+				<artifactId>hibernate-validator</artifactId>
+				<version>${hibernate-validator.version}</version>
 			</dependency>
 			<dependency>
 				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-validator</artifactId>
-				<version>${hibernate-validator}</version>
+				<artifactId>hibernate-annotations</artifactId>
+				<version>${hibernate-annotations.version}</version>
+			</dependency>
+			<dependency>
+				<groupId>org.hibernate</groupId>
+				<artifactId>hibernate-entitymanager</artifactId>
+				<version>${hibernate-entitymanager.version}</version>
 			</dependency>
 
 			<dependency>
@@ -141,7 +131,7 @@
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
-						<dependency>
+			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>
 				<version>${org.slf4j.version}</version>
@@ -199,16 +189,15 @@
 				<scope>test</scope>
 			</dependency>
 			<dependency>
-				<groupId>org.jbehave</groupId>
-				<artifactId>jbehave-spring</artifactId>
-				<version>${jbehave-core.version}</version>
-				<scope>test</scope>
-			</dependency>
-			<dependency>
 				<groupId>org.jbehave.site</groupId>
 				<artifactId>jbehave-site-resources</artifactId>
 				<version>${jbehave-site.version}</version>
 				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.jboss.seam</groupId>
+				<artifactId>jboss-seam</artifactId>
+				<version>2.2.0.GA</version>
 			</dependency>
 		</dependencies>
 
@@ -216,6 +205,11 @@
 	</dependencyManagement>
 
 	<repositories>
+		<repository>
+			<id>repository.jboss.org</id>
+			<name>JBoss Repository</name>
+			<url>http://repository.jboss.org/maven2</url>
+		</repository>
 		<repository>
 			<id>JBoss-Release</id>
 			<name>JBoss Release Repository</name>
