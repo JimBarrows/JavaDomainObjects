@@ -7,26 +7,10 @@
 		<version>1.0-SNAPSHOT</version>
 	</parent>
 	<artifactId>party-services</artifactId>
-	<name>Party Servicess</name>
+	<name>Party Services</name>
 	<dependencies>
 
-		<dependency>
-			<groupId>org.hibernate</groupId>
-			<artifactId>hibernate-core</artifactId>
-		</dependency>
 
-		<dependency>
-			<groupId>mbmp</groupId>
-			<artifactId>party-model</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		
-		<dependency>
-			<groupId>org.springframework</groupId>
-			<artifactId>spring-test</artifactId>
-			<scope>test</scope>
-		</dependency>
-		
 		<dependency>
 			<groupId>mbmp</groupId>
 			<artifactId>test-utils</artifactId>
@@ -34,5 +18,29 @@
 			<type>jar</type>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>mbmp</groupId>
+			<artifactId>all-models</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
+	<packaging>ejb</packaging>
+	<build>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.3</version>
+				<configuration>
+					<ejbVersion>3.0</ejbVersion>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>lib</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
 </project>
