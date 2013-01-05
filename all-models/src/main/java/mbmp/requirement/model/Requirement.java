@@ -49,6 +49,7 @@ public class Requirement extends BasePersistentModel {
 
 	private List<RequirementBudgetAllocation> allocatedVia = new ArrayList<RequirementBudgetAllocation>();
 
+    @OneToMany
     public List<RequirementBudgetAllocation> getAllocatedVia() {
         return allocatedVia;
     }

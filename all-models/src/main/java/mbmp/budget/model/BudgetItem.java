@@ -38,6 +38,7 @@ public class BudgetItem extends BasePersistentModel {
 
 	private List<RequirementBudgetAllocation> providesFundingVia;
 
+	@OneToMany
 	public List<RequirementBudgetAllocation> getProvidesFundingVia() {
 		return providesFundingVia;
 	}

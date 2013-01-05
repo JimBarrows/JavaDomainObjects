@@ -2,7 +2,7 @@ package mbmp.party.model;
 
 import javax.persistence.Entity;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * A single person the system keeps track of.

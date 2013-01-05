@@ -22,7 +22,7 @@ import mbmp.party.model.relationship.PartyRelationship;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Represents a communication between two or more parties.

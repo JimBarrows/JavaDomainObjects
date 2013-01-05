@@ -19,7 +19,7 @@ import mbmp.model.BasePersistentModel;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * A Case may be set up for a series of related communication events, regarding

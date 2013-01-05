@@ -1,6 +1,7 @@
 package de.jayefem.log4e;
 
 import org.apache.commons.lang.builder.ToStringStyle;
+import javax.persistence.Entity;
 
 /**
  * The method parameter style for logging with Log4E.

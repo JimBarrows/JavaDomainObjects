@@ -11,7 +11,7 @@ import javax.persistence.OneToMany;
 import mbmp.model.BaseDateRangeModel;
 import mbmp.party.model.contactmechanism.ContactMechanism;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Maps the relationship between a party and their contact mechanisms

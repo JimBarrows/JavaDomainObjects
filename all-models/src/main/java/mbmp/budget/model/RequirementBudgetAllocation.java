@@ -1,5 +1,6 @@
 package mbmp.budget.model;
 
+import javax.persistence.Entity;
 import java.math.BigDecimal;
 
 import mbmp.model.BasePersistentModel;
@@ -10,6 +11,7 @@ import mbmp.requirement.model.Requirement;
  * @version 1.0
  * @created: Apr 2, 2010 8:48:30 AM
  */
+@Entity
 public class RequirementBudgetAllocation extends BasePersistentModel {
 
     /**

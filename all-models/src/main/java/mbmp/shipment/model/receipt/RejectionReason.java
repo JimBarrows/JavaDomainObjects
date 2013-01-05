@@ -5,7 +5,7 @@ import javax.persistence.Lob;
 
 import mbmp.model.BasePersistentModel;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class RejectionReason extends BasePersistentModel {

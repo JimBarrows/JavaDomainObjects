@@ -6,7 +6,7 @@ import javax.persistence.Entity;
 
 import mbmp.model.BasePersistentModel;
 
-import org.hibernate.validator.Range;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class InvoiceRole extends BasePersistentModel {

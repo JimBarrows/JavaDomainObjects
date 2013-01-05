@@ -11,8 +11,6 @@ import javax.persistence.OneToMany;
 import mbmp.budget.model.GlBudgetXref;
 import mbmp.model.BasePersistentModel;
 
-import org.hibernate.validator.NotEmpty;
-
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
 public class GeneralLedgerAccount extends BasePersistentModel {
@@ -44,7 +42,7 @@ public class GeneralLedgerAccount extends BasePersistentModel {
 		return description;
 	}
 
-	@NotEmpty
+	@org.hibernate.validator.constraints.NotEmpty
 	public String getName() {
 		return name;
 	}

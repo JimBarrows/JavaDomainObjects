@@ -11,7 +11,7 @@ import mbmp.humanresoures.model.position.salary.PositionTypeRate;
 import mbmp.model.BaseType;
 import mbmp.party.model.PartyRole;
 
-import org.hibernate.validator.Range;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class PositionType extends BaseType {

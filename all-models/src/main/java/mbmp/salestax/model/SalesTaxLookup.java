@@ -17,14 +17,13 @@ public class SalesTaxLookup extends BaseDateRangeModel {
 	 */
 	private static final long serialVersionUID = 1L;
 	
-	@ManyToOne
 	private GeographicBoundary salesTaxLookupFor;
 	
 	private BigDecimal salesTaxPercentage;
 	
-	@ManyToOne
 	private ProductCategory specifiedFor;
 
+	@ManyToOne
 	public GeographicBoundary getSalesTaxLookupFor() {
 		return salesTaxLookupFor;
 	}
@@ -33,6 +32,7 @@ public class SalesTaxLookup extends BaseDateRangeModel {
 		return salesTaxPercentage;
 	}
 
+	@ManyToOne
 	public ProductCategory getSpecifiedFor() {
 		return specifiedFor;
 	}

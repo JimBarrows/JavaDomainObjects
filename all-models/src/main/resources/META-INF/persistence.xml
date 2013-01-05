@@ -2,66 +2,16 @@
 <persistence version="2.0"
 	xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_2_0.xsd">
-	<persistence-unit name="party-model" transaction-type="JTA">
+	<persistence-unit name="all-models" transaction-type="RESOURCE_LOCAL">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
-		<jta-data-source>java:jboss/datasources/mbms</jta-data-source>
-		<class>mbmp.party.model.relationship.TerminationReason</class>
-		<class>mbmp.party.model.relationship.SupplierRelationship</class>
-		<class>mbmp.party.model.relationship.StatusType</class>
-		<class>mbmp.party.model.relationship.RelationshipType</class>
-		<class>mbmp.party.model.relationship.PriorityType</class>
-		<class>mbmp.party.model.relationship.PartyRelationship</class>
-		<class>mbmp.party.model.relationship.Partnership</class>
-		<class>mbmp.party.model.relationship.OrganizationRollup</class>
-		<class>mbmp.party.model.relationship.OrganizationContactRelationship</class>
-		<class>mbmp.party.model.relationship.Employment</class>
-		<class>mbmp.party.model.relationship.DistributorChannelRelationship</class>
-		<class>mbmp.party.model.relationship.CustomerRelationship</class>
-		<class>mbmp.party.model.geographic_boundary.GeographicBoundaryType</class>
-		<class>mbmp.party.model.geographic_boundary.GeographicBoundary</class>
-		<class>mbmp.party.model.facility.Warehouse</class>
-		<class>mbmp.party.model.facility.Room</class>
-		<class>mbmp.party.model.facility.Plant</class>
-		<class>mbmp.party.model.facility.Office</class>
-		<class>mbmp.party.model.facility.Floor</class>
-		<class>mbmp.party.model.facility.FacilityRoleType</class>
-		<class>mbmp.party.model.facility.FacilityRole</class>
-		<class>mbmp.party.model.facility.FacilityContactMechanism</class>
-		<class>mbmp.party.model.facility.Facility</class>
-		<class>mbmp.party.model.facility.Building</class>
-		<class>mbmp.party.model.contactmechanism.TelecommunicationsNumber</class>
-		<class>mbmp.party.model.contactmechanism.PostalAddress</class>
-		<class>mbmp.party.model.contactmechanism.ContactMechanismPurposeType</class>
-		<class>mbmp.party.model.contactmechanism.ContactMechanism</class>
-		<class>mbmp.party.model.communication.CommunicationEventWorkEffort</class>
-		<class>mbmp.party.model.communication.CommunicationEventStatusType</class>
-		<class>mbmp.party.model.communication.CommunicationEventRoleType</class>
-		<class>mbmp.party.model.communication.CommunicationEventRole</class>
-		<class>mbmp.party.model.communication.CommunicationEventPurposeType</class>
-		<class>mbmp.party.model.communication.CommunicationEventPurpose</class>
-		<class>mbmp.party.model.communication.CommunicationEvent</class>
-		<class>mbmp.party.model.communication.CaseStatusType</class>
-		<class>mbmp.party.model.communication.CaseRoleType</class>
-		<class>mbmp.party.model.communication.CaseRole</class>
-		<class>mbmp.party.model.communication.Case</class>
-		<class>mbmp.party.model.classification.SizeClassification</class>
-		<class>mbmp.party.model.classification.PersonClassification</class>
-		<class>mbmp.party.model.classification.OrganizationClassification</class>
-		<class>mbmp.party.model.classification.MinorityClassification</class>
-		<class>mbmp.party.model.classification.IndustryClassification</class>
-		<class>mbmp.party.model.Person</class>
-		<class>mbmp.party.model.PartyRoleType</class>
-		<class>mbmp.party.model.PartyRole</class>
-		<class>mbmp.party.model.PartyPostalAddress</class>
-		<class>mbmp.party.model.PartyContactMechanismPurpose</class>
-		<class>mbmp.party.model.PartyContactMechanism</class>
-		<class>mbmp.party.model.PartyClassification</class>
-		<class>mbmp.party.model.Party</class>
-		<class>mbmp.party.model.Organization</class>
-		<exclude-unlisted-classes>false</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.show_sql" value="true"/>
-			<property name="hibernate.hbm2ddl.auto" value="create-drop"/>
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect"/>
+			<property name="hibernate.hbm2ddl.auto" value="create"/>
+			<property name="javax.persistence.jdbc.url" value="jdbc:postgresql:postgres"/>
+			<property name="javax.persistence.jdbc.user" value="postgres"/>
+			<property name="javax.persistence.jdbc.password" value="postgres"/>
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver"/>
 		</properties>
 	</persistence-unit>
 </persistence>

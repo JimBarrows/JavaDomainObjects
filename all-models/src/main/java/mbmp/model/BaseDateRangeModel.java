@@ -11,6 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.hibernate.annotations.Type;
 import org.joda.time.DateTime;
 
 /**
@@ -80,7 +81,7 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 	}
 
 	@Column(name = "fromDate")
-//	@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
 	@NotNull
 	public DateTime getFrom() {
 		return from;
@@ -91,7 +92,7 @@ public abstract class BaseDateRangeModel extends BasePersistentModel {
 	}
 
 	@Column(name = "thruDate")
-	//@Type(type="org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	@Type(type="org.joda.time.contrib.hibernate.PersistentDateTime")
 	public DateTime getThru() {
 		return thru;
 	}

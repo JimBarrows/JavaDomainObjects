@@ -36,6 +36,7 @@ public class Payment extends BasePersistentModel {
 
     private List<PaymentApplication> usedToPay;
 
+		@OneToMany
     public List<PaymentBudgetAllocation> getBookedAgainst() {
         return bookedAgainst;
     }

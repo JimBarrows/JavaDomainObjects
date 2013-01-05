@@ -10,7 +10,7 @@ import mbmp.party.model.contactmechanism.PostalAddress;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Association class between Party and PostalAddress classes, since these could

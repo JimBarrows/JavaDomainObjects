@@ -19,7 +19,7 @@ import mbmp.model.BaseDateRangeModel;
 import mbmp.party.model.geographic_boundary.GeographicBoundary;
 import mbmp.party.model.relationship.PartyRelationship;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)

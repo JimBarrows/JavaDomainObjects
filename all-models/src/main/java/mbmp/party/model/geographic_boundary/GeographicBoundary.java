@@ -16,8 +16,10 @@ import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import mbmp.party.model.contactmechanism.PostalAddress;
+import mbmp.product.model.supplier.ReorderGuideline;
+import mbmp.salestax.model.SalesTaxLookup;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 /**
@@ -48,6 +50,23 @@ public class GeographicBoundary {
 	 * 
 	 */
 	private List<GeographicBoundary> within = new ArrayList<GeographicBoundary>();
+
+	private List<ReorderGuideline> reorderGuideline = new ArrayList<ReorderGuideline>();
+	
+	private List<SalesTaxLookup> salesTaxLookup = new ArrayList<SalesTaxLookup>();
+
+	@OneToMany
+	public List<SalesTaxLookup> getSalesTaxLookup() {
+		return salesTaxLookup;
+	}
+
+	public void setSalesTaxLookup(List<SalesTaxLookup> salesTaxLookup) {
+		this.salesTaxLookup = salesTaxLookup;
+	}
+
+	public void setReorderGuideline(List<ReorderGuideline> reorderGuideline) {
+		this.reorderGuideline = reorderGuideline;
+	}
 
 	/**
 	 * This adds the boundary to the contains list, and adds this to the within
@@ -98,6 +117,14 @@ public class GeographicBoundary {
 		this.abbreviation = abbreviation;
 	}
 
+	@OneToMany
+	public List<ReorderGuideline> getReorderGuideline() {
+		return reorderGuideline;
+	}
+
+	public void setReorderGuideline(ReorderGuideline ReorderGuideline) {
+		this.reorderGuideline = reorderGuideline;
+	}
 	public void setBoundaryFor(List<PostalAddress> boundaryFor) {
 		this.boundaryFor = boundaryFor;
 	}

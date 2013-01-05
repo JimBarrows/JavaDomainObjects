@@ -14,7 +14,7 @@ import javax.xml.crypto.Data;
 import mbmp.party.model.PartyPostalAddress;
 import mbmp.party.model.geographic_boundary.GeographicBoundary;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 
 /** 

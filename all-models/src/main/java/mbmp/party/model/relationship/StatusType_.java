@@ -2,8 +2,9 @@ package mbmp.party.model.relationship;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
+import mbmp.model.BaseType_;
 
-@Generated(value="Dali", date="2011-12-07T19:49:02.269-0700")
+@Generated(value="Dali", date="2013-01-05T08:07:17.797-0700")
 @StaticMetamodel(StatusType.class)
-public class StatusType_ {
+public class StatusType_ extends BaseType_ {
 }

@@ -10,7 +10,7 @@ import mbmp.budget.model.Budget;
 import mbmp.budget.model.BudgetItem;
 import mbmp.model.BasePersistentModel;
 
-import org.hibernate.validator.Range;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class BudgetScenarioApplication extends BasePersistentModel {

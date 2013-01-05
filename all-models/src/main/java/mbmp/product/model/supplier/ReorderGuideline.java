@@ -23,30 +23,29 @@ public class ReorderGuideline extends BaseDateRangeModel {
 	 * 
 	 */	
 	private static final long serialVersionUID = 1L;
-	@ManyToOne
 	private Facility basedOnFacility;
-	@ManyToOne
 	private GeographicBoundary basedOnGeographicBoundary;
-	@ManyToOne
 	private PartyRole basedOnInternalOrganization;
-	@ManyToOne
 	private Good guidelineFor;
 	private long reorderLevel;
-	@Min(0)
 	private long reorderQuantity;
 
+	@ManyToOne
 	public Facility getBasedOnFacility() {
 		return basedOnFacility;
 	}
 
+	@ManyToOne
 	public GeographicBoundary getBasedOnGeographicBoundary() {
 		return basedOnGeographicBoundary;
 	}
 
+	@ManyToOne
 	public PartyRole getBasedOnInternalOrganization() {
 		return basedOnInternalOrganization;
 	}
 
+	@ManyToOne
 	public Good getGuidelineFor() {
 		return guidelineFor;
 	}
@@ -55,6 +54,7 @@ public class ReorderGuideline extends BaseDateRangeModel {
 		return reorderLevel;
 	}
 
+	@Min(0)
 	public long getReorderQuantity() {
 		return reorderQuantity;
 	}

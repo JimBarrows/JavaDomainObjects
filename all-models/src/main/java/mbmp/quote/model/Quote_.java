@@ -1,0 +1,23 @@
+package mbmp.quote.model;
+
+import java.util.Date;
+import javax.annotation.Generated;
+import javax.persistence.metamodel.ListAttribute;
+import javax.persistence.metamodel.SingularAttribute;
+import javax.persistence.metamodel.StaticMetamodel;
+import mbmp.model.BasePersistentModel_;
+import mbmp.party.model.Party;
+
+@Generated(value="Dali", date="2013-01-04T22:11:22.969-0700")
+@StaticMetamodel(Quote.class)
+public class Quote_ extends BasePersistentModel_ {
+	public static volatile SingularAttribute<Quote, String> description;
+	public static volatile SingularAttribute<Quote, Party> givenTo;
+	public static volatile SingularAttribute<Quote, Date> issueDate;
+	public static volatile SingularAttribute<Quote, Party> issuedBy;
+	public static volatile ListAttribute<Quote, QuoteItem> items;
+	public static volatile ListAttribute<Quote, QuoteRole> roles;
+	public static volatile ListAttribute<Quote, QuoteTerm> terms;
+	public static volatile SingularAttribute<Quote, Date> validFrom;
+	public static volatile SingularAttribute<Quote, Date> validThru;
+}

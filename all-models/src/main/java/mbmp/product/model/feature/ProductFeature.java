@@ -17,7 +17,7 @@ import mbmp.product.model.cost.EstimatedProductCost;
 import mbmp.product.model.feature.interaction.ProductFeatureInteraction;
 import mbmp.product.model.price.PriceComponent;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Jim

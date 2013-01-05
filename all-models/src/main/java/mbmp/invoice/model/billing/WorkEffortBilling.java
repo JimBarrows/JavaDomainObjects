@@ -6,7 +6,7 @@ import javax.persistence.ManyToOne;
 import mbmp.model.BasePersistentModel;
 import mbmp.workeffort.WorkEffort;
 
-import org.hibernate.validator.Range;
+import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class WorkEffortBilling extends BasePersistentModel {

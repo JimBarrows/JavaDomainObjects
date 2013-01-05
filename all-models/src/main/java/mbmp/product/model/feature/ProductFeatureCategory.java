@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 
 import mbmp.model.BasePersistentModel;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Jim
