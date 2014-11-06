@@ -3,8 +3,6 @@ package mbmp.budget.model;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -18,13 +16,7 @@ public class Budget extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-
-	@Id
-	@GeneratedValue
-	public static long getSerialVersionUID() {
-		return serialVersionUID;
-	}
+	private static final long serialVersionUID = 1L;	
 	
 	private StandardTimePeriod associatedWith;
 	

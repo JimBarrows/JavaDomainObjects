@@ -2,22 +2,22 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<artifactId>ModularBusinessManagementPlatform</artifactId>
-		<groupId>mbmp</groupId>
+		<groupId>jdo</groupId>
+		<artifactId>JavaDomainObjects</artifactId>
 		<version>1.0-SNAPSHOT</version>
 		<relativePath>..</relativePath>
 	</parent>
-	<artifactId>business-setup-sevices</artifactId>
+	<artifactId>business-setup-services</artifactId>
 	<packaging>ejb</packaging>
 	<name>Business Setup Services</name>
 	<dependencies>
 		<dependency>
-			<groupId>mbmp</groupId>
-			<artifactId>party-model</artifactId>
+			<groupId>jdo</groupId>
+			<artifactId>all-models</artifactId>
 			<version>1.0-SNAPSHOT</version>
 		</dependency>
 		<dependency>
-			<groupId>mbmp</groupId>
+			<groupId>jdo</groupId>
 			<artifactId>test-utils</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>jar</type>

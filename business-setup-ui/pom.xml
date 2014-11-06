@@ -4,11 +4,11 @@
 
 	<modelVersion>4.0.0</modelVersion>
 
-	<parent>
-		<groupId>mbmp</groupId>
-		<artifactId>ModularBusinessManagementPlatform</artifactId>
+<parent>
+		<groupId>jdo</groupId>
+		<artifactId>JavaDomainObjects</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+		<relativePath>..</relativePath>
 	</parent>
 
 	<artifactId>business-setup-ui-web</artifactId>
@@ -35,14 +35,7 @@
 
 	<build>
 		<finalName>business-setup-ui-${project.version}</finalName>
-		<plugins>
-			<plugin>
-				<artifactId>maven-compiler-plugin</artifactId>
-				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
-				</configuration>
-			</plugin>
+		<plugins>			
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-war-plugin</artifactId>
@@ -66,14 +59,14 @@
 
 	<dependencies>
 		<dependency>
-			<groupId>mbmp</groupId>
+			<groupId>jdo</groupId>
 			<artifactId>party-services</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>ejb</type>
 			<scope>provided</scope>
 		</dependency>
 		<dependency>
-			<groupId>mbmp</groupId>
+			<groupId>jdo</groupId>
 			<artifactId>all-models</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>jar</type>

@@ -4,17 +4,14 @@
 	xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
 	<modelVersion>4.0.0</modelVersion>
 	<parent>
-		<groupId>mbmp</groupId>
-		<artifactId>ModularBusinessManagementPlatform</artifactId>
+		<groupId>jdo</groupId>
+		<artifactId>JavaDomainObjects</artifactId>
 		<version>1.0-SNAPSHOT</version>
-		<relativePath>../pom.xml</relativePath>
+		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>test-utils</artifactId>
-	<name>test-utils</name>
-	<url>http://maven.apache.org</url>
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-	</properties>
+	<name>Test Utils</name>
+	
 	<dependencies>
 		<dependency>
 			<groupId>org.hibernate</groupId>

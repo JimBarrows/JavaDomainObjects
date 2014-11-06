@@ -17,7 +17,7 @@ import mbmp.party.model.Party;
 @Stateless
 public class PartyCrudServices implements mbms.party.services.PartyCrudServices {
 
-	@PersistenceContext(name="party-model")
+	@PersistenceContext(name="all-models")
 	private EntityManager em;
 
 //	Validator validator;

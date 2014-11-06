@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>mbmp</groupId>
-	<artifactId>ModularBusinessManagementPlatform</artifactId>
-	<name>Modular Business Management Platform</name>
+	<groupId>jdo</groupId>
+	<artifactId>JavaDomainObjects</artifactId>
+	<name>Java Domain Objects</name>
 	<version>1.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
 	<licenses>
@@ -22,9 +21,6 @@
 			<id>Jim.Barrows</id>
 			<name>Jim Barrows</name>
 			<email>Jim.Barrows@gmail.com</email>
-			<url>jamesbarrows.blogspot.com</url>
-			<organization>NSFW Enterprises, LLC</organization>
-			<organizationUrl>http://nsfwenterprises.com</organizationUrl>
 			<roles>
 				<role>architect</role>
 				<role>developer</role>
@@ -33,17 +29,17 @@
 		</developer>
 	</developers>
 
-	<url>https://sourceforge.net/projects/modularbusiness/</url>
+	<url>https://github.com/JimBarrows/JavaDomainObjects</url>
 	<issueManagement>
-		<system>Redmine</system>
-		<url>http://nsfwenterprises.com/projects/projects/show/bmp?jump=welcome</url>
+		<url>https://github.com/JimBarrows/JavaDomainObjects/issues</url>
+		<system>GitHub</system>
 	</issueManagement>
 
 	<scm>
-		<connection>scm:git:ssh://bizondemand.com/var/local/git/biz360.git</connection>
-		<developerConnection>scm:git:ssh://bizondemand.com/var/local/git/biz360.git</developerConnection>
+		<connection>https://github.com/JimBarrows/JavaDomainObjects</connection>
+		<developerConnection>https://github.com/JimBarrows/JavaDomainObjects</developerConnection>
 		<tag>HEAD</tag>
-		<url>ssh://bizondemand.com/var/local/git/biz360.git</url>
+		<url>https://github.com/JimBarrows/JavaDomainObjects</url>
 	</scm>
 
 	<properties>
@@ -77,36 +73,36 @@
 				<activeByDefault>true</activeByDefault>
 			</activation>
 			<build>
-				<plugins> 
-					 <plugin>
-							<groupId>org.codehaus.mojo</groupId>
-							<artifactId>hibernate3-maven-plugin</artifactId>
-							<version>2.2</version>
-							<executions>
-								<execution>
-									<phase>process-classes</phase>
-									<goals>
-										<goal>hbm2ddl</goal>
-									</goals>
-								</execution>
-							</executions>
-							<configuration>
-								<components>
-									<component>
-										<name>hbm2ddl</name>
-										<implementation>jpaconfiguration</implementation>
-									</component>
-								</components>
-								<componentProperties>
-									<persistenceunit>all-models</persistenceunit>
-									<outputfilename>schema.ddl</outputfilename>
-									<drop>true</drop>
-									<create>true</create>
-									<export>false</export>
-									<format>true</format>
-								</componentProperties>
-							</configuration>
-						</plugin>
+				<plugins>
+					<plugin>
+						<groupId>org.codehaus.mojo</groupId>
+						<artifactId>hibernate3-maven-plugin</artifactId>
+						<version>2.2</version>
+						<executions>
+							<execution>
+								<phase>process-classes</phase>
+								<goals>
+									<goal>hbm2ddl</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<components>
+								<component>
+									<name>hbm2ddl</name>
+									<implementation>jpaconfiguration</implementation>
+								</component>
+							</components>
+							<componentProperties>
+								<persistenceunit>all-models</persistenceunit>
+								<outputfilename>schema.ddl</outputfilename>
+								<drop>true</drop>
+								<create>true</create>
+								<export>false</export>
+								<format>true</format>
+							</componentProperties>
+						</configuration>
+					</plugin>
 				</plugins>
 			</build>
 		</profile>
@@ -323,11 +319,40 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.3.2</version>
 				<configuration>
-					<source>1.6</source>
-					<target>1.6</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 		</plugins>
+		<pluginManagement>
+			<plugins>
+				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<plugin>
+					<groupId>org.eclipse.m2e</groupId>
+					<artifactId>lifecycle-mapping</artifactId>
+					<version>1.0.0</version>
+					<configuration>
+						<lifecycleMappingMetadata>
+							<pluginExecutions>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>org.codehaus.mojo</groupId>
+										<artifactId>hibernate3-maven-plugin</artifactId>
+										<versionRange>[2.2,)</versionRange>
+										<goals>
+											<goal>hbm2ddl</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+							</pluginExecutions>
+						</lifecycleMappingMetadata>
+					</configuration>
+				</plugin>
+			</plugins>
+		</pluginManagement>
 	</build>
 
 </project>
