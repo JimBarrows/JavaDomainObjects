@@ -6,9 +6,9 @@ import javax.ejb.Stateless;
 
 import jdo.party.model.Party;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.SessionFactory;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * This service returns a list of all parties, either the entire list, or
@@ -22,8 +22,7 @@ public class PartyListServices implements jdo.party.services.PartyListServices {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = LoggerFactory
-			.getLogger(PartyListServices.class);
+	private static final Logger logger = LogManager.getLogger(PartyListServices.class.getName());
 
 	private SessionFactory sessionFactory;
 

@@ -11,20 +11,31 @@
 
 	<ui:define name="body">
 		<rich:panel>
-			<h:form id="addPersonForm">
-				<h:panelGrid columns="3">
-					<h:outputLabel value="First Name" for="firstName" />
-					<h:inputText id="firstName" value="#{personController.firstName}" />
-					<rich:message for="firstName" />
-					<h:outputLabel value="Middle Name" for="middleName" />
-					<h:inputText id="middleName" value="#{personController.middleName}" />
-					<rich:message for="middleName" />
-					<h:outputLabel value="Last Name" for="lastName" />
-					<h:inputText id="lastName" value="#{personController.lastName}" />
-					<rich:message for="lastName" />
-				</h:panelGrid>
-				<h:commandButton value="Save" action="#{personController.save}" />
-			</h:form>
+			<rich:graphValidator value="#{personController}" id="gv">
+				<h:form id="addPersonForm">
+					<rich:messages for="gv" />
+					<h:panelGrid columns="3">
+						<h:outputLabel value="First Name" for="firstName" />
+						<h:inputText id="firstName" value="#{personController.firstName}">
+							<rich:validator />
+						</h:inputText>
+						<rich:message for="firstName" />
+						<h:outputLabel value="Middle Name" for="middleName" />
+						<h:inputText id="middleName"
+							value="#{personController.middleName}">
+							<rich:validator />
+						</h:inputText>
+						<rich:message for="middleName" />
+						<h:outputLabel value="Last Name" for="lastName" />
+						<h:inputText id="lastName" value="#{personController.lastName}">
+							<rich:validator />
+						</h:inputText>
+						<rich:message for="lastName" />
+					</h:panelGrid>
+
+					<h:commandButton value="Save" action="#{personController.save}" />
+				</h:form>
+			</rich:graphValidator>
 		</rich:panel>
 	</ui:define>
 </ui:composition>

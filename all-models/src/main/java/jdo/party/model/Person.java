@@ -2,7 +2,7 @@ package jdo.party.model;
 
 import javax.persistence.Entity;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import jdo.validations.annotations.AtLeastOneNotBlank;
 
 /**
  * A single person the system keeps track of.
@@ -11,17 +11,15 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @version 1.0
  * @created 25-Dec-2007 9:54:34 AM
  */
-@SuppressWarnings("serial")
 @Entity
+@AtLeastOneNotBlank(fieldNames = { "firstName", "lastName" })
 public class Person extends Party {
-	
-	@NotEmpty
-	private String firstName;
-	
-	@NotEmpty
-	private String lastName;
-	
-	private String middleName;
+
+	private String	firstName;
+
+	private String	lastName;
+
+	private String	middleName;
 
 	/**
 	 * @return the firstName
@@ -70,9 +68,11 @@ public class Person extends Party {
 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName
-				+ ", middleName=" + middleName + ", id=" + id + ", version="
-				+ version + "]";
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName + ", id=" + id + ", version=" + version + "]";
 	}
 
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 1L;
 }

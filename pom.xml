@@ -48,13 +48,15 @@
 		<powermock.version>1.5.6</powermock.version>
 		<mockito.version>1.10.8</mockito.version>
 		<postgres-driver.version>9.3-1100-jdbc41</postgres-driver.version>
-		<org.slf4j.version>1.7.7</org.slf4j.version>
+		<log4j2.version>2.1</log4j2.version>
 		<jbehave-core.version>4.0-beta-11</jbehave-core.version>
 		<jbehave-web-selenium.version>4.0-beta-11</jbehave-web-selenium.version>
 		<jbehave-site.version>3.1.1</jbehave-site.version>
 		<selenium-java.version>2.44.0</selenium-java.version>
 		<selenium-support.version>2.44.0</selenium-support.version>
 		<org.richfaces.bom.version>4.5.0.Final</org.richfaces.bom.version>
+		<hibernate.validator.version>5.2.0.Alpha1</hibernate.validator.version>
+		<hibernate.core.version>4.3.7.Final</hibernate.core.version>
 	</properties>
 
 	<modules>
@@ -62,8 +64,10 @@
 		<module>ecommerce-model</module>
 		<module>party-ui-web</module>
 		<module>party-services</module>
-		<module>test-utils</module>		
+		<module>test-utils</module>
 		<module>jdo-ear</module>
+		<module>validations</module>
+		<module>utils</module>
 	</modules>
 	<profiles>
 		<profile>
@@ -93,20 +97,22 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
-				<version>5.2.0.Alpha1</version>
+				<version>${hibernate.validator.version}</version>
 			</dependency>
 
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-core</artifactId>
-				<version>4.3.7.Final</version>
+				<version>${hibernate.core.version}</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
-				<version>4.3.7.Final</version>
+				<version>${hibernate.core.version}</version>
+				<scope>provided</scope>
 			</dependency>
 
 			<dependency>
@@ -134,24 +140,15 @@
 				<version>${org.slf4j.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>jcl-over-slf4j</artifactId>
-				<version>${org.slf4j.version}</version>
-				<scope>runtime</scope>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-api</artifactId>
+				<version>${log4j2.version}</version>
 			</dependency>
 			<dependency>
-				<groupId>org.slf4j</groupId>
-				<artifactId>slf4j-log4j12</artifactId>
-				<version>${org.slf4j.version}</version>
-				<scope>runtime</scope>
+				<groupId>org.apache.logging.log4j</groupId>
+				<artifactId>log4j-core</artifactId>
+				<version>${log4j2.version}</version>
 			</dependency>
-			<dependency>
-				<groupId>log4j</groupId>
-				<artifactId>log4j</artifactId>
-				<version>1.2.16</version>
-				<scope>runtime</scope>
-			</dependency>
-
 			<dependency>
 				<groupId>junit</groupId>
 				<artifactId>junit</artifactId>
@@ -223,6 +220,10 @@
 
 	<repositories>
 		<repository>
+			<id>JBoss Repository</id>
+			<url>https://repository.jboss.org/nexus/content/groups/public/</url>
+		</repository>
+		<repository>
 			<id>repository.jboss.org</id>
 			<name>JBoss Repository</name>
 			<url>http://repository.jboss.org/maven2</url>
@@ -252,10 +253,11 @@
 	<dependencies>
 
 		<dependency>
-			<groupId>org.apache.geronimo.specs</groupId>
-			<artifactId>geronimo-ejb_3.1_spec</artifactId>
-			<version>1.0</version>
-			<scope>test</scope>
+			<groupId>org.jboss.spec</groupId>
+			<artifactId>jboss-javaee-7.0</artifactId>
+			<version>1.0.0.Final</version>
+			<type>pom</type>
+			<scope>provided</scope>
 		</dependency>
 
 		<dependency>
@@ -270,18 +272,6 @@
 			<version>3.2.1</version>
 		</dependency>
 
-		<dependency>
-			<groupId>javax</groupId>
-			<artifactId>javaee-api</artifactId>
-			<version>6.0</version>
-			<scope>provided</scope>
-		</dependency>
-		
-		<dependency>
-			<groupId>javassist</groupId>
-			<artifactId>javassist</artifactId>
-			<version>3.12.0.GA</version>
-		</dependency>
 	</dependencies>
 
 	<build>

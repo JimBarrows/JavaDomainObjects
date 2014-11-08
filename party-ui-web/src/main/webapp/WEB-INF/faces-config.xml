@@ -2,11 +2,7 @@
 <faces-config version="2.0" xmlns="http://java.sun.com/xml/ns/javaee"
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
-	<managed-bean>
-		<managed-bean-name>personController</managed-bean-name>
-		<managed-bean-class>jdo.party.PersonController</managed-bean-class>
-		<managed-bean-scope>request</managed-bean-scope>
-	</managed-bean>
+	
 	<navigation-rule>
 		<navigation-case>
 			<from-outcome>home</from-outcome>
@@ -23,6 +19,12 @@
 			<from-action>#{personController.save}</from-action>
 			<from-outcome>saved</from-outcome>
 			<to-view-id>/index.xhtml</to-view-id>
+			<redirect/>
+		</navigation-case>
+		<navigation-case>
+			<from-action>#{personController.save}</from-action>
+			<from-outcome>notsaved</from-outcome>
+			<to-view-id>/party/person/add.xhtml</to-view-id>
 		</navigation-case>
 	</navigation-rule>
 </faces-config>

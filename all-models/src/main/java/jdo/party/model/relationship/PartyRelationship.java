@@ -1,5 +1,8 @@
 package jdo.party.model.relationship;
 
+import org.apache.logging.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -20,9 +23,6 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import de.jayefem.log4e.MethodParameterStyle;
 
 /**
@@ -43,8 +43,7 @@ public class PartyRelationship extends BaseDateRangeModel {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = LoggerFactory
-			.getLogger(PartyRelationship.class);
+	private static final Logger logger = LogManager.getLogger(PartyRelationship.class.getName());
 
 	private RelationshipType type;
 
@@ -120,9 +119,10 @@ public class PartyRelationship extends BaseDateRangeModel {
 		PartyRoleType left = relationshipTo.getType();
 		PartyRoleType right = type.getToRoleType();
 
-		logger.debug("isTheToRoleTypeSameAsRelationshipoTypeToRole() - left=" + left + ", right=" + right); //$NON-NLS-1$ //$NON-NLS-2$
+		boolean returnboolean = left.equals(right);
+		logger.debug("isTheToRoleTypeSameAsRelationshipoTypeToRole() - left=" + left + ", right=" + right + " - return value={}", returnboolean); //$NON-NLS-1$ //$NON-NLS-2$
 
-		return left.equals(right);
+		return returnboolean;
 	}
 
 	@ManyToOne(optional = false, targetEntity = RelationshipType.class)
