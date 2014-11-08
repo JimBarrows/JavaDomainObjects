@@ -5,7 +5,7 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a="http://richfaces.org/a4j">
+	xmlns:a4j="http://richfaces.org/a4j">
 <body>
 	<ui:component>
 		<h:form id="toolbarForm">
@@ -13,7 +13,7 @@
 				<h:commandLink id="homeLink" action="home" value="#{projectName}:"
 					immediate="true" />
 				<rich:toolbarGroup id="partyToolbarGroup" location="left">
-					<h:commandLink id="addPerson" value="Add Person" action="addPerson"/>
+					<h:commandLink id="addPerson" value="Add Person" action="addPerson" />
 				</rich:toolbarGroup>
 				<!--	 
 				<rich:toolbarGroup id="commonToolbarGroup" location="left">

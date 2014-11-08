@@ -122,10 +122,7 @@ public class GeographicBoundary {
 	public List<ReorderGuideline> getReorderGuideline() {
 		return reorderGuideline;
 	}
-
-	public void setReorderGuideline(ReorderGuideline ReorderGuideline) {
-		this.reorderGuideline = reorderGuideline;
-	}
+	
 	public void setBoundaryFor(List<PostalAddress> boundaryFor) {
 		this.boundaryFor = boundaryFor;
 	}

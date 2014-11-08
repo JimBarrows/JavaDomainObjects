@@ -54,6 +54,7 @@
 		<jbehave-site.version>3.1.1</jbehave-site.version>
 		<selenium-java.version>2.44.0</selenium-java.version>
 		<selenium-support.version>2.44.0</selenium-support.version>
+		<org.richfaces.bom.version>4.5.0.Final</org.richfaces.bom.version>
 	</properties>
 
 	<modules>
@@ -61,10 +62,8 @@
 		<module>ecommerce-model</module>
 		<module>party-ui-web</module>
 		<module>party-services</module>
-		<module>test-utils</module>
-		<module>business-setup-ui</module>
-		<module>business-setup-sevices</module>
-		<module>mbms-ear</module>
+		<module>test-utils</module>		
+		<module>jdo-ear</module>
 	</modules>
 	<profiles>
 		<profile>
@@ -211,8 +210,14 @@
 				<version>${mockito.version}</version>
 				<scope>test</scope>
 			</dependency>
-		</dependencies>
 
+			<dependency>
+				<groupId>org.richfaces</groupId>
+				<artifactId>richfaces</artifactId>
+				<version>${org.richfaces.bom.version}</version>
+
+			</dependency>
+		</dependencies>
 
 	</dependencyManagement>
 
@@ -253,14 +258,11 @@
 			<scope>test</scope>
 		</dependency>
 
-
 		<dependency>
 			<groupId>commons-lang</groupId>
 			<artifactId>commons-lang</artifactId>
 			<version>2.3</version>
 		</dependency>
-
-
 
 		<dependency>
 			<groupId>commons-collections</groupId>
@@ -274,6 +276,7 @@
 			<version>6.0</version>
 			<scope>provided</scope>
 		</dependency>
+		
 		<dependency>
 			<groupId>javassist</groupId>
 			<artifactId>javassist</artifactId>

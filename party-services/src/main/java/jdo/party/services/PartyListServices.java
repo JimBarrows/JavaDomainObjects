@@ -2,8 +2,11 @@ package jdo.party.services;
 
 import java.util.List;
 
+import javax.ejb.Remote;
+
 import jdo.party.model.Party;
 
+@Remote
 public interface PartyListServices {
 
 	/**Gets a list of parties, starting at the first result, and ending with the max results provided.

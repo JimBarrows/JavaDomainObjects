@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	<managed-bean>
 		<managed-bean-name>personController</managed-bean-name>
-		<managed-bean-class>mbms.party.PersonController</managed-bean-class>
+		<managed-bean-class>jdo.party.PersonController</managed-bean-class>
 		<managed-bean-scope>request</managed-bean-scope>
 	</managed-bean>
 	<navigation-rule>

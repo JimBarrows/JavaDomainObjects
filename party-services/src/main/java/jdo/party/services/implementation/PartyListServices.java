@@ -2,6 +2,8 @@ package jdo.party.services.implementation;
 
 import java.util.List;
 
+import javax.ejb.Stateless;
+
 import jdo.party.model.Party;
 
 import org.hibernate.SessionFactory;
@@ -15,7 +17,7 @@ import org.slf4j.LoggerFactory;
  * @author jimbarrows
  * 
  */
-
+@Stateless
 public class PartyListServices implements jdo.party.services.PartyListServices {
 	/**
 	 * Logger for this class
