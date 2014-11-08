@@ -1,7 +1,7 @@
 package mbmp.product.model.feature.interaction;
 
 import javax.persistence.Entity;
-import javax.xml.crypto.Data;
+ 
 
 /**
  * 

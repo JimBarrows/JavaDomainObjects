@@ -13,7 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Version;
 import javax.validation.constraints.NotNull;
-import javax.xml.crypto.Data;
+ 
 
 import mbmp.party.model.contactmechanism.PostalAddress;
 import mbmp.product.model.supplier.ReorderGuideline;

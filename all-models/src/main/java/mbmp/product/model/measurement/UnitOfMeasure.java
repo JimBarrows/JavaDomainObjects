@@ -8,7 +8,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
-import javax.xml.crypto.Data;
+ 
 
 import mbmp.model.BasePersistentModel;
 import mbmp.product.model.Product;

@@ -1,7 +1,7 @@
 package mbmp.party.model.communication;
 
 import javax.persistence.Entity;
-import javax.xml.crypto.Data;
+ 
 
 import mbmp.model.BaseType;
 

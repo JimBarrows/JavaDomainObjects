@@ -5,7 +5,6 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -18,7 +17,6 @@ import org.apache.commons.lang.builder.EqualsBuilder;
  * 
  */
 @Entity
-@MappedSuperclass
 public class BaseHeirarchicalType extends BaseType {
 
 	private BaseHeirarchicalType parent;

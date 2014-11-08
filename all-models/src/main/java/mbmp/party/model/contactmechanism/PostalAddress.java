@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
-import javax.xml.crypto.Data;
+ 
 
 import mbmp.party.model.PartyPostalAddress;
 import mbmp.party.model.geographic_boundary.GeographicBoundary;

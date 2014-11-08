@@ -9,6 +9,47 @@
 	</parent>
 	<artifactId>all-models</artifactId>
 	<name>All Models</name>
+	<profiles>
+		<profile>
+			<id>dev</id>
+			<activation>
+				<activeByDefault>true</activeByDefault>
+			</activation>
+			<build>
+				<plugins>
+					<plugin>
+						<groupId>de.juplo</groupId>
+						<artifactId>hibernate4-maven-plugin</artifactId>
+						<version>1.0.3</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>export</goal>
+								</goals>
+							</execution>
+						</executions>
+
+						<configuration>
+							<driverClassName>org.postgresql.Driver</driverClassName>
+							<hibernateDialect>org.hibernate.dialect.PostgresPlusDialect</hibernateDialect>
+							<username>jdodev</username>
+							<password>jdodev</password>
+							<url>jdbc:postgresql://localhost:5432/jdodev</url>
+							<target>BOTH</target>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.postgresql</groupId>
+								<artifactId>postgresql</artifactId>
+								<version>${postgres-driver.version}</version>
+							</dependency>
+						</dependencies>
+
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 	<dependencies>
 		<dependency>
 			<groupId>joda-time</groupId>

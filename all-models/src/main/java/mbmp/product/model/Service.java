@@ -1,7 +1,7 @@
 package mbmp.product.model;
 
 import javax.persistence.Entity;
-import javax.xml.crypto.Data;
+ 
 
 /**
  * @author Jim

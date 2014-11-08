@@ -3,7 +3,7 @@ package mbmp.product.model.supplier;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import javax.xml.crypto.Data;
+ 
 
 import mbmp.model.BaseDateRangeModel;
 import mbmp.party.model.Organization;

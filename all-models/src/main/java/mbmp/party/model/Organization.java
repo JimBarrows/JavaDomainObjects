@@ -2,7 +2,7 @@ package mbmp.party.model;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
-import javax.xml.crypto.Data;
+ 
 
 /**
  * An organization, such as a family, company, government agency etc.

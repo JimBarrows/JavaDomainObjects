@@ -46,13 +46,14 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<powermock.version>1.5.6</powermock.version>
-		<postgres-driver.version>9.1-901-1.jdbc4</postgres-driver.version>
-		<org.slf4j.version>1.6.1</org.slf4j.version>
-		<jbehave-core.version>3.5-SNAPSHOT</jbehave-core.version>
-		<jbehave-web-selenium.version>3.4-SNAPSHOT</jbehave-web-selenium.version>
+		<mockito.version>1.10.8</mockito.version>
+		<postgres-driver.version>9.3-1100-jdbc41</postgres-driver.version>
+		<org.slf4j.version>1.7.7</org.slf4j.version>
+		<jbehave-core.version>4.0-beta-11</jbehave-core.version>
+		<jbehave-web-selenium.version>4.0-beta-11</jbehave-web-selenium.version>
 		<jbehave-site.version>3.1.1</jbehave-site.version>
-		<selenium-java.version>2.0.0</selenium-java.version>
-		<selenium-support.version>2.0.0</selenium-support.version>		
+		<selenium-java.version>2.44.0</selenium-java.version>
+		<selenium-support.version>2.44.0</selenium-support.version>
 	</properties>
 
 	<modules>
@@ -73,35 +74,6 @@
 			</activation>
 			<build>
 				<plugins>
-					<plugin>
-						<groupId>org.codehaus.mojo</groupId>
-						<artifactId>hibernate3-maven-plugin</artifactId>
-						<version>2.2</version>
-						<executions>
-							<execution>
-								<phase>process-classes</phase>
-								<goals>
-									<goal>hbm2ddl</goal>
-								</goals>
-							</execution>
-						</executions>
-						<configuration>
-							<components>
-								<component>
-									<name>hbm2ddl</name>
-									<implementation>jpaconfiguration</implementation>
-								</component>
-							</components>
-							<componentProperties>
-								<persistenceunit>all-models</persistenceunit>
-								<outputfilename>schema.ddl</outputfilename>
-								<drop>true</drop>
-								<create>true</create>
-								<export>false</export>
-								<format>true</format>
-							</componentProperties>
-						</configuration>
-					</plugin>
 				</plugins>
 			</build>
 		</profile>
@@ -115,7 +87,7 @@
 	<dependencyManagement>
 		<dependencies>
 			<dependency>
-				<groupId>postgresql</groupId>
+				<groupId>org.postgresql</groupId>
 				<artifactId>postgresql</artifactId>
 				<version>${postgres-driver.version}</version>
 			</dependency>
@@ -219,7 +191,26 @@
 				<artifactId>jbehave-site-resources</artifactId>
 				<version>${jbehave-site.version}</version>
 				<scope>test</scope>
-			</dependency>			
+			</dependency>
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-module-junit4</artifactId>
+				<version>${powermock.version}</version>
+				<scope>test</scope>
+			</dependency>
+			<dependency>
+				<groupId>org.powermock</groupId>
+				<artifactId>powermock-api-mockito</artifactId>
+				<version>${powermock.version}</version>
+				<scope>test</scope>
+			</dependency>
+
+			<dependency>
+				<groupId>org.mockito</groupId>
+				<artifactId>mockito-all</artifactId>
+				<version>${mockito.version}</version>
+				<scope>test</scope>
+			</dependency>
 		</dependencies>
 
 
@@ -262,25 +253,6 @@
 			<scope>test</scope>
 		</dependency>
 
-		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-module-junit4</artifactId>
-			<version>${powermock.version}</version>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.powermock</groupId>
-			<artifactId>powermock-api-mockito</artifactId>
-			<version>${powermock.version}</version>
-			<scope>test</scope>
-		</dependency>
-
-		<dependency>
-			<groupId>org.mockito</groupId>
-			<artifactId>mockito-all</artifactId>
-			<version>1.8.5</version>
-			<scope>test</scope>
-		</dependency>
 
 		<dependency>
 			<groupId>commons-lang</groupId>
@@ -339,6 +311,23 @@
 										<versionRange>[2.2,)</versionRange>
 										<goals>
 											<goal>hbm2ddl</goal>
+										</goals>
+									</pluginExecutionFilter>
+									<action>
+										<ignore></ignore>
+									</action>
+								</pluginExecution>
+								<pluginExecution>
+									<pluginExecutionFilter>
+										<groupId>de.juplo</groupId>
+										<artifactId>
+											hibernate4-maven-plugin
+										</artifactId>
+										<versionRange>
+											[1.0.3,)
+										</versionRange>
+										<goals>
+											<goal>export</goal>
 										</goals>
 									</pluginExecutionFilter>
 									<action>

@@ -1,7 +1,6 @@
 package mbmp.model;
 
 import javax.persistence.Column;
-import javax.persistence.Entity;
 import javax.persistence.MappedSuperclass;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -13,7 +12,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @author Jim Barrows
  * 
  */
-@Entity
 @MappedSuperclass
 public class BaseType extends BasePersistentModel {
 

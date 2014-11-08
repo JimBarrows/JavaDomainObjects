@@ -10,13 +10,13 @@ import mbmp.accounting.model.transaction.PaymentAccountingTransaction;
 import mbmp.budget.model.PaymentBudgetAllocation;
 import mbmp.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-11-07T21:10:33.168-0700")
+@Generated(value="Dali", date="2014-11-07T21:49:20.502-0700")
 @StaticMetamodel(Payment.class)
 public class Payment_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<Payment, PaymentBudgetAllocation> bookedAgainst;
+	public static volatile SingularAttribute<Payment, PaymentAccountingTransaction> postedVia;
 	public static volatile SingularAttribute<Payment, PaymentMethodType> paidVia;
 	public static volatile ListAttribute<Payment, PaymentApplication> usedToPay;
-	public static volatile SingularAttribute<Payment, PaymentAccountingTransaction> postedVia;
 	public static volatile SingularAttribute<Payment, BigDecimal> amount;
 	public static volatile SingularAttribute<Payment, String> comment;
 	public static volatile SingularAttribute<Payment, Date> effectiveDate;

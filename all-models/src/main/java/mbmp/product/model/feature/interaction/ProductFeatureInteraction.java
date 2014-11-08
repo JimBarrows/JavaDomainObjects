@@ -5,7 +5,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.xml.crypto.Data;
+ 
 
 import mbmp.product.model.Product;
 import mbmp.product.model.feature.ProductFeature;
