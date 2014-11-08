@@ -6,10 +6,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 import mbmp.model.BaseDateRangeModel_;
 import mbmp.party.model.Party;
 
-@Generated(value="Dali", date="2013-01-05T07:41:45.742-0700")
+@Generated(value="Dali", date="2014-11-07T06:11:39.449-0700")
 @StaticMetamodel(BillingAccountRole.class)
 public class BillingAccountRole_ extends BaseDateRangeModel_ {
-	public static volatile SingularAttribute<BillingAccountRole, Party> accountFor;
 	public static volatile SingularAttribute<BillingAccountRole, BillingAccount> roleFor;
 	public static volatile SingularAttribute<BillingAccountRole, BillingAccountRoleType> type;
+	public static volatile SingularAttribute<BillingAccountRole, Party> accountFor;
 }

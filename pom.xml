@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
 	<groupId>jdo</groupId>
@@ -44,17 +45,14 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<powermock.version>1.4.9</powermock.version>
-		<postgres-driver.version>9.0-801.jdbc4</postgres-driver.version>
+		<powermock.version>1.5.6</powermock.version>
+		<postgres-driver.version>9.1-901-1.jdbc4</postgres-driver.version>
 		<org.slf4j.version>1.6.1</org.slf4j.version>
 		<jbehave-core.version>3.5-SNAPSHOT</jbehave-core.version>
 		<jbehave-web-selenium.version>3.4-SNAPSHOT</jbehave-web-selenium.version>
 		<jbehave-site.version>3.1.1</jbehave-site.version>
 		<selenium-java.version>2.0.0</selenium-java.version>
-		<selenium-support.version>2.0.0</selenium-support.version>
-		<hibernate-validator.version>3.1.0.GA</hibernate-validator.version>
-		<hibernate-annotations.version>3.4.0.GA</hibernate-annotations.version>
-		<hibernate-entitymanager.version>3.4.0.GA</hibernate-entitymanager.version>
+		<selenium-support.version>2.0.0</selenium-support.version>		
 	</properties>
 
 	<modules>
@@ -65,6 +63,7 @@
 		<module>test-utils</module>
 		<module>business-setup-ui</module>
 		<module>business-setup-sevices</module>
+		<module>mbms-ear</module>
 	</modules>
 	<profiles>
 		<profile>
@@ -123,17 +122,20 @@
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-validator</artifactId>
-				<version>4.3.1.Final</version>
+				<version>5.2.0.Alpha1</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.hibernate</groupId>
-				<artifactId>hibernate-annotations</artifactId>
-				<version>3.5.6-Final</version>
+				<artifactId>hibernate-core</artifactId>
+				<version>4.3.7.Final</version>
 			</dependency>
+
+			<!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
 			<dependency>
 				<groupId>org.hibernate</groupId>
 				<artifactId>hibernate-entitymanager</artifactId>
-				<version>4.1.9-Final</version>
+				<version>4.3.7.Final</version>
 			</dependency>
 
 			<dependency>
@@ -217,12 +219,7 @@
 				<artifactId>jbehave-site-resources</artifactId>
 				<version>${jbehave-site.version}</version>
 				<scope>test</scope>
-			</dependency>
-			<dependency>
-				<groupId>org.jboss.seam</groupId>
-				<artifactId>jboss-seam</artifactId>
-				<version>2.2.0.GA</version>
-			</dependency>
+			</dependency>			
 		</dependencies>
 
 
@@ -326,7 +323,8 @@
 		</plugins>
 		<pluginManagement>
 			<plugins>
-				<!--This plugin's configuration is used to store Eclipse m2e settings only. It has no influence on the Maven build itself.-->
+				<!--This plugin's configuration is used to store Eclipse m2e settings 
+					only. It has no influence on the Maven build itself. -->
 				<plugin>
 					<groupId>org.eclipse.m2e</groupId>
 					<artifactId>lifecycle-mapping</artifactId>

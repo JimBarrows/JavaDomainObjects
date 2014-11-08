@@ -2,6 +2,7 @@ package mbmp.model;
 
 import java.io.Serializable;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
@@ -16,6 +17,7 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * @author jimbarrows
  *
  */
+@Entity
 @MappedSuperclass
 public abstract class BasePersistentModel implements Serializable {
 

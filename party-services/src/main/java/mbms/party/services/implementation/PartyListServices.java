@@ -5,7 +5,6 @@ import java.util.List;
 import mbmp.party.model.Party;
 
 import org.hibernate.SessionFactory;
-import org.hibernate.classic.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -31,7 +30,7 @@ public class PartyListServices implements mbms.party.services.PartyListServices 
 			logger.debug("partyCount() - start"); //$NON-NLS-1$
 		}
 
-		Session currentSession = sessionFactory.getCurrentSession();
+		org.hibernate.Session currentSession = sessionFactory.getCurrentSession();
 		long returnlong = (Long) currentSession.createQuery(
 				"select count(*) from Party").uniqueResult();
 		if (logger.isDebugEnabled()) {

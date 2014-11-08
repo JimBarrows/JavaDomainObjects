@@ -12,7 +12,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.xml.crypto.Data;
 
 import mbmp.model.BasePersistentModel;
 import mbmp.party.model.communication.CaseRole;

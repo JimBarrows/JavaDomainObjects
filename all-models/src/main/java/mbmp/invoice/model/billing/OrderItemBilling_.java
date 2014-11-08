@@ -8,11 +8,11 @@ import mbmp.invoice.model.InvoiceItem;
 import mbmp.model.BasePersistentModel_;
 import mbmp.order.model.OrderItem;
 
-@Generated(value="Dali", date="2013-01-04T22:11:20.481-0700")
+@Generated(value="Dali", date="2014-11-07T06:11:39.418-0700")
 @StaticMetamodel(OrderItemBilling.class)
 public class OrderItemBilling_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<OrderItemBilling, BigDecimal> amount;
 	public static volatile SingularAttribute<OrderItemBilling, InvoiceItem> billingFor;
-	public static volatile SingularAttribute<OrderItemBilling, Integer> quantity;
 	public static volatile SingularAttribute<OrderItemBilling, OrderItem> quantityOf;
+	public static volatile SingularAttribute<OrderItemBilling, BigDecimal> amount;
+	public static volatile SingularAttribute<OrderItemBilling, Integer> quantity;
 }

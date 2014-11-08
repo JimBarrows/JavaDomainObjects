@@ -3,6 +3,7 @@ package mbmp.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
@@ -16,6 +17,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
  * @author jimbarrows
  * 
  */
+@Entity
 @MappedSuperclass
 public class BaseHeirarchicalType extends BaseType {
 

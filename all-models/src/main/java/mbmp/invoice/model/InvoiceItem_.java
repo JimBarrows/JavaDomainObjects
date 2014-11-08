@@ -15,12 +15,11 @@ import mbmp.product.model.storage.SerializedInventoryItem;
 import mbmp.shipment.model.ShipmentItem;
 import mbmp.workeffort.timetracking.TimeEntry;
 
-@Generated(value="Dali", date="2013-01-04T22:11:20.492-0700")
+@Generated(value="Dali", date="2014-11-07T06:11:39.463-0700")
 @StaticMetamodel(InvoiceItem.class)
 public class InvoiceItem_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<InvoiceItem, ShipmentItem> billingForShipmentItem;
 	public static volatile ListAttribute<InvoiceItem, InvoiceItem> adjustments;
-	public static volatile SingularAttribute<InvoiceItem, BigDecimal> amount;
 	public static volatile ListAttribute<InvoiceItem, OrderItemBilling> billingForOrderItem;
 	public static volatile ListAttribute<InvoiceItem, TimeEntry> billingForTimeEntry;
 	public static volatile ListAttribute<InvoiceItem, WorkEffortBilling> billingForWorkEffort;
@@ -28,10 +27,11 @@ public class InvoiceItem_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<InvoiceItem, SerializedInventoryItem> chargeForItem;
 	public static volatile SingularAttribute<InvoiceItem, Product> chargeForProduct;
 	public static volatile SingularAttribute<InvoiceItem, String> description;
-	public static volatile SingularAttribute<InvoiceItem, Integer> quantity;
-	public static volatile SingularAttribute<InvoiceItem, Integer> sequence;
 	public static volatile ListAttribute<InvoiceItem, InvoiceItem> soldWith;
 	public static volatile ListAttribute<InvoiceItem, InvoiceTerm> terms;
 	public static volatile SingularAttribute<InvoiceItem, InvoiceItemType> type;
+	public static volatile SingularAttribute<InvoiceItem, BigDecimal> amount;
+	public static volatile SingularAttribute<InvoiceItem, Integer> quantity;
+	public static volatile SingularAttribute<InvoiceItem, Integer> sequence;
 	public static volatile SingularAttribute<InvoiceItem, Boolean> taxable;
 }

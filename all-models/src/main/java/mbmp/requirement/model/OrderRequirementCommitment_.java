@@ -6,9 +6,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 import mbmp.model.BasePersistentModel_;
 import mbmp.order.model.OrderItem;
 
-@Generated(value="Dali", date="2013-01-04T22:11:23.126-0700")
+@Generated(value="Dali", date="2014-11-07T06:11:39.694-0700")
 @StaticMetamodel(OrderRequirementCommitment.class)
 public class OrderRequirementCommitment_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<OrderRequirementCommitment, Integer> quantity;
 	public static volatile SingularAttribute<OrderRequirementCommitment, OrderItem> usageOf;
+	public static volatile SingularAttribute<OrderRequirementCommitment, Integer> quantity;
 }

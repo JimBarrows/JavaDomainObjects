@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 
 import mbmp.model.BasePersistentModel;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Keep track of when every user logs in,and when they logged out, and what

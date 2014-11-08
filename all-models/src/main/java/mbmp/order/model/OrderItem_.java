@@ -12,10 +12,9 @@ import mbmp.order.model.terms.OrderTerm;
 import mbmp.product.model.Product;
 import mbmp.product.model.feature.ProductFeature;
 
-@Generated(value="Dali", date="2013-01-04T22:11:20.540-0700")
+@Generated(value="Dali", date="2014-11-07T06:11:39.526-0700")
 @StaticMetamodel(OrderItem.class)
 public class OrderItem_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<OrderItem, String> comment;
 	public static volatile SingularAttribute<OrderItem, Date> estimatedDeliveryDate;
 	public static volatile SingularAttribute<OrderItem, ProductFeature> forFeature;
 	public static volatile SingularAttribute<OrderItem, Product> forProduct;
@@ -23,10 +22,11 @@ public class OrderItem_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<OrderItem, OrderItemRole> involving;
 	public static volatile SingularAttribute<OrderItem, String> itemDescription;
 	public static volatile SingularAttribute<OrderItem, OrderItem> orderedWith;
-	public static volatile SingularAttribute<OrderItem, Long> orderItemSeqId;
-	public static volatile SingularAttribute<OrderItem, Integer> quantity;
 	public static volatile SingularAttribute<OrderItem, String> shippingInstructions;
 	public static volatile ListAttribute<OrderItem, OrderStatus> stateOf;
 	public static volatile ListAttribute<OrderItem, OrderTerm> subjectTo;
+	public static volatile SingularAttribute<OrderItem, String> comment;
+	public static volatile SingularAttribute<OrderItem, Long> orderItemSeqId;
+	public static volatile SingularAttribute<OrderItem, Integer> quantity;
 	public static volatile SingularAttribute<OrderItem, BigDecimal> unitPrice;
 }

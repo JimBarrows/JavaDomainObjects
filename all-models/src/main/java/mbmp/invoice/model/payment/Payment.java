@@ -19,94 +19,93 @@ import mbmp.model.BasePersistentModel;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Payment extends BasePersistentModel {
 
-    /**
+	/**
      *
      */
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    private BigDecimal amount;
+	private BigDecimal amount;
 
-    private String comment;
+	private String comment;
 
-    private Date effectiveDate;
+	private Date effectiveDate;
 
-    private PaymentMethodType paidVia;
+	private PaymentMethodType paidVia;
 
-    private String paymentRefNum;
+	private String paymentRefNum;
 
-    private List<PaymentApplication> usedToPay;
+	private List<PaymentApplication> usedToPay;
+	
+	private List<PaymentBudgetAllocation> bookedAgainst;
+	
+	private PaymentAccountingTransaction postedVia;
 
-		@OneToMany
-    public List<PaymentBudgetAllocation> getBookedAgainst() {
-        return bookedAgainst;
-    }
+	@OneToMany
+	public List<PaymentBudgetAllocation> getBookedAgainst() {
+		return bookedAgainst;
+	}
 
-    public void setBookedAgainst(List<PaymentBudgetAllocation> bookedAgainst) {
-        this.bookedAgainst = bookedAgainst;
-    }
+	public void setBookedAgainst(List<PaymentBudgetAllocation> bookedAgainst) {
+		this.bookedAgainst = bookedAgainst;
+	}
+	
 
-    private List<PaymentBudgetAllocation> bookedAgainst;
+	@OneToOne
+	public PaymentAccountingTransaction getPostedVia() {
+		return postedVia;
+	}
 
-    @OneToOne
-    private PaymentAccountingTransaction postedVia;
+	public void setPostedVia(PaymentAccountingTransaction postedVia) {
+		this.postedVia = postedVia;
+	}
 
-    public PaymentAccountingTransaction getPostedVia() {
-        return postedVia;
-    }
+	public BigDecimal getAmount() {
+		return amount;
+	}
 
-    public void setPostedVia(PaymentAccountingTransaction postedVia) {
-        this.postedVia = postedVia;
-    }
+	public String getComment() {
+		return comment;
+	}
 
-    public BigDecimal getAmount() {
-        return amount;
-    }
+	public Date getEffectiveDate() {
+		return effectiveDate;
+	}
 
-    public String getComment() {
-        return comment;
-    }
+	@ManyToOne
+	public PaymentMethodType getPaidVia() {
+		return paidVia;
+	}
 
-    public Date getEffectiveDate() {
-        return effectiveDate;
-    }
+	public String getPaymentRefNum() {
+		return paymentRefNum;
+	}
 
-    @ManyToOne
-    public PaymentMethodType getPaidVia() {
-        return paidVia;
-    }
+	@OneToMany
+	public List<PaymentApplication> getUsedToPay() {
+		return usedToPay;
+	}
 
-    public String getPaymentRefNum() {
-        return paymentRefNum;
-    }
+	public void setAmount(BigDecimal amount) {
+		this.amount = amount;
+	}
 
-    
+	public void setComment(String comment) {
+		this.comment = comment;
+	}
 
-    @OneToMany
-    public List<PaymentApplication> getUsedToPay() {
-        return usedToPay;
-    }
+	public void setEffectiveDate(Date effectiveDate) {
+		this.effectiveDate = effectiveDate;
+	}
 
-    public void setAmount(BigDecimal amount) {
-        this.amount = amount;
-    }
+	public void setPaidVia(PaymentMethodType paidVia) {
+		this.paidVia = paidVia;
+	}
 
-    public void setComment(String comment) {
-        this.comment = comment;
-    }
+	public void setPaymentRefNum(String paymentRefNum) {
+		this.paymentRefNum = paymentRefNum;
+	}
 
-    public void setEffectiveDate(Date effectiveDate) {
-        this.effectiveDate = effectiveDate;
-    }
-
-    public void setPaidVia(PaymentMethodType paidVia) {
-        this.paidVia = paidVia;
-    }
-
-    public void setPaymentRefNum(String paymentRefNum) {
-        this.paymentRefNum = paymentRefNum;
-    }
-
-    public void setUsedToPay(List<PaymentApplication> usedToPay) {
-        this.usedToPay = usedToPay;
-    }
+	public void setUsedToPay(List<PaymentApplication> usedToPay) {
+		this.usedToPay = usedToPay;
+	}
 }

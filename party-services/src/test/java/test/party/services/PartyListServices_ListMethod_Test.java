@@ -18,8 +18,8 @@ import mbmp.party.model.Party;
 import mbmp.party.model.Person;
 import mbms.party.services.implementation.PartyListServices;
 
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
-import org.hibernate.classic.Session;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;

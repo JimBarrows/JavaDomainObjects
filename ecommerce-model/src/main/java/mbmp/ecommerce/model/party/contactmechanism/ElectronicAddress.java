@@ -4,7 +4,7 @@ import javax.persistence.Entity;
 
 import mbmp.party.model.contactmechanism.ContactMechanism;
 
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class ElectronicAddress extends ContactMechanism {

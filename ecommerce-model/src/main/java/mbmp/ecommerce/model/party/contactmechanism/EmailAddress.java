@@ -3,8 +3,8 @@ package mbmp.ecommerce.model.party.contactmechanism;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 
-import org.hibernate.validator.Email;
-import org.hibernate.validator.NotEmpty;
+import org.hibernate.validator.constraints.Email;
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class EmailAddress extends ElectronicAddress {

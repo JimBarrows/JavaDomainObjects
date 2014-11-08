@@ -1,4 +1,5 @@
 package mbmp.product.model.storage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -9,14 +10,13 @@ import javax.persistence.OneToMany;
 import mbmp.model.BasePersistentModel;
 import mbmp.party.model.facility.Facility;
 
-
 /**
  * @author Jim
  * @version 1.0
  * @created 25-Dec-2007 9:54:28 AM
  */
 @Entity
-public class Container extends BasePersistentModel{
+public class Container extends BasePersistentModel {
 
 	/**
 	 * 
@@ -24,10 +24,9 @@ public class Container extends BasePersistentModel{
 	private static final long serialVersionUID = 1L;
 
 	private ContainerType describedBy;
-	
-	@ManyToOne
+
 	private Facility locatedAt;
-		
+
 	private List<InventoryItem> storageContainerFor = new ArrayList<InventoryItem>();
 
 	@ManyToOne
@@ -35,11 +34,12 @@ public class Container extends BasePersistentModel{
 		return describedBy;
 	}
 
+	@ManyToOne
 	public Facility getLocatedAt() {
 		return locatedAt;
 	}
 
-	@OneToMany(mappedBy="locatedWithin")
+	@OneToMany(mappedBy = "locatedWithin")
 	public List<InventoryItem> getStorageContainerFor() {
 		return storageContainerFor;
 	}

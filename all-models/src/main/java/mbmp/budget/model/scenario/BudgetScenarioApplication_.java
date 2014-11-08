@@ -8,12 +8,12 @@ import mbmp.budget.model.Budget;
 import mbmp.budget.model.BudgetItem;
 import mbmp.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2013-01-04T22:11:20.232-0700")
+@Generated(value="Dali", date="2014-11-07T06:11:38.739-0700")
 @StaticMetamodel(BudgetScenarioApplication.class)
 public class BudgetScenarioApplication_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<BudgetScenarioApplication, Budget> affectingBudget;
 	public static volatile SingularAttribute<BudgetScenarioApplication, BudgetItem> affectingBudgetItem;
-	public static volatile SingularAttribute<BudgetScenarioApplication, BigDecimal> amountChange;
 	public static volatile SingularAttribute<BudgetScenarioApplication, BudgetScenario> fromScenario;
+	public static volatile SingularAttribute<BudgetScenarioApplication, BigDecimal> amountChange;
 	public static volatile SingularAttribute<BudgetScenarioApplication, Integer> percentChange;
 }

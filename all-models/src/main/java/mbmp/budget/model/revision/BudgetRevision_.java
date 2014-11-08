@@ -8,11 +8,11 @@ import javax.persistence.metamodel.StaticMetamodel;
 import mbmp.budget.model.Budget;
 import mbmp.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2013-01-04T22:11:20.223-0700")
+@Generated(value="Dali", date="2014-11-07T06:11:38.724-0700")
 @StaticMetamodel(BudgetRevision.class)
 public class BudgetRevision_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<BudgetRevision, BudgetRevisionImpact> affecting;
-	public static volatile SingularAttribute<BudgetRevision, Date> revisedOn;
 	public static volatile SingularAttribute<BudgetRevision, Budget> revisionFor;
+	public static volatile SingularAttribute<BudgetRevision, Date> revisedOn;
 	public static volatile SingularAttribute<BudgetRevision, Long> sequence;
 }
