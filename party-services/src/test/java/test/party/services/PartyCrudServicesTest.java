@@ -9,9 +9,9 @@ import static org.mockito.Mockito.when;
 
 import javax.persistence.EntityManager;
 
-import mbmp.party.model.Party;
-import mbmp.party.model.Person;
-import mbms.party.services.implementation.PartyCrudServices;
+import jdo.party.model.Party;
+import jdo.party.model.Person;
+import jdo.party.services.implementation.PartyCrudServices;
 
 import org.junit.Before;
 import org.junit.Test;
