@@ -17,23 +17,13 @@ import jdo.party.model.Party;
 @Stateless
 public class PartyCrudServices implements jdo.party.services.PartyCrudServices {
 
-	@PersistenceContext(name="all-models")
-	private EntityManager em;
-
-//	Validator validator;
-//	ValidatorFactory factory = Validation.buildDefaultValidatorFactory();
+	@PersistenceContext(name = "all-models")
+	private EntityManager	em;
 
 	@Override
-	public Party create(Party party) /*throws ValidationException*/{
+	public Party create(Party party) {
 
-//		validator = factory.getValidator();
-//		Set<ConstraintViolation<Party>> violations = validator.validate(party);
-//		if (violations.isEmpty()) {
-			em.persist(party);
-//		} else {
-//			throw new ValidationException();
-//		}
-//
+		em.persist(party);
 		return party;
 	}
 
@@ -43,13 +33,8 @@ public class PartyCrudServices implements jdo.party.services.PartyCrudServices {
 	}
 
 	@Override
-	public Party update(Party party) throws ValidationException{
-//		validator = factory.getValidator();
-//		Set<ConstraintViolation<Party>> violations = validator.validate(party);
-//		if (violations.isEmpty()) {
-			return em.merge(party);
-//		}
-//		return party;
+	public Party update(Party party) throws ValidationException {
+		return em.merge(party);
 	}
 
 	@Remove
