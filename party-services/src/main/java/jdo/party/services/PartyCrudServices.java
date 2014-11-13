@@ -15,4 +15,5 @@ public interface PartyCrudServices {
 	public Party update( Party party) throws ValidationException;
 	
 	public void delete(Party party);
+
 }

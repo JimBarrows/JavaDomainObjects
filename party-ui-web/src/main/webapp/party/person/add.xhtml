@@ -11,29 +11,29 @@
 
 	<ui:define name="body">
 		<rich:panel>
-			<rich:graphValidator value="#{personController}" id="gv">
+			<rich:graphValidator value="#{PersonAdd}" id="gv">
 				<h:form id="addPersonForm">
 					<rich:messages for="gv" />
 					<h:panelGrid columns="3">
 						<h:outputLabel value="First Name" for="firstName" />
-						<h:inputText id="firstName" value="#{personController.firstName}">
+						<h:inputText id="firstName" value="#{PersonAdd.firstName}">
 							<rich:validator />
 						</h:inputText>
 						<rich:message for="firstName" />
 						<h:outputLabel value="Middle Name" for="middleName" />
 						<h:inputText id="middleName"
-							value="#{personController.middleName}">
+							value="#{PersonAdd.middleName}">
 							<rich:validator />
 						</h:inputText>
 						<rich:message for="middleName" />
 						<h:outputLabel value="Last Name" for="lastName" />
-						<h:inputText id="lastName" value="#{personController.lastName}">
+						<h:inputText id="lastName" value="#{PersonAdd.lastName}">
 							<rich:validator />
 						</h:inputText>
 						<rich:message for="lastName" />
 					</h:panelGrid>
 
-					<h:commandButton value="Save" action="#{personController.save}" />
+					<h:commandButton value="Save" action="#{PersonAdd.save}" />
 				</h:form>
 			</rich:graphValidator>
 		</rich:panel>

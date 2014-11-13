@@ -2,6 +2,7 @@ package jdo.party.controllers;
 
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
@@ -21,7 +22,12 @@ public class Index {
 	
 	private int	maxResults = 100;
 	private int	firstResult = 0;
+	private List<Party> list;
 	
+	@PostConstruct
+	public void init() {
+		list = partyListServices.list(firstResult, maxResults);
+	}
 	public String delete(Party party) {
 		partyCrudServices.delete(party);
 		return "index?faces-redirect=true&includeViewParams=true";
@@ -44,6 +50,6 @@ public class Index {
 	}	
 
 	public List<Party> list() {
-		return partyListServices.list(firstResult, maxResults);
+		return list;
 	}
 }

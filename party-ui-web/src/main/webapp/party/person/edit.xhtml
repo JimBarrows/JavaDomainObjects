@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<ui:composition template="/templates/template.xhtml">
+	<f:metadata>
+		<f:viewParam name="person" value="#{PersonEdit.person}"
+			converter="#{PersonConverter}" />
+		<f:event listener="#{PersonEdit.preRenderView()}" type="preRenderView" />
+	</f:metadata>
+	<ui:define name="title">Edit Person</ui:define>
+
+	<ui:define name="body">
+		<rich:panel>
+			<rich:graphValidator value="#{PersonEdit}" id="gv">
+				<h:form id="editPersonForm">
+					<rich:messages for="gv" />					
+					<h:panelGrid columns="3">
+						<h:outputLabel value="First Name" for="firstName" />
+						<h:inputText id="firstName" value="#{PersonEdit.person.firstName}">
+							<rich:validator />
+						</h:inputText>
+						<rich:message for="firstName" />
+						<h:outputLabel value="Middle Name" for="middleName" />
+						<h:inputText id="middleName"
+							value="#{PersonEdit.person.middleName}">
+							<rich:validator />
+						</h:inputText>
+						<rich:message for="middleName" />
+						<h:outputLabel value="Last Name" for="lastName" />
+						<h:inputText id="lastName" value="#{PersonEdit.person.lastName}">
+							<rich:validator />
+						</h:inputText>
+						<rich:message for="lastName" />
+					</h:panelGrid>
+
+					<h:commandButton value="Save" action="#{PersonEdit.save}" />
+				</h:form>
+			</rich:graphValidator>
+		</rich:panel>
+	</ui:define>
+</ui:composition>
+</html>

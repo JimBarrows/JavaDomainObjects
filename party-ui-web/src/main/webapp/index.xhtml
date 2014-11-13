@@ -12,15 +12,19 @@
 		<ui:define name="title">People &amp; Organizations</ui:define>
 
 		<ui:define name="body">
-			<rich:dataTable value="#{partyListController.list()}" var="party">
+			<rich:dataTable value="#{index.list()}" var="party">				
 				<rich:column>
 					<f:facet name="header">Name</f:facet>
 
-                    <h:outputText value="#{party.firstName}"/>&nbsp;
-                    <h:outputText value="#{party.lastName}"/>
+					<h:outputText value="#{party.firstName}" />&nbsp;
+                    <h:outputText value="#{party.lastName}" />
 				</rich:column>
 				<rich:column>
 					<h:form>
+						<h:button outcome="/party/person/edit?faces-redirect=true"
+							value="Edit">
+							<f:param name="person" value="#{party.id}" />
+						</h:button>
 						<h:commandButton action="#{index.delete(party)}" value="Delete" />
 					</h:form>
 				</rich:column>

@@ -3,28 +3,5 @@
 	xmlns:xi="http://www.w3.org/2001/XInclude" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-facesconfig_2_0.xsd">
 	
-	<navigation-rule>
-		<navigation-case>
-			<from-outcome>home</from-outcome>
-			<to-view-id>/index.xhtml</to-view-id>
-		</navigation-case>
-		<navigation-case>
-			<from-outcome>addPerson</from-outcome>
-			<to-view-id>/party/person/add.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
-	<navigation-rule>
-		<from-view-id>/party/person/add.xhtml</from-view-id>
-		<navigation-case>
-			<from-action>#{personController.save}</from-action>
-			<from-outcome>saved</from-outcome>
-			<to-view-id>/index.xhtml</to-view-id>
-			<redirect/>
-		</navigation-case>
-		<navigation-case>
-			<from-action>#{personController.save}</from-action>
-			<from-outcome>notsaved</from-outcome>
-			<to-view-id>/party/person/add.xhtml</to-view-id>
-		</navigation-case>
-	</navigation-rule>
+	
 </faces-config>
