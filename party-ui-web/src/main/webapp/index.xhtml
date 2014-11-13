@@ -16,8 +16,13 @@
 				<rich:column>
 					<f:facet name="header">Name</f:facet>
 
-                    <h:outputText value="#{party.firstName}"/>
+                    <h:outputText value="#{party.firstName}"/>&nbsp;
                     <h:outputText value="#{party.lastName}"/>
+				</rich:column>
+				<rich:column>
+					<h:form>
+						<h:commandButton action="#{index.delete(party)}" value="Delete" />
+					</h:form>
 				</rich:column>
 			</rich:dataTable>
 		</ui:define>

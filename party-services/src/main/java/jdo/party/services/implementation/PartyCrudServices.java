@@ -2,8 +2,12 @@ package jdo.party.services.implementation;
 
 import javax.ejb.Remove;
 import javax.ejb.Stateless;
+import javax.ejb.TransactionAttribute;
+import javax.ejb.TransactionAttributeType;
+import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.transaction.UserTransaction;
 import javax.validation.ValidationException;
 
 import jdo.party.model.Party;
@@ -19,7 +23,8 @@ public class PartyCrudServices implements jdo.party.services.PartyCrudServices {
 
 	@PersistenceContext(name = "all-models")
 	private EntityManager	em;
-
+	
+	
 	@Override
 	public Party create(Party party) {
 
@@ -37,11 +42,13 @@ public class PartyCrudServices implements jdo.party.services.PartyCrudServices {
 		return em.merge(party);
 	}
 
-	@Remove
+	@TransactionAttribute(TransactionAttributeType.REQUIRED)
 	@Override
 	public void delete(Party party) {
-		em.remove(party);
 
+		Party mergeParty = em.merge(party);
+		em.refresh(mergeParty);
+		em.remove(mergeParty);
 	}
 
 	public PartyCrudServices() {
