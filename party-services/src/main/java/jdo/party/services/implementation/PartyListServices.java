@@ -8,10 +8,6 @@ import javax.persistence.PersistenceContext;
 
 import jdo.party.model.Party;
 
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.hibernate.SessionFactory;
-
 /**
  * This service returns a list of all parties, either the entire list, or
  * paginated. It provides no searching, and no sorting capability.
@@ -30,12 +26,12 @@ public class PartyListServices implements jdo.party.services.PartyListServices {
 		long returnlong = (Long) em.createQuery(
 				"select count(*) from Party").getSingleResult();
 		return returnlong;
-	}
+	}	
 
 	@SuppressWarnings("unchecked")
 	@Override
 	public List<Party> list(int firstResult, int maxResults) {
-
+		
 		if ((firstResult < 0) || (maxResults <= 0))
 			throw new IllegalArgumentException(
 					"First Result and max results must be positive. Max results cannot be 0");
@@ -52,4 +48,8 @@ public class PartyListServices implements jdo.party.services.PartyListServices {
 		super();
 	}	
 
+	public PartyListServices(EntityManager em) {
+		super();
+		this.em = em;
+	}
 }

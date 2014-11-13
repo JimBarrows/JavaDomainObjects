@@ -13,13 +13,14 @@ import static org.mockito.Mockito.when;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.EntityManager;
+import javax.persistence.Query;
+
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
 import jdo.party.model.Person;
 import jdo.party.services.implementation.PartyListServices;
 
-import org.hibernate.Session;
-import org.hibernate.SessionFactory;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -35,33 +36,25 @@ public class ListMethod_Test {
 	private PartyListServices classUnderTest;
 	
 	@Mock
-	private SessionFactory sessionFactory;
-
-	@Mock
-	private Session session;
-
-	@Mock
-	private org.hibernate.Query query;
+	EntityManager em;
 	
 	@Mock
-	private org.hibernate.Transaction transaction;
-
+	private Query query;
+	
 	@Test
 	public void testList() {
 		//given
-		List<Party> expectedList = createExpectedList();
-		when( sessionFactory.getCurrentSession()).thenReturn(session);
-		when( session.createQuery(anyString())).thenReturn(query);
+		List<Party> expectedList = createExpectedList();		
+		when( em.createQuery(anyString())).thenReturn(query);
 		when( query.setFirstResult(anyInt())).thenReturn(query);
 		when( query.setMaxResults(anyInt())).thenReturn(query);
-		when( query.list()).thenReturn(expectedList);
-		when( session.getTransaction()).thenReturn(transaction);
+		when( query.getResultList()).thenReturn(expectedList);		
 		
 		//when
 		List<Party> list = classUnderTest.list(0, expectedList.size());
 		
 		//then
-		verify(session).createQuery("from Party");
+		verify(em).createQuery("from Party");
 		verify(query).setFirstResult(0);
 		verify(query).setMaxResults(expectedList.size());
 		assertEquals( expectedList, list);
@@ -70,12 +63,10 @@ public class ListMethod_Test {
 	@Test
 	public void firstResultNegative() {
 		//given
-		List<Party> expectedList = createExpectedList();
-		when( sessionFactory.getCurrentSession()).thenReturn(session);
-		when( session.getNamedQuery(anyString())).thenReturn(query);
+		List<Party> expectedList = createExpectedList();		
 		when( query.setFirstResult(anyInt())).thenReturn(query);
 		when( query.setMaxResults(anyInt())).thenReturn(query);
-		when( query.list()).thenReturn(expectedList);
+		when( query.getResultList()).thenReturn(expectedList);
 		
 		List<Party> list = null;
 		try {
@@ -83,9 +74,8 @@ public class ListMethod_Test {
 			list = classUnderTest.list(-1, expectedList.size());
 			fail("A negatvie first result is not valid");
 		} catch (IllegalArgumentException e) {
-			verifyZeroInteractions(session);
+			verifyZeroInteractions(em);
 			verifyZeroInteractions(query);
-			verifyZeroInteractions(sessionFactory);
 			assertNull( list );
 		}
 	}
@@ -94,11 +84,9 @@ public class ListMethod_Test {
 	public void maxResultsNegative() {
 		//given
 		List<Party> expectedList = createExpectedList();
-		when( sessionFactory.getCurrentSession()).thenReturn(session);
-		when( session.getNamedQuery(anyString())).thenReturn(query);
 		when( query.setFirstResult(anyInt())).thenReturn(query);
 		when( query.setMaxResults(anyInt())).thenReturn(query);
-		when( query.list()).thenReturn(expectedList);
+		when( query.getResultList()).thenReturn(expectedList);
 		
 		List<Party> list=null;
 		try {
@@ -106,9 +94,9 @@ public class ListMethod_Test {
 			 list = classUnderTest.list(0, -1);
 			fail("A negatvie first result is not valid");
 		} catch (IllegalArgumentException e) {
-			verifyZeroInteractions(session);
+			verifyZeroInteractions(em);
 			verifyZeroInteractions(query);
-			verifyZeroInteractions(sessionFactory);
+
 			assertNull( list );
 		}
 	}
@@ -116,12 +104,10 @@ public class ListMethod_Test {
 	@Test
 	public void maxResults0() {
 		//given
-		List<Party> expectedList = createExpectedList();
-		when( sessionFactory.getCurrentSession()).thenReturn(session);
-		when( session.getNamedQuery(anyString())).thenReturn(query);
+		List<Party> expectedList = createExpectedList();	
 		when( query.setFirstResult(anyInt())).thenReturn(query);
 		when( query.setMaxResults(anyInt())).thenReturn(query);
-		when( query.list()).thenReturn(expectedList);
+		when( query.getResultList()).thenReturn(expectedList);
 		
 		List<Party> list = null;
 		try {
@@ -129,9 +115,8 @@ public class ListMethod_Test {
 			list = classUnderTest.list(0, 0);
 			fail("A negatvie first result is not valid");
 		} catch (IllegalArgumentException e) {
-			verifyZeroInteractions(session);
+			verifyZeroInteractions(em);
 			verifyZeroInteractions(query);
-			verifyZeroInteractions(sessionFactory);
 			assertNull( list );
 		}
 	}
@@ -156,6 +141,6 @@ public class ListMethod_Test {
 
 	@Before
 	public void before() {
-		classUnderTest = spy(new PartyListServices(sessionFactory));
+		classUnderTest = spy(new PartyListServices(em));
 	}
 }
