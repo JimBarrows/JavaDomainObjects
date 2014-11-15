@@ -4,7 +4,8 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:ui="http://java.sun.com/jsf/facelets"
 	xmlns:rich="http://richfaces.org/rich"
-	xmlns:a4j="http://richfaces.org/a4j">
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:party="http://java.sun.com/jsf/composite/party">
 
 <body>
 	<ui:composition template="/templates/template.xhtml">
@@ -12,19 +13,18 @@
 		<ui:define name="title">People &amp; Organizations</ui:define>
 
 		<ui:define name="body">
-			<rich:dataTable value="#{index.list()}" var="party">				
+			<h:form>
+				<h:button outcome="/party/person/add" value="New Person"/>
+				<h:button outcome="/party/organization/add" value="New Organization"/>
+			</h:form>
+			<rich:dataTable value="#{index.list()}" var="party">
 				<rich:column>
 					<f:facet name="header">Name</f:facet>
-
-					<h:outputText value="#{party.firstName}" />&nbsp;
-                    <h:outputText value="#{party.lastName}" />
+					<party:displayName party="#{party}"/>
 				</rich:column>
 				<rich:column>
 					<h:form>
-						<h:button outcome="/party/person/edit?faces-redirect=true"
-							value="Edit">
-							<f:param name="person" value="#{party.id}" />
-						</h:button>
+						<party:editButton party="#{party}"/>
 						<h:commandButton action="#{index.delete(party)}" value="Delete" />
 					</h:form>
 				</rich:column>

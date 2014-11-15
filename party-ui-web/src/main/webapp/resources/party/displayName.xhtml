@@ -1,0 +1,33 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j">
+
+<h:head>
+	<title>Display Name</title>
+</h:head>
+
+<h:body>
+
+	<composite:interface>
+		<composite:attribute name="party" />
+	</composite:interface>
+
+	<composite:implementation>
+		<h:outputFormat value="{0} {1}"
+			rendered="#{party['class'].simpleName == 'Person'}">
+			<f:param value="#{party.firstName}" />
+			<f:param value="#{party.lastName}" />
+		</h:outputFormat>
+		<h:outputFormat value="{0}"
+			rendered="#{party['class'].simpleName == 'Organization'}">
+			<f:param value="#{party.name}" />
+		</h:outputFormat>
+	</composite:implementation>
+</h:body>
+
+</html>

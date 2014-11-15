@@ -11,68 +11,7 @@
 		<h:form id="toolbarForm">
 			<rich:toolbar id="mainToolbar">
 				<h:commandLink id="homeLink" action="/index" value="#{projectName}: People &amp; Organizations Manager"
-					immediate="true" />
-				<rich:toolbarGroup id="partyToolbarGroup" location="left">
-					<h:commandLink id="addPerson" value="Add Person" action="/party/person/add" />
-				</rich:toolbarGroup>
-				<!--	 
-				<rich:toolbarGroup id="commonToolbarGroup" location="left">
-					<h:commandLink id="contactListToolbarLink" value="Contact List"
-						action="home" />
-					<h:commandLink id="relationshipListToolbarLink"
-						value="Relationship List" action="/party/relationship/list.xhtml"
-						rendered="#{identity.loggedIn}" />
-					<h:commandLink id="caseListToolbarLink" value="Case List"
-						action="/party/case/list.xhtml" />
-					<h:commandLink id="communicationEventListToolbarLink"
-						value="Communication Event List"
-						action="/party/communicationEvent/list.xhtml" />
-				</rich:toolbarGroup>
-				<rich:toolbarGroup id="accountToolbarGroup">
-					<rich:dropDownMenu id="accountDropDown"
-						rendered="#{identity.loggedIn}">
-						<f:facet name="label">
-							<h:outputText value="Account" />
-						</f:facet>
-						<rich:menuItem id="contactRoleMenuItem" value="Contact Roles"
-							action="/party/role/type/list.xhtml" />
-						<rich:menuItem id="contactClassificationsMenuItem"
-							value="Contact Classifications"
-							action="/party/classification/type/list.xhtml" />
-						<rich:menuItem id="realtionshipTypesMenuItem"
-							value="Relationship Types"
-							action="/party/relationship/type/list.xhtml" />
-						<rich:menuItem id="relationshipPrioritiesMenuItem"
-							value="Relationship Priorities"
-							action="/party/relationship/priority/type/list.xhtml" />
-						<rich:menuItem id="relationshipStatusesMenuItem"
-							value="Relationship Statuses"
-							action="/party/relationship/status/type/list.xhtml" />
-
-						<rich:menuItem id="caseRolesMenuItem" value="Case Roles"
-							action="/party/case/role/type/list.xhtml" />
-						<rich:menuItem id="caseStatusesMenuItem" value="Case Statuses"
-							action="/party/case/status/type/list.xhtml">
-						</rich:menuItem>
-						<rich:menuItem id="communicationEventPurposesMenuItem"
-							value="Communication Event Purposes"
-							action="/party/communicationEvent/purpose/type/list.xhtml" />
-						<rich:menuItem id="communicationEventRolesMenuItem"
-							value="Communication Event Roles"
-							action="/party/communicationEvent/role/type/list.xhtml" />
-					</rich:dropDownMenu>
-				</rich:toolbarGroup>
-				<rich:toolbarGroup id="welcomeToolbarGroup" location="right">
-					<h:outputText id="welcomeMessage"
-						value="Welcome, #{identity.username}!"
-						rendered="#{identity.loggedIn}" />
-					<h:commandLink id="loginLink" action="/login.xhtml" value="Login"
-						rendered="#{not identity.loggedIn}" />
-
-					<h:commandLink id="logoutLink" action="#{loginUtils.logout}"
-						value="Log out" rendered="#{identity.loggedIn}" />
-				</rich:toolbarGroup>
--->
+					immediate="true" />					
 			</rich:toolbar>
 		</h:form>
 	</ui:component>
