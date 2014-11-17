@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:party="http://java.sun.com/jsf/composite/party">
+
+<body>
+	<ui:composition template="/templates/template.xhtml">
+
+		<ui:define name="title">Role Types</ui:define>
+
+		<ui:define name="body">
+			<h:form>
+				<h:button outcome="/party/roleType/add" value="New Role Type" />
+			</h:form>
+			<rich:dataTable value="#{partyRoleTypeIndex.list()}" var="roleType">
+				<rich:column>
+					<f:facet name="header">Description</f:facet>
+					#{roleType.description}
+				</rich:column>
+				<rich:column>
+					<h:form>
+						<h:button outcome="/party/roleType/edit" value="Edit">
+							<f:param name="roleType" value="#{roleType.id}" />
+						</h:button>
+						<h:commandButton action="#{partyRoleTypeIndex.delete(roleType)}"
+							value="Delete" />
+					</h:form>
+				</rich:column>
+			</rich:dataTable>
+		</ui:define>
+	</ui:composition>
+</body>
+</html>

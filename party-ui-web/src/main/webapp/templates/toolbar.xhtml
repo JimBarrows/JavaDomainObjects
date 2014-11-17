@@ -10,8 +10,13 @@
 	<ui:component>
 		<h:form id="toolbarForm">
 			<rich:toolbar id="mainToolbar">
-				<h:commandLink id="homeLink" action="/index" value="#{projectName}: People &amp; Organizations Manager"
-					immediate="true" />					
+				<h:commandLink id="homeLink" action="/index"
+					value="#{projectName}: People &amp; Organizations Manager"
+					immediate="true" />
+				<rich:toolbarGroup>
+					<h:commandLink id="PartyRoleTypeToolbar" action="/party/roleType/index"
+						value="Role Type" immediate="true" />
+				</rich:toolbarGroup>
 			</rich:toolbar>
 		</h:form>
 	</ui:component>
