@@ -3,6 +3,8 @@ package jdo.party.controllers.party.person;
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
 import javax.ejb.EJB;
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
 import javax.validation.constraints.AssertTrue;
 
 import jdo.party.model.PartyRole;
@@ -15,16 +17,17 @@ public abstract class Template {
 	@EJB
 	protected PartyCrudServices	partyCrud;
 
+	@PersistenceContext(name = "all-models")
+	private EntityManager	em;
+	
 	protected Person				person;
 	
 	public abstract String save();
 	
 	public void addRole() {
-		person = (Person) partyCrud.update(person);
-		PartyRole partyRole = new PartyRole();
-		partyRole.setRoleFor(person);
-		partyRole.setType(new PartyRoleType("foo"));
-		person.getActingAs().add(partyRole);
+		person = em.merge(person);
+		PartyRole partyRole = new PartyRole();		
+		person.addPartyRole(partyRole);
 	}
 	
 	@AssertTrue(message = "Either first or last name must have a value.")

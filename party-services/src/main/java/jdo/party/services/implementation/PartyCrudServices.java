@@ -19,7 +19,7 @@ import jdo.party.model.Party;
 @Stateless
 public class PartyCrudServices implements jdo.party.services.PartyCrudServices {
 
-	@PersistenceContext(name = "all-models", type=PersistenceContextType.EXTENDED)
+	@PersistenceContext(name = "all-models")
 	private EntityManager	em;
 	
 	
