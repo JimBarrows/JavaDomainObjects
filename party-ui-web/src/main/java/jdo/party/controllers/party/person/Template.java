@@ -5,6 +5,8 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 import javax.ejb.EJB;
 import javax.validation.constraints.AssertTrue;
 
+import jdo.party.model.PartyRole;
+import jdo.party.model.PartyRoleType;
 import jdo.party.model.Person;
 import jdo.party.services.PartyCrudServices;
 
@@ -16,6 +18,14 @@ public abstract class Template {
 	protected Person				person;
 	
 	public abstract String save();
+	
+	public void addRole() {
+		person = (Person) partyCrud.update(person);
+		PartyRole partyRole = new PartyRole();
+		partyRole.setRoleFor(person);
+		partyRole.setType(new PartyRoleType("foo"));
+		person.getActingAs().add(partyRole);
+	}
 	
 	@AssertTrue(message = "Either first or last name must have a value.")
 	public boolean isEitherFirstNameOrLastNameNotNull() {

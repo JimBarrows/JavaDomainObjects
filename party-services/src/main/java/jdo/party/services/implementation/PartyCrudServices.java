@@ -5,6 +5,7 @@ import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.PersistenceContextType;
 import javax.validation.ValidationException;
 
 import jdo.party.model.Party;
@@ -18,7 +19,7 @@ import jdo.party.model.Party;
 @Stateless
 public class PartyCrudServices implements jdo.party.services.PartyCrudServices {
 
-	@PersistenceContext(name = "all-models")
+	@PersistenceContext(name = "all-models", type=PersistenceContextType.EXTENDED)
 	private EntityManager	em;
 	
 	

@@ -19,7 +19,7 @@
 	<composite:implementation>
 		<rich:panel>
 			<rich:graphValidator value="#{cc.attrs.controller}" id="gv">
-				<h:form id="addPersonForm">
+				<h:form id="personForm">
 					<rich:messages for="gv" />
 					<h:panelGrid columns="3">
 						<h:outputLabel value="First Name" for="firstName" />
@@ -41,6 +41,26 @@
 					</h:panelGrid>
 
 					<h:commandButton value="Save" action="#{cc.attrs.controller.save}" />
+					
+					<rich:tabPanel>
+						<rich:tab header="Roles">
+							<a4j:commandButton value="Add" action="#{cc.attrs.controller.addRole}" render="actingAsTable"/>
+							<rich:dataTable id="actingAsTable" value="#{cc.attrs.controller.person.actingAs}" var="role">
+								<rich:column>
+									<f:facet name="header">Type</f:facet>
+									#{role.type.description}
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">From</f:facet>
+									#{role.from}
+								</rich:column>
+								<rich:column>
+									<f:facet name="header">Thru</f:facet>
+									#{role.thru}
+								</rich:column>
+							</rich:dataTable>
+						</rich:tab>
+					</rich:tabPanel>
 				</h:form>
 			</rich:graphValidator>
 		</rich:panel>
