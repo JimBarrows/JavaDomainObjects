@@ -1,6 +1,6 @@
 package jdo.party.services.implementation;
 
-import javax.ejb.Stateless;
+import javax.ejb.Stateful;
 import javax.ejb.TransactionAttribute;
 import javax.ejb.TransactionAttributeType;
 import javax.persistence.EntityManager;
@@ -16,10 +16,10 @@ import jdo.party.model.Party;
  * @author jimbarrows
  * 
  */
-@Stateless
+@Stateful
 public class PartyCrudServices implements jdo.party.services.PartyCrudServices {
 
-	@PersistenceContext(name = "all-models")
+	@PersistenceContext(name = "all-models", type=PersistenceContextType.EXTENDED)
 	private EntityManager	em;
 	
 	
