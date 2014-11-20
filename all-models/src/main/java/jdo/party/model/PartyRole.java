@@ -10,6 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.persistence.ManyToMany;
 
+import org.joda.time.DateTime;
+
 import jdo.model.BaseDateRangeModel;
 import jdo.shipment.model.route.ShipmentMethodType;
 
@@ -38,6 +40,11 @@ public class PartyRole extends BaseDateRangeModel {
 	
 	public PartyRole(PartyRoleType type) {
 		super();
+		this.type = type;
+	}
+
+	public PartyRole(DateTime from, DateTime thru, PartyRoleType type) {
+		super(from, thru);
 		this.type = type;
 	}
 

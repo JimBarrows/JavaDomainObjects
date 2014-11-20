@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:party="http://java.sun.com/jsf/composite/party">
+
+<f:metadata>
+	<f:viewParam name="party" value="#{PartyRoleAdd.party}"
+		converter="#{PartyConverter}" />
+</f:metadata>
+
+<h:head>
+	<title>Add Role Form</title>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/templates/template.xhtml">
+
+		<ui:define name="title">Add Role to <h:outputFormat
+				value="{0} {1}"
+				rendered="#{PartyRoleAdd.party['class'].simpleName == 'Person'}">
+				<f:param value="#{PartyRoleAdd.party.firstName}" />
+				<f:param value="#{PartyRoleAdd.party.lastName}" />
+			</h:outputFormat>
+			<h:outputFormat value="{0}"
+				rendered="#{PartyRoleAdd.party['class'].simpleName == 'Organization'}">
+				<f:param value="#{PartyRoleAdd.party.name}" />
+			</h:outputFormat>
+		</ui:define>
+
+		<ui:define name="body">
+			<rich:panel>
+				<rich:graphValidator value="#{PartyRoleAdd}" id="gv">
+					<h:form id="personForm">
+						<rich:messages for="gv" />
+						<h:panelGrid columns="3">
+							<h:outputLabel value="Type" for="type" />
+							<rich:autocomplete
+								autocompleteList="#{PartyRoleAdd.roleTypeList}" required="true"
+								value="#{PartyRoleAdd.roleType}" var="role" fetchValue="#{role.description}" layout="table">
+								<rich:column>
+									#{role.description}
+								</rich:column>
+							</rich:autocomplete>
+						</h:panelGrid>
+					</h:form>
+				</rich:graphValidator>
+			</rich:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
