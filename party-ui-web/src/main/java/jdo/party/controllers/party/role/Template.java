@@ -1,6 +1,7 @@
 package jdo.party.controllers.party.role;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import javax.ejb.EJB;
@@ -10,8 +11,6 @@ import jdo.party.model.Party;
 import jdo.party.model.PartyRoleType;
 import jdo.party.services.PartyCrudServices;
 import jdo.party.services.PartyRoleTypeServices;
-
-import org.joda.time.DateTime;
 
 public abstract class Template {
 
@@ -25,9 +24,9 @@ public abstract class Template {
 	
 	protected PartyRoleType roleType;
 	
-	protected DateTime from = new DateTime();
+	protected Date from = new Date();
 	
-	protected DateTime thru;
+	protected Date thru;
 	
 	protected List<PartyRoleType> roleTypeList = new ArrayList<PartyRoleType>();
 	
@@ -47,19 +46,19 @@ public abstract class Template {
 	}
 
 	@NotNull
-	public DateTime getFrom() {
+	public Date getFrom() {
 		return from;
 	}
 
-	public void setFrom(DateTime from) {
+	public void setFrom(Date from) {
 		this.from = from;
 	}
 
-	public DateTime getThru() {
+	public Date getThru() {
 		return thru;
 	}
 
-	public void setThru(DateTime thru) {
+	public void setThru(Date thru) {
 		this.thru = thru;
 	}	
 

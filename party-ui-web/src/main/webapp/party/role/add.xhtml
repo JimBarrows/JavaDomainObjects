@@ -20,7 +20,9 @@
 
 	<ui:composition template="/templates/template.xhtml">
 
-		<ui:define name="title">Add Role to <h:outputFormat
+		<ui:define name="title">Add Role to
+			<!--  I don't know why I can't use the displayName tag here, but the party object is null when it renders. --> 
+			<h:outputFormat
 				value="{0} {1}"
 				rendered="#{PartyRoleAdd.party['class'].simpleName == 'Person'}">
 				<f:param value="#{PartyRoleAdd.party.firstName}" />
@@ -35,18 +37,26 @@
 		<ui:define name="body">
 			<rich:panel>
 				<rich:graphValidator value="#{PartyRoleAdd}" id="gv">
-					<h:form id="personForm">
+					<h:form id="partyRoleForm">
 						<rich:messages for="gv" />
 						<h:panelGrid columns="3">
 							<h:outputLabel value="Type" for="type" />
-							<rich:autocomplete
+							<rich:autocomplete id="type"
 								autocompleteList="#{PartyRoleAdd.roleTypeList}" required="true"
 								value="#{PartyRoleAdd.roleType}" var="role" fetchValue="#{role.description}" layout="table">
 								<rich:column>
 									#{role.description}
 								</rich:column>
 							</rich:autocomplete>
+							<rich:message for="type" />
+							<h:outputLabel value="From" for="from" />
+							<rich:calendar id="from" datePattern="d/M/y hh:mm a" value="#{PartyRoleAdd.from}" required="true"></rich:calendar>
+							<rich:message for="from" />
+							<h:outputLabel value="Thru" for="thru" />
+							<rich:calendar id="thru" datePattern="d/M/y hh:mm a" value="#{PartyRoleAdd.thru}" required="fa;se"></rich:calendar>
+							<rich:message for="thru" />
 						</h:panelGrid>
+						<h:commandButton value="Save" action="#{PartyRoleAdd.save}" />
 					</h:form>
 				</rich:graphValidator>
 			</rich:panel>

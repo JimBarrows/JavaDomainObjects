@@ -4,6 +4,8 @@ import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
+import org.joda.time.DateTime;
+
 import jdo.party.model.PartyRole;
 
 @ManagedBean(name = "PartyRoleAdd")
@@ -12,7 +14,7 @@ public class Add extends Template {
 
 	@Override
 	public String save() {
-		PartyRole partyRole = new PartyRole(from, thru, roleType);
+		PartyRole partyRole = new PartyRole(new DateTime(from), new DateTime(thru), roleType);
 		party = partyCrud.read(party.getId());
 		party.addPartyRole(partyRole);
 
