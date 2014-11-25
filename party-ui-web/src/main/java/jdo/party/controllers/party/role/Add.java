@@ -15,7 +15,7 @@ public class Add extends Template {
 	@Override
 	public String save() {
 		PartyRole partyRole = new PartyRole(new DateTime(from), new DateTime(thru), roleType);
-		party = partyCrud.read(party.getId());
+		party = partyRepository.findById(party.getId());
 		party.addPartyRole(partyRole);
 
 		return String.format("/party/person/edit?person=%d&faces-redirect=true&includeViewParams=true", party.getId());
@@ -23,7 +23,7 @@ public class Add extends Template {
 	
 	@PostConstruct
 	public void init() {
-		roleTypeList = partyRoleTypeServices.list(0, 100);
+		roleTypeList = partyRoleTypeRepository.findAll();
 	}
 
 }

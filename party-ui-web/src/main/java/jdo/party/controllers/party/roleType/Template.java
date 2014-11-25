@@ -3,12 +3,12 @@ package jdo.party.controllers.party.roleType;
 import javax.ejb.EJB;
 
 import jdo.party.model.PartyRoleType;
-import jdo.party.services.PartyRoleTypeCrudServices;
+import jdo.party.repositories.PartyRoleTypeRepository;
 
 public abstract class Template {
 
 	@EJB
-	protected PartyRoleTypeCrudServices	partyRoleTypeCrud;
+	protected PartyRoleTypeRepository	partyRoleTypeRepository;
 
 	protected PartyRoleType				partyRoleType;
 	

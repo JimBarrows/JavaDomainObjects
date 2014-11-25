@@ -1,5 +1,6 @@
 package jdo.party.repositories.implementation;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ejb.Stateful;
@@ -31,9 +32,14 @@ public class PartyRepository implements jdo.party.repositories.PartyRepository {
 	}
 
 	@Override
-	public Party findBy(Specification<Party> specification) {
-		// TODO Auto-generated method stub
-		return null;
+	public List<Party> findBy(Specification<Party> specification) {
+		List<Party> found = new ArrayList<Party>(); 
+		findAll().forEach(p -> {
+			if( specification.isSatisifiedBy( p)) {
+				found.add(p);
+			}
+		});
+		return found;
 	}
 	
 	@Override

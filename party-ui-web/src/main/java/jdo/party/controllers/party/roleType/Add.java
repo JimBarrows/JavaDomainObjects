@@ -12,7 +12,7 @@ public class Add extends Template {
 
 	@Override
 	public String save() {
-		partyRoleTypeCrud.create(partyRoleType);
+		partyRoleTypeRepository.create(partyRoleType);
 
 		return "/party/roleType/index?faces-redirect=true&includeViewParams=true";
 	}

@@ -8,16 +8,13 @@ import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
 import jdo.party.model.PartyRoleType;
-import jdo.party.services.PartyRoleTypeCrudServices;
-import jdo.party.services.PartyRoleTypeServices;
+import jdo.party.repositories.PartyRoleTypeRepository;
 
 @ManagedBean(name="partyRoleTypeIndex")
 @RequestScoped
 public class Index {
 	@EJB
-	private PartyRoleTypeServices	partyRoleTypeServices;
-	@EJB
-	private PartyRoleTypeCrudServices partyRoleTypeCrudServices;
+	private PartyRoleTypeRepository	partyRoleTypeRepository;
 	
 	private int	maxResults = 100;
 	private int	firstResult = 0;
@@ -25,11 +22,11 @@ public class Index {
 	
 	@PostConstruct
 	public void init() {
-		list = partyRoleTypeServices.list(firstResult, maxResults);
+		list = partyRoleTypeRepository.findAll();
 	}
 	
 	public String delete(PartyRoleType partyRoleType) {
-		partyRoleTypeCrudServices.delete(partyRoleType);
+		partyRoleTypeRepository.delete(partyRoleType);
 		return "/party/roleType/index?faces-redirect=true&includeViewParams=true";
 	}
 

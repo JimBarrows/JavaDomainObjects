@@ -7,7 +7,6 @@ import javax.validation.constraints.AssertTrue;
 
 import jdo.party.model.Person;
 import jdo.party.repositories.PartyRepository;
-import jdo.party.services.PartyCrudServices;
 
 public abstract class Template {
 

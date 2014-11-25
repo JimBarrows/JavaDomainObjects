@@ -11,7 +11,7 @@ public class Edit extends Template{
 	
 	public String save() {		
 		
-		partyRoleTypeCrud.update(partyRoleType);
+		partyRoleTypeRepository.update(partyRoleType);
 
 		return "/party/roleType/index?faces-redirect=true&includeViewParams=true";
 	}

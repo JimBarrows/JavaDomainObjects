@@ -9,16 +9,16 @@ import javax.validation.constraints.NotNull;
 
 import jdo.party.model.Party;
 import jdo.party.model.PartyRoleType;
-import jdo.party.services.PartyCrudServices;
-import jdo.party.services.PartyRoleTypeServices;
+import jdo.party.repositories.PartyRepository;
+import jdo.party.repositories.PartyRoleTypeRepository;
 
 public abstract class Template {
 
 	@EJB
-	protected PartyRoleTypeServices	partyRoleTypeServices;	
-
+	protected PartyRoleTypeRepository	partyRoleTypeRepository;		
+	
 	@EJB
-	protected PartyCrudServices partyCrud;
+	protected PartyRepository	partyRepository;
 	
 	protected Party party;
 	

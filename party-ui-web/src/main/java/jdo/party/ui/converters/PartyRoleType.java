@@ -6,13 +6,13 @@ import javax.faces.component.UIComponent;
 import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
-import jdo.party.services.PartyRoleTypeCrudServices;
+import jdo.party.repositories.PartyRoleTypeRepository;
 
 @ManagedBean(name = "PartyRoleTypeConverter")
 public class PartyRoleType implements Converter {
 
 	@EJB
-	private PartyRoleTypeCrudServices	crudServices;
+	private PartyRoleTypeRepository	partyRoleTypeRepository;
 
 	@Override
 	public Object getAsObject(FacesContext context, UIComponent component, String value) {
@@ -21,7 +21,7 @@ public class PartyRoleType implements Converter {
 		}
 		long id = Long.parseLong(value);
 
-		return crudServices.read(id);
+		return partyRoleTypeRepository.findById(id);
 	}
 
 	@Override
