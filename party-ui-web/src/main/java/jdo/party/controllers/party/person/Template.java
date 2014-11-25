@@ -6,12 +6,13 @@ import javax.ejb.EJB;
 import javax.validation.constraints.AssertTrue;
 
 import jdo.party.model.Person;
+import jdo.party.repositories.PartyRepository;
 import jdo.party.services.PartyCrudServices;
 
 public abstract class Template {
 
 	@EJB
-	protected PartyCrudServices	partyCrud;
+	protected PartyRepository	partyRepository;
 
 	protected Person			person;
 
@@ -28,7 +29,7 @@ public abstract class Template {
 
 	public Person getPerson() {
 		if (person != null && person.getId() != null) {
-			person = (Person) partyCrud.update(person);
+			person = (Person) partyRepository.update(person);
 		}
 		return person;
 	}

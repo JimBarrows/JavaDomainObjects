@@ -12,7 +12,7 @@ public class Add extends Template{
 
 	public String save() {
 
-		partyCrud.create(organization);
+		partyRepository.create(organization);
 
 		return "/index?faces-redirect=true&includeViewParams=true";
 	}

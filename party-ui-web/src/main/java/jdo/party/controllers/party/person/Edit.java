@@ -11,7 +11,7 @@ public class Edit extends Template{
 	
 	public String save() {		
 		
-		partyCrud.update(person);
+		partyRepository.update(person);
 
 		return "/index?faces-redirect=true&includeViewParams=true";
 	}

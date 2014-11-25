@@ -3,12 +3,12 @@ package jdo.party.controllers.party.organization;
 import javax.ejb.EJB;
 
 import jdo.party.model.Organization;
-import jdo.party.services.PartyCrudServices;
+import jdo.party.repositories.PartyRepository;
 
 public abstract class Template {
 
 	@EJB
-	protected PartyCrudServices	partyCrud;
+	protected PartyRepository	partyRepository;
 
 	protected Organization				organization;
 	

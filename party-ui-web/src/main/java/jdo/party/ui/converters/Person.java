@@ -7,13 +7,13 @@ import javax.faces.context.FacesContext;
 import javax.faces.convert.Converter;
 
 import jdo.party.model.Party;
-import jdo.party.services.PartyCrudServices;
+import jdo.party.repositories.PartyRepository;
 
 @ManagedBean(name="PersonConverter")
 public class Person implements Converter{
 
 	 @EJB
-     private PartyCrudServices partyCrudServices;
+     private PartyRepository partyRepository;
      
      @Override
      public Object getAsObject(FacesContext context, UIComponent component, String value) {
@@ -22,7 +22,7 @@ public class Person implements Converter{
              }
              long id = Integer.parseInt(value);
              
-             return partyCrudServices.read(id);
+             return partyRepository.findById(id);
      }
 
      @Override

@@ -3,22 +3,17 @@ package jdo.party.controllers;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
-import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
 import jdo.party.model.Party;
-import jdo.party.services.PartyCrudServices;
-import jdo.party.services.PartyListServices;
+import jdo.party.repositories.PartyRepository;
 
 @ManagedBean
 @RequestScoped
 public class Index {
 
-	@EJB
-	private PartyListServices	partyListServices;
-	@EJB
-	private PartyCrudServices partyCrudServices;
+	private PartyRepository partyRepository;
 	
 	private int	maxResults = 100;
 	private int	firstResult = 0;
@@ -26,10 +21,10 @@ public class Index {
 	
 	@PostConstruct
 	public void init() {
-		list = partyListServices.list(firstResult, maxResults);
+		list = partyRepository.findAll();
 	}
 	public String delete(Party party) {
-		partyCrudServices.delete(party);
+		partyRepository.delete(party);
 		return "index?faces-redirect=true&includeViewParams=true";
 	}
 
