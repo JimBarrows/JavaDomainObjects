@@ -4,7 +4,9 @@ import static javax.persistence.CascadeType.ALL;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -45,7 +47,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * The roles this party plays, or has played, or will play
 	 * 
 	 */
-	private List<PartyRole> actingAs = new ArrayList<PartyRole>();
+	private Set<PartyRole> actingAs = new HashSet<PartyRole>();
 
 	/**
 	 * The cases this party is , has been, or will be part of.
@@ -121,7 +123,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	 */
 	@OneToMany(mappedBy = "roleFor", cascade = ALL)
 	@OrderBy("from")
-	public List<PartyRole> getActingAs() {
+	public Set<PartyRole> getActingAs() {
 		return actingAs;
 	}
 
@@ -179,7 +181,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * @param actingAs
 	 *            the actingAs to set
 	 */
-	public void setActingAs(List<PartyRole> actingAs) {
+	public void setActingAs(Set<PartyRole> actingAs) {
 		this.actingAs = actingAs;
 	}
 

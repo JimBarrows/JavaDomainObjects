@@ -57,6 +57,7 @@
 		<org.richfaces.bom.version>4.5.0.Final</org.richfaces.bom.version>
 		<hibernate.validator.version>5.2.0.Alpha1</hibernate.validator.version>
 		<hibernate.core.version>4.3.7.Final</hibernate.core.version>
+		<org.slf4j.version>1.7.7</org.slf4j.version>  
 	</properties>
 
 	<modules>
@@ -125,15 +126,14 @@
 			<dependency>
 				<groupId>joda-time</groupId>
 				<artifactId>joda-time</artifactId>
-				<version>1.6</version>
+				<version>2.3</version>
 			</dependency>
 			<dependency>
 				<groupId>org.jadira.usertype</groupId>
-				<artifactId>usertype.jodatime</artifactId>
-				<version>1.9</version>
-				<type>jar</type>
-				<scope>compile</scope>
+				<artifactId>usertype.core</artifactId>
+				<version>3.2.0.GA</version>
 			</dependency>
+
 			<dependency>
 				<groupId>org.slf4j</groupId>
 				<artifactId>slf4j-api</artifactId>

@@ -21,9 +21,8 @@
 	<ui:composition template="/templates/template.xhtml">
 
 		<ui:define name="title">Add Role to
-			<!--  I don't know why I can't use the displayName tag here, but the party object is null when it renders. --> 
-			<h:outputFormat
-				value="{0} {1}"
+			<!--  I don't know why I can't use the displayName tag here, but the party object is null when it renders. -->
+			<h:outputFormat value="{0} {1}"
 				rendered="#{PartyRoleAdd.party['class'].simpleName == 'Person'}">
 				<f:param value="#{PartyRoleAdd.party.firstName}" />
 				<f:param value="#{PartyRoleAdd.party.lastName}" />
@@ -41,25 +40,21 @@
 						<rich:messages for="gv" />
 						<h:panelGrid columns="3">
 							<h:outputLabel value="Type" for="type" />
-							<rich:autocomplete id="type"
-								autocompleteList="#{PartyRoleAdd.roleTypeList}" 
-								required="true"
-								showButton="true"
-								
-								value="#{PartyRoleAdd.roleType}" 
-								var="role" 
-								fetchValue="#{role.description}" 
-								layout="table">
-								<rich:column>
-									#{role.description}
-								</rich:column>
-							</rich:autocomplete>
+							<rich:select value="#{PartyRoleAdd.roleType}"
+								enableManualInput="true" defaultLabel="Role type" converter="#{PartyRoleTypeConverter}">
+								<f:selectItems value="#{PartyRoleAdd.roleTypeList}"
+									itemLabel="#{rt.description}" var="rt" >
+
+								</f:selectItems>
+							</rich:select>
 							<rich:message for="type" />
 							<h:outputLabel value="From" for="from" />
-							<rich:calendar id="from" datePattern="d/M/y hh:mm a" value="#{PartyRoleAdd.from}" required="true"></rich:calendar>
+							<rich:calendar id="from" datePattern="d/M/y hh:mm a"
+								value="#{PartyRoleAdd.from}" required="true"></rich:calendar>
 							<rich:message for="from" />
 							<h:outputLabel value="Thru" for="thru" />
-							<rich:calendar id="thru" datePattern="d/M/y hh:mm a" value="#{PartyRoleAdd.thru}" required="fa;se"></rich:calendar>
+							<rich:calendar id="thru" datePattern="d/M/y hh:mm a"
+								value="#{PartyRoleAdd.thru}" required="false"></rich:calendar>
 							<rich:message for="thru" />
 						</h:panelGrid>
 						<h:commandButton value="Save" action="#{PartyRoleAdd.save}" />

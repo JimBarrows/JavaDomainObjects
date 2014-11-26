@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.validation.constraints.NotNull;
 
@@ -35,6 +36,11 @@ public abstract class Template {
 	@NotNull
 	public PartyRoleType getRoleType() {
 		return roleType;
+	}
+	
+	@PostConstruct
+	public void init() {
+		roleTypeList = partyRoleTypeRepository.findAll();
 	}
 
 	public List<PartyRoleType> getRoleTypeList() {
