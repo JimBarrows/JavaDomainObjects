@@ -3,6 +3,7 @@ package jdo.party.controllers;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
+import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.faces.bean.ManagedBean;
 
@@ -13,6 +14,7 @@ import jdo.party.repositories.PartyRepository;
 @RequestScoped
 public class Index {
 
+	@EJB
 	private PartyRepository partyRepository;
 	
 	private int	maxResults = 100;

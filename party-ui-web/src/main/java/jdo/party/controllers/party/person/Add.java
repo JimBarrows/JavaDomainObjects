@@ -1,6 +1,5 @@
 package jdo.party.controllers.party.person;
 
-import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
 
@@ -17,8 +16,8 @@ public class Add extends Template{
 		return "/index?faces-redirect=true&includeViewParams=true";
 	}
 	
-	@PostConstruct
-	public void init() {
+	public Add() {
+		super();
 		person = new Person();
 	}
 	

@@ -42,8 +42,14 @@
 						<h:panelGrid columns="3">
 							<h:outputLabel value="Type" for="type" />
 							<rich:autocomplete id="type"
-								autocompleteList="#{PartyRoleAdd.roleTypeList}" required="true"
-								value="#{PartyRoleAdd.roleType}" var="role" fetchValue="#{role.description}" layout="table">
+								autocompleteList="#{PartyRoleAdd.roleTypeList}" 
+								required="true"
+								showButton="true"
+								
+								value="#{PartyRoleAdd.roleType}" 
+								var="role" 
+								fetchValue="#{role.description}" 
+								layout="table">
 								<rich:column>
 									#{role.description}
 								</rich:column>
