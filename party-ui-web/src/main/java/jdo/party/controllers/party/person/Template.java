@@ -2,6 +2,8 @@ package jdo.party.controllers.party.person;
 
 import static org.apache.commons.lang.StringUtils.isNotBlank;
 
+import java.io.Serializable;
+
 import javax.ejb.EJB;
 import javax.validation.constraints.AssertTrue;
 
@@ -9,7 +11,12 @@ import jdo.party.model.PartyRole;
 import jdo.party.model.Person;
 import jdo.party.repositories.PartyRepository;
 
-public abstract class Template {
+public abstract class Template implements Serializable {
+
+	/**
+	 * 
+	 */
+	private static final long	serialVersionUID	= 1L;
 
 	@EJB
 	protected PartyRepository	partyRepository;
@@ -33,7 +40,7 @@ public abstract class Template {
 
 	public Person getPerson() {
 		if (person != null && person.getId() != null) {
-			person = (Person) partyRepository.update(person);
+			person = (Person) partyRepository.findById(person.getId());
 		}
 		return person;
 	}

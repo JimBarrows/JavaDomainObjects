@@ -30,6 +30,6 @@ public class Customer {
 				return true;
 			}
 		};
-		return partyRepo.findBy(customerSpecification);
+		return partyRepo.findAll();
 	}
 }

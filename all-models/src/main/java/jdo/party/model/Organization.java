@@ -2,6 +2,7 @@ package jdo.party.model;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
+import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.crypto.Data;
 
 /**
@@ -13,6 +14,7 @@ import javax.xml.crypto.Data;
  * @see Data Model Resource Book Volume 1 Figure 3.5, page 82
  */
 @Entity
+@XmlRootElement
 public class Organization extends Party {
 
 	/**

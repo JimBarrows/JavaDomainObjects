@@ -4,9 +4,7 @@ import static javax.persistence.CascadeType.ALL;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -14,6 +12,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.crypto.Data;
 
@@ -50,7 +49,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * The roles this party plays, or has played, or will play
 	 * 
 	 */
-	private Set<PartyRole>					actingAs				= new HashSet<PartyRole>();
+	private List<PartyRole>					actingAs				= new ArrayList<PartyRole>();
 
 	/**
 	 * The cases this party is , has been, or will be part of.
@@ -125,8 +124,9 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * @return the actingAs
 	 */
 	@OneToMany(mappedBy = "roleFor", cascade = ALL)
-	@OrderBy("from")
-	public Set<PartyRole> getActingAs() {
+	@OrderBy("dateTimeRange.from")
+	@XmlList
+	public List<PartyRole> getActingAs() {
 		return actingAs;
 	}
 
@@ -147,7 +147,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	}
 
 	@OneToMany(mappedBy = "mechanismToContact", cascade = CascadeType.ALL)
-	@OrderBy("from")
+	@OrderBy("dateTimeRange.from")
 	public List<PartyContactMechanism> getContactedVia() {
 		return contactedVia;
 	}
@@ -172,7 +172,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * @return the residingAt
 	 */
 	@OneToMany(mappedBy = "specifiedFor", cascade = CascadeType.ALL)
-	@OrderBy("from")
+	@OrderBy("dateTimeRange.from")
 	public List<PartyPostalAddress> getResidingAt() {
 		return residingAt;
 	}
@@ -181,7 +181,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * @param actingAs
 	 *            the actingAs to set
 	 */
-	public void setActingAs(Set<PartyRole> actingAs) {
+	public void setActingAs(List<PartyRole> actingAs) {
 		this.actingAs = actingAs;
 	}
 
