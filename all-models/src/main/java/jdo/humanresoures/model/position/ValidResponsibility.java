@@ -1,25 +1,38 @@
 package jdo.humanresoures.model.position;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import jdo.humanresoures.model.position.type.PositionType;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 
 @Entity
-public class ValidResponsibility extends BaseDateRangeModel {
+public class ValidResponsibility extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private PositionType associatedWith;
-	
-	private String comment;
-	
-	private ResponsibilityType definedBy;
+	private static final long	serialVersionUID	= 1L;
+
+	private PositionType		associatedWith;
+
+	private String				comment;
+
+	private ResponsibilityType	definedBy;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@ManyToOne
 	public PositionType getAssociatedWith() {

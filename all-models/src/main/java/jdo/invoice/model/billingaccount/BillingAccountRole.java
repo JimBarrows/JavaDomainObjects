@@ -1,13 +1,15 @@
 package jdo.invoice.model.billingaccount;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.Party;
 
 @Entity
-public class BillingAccountRole extends BaseDateRangeModel {
+public class BillingAccountRole extends BasePersistentModel {
 
 	/**
 	 * 
@@ -19,6 +21,17 @@ public class BillingAccountRole extends BaseDateRangeModel {
 	private BillingAccount roleFor;
 	
 	private BillingAccountRoleType type;
+	
+	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	public Party getAccountFor() {
 		return accountFor;

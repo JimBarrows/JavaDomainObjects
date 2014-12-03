@@ -1,12 +1,14 @@
 package jdo.product.model.part;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.product.model.Product;
 
 /**
@@ -15,7 +17,7 @@ import jdo.product.model.Product;
  * @created 25-Dec-2007 9:54:36 AM
  */
 @Entity
-public class ProductComponent extends BaseDateRangeModel {
+public class ProductComponent extends BasePersistentModel {
 
 	/**
 	 * 
@@ -31,6 +33,17 @@ public class ProductComponent extends BaseDateRangeModel {
 	private Product productFor;
 
 	private long quantityUsed;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@Lob
 	public String getComment() {

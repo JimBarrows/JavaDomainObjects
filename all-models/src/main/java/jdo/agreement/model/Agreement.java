@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -15,7 +16,8 @@ import javax.validation.constraints.NotNull;
 
 import jdo.agreement.model.item.AgreementItem;
 import jdo.agreement.model.term.AgreementTerm;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.party.model.relationship.PartyRelationship;
 
@@ -23,7 +25,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class Agreement extends BaseDateRangeModel {
+public class Agreement extends BasePersistentModel {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -47,6 +49,17 @@ public class Agreement extends BaseDateRangeModel {
 	
 	private AgreementType type;
 
+	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
+	
 	@OneToMany
 	public List<Addendum> getAddendums() {
 		return addendums;

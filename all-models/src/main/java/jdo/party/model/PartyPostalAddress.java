@@ -1,12 +1,13 @@
 package jdo.party.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
- 
+import javax.xml.crypto.Data;
 
-
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.contactmechanism.PostalAddress;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -25,13 +26,24 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @SuppressWarnings("serial")
 @Entity
-public class PartyPostalAddress extends BaseDateRangeModel {	
+public class PartyPostalAddress extends BasePersistentModel {
 
-	private String comment;
-	
-	private PostalAddress locatedAt;
+	private String			comment;
 
-	private Party specifiedFor;
+	private PostalAddress	locatedAt;
+
+	private Party			specifiedFor;
+
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	/**
 	 * @see java.lang.Object#equals(Object)
@@ -44,9 +56,8 @@ public class PartyPostalAddress extends BaseDateRangeModel {
 			return false;
 		}
 		PartyPostalAddress rhs = (PartyPostalAddress) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(
-				this.specifiedFor, rhs.specifiedFor).append(this.comment,
-				rhs.comment).append(this.locatedAt, rhs.locatedAt).isEquals();
+		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.specifiedFor, rhs.specifiedFor).append(this.comment, rhs.comment)
+				.append(this.locatedAt, rhs.locatedAt).isEquals();
 	}
 
 	@NotEmpty
@@ -69,9 +80,8 @@ public class PartyPostalAddress extends BaseDateRangeModel {
 	 * @see java.lang.Object#hashCode()
 	 */
 	public int hashCode() {
-		return new HashCodeBuilder(1649912811, 1726898873).appendSuper(
-				super.hashCode()).append(this.specifiedFor)
-				.append(this.comment).append(this.locatedAt).toHashCode();
+		return new HashCodeBuilder(1649912811, 1726898873).appendSuper(super.hashCode()).append(this.specifiedFor).append(this.comment).append(this.locatedAt)
+				.toHashCode();
 	}
 
 	public void setComment(String comment) {

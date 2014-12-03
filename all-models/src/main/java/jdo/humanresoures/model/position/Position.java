@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -16,49 +17,61 @@ import jdo.humanresoures.model.position.fulfillment.PositionFulfillment;
 import jdo.humanresoures.model.position.fulfillment.PositionStatus;
 import jdo.humanresoures.model.position.structure.PositionReportingStructure;
 import jdo.humanresoures.model.position.type.PositionType;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.Organization;
 
 @Entity
-public class Position extends BaseDateRangeModel{
+public class Position extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private BudgetItem approvedThru;
-	
-	private List<PositionResponsibility> assigendTo;
-	
-	private Date estimatedFromDate;
-	
-	private Date estimatedThruDate;
-	
-	private boolean exempt;
-	
-	private List<PositionFulfillment> filledBy;	
-	
-	private boolean fulltime;
-	
-	private List<PositionReportingStructure> manages;
-	
-	private List<PositionReportingStructure> reportsTo;
-	
-	private boolean salary;
+	private static final long					serialVersionUID	= 1L;
 
-	private PositionStatus status;
-	
-	private boolean temporary;
-	
-	private PositionType type;
-	
-	private Organization within;
-	
+	private BudgetItem							approvedThru;
+
+	private List<PositionResponsibility>		assigendTo;
+
+	private Date								estimatedFromDate;
+
+	private Date								estimatedThruDate;
+
+	private boolean								exempt;
+
+	private List<PositionFulfillment>			filledBy;
+
+	private boolean								fulltime;
+
+	private List<PositionReportingStructure>	manages;
+
+	private List<PositionReportingStructure>	reportsTo;
+
+	private boolean								salary;
+
+	private PositionStatus						status;
+
+	private boolean								temporary;
+
+	private PositionType						type;
+
+	private Organization						within;
+
+	private DateTimeRange						dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
+
 	public BudgetItem getApprovedThru() {
 		return approvedThru;
 	}
-	
+
 	@OneToMany
 	public List<PositionResponsibility> getAssigendTo() {
 		return assigendTo;
@@ -79,12 +92,12 @@ public class Position extends BaseDateRangeModel{
 		return filledBy;
 	}
 
-	@OneToMany(mappedBy="subordinate")
+	@OneToMany(mappedBy = "subordinate")
 	public List<PositionReportingStructure> getManages() {
 		return manages;
 	}
 
-	@OneToMany(mappedBy="manager")
+	@OneToMany(mappedBy = "manager")
 	public List<PositionReportingStructure> getReportsTo() {
 		return reportsTo;
 	}
@@ -113,14 +126,14 @@ public class Position extends BaseDateRangeModel{
 
 	@Transient
 	public boolean isManager() {
-		return ! manages.isEmpty();
+		return !manages.isEmpty();
 	}
 
 	public boolean isSalary() {
 		return salary;
 	}
 
-	@Column(name="isATemp")
+	@Column(name = "isATemp")
 	public boolean isTemporary() {
 		return temporary;
 	}

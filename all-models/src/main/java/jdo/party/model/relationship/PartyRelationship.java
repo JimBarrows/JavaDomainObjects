@@ -1,8 +1,6 @@
 package jdo.party.model.relationship;
 
-import org.apache.logging.log4j.Logger;
-import org.apache.logging.log4j.LogManager;
-
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -11,18 +9,21 @@ import javax.persistence.Transient;
 import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
- 
+import javax.xml.crypto.Data;
 
-
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 import jdo.party.model.PartyRoleType;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
+
 import de.jayefem.log4e.MethodParameterStyle;
 
 /**
@@ -39,30 +40,40 @@ import de.jayefem.log4e.MethodParameterStyle;
 @SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class PartyRelationship extends BaseDateRangeModel {
+public class PartyRelationship extends BasePersistentModel {
 	/**
 	 * Logger for this class
 	 */
-	private static final Logger logger = LogManager.getLogger(PartyRelationship.class.getName());
+	private static final Logger	logger			= LogManager.getLogger(PartyRelationship.class.getName());
 
-	private RelationshipType type;
+	private RelationshipType	type;
 
-	private String comment;
+	private String				comment;
 
-	private PriorityType priority;
+	private PriorityType		priority;
 
-	private PartyRole relationshipFrom;
+	private PartyRole			relationshipFrom;
 
-	private PartyRole relationshipTo;
+	private PartyRole			relationshipTo;
 
-	private StatusType status;
+	private StatusType			status;
+
+	private DateTimeRange		dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	public PartyRelationship() {
 		super();
 	}
 
-	public PartyRelationship(RelationshipType type, String comment,
-			PartyRole from, PartyRole to) {
+	public PartyRelationship(RelationshipType type, String comment, PartyRole from, PartyRole to) {
 		super();
 		this.comment = comment;
 		relationshipFrom = from;
@@ -70,20 +81,20 @@ public class PartyRelationship extends BaseDateRangeModel {
 		this.type = type;
 	}
 
-	public PartyRelationship(Long id, Long version, DateTime from,
-			DateTime thru, RelationshipType type, String comment,
-			PartyRole relationshipFrom, PartyRole relationshipTo) {
-		super(id, version, from, thru);
+	public PartyRelationship(Long id, Long version, DateTime from, DateTime thru, RelationshipType type, String comment, PartyRole relationshipFrom,
+			PartyRole relationshipTo) {
+		super(id, version);
+		this.dateTimeRange.setFrom(from);
+		this.dateTimeRange.setThru(thru);
 		this.type = type;
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
 	}
 
-	public PartyRelationship(DateTime from, DateTime thru,
-			RelationshipType type, String comment, PartyRole relationshipFrom,
-			PartyRole relationshipTo) {
-		super(from, thru);
+	public PartyRelationship(DateTime from, DateTime thru, RelationshipType type, String comment, PartyRole relationshipFrom, PartyRole relationshipTo) {
+		this.dateTimeRange.setFrom(from);
+		this.dateTimeRange.setThru(thru);
 		this.type = type;
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
@@ -101,8 +112,7 @@ public class PartyRelationship extends BaseDateRangeModel {
 	public boolean isTheRelationshipToSameParty() {
 		logger.debug("isTheRelationshipToSameParty() - " + new ToStringBuilder("", MethodParameterStyle.METHOD_PARAMETER_STYLE).append("PartyRole relationshipFrom.roleFor", relationshipFrom.getRoleFor()).append("PartyRole relationshipTo.roleFor", relationshipTo.getRoleFor()).toString()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
-		return relationshipFrom.getRoleFor()
-				.equals(relationshipTo.getRoleFor());
+		return relationshipFrom.getRoleFor().equals(relationshipTo.getRoleFor());
 	}
 
 	@Transient
@@ -189,17 +199,13 @@ public class PartyRelationship extends BaseDateRangeModel {
 			return false;
 		}
 		PartyRelationship rhs = (PartyRelationship) obj;
-		return new EqualsBuilder().appendSuper(super.equals(rhs))
-				.append(type, rhs.type).append(comment, rhs.comment)
-				.append(relationshipFrom, rhs.relationshipFrom)
-				.append(relationshipTo, rhs.relationshipTo).isEquals();
+		return new EqualsBuilder().appendSuper(super.equals(rhs)).append(type, rhs.type).append(comment, rhs.comment)
+				.append(relationshipFrom, rhs.relationshipFrom).append(relationshipTo, rhs.relationshipTo).isEquals();
 	}
 
 	@Override
 	public int hashCode() {
-		return new HashCodeBuilder().appendSuper(super.hashCode()).append(type)
-				.append(comment).append(relationshipFrom)
-				.append(relationshipTo).toHashCode();
+		return new HashCodeBuilder().appendSuper(super.hashCode()).append(type).append(comment).append(relationshipFrom).append(relationshipTo).toHashCode();
 
 	}
 }

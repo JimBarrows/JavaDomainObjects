@@ -2,46 +2,59 @@ package jdo.humanresoures.model.payroll;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.accounting.model.asset.PeriodType;
 import jdo.invoice.model.payment.PaymentMethodType;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
 @Entity
-public class PayrollPreference extends BaseDateRangeModel {
+public class PayrollPreference extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String accountNumber;
-	
-	private String bankName;
-	
-	private BigDecimal flatAmount;
-	
-	private PartyRole forEmployee;
-	
-	private PartyRole forInternalOrganization;
-	
+	private static final long	serialVersionUID	= 1L;
 
-	
-	private int percentage;
-	
-	private PeriodType period;
-	
-	private String routingNumber;
-	
-	private DeductionType type;
-	
-	private PaymentMethodType paymentMethodType;
+	private String				accountNumber;
+
+	private String				bankName;
+
+	private BigDecimal			flatAmount;
+
+	private PartyRole			forEmployee;
+
+	private PartyRole			forInternalOrganization;
+
+	private int					percentage;
+
+	private PeriodType			period;
+
+	private String				routingNumber;
+
+	private DeductionType		type;
+
+	private PaymentMethodType	paymentMethodType;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
+
 	public PaymentMethodType getPaymentMethodType() {
 		return paymentMethodType;
 	}
+
 	public void setPaymentMethodType(PaymentMethodType paymentMethodType) {
 		this.paymentMethodType = paymentMethodType;
 	}
@@ -99,8 +112,7 @@ public class PayrollPreference extends BaseDateRangeModel {
 		this.forEmployee = forEmployee;
 	}
 
-	public void setForInternalOrganization(
-			PartyRole forInternalOrganization) {
+	public void setForInternalOrganization(PartyRole forInternalOrganization) {
 		this.forInternalOrganization = forInternalOrganization;
 	}
 

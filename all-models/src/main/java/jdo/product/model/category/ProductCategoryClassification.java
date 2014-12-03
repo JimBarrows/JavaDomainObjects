@@ -1,14 +1,15 @@
 package jdo.product.model.category;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
- 
+import javax.xml.crypto.Data;
 
-
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.product.model.Product;
 
 /**
@@ -23,7 +24,7 @@ import jdo.product.model.Product;
  */
 
 @Entity
-public class ProductCategoryClassification extends BaseDateRangeModel {
+public class ProductCategoryClassification extends BasePersistentModel {
 
 	/**
 	 * 
@@ -37,6 +38,17 @@ public class ProductCategoryClassification extends BaseDateRangeModel {
 	private ProductCategory definedBy;
 
 	private boolean primary = false;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@ManyToOne
 	public Product getCategoryFor() {

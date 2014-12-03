@@ -2,32 +2,45 @@ package jdo.humanresoures.model.benefit;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.accounting.model.asset.PeriodType;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.relationship.Employment;
 
 @Entity
-public class PartyBenefit extends BaseDateRangeModel {
+public class PartyBenefit extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private int actualEmployerPaidPercent;
-	
-	private int availableTime;
-	
-	private Employment benefitFor;
-	
-	private BigDecimal cost;
-	
-	private PeriodType period;
-	
-	private BenefitType type;
+	private static final long	serialVersionUID	= 1L;
+
+	private int					actualEmployerPaidPercent;
+
+	private int					availableTime;
+
+	private Employment			benefitFor;
+
+	private BigDecimal			cost;
+
+	private PeriodType			period;
+
+	private BenefitType			type;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	public int getActualEmployerPaidPercent() {
 		return actualEmployerPaidPercent;

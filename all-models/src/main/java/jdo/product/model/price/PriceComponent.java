@@ -2,6 +2,7 @@ package jdo.product.model.price;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -9,7 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.Organization;
 import jdo.party.model.PartyClassification;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
@@ -24,36 +26,47 @@ import jdo.product.model.feature.ProductFeature;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class PriceComponent extends BaseDateRangeModel {
+public class PriceComponent extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private GeographicBoundary basedOnGeographicBoundary;	
-	
-	private OrderValue basedOnOrderValue;
-	
-	private PartyClassification basedOnPartyType;
-	
-	private ProductCategory basedOnProductCategory;
-	
-	private QuantityBreak basedOnQuantityBreak;
-	
-	private SaleType basedOnSaleType;
-	
-	private String comment;
-	
-	private int percent;
-	
-	private BigDecimal price;
-	
-	private Product priceDefinedForProduct;
-	
-	private ProductFeature priceDefinedForProductFeature;
-	
-	private Organization specifiedFor;
+	private static final long	serialVersionUID	= 1L;
+
+	private GeographicBoundary	basedOnGeographicBoundary;
+
+	private OrderValue			basedOnOrderValue;
+
+	private PartyClassification	basedOnPartyType;
+
+	private ProductCategory		basedOnProductCategory;
+
+	private QuantityBreak		basedOnQuantityBreak;
+
+	private SaleType			basedOnSaleType;
+
+	private String				comment;
+
+	private int					percent;
+
+	private BigDecimal			price;
+
+	private Product				priceDefinedForProduct;
+
+	private ProductFeature		priceDefinedForProductFeature;
+
+	private Organization		specifiedFor;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@ManyToOne
 	public GeographicBoundary getBasedOnGeographicBoundary() {
@@ -114,8 +127,7 @@ public class PriceComponent extends BaseDateRangeModel {
 		return specifiedFor;
 	}
 
-	public void setBasedOnGeographicBoundary(
-			GeographicBoundary basedOnGeographicBoundary) {
+	public void setBasedOnGeographicBoundary(GeographicBoundary basedOnGeographicBoundary) {
 		this.basedOnGeographicBoundary = basedOnGeographicBoundary;
 	}
 
@@ -155,8 +167,7 @@ public class PriceComponent extends BaseDateRangeModel {
 		this.priceDefinedForProduct = priceDefinedForProduct;
 	}
 
-	public void setPriceDefinedForProductFeature(
-			ProductFeature priceDefinedForProductFeature) {
+	public void setPriceDefinedForProductFeature(ProductFeature priceDefinedForProductFeature) {
 		this.priceDefinedForProductFeature = priceDefinedForProductFeature;
 	}
 

@@ -2,30 +2,43 @@ package jdo.humanresoures.model.position.salary;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.accounting.model.asset.PeriodType;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.relationship.Employment;
 
 @Entity
-public class PayHistory extends BaseDateRangeModel {
+public class PayHistory extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private BigDecimal amount;
-	
-	private String comment;
-	
-	private PeriodType forPeriodType;
-	 
-	private Employment recordFor;
-	
-	private SalaryStep step;
+	private static final long	serialVersionUID	= 1L;
+
+	private BigDecimal			amount;
+
+	private String				comment;
+
+	private PeriodType			forPeriodType;
+
+	private Employment			recordFor;
+
+	private SalaryStep			step;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	public BigDecimal getAmount() {
 		return amount;

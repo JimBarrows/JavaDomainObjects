@@ -1,10 +1,12 @@
 package jdo.party.model.facility;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.contactmechanism.ContactMechanism;
 
 /**
@@ -15,11 +17,22 @@ import jdo.party.model.contactmechanism.ContactMechanism;
  */
 @SuppressWarnings("serial")
 @Entity
-public class FacilityContactMechanism extends BaseDateRangeModel{
-	
-	private Facility mechansimToContact;
+public class FacilityContactMechanism extends BasePersistentModel {
 
-	private ContactMechanism specifiedVia;
+	private Facility			mechansimToContact;
+
+	private ContactMechanism	specifiedVia;
+
+	private DateTimeRange		dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@NotNull
 	@ManyToOne
@@ -40,7 +53,5 @@ public class FacilityContactMechanism extends BaseDateRangeModel{
 	public void setSpecifiedVia(ContactMechanism specifiedVia) {
 		this.specifiedVia = specifiedVia;
 	}
-
-
 
 }

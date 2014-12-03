@@ -1,26 +1,40 @@
 package jdo.accounting.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
 import jdo.accounting.model.asset.PeriodType;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
 @Entity
-public class AccountingPeriod extends BaseDateRangeModel {
+public class AccountingPeriod extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;	
-		
-	private int accountingPeriodNumber;
-	
-	private PartyRole accountPeriodFor;
+	private static final long	serialVersionUID	= 1L;
 
-	private PeriodType definedBy;
+	private int					accountingPeriodNumber;
+
+	private PartyRole			accountPeriodFor;
+
+	private PeriodType			definedBy;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
+	
 
 	@Min(0)
 	public int getAccountingPeriodNumber() {

@@ -3,10 +3,12 @@ package jdo.requirement.model;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BaseDateRangeModel_;
+import jdo.model.BasePersistentModel_;
+import jdo.model.DateTimeRange;
 
-@Generated(value="Dali", date="2014-11-07T22:13:43.503-0700")
+@Generated(value="Dali", date="2014-12-02T21:12:39.638-0700")
 @StaticMetamodel(RequirementStatus.class)
-public class RequirementStatus_ extends BaseDateRangeModel_ {
+public class RequirementStatus_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<RequirementStatus, RequirementStatusType> type;
+	public static volatile SingularAttribute<RequirementStatus, DateTimeRange> dateTimeRange;
 }

@@ -1,32 +1,48 @@
 package jdo.product.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 
-/** Indicates that a product is well suited to function with other products.
+/**
+ * Indicates that a product is well suited to function with other products.
+ * 
  * @author Jim
  * @version 1.0
  * @created 25-Dec-2007 9:54:35 AM
  */
 @Entity
-public class ProductComplement extends BaseDateRangeModel{
+public class ProductComplement extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	@ManyToOne
-	private Product aUseOf;
+	private Product				aUseOf;
 
 	@ManyToOne
-	private Product complementFor;
-	@NotNull
-	private String reason;
+	private Product				complementFor;
 	
+	@NotNull
+	private String				reason;
+
+	@Embedded
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
+
 	public Product getAUseOf() {
 		return aUseOf;
 	}

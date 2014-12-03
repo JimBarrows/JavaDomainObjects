@@ -1,11 +1,13 @@
 package jdo.product.model.feature;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.product.model.Product;
 
 /**
@@ -15,24 +17,35 @@ import jdo.product.model.Product;
  * @see "Data Model Resource Book Volume 1 Figure 3.4, page 77"
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class ProductFeatureApplicability extends BaseDateRangeModel {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class ProductFeatureApplicability extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	@ManyToOne
-	private Product availableWith;
-	
-	@ManyToOne
-	private ProductFeature usedToDefine;
+	private static final long	serialVersionUID	= 1L;
 
+	private Product				availableWith;
+
+	private ProductFeature		usedToDefine;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
+
+	@ManyToOne
 	public Product getAvailableWith() {
 		return availableWith;
 	}
 
+	@ManyToOne
 	public ProductFeature getUsedToDefine() {
 		return usedToDefine;
 	}

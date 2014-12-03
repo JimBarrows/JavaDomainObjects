@@ -3,12 +3,14 @@ package jdo.party.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.contactmechanism.ContactMechanism;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -21,18 +23,29 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @SuppressWarnings("serial")
 @Entity
-public class PartyContactMechanism extends BaseDateRangeModel {		
-	private String comment;
-	
-	private Party mechanismToContact;
+public class PartyContactMechanism extends BasePersistentModel {
+	private String								comment;
 
-	private boolean solicitable = false;
-	
-	private PartyRole specifiedFor;
+	private Party								mechanismToContact;
 
-	private ContactMechanism specifiedVia;
-		
-	private List<PartyContactMechanismPurpose> usedForThePurposeOf = new ArrayList<PartyContactMechanismPurpose>();
+	private boolean								solicitable			= false;
+
+	private PartyRole							specifiedFor;
+
+	private ContactMechanism					specifiedVia;
+
+	private List<PartyContactMechanismPurpose>	usedForThePurposeOf	= new ArrayList<PartyContactMechanismPurpose>();
+
+	private DateTimeRange						dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@NotEmpty
 	@Lob
@@ -55,7 +68,7 @@ public class PartyContactMechanism extends BaseDateRangeModel {
 		return specifiedVia;
 	}
 
-	@OneToMany(mappedBy="usedWithin")
+	@OneToMany(mappedBy = "usedWithin")
 	public List<PartyContactMechanismPurpose> getUsedForThePurposeOf() {
 		return usedForThePurposeOf;
 	}
@@ -88,5 +101,4 @@ public class PartyContactMechanism extends BaseDateRangeModel {
 		this.usedForThePurposeOf = usedForThePurposeOf;
 	}
 
-	
 }

@@ -1,22 +1,35 @@
 package jdo.humanresoures.model.skills;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.Person;
 
 @Entity
-public class PersonTraining extends BaseDateRangeModel {
+public class PersonTraining extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Person receivedBy;
-	
-	private TrainingClassType type;
+	private static final long	serialVersionUID	= 1L;
+
+	private Person				receivedBy;
+
+	private TrainingClassType	type;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	public Person getReceivedBy() {
 		return receivedBy;

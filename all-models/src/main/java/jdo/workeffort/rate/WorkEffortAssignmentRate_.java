@@ -4,12 +4,14 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.humanresoures.model.position.salary.RateType;
-import jdo.model.BaseDateRangeModel_;
+import jdo.model.BasePersistentModel_;
+import jdo.model.DateTimeRange;
 import jdo.workeffort.assignment.WorkEffortPartyAssignment;
 
-@Generated(value="Dali", date="2014-11-07T22:13:43.670-0700")
+@Generated(value="Dali", date="2014-12-02T21:14:26.298-0700")
 @StaticMetamodel(WorkEffortAssignmentRate.class)
-public class WorkEffortAssignmentRate_ extends BaseDateRangeModel_ {
+public class WorkEffortAssignmentRate_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<WorkEffortAssignmentRate, WorkEffortPartyAssignment> rateOf;
 	public static volatile SingularAttribute<WorkEffortAssignmentRate, RateType> rateType;
+	public static volatile SingularAttribute<WorkEffortAssignmentRate, DateTimeRange> dateTimeRange;
 }

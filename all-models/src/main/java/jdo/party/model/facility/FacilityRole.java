@@ -1,11 +1,13 @@
 package jdo.party.model.facility;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.Party;
 
 /**
@@ -15,19 +17,29 @@ import jdo.party.model.Party;
  * @see "Data Model Resource Book Volume 1 Figure 2.11, page 59"
  */
 @Entity
-public class FacilityRole extends BaseDateRangeModel{
+public class FacilityRole extends BasePersistentModel {
 
-	
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private FacilityRoleType describedBy;
-	
-	private Party forParty;
-	
-	private Facility of;
+	private FacilityRoleType	describedBy;
+
+	private Party				forParty;
+
+	private Facility			of;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	/**
 	 * @return the describedBy
@@ -50,7 +62,7 @@ public class FacilityRole extends BaseDateRangeModel{
 	 * @return the of
 	 */
 	@ManyToOne
-	@JoinColumn(name="ofFacility")
+	@JoinColumn(name = "ofFacility")
 	public Facility getOf() {
 		return of;
 	}
@@ -78,6 +90,5 @@ public class FacilityRole extends BaseDateRangeModel{
 	public void setOf(Facility of) {
 		this.of = of;
 	}
-	
 
 }

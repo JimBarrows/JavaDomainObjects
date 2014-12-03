@@ -2,6 +2,7 @@ package jdo.product.model.cost;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -9,7 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.Organization;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.product.model.Product;
@@ -22,7 +24,7 @@ import jdo.product.model.feature.ProductFeature;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class EstimatedProductCost extends BaseDateRangeModel {
+public class EstimatedProductCost extends BasePersistentModel {
 
 	/**
 	 * 
@@ -44,6 +46,17 @@ public class EstimatedProductCost extends BaseDateRangeModel {
 
 	
 	private Organization specifiedForOrganization;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@ManyToOne
 	public ProductFeature getCalculatedForFeature() {

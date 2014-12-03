@@ -2,6 +2,7 @@ package jdo.humanresoures.model.performance;
 
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -9,40 +10,51 @@ import javax.persistence.OneToMany;
 import jdo.humanresoures.model.position.Position;
 import jdo.humanresoures.model.position.salary.PayHistory;
 import jdo.invoice.model.payment.Paycheck;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
 @Entity
-public class PerformanceReview extends BaseDateRangeModel {
+public class PerformanceReview extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private PayHistory affecting;
-	
-	
-	
-	private String comments;
-	
-	private PartyRole forEmployee;
-	
-	private PartyRole fromManager;
-	
-	private List<PerformanceReviewItem> items;
-	
-	private Position newPosition;
+	private static final long			serialVersionUID	= 1L;
 
-	private Paycheck bonus;
+	private PayHistory					affecting;
 
-    public Paycheck getBonus() {
-        return bonus;
-    }
+	private String						comments;
 
-    public void setBonus(Paycheck bonus) {
-        this.bonus = bonus;
-    }
+	private PartyRole					forEmployee;
+
+	private PartyRole					fromManager;
+
+	private List<PerformanceReviewItem>	items;
+
+	private Position					newPosition;
+
+	private Paycheck					bonus;
+
+	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
+
+	public Paycheck getBonus() {
+		return bonus;
+	}
+
+	public void setBonus(Paycheck bonus) {
+		this.bonus = bonus;
+	}
+
 	@ManyToOne
 	public PayHistory getAffecting() {
 		return affecting;

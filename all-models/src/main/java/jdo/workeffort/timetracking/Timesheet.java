@@ -2,15 +2,17 @@ package jdo.workeffort.timetracking;
 
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
 @Entity
-public class Timesheet extends BaseDateRangeModel {
+public class Timesheet extends BasePersistentModel {
 
 	/**
 	 * 
@@ -22,6 +24,17 @@ public class Timesheet extends BaseDateRangeModel {
 	private PartyRole hoursFor;
 	
 	private List<TimesheetRole> involving;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@OneToMany
 	public List<TimeEntry> getEntries() {

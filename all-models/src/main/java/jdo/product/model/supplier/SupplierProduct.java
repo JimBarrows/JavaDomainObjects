@@ -1,12 +1,13 @@
 package jdo.product.model.supplier;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
- 
+import javax.xml.crypto.Data;
 
-
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.Organization;
 import jdo.product.model.Good;
 
@@ -17,7 +18,7 @@ import jdo.product.model.Good;
  * @see Data Model Resource Book Volume 1 Figure 3.5, page 82
  */
 @Entity
-public class SupplierProduct extends BaseDateRangeModel {
+public class SupplierProduct extends BasePersistentModel {
 
 	/**
 	 * 
@@ -35,6 +36,17 @@ public class SupplierProduct extends BaseDateRangeModel {
 	private Organization suppliedBy;
 
 	private Good validSupplierFor;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@NotNull
 	public String getComment() {

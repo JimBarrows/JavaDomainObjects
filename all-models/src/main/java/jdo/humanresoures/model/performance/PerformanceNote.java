@@ -2,29 +2,42 @@ package jdo.humanresoures.model.performance;
 
 import java.util.Date;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
 @Entity
-public class PerformanceNote extends BaseDateRangeModel {
+public class PerformanceNote extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String comment;
-	
-	private Date communicationDate;
-	
-	private PartyRole forEmployee;
-	
-	private PartyRole fromManger;
-	
-	private PerformanceNoteType type;
+	private static final long	serialVersionUID	= 1L;
+
+	private String				comment;
+
+	private Date				communicationDate;
+
+	private PartyRole			forEmployee;
+
+	private PartyRole			fromManger;
+
+	private PerformanceNoteType	type;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	public String getComment() {
 		return comment;

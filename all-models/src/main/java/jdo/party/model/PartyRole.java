@@ -1,20 +1,22 @@
 package jdo.party.model;
 
-import java.util.List;
 import java.util.ArrayList;
+import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
-import javax.persistence.ManyToMany;
+
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
+import jdo.shipment.model.route.ShipmentMethodType;
 
 import org.joda.time.DateTime;
-
-import jdo.model.BaseDateRangeModel;
-import jdo.shipment.model.route.ShipmentMethodType;
 
 /**
  * A person or organization may play any number of roles such as a customer,
@@ -27,13 +29,24 @@ import jdo.shipment.model.route.ShipmentMethodType;
  */
 @Entity
 @Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class PartyRole extends BaseDateRangeModel {
+public class PartyRole extends BasePersistentModel {
 
 	private PartyRoleType type;
 	
 	private Party roleFor;
 
 	private List<ShipmentMethodType> ableToShipVia = new ArrayList<ShipmentMethodType>();
+	
+	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	public PartyRole() {
 		
@@ -50,7 +63,8 @@ public class PartyRole extends BaseDateRangeModel {
 	}
 
 	public PartyRole(DateTime from, DateTime thru, PartyRoleType type) {
-		super(from, thru);
+		dateTimeRange.setFrom(from);
+		dateTimeRange.setThru(thru);
 		this.type = type;
 	}
 

@@ -1,13 +1,15 @@
 package jdo.budget.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.accounting.model.GeneralLedgerAccount;
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 
 @Entity
-public class GlBudgetXref extends BaseDateRangeModel {
+public class GlBudgetXref extends BasePersistentModel {
 
 	/**
 	 * 
@@ -19,6 +21,17 @@ public class GlBudgetXref extends BaseDateRangeModel {
 	private BudgetItemType mappedToBudgetItemType;
 	
 	private GeneralLedgerAccount mappedToGlAccount;
+	
+	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	public int getAllocationPercentage() {
 		return allocationPercentage;

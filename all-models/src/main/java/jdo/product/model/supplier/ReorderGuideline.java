@@ -1,10 +1,12 @@
 package jdo.product.model.supplier;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 import jdo.party.model.facility.Facility;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
@@ -17,7 +19,7 @@ import jdo.product.model.Good;
  * @see "Data Model Resource Book Volume 1 Figure 3.5, page 82"
  */
 @Entity
-public class ReorderGuideline extends BaseDateRangeModel {
+public class ReorderGuideline extends BasePersistentModel {
 
 	/**
 	 * 
@@ -29,6 +31,17 @@ public class ReorderGuideline extends BaseDateRangeModel {
 	private Good guidelineFor;
 	private long reorderLevel;
 	private long reorderQuantity;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@ManyToOne
 	public Facility getBasedOnFacility() {

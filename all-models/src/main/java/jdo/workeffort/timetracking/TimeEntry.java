@@ -1,14 +1,16 @@
 package jdo.workeffort.timetracking;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.workeffort.WorkEffort;
 
 @Entity
-public class TimeEntry extends BaseDateRangeModel {
+public class TimeEntry extends BasePersistentModel {
 
 	/**
 	 * 
@@ -18,6 +20,17 @@ public class TimeEntry extends BaseDateRangeModel {
 	private String comment;
 	
 	private WorkEffort timeSpendOn;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@Lob
 	public String getComment() {

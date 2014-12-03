@@ -1,14 +1,15 @@
 package jdo.party.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
- 
+import javax.xml.crypto.Data;
 
-
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 
 /**
  * Represents 1 or more classification to which a party may belong. The actual
@@ -23,15 +24,26 @@ import jdo.model.BaseDateRangeModel;
  * @see Data Model Resource Book Volume 1 Figure 3.2, page 73
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class PartyClassification extends BaseDateRangeModel {
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class PartyClassification extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Party classificationFor;
+	private static final long	serialVersionUID	= 1L;
+
+	private Party				classificationFor;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	/**
 	 * @return the classificationFor
@@ -41,7 +53,6 @@ public class PartyClassification extends BaseDateRangeModel {
 	public Party getClassificationFor() {
 		return classificationFor;
 	}
-
 
 	/**
 	 * @param classificationFor

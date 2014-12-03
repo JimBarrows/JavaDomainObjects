@@ -1,13 +1,15 @@
 package jdo.ecommerce.model.webcontent;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.Party;
 
 @Entity
-public class WebContentRole extends BaseDateRangeModel {
+public class WebContentRole extends BasePersistentModel {
 
 	/**
 	 * 
@@ -17,6 +19,17 @@ public class WebContentRole extends BaseDateRangeModel {
 	private Party roleOf;
 	
 	private WebContentRoleType type;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@ManyToOne
 	public Party getRoleOf() {

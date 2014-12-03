@@ -1,13 +1,15 @@
 package jdo.workeffort.association;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.workeffort.WorkEffort;
 
 @Entity
-public class WorkEfforAssociation extends BaseDateRangeModel {
+public class WorkEfforAssociation extends BasePersistentModel {
 
 	/**
 	 * 
@@ -17,6 +19,17 @@ public class WorkEfforAssociation extends BaseDateRangeModel {
 	private WorkEffort associatedFrom;
 	
 	private WorkEffort associatedTo;
+	
+	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@ManyToOne
 	public WorkEffort getAssociatedFrom() {

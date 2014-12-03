@@ -2,26 +2,39 @@ package jdo.salestax.model;
 
 import java.math.BigDecimal;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BaseDateRangeModel;
+import jdo.model.BasePersistentModel;
+import jdo.model.DateTimeRange;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.product.model.category.ProductCategory;
 
 @Entity
-public class SalesTaxLookup extends BaseDateRangeModel {
+public class SalesTaxLookup extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private GeographicBoundary salesTaxLookupFor;
-	
-	private BigDecimal salesTaxPercentage;
-	
-	private ProductCategory specifiedFor;
+	private static final long	serialVersionUID	= 1L;
+
+	private GeographicBoundary	salesTaxLookupFor;
+
+	private BigDecimal			salesTaxPercentage;
+
+	private ProductCategory		specifiedFor;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+
+	@Embedded
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
 
 	@ManyToOne
 	public GeographicBoundary getSalesTaxLookupFor() {
