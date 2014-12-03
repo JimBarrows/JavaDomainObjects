@@ -3,6 +3,9 @@ package jdo.product.model.price;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -38,11 +41,19 @@ public class OrderValue extends BasePersistentModel {
 
 	@Min(0)
 	@Embedded
+	@AttributeOverrides(value={
+			@AttributeOverride(column=@Column(name="fromAmountCurrency"), name="currency"),
+			@AttributeOverride(column=@Column(name="fromAmountAmount"), name="amount")
+	})
 	public Money getFromAmount() {
 		return fromAmount;
 	}
 
 	@Embedded
+	@AttributeOverrides(value={
+			@AttributeOverride(column=@Column(name="thruAmountCurrency"), name="currency"),
+			@AttributeOverride(column=@Column(name="thruAmountAmount"), name="amount")
+	})
 	public Money getThruAmount() {
 		return thruAmount;
 	}

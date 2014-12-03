@@ -3,6 +3,9 @@ package jdo.shipment.model;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -59,6 +62,10 @@ public class Shipment extends BasePersistentModel {
 	private List<ShipmentStatus>	statuses;
 
 	@Embedded
+	@AttributeOverrides(value={
+			@AttributeOverride(column=@Column(name="actualShipCostCurrency"), name="currency"),
+			@AttributeOverride(column=@Column(name="actualShipCostAmount"), name="amount")
+	})
 	public Money getActualShipCost() {
 		return actualShipCost;
 	}
@@ -74,6 +81,10 @@ public class Shipment extends BasePersistentModel {
 	}
 
 	@Embedded
+	@AttributeOverrides(value={
+			@AttributeOverride(column=@Column(name="estiamtedShipCostCurrency"), name="currency"),
+			@AttributeOverride(column=@Column(name="estiamtedShipCostAmount"), name="amount")
+	})
 	public Money getEstimatedShipCost() {
 		return estimatedShipCost;
 	}
