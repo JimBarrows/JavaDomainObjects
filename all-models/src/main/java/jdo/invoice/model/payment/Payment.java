@@ -1,9 +1,9 @@
 package jdo.invoice.model.payment;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -13,6 +13,7 @@ import javax.persistence.OneToOne;
 
 import jdo.accounting.model.transaction.PaymentAccountingTransaction;
 import jdo.budget.model.PaymentBudgetAllocation;
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 
 @Entity
@@ -22,23 +23,23 @@ public class Payment extends BasePersistentModel {
 	/**
      *
      */
-	private static final long serialVersionUID = 1L;
+	private static final long				serialVersionUID	= 1L;
 
-	private BigDecimal amount;
+	private Money							amount;
 
-	private String comment;
+	private String							comment;
 
-	private Date effectiveDate;
+	private Date							effectiveDate;
 
-	private PaymentMethodType paidVia;
+	private PaymentMethodType				paidVia;
 
-	private String paymentRefNum;
+	private String							paymentRefNum;
 
-	private List<PaymentApplication> usedToPay;
-	
-	private List<PaymentBudgetAllocation> bookedAgainst;
-	
-	private PaymentAccountingTransaction postedVia;
+	private List<PaymentApplication>		usedToPay;
+
+	private List<PaymentBudgetAllocation>	bookedAgainst;
+
+	private PaymentAccountingTransaction	postedVia;
 
 	@OneToMany
 	public List<PaymentBudgetAllocation> getBookedAgainst() {
@@ -48,7 +49,6 @@ public class Payment extends BasePersistentModel {
 	public void setBookedAgainst(List<PaymentBudgetAllocation> bookedAgainst) {
 		this.bookedAgainst = bookedAgainst;
 	}
-	
 
 	@OneToOne
 	public PaymentAccountingTransaction getPostedVia() {
@@ -59,7 +59,8 @@ public class Payment extends BasePersistentModel {
 		this.postedVia = postedVia;
 	}
 
-	public BigDecimal getAmount() {
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
@@ -85,7 +86,7 @@ public class Payment extends BasePersistentModel {
 		return usedToPay;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

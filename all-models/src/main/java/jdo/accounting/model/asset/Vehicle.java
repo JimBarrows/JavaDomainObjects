@@ -8,9 +8,9 @@ public class Vehicle extends FixedAsset {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private String vehicleIdentificationNumber;
+	private String				vehicleIdentificationNumber;
 
 	public String getVehicleIdentificationNumber() {
 		return vehicleIdentificationNumber;

@@ -35,7 +35,6 @@ public class ProductIncompatibility extends BasePersistentModel {
 	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}

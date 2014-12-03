@@ -23,16 +23,16 @@ public class ReorderGuideline extends BasePersistentModel {
 
 	/**
 	 * 
-	 */	
-	private static final long serialVersionUID = 1L;
-	private Facility basedOnFacility;
-	private GeographicBoundary basedOnGeographicBoundary;
-	private PartyRole basedOnInternalOrganization;
-	private Good guidelineFor;
-	private long reorderLevel;
-	private long reorderQuantity;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	 */
+	private static final long	serialVersionUID	= 1L;
+	private Facility			basedOnFacility;
+	private GeographicBoundary	basedOnGeographicBoundary;
+	private PartyRole			basedOnInternalOrganization;
+	private Good				guidelineFor;
+	private long				reorderLevel;
+	private long				reorderQuantity;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {
@@ -76,13 +76,11 @@ public class ReorderGuideline extends BasePersistentModel {
 		this.basedOnFacility = basedOnFacility;
 	}
 
-	public void setBasedOnGeographicBoundary(
-			GeographicBoundary basedOnGeographicBoundary) {
+	public void setBasedOnGeographicBoundary(GeographicBoundary basedOnGeographicBoundary) {
 		this.basedOnGeographicBoundary = basedOnGeographicBoundary;
 	}
 
-	public void setBasedOnInternalOrganization(
-			PartyRole basedOnInternalOrganization) {
+	public void setBasedOnInternalOrganization(PartyRole basedOnInternalOrganization) {
 		this.basedOnInternalOrganization = basedOnInternalOrganization;
 	}
 

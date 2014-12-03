@@ -9,12 +9,12 @@ import jdo.party.model.Party;
 @Entity
 public class RequestRole extends BasePersistentModel {
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Party party;
-		
-	private RequestRoleType roleType;
-	
+	private Party				party;
+
+	private RequestRoleType		roleType;
+
 	@ManyToOne
 	public Party getParty() {
 		return party;

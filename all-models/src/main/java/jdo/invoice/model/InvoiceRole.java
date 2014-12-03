@@ -14,13 +14,13 @@ public class InvoiceRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private int percentage;
-		
-	private Date performedOn;
+	private int					percentage;
 
-	@Range(min=0, max=100)
+	private Date				performedOn;
+
+	@Range(min = 0, max = 100)
 	public int getPercentage() {
 		return percentage;
 	}

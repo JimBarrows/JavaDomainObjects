@@ -1,7 +1,6 @@
 package jdo.order.model.adjustment;
 
-import java.math.BigDecimal;
-
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.AssertTrue;
@@ -9,6 +8,7 @@ import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import jdo.fields.Money;
 import jdo.order.model.Order;
 import jdo.order.model.OrderItem;
 
@@ -18,17 +18,17 @@ public class OrderAdjustment extends jdo.model.BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private OrderItem affectingItem;
+	private OrderItem			affectingItem;
 
-	private Order affectingOrder;
+	private Order				affectingOrder;
 
-	private BigDecimal amount;
+	private Money				amount;
 
-	private int percentage;
-	
-	private OrderAdjustmentType type;
+	private int					percentage;
+
+	private OrderAdjustmentType	type;
 
 	@ManyToOne
 	public OrderItem getAffectingItem() {
@@ -40,7 +40,8 @@ public class OrderAdjustment extends jdo.model.BasePersistentModel {
 		return affectingOrder;
 	}
 
-	public BigDecimal getAmount() {
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
@@ -68,7 +69,7 @@ public class OrderAdjustment extends jdo.model.BasePersistentModel {
 		this.affectingOrder = affectingOrder;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

@@ -22,19 +22,19 @@ public class ProductComponent extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private String comment;
+	private String				comment;
 
-	private Product in;
+	private Product				in;
 
-	private String instruction;
+	private String				instruction;
 
-	private Product productFor;
+	private Product				productFor;
 
-	private long quantityUsed;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	private long				quantityUsed;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {
@@ -51,7 +51,7 @@ public class ProductComponent extends BasePersistentModel {
 	}
 
 	@ManyToOne
-	@JoinColumn(name="productComponentIn")
+	@JoinColumn(name = "productComponentIn")
 	public Product getIn() {
 		return in;
 	}

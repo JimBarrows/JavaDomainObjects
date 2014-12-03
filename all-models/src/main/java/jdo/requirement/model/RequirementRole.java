@@ -14,15 +14,15 @@ public class RequirementRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Party assignedTo;
-	
-	private Requirement relatedTo;
-	
-	private RequirementRoleType type;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	private Party				assignedTo;
+
+	private Requirement			relatedTo;
+
+	private RequirementRoleType	type;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {
@@ -59,6 +59,5 @@ public class RequirementRole extends BasePersistentModel {
 	public void setType(final RequirementRoleType type) {
 		this.type = type;
 	}
-	
-	
+
 }

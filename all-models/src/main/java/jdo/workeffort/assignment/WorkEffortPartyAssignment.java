@@ -18,24 +18,24 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Party assigned;
-	
-	private Facility assignedAt;
-	
-	private String comment;
-	
-	private WorkEffortRoleType describedBy;
+	private static final long	serialVersionUID	= 1L;
 
-	private List<ShipmentItem> billingForShipmentItem;
+	private Party				assigned;
 
-    @OneToMany
+	private Facility			assignedAt;
+
+	private String				comment;
+
+	private WorkEffortRoleType	describedBy;
+
+	private List<ShipmentItem>	billingForShipmentItem;
+
+	@OneToMany
 	public List<ShipmentItem> getBillingForShipmentItem() {
 		return billingForShipmentItem;
 	}
 
-    public void setBillingForShipmentItem(List<ShipmentItem> billingFor) {
+	public void setBillingForShipmentItem(List<ShipmentItem> billingFor) {
 		this.billingForShipmentItem = billingFor;
 	}
 
@@ -74,5 +74,5 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 	public void setDescribedBy(WorkEffortRoleType describedBy) {
 		this.describedBy = describedBy;
 	}
-	
+
 }

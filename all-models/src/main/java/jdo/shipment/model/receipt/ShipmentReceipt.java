@@ -22,27 +22,27 @@ public class ShipmentReceipt extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long			serialVersionUID	= 1L;
 
-	private Good good;
-	
-	private InventoryItem inventoryItem;
-	
-	private String itemDescription;
-	
-	private OrderItem orderItem;
-	
-	private int quantityAccepted;
-	
-	private int quantityRejected;
-	
-	private Date received;
-	
-	private RejectionReason rejectionReason;
-	
-	private List<ShipmentReceiptRole> roles;
-	
-	private ShipmentPackage shipmentPackage;
+	private Good						good;
+
+	private InventoryItem				inventoryItem;
+
+	private String						itemDescription;
+
+	private OrderItem					orderItem;
+
+	private int							quantityAccepted;
+
+	private int							quantityRejected;
+
+	private Date						received;
+
+	private RejectionReason				rejectionReason;
+
+	private List<ShipmentReceiptRole>	roles;
+
+	private ShipmentPackage				shipmentPackage;
 
 	@ManyToOne
 	public Good getGood() {

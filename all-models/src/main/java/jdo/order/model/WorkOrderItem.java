@@ -8,7 +8,6 @@ public class WorkOrderItem extends OrderItem {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	
 }

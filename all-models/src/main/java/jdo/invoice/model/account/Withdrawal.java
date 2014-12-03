@@ -5,16 +5,15 @@ import javax.persistence.OneToOne;
 
 import jdo.invoice.model.payment.Disbursement;
 
-
 @Entity
 public class Withdrawal extends FinancialAccountTransaction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Disbursement causedBy;
+	private static final long	serialVersionUID	= 1L;
+
+	private Disbursement		causedBy;
 
 	@OneToOne
 	public Disbursement getCausedBy() {

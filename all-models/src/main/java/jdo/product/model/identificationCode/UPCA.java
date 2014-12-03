@@ -5,6 +5,6 @@ public class UPCA extends GoodIdentification {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 }

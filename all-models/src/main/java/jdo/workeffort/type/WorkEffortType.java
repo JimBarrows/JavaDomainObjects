@@ -17,19 +17,19 @@ public class WorkEffortType extends BaseType {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long				serialVersionUID	= 1L;
 
-	private List<WorkEffortType> breaksDownInto;
+	private List<WorkEffortType>			breaksDownInto;
 
-	private List<WorkEffortType> dependsOn;
+	private List<WorkEffortType>			dependsOn;
 
-	private List<WorkEffortGoodStandard> goodStandardNeeds;
+	private List<WorkEffortGoodStandard>	goodStandardNeeds;
 
-	private int standardWorkHours;
+	private int								standardWorkHours;
 
-	private DeliverableType usedToProduceDeliverable;
+	private DeliverableType					usedToProduceDeliverable;
 
-	private Product usedToProduceProduct;
+	private Product							usedToProduceProduct;
 
 	@OneToMany
 	public List<WorkEffortType> getBreaksDownInto() {
@@ -62,8 +62,7 @@ public class WorkEffortType extends BaseType {
 
 	@AssertTrue
 	public boolean producesOnlyOneThing() {
-		return (usedToProduceDeliverable != null)
-				^ (usedToProduceProduct != null);
+		return (usedToProduceDeliverable != null) ^ (usedToProduceProduct != null);
 	}
 
 	public void setBreaksDownInto(List<WorkEffortType> breaksDownInto) {
@@ -74,8 +73,7 @@ public class WorkEffortType extends BaseType {
 		this.dependsOn = dependsOn;
 	}
 
-	public void setGoodStandardNeeds(
-			List<WorkEffortGoodStandard> goodStandardNeeds) {
+	public void setGoodStandardNeeds(List<WorkEffortGoodStandard> goodStandardNeeds) {
 		this.goodStandardNeeds = goodStandardNeeds;
 	}
 
@@ -83,8 +81,7 @@ public class WorkEffortType extends BaseType {
 		this.standardWorkHours = standardWorkHours;
 	}
 
-	public void setUsedToProduceDeliverable(
-			DeliverableType usedToProduceDeliverable) {
+	public void setUsedToProduceDeliverable(DeliverableType usedToProduceDeliverable) {
 		this.usedToProduceDeliverable = usedToProduceDeliverable;
 	}
 

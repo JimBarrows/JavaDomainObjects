@@ -14,15 +14,15 @@ public class BillingAccountRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private Party accountFor;
-	
-	private BillingAccount roleFor;
-	
-	private BillingAccountRoleType type;
-	
-	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+	private Party					accountFor;
+
+	private BillingAccount			roleFor;
+
+	private BillingAccountRoleType	type;
+
+	private DateTimeRange			dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {

@@ -12,11 +12,11 @@ public class WorkEffortInvenotryAssignment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private int quantity;
-	
-	private InventoryItem useOf;
+	private int					quantity;
+
+	private InventoryItem		useOf;
 
 	public int getQuantity() {
 		return quantity;

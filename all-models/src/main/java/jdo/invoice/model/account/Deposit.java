@@ -7,18 +7,17 @@ import javax.persistence.OneToMany;
 
 import jdo.invoice.model.payment.Receipt;
 
-
 @Entity
 public class Deposit extends FinancialAccountTransaction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private List<Receipt> causedBy;
+	private List<Receipt>		causedBy;
 
-	@OneToMany(mappedBy="depositedVia")
+	@OneToMany(mappedBy = "depositedVia")
 	public List<Receipt> getCausedBy() {
 		return causedBy;
 	}
@@ -26,6 +25,5 @@ public class Deposit extends FinancialAccountTransaction {
 	public void setCausedBy(List<Receipt> causedBy) {
 		this.causedBy = causedBy;
 	}
-
 
 }

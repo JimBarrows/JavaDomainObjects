@@ -1,7 +1,5 @@
 package jdo.agreement.model.term;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -11,6 +9,7 @@ import javax.validation.constraints.AssertTrue;
 
 import jdo.agreement.model.Agreement;
 import jdo.agreement.model.item.AgreementItem;
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 
@@ -27,7 +26,7 @@ public class AgreementTerm extends BasePersistentModel {
 
 	private AgreementItem		agreementItem;
 
-	private BigDecimal			value;
+	private Money				value;
 
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
@@ -50,7 +49,8 @@ public class AgreementTerm extends BasePersistentModel {
 		return agreementItem;
 	}
 
-	public BigDecimal getValue() {
+	@Embedded
+	public Money getValue() {
 		return value;
 	}
 
@@ -67,7 +67,7 @@ public class AgreementTerm extends BasePersistentModel {
 		this.agreementItem = agreementItem;
 	}
 
-	public void setValue(BigDecimal value) {
+	public void setValue(Money value) {
 		this.value = value;
 	}
 }

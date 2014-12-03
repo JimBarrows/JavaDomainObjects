@@ -1,19 +1,20 @@
 package jdo.accounting.model.transaction.detail;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.accounting.model.OrganizationGlAccount;
 import jdo.accounting.model.transaction.AccountingTransaction;
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 
 @Entity
-public class TransactionDetail extends BasePersistentModel{
+public class TransactionDetail extends BasePersistentModel {
 
 	public TransactionDetail() {
 		super();
@@ -22,30 +23,31 @@ public class TransactionDetail extends BasePersistentModel{
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private OrganizationGlAccount allocatedTo;
-	
-	private BigDecimal amount;
-	
-	private List<TransactionDetail> associatedWith = new ArrayList<TransactionDetail>();
-	
-	private boolean debitCreditFlag;
-		
-	private AccountingTransaction partOf;
-		
-	private TransactionDetail relatedTo;
+	private OrganizationGlAccount	allocatedTo;
+
+	private Money					amount;
+
+	private List<TransactionDetail>	associatedWith		= new ArrayList<TransactionDetail>();
+
+	private boolean					debitCreditFlag;
+
+	private AccountingTransaction	partOf;
+
+	private TransactionDetail		relatedTo;
 
 	@ManyToOne
 	public OrganizationGlAccount getAllocatedTo() {
 		return allocatedTo;
 	}
 
-	public BigDecimal getAmount() {
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
-	@OneToMany(mappedBy="relatedTo")
+	@OneToMany(mappedBy = "relatedTo")
 	public List<TransactionDetail> getAssociatedWith() {
 		return associatedWith;
 	}
@@ -68,7 +70,7 @@ public class TransactionDetail extends BasePersistentModel{
 		this.allocatedTo = allocatedTo;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

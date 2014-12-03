@@ -23,21 +23,21 @@ public class SupplierProduct extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private String comment;
+	private String				comment;
 
-	private PreferenceType furtherDescribedBy;
-	
-	private RatingType ratedBy;
+	private PreferenceType		furtherDescribedBy;
 
-	private long standardLeadTime;
-	
-	private Organization suppliedBy;
+	private RatingType			ratedBy;
 
-	private Good validSupplierFor;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	private long				standardLeadTime;
+
+	private Organization		suppliedBy;
+
+	private Good				validSupplierFor;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {
@@ -85,7 +85,6 @@ public class SupplierProduct extends BasePersistentModel {
 		this.furtherDescribedBy = furtherDescribedBy;
 	}
 
-	
 	public void setRatedBy(RatingType ratedBy) {
 		this.ratedBy = ratedBy;
 	}

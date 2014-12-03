@@ -14,16 +14,16 @@ public class InvoiceTerm extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Invoice conditionForInvoice;
-	
-	private InvoiceItem conditionForInvoiceItem;
-	
-	private int termValue;
-	
-	private InvoiceTermType type;
-	
+	private static final long	serialVersionUID	= 1L;
+
+	private Invoice				conditionForInvoice;
+
+	private InvoiceItem			conditionForInvoiceItem;
+
+	private int					termValue;
+
+	private InvoiceTermType		type;
+
 	@AssertTrue
 	public boolean forItemOrInvoiceOnly() {
 		return (conditionForInvoiceItem != null) ^ (conditionForInvoice != null);

@@ -1,13 +1,14 @@
 package jdo.humanresoures.model.position.salary;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 
 @Entity
@@ -16,21 +17,22 @@ public class SalaryStep extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private BigDecimal amount;
-	
-	private Date dateModified;
-	
-	private PayGrade grade;
-	
-	private List<PayHistory> history;
-	
-	private List<PositionTypeRate> positionTypeRates;
-	
-	private int sequence;
+	private static final long		serialVersionUID	= 1L;
 
-	public BigDecimal getAmount() {
+	private Money					amount;
+
+	private Date					dateModified;
+
+	private PayGrade				grade;
+
+	private List<PayHistory>		history;
+
+	private List<PositionTypeRate>	positionTypeRates;
+
+	private int						sequence;
+
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
@@ -57,7 +59,7 @@ public class SalaryStep extends BasePersistentModel {
 		return sequence;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

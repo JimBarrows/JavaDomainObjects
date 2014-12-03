@@ -1,9 +1,9 @@
 package jdo.shipment.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.Lob;
@@ -13,6 +13,7 @@ import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.Party;
 import jdo.party.model.contactmechanism.ContactMechanism;
@@ -25,39 +26,40 @@ public class Shipment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private BigDecimal actualShipCost;
-	
-	private Date estimatedArrivalDate;
-	
-	private Date estimatedReadyDate;
-	
-	private BigDecimal estimatedShipCost;
-	
-	private Date estimatedShipDate;
-	
-	private String handlingInstructions;
-	
-	private ContactMechanism inquiredAboutVia;
-	
-	private List<ShipmentItem> items;
+	private Money					actualShipCost;
 
-	private Date lastUpdated;
-	
-	private Date latestCancelDate;
-	
-	private PostalAddress shippedFromContactMechanism;
-	
-	private Party shippedFromParty;
-	
-	private PostalAddress shippedToContactMechanism;
-	
-	private Party shippedToParty;
-	
-	private List<ShipmentStatus> statuses;
-	
-	public BigDecimal getActualShipCost() {
+	private Date					estimatedArrivalDate;
+
+	private Date					estimatedReadyDate;
+
+	private Money					estimatedShipCost;
+
+	private Date					estimatedShipDate;
+
+	private String					handlingInstructions;
+
+	private ContactMechanism		inquiredAboutVia;
+
+	private List<ShipmentItem>		items;
+
+	private Date					lastUpdated;
+
+	private Date					latestCancelDate;
+
+	private PostalAddress			shippedFromContactMechanism;
+
+	private Party					shippedFromParty;
+
+	private PostalAddress			shippedToContactMechanism;
+
+	private Party					shippedToParty;
+
+	private List<ShipmentStatus>	statuses;
+
+	@Embedded
+	public Money getActualShipCost() {
 		return actualShipCost;
 	}
 
@@ -71,7 +73,8 @@ public class Shipment extends BasePersistentModel {
 		return estimatedReadyDate;
 	}
 
-	public BigDecimal getEstimatedShipCost() {
+	@Embedded
+	public Money getEstimatedShipCost() {
 		return estimatedShipCost;
 	}
 
@@ -91,7 +94,7 @@ public class Shipment extends BasePersistentModel {
 	}
 
 	@OneToMany
-	@OrderBy(value="sequenceNumber")
+	@OrderBy(value = "sequenceNumber")
 	public List<ShipmentItem> getItems() {
 		return items;
 	}
@@ -127,12 +130,12 @@ public class Shipment extends BasePersistentModel {
 	}
 
 	@OneToMany
-	@OrderBy(value="statusDate")
+	@OrderBy(value = "statusDate")
 	public List<ShipmentStatus> getStatuses() {
 		return statuses;
 	}
 
-	public void setActualShipCost(BigDecimal actualShipCost) {
+	public void setActualShipCost(Money actualShipCost) {
 		this.actualShipCost = actualShipCost;
 	}
 
@@ -143,8 +146,8 @@ public class Shipment extends BasePersistentModel {
 	public void setEstimatedReadyDate(Date estimatedReadyDate) {
 		this.estimatedReadyDate = estimatedReadyDate;
 	}
-	
-	public void setEstimatedShipCost(BigDecimal estimatedShipCost) {
+
+	public void setEstimatedShipCost(Money estimatedShipCost) {
 		this.estimatedShipCost = estimatedShipCost;
 	}
 
@@ -172,8 +175,7 @@ public class Shipment extends BasePersistentModel {
 		this.latestCancelDate = latestCancelDate;
 	}
 
-	public void setShippedFromContactMechanism(
-			PostalAddress shippedFromContactMechanism) {
+	public void setShippedFromContactMechanism(PostalAddress shippedFromContactMechanism) {
 		this.shippedFromContactMechanism = shippedFromContactMechanism;
 	}
 
@@ -181,8 +183,7 @@ public class Shipment extends BasePersistentModel {
 		this.shippedFromParty = shippedFromParty;
 	}
 
-	public void setShippedToContactMechanism(
-			PostalAddress shippedToContactMechanism) {
+	public void setShippedToContactMechanism(PostalAddress shippedToContactMechanism) {
 		this.shippedToContactMechanism = shippedToContactMechanism;
 	}
 

@@ -10,9 +10,9 @@ import jdo.product.model.price.PriceComponent;
 @Entity
 public class AgreementPricingProgram extends AgreementItem {
 
-	private static final long serialVersionUID = 1L;
-	
-	private List<PriceComponent> priceComponents;
+	private static final long		serialVersionUID	= 1L;
+
+	private List<PriceComponent>	priceComponents;
 
 	@OneToMany
 	public List<PriceComponent> getPriceComponents() {

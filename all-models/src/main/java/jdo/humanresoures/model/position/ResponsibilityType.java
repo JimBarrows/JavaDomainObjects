@@ -13,9 +13,9 @@ public class ResponsibilityType extends BaseType {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private List<ValidResponsibility> usedToDefine;
+	private static final long			serialVersionUID	= 1L;
+
+	private List<ValidResponsibility>	usedToDefine;
 
 	@OneToMany
 	public List<ValidResponsibility> getUsedToDefine() {
@@ -25,6 +25,5 @@ public class ResponsibilityType extends BaseType {
 	public void setUsedToDefine(List<ValidResponsibility> usedToDefine) {
 		this.usedToDefine = usedToDefine;
 	}
-	
 
 }

@@ -9,12 +9,12 @@ import jdo.order.model.OrderItem;
 
 @Entity
 public class OrderRequirementCommitment extends BasePersistentModel {
-	
-	private static final long serialVersionUID = 1L;
-	
-	private int quantity = 1;
-	
-	private OrderItem usageOf;
+
+	private static final long	serialVersionUID	= 1L;
+
+	private int					quantity			= 1;
+
+	private OrderItem			usageOf;
 
 	@Min(1)
 	public int getQuantity() {

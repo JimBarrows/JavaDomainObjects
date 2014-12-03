@@ -2,7 +2,6 @@ package jdo.product.model.storage;
 
 import javax.validation.constraints.Min;
 
-
 /**
  * @author Jim
  * @version 1.0
@@ -13,10 +12,10 @@ public class NonSerializedInventoryItem extends InventoryItem {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	@Min(value=0)
-	private long quantityOnHand;
+	private static final long	serialVersionUID	= 1L;
+
+	@Min(value = 0)
+	private long				quantityOnHand;
 
 	public long getQuantityOnHand() {
 		return quantityOnHand;
@@ -25,6 +24,5 @@ public class NonSerializedInventoryItem extends InventoryItem {
 	public void setQuantityOnHand(long quantityOnHand) {
 		this.quantityOnHand = quantityOnHand;
 	}
-	
 
 }

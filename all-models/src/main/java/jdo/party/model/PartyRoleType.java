@@ -8,7 +8,7 @@ import jdo.model.BaseType;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class PartyRoleType extends BaseType{
+public class PartyRoleType extends BaseType {
 
 	public PartyRoleType(String description) {
 		super(description);
@@ -21,13 +21,11 @@ public class PartyRoleType extends BaseType{
 	public PartyRoleType(Long id, Long version, String description) {
 		super(id, version, description);
 	}
-	
-	
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	@Override
 	public String toString() {

@@ -15,19 +15,19 @@ public class EmploymentApplication extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Date applicationDate;
-	
-	private Position forPosition;
-	
-	private Person fromPerson;
-	
-	private Person referredBy;
-	
-	private EmploymnetApplicationSourceType source;
-	
-	private EmploymentApplicationStatusType status;
+	private static final long				serialVersionUID	= 1L;
+
+	private Date							applicationDate;
+
+	private Position						forPosition;
+
+	private Person							fromPerson;
+
+	private Person							referredBy;
+
+	private EmploymnetApplicationSourceType	source;
+
+	private EmploymentApplicationStatusType	status;
 
 	public Date getApplicationDate() {
 		return applicationDate;

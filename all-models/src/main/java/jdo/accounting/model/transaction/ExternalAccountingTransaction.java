@@ -10,11 +10,11 @@ public class ExternalAccountingTransaction extends AccountingTransaction {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Party partyFrom;
-	
-	private Party partyTo;
+	private static final long	serialVersionUID	= 1L;
+
+	private Party				partyFrom;
+
+	private Party				partyTo;
 
 	public Party getPartyFrom() {
 		return partyFrom;
@@ -31,5 +31,5 @@ public class ExternalAccountingTransaction extends AccountingTransaction {
 	public void setPartyTo(Party partyTo) {
 		this.partyTo = partyTo;
 	}
-	
+
 }

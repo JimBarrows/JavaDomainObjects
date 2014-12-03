@@ -16,18 +16,18 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:37 AM
  */
 @Entity
-public class QuantityBreak extends BasePersistentModel{
+public class QuantityBreak extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private List<PriceComponent> discountLevelDefinedFor = new ArrayList<PriceComponent>();
-		
-	private int fromQuantity;	
-	
-	private int thruQuantity;
+	private static final long		serialVersionUID		= 1L;
+
+	private List<PriceComponent>	discountLevelDefinedFor	= new ArrayList<PriceComponent>();
+
+	private int						fromQuantity;
+
+	private int						thruQuantity;
 
 	@OneToMany
 	public List<PriceComponent> getDiscountLevelDefinedFor() {
@@ -49,8 +49,7 @@ public class QuantityBreak extends BasePersistentModel{
 		return thruQuantity >= fromQuantity;
 	}
 
-	public void setDiscountLevelDefinedFor(
-			List<PriceComponent> discountLevelDefinedFor) {
+	public void setDiscountLevelDefinedFor(List<PriceComponent> discountLevelDefinedFor) {
 		this.discountLevelDefinedFor = discountLevelDefinedFor;
 	}
 

@@ -4,7 +4,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
 
-
 /**
  * @author Jim
  * @version 1.0
@@ -16,11 +15,11 @@ public class SerializedInventoryItem extends InventoryItem {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long	serialVersionUID	= 1L;
+
 	@NotNull
-	@Column(nullable=false, unique=true)
-	private String serialNumber;
+	@Column(nullable = false, unique = true)
+	private String				serialNumber;
 
 	public String getSerialNumber() {
 		return serialNumber;
@@ -30,5 +29,4 @@ public class SerializedInventoryItem extends InventoryItem {
 		this.serialNumber = serialNumber;
 	}
 
-	
 }

@@ -1,12 +1,11 @@
 package jdo.humanresoures.model.payroll;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.accounting.model.asset.PeriodType;
+import jdo.fields.Money;
 import jdo.invoice.model.payment.PaymentMethodType;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
@@ -24,7 +23,7 @@ public class PayrollPreference extends BasePersistentModel {
 
 	private String				bankName;
 
-	private BigDecimal			flatAmount;
+	private Money				flatAmount;
 
 	private PartyRole			forEmployee;
 
@@ -67,7 +66,8 @@ public class PayrollPreference extends BasePersistentModel {
 		return bankName;
 	}
 
-	public BigDecimal getFlatAmount() {
+	@Embedded
+	public Money getFlatAmount() {
 		return flatAmount;
 	}
 
@@ -104,7 +104,7 @@ public class PayrollPreference extends BasePersistentModel {
 		this.bankName = bankName;
 	}
 
-	public void setFlatAmount(BigDecimal flatAmount) {
+	public void setFlatAmount(Money flatAmount) {
 		this.flatAmount = flatAmount;
 	}
 

@@ -13,9 +13,9 @@ public class RejectionReason extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String description;
+	private static final long	serialVersionUID	= 1L;
+
+	private String				description;
 
 	@Lob
 	@NotEmpty

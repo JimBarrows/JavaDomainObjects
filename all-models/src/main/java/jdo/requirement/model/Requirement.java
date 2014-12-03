@@ -1,10 +1,10 @@
 package jdo.requirement.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -15,6 +15,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import jdo.budget.model.RequirementBudgetAllocation;
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.facility.Facility;
 
@@ -25,39 +26,40 @@ public class Requirement extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long					serialVersionUID	= 1L;
 
-	private List<OrderRequirementCommitment> commitmentOf;
+	private List<OrderRequirementCommitment>	commitmentOf;
 
-	private Date creationDate;
+	private Date								creationDate;
 
-	private String description;
+	private String								description;
 
-	private BigDecimal estimatedBudget;
+	private Money								estimatedBudget;
 
-	private Facility neededAt;
+	private Facility							neededAt;
 
-	private int quantity;
+	private int									quantity;
 
-	private String reason;
+	private String								reason;
 
-	private Date requiredBy;
+	private Date								requiredBy;
 
-	private List<RequirementStatus> status = new ArrayList<RequirementStatus>();
+	private List<RequirementStatus>				status				= new ArrayList<RequirementStatus>();
 
-	private List<Requirement> subRequirements = new ArrayList<Requirement>();
+	private List<Requirement>					subRequirements		= new ArrayList<Requirement>();
 
-	private List<RequirementBudgetAllocation> allocatedVia = new ArrayList<RequirementBudgetAllocation>();
+	private List<RequirementBudgetAllocation>	allocatedVia		= new ArrayList<RequirementBudgetAllocation>();
 
-    @OneToMany
-    public List<RequirementBudgetAllocation> getAllocatedVia() {
-        return allocatedVia;
-    }
+	@OneToMany
+	public List<RequirementBudgetAllocation> getAllocatedVia() {
+		return allocatedVia;
+	}
 
-    public void setAllocatedVia(List<RequirementBudgetAllocation> allocatedVia) {
-        this.allocatedVia = allocatedVia;
-    }
-    @OneToMany
+	public void setAllocatedVia(List<RequirementBudgetAllocation> allocatedVia) {
+		this.allocatedVia = allocatedVia;
+	}
+
+	@OneToMany
 	public List<OrderRequirementCommitment> getCommitmentOf() {
 		return commitmentOf;
 	}
@@ -72,7 +74,8 @@ public class Requirement extends BasePersistentModel {
 		return description;
 	}
 
-	public BigDecimal getEstimatedBudget() {
+	@Embedded
+	public Money getEstimatedBudget() {
 		return estimatedBudget;
 	}
 
@@ -117,7 +120,7 @@ public class Requirement extends BasePersistentModel {
 		this.description = description;
 	}
 
-	public void setEstimatedBudget(final BigDecimal estimatedBudget) {
+	public void setEstimatedBudget(final Money estimatedBudget) {
 		this.estimatedBudget = estimatedBudget;
 	}
 

@@ -1,12 +1,12 @@
 package jdo.invoice.model.billing;
 
-import java.math.BigDecimal;
-
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import jdo.fields.Money;
 import jdo.invoice.model.InvoiceItem;
 import jdo.model.BasePersistentModel;
 import jdo.order.model.OrderItem;
@@ -17,17 +17,18 @@ public class OrderItemBilling extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private BigDecimal amount;
-	
-	private InvoiceItem billingFor;
-	
-	private int quantity;
-	
-	private OrderItem quantityOf;
+	private static final long	serialVersionUID	= 1L;
 
-	public BigDecimal getAmount() {
+	private Money				amount;
+
+	private InvoiceItem			billingFor;
+
+	private int					quantity;
+
+	private OrderItem			quantityOf;
+
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
@@ -48,7 +49,7 @@ public class OrderItemBilling extends BasePersistentModel {
 		return quantityOf;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

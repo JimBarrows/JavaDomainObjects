@@ -1,10 +1,10 @@
 package jdo.invoice.model.payment;
 
-import java.math.BigDecimal;
-
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.Money;
 import jdo.invoice.model.InvoiceItem;
 import jdo.invoice.model.billingaccount.BillingAccount;
 import jdo.model.BasePersistentModel;
@@ -15,15 +15,16 @@ public class PaymentApplication extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private BigDecimal amountApplied;
-	
-	private BillingAccount appliedToAccount;
-	
-	private InvoiceItem appliedToItem;
+	private static final long	serialVersionUID	= 1L;
 
-	public BigDecimal getAmountApplied() {
+	private Money				amountApplied;
+
+	private BillingAccount		appliedToAccount;
+
+	private InvoiceItem			appliedToItem;
+
+	@Embedded
+	public Money getAmountApplied() {
 		return amountApplied;
 	}
 
@@ -37,7 +38,7 @@ public class PaymentApplication extends BasePersistentModel {
 		return appliedToItem;
 	}
 
-	public void setAmountApplied(BigDecimal amountApplied) {
+	public void setAmountApplied(Money amountApplied) {
 		this.amountApplied = amountApplied;
 	}
 

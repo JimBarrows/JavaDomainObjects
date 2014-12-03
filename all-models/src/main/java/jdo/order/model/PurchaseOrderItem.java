@@ -21,13 +21,13 @@ public class PurchaseOrderItem extends OrderItem {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private PartyRole designatedShipTo;
-	
-	private ContactMechanism shipToMechanism;
-	
-	private List<SalesOrderItem> usedToFillfill = new ArrayList<SalesOrderItem>();
+	private PartyRole				designatedShipTo;
+
+	private ContactMechanism		shipToMechanism;
+
+	private List<SalesOrderItem>	usedToFillfill		= new ArrayList<SalesOrderItem>();
 
 	@ManyToOne
 	public PartyRole getDesignatedShipTo() {

@@ -8,9 +8,10 @@ import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
 
-
-/**Every persistent model needs to have an id and version field, this just keeps me from typing it all the time.
- * Also provides basic equality and hashcode.
+/**
+ * Every persistent model needs to have an id and version field, this just keeps
+ * me from typing it all the time. Also provides basic equality and hashcode.
+ * 
  * @author jimbarrows
  *
  */
@@ -20,14 +21,14 @@ public abstract class BasePersistentModel implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	protected Long id;
+	protected Long				id;
 
-	protected Long version = 0l;
+	protected Long				version				= 0l;
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Long getId() {
 		return id;
 	}

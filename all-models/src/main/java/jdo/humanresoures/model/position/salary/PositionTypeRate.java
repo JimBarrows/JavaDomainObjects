@@ -1,12 +1,11 @@
 package jdo.humanresoures.model.position.salary;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.accounting.model.asset.PeriodType;
+import jdo.fields.Money;
 import jdo.humanresoures.model.position.type.PositionType;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
@@ -27,7 +26,7 @@ public class PositionTypeRate extends BasePersistentModel {
 
 	private RateType			forRateType;
 
-	private BigDecimal			rate;
+	private Money				rate;
 
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
@@ -59,7 +58,8 @@ public class PositionTypeRate extends BasePersistentModel {
 		return forRateType;
 	}
 
-	public BigDecimal getRate() {
+	@Embedded
+	public Money getRate() {
 		return rate;
 	}
 
@@ -79,7 +79,7 @@ public class PositionTypeRate extends BasePersistentModel {
 		this.forRateType = forRateType;
 	}
 
-	public void setRate(BigDecimal rate) {
+	public void setRate(Money rate) {
 		this.rate = rate;
 	}
 

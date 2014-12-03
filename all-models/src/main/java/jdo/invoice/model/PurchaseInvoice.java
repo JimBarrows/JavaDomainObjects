@@ -8,6 +8,6 @@ public class PurchaseInvoice extends Invoice {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 }

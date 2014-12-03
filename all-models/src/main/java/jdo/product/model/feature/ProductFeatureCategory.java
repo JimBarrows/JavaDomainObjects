@@ -26,13 +26,13 @@ public class ProductFeatureCategory extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private List<ProductFeature> categoryFor;
+	private List<ProductFeature>	categoryFor;
 
-	private String description;
-	
-	private String name;
+	private String					description;
+
+	private String					name;
 
 	@OneToMany
 	public List<ProductFeature> getCategoryFor() {

@@ -4,8 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
- 
-
+import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 
@@ -16,21 +15,18 @@ import jdo.model.BasePersistentModel;
  * @see Data Model Resource Book Volume 1 Figure 3.4, page 77
  */
 @Entity
-public class UnitOfMeasureConversion extends BasePersistentModel{
+public class UnitOfMeasureConversion extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	
-	private String conversionFactor;
-	
-	
-	private UnitOfMeasure fromUom;
-	
-	
-	private UnitOfMeasure in;
+	private String				conversionFactor;
+
+	private UnitOfMeasure		fromUom;
+
+	private UnitOfMeasure		in;
 
 	@NotNull
 	public String getConversionFactor() {
@@ -43,7 +39,7 @@ public class UnitOfMeasureConversion extends BasePersistentModel{
 	}
 
 	@ManyToOne
-	@JoinColumn(name="inUnitOfMeasure")
+	@JoinColumn(name = "inUnitOfMeasure")
 	public UnitOfMeasure getIn() {
 		return in;
 	}
@@ -60,5 +56,4 @@ public class UnitOfMeasureConversion extends BasePersistentModel{
 		this.in = in;
 	}
 
-	
 }

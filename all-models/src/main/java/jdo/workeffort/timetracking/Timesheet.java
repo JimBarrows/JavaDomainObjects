@@ -17,15 +17,15 @@ public class Timesheet extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private List<TimeEntry> entries;
-	
-	private PartyRole hoursFor;
-	
-	private List<TimesheetRole> involving;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	private List<TimeEntry>		entries;
+
+	private PartyRole			hoursFor;
+
+	private List<TimesheetRole>	involving;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {
@@ -62,5 +62,5 @@ public class Timesheet extends BasePersistentModel {
 	public void setInvolving(List<TimesheetRole> involving) {
 		this.involving = involving;
 	}
-	
+
 }

@@ -10,9 +10,9 @@ public class InternalAccountingTransaction extends AccountingTransaction {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private PartyRole transactionFrom;
+	private static final long	serialVersionUID	= 1L;
+
+	private PartyRole			transactionFrom;
 
 	public PartyRole getTransactionFrom() {
 		return transactionFrom;

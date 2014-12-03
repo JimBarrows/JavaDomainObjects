@@ -12,21 +12,21 @@ import jdo.budget.model.GlBudgetXref;
 import jdo.model.BasePersistentModel;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class GeneralLedgerAccount extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;	
-	
-	private List<OrganizationGlAccount> associatedWith =new ArrayList<OrganizationGlAccount>();
-		
-	private List<GlBudgetXref> budgetLineItems;
+	private static final long			serialVersionUID	= 1L;
 
-	private String description;
-	
-	private String name;
+	private List<OrganizationGlAccount>	associatedWith		= new ArrayList<OrganizationGlAccount>();
+
+	private List<GlBudgetXref>			budgetLineItems;
+
+	private String						description;
+
+	private String						name;
 
 	@OneToMany
 	public List<OrganizationGlAccount> getAssociatedWith() {

@@ -8,6 +8,6 @@ public class ReceiptAccountingTransaction extends PaymentAccountingTransaction {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 }

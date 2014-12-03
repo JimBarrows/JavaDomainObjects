@@ -1,9 +1,9 @@
 package jdo.quote.model;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
@@ -12,6 +12,7 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.order.model.OrderItem;
 import jdo.product.model.Product;
@@ -23,27 +24,27 @@ public class QuoteItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private String comment;
-	
-	private Date estimatedDeliveryDate;
-	
-	private List<OrderItem> orderItems;
-	
-	private Quote partOf;
-	
-	private Product product;
-	
-	private int quantity;
-	
-	private RequestItem responseTo;
-	
-	private int sequenceId;
-	
-	private List<QuoteTerm> terms;
-	
-	private BigDecimal unitPrice;
+	private String				comment;
+
+	private Date				estimatedDeliveryDate;
+
+	private List<OrderItem>		orderItems;
+
+	private Quote				partOf;
+
+	private Product				product;
+
+	private int					quantity;
+
+	private RequestItem			responseTo;
+
+	private int					sequenceId;
+
+	private List<QuoteTerm>		terms;
+
+	private Money				unitPrice;
 
 	@Lob
 	public String getComment() {
@@ -90,7 +91,8 @@ public class QuoteItem extends BasePersistentModel {
 		return terms;
 	}
 
-	public BigDecimal getUnitPrice() {
+	@Embedded
+	public Money getUnitPrice() {
 		return unitPrice;
 	}
 
@@ -130,9 +132,8 @@ public class QuoteItem extends BasePersistentModel {
 		this.terms = terms;
 	}
 
-	public void setUnitPrice(BigDecimal unitPrice) {
+	public void setUnitPrice(Money unitPrice) {
 		this.unitPrice = unitPrice;
 	}
-	
-	
+
 }

@@ -15,13 +15,13 @@ public class TimeEntry extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String comment;
-	
-	private WorkEffort timeSpendOn;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	private static final long	serialVersionUID	= 1L;
+
+	private String				comment;
+
+	private WorkEffort			timeSpendOn;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {

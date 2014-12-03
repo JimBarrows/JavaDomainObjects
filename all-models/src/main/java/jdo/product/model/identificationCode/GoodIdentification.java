@@ -6,8 +6,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
- 
-
+import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.product.model.Good;
@@ -15,7 +14,7 @@ import jdo.product.model.Good;
 /**
  * 
  * @author Jim.Barrows
- *@see Data Model Resource Book Volume 1 Figure 3.3, page 75
+ * @see Data Model Resource Book Volume 1 Figure 3.3, page 75
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
@@ -24,13 +23,13 @@ public class GoodIdentification extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private IdentificationType definedAs;
+	private IdentificationType	definedAs;
 
-	private Good identifierFor;
+	private Good				identifierFor;
 
-	private String idValue;
+	private String				idValue;
 
 	@ManyToOne
 	public IdentificationType getDefinedAs() {

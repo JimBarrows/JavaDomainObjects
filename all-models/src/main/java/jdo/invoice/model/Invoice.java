@@ -22,33 +22,33 @@ public class Invoice extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private ContactMechanism addressedTo;
-	
-	private Party billedFrom;
-	
-	private BillingAccount billedToAccount;
-	
-	private Party billedToParty;
-	
-	private List<InvoiceItem> composedOf;
-		
-	private String description;
-		
-	private Date invoiceDate;
-	
-	private List<InvoiceRole> involving;
-		
-	private String message;
-	
-	private ContactMechanism sentFrom;
-	
-	private List<InvoiceTerm> terms;
-	
-//	@OneToOne
-//	private SalesAccountingTransaction postedVia;
-	
+	private ContactMechanism	addressedTo;
+
+	private Party				billedFrom;
+
+	private BillingAccount		billedToAccount;
+
+	private Party				billedToParty;
+
+	private List<InvoiceItem>	composedOf;
+
+	private String				description;
+
+	private Date				invoiceDate;
+
+	private List<InvoiceRole>	involving;
+
+	private String				message;
+
+	private ContactMechanism	sentFrom;
+
+	private List<InvoiceTerm>	terms;
+
+	// @OneToOne
+	// private SalesAccountingTransaction postedVia;
+
 	@AssertTrue
 	public boolean billedToPartyXorAccount() {
 		return (billedToParty != null) ^ (billedToAccount != null);
@@ -153,11 +153,11 @@ public class Invoice extends BasePersistentModel {
 		this.terms = terms;
 	}
 
-//	public SalesAccountingTransaction getPostedVia() {
-//		return postedVia;
-//	}
-//
-//	public void setPostedVia(SalesAccountingTransaction postedVia) {
-//		this.postedVia = postedVia;
-//	}
+	// public SalesAccountingTransaction getPostedVia() {
+	// return postedVia;
+	// }
+	//
+	// public void setPostedVia(SalesAccountingTransaction postedVia) {
+	// this.postedVia = postedVia;
+	// }
 }

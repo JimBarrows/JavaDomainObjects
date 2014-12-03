@@ -28,7 +28,7 @@ public class ProductComplement extends BasePersistentModel {
 
 	@ManyToOne
 	private Product				complementFor;
-	
+
 	@NotNull
 	private String				reason;
 

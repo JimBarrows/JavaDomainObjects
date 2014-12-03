@@ -18,17 +18,17 @@ public class ItemIssuance extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private PicklistItem issuedAccordingTo;
-	
-	private ShipmentItem issuedFor;
-	
-	private InventoryItem issuedFrom;
-	
-	private Date issuedOn;
-	
-	private int quantity;
+	private PicklistItem		issuedAccordingTo;
+
+	private ShipmentItem		issuedFor;
+
+	private InventoryItem		issuedFrom;
+
+	private Date				issuedOn;
+
+	private int					quantity;
 
 	@ManyToOne
 	public PicklistItem getIssuedAccordingTo() {

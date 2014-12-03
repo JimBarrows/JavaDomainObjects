@@ -14,15 +14,15 @@ public class FinancialAccount extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String name;
-	
-	private List<FinancialAccountRole> ownedBy;
-	
-	private List<FinancialAccountTransaction> transactions;
-	
-	private FinancialAccountType type;
+	private static final long					serialVersionUID	= 1L;
+
+	private String								name;
+
+	private List<FinancialAccountRole>			ownedBy;
+
+	private List<FinancialAccountTransaction>	transactions;
+
+	private FinancialAccountType				type;
 
 	public String getName() {
 		return name;

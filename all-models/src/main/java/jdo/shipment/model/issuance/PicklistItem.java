@@ -16,15 +16,15 @@ public class PicklistItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private List<ItemIssuance> issueList;
-	
-	private PickList partOf;
-	
-	private InventoryItem pickedFrom;
-	
-	private int quantity;
+	private List<ItemIssuance>	issueList;
+
+	private PickList			partOf;
+
+	private InventoryItem		pickedFrom;
+
+	private int					quantity;
 
 	@OneToMany
 	public List<ItemIssuance> getIssueList() {

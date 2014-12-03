@@ -6,8 +6,8 @@ public class CustomerSpecification implements Specification<Party> {
 
 	@Override
 	public boolean isSatisifiedBy(Party entity) {
-		if( entity.)
-		return false;
+		
+		return true;
 	}
 
 }

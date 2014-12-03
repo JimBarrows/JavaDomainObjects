@@ -14,8 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.NotNull;
- 
-
+import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.product.model.category.ProductCategoryClassification;
@@ -45,62 +44,62 @@ public class Product extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long					serialVersionUID	= 1L;
 
-	private List<ProductObsolescence> aReplacement = new ArrayList<ProductObsolescence>();
+	private List<ProductObsolescence>			aReplacement		= new ArrayList<ProductObsolescence>();
 
-	private List<ProductCategoryClassification> categorizedBy = new ArrayList<ProductCategoryClassification>();
+	private List<ProductCategoryClassification>	categorizedBy		= new ArrayList<ProductCategoryClassification>();
 
 	/**
 	 * Descriptions and/or notes about the product.
 	 * 
 	 */
-	private String comment;
+	private String								comment;
 
-	private List<ProductComplement> complimentedWith = new ArrayList<ProductComplement>();
+	private List<ProductComplement>				complimentedWith	= new ArrayList<ProductComplement>();
 
-	private List<ProductComplement> complimentFor = new ArrayList<ProductComplement>();
+	private List<ProductComplement>				complimentFor		= new ArrayList<ProductComplement>();
 
-	private List<EstimatedProductCost> costedBy = new ArrayList<EstimatedProductCost>();
+	private List<EstimatedProductCost>			costedBy			= new ArrayList<EstimatedProductCost>();
 
-	private List<ProductIncompatibility> incompatibleWith = new ArrayList<ProductIncompatibility>();
+	private List<ProductIncompatibility>		incompatibleWith	= new ArrayList<ProductIncompatibility>();
 
 	/**
 	 * The date the product was first available to be sold.
 	 * 
 	 */
-	private Date introductionDate;
+	private Date								introductionDate;
 
-	private List<ProductComponent> madeUpOf = new ArrayList<ProductComponent>();
+	private List<ProductComponent>				madeUpOf			= new ArrayList<ProductComponent>();
 
-	private UnitOfMeasure measuredUsing;
+	private UnitOfMeasure						measuredUsing;
 
-	private String name;
+	private String								name;
 
-	private List<PriceComponent> pricedBy = new ArrayList<PriceComponent>();
+	private List<PriceComponent>				pricedBy			= new ArrayList<PriceComponent>();
 
 	/**
 	 * When the product will not be sold any more.
 	 * 
 	 */
-	private Date salesDiscontinuationDate;
+	private Date								salesDiscontinuationDate;
 
-	private List<ProductSubstitute> substitutedBy = new ArrayList<ProductSubstitute>();
+	private List<ProductSubstitute>				substitutedBy		= new ArrayList<ProductSubstitute>();
 
-	private List<ProductObsolescence> supercededBy = new ArrayList<ProductObsolescence>();
+	private List<ProductObsolescence>			supercededBy		= new ArrayList<ProductObsolescence>();
 
 	/**
 	 * The date on which the product will no longer be supported by the
 	 * enterprise.
 	 * 
 	 */
-	private Date supportDiscontinuationDate;
+	private Date								supportDiscontinuationDate;
 
-	private List<ProductSubstitute> usedAs = new ArrayList<ProductSubstitute>();
+	private List<ProductSubstitute>				usedAs				= new ArrayList<ProductSubstitute>();
 
-	private List<ProductComponent> usedIn = new ArrayList<ProductComponent>();
+	private List<ProductComponent>				usedIn				= new ArrayList<ProductComponent>();
 
-	private List<ProductFeatureInteraction> usedToDefine = new ArrayList<ProductFeatureInteraction>();
+	private List<ProductFeatureInteraction>		usedToDefine		= new ArrayList<ProductFeatureInteraction>();
 
 	@OneToMany
 	public List<ProductObsolescence> getAReplacement() {
@@ -202,8 +201,7 @@ public class Product extends BasePersistentModel {
 		aReplacement = replacement;
 	}
 
-	public void setCategorizedBy(
-			List<ProductCategoryClassification> categorizedBy) {
+	public void setCategorizedBy(List<ProductCategoryClassification> categorizedBy) {
 		this.categorizedBy = categorizedBy;
 	}
 
@@ -223,8 +221,7 @@ public class Product extends BasePersistentModel {
 		this.costedBy = costedBy;
 	}
 
-	public void setIncompatibleWith(
-			List<ProductIncompatibility> incompatibleWith) {
+	public void setIncompatibleWith(List<ProductIncompatibility> incompatibleWith) {
 		this.incompatibleWith = incompatibleWith;
 	}
 

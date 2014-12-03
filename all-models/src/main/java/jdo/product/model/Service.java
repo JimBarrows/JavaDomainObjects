@@ -1,7 +1,7 @@
 package jdo.product.model;
 
 import javax.persistence.Entity;
- 
+import javax.xml.crypto.Data;
 
 /**
  * @author Jim
@@ -16,6 +16,6 @@ public class Service extends Product {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 }

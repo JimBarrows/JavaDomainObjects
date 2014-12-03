@@ -27,17 +27,17 @@ public class AccountingTransaction extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long			serialVersionUID	= 1L;
 
-	private List<TransactionDetail> composedOf = new ArrayList<TransactionDetail>();
+	private List<TransactionDetail>		composedOf			= new ArrayList<TransactionDetail>();
 
-	private AccountingTransactionType describedBy;
+	private AccountingTransactionType	describedBy;
 
-	private String description;
+	private String						description;
 
-	private Date entryDate;
+	private Date						entryDate;
 
-	private Date transactionDate;
+	private Date						transactionDate;
 
 	@OneToMany
 	public List<TransactionDetail> getComposedOf() {

@@ -14,13 +14,13 @@ public class WorkEfforAssociation extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private WorkEffort associatedFrom;
-	
-	private WorkEffort associatedTo;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	private static final long	serialVersionUID	= 1L;
+
+	private WorkEffort			associatedFrom;
+
+	private WorkEffort			associatedTo;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {

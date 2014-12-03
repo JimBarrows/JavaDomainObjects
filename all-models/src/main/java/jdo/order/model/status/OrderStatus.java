@@ -19,22 +19,21 @@ public class OrderStatus extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private OrderStatusType describedBy;
+	private static final long	serialVersionUID	= 1L;
 
-	private OrderItem statusForItem;
+	private OrderStatusType		describedBy;
 
-	private Order statusForOrder;
-	
-	private Date statusOn;
+	private OrderItem			statusForItem;
+
+	private Order				statusForOrder;
+
+	private Date				statusOn;
 
 	@NotNull
 	@ManyToOne
 	public OrderStatusType getDescribedBy() {
 		return describedBy;
 	}
-
 
 	@ManyToOne
 	public OrderItem getStatusForItem() {
@@ -54,8 +53,7 @@ public class OrderStatus extends BasePersistentModel {
 
 	@AssertTrue
 	public boolean onlyOrderOrItemSet() {
-		return ( 	((statusForItem == null) && (statusForOrder !=null)) 
-				|| 	((statusForItem != null) && (statusForOrder ==null)));
+		return (((statusForItem == null) && (statusForOrder != null)) || ((statusForItem != null) && (statusForOrder == null)));
 	}
 
 	public void setDescribedBy(OrderStatusType describedBy) {
@@ -69,7 +67,6 @@ public class OrderStatus extends BasePersistentModel {
 	public void setStatusForOrder(Order conditionForOrder) {
 		this.statusForOrder = conditionForOrder;
 	}
-
 
 	public void setStatusOn(Date statusOn) {
 		this.statusOn = statusOn;

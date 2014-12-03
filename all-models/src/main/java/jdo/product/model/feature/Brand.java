@@ -1,7 +1,7 @@
 package jdo.product.model.feature;
 
 import javax.persistence.Entity;
- 
+import javax.xml.crypto.Data;
 
 /**
  * 
@@ -14,6 +14,6 @@ public class Brand extends ProductFeature {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 }

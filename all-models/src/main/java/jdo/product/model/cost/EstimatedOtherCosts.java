@@ -2,7 +2,6 @@ package jdo.product.model.cost;
 
 import javax.persistence.Entity;
 
-
 /**
  * @author Jim
  * @version 1.0
@@ -14,7 +13,6 @@ public class EstimatedOtherCosts extends EstimatedProductCost {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	
 }

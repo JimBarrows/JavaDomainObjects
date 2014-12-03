@@ -8,8 +8,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
- 
-
+import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.product.model.Product;
@@ -21,27 +20,23 @@ import jdo.product.model.Product;
  * @see Data Model Resource Book Volume 1 Figure 3.4, page 77
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class UnitOfMeasure extends BasePersistentModel{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class UnitOfMeasure extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long				serialVersionUID	= 1L;
 
-	private String abbreviation;
-	
-	
-	private List<UnitOfMeasureConversion> convertedFrom;
-	
-	
-	private List<UnitOfMeasureConversion> convertedTo;
-	
-	
-	private String description;
-	
-	
-	private List<Product> usedIn;
+	private String							abbreviation;
+
+	private List<UnitOfMeasureConversion>	convertedFrom;
+
+	private List<UnitOfMeasureConversion>	convertedTo;
+
+	private String							description;
+
+	private List<Product>					usedIn;
 
 	public String getAbbreviation() {
 		return abbreviation;
@@ -63,7 +58,7 @@ public class UnitOfMeasure extends BasePersistentModel{
 		return description;
 	}
 
-	@OneToMany(mappedBy="measuredUsing")
+	@OneToMany(mappedBy = "measuredUsing")
 	public List<Product> getUsedIn() {
 		return usedIn;
 	}
@@ -87,6 +82,5 @@ public class UnitOfMeasure extends BasePersistentModel{
 	public void setUsedIn(List<Product> usedIn) {
 		this.usedIn = usedIn;
 	}
-
 
 }

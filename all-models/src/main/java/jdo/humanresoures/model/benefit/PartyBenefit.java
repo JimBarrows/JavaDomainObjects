@@ -1,12 +1,11 @@
 package jdo.humanresoures.model.benefit;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.accounting.model.asset.PeriodType;
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.relationship.Employment;
@@ -25,7 +24,7 @@ public class PartyBenefit extends BasePersistentModel {
 
 	private Employment			benefitFor;
 
-	private BigDecimal			cost;
+	private Money				cost;
 
 	private PeriodType			period;
 
@@ -55,7 +54,8 @@ public class PartyBenefit extends BasePersistentModel {
 		return benefitFor;
 	}
 
-	public BigDecimal getCost() {
+	@Embedded
+	public Money getCost() {
 		return cost;
 	}
 
@@ -80,7 +80,7 @@ public class PartyBenefit extends BasePersistentModel {
 		this.benefitFor = benefitFor;
 	}
 
-	public void setCost(BigDecimal cost) {
+	public void setCost(Money cost) {
 		this.cost = cost;
 	}
 

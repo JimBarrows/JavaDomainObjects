@@ -1,10 +1,10 @@
 package jdo.order.model;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -16,6 +16,7 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.order.model.status.OrderStatus;
 import jdo.order.model.terms.OrderTerm;
@@ -34,35 +35,35 @@ public class OrderItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long				serialVersionUID	= 1L;
 
-	private String comment;
+	private String							comment;
 
-	private Date estimatedDeliveryDate;
+	private Date							estimatedDeliveryDate;
 
-	private ProductFeature forFeature;
+	private ProductFeature					forFeature;
 
-	private Product forProduct;
+	private Product							forProduct;
 
-	private List<OrderItemContactMechanism> having;
+	private List<OrderItemContactMechanism>	having;
 
-	private List<OrderItemRole> involving;
+	private List<OrderItemRole>				involving;
 
-	private String itemDescription;
+	private String							itemDescription;
 
-	private OrderItem orderedWith;
+	private OrderItem						orderedWith;
 
-	private long orderItemSeqId;
+	private long							orderItemSeqId;
 
-	private int quantity;
+	private int								quantity;
 
-	private String shippingInstructions;
+	private String							shippingInstructions;
 
-	private List<OrderStatus> stateOf = new ArrayList<OrderStatus>();
-	
-	private List<OrderTerm> subjectTo = new ArrayList<OrderTerm>();
-	
-	private BigDecimal unitPrice;
+	private List<OrderStatus>				stateOf				= new ArrayList<OrderStatus>();
+
+	private List<OrderTerm>					subjectTo			= new ArrayList<OrderTerm>();
+
+	private Money							unitPrice;
 
 	public String getComment() {
 		return comment;
@@ -130,7 +131,8 @@ public class OrderItem extends BasePersistentModel {
 		return subjectTo;
 	}
 
-	public BigDecimal getUnitPrice() {
+	@Embedded
+	public Money getUnitPrice() {
 		return unitPrice;
 	}
 
@@ -186,7 +188,7 @@ public class OrderItem extends BasePersistentModel {
 		this.subjectTo = subjectTo;
 	}
 
-	public void setUnitPrice(BigDecimal unitPrice) {
+	public void setUnitPrice(Money unitPrice) {
 		this.unitPrice = unitPrice;
 	}
 

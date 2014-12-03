@@ -12,11 +12,11 @@ public class Resume extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Date dateReceived;
-	
-	private String text;
+	private static final long	serialVersionUID	= 1L;
+
+	private Date				dateReceived;
+
+	private String				text;
 
 	public Date getDateReceived() {
 		return dateReceived;

@@ -14,17 +14,17 @@ public class PartySkill extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Party heldBy;
-	
-	private int skillLevel;
-	
-	private Date startedUsing;
-	
-	private SkillType type;
-	
-	private int yearsOfExperience;
+	private static final long	serialVersionUID	= 1L;
+
+	private Party				heldBy;
+
+	private int					skillLevel;
+
+	private Date				startedUsing;
+
+	private SkillType			type;
+
+	private int					yearsOfExperience;
 
 	public Party getHeldBy() {
 		return heldBy;

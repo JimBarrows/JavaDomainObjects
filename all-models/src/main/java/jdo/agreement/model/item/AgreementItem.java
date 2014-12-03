@@ -21,25 +21,25 @@ public class AgreementItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long			serialVersionUID	= 1L;
 
-	private List<Addendum> addendums;
-	
-	private List<AgreementItem> composedOf;
-	
-	private List<GeographicBoundary> geographicBoundaries;
-	
-	private String image;
-	
-	private List<Organization> organizations;
-	
-	private Agreement partOf;
-	
-	private List<Product> products;
-	
-	private int sequenceId;
-	
-	private String text;
+	private List<Addendum>				addendums;
+
+	private List<AgreementItem>			composedOf;
+
+	private List<GeographicBoundary>	geographicBoundaries;
+
+	private String						image;
+
+	private List<Organization>			organizations;
+
+	private Agreement					partOf;
+
+	private List<Product>				products;
+
+	private int							sequenceId;
+
+	private String						text;
 
 	@OneToMany
 	public List<Addendum> getAddendums() {
@@ -93,8 +93,7 @@ public class AgreementItem extends BasePersistentModel {
 		this.composedOf = composedOf;
 	}
 
-	public void setGeographicBoundaries(
-			List<GeographicBoundary> geographicBoundaries) {
+	public void setGeographicBoundaries(List<GeographicBoundary> geographicBoundaries) {
 		this.geographicBoundaries = geographicBoundaries;
 	}
 
@@ -121,6 +120,5 @@ public class AgreementItem extends BasePersistentModel {
 	public void setText(String text) {
 		this.text = text;
 	}
-	
-	
+
 }

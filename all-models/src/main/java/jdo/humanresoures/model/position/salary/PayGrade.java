@@ -13,13 +13,13 @@ public class PayGrade extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String comment;
-	
-	private String name;
-	
-	private List<SalaryStep> steps;
+	private static final long	serialVersionUID	= 1L;
+
+	private String				comment;
+
+	private String				name;
+
+	private List<SalaryStep>	steps;
 
 	public String getComment() {
 		return comment;

@@ -24,30 +24,30 @@ import jdo.party.model.relationship.PartyRelationship;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Agreement extends BasePersistentModel {
 
-	private static final long serialVersionUID = 1L;
-	
-	private List<Addendum> addendums;
-	
-	private PartyRelationship associatedWith;
-	
-	private Date date;
-	
-	private String description;
-	
-	private List<GeographicBoundary> geographicalApplicability;
-	
-	private List<AgreementItem> items;
-	
-	private List<AgreementRole> roles;
-	
-	private List<AgreementTerm> terms;
-	
-	private String text;
-	
-	private AgreementType type;
+	private static final long			serialVersionUID	= 1L;
+
+	private List<Addendum>				addendums;
+
+	private PartyRelationship			associatedWith;
+
+	private Date						date;
+
+	private String						description;
+
+	private List<GeographicBoundary>	geographicalApplicability;
+
+	private List<AgreementItem>			items;
+
+	private List<AgreementRole>			roles;
+
+	private List<AgreementTerm>			terms;
+
+	private String						text;
+
+	private AgreementType				type;
 
 	private DateTimeRange				dateTimeRange		= new DateTimeRange();
 
@@ -59,7 +59,7 @@ public class Agreement extends BasePersistentModel {
 	public void setDateTimeRange(DateTimeRange dateTimeRange) {
 		this.dateTimeRange = dateTimeRange;
 	}
-	
+
 	@OneToMany
 	public List<Addendum> getAddendums() {
 		return addendums;
@@ -70,7 +70,7 @@ public class Agreement extends BasePersistentModel {
 		return associatedWith;
 	}
 
-	@Column(name="agreementDate")
+	@Column(name = "agreementDate")
 	public Date getDate() {
 		return date;
 	}
@@ -86,7 +86,7 @@ public class Agreement extends BasePersistentModel {
 	}
 
 	@OneToMany
-	@OrderBy(value="sequenceId")
+	@OrderBy(value = "sequenceId")
 	public List<AgreementItem> getItems() {
 		return items;
 	}
@@ -128,8 +128,7 @@ public class Agreement extends BasePersistentModel {
 		this.description = description;
 	}
 
-	public void setGeographicalApplicability(
-			List<GeographicBoundary> geographicalApplicability) {
+	public void setGeographicalApplicability(List<GeographicBoundary> geographicalApplicability) {
 		this.geographicalApplicability = geographicalApplicability;
 	}
 

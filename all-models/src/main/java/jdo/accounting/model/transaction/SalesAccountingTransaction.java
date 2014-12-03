@@ -11,10 +11,10 @@ public class SalesAccountingTransaction extends ObligationAccountingTransaction 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	@OneToOne
-	private Invoice orignatedFrom;
+	private Invoice				orignatedFrom;
 
 	public Invoice getOrignatedFrom() {
 		return orignatedFrom;

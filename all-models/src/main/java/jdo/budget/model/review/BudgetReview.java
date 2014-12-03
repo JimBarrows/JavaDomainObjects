@@ -15,17 +15,17 @@ public class BudgetReview extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String comment;
-	
-	private Budget forBudget;
-	
-	private Party ofParty;
-	
-	private BudgetReviewResultType result;
-	
-	private Date reviewDate;
+	private static final long		serialVersionUID	= 1L;
+
+	private String					comment;
+
+	private Budget					forBudget;
+
+	private Party					ofParty;
+
+	private BudgetReviewResultType	result;
+
+	private Date					reviewDate;
 
 	public String getComment() {
 		return comment;

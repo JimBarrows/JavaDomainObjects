@@ -5,16 +5,15 @@ import javax.persistence.ManyToOne;
 
 import jdo.accounting.model.asset.FixedAsset;
 
-
 @Entity
 public class Depreciation extends InternalAccountingTransaction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private FixedAsset forFixedAsset;
+	private FixedAsset			forFixedAsset;
 
 	@ManyToOne
 	public FixedAsset getForFixedAsset() {

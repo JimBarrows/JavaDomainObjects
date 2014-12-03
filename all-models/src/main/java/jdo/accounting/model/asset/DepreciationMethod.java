@@ -10,11 +10,11 @@ public class DepreciationMethod extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String description;
-	
-	private String formula;
+	private static final long	serialVersionUID	= 1L;
+
+	private String				description;
+
+	private String				formula;
 
 	public String getDescription() {
 		return description;

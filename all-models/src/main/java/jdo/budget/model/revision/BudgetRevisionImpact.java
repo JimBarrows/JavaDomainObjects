@@ -1,13 +1,13 @@
 package jdo.budget.model.revision;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
 import jdo.budget.model.BudgetItem;
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 
 @Entity
@@ -16,18 +16,18 @@ public class BudgetRevisionImpact extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private boolean add;
-	
-	private BudgetItem affects;
-	
-	private BudgetRevision fromBudgetRevision;
-	
-	private String reason;
-	
-	private BigDecimal revisedAmount;
-	
+	private static final long	serialVersionUID	= 1L;
+
+	private boolean				add;
+
+	private BudgetItem			affects;
+
+	private BudgetRevision		fromBudgetRevision;
+
+	private String				reason;
+
+	private Money				revisedAmount;
+
 	@ManyToOne
 	public BudgetItem getAffects() {
 		return affects;
@@ -42,11 +42,12 @@ public class BudgetRevisionImpact extends BasePersistentModel {
 		return reason;
 	}
 
-	public BigDecimal getRevisedAmount() {
+	@Embedded
+	public Money getRevisedAmount() {
 		return revisedAmount;
 	}
 
-	@Column(name="addDelete")
+	@Column(name = "addDelete")
 	public boolean isAdd() {
 		return add;
 	}
@@ -72,7 +73,7 @@ public class BudgetRevisionImpact extends BasePersistentModel {
 		this.reason = reason;
 	}
 
-	public void setRevisedAmount(BigDecimal revisedAmount) {
+	public void setRevisedAmount(Money revisedAmount) {
 		this.revisedAmount = revisedAmount;
 	}
 

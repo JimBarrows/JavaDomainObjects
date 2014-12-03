@@ -19,9 +19,9 @@ import org.apache.commons.lang.builder.EqualsBuilder;
 @Entity
 public class BaseHeirarchicalType extends BaseType {
 
-	private BaseHeirarchicalType parent;
+	private BaseHeirarchicalType		parent;
 
-	private List<BaseHeirarchicalType> children = new ArrayList<BaseHeirarchicalType>();
+	private List<BaseHeirarchicalType>	children	= new ArrayList<BaseHeirarchicalType>();
 
 	public BaseHeirarchicalType() {
 		super();
@@ -31,8 +31,7 @@ public class BaseHeirarchicalType extends BaseType {
 		super(id, version, description);
 	}
 
-	public BaseHeirarchicalType(Long id, Long version, String description,
-			BaseHeirarchicalType parent, List<BaseHeirarchicalType> children) {
+	public BaseHeirarchicalType(Long id, Long version, String description, BaseHeirarchicalType parent, List<BaseHeirarchicalType> children) {
 		super(id, version, description);
 		this.parent = parent;
 		this.children = children;
@@ -49,10 +48,7 @@ public class BaseHeirarchicalType extends BaseType {
 		if (parent == null && right.getParent() == null) {
 			return true;
 		} else {
-			return new EqualsBuilder()
-					.append(parent, right.parent).isEquals()
-					&& ((parent == null) ? false : parent
-							.isA(right.getParent()));
+			return new EqualsBuilder().append(parent, right.parent).isEquals() && ((parent == null) ? false : parent.isA(right.getParent()));
 		}
 	}
 
@@ -74,7 +70,7 @@ public class BaseHeirarchicalType extends BaseType {
 		this.children = children;
 	}
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 	public void addChild(BaseHeirarchicalType child) {
 		child.setParent(this);

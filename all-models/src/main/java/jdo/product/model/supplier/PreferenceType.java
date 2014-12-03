@@ -11,11 +11,11 @@ import jdo.model.BaseType;
  * @see "Data Model Resource Book Volume 1 Figure 3.5, page 82"
  */
 @Entity
-public class PreferenceType extends BaseType{	
-		
+public class PreferenceType extends BaseType {
+
 	/**
 	 * 
-	 */	
-	private static final long serialVersionUID = 1L;	
+	 */
+	private static final long	serialVersionUID	= 1L;
 
 }

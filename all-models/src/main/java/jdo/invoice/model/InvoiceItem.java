@@ -1,14 +1,15 @@
 package jdo.invoice.model;
 
-import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
+import jdo.fields.Money;
 import jdo.invoice.model.billing.OrderItemBilling;
 import jdo.invoice.model.billing.WorkEffortBilling;
 import jdo.invoice.model.term.InvoiceTerm;
@@ -25,56 +26,56 @@ public class InvoiceItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private List<InvoiceItem> adjustments;
-	
-	private BigDecimal amount;
-	
-	private List<OrderItemBilling> billingForOrderItem;
-	
+	private List<InvoiceItem>		adjustments;
 
-	
-	private List<TimeEntry> billingForTimeEntry;
-	
-	private List<WorkEffortBilling> billingForWorkEffort;
-	
-	private ProductFeature chargeforFeature;
-	
-	private SerializedInventoryItem chargeForItem;
-	
-	private Product chargeForProduct;
-	
-	private String description;
-	
-	private int quantity;
-	
-	private int sequence;
-	
-	private List<InvoiceItem> soldWith;
-	
-	private boolean taxable;
-	
-	private List<InvoiceTerm> terms;
-	
-	private InvoiceItemType type;
+	private Money					amount;
 
-	private List<ShipmentItem> billingForShipmentItem;
+	private List<OrderItemBilling>	billingForOrderItem;
 
-    @OneToMany
+	private List<TimeEntry>			billingForTimeEntry;
+
+	private List<WorkEffortBilling>	billingForWorkEffort;
+
+	private ProductFeature			chargeforFeature;
+
+	private SerializedInventoryItem	chargeForItem;
+
+	private Product					chargeForProduct;
+
+	private String					description;
+
+	private int						quantity;
+
+	private int						sequence;
+
+	private List<InvoiceItem>		soldWith;
+
+	private boolean					taxable;
+
+	private List<InvoiceTerm>		terms;
+
+	private InvoiceItemType			type;
+
+	private List<ShipmentItem>		billingForShipmentItem;
+
+	@OneToMany
 	public List<ShipmentItem> getBillingForShipmentItem() {
 		return billingForShipmentItem;
 	}
 
-    public void setBillingForShipmentItem(List<ShipmentItem> billingFor) {
+	public void setBillingForShipmentItem(List<ShipmentItem> billingFor) {
 		this.billingForShipmentItem = billingFor;
 	}
+
 	@OneToMany
 	public List<InvoiceItem> getAdjustments() {
 		return adjustments;
 	}
 
-	public BigDecimal getAmount() {
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
@@ -102,7 +103,7 @@ public class InvoiceItem extends BasePersistentModel {
 	public SerializedInventoryItem getChargeForItem() {
 		return chargeForItem;
 	}
-	
+
 	@ManyToOne
 	public Product getChargeForProduct() {
 		return chargeForProduct;
@@ -145,7 +146,7 @@ public class InvoiceItem extends BasePersistentModel {
 		this.adjustments = adjustments;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

@@ -11,20 +11,20 @@ import jdo.shipment.model.ShipmentItem;
 import jdo.shipment.model.receipt.ShipmentPackage;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Document extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private ShipmentItem forItem;
-	
-	private ShipmentPackage forPackage;
-	
-	private Shipment forShipment;
-	
+	private ShipmentItem		forItem;
+
+	private ShipmentPackage		forPackage;
+
+	private Shipment			forShipment;
+
 	@ManyToOne
 	public ShipmentItem getForItem() {
 		return forItem;

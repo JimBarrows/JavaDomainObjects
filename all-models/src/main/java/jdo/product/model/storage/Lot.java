@@ -18,20 +18,20 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:31 AM
  */
 @Entity
-public class Lot extends BasePersistentModel{
+public class Lot extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Date creationDate;
-		
-	private Date expirationDate;
+	private Date				creationDate;
 
-	private List<InventoryItem> madeUpOf = new ArrayList<InventoryItem>();
-		
-	private long quantity;
+	private Date				expirationDate;
+
+	private List<InventoryItem>	madeUpOf			= new ArrayList<InventoryItem>();
+
+	private long				quantity;
 
 	@Temporal(TemporalType.DATE)
 	public Date getCreationDate() {
@@ -43,12 +43,12 @@ public class Lot extends BasePersistentModel{
 		return expirationDate;
 	}
 
-	@OneToMany(mappedBy="partOf")
+	@OneToMany(mappedBy = "partOf")
 	public List<InventoryItem> getMadeUpOf() {
 		return madeUpOf;
 	}
 
-	@Min(value=0)
+	@Min(value = 0)
 	public long getQuantity() {
 		return quantity;
 	}
@@ -69,5 +69,4 @@ public class Lot extends BasePersistentModel{
 		this.quantity = quantity;
 	}
 
-	
 }

@@ -12,11 +12,11 @@ public class BudgetRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Party forParty;
-	
-	private BudgetRoleType type;
+	private static final long	serialVersionUID	= 1L;
+
+	private Party				forParty;
+
+	private BudgetRoleType		type;
 
 	public Party getForParty() {
 		return forParty;

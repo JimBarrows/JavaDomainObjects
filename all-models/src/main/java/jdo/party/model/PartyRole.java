@@ -28,16 +28,16 @@ import org.joda.time.DateTime;
  * 
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartyRole extends BasePersistentModel {
 
-	private PartyRoleType type;
-	
-	private Party roleFor;
+	private PartyRoleType				type;
 
-	private List<ShipmentMethodType> ableToShipVia = new ArrayList<ShipmentMethodType>();
-	
-	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+	private Party						roleFor;
+
+	private List<ShipmentMethodType>	ableToShipVia	= new ArrayList<ShipmentMethodType>();
+
+	private DateTimeRange				dateTimeRange	= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {
@@ -49,9 +49,9 @@ public class PartyRole extends BasePersistentModel {
 	}
 
 	public PartyRole() {
-		
+
 	}
-	
+
 	public PartyRole(PartyRoleType type) {
 		super();
 		this.type = type;
@@ -78,7 +78,7 @@ public class PartyRole extends BasePersistentModel {
 	public void setRoleFor(Party roleFor) {
 		this.roleFor = roleFor;
 	}
-	
+
 	@NotNull
 	@ManyToOne
 	public PartyRoleType getType() {
@@ -88,15 +88,15 @@ public class PartyRole extends BasePersistentModel {
 	public void setType(PartyRoleType type) {
 		this.type = type;
 	}
-	
+
 	@ManyToMany
 	public List<ShipmentMethodType> getAbleToShipVia() {
 		return ableToShipVia;
 	}
 
-	public void setAbleToShipVia( List<ShipmentMethodType> ableToShipvia) {
+	public void setAbleToShipVia(List<ShipmentMethodType> ableToShipvia) {
 		this.ableToShipVia = ableToShipvia;
-	}	
-	
-	private static final long serialVersionUID = 1L;
+	}
+
+	private static final long	serialVersionUID	= 1L;
 }

@@ -9,11 +9,11 @@ import jdo.requirement.model.Requirement;
 @Entity
 public class RequirementRequest extends BasePersistentModel {
 
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Requirement associatedTo;
-	
-	private RequestItem communicatedVia;
+	private Requirement			associatedTo;
+
+	private RequestItem			communicatedVia;
 
 	@ManyToOne
 	public Requirement getAssociatedTo() {
@@ -32,5 +32,5 @@ public class RequirementRequest extends BasePersistentModel {
 	public void setCommunicatedVia(RequestItem communicatedVia) {
 		this.communicatedVia = communicatedVia;
 	}
-	
+
 }

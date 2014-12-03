@@ -1,7 +1,5 @@
 package jdo.product.model.price;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -10,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Organization;
@@ -49,7 +48,7 @@ public class PriceComponent extends BasePersistentModel {
 
 	private int					percent;
 
-	private BigDecimal			price;
+	private Money				price;
 
 	private Product				priceDefinedForProduct;
 
@@ -108,7 +107,8 @@ public class PriceComponent extends BasePersistentModel {
 		return percent;
 	}
 
-	public BigDecimal getPrice() {
+	@Embedded
+	public Money getPrice() {
 		return price;
 	}
 
@@ -159,7 +159,7 @@ public class PriceComponent extends BasePersistentModel {
 		this.percent = percent;
 	}
 
-	public void setPrice(BigDecimal price) {
+	public void setPrice(Money price) {
 		this.price = price;
 	}
 

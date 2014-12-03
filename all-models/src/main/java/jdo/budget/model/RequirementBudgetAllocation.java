@@ -1,9 +1,9 @@
 package jdo.budget.model;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
-import java.math.BigDecimal;
-
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.requirement.model.Requirement;
 
@@ -15,18 +15,18 @@ import jdo.requirement.model.Requirement;
 @Entity
 public class RequirementBudgetAllocation extends BasePersistentModel {
 
-    /**
+	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private BudgetItem allocatedTo;
+	private BudgetItem			allocatedTo;
 
-    private Requirement allocationOf;
+	private Requirement			allocationOf;
 
-    private BigDecimal amount;
+	private Money				amount;
 
-    public Requirement getAllocationOf() {
+	public Requirement getAllocationOf() {
 		return allocationOf;
 	}
 
@@ -34,19 +34,20 @@ public class RequirementBudgetAllocation extends BasePersistentModel {
 		this.allocationOf = allocationOf;
 	}
 
-	public BigDecimal getAmount() {
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 
 	public BudgetItem getAllocatedTo() {
-        return allocatedTo;
-    }
+		return allocatedTo;
+	}
 
-    public void setAllocatedTo(BudgetItem allocatedTo) {
-        this.allocatedTo = allocatedTo;
-    }
+	public void setAllocatedTo(BudgetItem allocatedTo) {
+		this.allocatedTo = allocatedTo;
+	}
 }

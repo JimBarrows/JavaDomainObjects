@@ -14,7 +14,7 @@ import org.joda.time.DateTime;
 
 @Embeddable
 public class DateTimeRange implements Serializable {
-	
+
 	private DateTime	from	= new DateTime();
 
 	private DateTime	thru;

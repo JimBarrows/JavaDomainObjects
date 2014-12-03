@@ -1,11 +1,10 @@
 package jdo.workeffort.rate;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.Money;
 import jdo.humanresoures.model.position.salary.RateType;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
@@ -17,15 +16,15 @@ public class PartyRate extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private BigDecimal rate;
-	
-	private Party rateFor;
-	
-	private RateType rateType;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	private static final long	serialVersionUID	= 1L;
+
+	private Money				rate;
+
+	private Party				rateFor;
+
+	private RateType			rateType;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {
@@ -36,7 +35,8 @@ public class PartyRate extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public BigDecimal getRate() {
+	@Embedded
+	public Money getRate() {
 		return rate;
 	}
 
@@ -50,7 +50,7 @@ public class PartyRate extends BasePersistentModel {
 		return rateType;
 	}
 
-	public void setRate(BigDecimal rate) {
+	public void setRate(Money rate) {
 		this.rate = rate;
 	}
 

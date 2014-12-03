@@ -1,14 +1,15 @@
 package jdo.budget.model;
 
-import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.budget.model.revision.BudgetRevisionImpact;
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.order.model.OrderItem;
 
@@ -18,33 +19,32 @@ public class BudgetItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long					serialVersionUID	= 1L;
 
-	private List<BudgetRevisionImpact> affectedBy;
+	private List<BudgetRevisionImpact>			affectedBy;
 
-	private BigDecimal amount;
+	private Money								amount;
 
-	private List<BudgetItem> composedOf;
+	private List<BudgetItem>					composedOf;
 
-	private String justification;
+	private String								justification;
 
-	private String purpose;
+	private String								purpose;
 
-	private BudgetItemType type;
+	private BudgetItemType						type;
 
-	private List<PaymentBudgetAllocation> usedToPay;
+	private List<PaymentBudgetAllocation>		usedToPay;
 
-	private List<OrderItem> usedToBuy;
+	private List<OrderItem>						usedToBuy;
 
-	private List<RequirementBudgetAllocation> providesFundingVia;
+	private List<RequirementBudgetAllocation>	providesFundingVia;
 
 	@OneToMany
 	public List<RequirementBudgetAllocation> getProvidesFundingVia() {
 		return providesFundingVia;
 	}
 
-	public void setProvidesFundingVia(
-			List<RequirementBudgetAllocation> providesFundingVia) {
+	public void setProvidesFundingVia(List<RequirementBudgetAllocation> providesFundingVia) {
 		this.providesFundingVia = providesFundingVia;
 	}
 
@@ -56,7 +56,7 @@ public class BudgetItem extends BasePersistentModel {
 	public void setUsedToBuy(List<OrderItem> usedToBuy) {
 		this.usedToBuy = usedToBuy;
 	}
-	
+
 	@OneToMany
 	public List<PaymentBudgetAllocation> getUsedToPay() {
 		return usedToPay;
@@ -71,7 +71,8 @@ public class BudgetItem extends BasePersistentModel {
 		return affectedBy;
 	}
 
-	public BigDecimal getAmount() {
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
@@ -97,7 +98,7 @@ public class BudgetItem extends BasePersistentModel {
 		this.affectedBy = affectedBy;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

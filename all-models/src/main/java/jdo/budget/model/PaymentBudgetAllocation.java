@@ -1,10 +1,10 @@
 package jdo.budget.model;
 
-import java.math.BigDecimal;
-
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.Money;
 import jdo.invoice.model.payment.Payment;
 
 @Entity
@@ -13,19 +13,20 @@ public class PaymentBudgetAllocation extends jdo.model.BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Payment allocationOf;
-	
-	private BigDecimal amount;
-	
-	private BudgetItem usageOf;
+	private static final long	serialVersionUID	= 1L;
+
+	private Payment				allocationOf;
+
+	private Money				amount;
+
+	private BudgetItem			usageOf;
 
 	public Payment getAllocationOf() {
 		return allocationOf;
 	}
 
-	public BigDecimal getAmount() {
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
 
@@ -38,7 +39,7 @@ public class PaymentBudgetAllocation extends jdo.model.BasePersistentModel {
 		this.allocationOf = allocationOf;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

@@ -7,19 +7,18 @@ import javax.validation.constraints.NotNull;
 
 import jdo.product.model.measurement.TimeFrequencyMeasure;
 
-
 @Entity
 public class RecurringCharge extends PriceComponent {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private TimeFrequencyMeasure per;
+	private static final long		serialVersionUID	= 1L;
+
+	private TimeFrequencyMeasure	per;
 
 	@ManyToOne
-	@JoinColumn(name="perTimeFrequencyMeasure")
+	@JoinColumn(name = "perTimeFrequencyMeasure")
 	@NotNull
 	public TimeFrequencyMeasure getPer() {
 		return per;

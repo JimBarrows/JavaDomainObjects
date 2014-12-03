@@ -10,11 +10,11 @@ public class WorkEffortGoodStandard extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private int estiamtedCost;
-	
-	private int estimatedQuantity;
+	private static final long	serialVersionUID	= 1L;
+
+	private int					estiamtedCost;
+
+	private int					estimatedQuantity;
 
 	public int getEstiamtedCost() {
 		return estiamtedCost;

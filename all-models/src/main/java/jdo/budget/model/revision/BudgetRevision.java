@@ -16,15 +16,15 @@ public class BudgetRevision extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private List<BudgetRevisionImpact>affecting;
-	
-	private Date revisedOn;
-	
-	private Budget revisionFor;
-	
-	private long sequence;
+	private static final long			serialVersionUID	= 1L;
+
+	private List<BudgetRevisionImpact>	affecting;
+
+	private Date						revisedOn;
+
+	private Budget						revisionFor;
+
+	private long						sequence;
 
 	@OneToMany
 	public List<BudgetRevisionImpact> getAffecting() {

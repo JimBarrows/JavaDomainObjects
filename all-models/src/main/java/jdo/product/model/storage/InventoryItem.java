@@ -1,4 +1,5 @@
 package jdo.product.model.storage;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,30 +19,27 @@ import jdo.product.model.Good;
  * @created 25-Dec-2007 9:54:31 AM
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
-public class InventoryItem extends BasePersistentModel{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class InventoryItem extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long			serialVersionUID	= 1L;
 
-	
-	private List<InventoryItemVariance> adjustedThru = new ArrayList<InventoryItemVariance>();
+	private List<InventoryItemVariance>	adjustedThru		= new ArrayList<InventoryItemVariance>();
 
-	
-	private InventoryItemStatusType inTheStateOf;
-	
-	private Facility locatedAt;
-	
-	private Container locatedWithin;
-	
-	private Lot partOf;
-	
-	
-	private Good physicalOccurenceOf;
+	private InventoryItemStatusType		inTheStateOf;
 
-	@OneToMany(mappedBy="adjustmentFor")
+	private Facility					locatedAt;
+
+	private Container					locatedWithin;
+
+	private Lot							partOf;
+
+	private Good						physicalOccurenceOf;
+
+	@OneToMany(mappedBy = "adjustmentFor")
 	public List<InventoryItemVariance> getAdjustedThru() {
 		return adjustedThru;
 	}

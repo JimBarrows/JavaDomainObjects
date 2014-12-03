@@ -21,11 +21,11 @@ public class Reason extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long			serialVersionUID	= 1L;
 
-	private String description;
+	private String						description;
 
-	private List<InventoryItemVariance> explanationFor = new ArrayList<InventoryItemVariance>();
+	private List<InventoryItemVariance>	explanationFor		= new ArrayList<InventoryItemVariance>();
 
 	@NotNull
 	@Lob

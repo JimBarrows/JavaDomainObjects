@@ -12,11 +12,11 @@ public class TimesheetRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Party involving;
-	
-	private TimeSheetRoleType type;
+	private Party				involving;
+
+	private TimeSheetRoleType	type;
 
 	@ManyToOne
 	public Party getInvolving() {

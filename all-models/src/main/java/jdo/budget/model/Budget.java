@@ -16,24 +16,23 @@ public class Budget extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;	
-	
-	private StandardTimePeriod associatedWith;
-	
-	private String comment;
-	
-	private List<BudgetItem> composedOf;
-	
-	private List<BudgetStatus>describedBy;
-	
-	private List<BudgetRole> involving;
-	
-	private List<BudgetReview> reviews;
-	
-	private List<BudgetRevision> revisedBy;
-	
+	private static final long		serialVersionUID	= 1L;
 
-	private BudgetType type;
+	private StandardTimePeriod		associatedWith;
+
+	private String					comment;
+
+	private List<BudgetItem>		composedOf;
+
+	private List<BudgetStatus>		describedBy;
+
+	private List<BudgetRole>		involving;
+
+	private List<BudgetReview>		reviews;
+
+	private List<BudgetRevision>	revisedBy;
+
+	private BudgetType				type;
 
 	@ManyToOne
 	public StandardTimePeriod getAssociatedWith() {

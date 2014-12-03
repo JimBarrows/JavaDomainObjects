@@ -11,11 +11,11 @@ import jdo.product.model.Product;
 @Entity
 public class ProductRequirement extends Requirement {
 
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private Product requesting;
-	
-	private List<DesiredFeature> specifying;
+	private Product					requesting;
+
+	private List<DesiredFeature>	specifying;
 
 	@ManyToOne
 	public Product getRequesting() {

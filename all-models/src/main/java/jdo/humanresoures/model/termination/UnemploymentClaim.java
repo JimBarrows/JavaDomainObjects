@@ -14,15 +14,15 @@ public class UnemploymentClaim extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Date claimDate;
-	
-	private String description;
-	
-	private Employment resultingFrom;
-	
-	private UnemploymentClaimStatusType status;
+	private static final long			serialVersionUID	= 1L;
+
+	private Date						claimDate;
+
+	private String						description;
+
+	private Employment					resultingFrom;
+
+	private UnemploymentClaimStatusType	status;
 
 	public Date getClaimDate() {
 		return claimDate;

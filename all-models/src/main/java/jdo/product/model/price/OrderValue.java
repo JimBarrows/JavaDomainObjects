@@ -1,14 +1,15 @@
 package jdo.product.model.price;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Min;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 
 /**
@@ -17,30 +18,32 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:32 AM
  */
 @Entity
-public class OrderValue extends BasePersistentModel{
+public class OrderValue extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID		= 1L;
 
-	private List<PriceComponent> discountLevelDefinedFor = new ArrayList<PriceComponent>();
-	
-	private BigDecimal fromAmount;
-	
-	private BigDecimal thruAmount;
+	private List<PriceComponent>	discountLevelDefinedFor	= new ArrayList<PriceComponent>();
 
-	@OneToMany(mappedBy="basedOnOrderValue")
+	private Money					fromAmount;
+
+	private Money					thruAmount;
+
+	@OneToMany(mappedBy = "basedOnOrderValue")
 	public List<PriceComponent> getDiscountLevelDefinedFor() {
 		return discountLevelDefinedFor;
 	}
 
 	@Min(0)
-	public BigDecimal getFromAmount() {
+	@Embedded
+	public Money getFromAmount() {
 		return fromAmount;
 	}
 
-	public BigDecimal getThruAmount() {
+	@Embedded
+	public Money getThruAmount() {
 		return thruAmount;
 	}
 
@@ -49,16 +52,15 @@ public class OrderValue extends BasePersistentModel{
 		return thruAmount.compareTo(fromAmount) >= 0;
 	}
 
-	public void setDiscountLevelDefinedFor(
-			List<PriceComponent> discountLevelDefinedFor) {
+	public void setDiscountLevelDefinedFor(List<PriceComponent> discountLevelDefinedFor) {
 		this.discountLevelDefinedFor = discountLevelDefinedFor;
 	}
 
-	public void setFromAmount(BigDecimal fromAmount) {
+	public void setFromAmount(Money fromAmount) {
 		this.fromAmount = fromAmount;
 	}
 
-	public void setThruAmount(BigDecimal thruAmount) {
+	public void setThruAmount(Money thruAmount) {
 		this.thruAmount = thruAmount;
 	}
 }

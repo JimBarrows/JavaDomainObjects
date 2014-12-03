@@ -5,7 +5,6 @@ import javax.persistence.ManyToOne;
 
 import jdo.product.model.measurement.UnitOfMeasure;
 
-
 /**
  * 
  * @author Jim.Barrows
@@ -17,11 +16,11 @@ public class Dimension extends ProductFeature {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long	serialVersionUID	= 1L;
+
 	@ManyToOne
-	private UnitOfMeasure measuredUsing;
-	
+	private UnitOfMeasure		measuredUsing;
+
 	public UnitOfMeasure getMeasuredUsing() {
 		return measuredUsing;
 	}
@@ -30,5 +29,4 @@ public class Dimension extends ProductFeature {
 		this.measuredUsing = measuredUsing;
 	}
 
-	
 }

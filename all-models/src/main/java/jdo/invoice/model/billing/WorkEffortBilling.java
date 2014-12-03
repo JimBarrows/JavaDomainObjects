@@ -14,13 +14,13 @@ public class WorkEffortBilling extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private int percentage;
-	
-	private WorkEffort percentageOf;
+	private static final long	serialVersionUID	= 1L;
 
-	@Range(min=1, max=100)
+	private int					percentage;
+
+	private WorkEffort			percentageOf;
+
+	@Range(min = 1, max = 100)
 	public int getPercentage() {
 		return percentage;
 	}

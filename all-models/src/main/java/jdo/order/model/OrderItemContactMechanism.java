@@ -10,12 +10,12 @@ import jdo.party.model.contactmechanism.ContactMechanismPurposeType;
 
 @Entity
 public class OrderItemContactMechanism extends BasePersistentModel {
-	
-	private static final long serialVersionUID = 1L;
-	
-	private ContactMechanism mechanism;
-	
-	private ContactMechanismPurposeType type;
+
+	private static final long			serialVersionUID	= 1L;
+
+	private ContactMechanism			mechanism;
+
+	private ContactMechanismPurposeType	type;
 
 	@NotNull
 	@ManyToOne

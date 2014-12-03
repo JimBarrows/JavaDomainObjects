@@ -14,13 +14,13 @@ public class Paycheck extends Disbursement {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private List<Deduction> deductions;
-	
-	private PartyRole issuedFrom;
-	
-	private PartyRole issuedTo;
+	private static final long	serialVersionUID	= 1L;
+
+	private List<Deduction>		deductions;
+
+	private PartyRole			issuedFrom;
+
+	private PartyRole			issuedTo;
 
 	@OneToMany
 	public List<Deduction> getDeductions() {

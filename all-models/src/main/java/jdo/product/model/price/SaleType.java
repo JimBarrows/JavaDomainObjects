@@ -10,11 +10,11 @@ import jdo.model.BaseType;
  * @created 25-Dec-2007 9:54:38 AM
  */
 @Entity
-public class SaleType extends BaseType{
+public class SaleType extends BaseType {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-		
+	private static final long	serialVersionUID	= 1L;
+
 }

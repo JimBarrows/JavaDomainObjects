@@ -15,17 +15,17 @@ import jdo.party.model.contactmechanism.ContactMechanism;
 @Entity
 public class PurchaseOrder extends Order {
 
-	private ContactMechanism billedTo;
-	
-	private PartyRole placedBy;
-	
-	private ContactMechanism placedUsing;
-	
-	private PartyRole requestedBillTo;
+	private ContactMechanism	billedTo;
 
-	private PartyRole takenBy;
-	
-	private ContactMechanism takenVia;
+	private PartyRole			placedBy;
+
+	private ContactMechanism	placedUsing;
+
+	private PartyRole			requestedBillTo;
+
+	private PartyRole			takenBy;
+
+	private ContactMechanism	takenVia;
 
 	@ManyToOne
 	public ContactMechanism getBilledTo() {

@@ -29,17 +29,17 @@ public class ProductCategoryClassification extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Product categoryFor;
+	private Product				categoryFor;
 
-	private String comment;
+	private String				comment;
 
-	private ProductCategory definedBy;
+	private ProductCategory		definedBy;
 
-	private boolean primary = false;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	private boolean				primary				= false;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {

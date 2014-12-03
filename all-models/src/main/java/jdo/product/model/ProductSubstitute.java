@@ -9,32 +9,30 @@ import javax.validation.constraints.Min;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 
-/**Shows which products can be substituted by other products.
+/**
+ * Shows which products can be substituted by other products.
+ * 
  * @author Jim
  * @version 1.0
  * @created 25-Dec-2007 9:54:37 AM
  */
 @Entity
-public class ProductSubstitute extends BasePersistentModel{
+public class ProductSubstitute extends BasePersistentModel {
 
 	/**
 	 * 
-	 */	
-	private static final long serialVersionUID = 1L;
-	
-	
-	private Product aUseOf;
-	
-	
-	private String comment;
-	
-	
-	private long quantity;
-	
-	
-	private Product substituteFor;
-	
-	private DateTimeRange	dateTimeRange	= new DateTimeRange();
+	 */
+	private static final long	serialVersionUID	= 1L;
+
+	private Product				aUseOf;
+
+	private String				comment;
+
+	private long				quantity;
+
+	private Product				substituteFor;
+
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
 	@Embedded
 	public DateTimeRange getDateTimeRange() {

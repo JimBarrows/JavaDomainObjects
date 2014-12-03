@@ -13,11 +13,11 @@ public class ShipmentPackage extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private List<PackagingContent> composedOf;
-	
-	private List<ShipmentReceipt> consistingOf;
+	private List<PackagingContent>	composedOf;
+
+	private List<ShipmentReceipt>	consistingOf;
 
 	@OneToMany
 	public List<PackagingContent> getComposedOf() {

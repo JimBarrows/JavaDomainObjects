@@ -8,6 +8,6 @@ public class StandardFeature extends ProductFeatureApplicability {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
 }

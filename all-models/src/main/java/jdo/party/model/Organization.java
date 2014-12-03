@@ -2,10 +2,11 @@ package jdo.party.model;
 
 import javax.persistence.Entity;
 import javax.validation.constraints.NotNull;
- 
+import javax.xml.crypto.Data;
 
 /**
  * An organization, such as a family, company, government agency etc.
+ * 
  * @author Jim
  * @version 1.0
  * @created 25-Dec-2007 9:54:32 AM
@@ -17,11 +18,11 @@ public class Organization extends Party {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long	serialVersionUID	= 1L;
+
 	@NotNull
-	private String name;
-	
+	private String				name;
+
 	/**
 	 * @return the name
 	 */
@@ -30,7 +31,8 @@ public class Organization extends Party {
 	}
 
 	/**
-	 * @param name the name to set
+	 * @param name
+	 *            the name to set
 	 */
 	public void setName(String name) {
 		this.name = name;

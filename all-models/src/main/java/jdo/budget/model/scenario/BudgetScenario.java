@@ -13,13 +13,13 @@ public class BudgetScenario extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long				serialVersionUID	= 1L;
 
-	private List<BudgetScenarioRule> affectedBy;
-	
-	private List<BudgetScenarioApplication> affecting;
-	
-	private String description;
+	private List<BudgetScenarioRule>		affectedBy;
+
+	private List<BudgetScenarioApplication>	affecting;
+
+	private String							description;
 
 	@OneToMany
 	public List<BudgetScenarioRule> getAffectedBy() {
@@ -45,5 +45,5 @@ public class BudgetScenario extends BasePersistentModel {
 
 	public void setDescription(String description) {
 		this.description = description;
-	} 
+	}
 }

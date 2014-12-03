@@ -19,17 +19,17 @@ public class Addendum extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	private Date creationDate;
-	private Date effectiveDate;
-	private String text;
+	private static final long	serialVersionUID	= 1L;
+	private Date				creationDate;
+	private Date				effectiveDate;
+	private String				text;
 
 	@Temporal(TemporalType.DATE)
 	@javax.validation.constraints.NotNull
 	public Date getCreationDate() {
 		return creationDate;
 	}
-	
+
 	@Temporal(TemporalType.DATE)
 	@NotNull
 	public Date getEffectiveDate() {

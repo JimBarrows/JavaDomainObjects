@@ -8,13 +8,13 @@ public class ProductionRun extends Purpose {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private long quantityProduced;
-	
-	private long quantityRejected;
-	
-	private long quantityToProduce;
+	private long				quantityProduced;
+
+	private long				quantityRejected;
+
+	private long				quantityToProduce;
 
 	public long getQuantityProduced() {
 		return quantityProduced;

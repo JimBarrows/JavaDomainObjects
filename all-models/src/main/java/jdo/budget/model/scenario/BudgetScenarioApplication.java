@@ -1,13 +1,13 @@
 package jdo.budget.model.scenario;
 
-import java.math.BigDecimal;
-
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.AssertTrue;
 
 import jdo.budget.model.Budget;
 import jdo.budget.model.BudgetItem;
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 
 import org.hibernate.validator.constraints.Range;
@@ -18,23 +18,23 @@ public class BudgetScenarioApplication extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private Budget affectingBudget;
-	
-	private BudgetItem affectingBudgetItem;
-	
-	private BigDecimal amountChange;
-	
-	private BudgetScenario fromScenario;
-	
-	private int percentChange;
+	private static final long	serialVersionUID	= 1L;
+
+	private Budget				affectingBudget;
+
+	private BudgetItem			affectingBudgetItem;
+
+	private Money				amountChange;
+
+	private BudgetScenario		fromScenario;
+
+	private int					percentChange;
 
 	@AssertTrue
 	public boolean affectsOnlyBudgetXorItem() {
-		return (affectingBudget != null) ^ (affectingBudgetItem != null); 
+		return (affectingBudget != null) ^ (affectingBudgetItem != null);
 	}
-	
+
 	@ManyToOne
 	public Budget getAffectingBudget() {
 		return affectingBudget;
@@ -45,7 +45,8 @@ public class BudgetScenarioApplication extends BasePersistentModel {
 		return affectingBudgetItem;
 	}
 
-	public BigDecimal getAmountChange() {
+	@Embedded
+	public Money getAmountChange() {
 		return amountChange;
 	}
 
@@ -54,7 +55,7 @@ public class BudgetScenarioApplication extends BasePersistentModel {
 		return fromScenario;
 	}
 
-	@Range(min=-100, max=100)
+	@Range(min = -100, max = 100)
 	public int getPercentChange() {
 		return percentChange;
 	}
@@ -67,7 +68,7 @@ public class BudgetScenarioApplication extends BasePersistentModel {
 		this.affectingBudgetItem = affectingBudgetItem;
 	}
 
-	public void setAmountChange(BigDecimal amountChange) {
+	public void setAmountChange(Money amountChange) {
 		this.amountChange = amountChange;
 	}
 

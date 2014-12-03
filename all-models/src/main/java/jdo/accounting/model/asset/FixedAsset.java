@@ -11,27 +11,27 @@ import javax.persistence.OneToMany;
 import jdo.model.BasePersistentModel;
 
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class FixedAsset extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long					serialVersionUID	= 1L;
 
-	private Date dateAcquired;
+	private Date								dateAcquired;
 
-	private Date dateLastServiced;
-	
-	private List<FixedAssetDepreciationMethod> depreciatedVia;
-	
-	private String description;
-	
-	private String name;
-	
-	private Date nextService;
-	
-	private int productionCapacity;
+	private Date								dateLastServiced;
+
+	private List<FixedAssetDepreciationMethod>	depreciatedVia;
+
+	private String								description;
+
+	private String								name;
+
+	private Date								nextService;
+
+	private int									productionCapacity;
 
 	public Date getDateAcquired() {
 		return dateAcquired;

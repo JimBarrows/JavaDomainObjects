@@ -1,6 +1,5 @@
 package jdo.product.model.feature;
 
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,27 +25,27 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @see "Data Model Resource Book Volume 1 Figure 3.4, page 77"
  */
 @Entity
-@Inheritance(strategy= InheritanceType.SINGLE_TABLE)
-public class ProductFeature extends BasePersistentModel{
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+public class ProductFeature extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private ProductFeatureCategory categorizedBy;
-	
-	private List<EstimatedProductCost> costedBy = new ArrayList<EstimatedProductCost>();
-	
-	private List<ProductFeatureInteraction> dependentOnSelectionOf;	
-	
-	private String description;
-	
-	private List<PriceComponent> pricedBy = new ArrayList<PriceComponent>();
-	
-	private List<ProductFeatureInteraction> selectedIn = new ArrayList<ProductFeatureInteraction>();
-	
-	private List<ProductFeatureApplicability> usedToDefine = new ArrayList<ProductFeatureApplicability>();
+	private static final long					serialVersionUID	= 1L;
+
+	private ProductFeatureCategory				categorizedBy;
+
+	private List<EstimatedProductCost>			costedBy			= new ArrayList<EstimatedProductCost>();
+
+	private List<ProductFeatureInteraction>		dependentOnSelectionOf;
+
+	private String								description;
+
+	private List<PriceComponent>				pricedBy			= new ArrayList<PriceComponent>();
+
+	private List<ProductFeatureInteraction>		selectedIn			= new ArrayList<ProductFeatureInteraction>();
+
+	private List<ProductFeatureApplicability>	usedToDefine		= new ArrayList<ProductFeatureApplicability>();
 
 	@ManyToOne
 	@NotNull
@@ -54,7 +53,7 @@ public class ProductFeature extends BasePersistentModel{
 		return categorizedBy;
 	}
 
-	@OneToMany(mappedBy="calculatedForFeature")
+	@OneToMany(mappedBy = "calculatedForFeature")
 	public List<EstimatedProductCost> getCostedBy() {
 		return costedBy;
 	}
@@ -65,17 +64,17 @@ public class ProductFeature extends BasePersistentModel{
 	}
 
 	@NotEmpty
-	@Column(unique=true, nullable=false)
+	@Column(unique = true, nullable = false)
 	public String getDescription() {
 		return description;
 	}
-	
-	@OneToMany(mappedBy="priceDefinedForProductFeature")
+
+	@OneToMany(mappedBy = "priceDefinedForProductFeature")
 	public List<PriceComponent> getPricedBy() {
 		return pricedBy;
 	}
-	
-	@OneToMany(mappedBy="of")
+
+	@OneToMany(mappedBy = "of")
 	public List<ProductFeatureInteraction> getSelectedIn() {
 		return selectedIn;
 	}
@@ -92,9 +91,8 @@ public class ProductFeature extends BasePersistentModel{
 	public void setCostedBy(List<EstimatedProductCost> costedBy) {
 		this.costedBy = costedBy;
 	}
-	
-	public void setDependentOnSelectionOf(
-			List<ProductFeatureInteraction> dependentOnSelectionOf) {
+
+	public void setDependentOnSelectionOf(List<ProductFeatureInteraction> dependentOnSelectionOf) {
 		this.dependentOnSelectionOf = dependentOnSelectionOf;
 	}
 

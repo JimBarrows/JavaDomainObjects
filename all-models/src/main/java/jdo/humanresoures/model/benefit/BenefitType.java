@@ -13,15 +13,15 @@ public class BenefitType extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String description;
-	
-	private int employerPercentage;
-	
-	private String name;
-	
-	private List<PartyBenefit> partyBenefits;
+	private static final long	serialVersionUID	= 1L;
+
+	private String				description;
+
+	private int					employerPercentage;
+
+	private String				name;
+
+	private List<PartyBenefit>	partyBenefits;
 
 	public String getDescription() {
 		return description;

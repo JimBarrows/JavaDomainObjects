@@ -12,11 +12,11 @@ public class QuoteRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Party party;
-	
-	private QuoteRoleType type;
+	private Party				party;
+
+	private QuoteRoleType		type;
 
 	@ManyToOne
 	public Party getParty() {

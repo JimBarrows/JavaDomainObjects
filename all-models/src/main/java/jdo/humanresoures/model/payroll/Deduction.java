@@ -1,10 +1,10 @@
 package jdo.humanresoures.model.payroll;
 
-import java.math.BigDecimal;
-
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.Money;
 import jdo.invoice.model.payment.Paycheck;
 import jdo.model.BasePersistentModel;
 
@@ -14,15 +14,13 @@ public class Deduction extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private BigDecimal amount;
-	
-	
-	
-	private DeductionType type;
+	private static final long	serialVersionUID	= 1L;
 
-	private Paycheck reductionOf;
+	private Money				amount;
+
+	private DeductionType		type;
+
+	private Paycheck			reductionOf;
 
 	public Paycheck getReductionOf() {
 		return reductionOf;
@@ -31,18 +29,18 @@ public class Deduction extends BasePersistentModel {
 	public void setReductionOf(Paycheck reductionOf) {
 		this.reductionOf = reductionOf;
 	}
-	
-	public BigDecimal getAmount() {
+
+	@Embedded
+	public Money getAmount() {
 		return amount;
 	}
-
 
 	@ManyToOne
 	public DeductionType getType() {
 		return type;
 	}
 
-	public void setAmount(BigDecimal amount) {
+	public void setAmount(Money amount) {
 		this.amount = amount;
 	}
 

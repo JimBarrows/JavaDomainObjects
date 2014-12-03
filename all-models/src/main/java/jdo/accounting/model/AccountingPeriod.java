@@ -25,7 +25,7 @@ public class AccountingPeriod extends BasePersistentModel {
 	private PeriodType			definedBy;
 
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-	
+
 	@Embedded
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -34,7 +34,6 @@ public class AccountingPeriod extends BasePersistentModel {
 	public void setDateTimeRange(DateTimeRange dateTimeRange) {
 		this.dateTimeRange = dateTimeRange;
 	}
-	
 
 	@Min(0)
 	public int getAccountingPeriodNumber() {

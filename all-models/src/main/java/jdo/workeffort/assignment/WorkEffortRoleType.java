@@ -9,5 +9,5 @@ public class WorkEffortRoleType extends BaseType {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 }

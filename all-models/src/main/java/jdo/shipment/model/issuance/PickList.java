@@ -16,11 +16,11 @@ public class PickList extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Date createdOn;
-	
-	private List<PicklistItem> items;
+	private Date				createdOn;
+
+	private List<PicklistItem>	items;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getCreatedOn() {

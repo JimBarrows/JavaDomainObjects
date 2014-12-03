@@ -12,15 +12,15 @@ public class WorkEffortSkill extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private int estimatedCost;
-	
-	private int estimatedDuration;
-	
-	private int estimatedNumberOfPeople;
-	
-	private SkillType skillType;
+	private int					estimatedCost;
+
+	private int					estimatedDuration;
+
+	private int					estimatedNumberOfPeople;
+
+	private SkillType			skillType;
 
 	public int getEstimatedCost() {
 		return estimatedCost;

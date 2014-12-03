@@ -16,21 +16,21 @@ public class Deliverable extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private String description;
-	
-	private String name;
-	
-	private List<WorkRequirement> producedBy = new ArrayList<WorkRequirement>();
-	
-	private DeliverableType type;
-	
+	private static final long		serialVersionUID	= 1L;
+
+	private String					description;
+
+	private String					name;
+
+	private List<WorkRequirement>	producedBy			= new ArrayList<WorkRequirement>();
+
+	private DeliverableType			type;
+
 	@Lob
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public String getName() {
 		return name;
 	}
@@ -52,11 +52,11 @@ public class Deliverable extends BasePersistentModel {
 	public void setName(String name) {
 		this.name = name;
 	}
-	
+
 	public void setProducedBy(List<WorkRequirement> producedBy) {
 		this.producedBy = producedBy;
 	}
-	
+
 	public void setType(DeliverableType type) {
 		this.type = type;
 	}

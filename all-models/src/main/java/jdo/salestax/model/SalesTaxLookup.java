@@ -1,11 +1,10 @@
 package jdo.salestax.model;
 
-import java.math.BigDecimal;
-
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
@@ -21,7 +20,7 @@ public class SalesTaxLookup extends BasePersistentModel {
 
 	private GeographicBoundary	salesTaxLookupFor;
 
-	private BigDecimal			salesTaxPercentage;
+	private Money				salesTaxPercentage;
 
 	private ProductCategory		specifiedFor;
 
@@ -41,7 +40,8 @@ public class SalesTaxLookup extends BasePersistentModel {
 		return salesTaxLookupFor;
 	}
 
-	public BigDecimal getSalesTaxPercentage() {
+	@Embedded
+	public Money getSalesTaxPercentage() {
 		return salesTaxPercentage;
 	}
 
@@ -54,7 +54,7 @@ public class SalesTaxLookup extends BasePersistentModel {
 		this.salesTaxLookupFor = salesTaxLookupFor;
 	}
 
-	public void setSalesTaxPercentage(BigDecimal salesTaxPercentage) {
+	public void setSalesTaxPercentage(Money salesTaxPercentage) {
 		this.salesTaxPercentage = salesTaxPercentage;
 	}
 

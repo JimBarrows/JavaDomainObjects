@@ -6,16 +6,15 @@ import javax.persistence.OneToOne;
 import jdo.invoice.model.payment.Payment;
 
 @Entity
-public class PaymentAccountingTransaction extends
-        ExternalAccountingTransaction {
+public class PaymentAccountingTransaction extends ExternalAccountingTransaction {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
+	private static final long	serialVersionUID	= 1L;
+
 	@OneToOne
-	private Payment originatedFrom;
+	private Payment				originatedFrom;
 
 	public Payment getOriginatedFrom() {
 		return originatedFrom;

@@ -8,12 +8,12 @@ import jdo.product.model.feature.ProductFeature;
 
 @Entity
 public class DesiredFeature extends BasePersistentModel {
-	
-	private static final long serialVersionUID = 1L;
 
-	private ProductFeature describedBy;
-	
-	private boolean optional;
+	private static final long	serialVersionUID	= 1L;
+
+	private ProductFeature		describedBy;
+
+	private boolean				optional;
 
 	@ManyToOne
 	public ProductFeature getDescribedBy() {

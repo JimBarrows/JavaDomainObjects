@@ -17,19 +17,19 @@ import jdo.model.BasePersistentModel;
  */
 @Entity
 public class InventoryItemVariance extends BasePersistentModel {
-	
-	private static final long serialVersionUID = 1L;
-	
-	private InventoryItem adjustmentFor;
-		
-	private String comment;
-	
-	private Reason explainedWith;
-	
-	private Date physicalInventoryDate;
-	
-	private long quantity;
-	
+
+	private static final long	serialVersionUID	= 1L;
+
+	private InventoryItem		adjustmentFor;
+
+	private String				comment;
+
+	private Reason				explainedWith;
+
+	private Date				physicalInventoryDate;
+
+	private long				quantity;
+
 	@ManyToOne
 	public InventoryItem getAdjustmentFor() {
 		return adjustmentFor;
@@ -39,6 +39,7 @@ public class InventoryItemVariance extends BasePersistentModel {
 	public String getComment() {
 		return comment;
 	}
+
 	@ManyToOne
 	public Reason getExplainedWith() {
 		return explainedWith;
@@ -48,6 +49,7 @@ public class InventoryItemVariance extends BasePersistentModel {
 	public Date getPhysicalInventoryDate() {
 		return physicalInventoryDate;
 	}
+
 	public long getQuantity() {
 		return quantity;
 	}
@@ -55,6 +57,7 @@ public class InventoryItemVariance extends BasePersistentModel {
 	public void setAdjustmentFor(InventoryItem adjustmentFor) {
 		this.adjustmentFor = adjustmentFor;
 	}
+
 	public void setComment(String comment) {
 		this.comment = comment;
 	}

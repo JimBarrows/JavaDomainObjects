@@ -1,13 +1,14 @@
 package jdo.shipment.model.route;
 
-import java.math.BigDecimal;
 import java.util.Date;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.PartyRole;
 import jdo.party.model.facility.Facility;
@@ -19,33 +20,33 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private Date actualArrival;
-	
-	private Date actualStart;
-	
-	private long endMileage;
-	
-	private Date estimatedArrival;
-	
-	private Date estimatedStart;
-	
-	private BigDecimal fuelUsed;
-	
-	private Shipment shipmentOf;
-	
-	private Facility shippedFrom;
-	
-	private Facility shippedTo;
-	
-	//private Vehicle vehicle;
-	
-	private ShipmentMethodType shippedVia;
-	
-	private PartyRole shipppedBy;
-	
-	private long startMileage;
+	private Date				actualArrival;
+
+	private Date				actualStart;
+
+	private long				endMileage;
+
+	private Date				estimatedArrival;
+
+	private Date				estimatedStart;
+
+	private Money				fuelUsed;
+
+	private Shipment			shipmentOf;
+
+	private Facility			shippedFrom;
+
+	private Facility			shippedTo;
+
+	// private Vehicle vehicle;
+
+	private ShipmentMethodType	shippedVia;
+
+	private PartyRole			shipppedBy;
+
+	private long				startMileage;
 
 	@Temporal(TemporalType.TIMESTAMP)
 	public Date getActualArrival() {
@@ -71,7 +72,8 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 		return estimatedStart;
 	}
 
-	public BigDecimal getFuelUsed() {
+	@Embedded
+	public Money getFuelUsed() {
 		return fuelUsed;
 	}
 
@@ -124,7 +126,7 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 		this.estimatedStart = estimatedStart;
 	}
 
-	public void setFuelUsed(BigDecimal fuelUsed) {
+	public void setFuelUsed(Money fuelUsed) {
 		this.fuelUsed = fuelUsed;
 	}
 
@@ -151,5 +153,5 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 	public void setStartMileage(long startMileage) {
 		this.startMileage = startMileage;
 	}
-	
+
 }

@@ -13,11 +13,11 @@ public class ShipmentReceiptRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private Party party;
-	
-	private ShipmentReceiptRoleType type;
+	private Party					party;
+
+	private ShipmentReceiptRoleType	type;
 
 	@NotNull
 	@ManyToOne

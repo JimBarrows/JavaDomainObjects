@@ -23,19 +23,19 @@ import jdo.model.BasePersistentModel;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Request extends BasePersistentModel {
 
-	private static final long serialVersionUID = 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private String description;
+	private String					description;
 
-	private List<RequestItem> items;
+	private List<RequestItem>		items;
 
-	private Date requestDate;
+	private Date					requestDate;
 
-	private List<RespondingParty> respondingParties;
+	private List<RespondingParty>	respondingParties;
 
-	private Date responseRequired;
+	private Date					responseRequired;
 
-	private List<RequestRole> roles;
+	private List<RequestRole>		roles;
 
 	@Lob
 	public String getDescription() {

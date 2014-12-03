@@ -1,9 +1,9 @@
 package jdo.workeffort;
 
-import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
 
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -13,6 +13,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.order.model.WorkOrderItem;
 import jdo.party.model.facility.Facility;
@@ -31,61 +32,61 @@ import jdo.workeffort.type.WorkEffortType;
  * @see "Data Model Resource Book Volume 1 Figure 2.13, page 64"
  */
 @Entity
-@Inheritance(strategy=InheritanceType.SINGLE_TABLE)
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class WorkEffort extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long					serialVersionUID	= 1L;
 
-	private Date actualCompletionDate;
+	private Date								actualCompletionDate;
 
-	private long actualHours;
+	private long								actualHours;
 
-	private Date actualStartDate;
+	private Date								actualStartDate;
 
-	private List<WorkEffortPartyAssignment> assignedVia;
+	private List<WorkEffortPartyAssignment>		assignedVia;
 
-	private List<InventoryItem> deliverableProduced;
+	private List<InventoryItem>					deliverableProduced;
 
-	private String description;
+	private String								description;
 
-	private long estimatedHours;
+	private long								estimatedHours;
 
-	private List<WorkEfforAssociation> fromAssociatedWith;
+	private List<WorkEfforAssociation>			fromAssociatedWith;
 
-	private List<Requirement> fulfillsRequirement;
+	private List<Requirement>					fulfillsRequirement;
 
-	private List<WorkOrderItem> fullfillsWorkOderItems;
+	private List<WorkOrderItem>					fullfillsWorkOderItems;
 
-	private List<WorkEffortInvenotryAssignment> inNeedOf;
-	
-	private List<InventoryItem> inventoryProduced;	
+	private List<WorkEffortInvenotryAssignment>	inNeedOf;
 
-	private String name;
-	
-	private Facility performedAt;
-	
-	private List<WorkEffort>redoneVia;
-	
-	private Date scheduledCompletionDate;
-	
-	private Date scheduledStartDate;
-	
-	private String specialTerms;
+	private List<InventoryItem>					inventoryProduced;
 
-	private List<WorkEfforAssociation> toAssociatedWith;
-	
-	private BigDecimal totalDollarsAllowed;
-	
-	private long totalHoursAllowed;
-	
-	private List<TimeEntry>trackedVia;
-	
-	private WorkEffortType type;
-	
-	private WorkEffort versionOf;
+	private String								name;
+
+	private Facility							performedAt;
+
+	private List<WorkEffort>					redoneVia;
+
+	private Date								scheduledCompletionDate;
+
+	private Date								scheduledStartDate;
+
+	private String								specialTerms;
+
+	private List<WorkEfforAssociation>			toAssociatedWith;
+
+	private Money								totalDollarsAllowed;
+
+	private long								totalHoursAllowed;
+
+	private List<TimeEntry>						trackedVia;
+
+	private WorkEffortType						type;
+
+	private WorkEffort							versionOf;
 
 	@Temporal(TemporalType.DATE)
 	public Date getActualCompletionDate() {
@@ -126,7 +127,7 @@ public class WorkEffort extends BasePersistentModel {
 		return estimatedHours;
 	}
 
-	@OneToMany(mappedBy="associatedTo")
+	@OneToMany(mappedBy = "associatedTo")
 	public List<WorkEfforAssociation> getFromAssociatedWith() {
 		return fromAssociatedWith;
 	}
@@ -157,13 +158,13 @@ public class WorkEffort extends BasePersistentModel {
 	public String getName() {
 		return name;
 	}
-	
+
 	@ManyToOne
 	public Facility getPerformedAt() {
 		return performedAt;
 	}
 
-	@OneToMany(mappedBy="versionOf")
+	@OneToMany(mappedBy = "versionOf")
 	public List<WorkEffort> getRedoneVia() {
 		return redoneVia;
 	}
@@ -189,7 +190,7 @@ public class WorkEffort extends BasePersistentModel {
 		return specialTerms;
 	}
 
-	@OneToMany(mappedBy="associatedFrom")
+	@OneToMany(mappedBy = "associatedFrom")
 	public List<WorkEfforAssociation> getToAssociatedWith() {
 		return toAssociatedWith;
 	}
@@ -197,7 +198,8 @@ public class WorkEffort extends BasePersistentModel {
 	/**
 	 * @return the totalDollarsAllowed
 	 */
-	public BigDecimal getTotalDollarsAllowed() {
+	@Embedded
+	public Money getTotalDollarsAllowed() {
 		return totalDollarsAllowed;
 	}
 
@@ -323,10 +325,10 @@ public class WorkEffort extends BasePersistentModel {
 	 * @param totalDollarsAllowed
 	 *            the totalDollarsAllowed to set
 	 */
-	public void setTotalDollarsAllowed(BigDecimal totalDollarsAllowed) {
+	public void setTotalDollarsAllowed(Money totalDollarsAllowed) {
 		this.totalDollarsAllowed = totalDollarsAllowed;
 	}
-	
+
 	/**
 	 * @param totalHoursAllowed
 	 *            the totalHoursAllowed to set

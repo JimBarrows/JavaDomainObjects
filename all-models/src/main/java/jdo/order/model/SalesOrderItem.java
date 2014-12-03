@@ -21,19 +21,18 @@ public class SalesOrderItem extends OrderItem {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
-	
-	private List<PurchaseOrderItem> associatedWith = new ArrayList<PurchaseOrderItem>();
-	
-	private ContactMechanism shippedToMechanism;
-	
-	private PartyRole shipToCustomer;	
+	private static final long		serialVersionUID	= 1L;
 
-	@ManyToMany(mappedBy="usedToFillfill")
+	private List<PurchaseOrderItem>	associatedWith		= new ArrayList<PurchaseOrderItem>();
+
+	private ContactMechanism		shippedToMechanism;
+
+	private PartyRole				shipToCustomer;
+
+	@ManyToMany(mappedBy = "usedToFillfill")
 	public List<PurchaseOrderItem> getAssociatedWith() {
 		return associatedWith;
 	}
-
 
 	@ManyToOne
 	public ContactMechanism getShippedToMechanism() {
@@ -57,5 +56,4 @@ public class SalesOrderItem extends OrderItem {
 		this.shipToCustomer = shipToCustomer;
 	}
 
-	
 }
