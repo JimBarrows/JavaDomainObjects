@@ -69,6 +69,7 @@
 		<module>jdo-ear</module>
 		<module>validations</module>
 		<module>utils</module>
+		<module>crm</module>
 	</modules>
 	<profiles>
 		<profile>

@@ -14,7 +14,7 @@
 <h:body>
 
 	<composite:interface>
-		<composite:attribute name="controller"/>
+		<composite:attribute name="controller" />
 	</composite:interface>
 	<composite:implementation>
 		<rich:panel>
@@ -23,7 +23,8 @@
 					<rich:messages for="gv" />
 					<h:panelGrid columns="3">
 						<h:outputLabel value="First Name" for="firstName" />
-						<h:inputText id="firstName" value="#{cc.attrs.controller.person.firstName}">
+						<h:inputText id="firstName"
+							value="#{cc.attrs.controller.person.firstName}">
 							<rich:validator />
 						</h:inputText>
 						<rich:message for="firstName" />
@@ -34,18 +35,21 @@
 						</h:inputText>
 						<rich:message for="middleName" />
 						<h:outputLabel value="Last Name" for="lastName" />
-						<h:inputText id="lastName" value="#{cc.attrs.controller.person.lastName}">
+						<h:inputText id="lastName"
+							value="#{cc.attrs.controller.person.lastName}">
 							<rich:validator />
 						</h:inputText>
 						<rich:message for="lastName" />
 					</h:panelGrid>
 
 					<h:commandButton value="Save" action="#{cc.attrs.controller.save}" />
-					
+
 					<rich:tabPanel>
 						<rich:tab header="Roles">
-							<a4j:commandButton value="Add" action="#{cc.attrs.controller.addRole}" render="actingAsTable"/>
-							<rich:dataTable id="actingAsTable" value="#{cc.attrs.controller.person.actingAs}" var="role">
+							<h:commandButton value="Add"
+								action="#{cc.attrs.controller.addRole}"/>
+							<rich:dataTable id="actingAsTable"
+								value="#{cc.attrs.controller.person.actingAs}" var="role">
 								<rich:column>
 									<f:facet name="header">Type</f:facet>
 									#{role.type.description}
@@ -57,6 +61,12 @@
 								<rich:column>
 									<f:facet name="header">Thru</f:facet>
 									#{role.thru}
+								</rich:column>
+								<rich:column>
+									<h:form>										
+										<h:commandButton action="#{cc.attrs.controller.editRole(role)}"
+											value="Edit" />
+									</h:form>
 								</rich:column>
 							</rich:dataTable>
 						</rich:tab>

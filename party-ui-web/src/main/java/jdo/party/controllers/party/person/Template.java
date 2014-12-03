@@ -5,6 +5,7 @@ import static org.apache.commons.lang.StringUtils.isNotBlank;
 import javax.ejb.EJB;
 import javax.validation.constraints.AssertTrue;
 
+import jdo.party.model.PartyRole;
 import jdo.party.model.Person;
 import jdo.party.repositories.PartyRepository;
 
@@ -19,6 +20,10 @@ public abstract class Template {
 
 	public String addRole() {
 		return String.format("/party/role/add?faces-redirect=true&party=%d",person.getId());
+	}
+	
+	public String editRole(PartyRole role) {
+		return String.format("/party/role/edit?faces-redirect=true&party=%d&partyRole",person.getId(), role.getId());
 	}
 
 	@AssertTrue(message = "Either first or last name must have a value.")

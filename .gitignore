@@ -45,3 +45,4 @@ Servers/
 target/
 test-output
 tmp*
+/bin/

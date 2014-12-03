@@ -1,0 +1,61 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:rich="http://richfaces.org/rich"
+	xmlns:a4j="http://richfaces.org/a4j"
+	xmlns:party="http://java.sun.com/jsf/composite/party">
+
+<f:metadata>
+	<f:viewParam name="party" value="#{PartyRoleEdit.party}"
+		converter="#{PartyConverter}" />
+	<f:viewParam name="roleType" value="#{PartyRoleEdit.roleType}"
+		converter="#{PartyRoleTypeConverter}" />		
+</f:metadata>
+
+<h:head>
+	<title>Edit Role Form</title>
+</h:head>
+
+<h:body>
+
+	<ui:composition template="/templates/template.xhtml">
+
+		<ui:define name="title">Edit Role to
+			<!--  I don't know why I can't use the displayName tag here, but the party object is null when it renders. -->
+			<party:displayName party="#{PartyRoleEdit.party}"></party:displayName>
+		</ui:define>
+
+		<ui:define name="body">
+			<rich:panel>
+				<rich:graphValidator value="#{PartyRoleEdit}" id="gv">
+					<h:form id="partyRoleForm">
+						<rich:messages for="gv" />
+						<h:panelGrid columns="3">
+							<h:outputLabel value="Type" for="type" />
+							<rich:select value="#{PartyRoleEdit.roleType}"
+								enableManualInput="true" defaultLabel="Role type" converter="#{PartyRoleTypeConverter}">
+								<f:selectItems value="#{PartyRoleEdit.roleTypeList}"
+									itemLabel="#{rt.description}" var="rt" >
+
+								</f:selectItems>
+							</rich:select>
+							<rich:message for="type" />
+							<h:outputLabel value="From" for="from" />
+							<rich:calendar id="from" datePattern="d/M/y hh:mm a"
+								value="#{PartyRoleEdit.from}" required="true"></rich:calendar>
+							<rich:message for="from" />
+							<h:outputLabel value="Thru" for="thru" />
+							<rich:calendar id="thru" datePattern="d/M/y hh:mm a"
+								value="#{PartyRoleEdit.thru}" required="false"></rich:calendar>
+							<rich:message for="thru" />
+						</h:panelGrid>
+						<h:commandButton value="Save" action="#{PartyRoleEdit.save}" />
+					</h:form>
+				</rich:graphValidator>
+			</rich:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

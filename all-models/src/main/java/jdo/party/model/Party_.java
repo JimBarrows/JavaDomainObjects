@@ -9,14 +9,14 @@ import jdo.party.model.communication.CaseRole;
 import jdo.party.model.communication.CommunicationEventRole;
 import jdo.party.model.facility.FacilityRole;
 
-@Generated(value="Dali", date="2014-11-25T21:27:34.037-0700")
+@Generated(value="Dali", date="2014-12-01T21:14:12.228-0700")
 @StaticMetamodel(Party.class)
 public class Party_ extends BasePersistentModel_ {
+	public static volatile SetAttribute<Party, PartyRole> actingAs;
 	public static volatile ListAttribute<Party, CaseRole> caseRolesInvolvedIn;
 	public static volatile ListAttribute<Party, PartyClassification> classifiedInto;
 	public static volatile ListAttribute<Party, PartyContactMechanism> contactedVia;
 	public static volatile ListAttribute<Party, CommunicationEventRole> eventRolesInvolvedIn;
 	public static volatile ListAttribute<Party, FacilityRole> involvedInFacilityRole;
 	public static volatile ListAttribute<Party, PartyPostalAddress> residingAt;
-	public static volatile SetAttribute<Party, PartyRole> actingAs;
 }

@@ -14,6 +14,7 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
+import javax.xml.bind.annotation.XmlRootElement;
 
 import jdo.model.BasePersistentModel;
 import jdo.party.model.communication.CaseRole;
@@ -36,6 +37,7 @@ import jdo.party.model.facility.FacilityRole;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
+@XmlRootElement
 public class Party extends BasePersistentModel implements Serializable {
 
 	/**
