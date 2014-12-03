@@ -57,12 +57,11 @@
 		<org.richfaces.bom.version>4.5.0.Final</org.richfaces.bom.version>
 		<hibernate.validator.version>5.2.0.Alpha1</hibernate.validator.version>
 		<hibernate.core.version>4.3.7.Final</hibernate.core.version>
-		<org.slf4j.version>1.7.7</org.slf4j.version>  
+		<org.slf4j.version>1.7.7</org.slf4j.version>
 	</properties>
 
 	<modules>
 		<module>all-models</module>
-		<module>ecommerce-model</module>
 		<module>party-ui-web</module>
 		<module>party-services</module>
 		<module>test-utils</module>

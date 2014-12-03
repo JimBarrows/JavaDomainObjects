@@ -4,8 +4,8 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value = "Dali", date = "2013-01-04T22:23:03.925-0700")
+@Generated(value="Dali", date="2014-12-02T21:45:36.656-0700")
 @StaticMetamodel(Vehicle.class)
 public class Vehicle_ extends FixedAsset_ {
-	public static volatile SingularAttribute<Vehicle, String>	vehicleIdentificationNumber;
+	public static volatile SingularAttribute<Vehicle, String> vehicleIdentificationNumber;
 }

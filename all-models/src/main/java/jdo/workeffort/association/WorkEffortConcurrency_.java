@@ -3,7 +3,7 @@ package jdo.workeffort.association;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value = "Dali", date = "2013-01-04T22:11:23.510-0700")
+@Generated(value="Dali", date="2014-12-02T21:45:38.796-0700")
 @StaticMetamodel(WorkEffortConcurrency.class)
 public class WorkEffortConcurrency_ extends WorkEffortDependency_ {
 }
