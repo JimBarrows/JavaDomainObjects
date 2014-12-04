@@ -2,7 +2,8 @@ package jdo.party.model.relationship;
 
 import javax.persistence.Entity;
 
-import jdo.party.model.PartyRole;
+import jdo.party.model.roles.Customer;
+import jdo.party.model.roles.InternalOrganization;
 
 
 @Entity
@@ -13,20 +14,20 @@ public class CustomerRelationship extends PartyRelationship {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	public PartyRole getRelationshipFrom() {
-		return (PartyRole)super.getRelationshipFrom();
+	public InternalOrganization getRelationshipFrom() {
+		return (InternalOrganization)super.getRelationshipFrom();
 	}
 
-	public PartyRole getRelationshipTo() {
-		return (PartyRole)super.getRelationshipTo();
+	public Customer getRelationshipTo() {
+		return (Customer)super.getRelationshipTo();
 	}
 
 
-	public void setRelationshipFrom(PartyRole relationshipFrom) {
+	public void setRelationshipFrom(InternalOrganization relationshipFrom) {
 		super.setRelationshipFrom(relationshipFrom);
 	}
 
-	public void setRelationshipTo(PartyRole relationshipTo) {
+	public void setRelationshipTo(Customer relationshipTo) {
 		super.setRelationshipTo(relationshipTo);
 	}
 

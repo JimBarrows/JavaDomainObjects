@@ -7,14 +7,13 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.643-0700")
+@Generated(value="Dali", date="2014-12-03T23:34:27.555-0700")
 @StaticMetamodel(PartyRelationship.class)
 public class PartyRelationship_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PartyRelationship, DateTimeRange> dateTimeRange;
-	public static volatile SingularAttribute<PartyRelationship, RelationshipType> type;
+	public static volatile SingularAttribute<PartyRelationship, String> comment;
 	public static volatile SingularAttribute<PartyRelationship, PriorityType> priority;
 	public static volatile SingularAttribute<PartyRelationship, PartyRole> relationshipFrom;
 	public static volatile SingularAttribute<PartyRelationship, PartyRole> relationshipTo;
 	public static volatile SingularAttribute<PartyRelationship, StatusType> status;
-	public static volatile SingularAttribute<PartyRelationship, String> comment;
 }

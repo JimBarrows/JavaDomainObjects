@@ -4,20 +4,17 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertFalse;
-import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
-import jdo.party.model.PartyRoleType;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -46,8 +43,6 @@ public class PartyRelationship extends BasePersistentModel {
 	 */
 	private static final Logger	logger			= LogManager.getLogger(PartyRelationship.class.getName());
 
-	private RelationshipType	type;
-
 	private String				comment;
 
 	private PriorityType		priority;
@@ -73,29 +68,26 @@ public class PartyRelationship extends BasePersistentModel {
 		super();
 	}
 
-	public PartyRelationship(RelationshipType type, String comment, PartyRole from, PartyRole to) {
+	public PartyRelationship( String comment, PartyRole from, PartyRole to) {
 		super();
 		this.comment = comment;
 		relationshipFrom = from;
 		relationshipTo = to;
-		this.type = type;
 	}
 
-	public PartyRelationship(Long id, Long version, DateTime from, DateTime thru, RelationshipType type, String comment, PartyRole relationshipFrom,
+	public PartyRelationship(Long id, Long version, DateTime from, DateTime thru, String comment, PartyRole relationshipFrom,
 			PartyRole relationshipTo) {
 		super(id, version);
 		this.dateTimeRange.setFrom(from);
-		this.dateTimeRange.setThru(thru);
-		this.type = type;
+		this.dateTimeRange.setThru(thru);		
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
 	}
 
-	public PartyRelationship(DateTime from, DateTime thru, RelationshipType type, String comment, PartyRole relationshipFrom, PartyRole relationshipTo) {
+	public PartyRelationship(DateTime from, DateTime thru, String comment, PartyRole relationshipFrom, PartyRole relationshipTo) {
 		this.dateTimeRange.setFrom(from);
 		this.dateTimeRange.setThru(thru);
-		this.type = type;
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
@@ -113,38 +105,9 @@ public class PartyRelationship extends BasePersistentModel {
 		logger.debug("isTheRelationshipToSameParty() - " + new ToStringBuilder("", MethodParameterStyle.METHOD_PARAMETER_STYLE).append("PartyRole relationshipFrom.roleFor", relationshipFrom.getRoleFor()).append("PartyRole relationshipTo.roleFor", relationshipTo.getRoleFor()).toString()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
 
 		return relationshipFrom.getRoleFor().equals(relationshipTo.getRoleFor());
-	}
+	}		
 
-	@Transient
-	@AssertTrue(message = "The from role, must of the same type as the Realtionship Type from role")
-	public boolean isTheFromRoleSameAsRelationshipoTypeFromRole() {
-		PartyRoleType left = relationshipFrom.getType();
-		PartyRoleType right = type.getFromRoleType();
-		return left.equals(right);
-	}
-
-	@Transient
-	@AssertTrue(message = "The to role, must of the same type as the Realtionship Type to role")
-	public boolean isTheToRoleTypeSameAsRelationshipoTypeToRole() {
-		PartyRoleType left = relationshipTo.getType();
-		PartyRoleType right = type.getToRoleType();
-
-		boolean returnboolean = left.equals(right);
-		logger.debug("isTheToRoleTypeSameAsRelationshipoTypeToRole() - left=" + left + ", right=" + right + " - return value={}", returnboolean); //$NON-NLS-1$ //$NON-NLS-2$
-
-		return returnboolean;
-	}
-
-	@ManyToOne(optional = false, targetEntity = RelationshipType.class)
-	@NotNull
-	public RelationshipType getType() {
-		return type;
-	}
-
-	public void setType(RelationshipType type) {
-		this.type = type;
-	}
-
+	@Lob
 	@NotEmpty
 	public String getComment() {
 		return comment;
@@ -193,19 +156,9 @@ public class PartyRelationship extends BasePersistentModel {
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-
-		if (!(obj instanceof PartyRelationship)) {
-			return false;
-		}
-		PartyRelationship rhs = (PartyRelationship) obj;
-		return new EqualsBuilder().appendSuper(super.equals(rhs)).append(type, rhs.type).append(comment, rhs.comment)
-				.append(relationshipFrom, rhs.relationshipFrom).append(relationshipTo, rhs.relationshipTo).isEquals();
+	public String toString() {
+		return "PartyRelationship [comment=" + comment + ", priority=" + priority + ", relationshipFrom=" + relationshipFrom + ", relationshipTo="
+				+ relationshipTo + ", status=" + status + ", dateTimeRange=" + dateTimeRange + ", id=" + id + ", version=" + version + "]";
 	}
-
-	@Override
-	public int hashCode() {
-		return new HashCodeBuilder().appendSuper(super.hashCode()).append(type).append(comment).append(relationshipFrom).append(relationshipTo).toHashCode();
-
-	}
+	
 }

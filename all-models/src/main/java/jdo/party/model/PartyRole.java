@@ -31,8 +31,6 @@ import org.joda.time.DateTime;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartyRole extends BasePersistentModel {
 
-	private PartyRoleType				type;
-
 	private Party						roleFor;
 
 	private List<ShipmentMethodType>	ableToShipVia	= new ArrayList<ShipmentMethodType>();
@@ -50,22 +48,11 @@ public class PartyRole extends BasePersistentModel {
 
 	public PartyRole() {
 
-	}
+	}	
 
-	public PartyRole(PartyRoleType type) {
-		super();
-		this.type = type;
-	}
-
-	@Override
-	public String toString() {
-		return "PartyRole [type=" + type + ", roleFor=" + roleFor + ", ableToShipVia=" + ableToShipVia + "]";
-	}
-
-	public PartyRole(DateTime from, DateTime thru, PartyRoleType type) {
+	public PartyRole(DateTime from, DateTime thru) {
 		dateTimeRange.setFrom(from);
 		dateTimeRange.setThru(thru);
-		this.type = type;
 	}
 
 	@NotNull
@@ -77,17 +64,7 @@ public class PartyRole extends BasePersistentModel {
 
 	public void setRoleFor(Party roleFor) {
 		this.roleFor = roleFor;
-	}
-
-	@NotNull
-	@ManyToOne
-	public PartyRoleType getType() {
-		return type;
-	}
-
-	public void setType(PartyRoleType type) {
-		this.type = type;
-	}
+	}	
 
 	@ManyToMany
 	public List<ShipmentMethodType> getAbleToShipVia() {
