@@ -1,8 +1,11 @@
 package jdo.crm.resources;
 
+import static jdo.core.ApplicationConfiguration.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.ejb.EJB;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -10,15 +13,25 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.ws.rs.core.UriBuilder;
 
+import jdo.core.ApplicationConfiguration;
+import jdo.dto.CustomerDto;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
+import jdo.party.model.PartyRole;
 import jdo.party.model.Person;
 import jdo.party.model.relationship.CustomerRelationship;
+import jdo.party.model.roles.InternalOrganization;
 
 @Stateless
 @Path("/customers")
@@ -26,6 +39,30 @@ public class Customer {
 
 	@PersistenceContext(name = "all-models")
 	private EntityManager	em;
+	
+	@EJB
+	private ApplicationConfiguration config;
+
+	@POST
+	@Consumes(MediaType.APPLICATION_JSON)
+	public CustomerDto create( CustomerDto customer) {
+		
+		Organization entity = new Organization();
+		entity.setName(customer.getName());
+		jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
+		entity.addPartyRole( customerRole);
+		
+		em.persist(entity);
+		
+		InternalOrganization companyInternalRole = (InternalOrganization) config.getCompany().getActingAs().stream().filter( internalOrganizationPredicate()).findFirst().get();
+		
+		CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
+		
+		em.persist(customerRelationship);
+		
+		
+		return customer;
+	}
 
 	@GET
 	@Produces("application/json")
@@ -45,7 +82,7 @@ public class Customer {
 		List<Party> customers = new ArrayList<Party>();
 		entities.forEach(customerRelationship -> {
 			Party party = customerRelationship.getRelationshipTo().getRoleFor();
-			if(party instanceof Person) {
+			if (party instanceof Person) {
 				customers.add((Person) party);
 			} else {
 				customers.add((Organization) party);

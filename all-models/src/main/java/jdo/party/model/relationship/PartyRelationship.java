@@ -15,13 +15,7 @@ import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
-import org.apache.commons.lang.builder.ToStringBuilder;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
-import org.hibernate.validator.constraints.NotEmpty;
 import org.joda.time.DateTime;
-
-import de.jayefem.log4e.MethodParameterStyle;
 
 /**
  * A relationship is defined by the two parties and their respective roles.
@@ -37,11 +31,7 @@ import de.jayefem.log4e.MethodParameterStyle;
 @SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class PartyRelationship extends BasePersistentModel {
-	/**
-	 * Logger for this class
-	 */
-	private static final Logger	logger			= LogManager.getLogger(PartyRelationship.class.getName());
+public class PartyRelationship extends BasePersistentModel {	
 
 	private String				comment;
 
@@ -67,6 +57,13 @@ public class PartyRelationship extends BasePersistentModel {
 	public PartyRelationship() {
 		super();
 	}
+
+	public PartyRelationship(PartyRole relationshipFrom, PartyRole relationshipTo) {
+		super();
+		this.relationshipFrom = relationshipFrom;
+		this.relationshipTo = relationshipTo;
+	}
+		
 
 	public PartyRelationship( String comment, PartyRole from, PartyRole to) {
 		super();
@@ -97,18 +94,9 @@ public class PartyRelationship extends BasePersistentModel {
 	@AssertFalse
 	public boolean isRelationshipRolesNull() {
 		return relationshipFrom == null || relationshipTo == null;
-	}
+	}	
 
-	@Transient
-	@AssertFalse(message = "Relationship cannot be to the same party.")
-	public boolean isTheRelationshipToSameParty() {
-		logger.debug("isTheRelationshipToSameParty() - " + new ToStringBuilder("", MethodParameterStyle.METHOD_PARAMETER_STYLE).append("PartyRole relationshipFrom.roleFor", relationshipFrom.getRoleFor()).append("PartyRole relationshipTo.roleFor", relationshipTo.getRoleFor()).toString()); //$NON-NLS-1$ //$NON-NLS-2$ //$NON-NLS-3$ //$NON-NLS-4$
-
-		return relationshipFrom.getRoleFor().equals(relationshipTo.getRoleFor());
-	}		
-
-	@Lob
-	@NotEmpty
+	@Lob	
 	public String getComment() {
 		return comment;
 	}
@@ -160,5 +148,5 @@ public class PartyRelationship extends BasePersistentModel {
 		return "PartyRelationship [comment=" + comment + ", priority=" + priority + ", relationshipFrom=" + relationshipFrom + ", relationshipTo="
 				+ relationshipTo + ", status=" + status + ", dateTimeRange=" + dateTimeRange + ", id=" + id + ", version=" + version + "]";
 	}
-	
+
 }

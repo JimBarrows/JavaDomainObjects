@@ -1,11 +1,9 @@
-package jdo.party.model.roles;
+package jdo.party.model;
 
 import javax.persistence.Entity;
 
-import jdo.party.model.PartyRole;
-
 @Entity
-public class Customer extends PartyRole {
+public class Company extends LegalOrganization {
 
 	/**
 	 * 
