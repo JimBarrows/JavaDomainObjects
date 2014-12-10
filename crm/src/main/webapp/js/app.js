@@ -1,7 +1,9 @@
 App = Ember.Application.create();
+
 $.ajaxSetup({
 	contentType : "application/json"
 });
+
 App.Router.map(function() {
 	this.resource('customers', function() {
 		this.route('create', {
@@ -32,12 +34,15 @@ App.AlertController = Ember.Controller.extend({
 
 App.CustomersCreateController = Ember.Controller.extend({
 	name : '',
+	partyType :'Person',
 	needs : [ 'alert' ],
+	partyTypeList : ['Person', 'Organization', 'Company', 'Government Agency', 'Team', 'Family'],
+	errors : {},
 	actions : {
 		save : function() {
 			var thisController = this;
 			var data =  JSON.stringify({
-					'partyType' : 'Organization',
+					'partyType' : this.partyType,
 					'name' : this.name
 					});
 			var promise = $.ajax({
@@ -46,7 +51,7 @@ App.CustomersCreateController = Ember.Controller.extend({
 				"url" : "/crm/api/customers", 
 				"data" :data,
 				"success":function(data) {
-				
+				alert( data);
 				}
 			});
 
@@ -54,6 +59,7 @@ App.CustomersCreateController = Ember.Controller.extend({
 				var alertController = thisController.get('controllers.alert');
 				alertController.set('alert', [ 'danger',
 						'Could not save customer because ' + errorThrown ]);
+				thisController.set('errors', jqXHR.responseJSON.errors);				
 			});
 			return promise;
 		}

@@ -1,6 +1,6 @@
 package jdo.crm.resources;
 
-import static jdo.core.ApplicationConfiguration.*;
+import static jdo.core.ApplicationConfiguration.internalOrganizationPredicate;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,6 @@ import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -21,14 +20,13 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
-import javax.ws.rs.core.Response;
-import javax.ws.rs.core.UriBuilder;
 
 import jdo.core.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
+import jdo.errors.Errors;
+import jdo.errors.ValidationError;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
-import jdo.party.model.PartyRole;
 import jdo.party.model.Person;
 import jdo.party.model.relationship.CustomerRelationship;
 import jdo.party.model.roles.InternalOrganization;
@@ -47,8 +45,23 @@ public class Customer {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public CustomerDto create( CustomerDto customer) {
 		
-		Organization entity = new Organization();
-		entity.setName(customer.getName());
+		Party entity = null;
+		switch( customer.getPartyType()) {
+			case "Person" :
+				entity = new Person();
+				((Person)entity).setFirstName(customer.getFirstName());
+				((Person)entity).setLastName(customer.getLastName());
+				break;
+			case "Organization":
+				entity = new Organization();
+				((Organization)entity).setName(customer.getName());
+				break;
+			default:
+				Errors error = new Errors();
+				error.add("partyType", "Invalid type " + customer.getPartyType());
+				throw new ValidationError( error);
+		}
+		
 		jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
 		entity.addPartyRole( customerRole);
 		

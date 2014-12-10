@@ -7,6 +7,8 @@ public class CustomerDto {
 
 	private String	partyType;
 	private String	name;
+	private String	firstName;
+	private String	lastName;
 
 	public String getPartyType() {
 		return partyType;
@@ -59,5 +61,21 @@ public class CustomerDto {
 	public String toString() {
 		return "CustomerDto [partyType=" + partyType + ", name=" + name + "]";
 	}
-	
+
+	public String getFirstName() {
+		return firstName;
+	}
+
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public String getLastName() {
+		return lastName;
+	}
+
+	public void setLastName(String lastName) {
+		this.lastName = lastName;
+	}
+
 }
