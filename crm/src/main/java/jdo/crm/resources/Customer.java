@@ -79,7 +79,7 @@ public class Customer {
 
 	@GET
 	@Produces("application/json")
-	public List<Party> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
+	public List<CustomerDto> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<CustomerRelationship> criteria = builder.createQuery(CustomerRelationship.class);
 		Root<CustomerRelationship> entityRoot = criteria.from(CustomerRelationship.class);
@@ -92,14 +92,10 @@ public class Customer {
 			query.setMaxResults(maxResult);
 		}
 		List<CustomerRelationship> entities = query.getResultList();
-		List<Party> customers = new ArrayList<Party>();
+		List<CustomerDto> customers = new ArrayList<CustomerDto>();
 		entities.forEach(customerRelationship -> {
 			Party party = customerRelationship.getRelationshipTo().getRoleFor();
-			if (party instanceof Person) {
-				customers.add((Person) party);
-			} else {
-				customers.add((Organization) party);
-			}
+			customers.add( new CustomerDto( party));
 		});
 		return customers;
 	}

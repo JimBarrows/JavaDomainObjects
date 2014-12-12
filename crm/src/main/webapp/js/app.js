@@ -34,9 +34,11 @@ App.AlertController = Ember.Controller.extend({
 
 App.CustomersCreateController = Ember.Controller.extend({
 	name : '',
-	partyType :'Person',
+	firstName : '',
+	lastName : '',
+	partyType :'jdo.party.model.Person',
 	needs : [ 'alert' ],
-	partyTypeList : ['Person', 'Organization', 'Company', 'Government Agency', 'Team', 'Family'],
+	partyTypeList : ['jdo.party.model.Person', 'jdo.party.model.Organization', 'jdo.party.model.Company', 'jdo.party.model.Government Agency', 'jdo.party.model.Team', 'jdo.party.model.Family'],
 	errors : {},
 	actions : {
 		save : function() {
@@ -51,17 +53,18 @@ App.CustomersCreateController = Ember.Controller.extend({
 				"url" : "/crm/api/customers", 
 				"data" :data,
 				"success":function(data) {
-				alert( data);
+				
 				}
 			});
 
 			promise.fail(function(jqXHR, textStatus, errorThrown) {
-				var alertController = thisController.get('controllers.alert');
-				alertController.set('alert', [ 'danger',
-						'Could not save customer because ' + errorThrown ]);
+				var alertController = thisController.get('controllers.alert');				
 				thisController.set('errors', jqXHR.responseJSON.errors);				
 			});
 			return promise;
 		}
-	}
+	},
+	isPerson : function() {
+		return this.partyType === "jdo.party.model.Person";
+	}.property('partyType')
 });
