@@ -25,6 +25,8 @@ import jdo.core.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
 import jdo.errors.Errors;
 import jdo.errors.ValidationError;
+import jdo.party.model.Company;
+import jdo.party.model.LegalOrganization;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
 import jdo.party.model.Person;
@@ -47,15 +49,24 @@ public class Customer {
 		
 		Party entity = null;
 		switch( customer.getPartyType()) {
-			case "Person" :
-				entity = new Person();
-				((Person)entity).setFirstName(customer.getFirstName());
-				((Person)entity).setLastName(customer.getLastName());
+			case "jdo.party.model.Company":
+				entity = new Company();
+				((Company)entity).setName(customer.getName());
 				break;
-			case "Organization":
+			case "jdo.party.model.LegalOrganization":
+				entity = new LegalOrganization();
+				((LegalOrganization)entity).setName(customer.getName());
+				break;
+			case "jdo.party.model.Organization":
 				entity = new Organization();
 				((Organization)entity).setName(customer.getName());
 				break;
+			case "jdo.party.model.Person" :
+				entity = new Person();
+				((Person)entity).setFirstName(customer.getFirstName());
+				((Person)entity).setLastName(customer.getLastName());
+				break;			
+			
 			default:
 				Errors error = new Errors();
 				error.add("partyType", "Invalid type " + customer.getPartyType());

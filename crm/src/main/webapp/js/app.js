@@ -38,14 +38,16 @@ App.CustomersCreateController = Ember.Controller.extend({
 	lastName : '',
 	partyType :'jdo.party.model.Person',
 	needs : [ 'alert' ],
-	partyTypeList : ['jdo.party.model.Person', 'jdo.party.model.Organization', 'jdo.party.model.Company', 'jdo.party.model.Government Agency', 'jdo.party.model.Team', 'jdo.party.model.Family'],
+	partyTypeList : ['jdo.party.model.Company', 'jdo.party.model.LegalOrganization', 'jdo.party.model.Organization', 'jdo.party.model.Person'  ],
 	errors : {},
 	actions : {
 		save : function() {
 			var thisController = this;
 			var data =  JSON.stringify({
 					'partyType' : this.partyType,
-					'name' : this.name
+					'name' : this.name,
+					'firstName' : this.firstName,
+					'lastName' : this.lastName
 					});
 			var promise = $.ajax({
 				"type" : "POST",
