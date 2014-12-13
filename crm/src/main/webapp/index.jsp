@@ -30,12 +30,16 @@
 	<script type="text/x-handlebars" id="customers/create">
 		<%@ include file="customers/create.jsp" %> 
 	</script>
-	
+
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="js/libs/handlebars-v1.3.0.js"></script>
-	<script src="js/libs/ember-1.8.1.js"></script>
+	<script src="js/libs/handlebars-v2.0.0.js"></script>
+	<script src="js/libs/ember-1.9.0.js"></script>
+	<script src="js/libs/ember-data-1.0.0-beta.11.js"></script>
 	<script src="js/app.js"></script>
+	<script src="js/models.js"></script>
+	<script src="js/controllers.js"></script>
+	<script src="js/routes.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
 	<!-- to activate the test runner, add the "?test" query string parameter -->
 	<script src="tests/runner.js"></script>

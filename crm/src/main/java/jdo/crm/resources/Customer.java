@@ -3,16 +3,18 @@ package jdo.crm.resources;
 import static jdo.core.ApplicationConfiguration.internalOrganizationPredicate;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import javax.ejb.EJB;
-import javax.ejb.Stateless;
+import javax.enterprise.context.RequestScoped;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -23,18 +25,18 @@ import javax.ws.rs.core.MediaType;
 
 import jdo.core.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
+import jdo.dto.CustomerDtoList;
 import jdo.errors.Errors;
 import jdo.errors.ValidationError;
 import jdo.party.model.Company;
-import jdo.party.model.LegalOrganization;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
 import jdo.party.model.Person;
 import jdo.party.model.relationship.CustomerRelationship;
 import jdo.party.model.roles.InternalOrganization;
 
-@Stateless
 @Path("/customers")
+@RequestScoped
 public class Customer {
 
 	@PersistenceContext(name = "all-models")
@@ -45,6 +47,7 @@ public class Customer {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
+	@Transactional
 	public CustomerDto create( CustomerDto customer) {
 		
 		Party entity = null;
@@ -52,11 +55,7 @@ public class Customer {
 			case "jdo.party.model.Company":
 				entity = new Company();
 				((Company)entity).setName(customer.getName());
-				break;
-			case "jdo.party.model.LegalOrganization":
-				entity = new LegalOrganization();
-				((LegalOrganization)entity).setName(customer.getName());
-				break;
+				break;			
 			case "jdo.party.model.Organization":
 				entity = new Organization();
 				((Organization)entity).setName(customer.getName());
@@ -69,7 +68,7 @@ public class Customer {
 			
 			default:
 				Errors error = new Errors();
-				error.add("partyType", "Invalid type " + customer.getPartyType());
+				error.put("partyType", Arrays.asList("Invalid type " + customer.getPartyType()));
 				throw new ValidationError( error);
 		}
 		
@@ -84,13 +83,13 @@ public class Customer {
 		
 		em.persist(customerRelationship);
 		
-		
+		customer.setId( entity.getId());
 		return customer;
 	}
 
 	@GET
-	@Produces("application/json")
-	public List<CustomerDto> listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
+	@Produces(MediaType.APPLICATION_JSON)
+	public CustomerDtoList listAll(@QueryParam("start") Integer startPosition, @QueryParam("max") Integer maxResult) {
 		CriteriaBuilder builder = em.getCriteriaBuilder();
 		CriteriaQuery<CustomerRelationship> criteria = builder.createQuery(CustomerRelationship.class);
 		Root<CustomerRelationship> entityRoot = criteria.from(CustomerRelationship.class);
@@ -108,6 +107,6 @@ public class Customer {
 			Party party = customerRelationship.getRelationshipTo().getRoleFor();
 			customers.add( new CustomerDto( party));
 		});
-		return customers;
+		return new CustomerDtoList( customers);
 	}
 }

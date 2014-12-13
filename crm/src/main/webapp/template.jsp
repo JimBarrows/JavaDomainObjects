@@ -30,9 +30,11 @@
 	<div class="page-header">
 		<h1>Customer Relationship Management</h1>
 	</div>
+	{{#if alertController.alert}}
 	<div id="flash">
 		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		<span></span>
 	</div>
+	{{/if}}
 	{{outlet}}
 </div>
