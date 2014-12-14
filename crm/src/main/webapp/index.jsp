@@ -30,6 +30,10 @@
 	<script type="text/x-handlebars" id="customers/create">
 		<%@ include file="customers/create.jsp" %> 
 	</script>
+	
+	<script type="text/x-handlebars" id="customers/edit">
+		<%@ include file="customers/edit.jsp" %> 
+	</script>
 
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>

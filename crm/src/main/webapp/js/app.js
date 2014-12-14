@@ -34,5 +34,8 @@ App.Router.map(function() {
 		this.route('create', {
 			path : "/new"
 		});
+		this.route('edit', {
+			path : "/:customer_id"
+		});
 	});
 });
