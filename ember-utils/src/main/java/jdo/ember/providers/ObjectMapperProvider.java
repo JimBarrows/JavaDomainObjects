@@ -1,4 +1,4 @@
-package jdo.crm.providers;
+package jdo.ember.providers;
 
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;

@@ -1,5 +1,6 @@
-package jdo.errors;
+package jdo.ember.dto;
 
+import java.util.Arrays;
 import java.util.Hashtable;
 import java.util.List;
 
@@ -14,5 +15,7 @@ public class Errors extends Hashtable<String, List<String>>{
 	private static final long	serialVersionUID	= 1L;
 
 	
-	
+	public void put( String key, String ... messages) {
+		this.put(key, Arrays.asList(messages));
+	}
 }

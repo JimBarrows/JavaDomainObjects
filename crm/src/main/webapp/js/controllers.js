@@ -29,3 +29,17 @@ App.CustomersCreateController = Ember.Controller.extend({
 		}
 	}
 });
+
+App.CustomersEditController = Ember.Controller.extend({
+	needs : [ 'alert' ],
+	partyTypeList : [],
+	actions : {
+		save : function() {
+			return this.model.save().then(function(){
+				  route.transitionTo('customers');
+			}, function() {
+			  // Couldn't save, do nothing about it.
+			});
+		}
+	}
+});

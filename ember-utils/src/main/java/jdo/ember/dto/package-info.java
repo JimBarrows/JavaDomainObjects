@@ -5,4 +5,4 @@
  * @author Jim
  *
  */
-package jdo.errors;
+package jdo.ember.dto;

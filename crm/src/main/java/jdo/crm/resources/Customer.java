@@ -17,7 +17,9 @@ import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -27,8 +29,8 @@ import javax.ws.rs.core.MediaType;
 import jdo.core.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
 import jdo.dto.CustomerDtoList;
-import jdo.errors.Errors;
-import jdo.errors.ValidationError;
+import jdo.ember.dto.Errors;
+import jdo.ember.dto.ValidationError;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
@@ -41,50 +43,100 @@ import jdo.party.model.roles.InternalOrganization;
 public class Customer {
 
 	@PersistenceContext(name = "all-models")
-	private EntityManager	em;
-	
+	private EntityManager				em;
+
 	@EJB
-	private ApplicationConfiguration config;
+	private ApplicationConfiguration	config;
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
 	@Transactional
-	public CustomerDto create( CustomerDto customer) {
-		
+	public CustomerDto create(CustomerDto customer) {
+
 		Party entity = null;
-		switch( customer.getPartyType()) {
+		switch (customer.getPartyType()) {
 			case "jdo.party.model.Company":
 				entity = new Company();
-				((Company)entity).setName(customer.getName());
-				break;			
+				((Company) entity).setName(customer.getName());
+				break;
 			case "jdo.party.model.Organization":
 				entity = new Organization();
-				((Organization)entity).setName(customer.getName());
+				((Organization) entity).setName(customer.getName());
 				break;
-			case "jdo.party.model.Person" :
+			case "jdo.party.model.Person":
 				entity = new Person();
-				((Person)entity).setFirstName(customer.getFirstName());
-				((Person)entity).setLastName(customer.getLastName());
-				break;			
-			
+				((Person) entity).setFirstName(customer.getFirstName());
+				((Person) entity).setLastName(customer.getLastName());
+				break;
+
 			default:
 				Errors error = new Errors();
 				error.put("partyType", Arrays.asList("Invalid type " + customer.getPartyType()));
-				throw new ValidationError( error);
+				throw new ValidationError(error);
 		}
-		
+
 		jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
-		entity.addPartyRole( customerRole);
-		
+		entity.addPartyRole(customerRole);
+
 		em.persist(entity);
-		
-		InternalOrganization companyInternalRole = (InternalOrganization) config.getCompany().getActingAs().stream().filter( internalOrganizationPredicate()).findFirst().get();
-		
+
+		InternalOrganization companyInternalRole = (InternalOrganization) config.getCompany().getActingAs().stream().filter(internalOrganizationPredicate())
+				.findFirst().get();
+
 		CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
-		
+
 		em.persist(customerRelationship);
-		
-		customer.setId( entity.getId());
+
+		customer.setId(entity.getId());
+		return customer;
+	}
+
+	@PUT
+	@Path("/{id}")
+	@Consumes(MediaType.APPLICATION_JSON)
+	@Transactional
+	public CustomerDto update(@PathParam("id") Long id, CustomerDto customer) {
+		if ((id == null) || (id < 0)) {
+			throw new IllegalArgumentException("Id must be part of path, and greater than 0.");
+		}
+
+		Party entity = em.find(Party.class, id);
+
+		if (entity.getActingAs().stream().anyMatch(role -> {
+			return (role instanceof jdo.party.model.roles.Customer);
+		})) {
+
+			switch (customer.getPartyType()) {
+				case "jdo.party.model.Company":
+					if (entity instanceof Company) {
+						((Company) entity).setName(customer.getName());
+					} else {
+						throw new NotFoundException();
+					}
+					break;
+				case "jdo.party.model.Organization":
+					if (entity instanceof Company) {
+						((Organization) entity).setName(customer.getName());
+					} else {
+						throw new NotFoundException();
+					}
+					break;
+				case "jdo.party.model.Person":
+					if (entity instanceof Person) {
+						((Person) entity).setFirstName(customer.getFirstName());
+						((Person) entity).setLastName(customer.getLastName());
+					} else {
+						throw new NotFoundException();
+					}
+					break;
+
+				default:
+					throw new NotFoundException();
+			}
+		} else {
+
+			throw new NotFoundException();
+		}
 		return customer;
 	}
 
@@ -106,15 +158,19 @@ public class Customer {
 		List<CustomerDto> customers = new ArrayList<CustomerDto>();
 		entities.forEach(customerRelationship -> {
 			Party party = customerRelationship.getRelationshipTo().getRoleFor();
-			customers.add( new CustomerDto( party));
+			customers.add(new CustomerDto(party));
 		});
-		return new CustomerDtoList( customers);
+		return new CustomerDtoList(customers);
 	}
-	
+
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)
 	public CustomerDto findById(@PathParam("id") Long id) {
-		return new CustomerDto( em.find(Party.class, id));
+		Party party = em.find(Party.class, id);
+		if( party == null) {
+			throw new NotFoundException();
+		}
+		return new CustomerDto(party);
 	}
 }

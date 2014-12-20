@@ -1,4 +1,4 @@
-package jdo.errors;
+package jdo.ember.dto;
 
 import javax.ws.rs.core.Response;
 import javax.ws.rs.core.Response.Status.Family;
