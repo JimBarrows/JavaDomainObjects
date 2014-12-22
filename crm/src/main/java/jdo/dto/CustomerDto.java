@@ -1,8 +1,12 @@
 package jdo.dto;
 
+import static org.apache.commons.lang.StringUtils.*;
 import java.io.Serializable;
 
+import javax.validation.constraints.AssertTrue;
 import javax.xml.bind.annotation.XmlRootElement;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 
@@ -15,6 +19,7 @@ import jdo.party.model.Person;
 public class CustomerDto implements Serializable {
 
 	private Long	id;
+	@NotEmpty
 	private String	partyType;
 	private String	name;
 	private String	firstName;
@@ -35,6 +40,11 @@ public class CustomerDto implements Serializable {
 		id = party.getId();
 	}
 
+	@AssertTrue
+	public boolean hasName() {
+		return isNotBlank( name) || isNotBlank( lastName);
+	}
+	
 	public String getPartyType() {
 		return partyType;
 	}

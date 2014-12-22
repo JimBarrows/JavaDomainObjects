@@ -1,8 +1,11 @@
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
+<%@ taglib uri="http://javadomainobjects.org/tags/ember" prefix="ember"%>
+ 
 <div class="container">
 	<div class="page-header">
 		<h1>Add Customer</h1>
 	</div>
-	<form class="form-horizontal" role="form">
+	<form class="form-horizontal" role="form">		
 		<div {{bind-attr class=":form-group model.errors.partyType:has-error" }}>
 			<label for="name" class="col-sm-2 control-label">Type</label>
 			<div class="col-sm-10">
@@ -18,43 +21,10 @@
 			</div>
 		</div>
 		{{#if model.isPerson}}
-		<div class="form-group has-feedback">
-			<label for="name" class="col-sm-2 control-label">First Name</label>
-			<div class="col-sm-10">
-				{{input type="text" value=model.firstName class="form-control" placeholder="First Name"}} 
-				{{#if model.errors.firstName}} 
-					<span class="glyphicon glyphicon-remove form-control-feedback"></span> 
-					<span class="help-block"> 
-						{{#each model.errors.firstName}} {{message}} {{/each}} 
-					</span> 
-				{{/if}}
-			</div>
-		</div>
-		<div class="form-group">
-			<label for="name" class="col-sm-2 control-label">Last Name</label>
-			<div class="col-sm-10">
-				{{input type="text" value=model.lastName class="form-control" placeholder="First Name"}} 
-				{{#if model.errors.lastName}} 
-					<span class="glyphicon glyphicon-remove form-control-feedback"></span> 
-					<span class="help-block"> 
-						{{#each model.errors.lastName}} {{message}} {{/each}} 
-					</span> 
-				{{/if}}
-			</div>
-		</div>
+		<ember:TextField label="First Name" field="firstName" placeHolder="Sarah Jane"/>		
+		<ember:TextField label="Last Name" field="lastName" placeHolder="Smith"/>		
 		{{else}}
-		<div class="form-group">
-			<label for="name" class="col-sm-2 control-label">Name</label>
-			<div class="col-sm-10">
-				{{input type="text" value=model.name class="form-control" placeholder="Customer Name"}} 
-				{{#if model.errors.name}} 
-					<span class="glyphicon glyphicon-remove form-control-feedback"></span> 
-					<span class="help-block"> 
-						{{#each model.errors.name}} {{message}} {{/each}} 
-					</span> 
-				{{/if}}
-			</div>
-		</div>
+		<ember:TextField label="Name" field="name" placeHolder="Thingmaker"/>		
 		{{/if}}
 		<button {{action 'save'}} class="btn btn-sm btn-primary" role="button">Save</button>
 	</form>
