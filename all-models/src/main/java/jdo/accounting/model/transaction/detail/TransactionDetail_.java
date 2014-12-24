@@ -7,11 +7,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.accounting.model.OrganizationGlAccount;
 import jdo.accounting.model.transaction.AccountingTransaction;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.012-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:53.858-0700")
 @StaticMetamodel(TransactionDetail.class)
-public class TransactionDetail_ extends BasePersistentModel_ {
+public class TransactionDetail_ {
 	public static volatile SingularAttribute<TransactionDetail, OrganizationGlAccount> allocatedTo;
 	public static volatile SingularAttribute<TransactionDetail, Money> amount;
 	public static volatile ListAttribute<TransactionDetail, TransactionDetail> associatedWith;

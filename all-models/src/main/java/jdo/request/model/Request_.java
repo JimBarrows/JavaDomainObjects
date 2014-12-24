@@ -5,11 +5,10 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-02T21:45:38.462-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:57.580-0700")
 @StaticMetamodel(Request.class)
-public class Request_ extends BasePersistentModel_ {
+public class Request_ {
 	public static volatile SingularAttribute<Request, String> description;
 	public static volatile ListAttribute<Request, RequestItem> items;
 	public static volatile SingularAttribute<Request, Date> requestDate;

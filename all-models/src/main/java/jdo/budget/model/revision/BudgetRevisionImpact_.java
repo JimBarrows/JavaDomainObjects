@@ -5,11 +5,10 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.budget.model.BudgetItem;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.094-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:54.084-0700")
 @StaticMetamodel(BudgetRevisionImpact.class)
-public class BudgetRevisionImpact_ extends BasePersistentModel_ {
+public class BudgetRevisionImpact_ {
 	public static volatile SingularAttribute<BudgetRevisionImpact, BudgetItem> affects;
 	public static volatile SingularAttribute<BudgetRevisionImpact, BudgetRevision> fromBudgetRevision;
 	public static volatile SingularAttribute<BudgetRevisionImpact, Money> revisedAmount;

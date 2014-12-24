@@ -7,14 +7,13 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.agreement.model.item.AgreementItem;
 import jdo.agreement.model.term.AgreementTerm;
-import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.party.model.relationship.PartyRelationship;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.036-0700")
+@Generated(value="Dali", date="2014-12-24T16:34:40.375-0700")
 @StaticMetamodel(Agreement.class)
-public class Agreement_ extends BasePersistentModel_ {
+public class Agreement_ {
 	public static volatile SingularAttribute<Agreement, DateTimeRange> dateTimeRange;
 	public static volatile ListAttribute<Agreement, Addendum> addendums;
 	public static volatile SingularAttribute<Agreement, PartyRelationship> associatedWith;

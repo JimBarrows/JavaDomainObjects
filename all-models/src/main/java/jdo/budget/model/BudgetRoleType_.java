@@ -2,9 +2,8 @@ package jdo.budget.model;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BaseType_;
 
-@Generated(value="Dali", date="2014-12-02T21:45:36.941-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:53.962-0700")
 @StaticMetamodel(BudgetRoleType.class)
-public class BudgetRoleType_ extends BaseType_ {
+public class BudgetRoleType_ {
 }

@@ -3,11 +3,10 @@ package jdo.accounting.model.asset;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-02T21:45:36.616-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:53.734-0700")
 @StaticMetamodel(DepreciationMethod.class)
-public class DepreciationMethod_ extends BasePersistentModel_ {
+public class DepreciationMethod_ {
 	public static volatile SingularAttribute<DepreciationMethod, String> description;
 	public static volatile SingularAttribute<DepreciationMethod, String> formula;
 }

@@ -6,11 +6,10 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.254-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:55.527-0700")
 @StaticMetamodel(SalaryStep.class)
-public class SalaryStep_ extends BasePersistentModel_ {
+public class SalaryStep_ {
 	public static volatile SingularAttribute<SalaryStep, Money> amount;
 	public static volatile SingularAttribute<SalaryStep, PayGrade> grade;
 	public static volatile ListAttribute<SalaryStep, PayHistory> history;

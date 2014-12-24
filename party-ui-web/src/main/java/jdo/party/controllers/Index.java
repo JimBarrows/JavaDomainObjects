@@ -26,7 +26,7 @@ public class Index {
 		list = partyRepository.findAll();
 	}
 	public String delete(Party party) {
-		partyRepository.delete(party);
+		partyRepository.delete(party.getId());
 		return "index?faces-redirect=true&includeViewParams=true";
 	}
 

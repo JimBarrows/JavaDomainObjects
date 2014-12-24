@@ -5,15 +5,14 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.accounting.model.transaction.detail.TransactionDetail;
-import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.005-0700")
+@Generated(value="Dali", date="2014-12-24T16:34:40.338-0700")
 @StaticMetamodel(OrganizationGlAccount.class)
-public class OrganizationGlAccount_ extends BasePersistentModel_ {
+public class OrganizationGlAccount_ {
 	public static volatile SingularAttribute<OrganizationGlAccount, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<OrganizationGlAccount, GeneralLedgerAccount> accountFor;
 	public static volatile ListAttribute<OrganizationGlAccount, OrganizationGlAccount> comprisedOf;

@@ -6,11 +6,10 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.fields.Money;
 import jdo.invoice.model.InvoiceItem;
 import jdo.invoice.model.billingaccount.BillingAccount;
-import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.552-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:55.861-0700")
 @StaticMetamodel(PaymentApplication.class)
-public class PaymentApplication_ extends BasePersistentModel_ {
+public class PaymentApplication_ {
 	public static volatile SingularAttribute<PaymentApplication, Money> amountApplied;
 	public static volatile SingularAttribute<PaymentApplication, BillingAccount> appliedToAccount;
 	public static volatile SingularAttribute<PaymentApplication, InvoiceItem> appliedToItem;

@@ -2,9 +2,8 @@ package jdo.product.model.supplier;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BaseType_;
 
-@Generated(value="Dali", date="2014-12-02T21:45:38.396-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:57.525-0700")
 @StaticMetamodel(RatingType.class)
-public class RatingType_ extends BaseType_ {
+public class RatingType_ {
 }

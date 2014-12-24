@@ -6,12 +6,11 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.budget.model.revision.BudgetRevisionImpact;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel_;
 import jdo.order.model.OrderItem;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.055-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:53.944-0700")
 @StaticMetamodel(BudgetItem.class)
-public class BudgetItem_ extends BasePersistentModel_ {
+public class BudgetItem_ {
 	public static volatile ListAttribute<BudgetItem, RequirementBudgetAllocation> providesFundingVia;
 	public static volatile ListAttribute<BudgetItem, OrderItem> usedToBuy;
 	public static volatile ListAttribute<BudgetItem, PaymentBudgetAllocation> usedToPay;

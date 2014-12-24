@@ -4,12 +4,11 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BasePersistentModel_;
 import jdo.product.model.Product;
 
-@Generated(value="Dali", date="2014-12-02T21:45:38.241-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:56.504-0700")
 @StaticMetamodel(UnitOfMeasure.class)
-public class UnitOfMeasure_ extends BasePersistentModel_ {
+public class UnitOfMeasure_ {
 	public static volatile ListAttribute<UnitOfMeasure, UnitOfMeasureConversion> convertedFrom;
 	public static volatile ListAttribute<UnitOfMeasure, UnitOfMeasureConversion> convertedTo;
 	public static volatile SingularAttribute<UnitOfMeasure, String> description;

@@ -2,9 +2,8 @@ package jdo.party.model.relationship;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BaseType_;
 
-@Generated(value="Dali", date="2014-11-07T22:13:42.975-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:56.371-0700")
 @StaticMetamodel(PriorityType.class)
-public class PriorityType_ extends BaseType_ {
+public class PriorityType_ {
 }

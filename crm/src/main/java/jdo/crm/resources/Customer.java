@@ -1,10 +1,9 @@
 package jdo.crm.resources;
 
-import static jdo.core.ApplicationConfiguration.internalOrganizationPredicate;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
+import java.util.function.Predicate;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
@@ -26,7 +25,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import jdo.core.ApplicationConfiguration;
+import jdo.application.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
 import jdo.dto.CustomerDtoList;
 import jdo.ember.dto.Errors;
@@ -34,6 +33,7 @@ import jdo.ember.dto.ValidationError;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
+import jdo.party.model.PartyRole;
 import jdo.party.model.Person;
 import jdo.party.model.relationship.CustomerRelationship;
 import jdo.party.model.roles.InternalOrganization;
@@ -89,6 +89,11 @@ public class Customer {
 
 		customer.setId(entity.getId());
 		return customer;
+	}
+
+	private Predicate<? super PartyRole> internalOrganizationPredicate() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	@PUT

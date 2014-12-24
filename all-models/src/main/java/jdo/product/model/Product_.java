@@ -5,7 +5,6 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BasePersistentModel_;
 import jdo.product.model.category.ProductCategoryClassification;
 import jdo.product.model.cost.EstimatedProductCost;
 import jdo.product.model.feature.interaction.ProductFeatureInteraction;
@@ -13,9 +12,9 @@ import jdo.product.model.measurement.UnitOfMeasure;
 import jdo.product.model.part.ProductComponent;
 import jdo.product.model.price.PriceComponent;
 
-@Generated(value="Dali", date="2014-12-02T21:45:38.319-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:57.414-0700")
 @StaticMetamodel(Product.class)
-public class Product_ extends BasePersistentModel_ {
+public class Product_ {
 	public static volatile ListAttribute<Product, ProductObsolescence> AReplacement;
 	public static volatile ListAttribute<Product, ProductCategoryClassification> categorizedBy;
 	public static volatile SingularAttribute<Product, String> comment;

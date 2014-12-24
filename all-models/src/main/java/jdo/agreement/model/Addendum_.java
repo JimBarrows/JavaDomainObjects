@@ -4,11 +4,10 @@ import java.util.Date;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-02T21:45:36.797-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:53.880-0700")
 @StaticMetamodel(Addendum.class)
-public class Addendum_ extends BasePersistentModel_ {
+public class Addendum_ {
 	public static volatile SingularAttribute<Addendum, Date> creationDate;
 	public static volatile SingularAttribute<Addendum, Date> effectiveDate;
 	public static volatile SingularAttribute<Addendum, String> text;

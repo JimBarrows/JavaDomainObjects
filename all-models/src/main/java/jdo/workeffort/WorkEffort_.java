@@ -6,7 +6,6 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel_;
 import jdo.order.model.WorkOrderItem;
 import jdo.party.model.facility.Facility;
 import jdo.product.model.storage.InventoryItem;
@@ -17,9 +16,9 @@ import jdo.workeffort.inventory.WorkEffortInvenotryAssignment;
 import jdo.workeffort.timetracking.TimeEntry;
 import jdo.workeffort.type.WorkEffortType;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.844-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:57.899-0700")
 @StaticMetamodel(WorkEffort.class)
-public class WorkEffort_ extends BasePersistentModel_ {
+public class WorkEffort_ {
 	public static volatile SingularAttribute<WorkEffort, Date> actualCompletionDate;
 	public static volatile SingularAttribute<WorkEffort, Date> actualStartDate;
 	public static volatile ListAttribute<WorkEffort, WorkEffortPartyAssignment> assignedVia;

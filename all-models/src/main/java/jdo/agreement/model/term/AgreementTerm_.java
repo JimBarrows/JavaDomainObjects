@@ -6,12 +6,11 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.agreement.model.Agreement;
 import jdo.agreement.model.item.AgreementItem;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.046-0700")
+@Generated(value="Dali", date="2014-12-24T16:34:40.386-0700")
 @StaticMetamodel(AgreementTerm.class)
-public class AgreementTerm_ extends BasePersistentModel_ {
+public class AgreementTerm_ {
 	public static volatile SingularAttribute<AgreementTerm, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<AgreementTerm, Agreement> agreement;
 	public static volatile SingularAttribute<AgreementTerm, AgreementItem> agreementItem;

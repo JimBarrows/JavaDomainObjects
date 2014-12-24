@@ -71,6 +71,8 @@
 		<module>crm</module>
 		<module>ember-utils</module>
 		<module>ember-tags</module>
+		<module>common</module>
+		<module>application</module>
 	</modules>
 
 	<profiles>

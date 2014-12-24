@@ -3,14 +3,13 @@ package jdo.party.model;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BasePersistentModel_;
 import jdo.party.model.communication.CaseRole;
 import jdo.party.model.communication.CommunicationEventRole;
 import jdo.party.model.facility.FacilityRole;
 
-@Generated(value="Dali", date="2014-12-03T23:34:27.528-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:56.314-0700")
 @StaticMetamodel(Party.class)
-public class Party_ extends BasePersistentModel_ {
+public class Party_ {
 	public static volatile ListAttribute<Party, PartyRole> actingAs;
 	public static volatile ListAttribute<Party, CaseRole> caseRolesInvolvedIn;
 	public static volatile ListAttribute<Party, PartyClassification> classifiedInto;

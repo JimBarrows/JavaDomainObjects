@@ -5,14 +5,13 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BasePersistentModel_;
 import jdo.order.model.OrderItem;
 import jdo.product.model.Good;
 import jdo.product.model.storage.InventoryItem;
 
-@Generated(value="Dali", date="2014-12-02T21:45:38.705-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:57.738-0700")
 @StaticMetamodel(ShipmentReceipt.class)
-public class ShipmentReceipt_ extends BasePersistentModel_ {
+public class ShipmentReceipt_ {
 	public static volatile SingularAttribute<ShipmentReceipt, Good> good;
 	public static volatile SingularAttribute<ShipmentReceipt, InventoryItem> inventoryItem;
 	public static volatile SingularAttribute<ShipmentReceipt, String> itemDescription;

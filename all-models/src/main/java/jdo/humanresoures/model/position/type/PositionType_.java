@@ -6,12 +6,11 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.humanresoures.model.position.ValidResponsibility;
 import jdo.humanresoures.model.position.salary.PositionTypeRate;
-import jdo.model.BaseType_;
 import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-02T21:45:37.275-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:55.559-0700")
 @StaticMetamodel(PositionType.class)
-public class PositionType_ extends BaseType_ {
+public class PositionType_ {
 	public static volatile ListAttribute<PositionType, PositionTypeRate> rates;
 	public static volatile ListAttribute<PositionType, PositionTypeClass> typeClasses;
 	public static volatile SingularAttribute<PositionType, PartyRole> union;

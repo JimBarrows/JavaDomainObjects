@@ -2,9 +2,8 @@ package jdo.humanresoures.model.termination;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.model.BaseType_;
 
-@Generated(value="Dali", date="2014-12-02T21:45:37.336-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:55.667-0700")
 @StaticMetamodel(TerminationType.class)
-public class TerminationType_ extends BaseType_ {
+public class TerminationType_ {
 }

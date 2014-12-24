@@ -8,16 +8,15 @@ import jdo.fields.Money;
 import jdo.invoice.model.billing.OrderItemBilling;
 import jdo.invoice.model.billing.WorkEffortBilling;
 import jdo.invoice.model.term.InvoiceTerm;
-import jdo.model.BasePersistentModel_;
 import jdo.product.model.Product;
 import jdo.product.model.feature.ProductFeature;
 import jdo.product.model.storage.SerializedInventoryItem;
 import jdo.shipment.model.ShipmentItem;
 import jdo.workeffort.timetracking.TimeEntry;
 
-@Generated(value="Dali", date="2014-12-02T21:59:11.360-0700")
+@Generated(value="Dali", date="2014-12-24T16:23:55.836-0700")
 @StaticMetamodel(InvoiceItem.class)
-public class InvoiceItem_ extends BasePersistentModel_ {
+public class InvoiceItem_ {
 	public static volatile ListAttribute<InvoiceItem, ShipmentItem> billingForShipmentItem;
 	public static volatile ListAttribute<InvoiceItem, InvoiceItem> adjustments;
 	public static volatile SingularAttribute<InvoiceItem, Money> amount;
