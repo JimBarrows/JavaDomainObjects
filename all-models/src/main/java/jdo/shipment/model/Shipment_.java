@@ -6,12 +6,13 @@ import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.fields.Money;
+import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 import jdo.party.model.contactmechanism.ContactMechanism;
 
-@Generated(value="Dali", date="2014-12-24T16:23:57.776-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:48.781-0700")
 @StaticMetamodel(Shipment.class)
-public class Shipment_ {
+public class Shipment_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Shipment, Money> actualShipCost;
 	public static volatile SingularAttribute<Shipment, Date> estimatedArrivalDate;
 	public static volatile SingularAttribute<Shipment, Date> estimatedReadyDate;

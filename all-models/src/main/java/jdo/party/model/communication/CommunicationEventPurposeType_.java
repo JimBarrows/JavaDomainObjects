@@ -2,8 +2,9 @@ package jdo.party.model.communication;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T16:23:56.212-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:47.562-0700")
 @StaticMetamodel(CommunicationEventPurposeType.class)
-public class CommunicationEventPurposeType_ {
+public class CommunicationEventPurposeType_ extends BasePersistentModel_ {
 }

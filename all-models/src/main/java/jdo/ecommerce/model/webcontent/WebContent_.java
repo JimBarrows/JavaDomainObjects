@@ -4,11 +4,12 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 import jdo.party.model.contactmechanism.WebAddress;
 
-@Generated(value="Dali", date="2014-12-24T16:23:54.296-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.670-0700")
 @StaticMetamodel(WebContent.class)
-public class WebContent_ {
+public class WebContent_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<WebContent, String> content;
 	public static volatile ListAttribute<WebContent, WebContentRole> involving;
 	public static volatile SingularAttribute<WebContent, WebAddress> locationOf;

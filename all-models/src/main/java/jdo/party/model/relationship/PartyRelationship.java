@@ -146,7 +146,7 @@ public class PartyRelationship extends BasePersistentModel {
 	@Override
 	public String toString() {
 		return "PartyRelationship [comment=" + comment + ", priority=" + priority + ", relationshipFrom=" + relationshipFrom + ", relationshipTo="
-				+ relationshipTo + ", status=" + status + ", dateTimeRange=" + dateTimeRange + ", id=" + id + ", version=" + version + "]";
+				+ relationshipTo + ", status=" + status + ", dateTimeRange=" + dateTimeRange + ", id=" + getId() + ", version=" + getVersion() + "]";
 	}
 
 }

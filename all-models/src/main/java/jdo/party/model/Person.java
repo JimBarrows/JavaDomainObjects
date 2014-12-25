@@ -68,7 +68,7 @@ public class Person extends Party {
 
 	@Override
 	public String toString() {
-		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName + ", id=" + id + ", version=" + version + "]";
+		return "Person [firstName=" + firstName + ", lastName=" + lastName + ", middleName=" + middleName + ", id=" + getId() + ", version=" + getVersion() + "]";
 	}
 
 	/**

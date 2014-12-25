@@ -136,7 +136,7 @@ public class UserLogin extends BasePersistentModel {
 	 *            the id to set
 	 */
 	public void setId(Long id) {
-		this.id = id;
+		this.setId( id);
 	}
 
 	/**
@@ -169,14 +169,6 @@ public class UserLogin extends BasePersistentModel {
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}
-
-	/**
-	 * @param version
-	 *            the version to set
-	 */
-	public void setVersion(Long version) {
-		this.version = version;
-	}
+	}	
 
 }

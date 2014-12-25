@@ -5,11 +5,12 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.budget.model.Budget;
+import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 
-@Generated(value="Dali", date="2014-12-24T16:23:54.064-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.526-0700")
 @StaticMetamodel(BudgetReview.class)
-public class BudgetReview_ {
+public class BudgetReview_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<BudgetReview, Budget> forBudget;
 	public static volatile SingularAttribute<BudgetReview, BudgetReviewResultType> result;
 	public static volatile SingularAttribute<BudgetReview, String> comment;

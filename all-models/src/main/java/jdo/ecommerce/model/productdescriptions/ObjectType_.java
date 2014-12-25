@@ -2,8 +2,9 @@ package jdo.ecommerce.model.productdescriptions;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T16:23:54.220-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.627-0700")
 @StaticMetamodel(ObjectType.class)
-public class ObjectType_ {
+public class ObjectType_ extends BasePersistentModel_ {
 }

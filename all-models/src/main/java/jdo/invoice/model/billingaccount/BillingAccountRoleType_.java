@@ -2,8 +2,9 @@ package jdo.invoice.model.billingaccount;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T16:23:55.823-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:46.672-0700")
 @StaticMetamodel(BillingAccountRoleType.class)
-public class BillingAccountRoleType_ {
+public class BillingAccountRoleType_ extends BasePersistentModel_ {
 }

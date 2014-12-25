@@ -7,11 +7,12 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.budget.model.RequirementBudgetAllocation;
 import jdo.fields.Money;
+import jdo.model.BasePersistentModel_;
 import jdo.party.model.facility.Facility;
 
-@Generated(value="Dali", date="2014-12-24T16:23:57.635-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:48.659-0700")
 @StaticMetamodel(Requirement.class)
-public class Requirement_ {
+public class Requirement_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<Requirement, RequirementBudgetAllocation> allocatedVia;
 	public static volatile ListAttribute<Requirement, OrderRequirementCommitment> commitmentOf;
 	public static volatile SingularAttribute<Requirement, Date> creationDate;

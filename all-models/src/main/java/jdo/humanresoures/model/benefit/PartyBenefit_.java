@@ -5,12 +5,13 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.accounting.model.asset.PeriodType;
 import jdo.fields.Money;
+import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.relationship.Employment;
 
-@Generated(value="Dali", date="2014-12-24T16:34:40.435-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.791-0700")
 @StaticMetamodel(PartyBenefit.class)
-public class PartyBenefit_ {
+public class PartyBenefit_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PartyBenefit, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PartyBenefit, Employment> benefitFor;
 	public static volatile SingularAttribute<PartyBenefit, Money> cost;

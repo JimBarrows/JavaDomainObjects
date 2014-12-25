@@ -5,13 +5,14 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 import jdo.product.model.Product;
 import jdo.product.model.feature.ProductFeature;
 
-@Generated(value="Dali", date="2014-12-24T16:23:54.190-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.612-0700")
 @StaticMetamodel(DescriptionObject.class)
-public class DescriptionObject_ {
+public class DescriptionObject_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<DescriptionObject, ProductFeature> describes;
 	public static volatile ListAttribute<DescriptionObject, Product> forProduct;
 	public static volatile ListAttribute<DescriptionObject, Party> ofParty;

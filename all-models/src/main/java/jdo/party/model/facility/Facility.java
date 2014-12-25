@@ -100,7 +100,7 @@ public class Facility extends BasePersistentModel{
 	 *            the facilityId to set
 	 */
 	public void setFacilityId(Long facilityId) {
-		this.id = facilityId;
+		this.setId( facilityId);
 	}
 
 	/**

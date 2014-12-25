@@ -4,6 +4,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.fields.Money;
+import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Organization;
 import jdo.party.model.PartyClassification;
@@ -12,9 +13,9 @@ import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 import jdo.product.model.feature.ProductFeature;
 
-@Generated(value="Dali", date="2014-12-24T16:34:41.948-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:47.795-0700")
 @StaticMetamodel(PriceComponent.class)
-public class PriceComponent_ {
+public class PriceComponent_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PriceComponent, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PriceComponent, GeographicBoundary> basedOnGeographicBoundary;
 	public static volatile SingularAttribute<PriceComponent, OrderValue> basedOnOrderValue;

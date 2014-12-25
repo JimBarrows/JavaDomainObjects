@@ -16,19 +16,20 @@ import javax.persistence.Version;
  *
  */
 @MappedSuperclass
-public abstract class BasePersistentModel implements Serializable {
+public class BasePersistentModel implements Serializable {
 
 	/**
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	protected Long				id;
-
-	protected Long				version				= 0l;
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	private Long				id;
+
+	@Version
+	private Long				version				= 0l;
+
 	public Long getId() {
 		return id;
 	}
@@ -47,7 +48,6 @@ public abstract class BasePersistentModel implements Serializable {
 		this.id = id;
 	}
 
-	@Version
 	public Long getVersion() {
 		return version;
 	}

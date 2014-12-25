@@ -3,12 +3,13 @@ package jdo.party.model.relationship;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-24T16:34:41.514-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:47.682-0700")
 @StaticMetamodel(PartyRelationship.class)
-public class PartyRelationship_ {
+public class PartyRelationship_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PartyRelationship, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PartyRelationship, String> comment;
 	public static volatile SingularAttribute<PartyRelationship, PriorityType> priority;

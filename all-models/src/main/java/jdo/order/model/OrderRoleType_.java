@@ -2,8 +2,9 @@ package jdo.order.model;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T16:23:56.113-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:46.823-0700")
 @StaticMetamodel(OrderRoleType.class)
-public class OrderRoleType_ {
+public class OrderRoleType_ extends BasePersistentModel_ {
 }

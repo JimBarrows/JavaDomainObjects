@@ -2,8 +2,9 @@ package jdo.party.model.relationship;
 
 import javax.annotation.Generated;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T16:23:56.393-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:47.698-0700")
 @StaticMetamodel(TerminationReason.class)
-public class TerminationReason_ {
+public class TerminationReason_ extends BasePersistentModel_ {
 }

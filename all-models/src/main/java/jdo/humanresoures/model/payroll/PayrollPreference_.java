@@ -6,12 +6,13 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.accounting.model.asset.PeriodType;
 import jdo.fields.Money;
 import jdo.invoice.model.payment.PaymentMethodType;
+import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-24T16:34:40.450-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.812-0700")
 @StaticMetamodel(PayrollPreference.class)
-public class PayrollPreference_ {
+public class PayrollPreference_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PayrollPreference, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PayrollPreference, Money> flatAmount;
 	public static volatile SingularAttribute<PayrollPreference, DeductionType> type;

@@ -42,7 +42,7 @@ public class BaseType extends BasePersistentModel {
 
 	@Override
 	public String toString() {
-		return "BaseType [description=" + description + ", id=" + id + ", version=" + version + "]";
+		return "BaseType [description=" + description + ", id=" + getId() + ", version=" + getVersion() + "]";
 	}
 
 	/**

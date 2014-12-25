@@ -7,6 +7,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.ecommerce.model.productdescriptions.NeedType;
 import jdo.ecommerce.model.productdescriptions.PartyNeed;
+import jdo.model.BasePersistentModel_;
 import jdo.order.model.OrderItem;
 import jdo.party.model.PartyRole;
 import jdo.party.model.communication.CommunicationEvent;
@@ -14,9 +15,9 @@ import jdo.party.model.contactmechanism.ContactMechanism;
 import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 
-@Generated(value="Dali", date="2014-12-24T16:23:54.235-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.640-0700")
 @StaticMetamodel(Subscription.class)
-public class Subscription_ {
+public class Subscription_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Subscription, Date> endDate;
 	public static volatile ListAttribute<Subscription, SubscriptionActivity> fullfilledVia;
 	public static volatile SingularAttribute<Subscription, NeedType> needType;

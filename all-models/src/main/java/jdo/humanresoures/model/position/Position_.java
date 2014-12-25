@@ -10,12 +10,13 @@ import jdo.humanresoures.model.position.fulfillment.PositionFulfillment;
 import jdo.humanresoures.model.position.fulfillment.PositionStatus;
 import jdo.humanresoures.model.position.structure.PositionReportingStructure;
 import jdo.humanresoures.model.position.type.PositionType;
+import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Organization;
 
-@Generated(value="Dali", date="2014-12-24T16:34:40.486-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.869-0700")
 @StaticMetamodel(Position.class)
-public class Position_ {
+public class Position_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Position, DateTimeRange> dateTimeRange;
 	public static volatile ListAttribute<Position, PositionResponsibility> assigendTo;
 	public static volatile SingularAttribute<Position, Date> estimatedFromDate;

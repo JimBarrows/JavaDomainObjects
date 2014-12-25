@@ -4,12 +4,13 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.humanresoures.model.position.Position;
+import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Person;
 
-@Generated(value="Dali", date="2014-12-24T16:34:40.473-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:45.854-0700")
 @StaticMetamodel(PositionFulfillment.class)
-public class PositionFulfillment_ {
+public class PositionFulfillment_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PositionFulfillment, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PositionFulfillment, Position> fullfillmentOf;
 	public static volatile SingularAttribute<PositionFulfillment, Person> acceptedBy;

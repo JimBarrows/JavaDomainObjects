@@ -5,10 +5,11 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T16:23:53.762-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:44.832-0700")
 @StaticMetamodel(FixedAsset.class)
-public class FixedAsset_ {
+public class FixedAsset_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<FixedAsset, FixedAssetDepreciationMethod> depreciatedVia;
 	public static volatile SingularAttribute<FixedAsset, Date> dateAcquired;
 	public static volatile SingularAttribute<FixedAsset, Date> dateLastServiced;

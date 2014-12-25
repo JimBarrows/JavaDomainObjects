@@ -5,12 +5,13 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.fields.Money;
 import jdo.humanresoures.model.position.salary.RateType;
+import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Party;
 
-@Generated(value="Dali", date="2014-12-24T16:34:42.022-0700")
+@Generated(value="Dali", date="2014-12-24T17:30:48.839-0700")
 @StaticMetamodel(PartyRate.class)
-public class PartyRate_ {
+public class PartyRate_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PartyRate, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PartyRate, Money> rate;
 	public static volatile SingularAttribute<PartyRate, Party> rateFor;
