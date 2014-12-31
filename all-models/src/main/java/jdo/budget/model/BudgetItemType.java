@@ -15,9 +15,9 @@ public class BudgetItemType extends BaseType {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private List<GlBudgetXref>	assignedTo;
-
 	@OneToMany
+	private List<GlBudgetXref>	assignedTo;
+	
 	public List<GlBudgetXref> getAssignedTo() {
 		return assignedTo;
 	}

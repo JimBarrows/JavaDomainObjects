@@ -21,27 +21,31 @@ public class OrganizationGlAccount extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long						serialVersionUID	= 1L;
 
-	private GeneralLedgerAccount		accountFor;
+	@ManyToOne
+	private GeneralLedgerAccount				accountFor;
 
-	private List<OrganizationGlAccount>	comprisedOf			= new ArrayList<OrganizationGlAccount>();
+	@OneToMany(mappedBy = "subsidiaryOf")
+	private List<OrganizationGlAccount>	comprisedOf				= new ArrayList<OrganizationGlAccount>();
 
-	private List<TransactionDetail>		consistingOf		= new ArrayList<TransactionDetail>();
+	@OneToMany
+	private List<TransactionDetail>			consistingOf			= new ArrayList<TransactionDetail>();
 
-	private PartyRole					internalOrganizationFor;
+	private PartyRole										internalOrganizationFor;
 
-	private PartyRole					referencingBillToCustomer;
+	private PartyRole										referencingBillToCustomer;
 
-	private PartyRole					referencingSupplier;
+	private PartyRole										referencingSupplier;
 
-	private OrganizationGlAccount		subsidiaryOf;
+	@ManyToOne
+	private OrganizationGlAccount				subsidiaryOf;
 
-	private Product						referencingProduct;
-
-	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+	private Product											referencingProduct;
 
 	@Embedded
+	private DateTimeRange								dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -68,17 +72,14 @@ public class OrganizationGlAccount extends BasePersistentModel {
 		this.referencingProductCategory = referencingProductCategory;
 	}
 
-	@ManyToOne
 	public GeneralLedgerAccount getAccountFor() {
 		return accountFor;
 	}
 
-	@OneToMany(mappedBy = "subsidiaryOf")
 	public List<OrganizationGlAccount> getComprisedOf() {
 		return comprisedOf;
 	}
 
-	@OneToMany
 	public List<TransactionDetail> getConsistingOf() {
 		return consistingOf;
 	}
@@ -95,7 +96,6 @@ public class OrganizationGlAccount extends BasePersistentModel {
 		return referencingSupplier;
 	}
 
-	@ManyToOne
 	public OrganizationGlAccount getSubsidiaryOf() {
 		return subsidiaryOf;
 	}

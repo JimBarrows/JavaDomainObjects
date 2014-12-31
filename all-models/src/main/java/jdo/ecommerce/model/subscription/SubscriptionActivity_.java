@@ -7,7 +7,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.656-0700")
+@Generated(value="Dali", date="2014-12-31T07:23:06.103-0700")
 @StaticMetamodel(SubscriptionActivity.class)
 public class SubscriptionActivity_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<SubscriptionActivity, String> comment;

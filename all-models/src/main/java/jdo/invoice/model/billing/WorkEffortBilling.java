@@ -16,16 +16,16 @@ public class WorkEffortBilling extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private int					percentage;
-
-	private WorkEffort			percentageOf;
-
 	@Range(min = 1, max = 100)
+	private int								percentage;
+
+	@ManyToOne
+	private WorkEffort				percentageOf;
+
 	public int getPercentage() {
 		return percentage;
 	}
 
-	@ManyToOne
 	public WorkEffort getPercentageOf() {
 		return percentageOf;
 	}

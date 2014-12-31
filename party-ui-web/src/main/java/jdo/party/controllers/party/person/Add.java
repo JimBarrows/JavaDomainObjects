@@ -9,6 +9,11 @@ import jdo.party.model.Person;
 @ViewScoped
 public class Add extends Template{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	public String save() {
 
 		partyRepository.create(person);

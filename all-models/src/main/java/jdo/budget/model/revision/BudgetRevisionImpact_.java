@@ -7,12 +7,12 @@ import jdo.budget.model.BudgetItem;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.552-0700")
+@Generated(value="Dali", date="2014-12-31T07:40:59.410-0700")
 @StaticMetamodel(BudgetRevisionImpact.class)
 public class BudgetRevisionImpact_ extends BasePersistentModel_ {
+	public static volatile SingularAttribute<BudgetRevisionImpact, Boolean> add;
 	public static volatile SingularAttribute<BudgetRevisionImpact, BudgetItem> affects;
 	public static volatile SingularAttribute<BudgetRevisionImpact, BudgetRevision> fromBudgetRevision;
-	public static volatile SingularAttribute<BudgetRevisionImpact, Money> revisedAmount;
-	public static volatile SingularAttribute<BudgetRevisionImpact, Boolean> add;
 	public static volatile SingularAttribute<BudgetRevisionImpact, String> reason;
+	public static volatile SingularAttribute<BudgetRevisionImpact, Money> revisedAmount;
 }

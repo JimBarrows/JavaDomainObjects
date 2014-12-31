@@ -37,12 +37,17 @@ public class UserLogin extends BasePersistentModel {
 
 	private boolean							active					= false;
 
+	@OneToMany(mappedBy = "preferenceFor")
 	private Map<String, WebUserPreference>	governedBy				= new HashMap<String, WebUserPreference>();
 
+	@OneToMany(cascade = CascadeType.ALL)
+	@OrderBy(value = "loggedInFrom")
 	private List<LoginAccountHistory>		having					= new ArrayList<LoginAccountHistory>();
 
+	@ManyToOne
 	private Party							loginFor;
 
+	@ManyToOne
 	private WebAddress						loginTo;
 
 	private String							password;
@@ -55,17 +60,14 @@ public class UserLogin extends BasePersistentModel {
 
 	/**
 	 * @return the governedBy
-	 */
-	@OneToMany(mappedBy = "preferenceFor")
+	 */	
 	public Map<String, WebUserPreference> getGovernedBy() {
 		return governedBy;
 	}
 
 	/**
 	 * @return the having
-	 */
-	@OneToMany(cascade = CascadeType.ALL)
-	@OrderBy(value = "loggedInFrom")
+	 */	
 	public List<LoginAccountHistory> getHaving() {
 		return having;
 	}
@@ -77,16 +79,14 @@ public class UserLogin extends BasePersistentModel {
 
 	/**
 	 * @return the loginFor
-	 */
-	@ManyToOne
+	 */	
 	public Party getLoginFor() {
 		return loginFor;
 	}
 
 	/**
 	 * @return the loginTo
-	 */
-	@ManyToOne
+	 */	
 	public WebAddress getLoginTo() {
 		return loginTo;
 	}

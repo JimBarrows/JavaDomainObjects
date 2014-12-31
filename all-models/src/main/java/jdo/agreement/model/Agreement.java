@@ -12,7 +12,6 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
-import javax.validation.constraints.NotNull;
 
 import jdo.agreement.model.item.AgreementItem;
 import jdo.agreement.model.term.AgreementTerm;
@@ -29,29 +28,39 @@ public class Agreement extends BasePersistentModel {
 
 	private static final long			serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<Addendum>				addendums;
 
+	@ManyToOne
 	private PartyRelationship			associatedWith;
 
+	@Column(name = "agreementDate")
 	private Date						date;
 
+	@Lob
 	private String						description;
 
+	@OneToMany
 	private List<GeographicBoundary>	geographicalApplicability;
 
+	@OneToMany
+	@OrderBy(value = "sequenceId")
 	private List<AgreementItem>			items;
 
+	@OneToMany
 	private List<AgreementRole>			roles;
 
+	@OneToMany
 	private List<AgreementTerm>			terms;
 
+	@Lob
+	@NotEmpty
 	private String						text;
 
-	private AgreementType				type;
-
+	@Embedded
 	private DateTimeRange				dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -59,58 +68,42 @@ public class Agreement extends BasePersistentModel {
 	public void setDateTimeRange(DateTimeRange dateTimeRange) {
 		this.dateTimeRange = dateTimeRange;
 	}
-
-	@OneToMany
+	
 	public List<Addendum> getAddendums() {
 		return addendums;
 	}
 
-	@ManyToOne
 	public PartyRelationship getAssociatedWith() {
 		return associatedWith;
 	}
-
-	@Column(name = "agreementDate")
+	
 	public Date getDate() {
 		return date;
 	}
 
-	@Lob
 	public String getDescription() {
 		return description;
 	}
-
-	@OneToMany
+	
 	public List<GeographicBoundary> getGeographicalApplicability() {
 		return geographicalApplicability;
 	}
-
-	@OneToMany
-	@OrderBy(value = "sequenceId")
+	
 	public List<AgreementItem> getItems() {
 		return items;
 	}
-
-	@OneToMany
+	
 	public List<AgreementRole> getRoles() {
 		return roles;
 	}
-
-	@OneToMany
+	
 	public List<AgreementTerm> getTerms() {
 		return terms;
 	}
-
-	@Lob
-	@NotEmpty
+	
 	public String getText() {
 		return text;
-	}
-
-	@NotNull
-	public AgreementType getType() {
-		return type;
-	}
+	}	
 
 	public void setAddendums(List<Addendum> addendums) {
 		this.addendums = addendums;
@@ -146,10 +139,6 @@ public class Agreement extends BasePersistentModel {
 
 	public void setText(String text) {
 		this.text = text;
-	}
-
-	public void setType(AgreementType type) {
-		this.type = type;
 	}
 
 }

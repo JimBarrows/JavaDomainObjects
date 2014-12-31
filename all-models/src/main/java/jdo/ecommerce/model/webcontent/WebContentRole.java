@@ -16,13 +16,15 @@ public class WebContentRole extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Party				roleOf;
 
+	@ManyToOne
 	private WebContentRoleType	type;
 
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -31,12 +33,12 @@ public class WebContentRole extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
+	
 	public Party getRoleOf() {
 		return roleOf;
 	}
 
-	@ManyToOne
+	
 	public WebContentRoleType getType() {
 		return type;
 	}

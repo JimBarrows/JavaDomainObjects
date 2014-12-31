@@ -8,7 +8,7 @@ import jdo.budget.model.BudgetItem;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.562-0700")
+@Generated(value="Dali", date="2014-12-29T23:05:21.795-0700")
 @StaticMetamodel(BudgetScenarioApplication.class)
 public class BudgetScenarioApplication_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<BudgetScenarioApplication, Budget> affectingBudget;

@@ -8,11 +8,11 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Person;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.854-0700")
+@Generated(value="Dali", date="2014-12-31T07:37:36.582-0700")
 @StaticMetamodel(PositionFulfillment.class)
 public class PositionFulfillment_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<PositionFulfillment, DateTimeRange> dateTimeRange;
-	public static volatile SingularAttribute<PositionFulfillment, Position> fullfillmentOf;
 	public static volatile SingularAttribute<PositionFulfillment, Person> acceptedBy;
 	public static volatile SingularAttribute<PositionFulfillment, String> comment;
+	public static volatile SingularAttribute<PositionFulfillment, Position> fullfillmentOf;
+	public static volatile SingularAttribute<PositionFulfillment, DateTimeRange> dateTimeRange;
 }

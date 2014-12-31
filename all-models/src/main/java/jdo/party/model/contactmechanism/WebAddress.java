@@ -11,9 +11,7 @@ import javax.validation.constraints.AssertTrue;
 
 import jdo.ecommerce.model.webvisit.Visit;
 
-
 /**
- *
  * @author Jim.Barrows@gmail.com
  * @See "The Data Model Resource Book, Revised Edition Volume 2 Figure 2.7 pg 421"
  */
@@ -23,10 +21,11 @@ public class WebAddress extends ElectronicAddress {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;
+	private static final long	serialVersionUID	= 1L;
 
-	private List<Visit> hostOf;
-	
+	@OneToMany
+	private List<Visit>				hostOf;
+
 	@AssertTrue
 	public boolean addressIsUrl() {
 		try {
@@ -36,7 +35,7 @@ public class WebAddress extends ElectronicAddress {
 			return false;
 		}
 	}
-	
+
 	@Transient
 	public URL getUrl() {
 		try {
@@ -46,14 +45,12 @@ public class WebAddress extends ElectronicAddress {
 		}
 	}
 
-	@OneToMany
 	public List<Visit> getHostOf() {
 		return hostOf;
 	}
 
 	public void setHostOf(List<Visit> hostOf) {
 		this.hostOf = hostOf;
-	}	
-	
-	
+	}
+
 }

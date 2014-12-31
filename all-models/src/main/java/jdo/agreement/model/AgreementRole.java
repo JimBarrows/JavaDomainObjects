@@ -12,18 +12,19 @@ public class AgreementRole extends BasePersistentModel {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@NotNull
+	@ManyToOne
 	private Party				party;
-
-	private AgreementRoleType	type;
 
 	@NotNull
 	@ManyToOne
+	private AgreementRoleType	type;
+	
 	public Party getParty() {
 		return party;
 	}
 
-	@NotNull
-	@ManyToOne
+
 	public AgreementRoleType getType() {
 		return type;
 	}

@@ -8,13 +8,13 @@ import jdo.humanresoures.model.position.Position;
 import jdo.model.BasePersistentModel_;
 import jdo.party.model.Person;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.769-0700")
+@Generated(value="Dali", date="2014-12-31T07:28:58.947-0700")
 @StaticMetamodel(EmploymentApplication.class)
 public class EmploymentApplication_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<EmploymentApplication, Position> forPosition;
-	public static volatile SingularAttribute<EmploymentApplication, EmploymnetApplicationSourceType> source;
-	public static volatile SingularAttribute<EmploymentApplication, EmploymentApplicationStatusType> status;
 	public static volatile SingularAttribute<EmploymentApplication, Date> applicationDate;
+	public static volatile SingularAttribute<EmploymentApplication, Position> forPosition;
 	public static volatile SingularAttribute<EmploymentApplication, Person> fromPerson;
 	public static volatile SingularAttribute<EmploymentApplication, Person> referredBy;
+	public static volatile SingularAttribute<EmploymentApplication, EmploymnetApplicationSourceType> source;
+	public static volatile SingularAttribute<EmploymentApplication, EmploymentApplicationStatusType> status;
 }

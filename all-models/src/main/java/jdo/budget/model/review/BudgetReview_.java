@@ -8,12 +8,12 @@ import jdo.budget.model.Budget;
 import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.526-0700")
+@Generated(value="Dali", date="2014-12-29T23:03:24.245-0700")
 @StaticMetamodel(BudgetReview.class)
 public class BudgetReview_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<BudgetReview, Budget> forBudget;
-	public static volatile SingularAttribute<BudgetReview, BudgetReviewResultType> result;
 	public static volatile SingularAttribute<BudgetReview, String> comment;
+	public static volatile SingularAttribute<BudgetReview, Budget> forBudget;
 	public static volatile SingularAttribute<BudgetReview, Party> ofParty;
+	public static volatile SingularAttribute<BudgetReview, BudgetReviewResultType> result;
 	public static volatile SingularAttribute<BudgetReview, Date> reviewDate;
 }

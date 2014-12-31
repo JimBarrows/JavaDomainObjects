@@ -5,7 +5,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.750-0700")
+@Generated(value="Dali", date="2014-12-31T07:27:15.650-0700")
 @StaticMetamodel(UserAgent.class)
 public class UserAgent_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<UserAgent, BrowserType> browser;

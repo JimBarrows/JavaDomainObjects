@@ -20,42 +20,42 @@ public class BudgetScenarioApplication extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Budget				affectingBudget;
+	@ManyToOne
+	private Budget						affectingBudget;
 
-	private BudgetItem			affectingBudgetItem;
+	@ManyToOne
+	private BudgetItem				affectingBudgetItem;
 
-	private Money				amountChange;
+	@Embedded
+	private Money							amountChange;
 
+	@ManyToOne
 	private BudgetScenario		fromScenario;
 
-	private int					percentChange;
+	@Range(min = -100, max = 100)
+	private int								percentChange;
 
 	@AssertTrue
 	public boolean affectsOnlyBudgetXorItem() {
 		return (affectingBudget != null) ^ (affectingBudgetItem != null);
 	}
 
-	@ManyToOne
 	public Budget getAffectingBudget() {
 		return affectingBudget;
 	}
 
-	@ManyToOne
 	public BudgetItem getAffectingBudgetItem() {
 		return affectingBudgetItem;
 	}
 
-	@Embedded
 	public Money getAmountChange() {
 		return amountChange;
 	}
 
-	@ManyToOne
 	public BudgetScenario getFromScenario() {
 		return fromScenario;
 	}
 
-	@Range(min = -100, max = 100)
 	public int getPercentChange() {
 		return percentChange;
 	}

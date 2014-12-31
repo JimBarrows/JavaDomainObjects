@@ -15,17 +15,20 @@ public class ValidResponsibility extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private PositionType		associatedWith;
+	@ManyToOne
+	private PositionType				associatedWith;
 
-	private String				comment;
+	@Lob
+	private String							comment;
 
+	@ManyToOne
 	private ResponsibilityType	definedBy;
 
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange				dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -34,17 +37,14 @@ public class ValidResponsibility extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public PositionType getAssociatedWith() {
 		return associatedWith;
 	}
 
-	@Lob
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
 	public ResponsibilityType getDefinedBy() {
 		return definedBy;
 	}

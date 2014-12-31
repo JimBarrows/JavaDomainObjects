@@ -7,10 +7,10 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Person;
 
-@Generated(value="Dali", date="2014-12-24T17:30:46.568-0700")
+@Generated(value="Dali", date="2014-12-31T07:45:16.591-0700")
 @StaticMetamodel(PersonTraining.class)
 public class PersonTraining_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<PersonTraining, DateTimeRange> dateTimeRange;
-	public static volatile SingularAttribute<PersonTraining, TrainingClassType> type;
 	public static volatile SingularAttribute<PersonTraining, Person> receivedBy;
+	public static volatile SingularAttribute<PersonTraining, TrainingClassType> type;
+	public static volatile SingularAttribute<PersonTraining, DateTimeRange> dateTimeRange;
 }

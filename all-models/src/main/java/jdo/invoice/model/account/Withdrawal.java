@@ -13,9 +13,9 @@ public class Withdrawal extends FinancialAccountTransaction {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Disbursement		causedBy;
-
 	@OneToOne
+	private Disbursement			causedBy;
+
 	public Disbursement getCausedBy() {
 		return causedBy;
 	}

@@ -20,25 +20,28 @@ public class PerformanceReview extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long						serialVersionUID	= 1L;
 
-	private PayHistory					affecting;
+	@ManyToOne
+	private PayHistory									affecting;
 
-	private String						comments;
+	private String											comments;
 
-	private PartyRole					forEmployee;
+	private PartyRole										forEmployee;
 
-	private PartyRole					fromManager;
+	private PartyRole										fromManager;
 
+	@OneToMany
 	private List<PerformanceReviewItem>	items;
 
-	private Position					newPosition;
+	@ManyToOne
+	private Position										newPosition;
 
-	private Paycheck					bonus;
-
-	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+	private Paycheck										bonus;
 
 	@Embedded
+	private DateTimeRange								dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -55,7 +58,6 @@ public class PerformanceReview extends BasePersistentModel {
 		this.bonus = bonus;
 	}
 
-	@ManyToOne
 	public PayHistory getAffecting() {
 		return affecting;
 	}
@@ -72,12 +74,10 @@ public class PerformanceReview extends BasePersistentModel {
 		return fromManager;
 	}
 
-	@OneToMany
 	public List<PerformanceReviewItem> getItems() {
 		return items;
 	}
 
-	@ManyToOne
 	public Position getNewPosition() {
 		return newPosition;
 	}

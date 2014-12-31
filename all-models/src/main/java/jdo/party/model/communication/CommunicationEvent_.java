@@ -9,7 +9,7 @@ import jdo.model.BasePersistentModel_;
 import jdo.party.model.PartyContactMechanism;
 import jdo.party.model.relationship.PartyRelationship;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.552-0700")
+@Generated(value="Dali", date="2014-12-29T23:09:09.588-0700")
 @StaticMetamodel(CommunicationEvent.class)
 public class CommunicationEvent_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<CommunicationEvent, Case> asPartOf;

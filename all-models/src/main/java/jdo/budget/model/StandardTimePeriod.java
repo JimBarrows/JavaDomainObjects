@@ -16,11 +16,12 @@ public class StandardTimePeriod extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private PeriodType			type;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@ManyToOne
+	private PeriodType				type;
 
 	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -29,7 +30,6 @@ public class StandardTimePeriod extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public PeriodType getType() {
 		return type;
 	}

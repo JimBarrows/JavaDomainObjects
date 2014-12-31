@@ -13,11 +13,11 @@ public class ResponsibilityType extends BaseType {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
-
-	private List<ValidResponsibility>	usedToDefine;
+	private static final long					serialVersionUID	= 1L;
 
 	@OneToMany
+	private List<ValidResponsibility>	usedToDefine;
+
 	public List<ValidResponsibility> getUsedToDefine() {
 		return usedToDefine;
 	}

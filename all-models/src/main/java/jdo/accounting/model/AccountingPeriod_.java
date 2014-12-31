@@ -8,11 +8,11 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-24T17:30:44.800-0700")
+@Generated(value="Dali", date="2014-12-29T22:48:18.747-0700")
 @StaticMetamodel(AccountingPeriod.class)
 public class AccountingPeriod_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<AccountingPeriod, DateTimeRange> dateTimeRange;
+	public static volatile SingularAttribute<AccountingPeriod, Integer> accountingPeriodNumber;
 	public static volatile SingularAttribute<AccountingPeriod, PartyRole> accountPeriodFor;
 	public static volatile SingularAttribute<AccountingPeriod, PeriodType> definedBy;
-	public static volatile SingularAttribute<AccountingPeriod, Integer> accountingPeriodNumber;
+	public static volatile SingularAttribute<AccountingPeriod, DateTimeRange> dateTimeRange;
 }

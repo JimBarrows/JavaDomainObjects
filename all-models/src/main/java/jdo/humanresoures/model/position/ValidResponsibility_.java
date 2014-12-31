@@ -7,11 +7,11 @@ import jdo.humanresoures.model.position.type.PositionType;
 import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 
-@Generated(value="Dali", date="2014-12-24T17:30:46.538-0700")
+@Generated(value="Dali", date="2014-12-31T07:37:11.503-0700")
 @StaticMetamodel(ValidResponsibility.class)
 public class ValidResponsibility_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<ValidResponsibility, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<ValidResponsibility, PositionType> associatedWith;
 	public static volatile SingularAttribute<ValidResponsibility, String> comment;
 	public static volatile SingularAttribute<ValidResponsibility, ResponsibilityType> definedBy;
+	public static volatile SingularAttribute<ValidResponsibility, DateTimeRange> dateTimeRange;
 }

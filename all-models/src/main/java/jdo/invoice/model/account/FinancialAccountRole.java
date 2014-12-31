@@ -14,15 +14,16 @@ public class FinancialAccountRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long					serialVersionUID	= 1L;
 
-	private Party						accountFor;
+	private Party											accountFor;
 
+	@ManyToOne
 	private FinancialAccountRoleType	type;
 
-	private DateTimeRange				dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange							dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -35,7 +36,6 @@ public class FinancialAccountRole extends BasePersistentModel {
 		return accountFor;
 	}
 
-	@ManyToOne
 	public FinancialAccountRoleType getType() {
 		return type;
 	}

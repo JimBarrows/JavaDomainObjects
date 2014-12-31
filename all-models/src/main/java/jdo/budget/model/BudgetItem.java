@@ -21,25 +21,32 @@ public class BudgetItem extends BasePersistentModel {
 	 */
 	private static final long					serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<BudgetRevisionImpact>			affectedBy;
 
+	@Embedded
 	private Money								amount;
 
+	@ManyToMany
 	private List<BudgetItem>					composedOf;
 
 	private String								justification;
 
 	private String								purpose;
 
+	@ManyToOne
 	private BudgetItemType						type;
 
+	@OneToMany
 	private List<PaymentBudgetAllocation>		usedToPay;
 
+	@OneToMany
 	private List<OrderItem>						usedToBuy;
 
+	@OneToMany
 	private List<RequirementBudgetAllocation>	providesFundingVia;
 
-	@OneToMany
+	
 	public List<RequirementBudgetAllocation> getProvidesFundingVia() {
 		return providesFundingVia;
 	}
@@ -48,7 +55,7 @@ public class BudgetItem extends BasePersistentModel {
 		this.providesFundingVia = providesFundingVia;
 	}
 
-	@OneToMany
+	
 	public List<OrderItem> getUsedToBuy() {
 		return usedToBuy;
 	}
@@ -57,7 +64,7 @@ public class BudgetItem extends BasePersistentModel {
 		this.usedToBuy = usedToBuy;
 	}
 
-	@OneToMany
+	
 	public List<PaymentBudgetAllocation> getUsedToPay() {
 		return usedToPay;
 	}
@@ -66,17 +73,16 @@ public class BudgetItem extends BasePersistentModel {
 		this.usedToPay = usedToPay;
 	}
 
-	@OneToMany
+	
 	public List<BudgetRevisionImpact> getAffectedBy() {
 		return affectedBy;
 	}
 
-	@Embedded
+	
 	public Money getAmount() {
 		return amount;
 	}
-
-	@ManyToMany
+	
 	public List<BudgetItem> getComposedOf() {
 		return composedOf;
 	}
@@ -88,8 +94,7 @@ public class BudgetItem extends BasePersistentModel {
 	public String getPurpose() {
 		return purpose;
 	}
-
-	@ManyToOne
+	
 	public BudgetItemType getType() {
 		return type;
 	}

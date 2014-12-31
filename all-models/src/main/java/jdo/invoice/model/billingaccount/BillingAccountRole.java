@@ -14,17 +14,20 @@ public class BillingAccountRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
+	private static final long				serialVersionUID	= 1L;
 
-	private Party					accountFor;
+	@ManyToOne
+	private Party										accountFor;
 
-	private BillingAccount			roleFor;
+	@ManyToOne
+	private BillingAccount					roleFor;
 
+	@ManyToOne
 	private BillingAccountRoleType	type;
 
-	private DateTimeRange			dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange						dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -37,12 +40,10 @@ public class BillingAccountRole extends BasePersistentModel {
 		return accountFor;
 	}
 
-	@ManyToOne
 	public BillingAccount getRoleFor() {
 		return roleFor;
 	}
 
-	@ManyToOne
 	public BillingAccountRoleType getType() {
 		return type;
 	}

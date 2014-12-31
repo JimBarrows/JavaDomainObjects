@@ -15,15 +15,18 @@ public class EmploymentApplication extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long				serialVersionUID	= 1L;
+	private static final long								serialVersionUID	= 1L;
 
-	private Date							applicationDate;
+	private Date														applicationDate;
 
-	private Position						forPosition;
+	@ManyToOne
+	private Position												forPosition;
 
-	private Person							fromPerson;
+	@ManyToOne
+	private Person													fromPerson;
 
-	private Person							referredBy;
+	@ManyToOne
+	private Person													referredBy;
 
 	private EmploymnetApplicationSourceType	source;
 
@@ -33,7 +36,6 @@ public class EmploymentApplication extends BasePersistentModel {
 		return applicationDate;
 	}
 
-	@ManyToOne
 	public Position getForPosition() {
 		return forPosition;
 	}
@@ -46,12 +48,10 @@ public class EmploymentApplication extends BasePersistentModel {
 		return referredBy;
 	}
 
-	@ManyToOne
 	public EmploymnetApplicationSourceType getSource() {
 		return source;
 	}
 
-	@ManyToOne
 	public EmploymentApplicationStatusType getStatus() {
 		return status;
 	}

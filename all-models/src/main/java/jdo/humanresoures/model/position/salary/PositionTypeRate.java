@@ -18,19 +18,23 @@ public class PositionTypeRate extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private SalaryStep			associatedWith;
+	@ManyToOne
+	private SalaryStep				associatedWith;
 
-	private PeriodType			forPeriodType;
+	private PeriodType				forPeriodType;
 
-	private PositionType		forPositionType;
+	@ManyToOne
+	private PositionType			forPositionType;
 
-	private RateType			forRateType;
-
-	private Money				rate;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@ManyToOne
+	private RateType					forRateType;
 
 	@Embedded
+	private Money							rate;
+
+	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -39,7 +43,6 @@ public class PositionTypeRate extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public SalaryStep getAssociatedWith() {
 		return associatedWith;
 	}
@@ -48,17 +51,14 @@ public class PositionTypeRate extends BasePersistentModel {
 		return forPeriodType;
 	}
 
-	@ManyToOne
 	public PositionType getForPositionType() {
 		return forPositionType;
 	}
 
-	@ManyToOne
 	public RateType getForRateType() {
 		return forRateType;
 	}
 
-	@Embedded
 	public Money getRate() {
 		return rate;
 	}

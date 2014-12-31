@@ -7,10 +7,10 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Party;
 
-@Generated(value="Dali", date="2014-12-24T17:30:46.615-0700")
+@Generated(value="Dali", date="2014-12-31T07:49:51.731-0700")
 @StaticMetamodel(FinancialAccountRole.class)
 public class FinancialAccountRole_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<FinancialAccountRole, DateTimeRange> dateTimeRange;
-	public static volatile SingularAttribute<FinancialAccountRole, FinancialAccountRoleType> type;
 	public static volatile SingularAttribute<FinancialAccountRole, Party> accountFor;
+	public static volatile SingularAttribute<FinancialAccountRole, FinancialAccountRoleType> type;
+	public static volatile SingularAttribute<FinancialAccountRole, DateTimeRange> dateTimeRange;
 }

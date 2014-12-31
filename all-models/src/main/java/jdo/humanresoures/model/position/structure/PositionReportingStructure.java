@@ -17,17 +17,19 @@ public class PositionReportingStructure extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private String				comment;
+	private String						comment;
 
-	private Position			manager;
+	private Position					manager;
 
-	private boolean				primary;
+	@Column(name = "isPrimary")
+	private boolean						primary;
 
-	private Position			subordinate;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@ManyToOne
+	private Position					subordinate;
 
 	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -40,17 +42,14 @@ public class PositionReportingStructure extends BasePersistentModel {
 		return comment;
 	}
 
-	@ManyToOne
 	public Position getManager() {
 		return manager;
 	}
 
-	@ManyToOne
 	public Position getSubordinate() {
 		return subordinate;
 	}
 
-	@Column(name = "isPrimary")
 	public boolean isPrimary() {
 		return primary;
 	}

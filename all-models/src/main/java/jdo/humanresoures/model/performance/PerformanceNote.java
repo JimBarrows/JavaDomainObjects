@@ -16,21 +16,22 @@ public class PerformanceNote extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private String				comment;
+	private String							comment;
 
-	private Date				communicationDate;
+	private Date								communicationDate;
 
-	private PartyRole			forEmployee;
+	private PartyRole						forEmployee;
 
-	private PartyRole			fromManger;
+	private PartyRole						fromManger;
 
+	@ManyToOne
 	private PerformanceNoteType	type;
 
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange				dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -55,7 +56,6 @@ public class PerformanceNote extends BasePersistentModel {
 		return fromManger;
 	}
 
-	@ManyToOne
 	public PerformanceNoteType getType() {
 		return type;
 	}

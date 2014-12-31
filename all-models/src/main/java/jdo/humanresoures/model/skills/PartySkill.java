@@ -16,15 +16,16 @@ public class PartySkill extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Party				heldBy;
+	private Party							heldBy;
 
-	private int					skillLevel;
+	private int								skillLevel;
 
-	private Date				startedUsing;
+	private Date							startedUsing;
 
-	private SkillType			type;
+	@ManyToOne
+	private SkillType					type;
 
-	private int					yearsOfExperience;
+	private int								yearsOfExperience;
 
 	public Party getHeldBy() {
 		return heldBy;
@@ -38,7 +39,6 @@ public class PartySkill extends BasePersistentModel {
 		return startedUsing;
 	}
 
-	@ManyToOne
 	public SkillType getType() {
 		return type;
 	}

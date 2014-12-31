@@ -9,14 +9,14 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.relationship.Employment;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.791-0700")
+@Generated(value="Dali", date="2014-12-31T07:30:21.660-0700")
 @StaticMetamodel(PartyBenefit.class)
 public class PartyBenefit_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<PartyBenefit, DateTimeRange> dateTimeRange;
-	public static volatile SingularAttribute<PartyBenefit, Employment> benefitFor;
-	public static volatile SingularAttribute<PartyBenefit, Money> cost;
-	public static volatile SingularAttribute<PartyBenefit, BenefitType> type;
 	public static volatile SingularAttribute<PartyBenefit, Integer> actualEmployerPaidPercent;
 	public static volatile SingularAttribute<PartyBenefit, Integer> availableTime;
+	public static volatile SingularAttribute<PartyBenefit, Employment> benefitFor;
+	public static volatile SingularAttribute<PartyBenefit, Money> cost;
 	public static volatile SingularAttribute<PartyBenefit, PeriodType> period;
+	public static volatile SingularAttribute<PartyBenefit, BenefitType> type;
+	public static volatile SingularAttribute<PartyBenefit, DateTimeRange> dateTimeRange;
 }

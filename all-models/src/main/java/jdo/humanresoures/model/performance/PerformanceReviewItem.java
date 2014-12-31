@@ -11,31 +11,31 @@ public class PerformanceReviewItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long					serialVersionUID	= 1L;
 
-	private String						comment;
+	private String										comment;
 
-	private PerformanceReview			partOf;
+	@ManyToOne
+	private PerformanceReview					partOf;
 
-	private PerformanceRatingType		scored;
+	@ManyToOne
+	private PerformanceRatingType			scored;
 
+	@ManyToOne
 	private PerformanceReviewItemType	type;
 
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
 	public PerformanceReview getPartOf() {
 		return partOf;
 	}
 
-	@ManyToOne
 	public PerformanceRatingType getScored() {
 		return scored;
 	}
 
-	@ManyToOne
 	public PerformanceReviewItemType getType() {
 		return type;
 	}

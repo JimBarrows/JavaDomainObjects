@@ -15,9 +15,10 @@ public class Deposit extends FinancialAccountTransaction {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@OneToMany(mappedBy = "depositedVia")
 	private List<Receipt>		causedBy;
 
-	@OneToMany(mappedBy = "depositedVia")
+	
 	public List<Receipt> getCausedBy() {
 		return causedBy;
 	}

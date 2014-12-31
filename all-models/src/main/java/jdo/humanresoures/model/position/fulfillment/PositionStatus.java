@@ -13,13 +13,14 @@ public class PositionStatus extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
+	@ManyToOne
 	private PositionStatusType	type;
 
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange				dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -28,7 +29,6 @@ public class PositionStatus extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public PositionStatusType getType() {
 		return type;
 	}

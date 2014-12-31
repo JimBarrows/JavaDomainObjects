@@ -16,23 +16,28 @@ public class WebContent extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
-
-	private String						content;
-
-	private String						description;
-
-	private List<WebContentRole>		involving;
-
-	private WebAddress					locationOf;
-
-	private List<WebContentAssociation>	relatedTo;
-
-	private WebContentStatusType		status;
-
-	private WebContentType				type;
+	private static final long						serialVersionUID	= 1L;
 
 	@Lob
+	private String											content;
+
+	private String											description;
+
+	@OneToMany
+	private List<WebContentRole>				involving;
+
+	@ManyToOne
+	private WebAddress									locationOf;
+
+	@OneToMany(mappedBy = "forWebContent")
+	private List<WebContentAssociation>	relatedTo;
+
+	@ManyToOne
+	private WebContentStatusType				status;
+
+	@ManyToOne
+	private WebContentType							type;
+
 	public String getContent() {
 		return content;
 	}
@@ -41,27 +46,22 @@ public class WebContent extends BasePersistentModel {
 		return description;
 	}
 
-	@OneToMany
 	public List<WebContentRole> getInvolving() {
 		return involving;
 	}
 
-	@ManyToOne
 	public WebAddress getLocationOf() {
 		return locationOf;
 	}
 
-	@OneToMany(mappedBy = "forWebContent")
 	public List<WebContentAssociation> getRelatedTo() {
 		return relatedTo;
 	}
 
-	@ManyToOne
 	public WebContentStatusType getStatus() {
 		return status;
 	}
 
-	@ManyToOne
 	public WebContentType getType() {
 		return type;
 	}

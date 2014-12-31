@@ -23,35 +23,40 @@ public class AgreementItem extends BasePersistentModel {
 	 */
 	private static final long			serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<Addendum>				addendums;
 
+	@OneToMany
 	private List<AgreementItem>			composedOf;
 
+	@OneToMany
 	private List<GeographicBoundary>	geographicBoundaries;
 
 	private String						image;
 
+	@OneToMany
 	private List<Organization>			organizations;
 
+	@ManyToOne
 	private Agreement					partOf;
 
+	@OneToMany
 	private List<Product>				products;
 
+	@Min(1)
 	private int							sequenceId;
 
+	@Lob
 	private String						text;
-
-	@OneToMany
+	
 	public List<Addendum> getAddendums() {
 		return addendums;
 	}
-
-	@OneToMany
+	
 	public List<AgreementItem> getComposedOf() {
 		return composedOf;
 	}
 
-	@OneToMany
 	public List<GeographicBoundary> getGeographicBoundaries() {
 		return geographicBoundaries;
 	}
@@ -60,27 +65,23 @@ public class AgreementItem extends BasePersistentModel {
 		return image;
 	}
 
-	@OneToMany
 	public List<Organization> getOrganizations() {
 		return organizations;
 	}
 
-	@ManyToOne
+
 	public Agreement getPartOf() {
 		return partOf;
 	}
-
-	@OneToMany
+	
 	public List<Product> getProducts() {
 		return products;
 	}
 
-	@Min(1)
 	public int getSequenceId() {
 		return sequenceId;
 	}
-
-	@Lob
+	
 	public String getText() {
 		return text;
 	}

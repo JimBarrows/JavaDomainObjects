@@ -13,9 +13,9 @@ public class ItemVarianceAccountingTransaction extends InternalAccountingTransac
 	 */
 	private static final long		serialVersionUID	= 1L;
 
-	private InventoryItemVariance	originatedFrom;
-
 	@OneToOne
+	private InventoryItemVariance	originatedFrom;
+	
 	public InventoryItemVariance getOriginatedFrom() {
 		return originatedFrom;
 	}

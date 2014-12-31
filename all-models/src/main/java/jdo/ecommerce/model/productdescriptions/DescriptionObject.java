@@ -20,25 +20,30 @@ public class DescriptionObject extends BasePersistentModel {
 	 */
 	private static final long		serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<ProductFeature>	describes;
 
 	private String					description;
 
+	@OneToMany
 	private List<Product>			forProduct;
 
 	private File					location;
 
 	private String					name;
 
+	@OneToMany
 	private List<Party>				ofParty;
 
+	@ManyToOne
 	private ObjectType				type;
 
+	@OneToMany
 	private List<ObjectPurpose>		usedFor;
 
-	private List<ObjectUsage>		usedWithin;
-
 	@OneToMany
+	private List<ObjectUsage>		usedWithin;
+	
 	public List<ProductFeature> getDescribes() {
 		return describes;
 	}
@@ -47,7 +52,7 @@ public class DescriptionObject extends BasePersistentModel {
 		return description;
 	}
 
-	@OneToMany
+	
 	public List<Product> getForProduct() {
 		return forProduct;
 	}
@@ -60,22 +65,20 @@ public class DescriptionObject extends BasePersistentModel {
 		return name;
 	}
 
-	@OneToMany
+	
 	public List<Party> getOfParty() {
 		return ofParty;
 	}
 
-	@ManyToOne
 	public ObjectType getType() {
 		return type;
 	}
 
-	@OneToMany
+	
 	public List<ObjectPurpose> getUsedFor() {
 		return usedFor;
 	}
-
-	@OneToMany
+	
 	public List<ObjectUsage> getUsedWithin() {
 		return usedWithin;
 	}

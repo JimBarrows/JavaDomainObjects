@@ -22,15 +22,23 @@ public class AgreementTerm extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Agreement			agreement;
+	@ManyToOne
+	private Agreement					agreement;
 
-	private AgreementItem		agreementItem;
-
-	private Money				value;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@ManyToOne
+	private AgreementItem			agreementItem;
 
 	@Embedded
+	private Money							value;
+
+	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
+	@AssertTrue
+	public boolean onlyAgreementOrItem() {
+		return (agreement == null && agreementItem != null) || (agreement != null && agreementItem == null);
+	}
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -39,24 +47,16 @@ public class AgreementTerm extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public Agreement getAgreement() {
 		return agreement;
 	}
 
-	@ManyToOne
 	public AgreementItem getAgreementItem() {
 		return agreementItem;
 	}
 
-	@Embedded
 	public Money getValue() {
 		return value;
-	}
-
-	@AssertTrue
-	public boolean onlyAgreementOrItem() {
-		return (agreement == null && agreementItem != null) || (agreement != null && agreementItem == null);
 	}
 
 	public void setAgreement(Agreement agreement) {

@@ -18,22 +18,24 @@ public class BudgetRevisionImpact extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private boolean				add;
-
-	private BudgetItem			affects;
-
-	private BudgetRevision		fromBudgetRevision;
-
-	private String				reason;
-
-	private Money				revisedAmount;
+	@Column(name = "addDelete")
+	private boolean						add;
 
 	@ManyToOne
+	private BudgetItem				affects;
+
+	@ManyToOne
+	private BudgetRevision		fromBudgetRevision;
+
+	private String						reason;
+
+	@Embedded
+	private Money							revisedAmount;
+
 	public BudgetItem getAffects() {
 		return affects;
 	}
 
-	@ManyToOne
 	public BudgetRevision getFromBudgetRevision() {
 		return fromBudgetRevision;
 	}
@@ -42,12 +44,10 @@ public class BudgetRevisionImpact extends BasePersistentModel {
 		return reason;
 	}
 
-	@Embedded
 	public Money getRevisedAmount() {
 		return revisedAmount;
 	}
 
-	@Column(name = "addDelete")
 	public boolean isAdd() {
 		return add;
 	}

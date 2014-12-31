@@ -11,39 +11,39 @@ public class UserAgent extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private BrowserType			browser;
-
-	private UserAgentMethodType	methodType;
-
-	private PlatformType		platform;
-
-	private ProtocolType		protocolType;
-
-	private UserAgentType		type;
+	private static final long		serialVersionUID	= 1L;
 
 	@ManyToOne
+	private BrowserType					browser;
+
+	@ManyToOne
+	private UserAgentMethodType	methodType;
+
+	@ManyToOne
+	private PlatformType				platform;
+
+	@ManyToOne
+	private ProtocolType				protocolType;
+
+	@ManyToOne
+	private UserAgentType				type;
+
 	public BrowserType getBrowser() {
 		return browser;
 	}
 
-	@ManyToOne
 	public UserAgentMethodType getMethodType() {
 		return methodType;
 	}
 
-	@ManyToOne
 	public PlatformType getPlatform() {
 		return platform;
 	}
 
-	@ManyToOne
 	public ProtocolType getProtocolType() {
 		return protocolType;
 	}
 
-	@ManyToOne
 	public UserAgentType getType() {
 		return type;
 	}

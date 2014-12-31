@@ -16,11 +16,13 @@ public class Deduction extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Money				amount;
+	@Embedded
+	private Money							amount;
 
-	private DeductionType		type;
+	@ManyToOne
+	private DeductionType			type;
 
-	private Paycheck			reductionOf;
+	private Paycheck					reductionOf;
 
 	public Paycheck getReductionOf() {
 		return reductionOf;
@@ -30,12 +32,10 @@ public class Deduction extends BasePersistentModel {
 		this.reductionOf = reductionOf;
 	}
 
-	@Embedded
 	public Money getAmount() {
 		return amount;
 	}
 
-	@ManyToOne
 	public DeductionType getType() {
 		return type;
 	}

@@ -13,20 +13,20 @@ public class BudgetScenario extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long				serialVersionUID	= 1L;
-
-	private List<BudgetScenarioRule>		affectedBy;
-
-	private List<BudgetScenarioApplication>	affecting;
-
-	private String							description;
+	private static final long								serialVersionUID	= 1L;
 
 	@OneToMany
+	private List<BudgetScenarioRule>				affectedBy;
+
+	@OneToMany
+	private List<BudgetScenarioApplication>	affecting;
+
+	private String													description;
+
 	public List<BudgetScenarioRule> getAffectedBy() {
 		return affectedBy;
 	}
 
-	@OneToMany
 	public List<BudgetScenarioApplication> getAffecting() {
 		return affecting;
 	}

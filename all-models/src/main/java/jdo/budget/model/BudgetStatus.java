@@ -13,16 +13,17 @@ public class BudgetStatus extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Budget				forBudget;
 
-	private BudgetStatusType	type;
-
 	@ManyToOne
+	private BudgetStatusType	type;
+	
 	public Budget getForBudget() {
 		return forBudget;
 	}
 
-	@ManyToOne
+
 	public BudgetStatusType getType() {
 		return type;
 	}

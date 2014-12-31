@@ -23,6 +23,7 @@ public class FixedAsset extends BasePersistentModel {
 
 	private Date								dateLastServiced;
 
+	@OneToMany
 	private List<FixedAssetDepreciationMethod>	depreciatedVia;
 
 	private String								description;
@@ -41,7 +42,7 @@ public class FixedAsset extends BasePersistentModel {
 		return dateLastServiced;
 	}
 
-	@OneToMany
+	
 	public List<FixedAssetDepreciationMethod> getDepreciatedVia() {
 		return depreciatedVia;
 	}

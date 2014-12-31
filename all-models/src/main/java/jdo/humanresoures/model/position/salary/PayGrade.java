@@ -15,10 +15,11 @@ public class PayGrade extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private String				comment;
+	private String						comment;
 
-	private String				name;
+	private String						name;
 
+	@OneToMany
 	private List<SalaryStep>	steps;
 
 	public String getComment() {
@@ -29,7 +30,6 @@ public class PayGrade extends BasePersistentModel {
 		return name;
 	}
 
-	@OneToMany
 	public List<SalaryStep> getSteps() {
 		return steps;
 	}

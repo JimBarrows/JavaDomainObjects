@@ -3,7 +3,6 @@ package jdo.humanresoures.model.position.type;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Max;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
@@ -14,17 +13,19 @@ public class PositionTypeClass extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long						serialVersionUID	= 1L;
 
-	private PositionType				forPositionType;
+	@ManyToOne
+	private PositionType								forPositionType;
 
-	private int							standardHoursePerWeek;
+	private int													standardHoursePerWeek;
 
+	@ManyToOne
 	private PositionClassificationType	type;
 
-	private DateTimeRange				dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange								dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -33,17 +34,14 @@ public class PositionTypeClass extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public PositionType getForPositionType() {
 		return forPositionType;
 	}
 
-	@Max(40)
 	public int getStandardHoursePerWeek() {
 		return standardHoursePerWeek;
 	}
 
-	@ManyToOne
 	public PositionClassificationType getType() {
 		return type;
 	}

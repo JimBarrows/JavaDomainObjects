@@ -21,12 +21,9 @@ import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 
 /**
- * Represents all the data needed for a subscription to Newsgroups, product
- * information, user groups, or other things that can be subscribed to.
- * 
+ * Represents all the data needed for a subscription to Newsgroups, product information, user groups, or other things that can be subscribed to.
  * 
  * @author jim
- *
  */
 @Entity
 public class Subscription extends BasePersistentModel {
@@ -34,99 +31,99 @@ public class Subscription extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long						serialVersionUID	= 1L;
 
-	private Date						endDate;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date												endDate;
 
+	@ManyToMany(mappedBy = "subscriptionsInvolved")
 	private List<SubscriptionActivity>	fullfilledVia;
 
-	private NeedType					needType;
+	@ManyToOne
+	private NeedType										needType;
 
-	private List<OrderItem>				orderedVia;
+	@OneToMany
+	private List<OrderItem>							orderedVia;
 
-	private CommunicationEvent			originatingFrom;
+	@ManyToOne
+	private CommunicationEvent					originatingFrom;
 
-	private PartyNeed					partyNeed;
+	@ManyToOne
+	private PartyNeed										partyNeed;
 
-	private Product						product;
+	@ManyToOne
+	private Product											product;
 
-	private ProductCategory				productCategory;
+	@ManyToOne
+	private ProductCategory							productCategory;
 
-	private ContactMechanism			sendTo;
+	@ManyToOne
+	private ContactMechanism						sendTo;
 
-	private Date						startDate;
+	@Temporal(TemporalType.DATE)
+	private Date												startDate;
 
-	private PartyRole					subscriber;
+	@ManyToOne
+	private PartyRole										subscriber;
 
-	private PartyRole					subscriptionFor;
+	@ManyToOne
+	private PartyRole										subscriptionFor;
 
-	private SubscriptionType			type;
+	@ManyToOne
+	private SubscriptionType						type;
 
 	public Date getEndDate() {
 		return endDate;
 	}
 
-	@ManyToMany(mappedBy = "subscriptionsInvolved")
 	public List<SubscriptionActivity> getFullfilledVia() {
 		return fullfilledVia;
 	}
 
-	@ManyToOne
 	public NeedType getNeedType() {
 		return needType;
 	}
 
-	@OneToMany
 	public List<OrderItem> getOrderedVia() {
 		return orderedVia;
 	}
 
-	@ManyToOne
 	public CommunicationEvent getOriginatingFrom() {
 		return originatingFrom;
 	}
 
-	@ManyToOne
 	public PartyNeed getPartyNeed() {
 		return partyNeed;
 	}
 
-	@ManyToOne
 	public Product getProduct() {
 		return product;
 	}
 
-	@ManyToOne
 	public ProductCategory getProductCategory() {
 		return productCategory;
 	}
 
-	@ManyToOne
 	public ContactMechanism getSendTo() {
 		return sendTo;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getStartDate() {
 		return startDate;
 	}
 
-	@ManyToOne
 	public PartyRole getSubscriber() {
 		return subscriber;
 	}
 
-	@ManyToOne
 	public PartyRole getSubscriptionFor() {
 		return subscriptionFor;
 	}
 
-	@ManyToOne
 	public SubscriptionType getType() {
 		return type;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
 	}

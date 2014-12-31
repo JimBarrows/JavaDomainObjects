@@ -19,23 +19,26 @@ public class SubscriptionActivity extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@Lob
 	private String				comment;
-
+	
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				sentOne;
 
+	@ManyToMany
 	private List<Subscription>	subscriptionsInvolved;
 
-	@Lob
+	
 	public String getComment() {
 		return comment;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	public Date getSentOne() {
 		return sentOne;
 	}
 
-	@ManyToMany
+
 	public List<Subscription> getSubscriptionsInvolved() {
 		return subscriptionsInvolved;
 	}

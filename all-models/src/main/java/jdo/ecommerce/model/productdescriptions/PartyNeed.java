@@ -21,60 +21,60 @@ public class PartyNeed extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private String				description;
-
-	private CommunicationEvent	discoverdViaCommunicationEvent;
-
-	private ServerHit			discoveredViaServerHit;
-
-	private PartyRole			forConsumer;
-
-	private Product				forProduct;
-
-	private ProductCategory		forProductCategory;
-
-	private Date				identifiedOn;
-
-	private NeedType			type;
+	private static final long		serialVersionUID	= 1L;
 
 	@Lob
+	private String							description;
+
+	@ManyToOne
+	private CommunicationEvent	discoverdViaCommunicationEvent;
+
+	@ManyToOne
+	private ServerHit						discoveredViaServerHit;
+
+	@ManyToOne
+	private PartyRole						forConsumer;
+
+	@ManyToOne
+	private Product							forProduct;
+
+	@ManyToOne
+	private ProductCategory			forProductCategory;
+
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date								identifiedOn;
+
+	@ManyToOne
+	private NeedType						type;
+
 	public String getDescription() {
 		return description;
 	}
 
-	@ManyToOne
 	public CommunicationEvent getDiscoverdViaCommunicationEvent() {
 		return discoverdViaCommunicationEvent;
 	}
 
-	@ManyToOne
 	public ServerHit getDiscoveredViaServerHit() {
 		return discoveredViaServerHit;
 	}
 
-	@ManyToOne
 	public PartyRole getForConsumer() {
 		return forConsumer;
 	}
 
-	@ManyToOne
 	public Product getForProduct() {
 		return forProduct;
 	}
 
-	@ManyToOne
 	public ProductCategory getForProductCategory() {
 		return forProductCategory;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getIdentifiedOn() {
 		return identifiedOn;
 	}
 
-	@ManyToOne
 	public NeedType getType() {
 		return type;
 	}

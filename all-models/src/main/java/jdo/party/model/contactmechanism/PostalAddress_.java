@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.party.model.PartyPostalAddress;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 
-@Generated(value="Dali", date="2014-11-07T22:13:42.862-0700")
+@Generated(value="Dali", date="2014-12-29T23:11:14.942-0700")
 @StaticMetamodel(PostalAddress.class)
 public class PostalAddress_ extends ContactMechanism_ {
 	public static volatile SingularAttribute<PostalAddress, String> address;

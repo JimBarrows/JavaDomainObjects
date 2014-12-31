@@ -16,13 +16,13 @@ public class BudgetRole extends BasePersistentModel {
 
 	private Party				forParty;
 
+	@ManyToOne
 	private BudgetRoleType		type;
 
 	public Party getForParty() {
 		return forParty;
 	}
 
-	@ManyToOne
 	public BudgetRoleType getType() {
 		return type;
 	}

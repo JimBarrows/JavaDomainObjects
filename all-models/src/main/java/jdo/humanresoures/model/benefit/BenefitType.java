@@ -21,6 +21,7 @@ public class BenefitType extends BasePersistentModel {
 
 	private String				name;
 
+	@OneToMany
 	private List<PartyBenefit>	partyBenefits;
 
 	public String getDescription() {
@@ -34,8 +35,7 @@ public class BenefitType extends BasePersistentModel {
 	public String getName() {
 		return name;
 	}
-
-	@OneToMany
+	
 	public List<PartyBenefit> getPartyBenefits() {
 		return partyBenefits;
 	}

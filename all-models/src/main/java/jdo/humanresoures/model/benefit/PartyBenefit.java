@@ -18,21 +18,25 @@ public class PartyBenefit extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private int					actualEmployerPaidPercent;
+	private int								actualEmployerPaidPercent;
 
-	private int					availableTime;
+	private int								availableTime;
 
-	private Employment			benefitFor;
-
-	private Money				cost;
-
-	private PeriodType			period;
-
-	private BenefitType			type;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@ManyToOne
+	private Employment				benefitFor;
 
 	@Embedded
+	private Money							cost;
+
+	@ManyToOne
+	private PeriodType				period;
+
+	@ManyToOne
+	private BenefitType				type;
+
+	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -49,12 +53,10 @@ public class PartyBenefit extends BasePersistentModel {
 		return availableTime;
 	}
 
-	@ManyToOne
 	public Employment getBenefitFor() {
 		return benefitFor;
 	}
 
-	@Embedded
 	public Money getCost() {
 		return cost;
 	}
@@ -63,7 +65,6 @@ public class PartyBenefit extends BasePersistentModel {
 		return period;
 	}
 
-	@ManyToOne
 	public BenefitType getType() {
 		return type;
 	}

@@ -8,7 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.accounting.model.transaction.detail.TransactionDetail;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:44.860-0700")
+@Generated(value="Dali", date="2014-12-29T22:30:54.765-0700")
 @StaticMetamodel(AccountingTransaction.class)
 public class AccountingTransaction_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<AccountingTransaction, TransactionDetail> composedOf;

@@ -17,15 +17,16 @@ public class PositionFulfillment extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Person				acceptedBy;
+	private Person						acceptedBy;
 
-	private String				comment;
+	private String						comment;
 
-	private Position			fullfillmentOf;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@ManyToOne
+	private Position					fullfillmentOf;
 
 	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -42,7 +43,6 @@ public class PositionFulfillment extends BasePersistentModel {
 		return comment;
 	}
 
-	@ManyToOne
 	public Position getFullfillmentOf() {
 		return fullfillmentOf;
 	}

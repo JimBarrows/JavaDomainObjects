@@ -26,41 +26,51 @@ public class InvoiceItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
-
-	private List<InvoiceItem>		adjustments;
-
-	private Money					amount;
-
-	private List<OrderItemBilling>	billingForOrderItem;
-
-	private List<TimeEntry>			billingForTimeEntry;
-
-	private List<WorkEffortBilling>	billingForWorkEffort;
-
-	private ProductFeature			chargeforFeature;
-
-	private SerializedInventoryItem	chargeForItem;
-
-	private Product					chargeForProduct;
-
-	private String					description;
-
-	private int						quantity;
-
-	private int						sequence;
-
-	private List<InvoiceItem>		soldWith;
-
-	private boolean					taxable;
-
-	private List<InvoiceTerm>		terms;
-
-	private InvoiceItemType			type;
-
-	private List<ShipmentItem>		billingForShipmentItem;
+	private static final long				serialVersionUID	= 1L;
 
 	@OneToMany
+	private List<InvoiceItem>				adjustments;
+
+	@Embedded
+	private Money										amount;
+
+	@OneToMany
+	private List<OrderItemBilling>	billingForOrderItem;
+
+	@OneToMany
+	private List<TimeEntry>					billingForTimeEntry;
+
+	@OneToMany
+	private List<WorkEffortBilling>	billingForWorkEffort;
+
+	private ProductFeature					chargeforFeature;
+
+	@ManyToOne
+	private SerializedInventoryItem	chargeForItem;
+
+	@ManyToOne
+	private Product									chargeForProduct;
+
+	@Lob
+	private String									description;
+
+	private int											quantity;
+
+	@Min(0)
+	private int											sequence;
+
+	private List<InvoiceItem>				soldWith;
+
+	private boolean									taxable;
+
+	@OneToMany
+	private List<InvoiceTerm>				terms;
+
+	private InvoiceItemType					type;
+
+	@OneToMany
+	private List<ShipmentItem>			billingForShipmentItem;
+
 	public List<ShipmentItem> getBillingForShipmentItem() {
 		return billingForShipmentItem;
 	}
@@ -69,47 +79,38 @@ public class InvoiceItem extends BasePersistentModel {
 		this.billingForShipmentItem = billingFor;
 	}
 
-	@OneToMany
 	public List<InvoiceItem> getAdjustments() {
 		return adjustments;
 	}
 
-	@Embedded
 	public Money getAmount() {
 		return amount;
 	}
 
-	@OneToMany
 	public List<OrderItemBilling> getBillingForOrderItem() {
 		return billingForOrderItem;
 	}
 
-	@OneToMany
 	public List<TimeEntry> getBillingForTimeEntry() {
 		return billingForTimeEntry;
 	}
 
-	@OneToMany
 	public List<WorkEffortBilling> getBillingForWorkEffort() {
 		return billingForWorkEffort;
 	}
 
-	@ManyToOne
 	public ProductFeature getChargeforFeature() {
 		return chargeforFeature;
 	}
 
-	@ManyToOne
 	public SerializedInventoryItem getChargeForItem() {
 		return chargeForItem;
 	}
 
-	@ManyToOne
 	public Product getChargeForProduct() {
 		return chargeForProduct;
 	}
 
-	@Lob
 	public String getDescription() {
 		return description;
 	}
@@ -118,22 +119,18 @@ public class InvoiceItem extends BasePersistentModel {
 		return quantity;
 	}
 
-	@Min(0)
 	public int getSequence() {
 		return sequence;
 	}
 
-	@OneToMany
 	public List<InvoiceItem> getSoldWith() {
 		return soldWith;
 	}
 
-	@OneToMany
 	public List<InvoiceTerm> getTerms() {
 		return terms;
 	}
 
-	@ManyToOne
 	public InvoiceItemType getType() {
 		return type;
 	}

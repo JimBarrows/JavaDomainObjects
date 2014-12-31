@@ -43,6 +43,12 @@
 								<artifactId>postgresql</artifactId>
 								<version>${postgres-driver.version}</version>
 							</dependency>
+							<dependency>
+								<groupId>jdo</groupId>
+								<artifactId>common</artifactId>
+								<version>1.0-SNAPSHOT</version>
+
+							</dependency>
 						</dependencies>
 
 					</plugin>

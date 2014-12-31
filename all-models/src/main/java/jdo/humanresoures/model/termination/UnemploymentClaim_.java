@@ -7,11 +7,11 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.party.model.relationship.Employment;
 
-@Generated(value="Dali", date="2014-12-24T17:30:46.599-0700")
+@Generated(value="Dali", date="2014-12-31T07:46:03.373-0700")
 @StaticMetamodel(UnemploymentClaim.class)
 public class UnemploymentClaim_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<UnemploymentClaim, Employment> resultingFrom;
-	public static volatile SingularAttribute<UnemploymentClaim, UnemploymentClaimStatusType> status;
 	public static volatile SingularAttribute<UnemploymentClaim, Date> claimDate;
 	public static volatile SingularAttribute<UnemploymentClaim, String> description;
+	public static volatile SingularAttribute<UnemploymentClaim, Employment> resultingFrom;
+	public static volatile SingularAttribute<UnemploymentClaim, UnemploymentClaimStatusType> status;
 }

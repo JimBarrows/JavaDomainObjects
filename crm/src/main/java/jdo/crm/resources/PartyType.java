@@ -12,12 +12,10 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
-import jdo.dto.CustomerDto;
 import jdo.dto.PartyTypeDto;
 import jdo.dto.PartyTypeDtoList;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
-import jdo.party.model.Party;
 import jdo.party.model.Person;
 
 @Stateless

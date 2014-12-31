@@ -8,11 +8,11 @@ import jdo.invoice.model.InvoiceItem;
 import jdo.model.BasePersistentModel_;
 import jdo.order.model.OrderItem;
 
-@Generated(value="Dali", date="2014-12-24T17:30:46.635-0700")
+@Generated(value="Dali", date="2014-12-31T07:51:18.618-0700")
 @StaticMetamodel(OrderItemBilling.class)
 public class OrderItemBilling_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<OrderItemBilling, Money> amount;
 	public static volatile SingularAttribute<OrderItemBilling, InvoiceItem> billingFor;
-	public static volatile SingularAttribute<OrderItemBilling, OrderItem> quantityOf;
 	public static volatile SingularAttribute<OrderItemBilling, Integer> quantity;
+	public static volatile SingularAttribute<OrderItemBilling, OrderItem> quantityOf;
 }

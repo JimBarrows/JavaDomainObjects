@@ -23,41 +23,41 @@ public class TransactionDetail extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
-
-	private OrganizationGlAccount	allocatedTo;
-
-	private Money					amount;
-
-	private List<TransactionDetail>	associatedWith		= new ArrayList<TransactionDetail>();
-
-	private boolean					debitCreditFlag;
-
-	private AccountingTransaction	partOf;
-
-	private TransactionDetail		relatedTo;
+	private static final long				serialVersionUID	= 1L;
 
 	@ManyToOne
+	private OrganizationGlAccount		allocatedTo;
+
+	@Embedded
+	private Money										amount;
+
+	@OneToMany(mappedBy = "relatedTo")
+	private List<TransactionDetail>	associatedWith		= new ArrayList<TransactionDetail>();
+
+	private boolean									debitCreditFlag;
+
+	@ManyToOne
+	private AccountingTransaction		partOf;
+
+	@ManyToOne
+	private TransactionDetail				relatedTo;
+
 	public OrganizationGlAccount getAllocatedTo() {
 		return allocatedTo;
 	}
 
-	@Embedded
 	public Money getAmount() {
 		return amount;
 	}
 
-	@OneToMany(mappedBy = "relatedTo")
 	public List<TransactionDetail> getAssociatedWith() {
 		return associatedWith;
 	}
 
-	@ManyToOne
 	public AccountingTransaction getPartOf() {
 		return partOf;
 	}
 
-	@ManyToOne
 	public TransactionDetail getRelatedTo() {
 		return relatedTo;
 	}

@@ -15,23 +15,24 @@ public class BudgetReview extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
+	private static final long				serialVersionUID	= 1L;
 
-	private String					comment;
+	private String									comment;
 
-	private Budget					forBudget;
+	@ManyToOne
+	private Budget									forBudget;
 
-	private Party					ofParty;
+	private Party										ofParty;
 
+	@ManyToOne
 	private BudgetReviewResultType	result;
 
-	private Date					reviewDate;
+	private Date										reviewDate;
 
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
 	public Budget getForBudget() {
 		return forBudget;
 	}
@@ -40,7 +41,6 @@ public class BudgetReview extends BasePersistentModel {
 		return ofParty;
 	}
 
-	@ManyToOne
 	public BudgetReviewResultType getResult() {
 		return result;
 	}

@@ -27,39 +27,48 @@ public class Position extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long					serialVersionUID	= 1L;
+	private static final long									serialVersionUID	= 1L;
 
-	private BudgetItem							approvedThru;
+	private BudgetItem												approvedThru;
 
-	private List<PositionResponsibility>		assigendTo;
+	@OneToMany
+	private List<PositionResponsibility>			assigendTo;
 
-	private Date								estimatedFromDate;
+	@Temporal(TemporalType.DATE)
+	private Date															estimatedFromDate;
 
-	private Date								estimatedThruDate;
+	@Temporal(TemporalType.DATE)
+	private Date															estimatedThruDate;
 
-	private boolean								exempt;
+	private boolean														exempt;
 
-	private List<PositionFulfillment>			filledBy;
+	@OneToMany
+	private List<PositionFulfillment>					filledBy;
 
-	private boolean								fulltime;
+	private boolean														fulltime;
 
+	@OneToMany(mappedBy = "subordinate")
 	private List<PositionReportingStructure>	manages;
 
+	@OneToMany(mappedBy = "manager")
 	private List<PositionReportingStructure>	reportsTo;
 
-	private boolean								salary;
+	private boolean														salary;
 
-	private PositionStatus						status;
+	@ManyToOne
+	private PositionStatus										status;
 
-	private boolean								temporary;
+	@Column(name = "isATemp")
+	private boolean														temporary;
 
-	private PositionType						type;
+	@ManyToOne
+	private PositionType											type;
 
-	private Organization						within;
-
-	private DateTimeRange						dateTimeRange		= new DateTimeRange();
+	private Organization											within;
 
 	@Embedded
+	private DateTimeRange											dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -72,42 +81,34 @@ public class Position extends BasePersistentModel {
 		return approvedThru;
 	}
 
-	@OneToMany
 	public List<PositionResponsibility> getAssigendTo() {
 		return assigendTo;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getEstimatedFromDate() {
 		return estimatedFromDate;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getEstimatedThruDate() {
 		return estimatedThruDate;
 	}
 
-	@OneToMany
 	public List<PositionFulfillment> getFilledBy() {
 		return filledBy;
 	}
 
-	@OneToMany(mappedBy = "subordinate")
 	public List<PositionReportingStructure> getManages() {
 		return manages;
 	}
 
-	@OneToMany(mappedBy = "manager")
 	public List<PositionReportingStructure> getReportsTo() {
 		return reportsTo;
 	}
 
-	@ManyToOne
 	public PositionStatus getStatus() {
 		return status;
 	}
 
-	@ManyToOne
 	public PositionType getType() {
 		return type;
 	}
@@ -133,7 +134,6 @@ public class Position extends BasePersistentModel {
 		return salary;
 	}
 
-	@Column(name = "isATemp")
 	public boolean isTemporary() {
 		return temporary;
 	}

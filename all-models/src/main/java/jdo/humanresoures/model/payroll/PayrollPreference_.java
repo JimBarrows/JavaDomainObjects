@@ -10,18 +10,18 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.812-0700")
+@Generated(value="Dali", date="2014-12-31T07:31:45.674-0700")
 @StaticMetamodel(PayrollPreference.class)
 public class PayrollPreference_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<PayrollPreference, DateTimeRange> dateTimeRange;
-	public static volatile SingularAttribute<PayrollPreference, Money> flatAmount;
-	public static volatile SingularAttribute<PayrollPreference, DeductionType> type;
-	public static volatile SingularAttribute<PayrollPreference, PaymentMethodType> paymentMethodType;
 	public static volatile SingularAttribute<PayrollPreference, String> accountNumber;
 	public static volatile SingularAttribute<PayrollPreference, String> bankName;
+	public static volatile SingularAttribute<PayrollPreference, Money> flatAmount;
 	public static volatile SingularAttribute<PayrollPreference, PartyRole> forEmployee;
 	public static volatile SingularAttribute<PayrollPreference, PartyRole> forInternalOrganization;
 	public static volatile SingularAttribute<PayrollPreference, Integer> percentage;
 	public static volatile SingularAttribute<PayrollPreference, PeriodType> period;
 	public static volatile SingularAttribute<PayrollPreference, String> routingNumber;
+	public static volatile SingularAttribute<PayrollPreference, DeductionType> type;
+	public static volatile SingularAttribute<PayrollPreference, PaymentMethodType> paymentMethodType;
+	public static volatile SingularAttribute<PayrollPreference, DateTimeRange> dateTimeRange;
 }

@@ -12,9 +12,9 @@ public class AgreementPricingProgram extends AgreementItem {
 
 	private static final long		serialVersionUID	= 1L;
 
-	private List<PriceComponent>	priceComponents;
-
 	@OneToMany
+	private List<PriceComponent>	priceComponents;
+	
 	public List<PriceComponent> getPriceComponents() {
 		return priceComponents;
 	}

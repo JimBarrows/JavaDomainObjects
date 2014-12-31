@@ -30,8 +30,10 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ContactMechanism extends BasePersistentModel {
 
+	@OneToMany(mappedBy = "specifiedVia", cascade = CascadeType.ALL)
 	private List<FacilityContactMechanism> usedByFacilities = new ArrayList<FacilityContactMechanism>();
 
+	@OneToMany(mappedBy = "specifiedVia", cascade = CascadeType.ALL)
 	private List<PartyContactMechanism> usedByParties = new ArrayList<PartyContactMechanism>();
 
 	/**
@@ -52,13 +54,11 @@ public class ContactMechanism extends BasePersistentModel {
 
 	/**
 	 * @return the usedByFacilities
-	 */
-	@OneToMany(mappedBy = "specifiedVia", cascade = CascadeType.ALL)
+	 */	
 	public List<FacilityContactMechanism> getUsedByFacilities() {
 		return usedByFacilities;
 	}
-
-	@OneToMany(mappedBy = "specifiedVia", cascade = CascadeType.ALL)
+	
 	public List<PartyContactMechanism> getUsedByParties() {
 		return usedByParties;
 	}

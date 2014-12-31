@@ -9,4 +9,12 @@
 		<name>TextField</name>
 		<path>/META-INF/tags/textfield.tag</path>				
 	</tag-file>
+	<tag-file>
+		<name>NumericField</name>
+		<path>/META-INF/tags/numericfield.tag</path>				
+	</tag-file>
+	<tag-file>
+		<name>TextAreaField</name>
+		<path>/META-INF/tags/textareafield.tag</path>				
+	</tag-file>
 </taglib>

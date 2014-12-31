@@ -22,8 +22,12 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class LoginAccountHistory extends BasePersistentModel {
 
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date	loggedInFrom;
 
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date	loggedInThru;
 
 	private String	password;
@@ -74,18 +78,14 @@ public class LoginAccountHistory extends BasePersistentModel {
 
 	/**
 	 * @return the from
-	 */
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
+	 */	
 	public Date getLoggedInFrom() {
 		return loggedInFrom;
 	}
 
 	/**
 	 * @return the thru
-	 */
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
+	 */	
 	public Date getLoggedInThru() {
 		return loggedInThru;
 	}

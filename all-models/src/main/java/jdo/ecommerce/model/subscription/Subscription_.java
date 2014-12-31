@@ -15,7 +15,7 @@ import jdo.party.model.contactmechanism.ContactMechanism;
 import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.640-0700")
+@Generated(value="Dali", date="2014-12-31T07:22:23.527-0700")
 @StaticMetamodel(Subscription.class)
 public class Subscription_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Subscription, Date> endDate;

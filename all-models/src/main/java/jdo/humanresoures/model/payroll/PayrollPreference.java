@@ -19,29 +19,32 @@ public class PayrollPreference extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private String				accountNumber;
+	private String						accountNumber;
 
-	private String				bankName;
-
-	private Money				flatAmount;
-
-	private PartyRole			forEmployee;
-
-	private PartyRole			forInternalOrganization;
-
-	private int					percentage;
-
-	private PeriodType			period;
-
-	private String				routingNumber;
-
-	private DeductionType		type;
-
-	private PaymentMethodType	paymentMethodType;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	private String						bankName;
 
 	@Embedded
+	private Money							flatAmount;
+
+	private PartyRole					forEmployee;
+
+	private PartyRole					forInternalOrganization;
+
+	private int								percentage;
+
+	private PeriodType				period;
+
+	private String						routingNumber;
+
+	@ManyToOne
+	private DeductionType			type;
+
+	@ManyToOne
+	private PaymentMethodType	paymentMethodType;
+
+	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -66,7 +69,6 @@ public class PayrollPreference extends BasePersistentModel {
 		return bankName;
 	}
 
-	@Embedded
 	public Money getFlatAmount() {
 		return flatAmount;
 	}
@@ -91,7 +93,6 @@ public class PayrollPreference extends BasePersistentModel {
 		return routingNumber;
 	}
 
-	@ManyToOne
 	public DeductionType getType() {
 		return type;
 	}

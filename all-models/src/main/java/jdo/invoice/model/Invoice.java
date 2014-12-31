@@ -24,26 +24,37 @@ public class Invoice extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@NotNull
 	private ContactMechanism	addressedTo;
 
+	@NotNull
 	private Party				billedFrom;
 
+	@ManyToOne
 	private BillingAccount		billedToAccount;
 
+	@NotNull
 	private Party				billedToParty;
 
+	@OneToMany
 	private List<InvoiceItem>	composedOf;
 
+	@Lob
 	private String				description;
 
+	@NotNull
 	private Date				invoiceDate;
-
+	
+	@OneToMany
 	private List<InvoiceRole>	involving;
 
+	@Lob
 	private String				message;
 
+	@NotNull
 	private ContactMechanism	sentFrom;
 
+	@OneToMany
 	private List<InvoiceTerm>	terms;
 
 	// @OneToOne
@@ -54,57 +65,47 @@ public class Invoice extends BasePersistentModel {
 		return (billedToParty != null) ^ (billedToAccount != null);
 	}
 
-	@NotNull
+
 	public ContactMechanism getAddressedTo() {
 		return addressedTo;
 	}
-
-	@NotNull
+	
 	public Party getBilledFrom() {
 		return billedFrom;
 	}
-
-	@ManyToOne
+	
 	public BillingAccount getBilledToAccount() {
 		return billedToAccount;
 	}
-
-	@NotNull
+	
 	public Party getBilledToParty() {
 		return billedToParty;
 	}
 
-	@OneToMany
 	public List<InvoiceItem> getComposedOf() {
 		return composedOf;
 	}
 
-	@Lob
 	public String getDescription() {
 		return description;
 	}
-
-	@NotNull
+	
 	public Date getInvoiceDate() {
 		return invoiceDate;
 	}
-
-	@OneToMany
+	
 	public List<InvoiceRole> getInvolving() {
 		return involving;
 	}
 
-	@Lob
 	public String getMessage() {
 		return message;
 	}
-
-	@NotNull
+	
 	public ContactMechanism getSentFrom() {
 		return sentFrom;
 	}
 
-	@OneToMany
 	public List<InvoiceTerm> getTerms() {
 		return terms;
 	}

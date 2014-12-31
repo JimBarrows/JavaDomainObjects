@@ -16,13 +16,14 @@ public class PersonTraining extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Person				receivedBy;
+	private Person						receivedBy;
 
+	@ManyToOne
 	private TrainingClassType	type;
 
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -35,7 +36,6 @@ public class PersonTraining extends BasePersistentModel {
 		return receivedBy;
 	}
 
-	@ManyToOne
 	public TrainingClassType getType() {
 		return type;
 	}

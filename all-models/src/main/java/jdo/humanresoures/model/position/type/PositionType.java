@@ -19,26 +19,29 @@ public class PositionType extends BaseType {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
-
-	private int							benefitPercent;
-
-	private List<PositionTypeRate>		rates;
-
-	private String						title;
-
-	private List<PositionTypeClass>		typeClasses;
-
-	private PartyRole					union;
-
-	private List<ValidResponsibility>	validResponsibilities;
+	private static final long					serialVersionUID	= 1L;
 
 	@Range(min = 0, max = 100)
+	private int												benefitPercent;
+
+	@OneToMany
+	private List<PositionTypeRate>		rates;
+
+	private String										title;
+
+	@OneToMany
+	private List<PositionTypeClass>		typeClasses;
+
+	@ManyToOne
+	private PartyRole									union;
+
+	@OneToMany
+	private List<ValidResponsibility>	validResponsibilities;
+
 	public int getBenefitPercent() {
 		return benefitPercent;
 	}
 
-	@OneToMany
 	public List<PositionTypeRate> getRates() {
 		return rates;
 	}
@@ -47,17 +50,14 @@ public class PositionType extends BaseType {
 		return title;
 	}
 
-	@OneToMany
 	public List<PositionTypeClass> getTypeClasses() {
 		return typeClasses;
 	}
 
-	@ManyToOne
 	public PartyRole getUnion() {
 		return union;
 	}
 
-	@OneToMany
 	public List<ValidResponsibility> getValidResponsibilities() {
 		return validResponsibilities;
 	}

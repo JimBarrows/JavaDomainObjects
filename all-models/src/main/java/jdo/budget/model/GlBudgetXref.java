@@ -14,17 +14,19 @@ public class GlBudgetXref extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
+	private static final long			serialVersionUID	= 1L;
 
-	private int						allocationPercentage;
+	private int										allocationPercentage;
 
-	private BudgetItemType			mappedToBudgetItemType;
+	@ManyToOne
+	private BudgetItemType				mappedToBudgetItemType;
 
+	@ManyToOne
 	private GeneralLedgerAccount	mappedToGlAccount;
 
-	private DateTimeRange			dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange					dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -37,12 +39,10 @@ public class GlBudgetXref extends BasePersistentModel {
 		return allocationPercentage;
 	}
 
-	@ManyToOne
 	public BudgetItemType getMappedToBudgetItemType() {
 		return mappedToBudgetItemType;
 	}
 
-	@ManyToOne
 	public GeneralLedgerAccount getMappedToGlAccount() {
 		return mappedToGlAccount;
 	}

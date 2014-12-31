@@ -7,7 +7,7 @@ import jdo.fields.Money;
 import jdo.invoice.model.payment.Paycheck;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.796-0700")
+@Generated(value="Dali", date="2014-12-31T07:31:01.684-0700")
 @StaticMetamodel(Deduction.class)
 public class Deduction_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Deduction, Money> amount;

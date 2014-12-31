@@ -17,21 +17,24 @@ public class SalaryStep extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
-
-	private Money					amount;
-
-	private Date					dateModified;
-
-	private PayGrade				grade;
-
-	private List<PayHistory>		history;
-
-	private List<PositionTypeRate>	positionTypeRates;
-
-	private int						sequence;
+	private static final long				serialVersionUID	= 1L;
 
 	@Embedded
+	private Money										amount;
+
+	private Date										dateModified;
+
+	@ManyToOne
+	private PayGrade								grade;
+
+	@OneToMany
+	private List<PayHistory>				history;
+
+	@OneToMany
+	private List<PositionTypeRate>	positionTypeRates;
+
+	private int											sequence;
+
 	public Money getAmount() {
 		return amount;
 	}
@@ -40,17 +43,14 @@ public class SalaryStep extends BasePersistentModel {
 		return dateModified;
 	}
 
-	@ManyToOne
 	public PayGrade getGrade() {
 		return grade;
 	}
 
-	@OneToMany
 	public List<PayHistory> getHistory() {
 		return history;
 	}
 
-	@OneToMany
 	public List<PositionTypeRate> getPositionTypeRates() {
 		return positionTypeRates;
 	}

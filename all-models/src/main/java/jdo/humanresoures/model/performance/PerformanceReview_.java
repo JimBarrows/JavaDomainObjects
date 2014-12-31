@@ -11,15 +11,15 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.832-0700")
+@Generated(value="Dali", date="2014-12-31T07:33:11.910-0700")
 @StaticMetamodel(PerformanceReview.class)
 public class PerformanceReview_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<PerformanceReview, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PerformanceReview, PayHistory> affecting;
-	public static volatile ListAttribute<PerformanceReview, PerformanceReviewItem> items;
-	public static volatile SingularAttribute<PerformanceReview, Position> newPosition;
-	public static volatile SingularAttribute<PerformanceReview, Paycheck> bonus;
 	public static volatile SingularAttribute<PerformanceReview, String> comments;
 	public static volatile SingularAttribute<PerformanceReview, PartyRole> forEmployee;
 	public static volatile SingularAttribute<PerformanceReview, PartyRole> fromManager;
+	public static volatile ListAttribute<PerformanceReview, PerformanceReviewItem> items;
+	public static volatile SingularAttribute<PerformanceReview, Position> newPosition;
+	public static volatile SingularAttribute<PerformanceReview, Paycheck> bonus;
+	public static volatile SingularAttribute<PerformanceReview, DateTimeRange> dateTimeRange;
 }

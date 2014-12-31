@@ -10,14 +10,14 @@ import jdo.order.model.Order;
 import jdo.party.model.PartyRole;
 import jdo.party.model.contactmechanism.WebAddress;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.764-0700")
+@Generated(value="Dali", date="2014-12-31T07:28:18.210-0700")
 @StaticMetamodel(Visit.class)
 public class Visit_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<Visit, ServerHit> composedOf;
+	public static volatile SingularAttribute<Visit, String> cookie;
 	public static volatile SingularAttribute<Visit, WebAddress> hostedVia;
 	public static volatile SingularAttribute<Visit, Order> resultingIn;
 	public static volatile SingularAttribute<Visit, PartyRole> visitedBy;
 	public static volatile SingularAttribute<Visit, Date> visitEnd;
 	public static volatile SingularAttribute<Visit, Date> visitStart;
-	public static volatile SingularAttribute<Visit, String> cookie;
 }

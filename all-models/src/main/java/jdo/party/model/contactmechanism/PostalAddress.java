@@ -9,17 +9,13 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
- 
-
 
 import jdo.party.model.PartyPostalAddress;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
-
-/** 
- * 
+/**
  * @author Jim
  * @version 1.0
  * @created 25-Dec-2007 9:54:34 AM
@@ -30,17 +26,20 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PostalAddress extends ContactMechanism {
 
-	
-	private String address;
-	
-	private String directions;	
+	@NotEmpty
+	@Lob
+	private String										address;
 
-	private List<PartyPostalAddress> locationFor = new ArrayList<PartyPostalAddress>();
+	@Lob
+	private String										directions;
 
-	private List<GeographicBoundary> within = new ArrayList<GeographicBoundary>();
+	@OneToMany
+	private List<PartyPostalAddress>	locationFor	= new ArrayList<PartyPostalAddress>();
 
-	protected void addGeographicBoundary(
-			GeographicBoundary newGeographicBoundary) {
+	@ManyToMany(mappedBy = "boundaryFor")
+	private List<GeographicBoundary>	within			= new ArrayList<GeographicBoundary>();
+
+	protected void addGeographicBoundary(GeographicBoundary newGeographicBoundary) {
 		if (!within.contains(newGeographicBoundary)) {
 			within.add(newGeographicBoundary);
 		}
@@ -49,13 +48,10 @@ public class PostalAddress extends ContactMechanism {
 	/**
 	 * @return the address1
 	 */
-	@NotEmpty
-	@Lob
 	public String getAddress() {
 		return address;
 	}
 
-	@Lob
 	public String getDirections() {
 		return directions;
 	}
@@ -63,7 +59,7 @@ public class PostalAddress extends ContactMechanism {
 	/**
 	 * @return the locationFor
 	 */
-	@OneToMany
+
 	public List<PartyPostalAddress> getLocationFor() {
 		return locationFor;
 	}
@@ -71,14 +67,14 @@ public class PostalAddress extends ContactMechanism {
 	/**
 	 * @return the within
 	 */
-	@ManyToMany(mappedBy="boundaryFor")
+
 	public List<GeographicBoundary> getWithin() {
 		return within;
 	}
 
 	/**
 	 * @param address1
-	 *            the address1 to set
+	 *          the address1 to set
 	 */
 	public void setAddress(String address1) {
 		this.address = address1;
@@ -90,15 +86,14 @@ public class PostalAddress extends ContactMechanism {
 
 	/**
 	 * @param locationFor
-	 *            the locationFor to set
+	 *          the locationFor to set
 	 */
 	public void setLocationFor(List<PartyPostalAddress> locationFor) {
 		this.locationFor = locationFor;
 	}
 
 	/**
-	 * @param within
-	 *            the within to set
+	 * @param within the within to set
 	 */
 	public void setWithin(List<GeographicBoundary> within) {
 		this.within = within;

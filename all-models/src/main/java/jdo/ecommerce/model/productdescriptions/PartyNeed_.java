@@ -11,7 +11,7 @@ import jdo.party.model.communication.CommunicationEvent;
 import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.636-0700")
+@Generated(value="Dali", date="2014-12-31T07:19:48.256-0700")
 @StaticMetamodel(PartyNeed.class)
 public class PartyNeed_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PartyNeed, String> description;

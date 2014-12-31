@@ -18,30 +18,31 @@ public class BudgetScenarioRule extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@Embedded
 	private Money				amountChange;
 
+	@ManyToOne
 	private BudgetScenario		forScenario;
 
+	@ManyToOne
 	private BudgetItemType		forType;
 
+	@Range(min = -100, max = 100)
 	private int					percentChange;
 
-	@Embedded
+	
 	public Money getAmountChange() {
 		return amountChange;
 	}
-
-	@ManyToOne
+	
 	public BudgetScenario getForScenario() {
 		return forScenario;
 	}
 
-	@ManyToOne
 	public BudgetItemType getForType() {
 		return forType;
 	}
-
-	@Range(min = -100, max = 100)
+	
 	public int getPercentChange() {
 		return percentChange;
 	}

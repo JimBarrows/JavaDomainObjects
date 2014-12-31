@@ -15,22 +15,22 @@ public class PaymentBudgetAllocation extends jdo.model.BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Payment				allocationOf;
+	private Payment						allocationOf;
 
-	private Money				amount;
+	@Embedded
+	private Money							amount;
 
-	private BudgetItem			usageOf;
+	@ManyToOne
+	private BudgetItem				usageOf;
 
 	public Payment getAllocationOf() {
 		return allocationOf;
 	}
 
-	@Embedded
 	public Money getAmount() {
 		return amount;
 	}
 
-	@ManyToOne
 	public BudgetItem getUsageOf() {
 		return usageOf;
 	}

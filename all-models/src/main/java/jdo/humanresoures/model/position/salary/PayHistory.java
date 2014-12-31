@@ -18,19 +18,22 @@ public class PayHistory extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Money				amount;
+	@Embedded
+	private Money							amount;
 
-	private String				comment;
+	private String						comment;
 
-	private PeriodType			forPeriodType;
+	private PeriodType				forPeriodType;
 
-	private Employment			recordFor;
+	@ManyToOne
+	private Employment				recordFor;
 
-	private SalaryStep			step;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@ManyToOne
+	private SalaryStep				step;
 
 	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -39,7 +42,6 @@ public class PayHistory extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@Embedded
 	public Money getAmount() {
 		return amount;
 	}
@@ -52,12 +54,10 @@ public class PayHistory extends BasePersistentModel {
 		return forPeriodType;
 	}
 
-	@ManyToOne
 	public Employment getRecordFor() {
 		return recordFor;
 	}
 
-	@ManyToOne
 	public SalaryStep getStep() {
 		return step;
 	}

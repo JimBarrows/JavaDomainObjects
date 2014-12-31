@@ -13,27 +13,30 @@ public class WebContentAssociation extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private WebContent			forWebContent;
 
+	@ManyToOne
 	private FunctionType		functionType;
 
+	@ManyToOne
 	private WebContent			ofWebContent;
 
 	private int					xLoc;
 
 	private int					yLoc;
 
-	@ManyToOne
+	
 	public WebContent getForWebContent() {
 		return forWebContent;
 	}
 
-	@ManyToOne
+	
 	public FunctionType getFunctionType() {
 		return functionType;
 	}
 
-	@ManyToOne
+	
 	public WebContent getOfWebContent() {
 		return ofWebContent;
 	}

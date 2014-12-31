@@ -19,66 +19,66 @@ public class ServerHit extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private long				bytes;
+	private long								bytes;
 
-	private UserLogin			fromUserLogin;
+	@ManyToOne
+	private UserLogin						fromUserLogin;
 
-	private WebContent			hitOn;
+	@ManyToOne
+	private WebContent					hitOn;
 
-	private IpAddress			identifiedBy;
+	@ManyToOne
+	private IpAddress						identifiedBy;
 
-	private Date				occuredOn;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date								occuredOn;
 
-	private Visit				partOf;
+	@ManyToOne
+	private Visit								partOf;
 
-	private WebAddress			referredVia;
+	@ManyToOne
+	private WebAddress					referredVia;
 
+	@ManyToOne
 	private ServerHitStatusType	status;
 
-	private UserAgent			userAgent;
+	@ManyToOne
+	private UserAgent						userAgent;
 
 	public long getBytes() {
 		return bytes;
 	}
 
-	@ManyToOne
 	public UserLogin getFromUserLogin() {
 		return fromUserLogin;
 	}
 
-	@ManyToOne
 	public WebContent getHitOn() {
 		return hitOn;
 	}
 
-	@ManyToOne
 	public IpAddress getIdentifiedBy() {
 		return identifiedBy;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getOccuredOn() {
 		return occuredOn;
 	}
 
-	@ManyToOne
 	public Visit getPartOf() {
 		return partOf;
 	}
 
-	@ManyToOne
 	public WebAddress getReferredVia() {
 		return referredVia;
 	}
 
-	@ManyToOne
 	public ServerHitStatusType getStatus() {
 		return status;
 	}
 
-	@ManyToOne
 	public UserAgent getUserAgent() {
 		return userAgent;
 	}

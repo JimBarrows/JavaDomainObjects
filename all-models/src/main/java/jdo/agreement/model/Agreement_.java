@@ -12,10 +12,9 @@ import jdo.model.DateTimeRange;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.party.model.relationship.PartyRelationship;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.420-0700")
+@Generated(value="Dali", date="2014-12-29T22:33:20.503-0700")
 @StaticMetamodel(Agreement.class)
 public class Agreement_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<Agreement, DateTimeRange> dateTimeRange;
 	public static volatile ListAttribute<Agreement, Addendum> addendums;
 	public static volatile SingularAttribute<Agreement, PartyRelationship> associatedWith;
 	public static volatile SingularAttribute<Agreement, Date> date;
@@ -25,5 +24,5 @@ public class Agreement_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<Agreement, AgreementRole> roles;
 	public static volatile ListAttribute<Agreement, AgreementTerm> terms;
 	public static volatile SingularAttribute<Agreement, String> text;
-	public static volatile SingularAttribute<Agreement, AgreementType> type;
+	public static volatile SingularAttribute<Agreement, DateTimeRange> dateTimeRange;
 }

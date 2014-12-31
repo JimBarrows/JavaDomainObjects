@@ -18,23 +18,29 @@ public class Budget extends BasePersistentModel {
 	 */
 	private static final long		serialVersionUID	= 1L;
 
+	@ManyToOne
 	private StandardTimePeriod		associatedWith;
 
 	private String					comment;
 
+	@OneToMany
 	private List<BudgetItem>		composedOf;
 
+	@OneToMany
 	private List<BudgetStatus>		describedBy;
 
+	@OneToMany
 	private List<BudgetRole>		involving;
 
+	@OneToMany
 	private List<BudgetReview>		reviews;
 
+	@OneToMany
 	private List<BudgetRevision>	revisedBy;
 
-	private BudgetType				type;
-
 	@ManyToOne
+	private BudgetType				type;
+	
 	public StandardTimePeriod getAssociatedWith() {
 		return associatedWith;
 	}
@@ -43,32 +49,30 @@ public class Budget extends BasePersistentModel {
 		return comment;
 	}
 
-	@OneToMany
+	
 	public List<BudgetItem> getComposedOf() {
 		return composedOf;
 	}
 
-	@OneToMany
+	
 	public List<BudgetStatus> getDescribedBy() {
 		return describedBy;
 	}
 
-	@OneToMany
+
 	public List<BudgetRole> getInvolving() {
 		return involving;
 	}
 
-	@OneToMany
 	public List<BudgetReview> getReviews() {
 		return reviews;
 	}
 
-	@OneToMany
 	public List<BudgetRevision> getRevisedBy() {
 		return revisedBy;
 	}
 
-	@ManyToOne
+
 	public BudgetType getType() {
 		return type;
 	}

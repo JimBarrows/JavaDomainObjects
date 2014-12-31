@@ -16,15 +16,15 @@ public class FinancialAccountTransaction extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private FinancialAccount	affecting;
 
-	private Date				entryDate;
+	private Date							entryDate;
 
-	private Party				executedBy;
+	private Party							executedBy;
 
-	private Date				transactionDate;
+	private Date							transactionDate;
 
-	@ManyToOne
 	public FinancialAccount getAffecting() {
 		return affecting;
 	}

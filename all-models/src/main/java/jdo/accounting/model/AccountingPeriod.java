@@ -18,15 +18,19 @@ public class AccountingPeriod extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@Min(0)
 	private int					accountingPeriodNumber;
 
+	@ManyToOne
 	private PartyRole			accountPeriodFor;
 
+	@ManyToOne
 	private PeriodType			definedBy;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -35,17 +39,15 @@ public class AccountingPeriod extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@Min(0)
 	public int getAccountingPeriodNumber() {
 		return accountingPeriodNumber;
 	}
 
-	@ManyToOne
+
 	public PartyRole getAccountPeriodFor() {
 		return accountPeriodFor;
 	}
-
-	@ManyToOne
+	
 	public PeriodType getDefinedBy() {
 		return definedBy;
 	}

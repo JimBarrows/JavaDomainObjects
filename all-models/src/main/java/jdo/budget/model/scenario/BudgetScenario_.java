@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.556-0700")
+@Generated(value="Dali", date="2014-12-29T23:04:47.367-0700")
 @StaticMetamodel(BudgetScenario.class)
 public class BudgetScenario_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<BudgetScenario, BudgetScenarioRule> affectedBy;

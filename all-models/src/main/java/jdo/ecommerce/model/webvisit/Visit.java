@@ -22,21 +22,26 @@ public class Visit extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<ServerHit>		composedOf;
 
-	private String				cookie;
+	private String						cookie;
 
-	private WebAddress			hostedVia;
+	@ManyToOne
+	private WebAddress				hostedVia;
 
-	private Order				resultingIn;
+	@ManyToOne
+	private Order							resultingIn;
 
-	private PartyRole			visitedBy;
+	@ManyToOne
+	private PartyRole					visitedBy;
 
-	private Date				visitEnd;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date							visitEnd;
 
-	private Date				visitStart;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date							visitStart;
 
-	@OneToMany
 	public List<ServerHit> getComposedOf() {
 		return composedOf;
 	}
@@ -45,27 +50,23 @@ public class Visit extends BasePersistentModel {
 		return cookie;
 	}
 
-	@ManyToOne
 	public WebAddress getHostedVia() {
 		return hostedVia;
 	}
 
-	@ManyToOne
 	public Order getResultingIn() {
 		return resultingIn;
 	}
 
-	@ManyToOne
 	public PartyRole getVisitedBy() {
 		return visitedBy;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	public Date getVisitEnd() {
 		return visitEnd;
 	}
-
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	public Date getVisitStart() {
 		return visitStart;
 	}

@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.583-0700")
+@Generated(value="Dali", date="2014-12-31T07:14:43.780-0700")
 @StaticMetamodel(LoginAccountHistory.class)
 public class LoginAccountHistory_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<LoginAccountHistory, Date> loggedInFrom;

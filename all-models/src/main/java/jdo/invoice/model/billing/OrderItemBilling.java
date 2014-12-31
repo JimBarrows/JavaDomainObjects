@@ -19,32 +19,32 @@ public class OrderItemBilling extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Money				amount;
-
-	private InvoiceItem			billingFor;
-
-	private int					quantity;
-
-	private OrderItem			quantityOf;
-
 	@Embedded
+	private Money							amount;
+
+	@ManyToOne
+	@NotNull
+	private InvoiceItem				billingFor;
+
+	@Min(0)
+	private int								quantity;
+
+	@NotNull
+	@ManyToOne
+	private OrderItem					quantityOf;
+
 	public Money getAmount() {
 		return amount;
 	}
 
-	@ManyToOne
-	@NotNull
 	public InvoiceItem getBillingFor() {
 		return billingFor;
 	}
 
-	@Min(0)
 	public int getQuantity() {
 		return quantity;
 	}
 
-	@NotNull
-	@ManyToOne
 	public OrderItem getQuantityOf() {
 		return quantityOf;
 	}

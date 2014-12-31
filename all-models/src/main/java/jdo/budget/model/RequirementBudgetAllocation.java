@@ -24,6 +24,7 @@ public class RequirementBudgetAllocation extends BasePersistentModel {
 
 	private Requirement			allocationOf;
 
+	@Embedded
 	private Money				amount;
 
 	public Requirement getAllocationOf() {
@@ -33,8 +34,7 @@ public class RequirementBudgetAllocation extends BasePersistentModel {
 	public void setAllocationOf(Requirement allocationOf) {
 		this.allocationOf = allocationOf;
 	}
-
-	@Embedded
+	
 	public Money getAmount() {
 		return amount;
 	}

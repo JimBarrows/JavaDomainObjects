@@ -15,11 +15,12 @@ public class FixedAssetDepreciationMethod extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private DepreciationMethod	depreciationMethod;
 
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -27,8 +28,7 @@ public class FixedAssetDepreciationMethod extends BasePersistentModel {
 	public void setDateTimeRange(DateTimeRange dateTimeRange) {
 		this.dateTimeRange = dateTimeRange;
 	}
-
-	@ManyToOne
+	
 	public DepreciationMethod getDepreciationMethod() {
 		return depreciationMethod;
 	}

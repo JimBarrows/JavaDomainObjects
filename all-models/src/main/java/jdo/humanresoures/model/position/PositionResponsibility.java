@@ -13,17 +13,19 @@ public class PositionResponsibility extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long		serialVersionUID	= 1L;
 
-	private Position			associatedWith;
+	@ManyToOne
+	private Position						associatedWith;
 
-	private String				comment;
+	private String							comment;
 
+	@ManyToOne
 	private ResponsibilityType	type;
 
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange				dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -32,7 +34,6 @@ public class PositionResponsibility extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public Position getAssociatedWith() {
 		return associatedWith;
 	}
@@ -41,7 +42,6 @@ public class PositionResponsibility extends BasePersistentModel {
 		return comment;
 	}
 
-	@ManyToOne
 	public ResponsibilityType getType() {
 		return type;
 	}

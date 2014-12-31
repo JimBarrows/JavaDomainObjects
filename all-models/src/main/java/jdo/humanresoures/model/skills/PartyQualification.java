@@ -16,13 +16,14 @@ public class PartyQualification extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	private Party				heldBy;
+	private Party							heldBy;
 
+	@ManyToOne
 	private QualificationType	type;
 
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
 	@Embedded
+	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -35,7 +36,6 @@ public class PartyQualification extends BasePersistentModel {
 		return heldBy;
 	}
 
-	@ManyToOne
 	public QualificationType getType() {
 		return type;
 	}

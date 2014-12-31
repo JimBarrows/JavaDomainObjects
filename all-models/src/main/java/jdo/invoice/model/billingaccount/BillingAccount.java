@@ -21,15 +21,18 @@ public class BillingAccount extends BasePersistentModel {
 
 	private ContactMechanism			billedAt;
 
+	@OneToMany
 	private List<Invoice>				billedFor;
 
 	private String						description;
 
+	@OneToMany
 	private List<BillingAccountRole>	usedBy;
 
+	@Embedded
 	private DateTimeRange				dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -42,7 +45,7 @@ public class BillingAccount extends BasePersistentModel {
 		return billedAt;
 	}
 
-	@OneToMany
+	
 	public List<Invoice> getBilledFor() {
 		return billedFor;
 	}
@@ -50,8 +53,7 @@ public class BillingAccount extends BasePersistentModel {
 	public String getDescription() {
 		return description;
 	}
-
-	@OneToMany
+	
 	public List<BillingAccountRole> getUsedBy() {
 		return usedBy;
 	}

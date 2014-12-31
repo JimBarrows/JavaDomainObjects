@@ -13,9 +13,9 @@ public class Depreciation extends InternalAccountingTransaction {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private FixedAsset			forFixedAsset;
 
-	@ManyToOne
 	public FixedAsset getForFixedAsset() {
 		return forFixedAsset;
 	}

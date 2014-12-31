@@ -14,22 +14,22 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Organization;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.869-0700")
+@Generated(value="Dali", date="2014-12-31T07:35:47.320-0700")
 @StaticMetamodel(Position.class)
 public class Position_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<Position, DateTimeRange> dateTimeRange;
+	public static volatile SingularAttribute<Position, BudgetItem> approvedThru;
 	public static volatile ListAttribute<Position, PositionResponsibility> assigendTo;
 	public static volatile SingularAttribute<Position, Date> estimatedFromDate;
 	public static volatile SingularAttribute<Position, Date> estimatedThruDate;
+	public static volatile SingularAttribute<Position, Boolean> exempt;
 	public static volatile ListAttribute<Position, PositionFulfillment> filledBy;
+	public static volatile SingularAttribute<Position, Boolean> fulltime;
 	public static volatile ListAttribute<Position, PositionReportingStructure> manages;
 	public static volatile ListAttribute<Position, PositionReportingStructure> reportsTo;
-	public static volatile SingularAttribute<Position, PositionStatus> status;
-	public static volatile SingularAttribute<Position, PositionType> type;
-	public static volatile SingularAttribute<Position, Boolean> temporary;
-	public static volatile SingularAttribute<Position, BudgetItem> approvedThru;
-	public static volatile SingularAttribute<Position, Organization> within;
-	public static volatile SingularAttribute<Position, Boolean> exempt;
-	public static volatile SingularAttribute<Position, Boolean> fulltime;
 	public static volatile SingularAttribute<Position, Boolean> salary;
+	public static volatile SingularAttribute<Position, PositionStatus> status;
+	public static volatile SingularAttribute<Position, Boolean> temporary;
+	public static volatile SingularAttribute<Position, PositionType> type;
+	public static volatile SingularAttribute<Position, Organization> within;
+	public static volatile SingularAttribute<Position, DateTimeRange> dateTimeRange;
 }

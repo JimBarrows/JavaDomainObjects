@@ -6,7 +6,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import jdo.budget.model.GlBudgetXref;
 import jdo.model.BasePersistentModel;
@@ -20,20 +23,24 @@ public class GeneralLedgerAccount extends BasePersistentModel {
 	 */
 	private static final long			serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<OrganizationGlAccount>	associatedWith		= new ArrayList<OrganizationGlAccount>();
 
+	@OneToMany
 	private List<GlBudgetXref>			budgetLineItems;
 
+	@Lob
 	private String						description;
 
+	@NotEmpty
 	private String						name;
 
-	@OneToMany
+	
 	public List<OrganizationGlAccount> getAssociatedWith() {
 		return associatedWith;
 	}
 
-	@OneToMany
+	
 	public List<GlBudgetXref> getBudgetLineItems() {
 		return budgetLineItems;
 	}
@@ -42,7 +49,7 @@ public class GeneralLedgerAccount extends BasePersistentModel {
 		return description;
 	}
 
-	@org.hibernate.validator.constraints.NotEmpty
+
 	public String getName() {
 		return name;
 	}

@@ -14,14 +14,16 @@ public class UnemploymentClaim extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long						serialVersionUID	= 1L;
 
-	private Date						claimDate;
+	private Date												claimDate;
 
-	private String						description;
+	private String											description;
 
-	private Employment					resultingFrom;
+	@ManyToOne
+	private Employment									resultingFrom;
 
+	@ManyToOne
 	private UnemploymentClaimStatusType	status;
 
 	public Date getClaimDate() {
@@ -32,12 +34,10 @@ public class UnemploymentClaim extends BasePersistentModel {
 		return description;
 	}
 
-	@ManyToOne
 	public Employment getResultingFrom() {
 		return resultingFrom;
 	}
 
-	@ManyToOne
 	public UnemploymentClaimStatusType getStatus() {
 		return status;
 	}
