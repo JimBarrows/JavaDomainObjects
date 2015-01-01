@@ -21,25 +21,25 @@ public class Container extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private ContainerType		describedBy;
-
-	private Facility			locatedAt;
-
-	private List<InventoryItem>	storageContainerFor	= new ArrayList<InventoryItem>();
+	private static final long		serialVersionUID		= 1L;
 
 	@ManyToOne
+	private ContainerType				describedBy;
+
+	@ManyToOne
+	private Facility						locatedAt;
+
+	@OneToMany(mappedBy = "locatedWithin")
+	private List<InventoryItem>	storageContainerFor	= new ArrayList<InventoryItem>();
+
 	public ContainerType getDescribedBy() {
 		return describedBy;
 	}
 
-	@ManyToOne
 	public Facility getLocatedAt() {
 		return locatedAt;
 	}
 
-	@OneToMany(mappedBy = "locatedWithin")
 	public List<InventoryItem> getStorageContainerFor() {
 		return storageContainerFor;
 	}

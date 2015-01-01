@@ -19,11 +19,11 @@ public class CostComponentType extends BaseType {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
-
-	private List<EstimatedProductCost>	usedToDefine		= new ArrayList<EstimatedProductCost>();
+	private static final long						serialVersionUID	= 1L;
 
 	@OneToMany(mappedBy = "categorizedBy")
+	private List<EstimatedProductCost>	usedToDefine			= new ArrayList<EstimatedProductCost>();
+
 	public List<EstimatedProductCost> getUsedToDefine() {
 		return usedToDefine;
 	}

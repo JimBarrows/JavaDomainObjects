@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.party.model.facility.Facility;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.856-0700")
+@Generated(value="Dali", date="2014-12-31T07:53:21.165-0700")
 @StaticMetamodel(Container.class)
 public class Container_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Container, ContainerType> describedBy;
