@@ -4,23 +4,26 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 
 /**
- * Some types might need children, and all children are considered to be the
- * same type as the parent.
+ * Some types might need children, and all children are considered to be the same type as the parent.
  * 
  * @author jimbarrows
- * 
  */
 @Entity
+@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
 public class BaseHeirarchicalType extends BaseType {
 
-	private BaseHeirarchicalType		parent;
+	@ManyToOne
+	private BaseHeirarchicalType				parent;
 
+	@OneToMany(mappedBy = "parent")
 	private List<BaseHeirarchicalType>	children	= new ArrayList<BaseHeirarchicalType>();
 
 	public BaseHeirarchicalType() {
@@ -38,8 +41,7 @@ public class BaseHeirarchicalType extends BaseType {
 	}
 
 	/**
-	 * Two heirarchies should only be the same if they are the same type. Base
-	 * classes should provide a public version, the ensures the same type.
+	 * Two heirarchies should only be the same if they are the same type. Base classes should provide a public version, the ensures the same type.
 	 * 
 	 * @param right
 	 * @return
@@ -52,12 +54,10 @@ public class BaseHeirarchicalType extends BaseType {
 		}
 	}
 
-	@ManyToOne
 	public BaseHeirarchicalType getParent() {
 		return parent;
 	}
 
-	@OneToMany(mappedBy = "parent")
 	public List<BaseHeirarchicalType> getChildren() {
 		return children;
 	}
