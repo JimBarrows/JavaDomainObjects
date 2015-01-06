@@ -12,6 +12,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
@@ -38,57 +41,80 @@ public class WorkEffort extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long					serialVersionUID	= 1L;
-
-	private Date								actualCompletionDate;
-
-	private long								actualHours;
-
-	private Date								actualStartDate;
-
-	private List<WorkEffortPartyAssignment>		assignedVia;
-
-	private List<InventoryItem>					deliverableProduced;
-
-	private String								description;
-
-	private long								estimatedHours;
-
-	private List<WorkEfforAssociation>			fromAssociatedWith;
-
-	private List<Requirement>					fulfillsRequirement;
-
-	private List<WorkOrderItem>					fullfillsWorkOderItems;
-
-	private List<WorkEffortInvenotryAssignment>	inNeedOf;
-
-	private List<InventoryItem>					inventoryProduced;
-
-	private String								name;
-
-	private Facility							performedAt;
-
-	private List<WorkEffort>					redoneVia;
-
-	private Date								scheduledCompletionDate;
-
-	private Date								scheduledStartDate;
-
-	private String								specialTerms;
-
-	private List<WorkEfforAssociation>			toAssociatedWith;
-
-	private Money								totalDollarsAllowed;
-
-	private long								totalHoursAllowed;
-
-	private List<TimeEntry>						trackedVia;
-
-	private WorkEffortType						type;
-
-	private WorkEffort							versionOf;
+	private static final long serialVersionUID = 1L;
 
 	@Temporal(TemporalType.DATE)
+	private Date actualCompletionDate;
+
+	@Min(0)
+	private long actualHours;
+
+	@Temporal(TemporalType.DATE)
+	private Date actualStartDate;
+
+	@OneToMany
+	private List<WorkEffortPartyAssignment> assignedVia;
+
+	@OneToMany
+	private List<InventoryItem> deliverableProduced;
+
+	@Lob
+	private String description;
+
+	@Min(0)
+	private long estimatedHours;
+
+	@OneToMany(mappedBy = "associatedTo")
+	private List<WorkEfforAssociation> fromAssociatedWith;
+
+	@OneToMany
+	private List<Requirement> fulfillsRequirement;
+
+	@OneToMany
+	private List<WorkOrderItem> fullfillsWorkOderItems;
+
+	@OneToMany
+	private List<WorkEffortInvenotryAssignment> inNeedOf;
+
+	@OneToMany
+	private List<InventoryItem> inventoryProduced;
+
+	@NotEmpty
+	private String name;
+
+	@ManyToOne
+	private Facility performedAt;
+
+	@OneToMany(mappedBy = "versionOf")
+	private List<WorkEffort> redoneVia;
+
+	@Temporal(TemporalType.DATE)
+	private Date scheduledCompletionDate;
+
+	@Temporal(TemporalType.DATE)
+	private Date scheduledStartDate;
+
+	@Lob
+	private String specialTerms;
+
+	@OneToMany(mappedBy = "associatedFrom")
+	private List<WorkEfforAssociation> toAssociatedWith;
+
+	@Embedded
+	private Money totalDollarsAllowed;
+
+	@Min(0)
+	private long totalHoursAllowed;
+
+	@OneToMany
+	private List<TimeEntry> trackedVia;
+
+	@ManyToOne
+	private WorkEffortType type;
+
+	@ManyToOne
+	private WorkEffort versionOf;
+
 	public Date getActualCompletionDate() {
 		return actualCompletionDate;
 	}
@@ -97,17 +123,14 @@ public class WorkEffort extends BasePersistentModel {
 		return actualHours;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getActualStartDate() {
 		return actualStartDate;
 	}
 
-	@OneToMany
 	public List<WorkEffortPartyAssignment> getAssignedVia() {
 		return assignedVia;
 	}
 
-	@OneToMany
 	public List<InventoryItem> getDeliverableProduced() {
 		return deliverableProduced;
 	}
@@ -115,7 +138,6 @@ public class WorkEffort extends BasePersistentModel {
 	/**
 	 * @return the description
 	 */
-	@Lob
 	public String getDescription() {
 		return description;
 	}
@@ -127,27 +149,22 @@ public class WorkEffort extends BasePersistentModel {
 		return estimatedHours;
 	}
 
-	@OneToMany(mappedBy = "associatedTo")
 	public List<WorkEfforAssociation> getFromAssociatedWith() {
 		return fromAssociatedWith;
 	}
 
-	@OneToMany
 	public List<Requirement> getFulfillsRequirement() {
 		return fulfillsRequirement;
 	}
 
-	@OneToMany
 	public List<WorkOrderItem> getFullfillsWorkOderItems() {
 		return fullfillsWorkOderItems;
 	}
 
-	@OneToMany
 	public List<WorkEffortInvenotryAssignment> getInNeedOf() {
 		return inNeedOf;
 	}
 
-	@OneToMany
 	public List<InventoryItem> getInventoryProduced() {
 		return inventoryProduced;
 	}
@@ -159,12 +176,10 @@ public class WorkEffort extends BasePersistentModel {
 		return name;
 	}
 
-	@ManyToOne
 	public Facility getPerformedAt() {
 		return performedAt;
 	}
 
-	@OneToMany(mappedBy = "versionOf")
 	public List<WorkEffort> getRedoneVia() {
 		return redoneVia;
 	}
@@ -172,7 +187,6 @@ public class WorkEffort extends BasePersistentModel {
 	/**
 	 * @return the scheduledCompletionDate
 	 */
-	@Temporal(TemporalType.DATE)
 	public Date getScheduledCompletionDate() {
 		return scheduledCompletionDate;
 	}
@@ -180,17 +194,14 @@ public class WorkEffort extends BasePersistentModel {
 	/**
 	 * @return the scheduledStartDate
 	 */
-	@Temporal(TemporalType.DATE)
 	public Date getScheduledStartDate() {
 		return scheduledStartDate;
 	}
 
-	@Lob
 	public String getSpecialTerms() {
 		return specialTerms;
 	}
 
-	@OneToMany(mappedBy = "associatedFrom")
 	public List<WorkEfforAssociation> getToAssociatedWith() {
 		return toAssociatedWith;
 	}
@@ -198,7 +209,6 @@ public class WorkEffort extends BasePersistentModel {
 	/**
 	 * @return the totalDollarsAllowed
 	 */
-	@Embedded
 	public Money getTotalDollarsAllowed() {
 		return totalDollarsAllowed;
 	}
@@ -210,17 +220,14 @@ public class WorkEffort extends BasePersistentModel {
 		return totalHoursAllowed;
 	}
 
-	@OneToMany
 	public List<TimeEntry> getTrackedVia() {
 		return trackedVia;
 	}
 
-	@ManyToOne
 	public WorkEffortType getType() {
 		return type;
 	}
 
-	@ManyToOne
 	public WorkEffort getVersionOf() {
 		return versionOf;
 	}

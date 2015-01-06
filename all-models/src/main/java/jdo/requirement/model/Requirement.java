@@ -26,29 +26,29 @@ public class Requirement extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long					serialVersionUID	= 1L;
+	private static final long									serialVersionUID	= 1L;
 
 	private List<OrderRequirementCommitment>	commitmentOf;
 
-	private Date								creationDate;
+	private Date															creationDate;
 
-	private String								description;
+	private String														description;
 
-	private Money								estimatedBudget;
+	private Money															estimatedBudget;
 
-	private Facility							neededAt;
+	private Facility													neededAt;
 
-	private int									quantity;
+	private int																quantity;
 
-	private String								reason;
+	private String														reason;
 
-	private Date								requiredBy;
+	private Date															requiredBy;
 
-	private List<RequirementStatus>				status				= new ArrayList<RequirementStatus>();
+	private List<RequirementStatus>						status						= new ArrayList<RequirementStatus>();
 
-	private List<Requirement>					subRequirements		= new ArrayList<Requirement>();
+	private List<Requirement>									subRequirements		= new ArrayList<Requirement>();
 
-	private List<RequirementBudgetAllocation>	allocatedVia		= new ArrayList<RequirementBudgetAllocation>();
+	private List<RequirementBudgetAllocation>	allocatedVia			= new ArrayList<RequirementBudgetAllocation>();
 
 	@OneToMany
 	public List<RequirementBudgetAllocation> getAllocatedVia() {

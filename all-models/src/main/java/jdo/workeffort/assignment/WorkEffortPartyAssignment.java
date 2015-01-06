@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
 
 import jdo.model.BasePersistentModel;
 import jdo.party.model.Party;
@@ -20,14 +21,20 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@NotNull
+	@ManyToOne
 	private Party				assigned;
 
+	@ManyToOne
 	private Facility			assignedAt;
 
+	@Lob
 	private String				comment;
 
+	@ManyToOne
 	private WorkEffortRoleType	describedBy;
 
+	@OneToMany
 	private List<ShipmentItem>	billingForShipmentItem;
 
 	@OneToMany
@@ -39,22 +46,18 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 		this.billingForShipmentItem = billingFor;
 	}
 
-	@ManyToOne
 	public Party getAssigned() {
 		return assigned;
 	}
 
-	@ManyToOne
 	public Facility getAssignedAt() {
 		return assignedAt;
 	}
 
-	@Lob
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
 	public WorkEffortRoleType getDescribedBy() {
 		return describedBy;
 	}
