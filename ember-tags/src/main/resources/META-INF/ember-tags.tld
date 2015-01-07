@@ -17,4 +17,8 @@
 		<name>TextAreaField</name>
 		<path>/META-INF/tags/textareafield.tag</path>				
 	</tag-file>
+	<tag-file>
+		<name>SelectObjectField</name>
+		<path>/META-INF/tags/selectobjectfield.tag</path>				
+	</tag-file>
 </taglib>
