@@ -9,7 +9,13 @@
 		<div {{bind-attr class=":form-group model.errors.partyType:has-error" }}>
 			<label for="name" class="col-sm-2 control-label">Type</label>
 			<div class="col-sm-10">
-				{{view "select" content=partyTypeList optionValuePath="content.id"  optionLabelPath="content.name" selection=model.partyType class="form-control" prompt="Please select a customer type"}} 
+				{{view "select" 
+					content=partyTypeList 
+					optionValuePath="content.id"  
+					optionLabelPath="content.name" 
+					selection=model.partyType 
+					class="form-control" 
+					prompt="Please select a customer type"}} 
 				{{#if model.errors.partyType}} 
 					<span class="glyphicon glyphicon-remove form-control-feedback"></span> 
 					<span class="help-block"> 
