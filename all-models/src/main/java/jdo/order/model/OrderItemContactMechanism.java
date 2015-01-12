@@ -13,18 +13,20 @@ public class OrderItemContactMechanism extends BasePersistentModel {
 
 	private static final long			serialVersionUID	= 1L;
 
+	@NotNull
+	@ManyToOne
 	private ContactMechanism			mechanism;
-
-	private ContactMechanismPurposeType	type;
 
 	@NotNull
 	@ManyToOne
+	private ContactMechanismPurposeType	type;
+
+	
 	public ContactMechanism getMechanism() {
 		return mechanism;
 	}
 
-	@NotNull
-	@ManyToOne
+	
 	public ContactMechanismPurposeType getType() {
 		return type;
 	}

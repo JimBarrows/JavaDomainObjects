@@ -17,46 +17,46 @@ public class SalesOrder extends Order {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private PartyRole			billTo;
-
-	private ContactMechanism	designatedToBeBilledTo;
-
-	private PartyRole			placedBy;
-
-	private ContactMechanism	placedUsingMechanism;
-
-	private PartyRole			takenBy;
-
-	private ContactMechanism	takenVia;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
+	private PartyRole billTo;
+
+	@ManyToOne
+	private ContactMechanism designatedToBeBilledTo;
+
+	@ManyToOne
+	private PartyRole placedBy;
+
+	@ManyToOne
+	private ContactMechanism placedUsingMechanism;
+
+	@ManyToOne
+	private PartyRole takenBy;
+
+	@ManyToOne
+	private ContactMechanism takenVia;
+
 	public PartyRole getBillTo() {
 		return billTo;
 	}
 
-	@ManyToOne
 	public ContactMechanism getDesignatedToBeBilledTo() {
 		return designatedToBeBilledTo;
 	}
 
-	@ManyToOne
 	public PartyRole getPlacedBy() {
 		return placedBy;
 	}
 
-	@ManyToOne
 	public ContactMechanism getPlacedUsingMechanism() {
 		return placedUsingMechanism;
 	}
 
-	@ManyToOne
 	public PartyRole getTakenBy() {
 		return takenBy;
 	}
 
-	@ManyToOne
 	public ContactMechanism getTakenVia() {
 		return takenVia;
 	}
@@ -65,7 +65,8 @@ public class SalesOrder extends Order {
 		this.billTo = billTo;
 	}
 
-	public void setDesignatedToBeBilledTo(ContactMechanism designatedToBeBilledTo) {
+	public void setDesignatedToBeBilledTo(
+			ContactMechanism designatedToBeBilledTo) {
 		this.designatedToBeBilledTo = designatedToBeBilledTo;
 	}
 

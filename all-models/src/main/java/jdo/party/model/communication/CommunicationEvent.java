@@ -20,8 +20,6 @@ import jdo.model.BasePersistentModel;
 import jdo.party.model.PartyContactMechanism;
 import jdo.party.model.relationship.PartyRelationship;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
 /**
@@ -73,22 +71,7 @@ public class CommunicationEvent extends BasePersistentModel {
 			communicationEventRole.setOf(this);
 		}
 
-	}
-
-	/**
-	 * @see java.lang.Object#equals(Object)
-	 */
-	public boolean equals(Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (!(object instanceof CommunicationEvent)) {
-			return false;
-		}
-		CommunicationEvent rhs = (CommunicationEvent) object;
-		return new EqualsBuilder().append(this.dateTimeStarted, rhs.dateTimeStarted).append(this.occursVia, rhs.occursVia)
-				.append(this.dateTimeEnded, rhs.dateTimeEnded).isEquals();
-	}
+	}	
 
 	/**
 	 * @return the asPartOf
@@ -153,13 +136,7 @@ public class CommunicationEvent extends BasePersistentModel {
 	public PartyContactMechanism getOccursVia() {
 		return occursVia;
 	}
-
-	/**
-	 * @see java.lang.Object#hashCode()
-	 */
-	public int hashCode() {
-		return new HashCodeBuilder(-837481293, 1211293983).append(this.dateTimeStarted).append(this.occursVia).append(this.dateTimeEnded).toHashCode();
-	}
+	
 
 	@Transient
 	@AssertTrue

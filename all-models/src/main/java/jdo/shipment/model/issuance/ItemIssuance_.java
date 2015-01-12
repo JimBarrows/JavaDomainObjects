@@ -8,7 +8,7 @@ import jdo.model.BasePersistentModel_;
 import jdo.product.model.storage.InventoryItem;
 import jdo.shipment.model.ShipmentItem;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.701-0700")
+@Generated(value="Dali", date="2015-01-12T06:51:48.171-0700")
 @StaticMetamodel(ItemIssuance.class)
 public class ItemIssuance_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<ItemIssuance, PicklistItem> issuedAccordingTo;

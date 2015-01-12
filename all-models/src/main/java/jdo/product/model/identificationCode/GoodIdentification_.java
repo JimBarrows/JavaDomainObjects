@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.product.model.Good;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.759-0700")
+@Generated(value="Dali", date="2015-01-11T23:29:19.646-0700")
 @StaticMetamodel(GoodIdentification.class)
 public class GoodIdentification_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<GoodIdentification, IdentificationType> definedAs;

@@ -12,18 +12,18 @@ public class ItemIssuanceRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
-
-	private Party					roleFor;
-
-	private ItemIssuanceRoleType	type;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
+	private Party roleFor;
+
+	@ManyToOne
+	private ItemIssuanceRoleType type;
+
 	public Party getRoleFor() {
 		return roleFor;
 	}
 
-	@ManyToOne
 	public ItemIssuanceRoleType getType() {
 		return type;
 	}

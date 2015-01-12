@@ -4,9 +4,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
@@ -32,33 +31,45 @@ public class PriceComponent extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private GeographicBoundary	basedOnGeographicBoundary;
 
+	@ManyToOne
 	private OrderValue			basedOnOrderValue;
 
+	@ManyToOne
 	private PartyClassification	basedOnPartyType;
 
+	@ManyToOne
 	private ProductCategory		basedOnProductCategory;
 
+	@ManyToOne
 	private QuantityBreak		basedOnQuantityBreak;
 
+	@ManyToOne
 	private SaleType			basedOnSaleType;
 
+	@Lob
 	private String				comment;
 
 	private int					percent;
 
+	@Embedded
 	private Money				price;
 
+	@ManyToOne
 	private Product				priceDefinedForProduct;
 
+	@ManyToOne
 	private ProductFeature		priceDefinedForProductFeature;
 
+	@ManyToOne
 	private Organization		specifiedFor;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -67,62 +78,62 @@ public class PriceComponent extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
+	
 	public GeographicBoundary getBasedOnGeographicBoundary() {
 		return basedOnGeographicBoundary;
 	}
 
-	@ManyToOne
+	
 	public OrderValue getBasedOnOrderValue() {
 		return basedOnOrderValue;
 	}
 
-	@ManyToOne
+	
 	public PartyClassification getBasedOnPartyType() {
 		return basedOnPartyType;
 	}
 
-	@ManyToOne
+	
 	public ProductCategory getBasedOnProductCategory() {
 		return basedOnProductCategory;
 	}
 
-	@ManyToOne
+	
 	public QuantityBreak getBasedOnQuantityBreak() {
 		return basedOnQuantityBreak;
 	}
 
-	@ManyToOne
+	
 	public SaleType getBasedOnSaleType() {
 		return basedOnSaleType;
 	}
 
-	@NotNull
+	
 	public String getComment() {
 		return comment;
 	}
 
-	@Min(0)
+	
 	public int getPercent() {
 		return percent;
 	}
 
-	@Embedded
+	
 	public Money getPrice() {
 		return price;
 	}
 
-	@ManyToOne
+	
 	public Product getPriceDefinedForProduct() {
 		return priceDefinedForProduct;
 	}
 
-	@ManyToOne
+	
 	public ProductFeature getPriceDefinedForProductFeature() {
 		return priceDefinedForProductFeature;
 	}
 
-	@ManyToOne
+	
 	public Organization getSpecifiedFor() {
 		return specifiedFor;
 	}

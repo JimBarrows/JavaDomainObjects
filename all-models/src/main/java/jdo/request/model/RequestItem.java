@@ -25,51 +25,46 @@ import jdo.requirement.model.Requirement;
 @Entity
 public class RequestItem extends BasePersistentModel {
 
-	private static final long			serialVersionUID	= 1L;
-
-	private List<RequirementRequest>	communicationMethod;
-
-	private String						description;
-
-	private Money						maximumAmount;
-
-	private Requirement					partOf;
-
-	private int							quantity;
-
-	private Date						requiredBy;
-
+	private static final long serialVersionUID = 1L;
 	@OneToMany
+	private List<RequirementRequest> communicationMethod;
+	@Lob
+	private String description;
+	@Embedded
+	private Money maximumAmount;
+	@ManyToOne
+	private Requirement partOf;
+	@Min(1)
+	private int quantity;
+	@Temporal(TemporalType.DATE)
+	private Date requiredBy;
+
 	public List<RequirementRequest> getCommunicationMethod() {
 		return communicationMethod;
 	}
 
-	@Lob
 	public String getDescription() {
 		return description;
 	}
 
-	@Embedded
 	public Money getMaximumAmount() {
 		return maximumAmount;
 	}
 
-	@ManyToOne
 	public Requirement getPartOf() {
 		return partOf;
 	}
 
-	@Min(1)
 	public int getQuantity() {
 		return quantity;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getRequiredBy() {
 		return requiredBy;
 	}
 
-	public void setCommunicationMethod(List<RequirementRequest> communicationMethod) {
+	public void setCommunicationMethod(
+			List<RequirementRequest> communicationMethod) {
 		this.communicationMethod = communicationMethod;
 	}
 

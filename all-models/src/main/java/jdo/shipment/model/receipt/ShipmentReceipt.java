@@ -22,74 +22,64 @@ public class ShipmentReceipt extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
-
-	private Good						good;
-
-	private InventoryItem				inventoryItem;
-
-	private String						itemDescription;
-
-	private OrderItem					orderItem;
-
-	private int							quantityAccepted;
-
-	private int							quantityRejected;
-
-	private Date						received;
-
-	private RejectionReason				rejectionReason;
-
-	private List<ShipmentReceiptRole>	roles;
-
-	private ShipmentPackage				shipmentPackage;
-
+	private static final long serialVersionUID = 1L;
 	@ManyToOne
+	private Good good;
+	@ManyToOne
+	private InventoryItem inventoryItem;
+	@Lob
+	private String itemDescription;
+	@ManyToOne
+	private OrderItem orderItem;
+	@Min(0)
+	private int quantityAccepted;
+	@Min(0)
+	private int quantityRejected;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date received;
+	@ManyToOne
+	private RejectionReason rejectionReason;
+	@OneToMany
+	private List<ShipmentReceiptRole> roles;
+	@ManyToOne
+	private ShipmentPackage shipmentPackage;
+
 	public Good getGood() {
 		return good;
 	}
 
-	@ManyToOne
 	public InventoryItem getInventoryItem() {
 		return inventoryItem;
 	}
 
-	@Lob
 	public String getItemDescription() {
 		return itemDescription;
 	}
 
-	@ManyToOne
 	public OrderItem getOrderItem() {
 		return orderItem;
 	}
 
-	@Min(0)
 	public int getQuantityAccepted() {
 		return quantityAccepted;
 	}
 
-	@Min(0)
 	public int getQuantityRejected() {
 		return quantityRejected;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getReceived() {
 		return received;
 	}
 
-	@ManyToOne
 	public RejectionReason getRejectionReason() {
 		return rejectionReason;
 	}
 
-	@OneToMany
 	public List<ShipmentReceiptRole> getRoles() {
 		return roles;
 	}
 
-	@ManyToOne
 	public ShipmentPackage getShipmentPackage() {
 		return shipmentPackage;
 	}

@@ -8,10 +8,10 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.shipment.model.route.ShipmentMethodType;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.675-0700")
+@Generated(value="Dali", date="2015-01-12T06:46:42.934-0700")
 @StaticMetamodel(PartyRole.class)
 public class PartyRole_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<PartyRole, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PartyRole, Party> roleFor;
 	public static volatile ListAttribute<PartyRole, ShipmentMethodType> ableToShipVia;
+	public static volatile SingularAttribute<PartyRole, DateTimeRange> dateTimeRange;
 }

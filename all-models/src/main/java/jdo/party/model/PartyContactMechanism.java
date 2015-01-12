@@ -13,8 +13,6 @@ import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.contactmechanism.ContactMechanism;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 /**
  * Maps the relationship between a party and their contact mechanisms
  * 
@@ -24,21 +22,27 @@ import org.hibernate.validator.constraints.NotEmpty;
 @SuppressWarnings("serial")
 @Entity
 public class PartyContactMechanism extends BasePersistentModel {
+	@Lob
 	private String								comment;
 
+	@ManyToOne
 	private Party								mechanismToContact;
 
 	private boolean								solicitable			= false;
 
+	@ManyToOne
 	private PartyRole							specifiedFor;
 
+	@ManyToOne
 	private ContactMechanism					specifiedVia;
 
+	@OneToMany(mappedBy = "usedWithin")
 	private List<PartyContactMechanismPurpose>	usedForThePurposeOf	= new ArrayList<PartyContactMechanismPurpose>();
 
+	@Embedded
 	private DateTimeRange						dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -47,28 +51,28 @@ public class PartyContactMechanism extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@NotEmpty
-	@Lob
+
+
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
+	
 	public Party getMechanismToContact() {
 		return mechanismToContact;
 	}
 
-	@ManyToOne
+	
 	public PartyRole getSpecifiedFor() {
 		return specifiedFor;
 	}
 
-	@ManyToOne
+	
 	public ContactMechanism getSpecifiedVia() {
 		return specifiedVia;
 	}
 
-	@OneToMany(mappedBy = "usedWithin")
+	
 	public List<PartyContactMechanismPurpose> getUsedForThePurposeOf() {
 		return usedForThePurposeOf;
 	}

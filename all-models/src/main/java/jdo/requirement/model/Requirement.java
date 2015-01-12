@@ -26,31 +26,30 @@ public class Requirement extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long									serialVersionUID	= 1L;
-
-	private List<OrderRequirementCommitment>	commitmentOf;
-
-	private Date															creationDate;
-
-	private String														description;
-
-	private Money															estimatedBudget;
-
-	private Facility													neededAt;
-
-	private int																quantity;
-
-	private String														reason;
-
-	private Date															requiredBy;
-
-	private List<RequirementStatus>						status						= new ArrayList<RequirementStatus>();
-
-	private List<Requirement>									subRequirements		= new ArrayList<Requirement>();
-
-	private List<RequirementBudgetAllocation>	allocatedVia			= new ArrayList<RequirementBudgetAllocation>();
-
+	private static final long serialVersionUID = 1L;
 	@OneToMany
+	private List<OrderRequirementCommitment> commitmentOf;
+	@Temporal(TemporalType.DATE)
+	private Date creationDate;
+	@Lob
+	private String description;
+	@Embedded
+	private Money estimatedBudget;
+	@ManyToOne
+	private Facility neededAt;
+
+	private int quantity;
+	@Lob
+	private String reason;
+	@Temporal(TemporalType.DATE)
+	private Date requiredBy;
+	@OneToMany
+	private List<RequirementStatus> status = new ArrayList<RequirementStatus>();
+	@OneToMany
+	private List<Requirement> subRequirements = new ArrayList<Requirement>();
+	@OneToMany
+	private List<RequirementBudgetAllocation> allocatedVia = new ArrayList<RequirementBudgetAllocation>();
+
 	public List<RequirementBudgetAllocation> getAllocatedVia() {
 		return allocatedVia;
 	}
@@ -59,27 +58,22 @@ public class Requirement extends BasePersistentModel {
 		this.allocatedVia = allocatedVia;
 	}
 
-	@OneToMany
 	public List<OrderRequirementCommitment> getCommitmentOf() {
 		return commitmentOf;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getCreationDate() {
 		return creationDate;
 	}
 
-	@Lob
 	public String getDescription() {
 		return description;
 	}
 
-	@Embedded
 	public Money getEstimatedBudget() {
 		return estimatedBudget;
 	}
 
-	@ManyToOne
 	public Facility getNeededAt() {
 		return neededAt;
 	}
@@ -88,27 +82,24 @@ public class Requirement extends BasePersistentModel {
 		return quantity;
 	}
 
-	@Lob
 	public String getReason() {
 		return reason;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getRequiredBy() {
 		return requiredBy;
 	}
 
-	@OneToMany
 	public List<RequirementStatus> getStatus() {
 		return status;
 	}
 
-	@OneToMany
 	public List<Requirement> getSubRequirements() {
 		return subRequirements;
 	}
 
-	public void setCommitmentOf(final List<OrderRequirementCommitment> commitmentOf) {
+	public void setCommitmentOf(
+			final List<OrderRequirementCommitment> commitmentOf) {
 		this.commitmentOf = commitmentOf;
 	}
 

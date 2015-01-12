@@ -27,44 +27,50 @@ public class InventoryItem extends BasePersistentModel {
 	 */
 	private static final long			serialVersionUID	= 1L;
 
+	@OneToMany(mappedBy = "adjustmentFor")
 	private List<InventoryItemVariance>	adjustedThru		= new ArrayList<InventoryItemVariance>();
 
+	@ManyToOne
 	private InventoryItemStatusType		inTheStateOf;
 
+	@ManyToOne
 	private Facility					locatedAt;
 
+	@ManyToOne
 	private Container					locatedWithin;
 
+	@ManyToOne
 	private Lot							partOf;
 
+	@ManyToOne
 	private Good						physicalOccurenceOf;
 
-	@OneToMany(mappedBy = "adjustmentFor")
+	
 	public List<InventoryItemVariance> getAdjustedThru() {
 		return adjustedThru;
 	}
 
-	@ManyToOne
+	
 	public InventoryItemStatusType getInTheStateOf() {
 		return inTheStateOf;
 	}
 
-	@ManyToOne
+	
 	public Facility getLocatedAt() {
 		return locatedAt;
 	}
 
-	@ManyToOne
+	
 	public Container getLocatedWithin() {
 		return locatedWithin;
 	}
 
-	@ManyToOne
+	
 	public Lot getPartOf() {
 		return partOf;
 	}
 
-	@ManyToOne
+	
 	public Good getPhysicalOccurenceOf() {
 		return physicalOccurenceOf;
 	}

@@ -5,6 +5,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
+import jdo.workeffort.WorkEffort;
 
 @Entity
 public class CommunicationEventWorkEffort extends BasePersistentModel {
@@ -12,24 +13,24 @@ public class CommunicationEventWorkEffort extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 1L;	
-
-	private String description;
-	
-//	private WorkEffort effortFor;
-	
-	private CommunicationEvent eventFrom;
+	private static final long serialVersionUID = 1L;
 
 	@Lob
+	private String description;
+
+	@ManyToOne
+	private WorkEffort effortFor;
+
+	@ManyToOne
+	private CommunicationEvent eventFrom;
+
 	public String getDescription() {
 		return description;
 	}
-	
-/*	@ManyToOne
+
 	public WorkEffort getEffortFor() {
 		return effortFor;
 	}
-*/
 
 	@ManyToOne
 	public CommunicationEvent getEventFrom() {
@@ -40,10 +41,9 @@ public class CommunicationEventWorkEffort extends BasePersistentModel {
 		this.description = description;
 	}
 
-/*	public void setEffortFor(WorkEffort effortFor) {
+	public void setEffortFor(WorkEffort effortFor) {
 		this.effortFor = effortFor;
 	}
-*/
 
 	public void setEventFrom(CommunicationEvent eventFrom) {
 		this.eventFrom = eventFrom;

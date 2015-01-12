@@ -23,46 +23,40 @@ import jdo.model.BasePersistentModel;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Request extends BasePersistentModel {
 
-	private static final long		serialVersionUID	= 1L;
-
-	private String					description;
-
-	private List<RequestItem>		items;
-
-	private Date					requestDate;
-
-	private List<RespondingParty>	respondingParties;
-
-	private Date					responseRequired;
-
-	private List<RequestRole>		roles;
-
+	private static final long serialVersionUID = 1L;
 	@Lob
+	private String description;
+	@OneToMany
+	private List<RequestItem> items;
+	@Temporal(TemporalType.DATE)
+	private Date requestDate;
+	@OneToMany
+	private List<RespondingParty> respondingParties;
+	@Temporal(TemporalType.DATE)
+	private Date responseRequired;
+	@OneToMany
+	private List<RequestRole> roles;
+
 	public String getDescription() {
 		return description;
 	}
 
-	@OneToMany
 	public List<RequestItem> getItems() {
 		return items;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getRequestDate() {
 		return requestDate;
 	}
 
-	@OneToMany
 	public List<RespondingParty> getRespondingParties() {
 		return respondingParties;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getResponseRequired() {
 		return responseRequired;
 	}
 
-	@OneToMany
 	public List<RequestRole> getRoles() {
 		return roles;
 	}

@@ -19,67 +19,61 @@ public class Quote extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private String				description;
-
-	private Party				givenTo;
-
-	private Date				issueDate;
-
-	private Party				issuedBy;
-
-	private List<QuoteItem>		items;
-
-	private List<QuoteRole>		roles;
-
-	private List<QuoteTerm>		terms;
-
-	private Date				validFrom;
-
-	private Date				validThru;
+	private static final long serialVersionUID = 1L;
 
 	@Lob
+	private String description;
+
+	@ManyToOne
+	private Party givenTo;
+
+	@Temporal(TemporalType.DATE)
+	private Date issueDate;
+	@ManyToOne
+	private Party issuedBy;
+	@OneToMany
+	private List<QuoteItem> items;
+	@OneToMany
+	private List<QuoteRole> roles;
+	@OneToMany
+	private List<QuoteTerm> terms;
+	@Temporal(TemporalType.DATE)
+	private Date validFrom;
+	@Temporal(TemporalType.DATE)
+	private Date validThru;
+
 	public String getDescription() {
 		return description;
 	}
 
-	@ManyToOne
 	public Party getGivenTo() {
 		return givenTo;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getIssueDate() {
 		return issueDate;
 	}
 
-	@ManyToOne
 	public Party getIssuedBy() {
 		return issuedBy;
 	}
 
-	@OneToMany
 	public List<QuoteItem> getItems() {
 		return items;
 	}
 
-	@OneToMany
 	public List<QuoteRole> getRoles() {
 		return roles;
 	}
 
-	@OneToMany
 	public List<QuoteTerm> getTerms() {
 		return terms;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getValidFrom() {
 		return validFrom;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getValidThru() {
 		return validThru;
 	}

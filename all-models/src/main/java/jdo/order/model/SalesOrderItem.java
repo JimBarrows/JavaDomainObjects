@@ -21,25 +21,25 @@ public class SalesOrderItem extends OrderItem {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
-
-	private List<PurchaseOrderItem>	associatedWith		= new ArrayList<PurchaseOrderItem>();
-
-	private ContactMechanism		shippedToMechanism;
-
-	private PartyRole				shipToCustomer;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToMany(mappedBy = "usedToFillfill")
+	private List<PurchaseOrderItem> associatedWith = new ArrayList<PurchaseOrderItem>();
+
+	@ManyToOne
+	private ContactMechanism shippedToMechanism;
+
+	@ManyToOne
+	private PartyRole shipToCustomer;
+
 	public List<PurchaseOrderItem> getAssociatedWith() {
 		return associatedWith;
 	}
 
-	@ManyToOne
 	public ContactMechanism getShippedToMechanism() {
 		return shippedToMechanism;
 	}
 
-	@ManyToOne
 	public PartyRole getShipToCustomer() {
 		return shipToCustomer;
 	}

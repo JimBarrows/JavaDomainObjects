@@ -18,53 +18,46 @@ public class ShipmentItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
-
-	private String					contentsDescription;
-
-	private int						quantity;
-
-	private int						sequenceNumber;
-
-	private List<ShipmentItem>		shipmentItems;
-
-	private Good					shipmentOf;
-
-	private List<OrderShipment>		shipmentsOf;
-
-	private List<ProductFeature>	shippedWith;
-
+	private static final long serialVersionUID = 1L;
 	@Lob
+	private String contentsDescription;
+	@Min(1)
+	private int quantity;
+	@Min(1)
+	private int sequenceNumber;
+	@OneToMany
+	private List<ShipmentItem> shipmentItems;
+	@ManyToOne
+	private Good shipmentOf;
+	@OneToMany
+	private List<OrderShipment> shipmentsOf;
+	@OneToMany
+	private List<ProductFeature> shippedWith;
+
 	public String getContentsDescription() {
 		return contentsDescription;
 	}
 
-	@Min(1)
 	public int getQuantity() {
 		return quantity;
 	}
 
-	@Min(1)
 	public int getSequenceNumber() {
 		return sequenceNumber;
 	}
 
-	@OneToMany
 	public List<ShipmentItem> getShipmentItems() {
 		return shipmentItems;
 	}
 
-	@ManyToOne
 	public Good getShipmentOf() {
 		return shipmentOf;
 	}
 
-	@OneToMany
 	public List<OrderShipment> getShipmentsOf() {
 		return shipmentsOf;
 	}
 
-	@OneToMany
 	public List<ProductFeature> getShippedWith() {
 		return shippedWith;
 	}

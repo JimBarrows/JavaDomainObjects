@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.product.model.storage.InventoryItem;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.722-0700")
+@Generated(value="Dali", date="2015-01-12T06:52:49.300-0700")
 @StaticMetamodel(PicklistItem.class)
 public class PicklistItem_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<PicklistItem, ItemIssuance> issueList;

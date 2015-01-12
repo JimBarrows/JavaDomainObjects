@@ -29,34 +29,35 @@ public class Good extends Product {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID		= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private List<InventoryItem>			genericDescriptionFor	= new ArrayList<InventoryItem>();
+	@OneToMany(mappedBy = "physicalOccurenceOf")
+	private List<InventoryItem> genericDescriptionFor = new ArrayList<InventoryItem>();
 
 	/**
 	 * A good can be identified by more then one id value.
 	 * 
 	 */
-	private List<GoodIdentification>	identifiedBy			= new ArrayList<GoodIdentification>();
+	@OneToMany(mappedBy = "identifierFor")
+	private List<GoodIdentification> identifiedBy = new ArrayList<GoodIdentification>();
 
-	private List<SupplierProduct>		suppliedThru			= new ArrayList<SupplierProduct>();
+	@OneToMany(mappedBy = "validSupplierFor")
+	private List<SupplierProduct> suppliedThru = new ArrayList<SupplierProduct>();
 
-	@OneToMany(mappedBy = "physicalOccurenceOf")
 	public List<InventoryItem> getGenericDescriptionFor() {
 		return genericDescriptionFor;
 	}
 
-	@OneToMany(mappedBy = "identifierFor")
 	public List<GoodIdentification> getIdentifiedBy() {
 		return identifiedBy;
 	}
 
-	@OneToMany(mappedBy = "validSupplierFor")
 	public List<SupplierProduct> getSuppliedThru() {
 		return suppliedThru;
 	}
 
-	public void setGenericDescriptionFor(List<InventoryItem> genericDescriptionFor) {
+	public void setGenericDescriptionFor(
+			List<InventoryItem> genericDescriptionFor) {
 		this.genericDescriptionFor = genericDescriptionFor;
 	}
 

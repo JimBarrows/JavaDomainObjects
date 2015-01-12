@@ -17,13 +17,16 @@ public class TimeEntry extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@Lob
 	private String				comment;
 
+	@ManyToOne
 	private WorkEffort			timeSpendOn;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -32,12 +35,12 @@ public class TimeEntry extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@Lob
+	
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
+	
 	public WorkEffort getTimeSpendOn() {
 		return timeSpendOn;
 	}

@@ -10,13 +10,12 @@ import jdo.model.DateTimeRange;
 @Entity
 public class RequirementStatus extends BasePersistentModel {
 
-	private static final long		serialVersionUID	= 1L;
-
-	private RequirementStatusType	type;
-
-	private DateTimeRange			dateTimeRange		= new DateTimeRange();
-
+	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	private RequirementStatusType type;
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -25,7 +24,6 @@ public class RequirementStatus extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public RequirementStatusType getType() {
 		return type;
 	}

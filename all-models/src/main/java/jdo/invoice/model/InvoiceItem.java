@@ -59,6 +59,7 @@ public class InvoiceItem extends BasePersistentModel {
 	@Min(0)
 	private int											sequence;
 
+	@OneToMany
 	private List<InvoiceItem>				soldWith;
 
 	private boolean									taxable;

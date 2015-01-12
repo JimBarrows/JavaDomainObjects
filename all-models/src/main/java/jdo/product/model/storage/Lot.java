@@ -25,30 +25,34 @@ public class Lot extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@Temporal(TemporalType.DATE)
 	private Date				creationDate;
 
+	@Temporal(TemporalType.DATE)
 	private Date				expirationDate;
 
+	@OneToMany(mappedBy = "partOf")
 	private List<InventoryItem>	madeUpOf			= new ArrayList<InventoryItem>();
 
+	@Min(value = 0)
 	private long				quantity;
 
-	@Temporal(TemporalType.DATE)
+	
 	public Date getCreationDate() {
 		return creationDate;
 	}
 
-	@Temporal(TemporalType.DATE)
+	
 	public Date getExpirationDate() {
 		return expirationDate;
 	}
 
-	@OneToMany(mappedBy = "partOf")
+	
 	public List<InventoryItem> getMadeUpOf() {
 		return madeUpOf;
 	}
 
-	@Min(value = 0)
+	
 	public long getQuantity() {
 		return quantity;
 	}

@@ -15,25 +15,25 @@ public class PaymentApplication extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private Money				amountApplied;
-
-	private BillingAccount		appliedToAccount;
-
-	private InvoiceItem			appliedToItem;
+	private static final long serialVersionUID = 1L;
 
 	@Embedded
+	private Money amountApplied;
+
+	@ManyToOne
+	private BillingAccount appliedToAccount;
+
+	@ManyToOne
+	private InvoiceItem appliedToItem;
+
 	public Money getAmountApplied() {
 		return amountApplied;
 	}
 
-	@ManyToOne
 	public BillingAccount getAppliedToAccount() {
 		return appliedToAccount;
 	}
 
-	@ManyToOne
 	public InvoiceItem getAppliedToItem() {
 		return appliedToItem;
 	}

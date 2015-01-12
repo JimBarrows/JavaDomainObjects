@@ -24,74 +24,64 @@ public class QuoteItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private String				comment;
-
-	private Date				estimatedDeliveryDate;
-
-	private List<OrderItem>		orderItems;
-
-	private Quote				partOf;
-
-	private Product				product;
-
-	private int					quantity;
-
-	private RequestItem			responseTo;
-
-	private int					sequenceId;
-
-	private List<QuoteTerm>		terms;
-
-	private Money				unitPrice;
-
+	private static final long serialVersionUID = 1L;
 	@Lob
+	private String comment;
+	@Temporal(TemporalType.DATE)
+	private Date estimatedDeliveryDate;
+	@OneToMany
+	private List<OrderItem> orderItems;
+	@ManyToOne
+	private Quote partOf;
+	@ManyToOne
+	private Product product;
+	@Min(1)
+	private int quantity;
+	@ManyToOne
+	private RequestItem responseTo;
+	@Min(1)
+	private int sequenceId;
+	@OneToMany
+	private List<QuoteTerm> terms;
+	@Embedded
+	private Money unitPrice;
+
 	public String getComment() {
 		return comment;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getEstimatedDeliveryDate() {
 		return estimatedDeliveryDate;
 	}
 
-	@OneToMany
 	public List<OrderItem> getOrderItems() {
 		return orderItems;
 	}
 
-	@ManyToOne
 	public Quote getPartOf() {
 		return partOf;
 	}
 
-	@ManyToOne
 	public Product getProduct() {
 		return product;
 	}
 
-	@Min(1)
 	public int getQuantity() {
 		return quantity;
 	}
 
-	@ManyToOne
 	public RequestItem getResponseTo() {
 		return responseTo;
 	}
 
-	@Min(1)
 	public int getSequenceId() {
 		return sequenceId;
 	}
 
-	@OneToMany
 	public List<QuoteTerm> getTerms() {
 		return terms;
 	}
 
-	@Embedded
 	public Money getUnitPrice() {
 		return unitPrice;
 	}

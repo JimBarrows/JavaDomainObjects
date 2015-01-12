@@ -10,10 +10,6 @@ import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.contactmechanism.PostalAddress;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.hibernate.validator.constraints.NotEmpty;
-
 /**
  * Association class between Party and PostalAddress classes, since these could
  * be a many to many relationship, and we might need/want to track address
@@ -28,15 +24,19 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Entity
 public class PartyPostalAddress extends BasePersistentModel {
 
+	@Lob
 	private String			comment;
 
+	@ManyToOne
 	private PostalAddress	locatedAt;
 
+	@ManyToOne
 	private Party			specifiedFor;
 
+	@Embedded
 	private DateTimeRange	dateTimeRange	= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -44,44 +44,17 @@ public class PartyPostalAddress extends BasePersistentModel {
 	public void setDateTimeRange(DateTimeRange dateTimeRange) {
 		this.dateTimeRange = dateTimeRange;
 	}
-
-	/**
-	 * @see java.lang.Object#equals(Object)
-	 */
-	public boolean equals(Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (!(object instanceof PartyPostalAddress)) {
-			return false;
-		}
-		PartyPostalAddress rhs = (PartyPostalAddress) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(this.specifiedFor, rhs.specifiedFor).append(this.comment, rhs.comment)
-				.append(this.locatedAt, rhs.locatedAt).isEquals();
-	}
-
-	@NotEmpty
-	@Lob
+	
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
 	public PostalAddress getLocatedAt() {
 		return locatedAt;
 	}
 
-	@ManyToOne
 	public Party getSpecifiedFor() {
 		return specifiedFor;
-	}
-
-	/**
-	 * @see java.lang.Object#hashCode()
-	 */
-	public int hashCode() {
-		return new HashCodeBuilder(1649912811, 1726898873).appendSuper(super.hashCode()).append(this.specifiedFor).append(this.comment).append(this.locatedAt)
-				.toHashCode();
 	}
 
 	public void setComment(String comment) {

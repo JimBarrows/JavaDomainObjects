@@ -10,7 +10,7 @@ import jdo.order.model.adjustment.OrderAdjustment;
 import jdo.order.model.status.OrderStatus;
 import jdo.order.model.terms.OrderTerm;
 
-@Generated(value="Dali", date="2014-12-24T17:30:46.780-0700")
+@Generated(value="Dali", date="2015-01-12T00:05:08.519-0700")
 @StaticMetamodel(Order.class)
 public class Order_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<Order, OrderAdjustment> affectedBy;

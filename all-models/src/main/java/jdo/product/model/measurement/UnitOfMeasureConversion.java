@@ -20,26 +20,23 @@ public class UnitOfMeasureConversion extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private String				conversionFactor;
-
-	private UnitOfMeasure		fromUom;
-
-	private UnitOfMeasure		in;
-
+	private static final long serialVersionUID = 1L;
 	@NotNull
+	private String conversionFactor;
+	@ManyToOne
+	private UnitOfMeasure fromUom;
+	@ManyToOne
+	@JoinColumn(name = "inUnitOfMeasure")
+	private UnitOfMeasure in;
+
 	public String getConversionFactor() {
 		return conversionFactor;
 	}
 
-	@ManyToOne
 	public UnitOfMeasure getFromUom() {
 		return fromUom;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "inUnitOfMeasure")
 	public UnitOfMeasure getIn() {
 		return in;
 	}

@@ -13,7 +13,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
@@ -23,6 +22,8 @@ import jdo.product.model.feature.interaction.ProductFeatureInteraction;
 import jdo.product.model.measurement.UnitOfMeasure;
 import jdo.product.model.part.ProductComponent;
 import jdo.product.model.price.PriceComponent;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Models all products the enterprise sells, products from suppliers, and
@@ -44,155 +45,155 @@ public class Product extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long					serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private List<ProductObsolescence>			aReplacement		= new ArrayList<ProductObsolescence>();
+	@OneToMany
+	private List<ProductObsolescence> aReplacement = new ArrayList<ProductObsolescence>();
 
-	private List<ProductCategoryClassification>	categorizedBy		= new ArrayList<ProductCategoryClassification>();
+	@OneToMany(mappedBy = "categoryFor")
+	private List<ProductCategoryClassification> categorizedBy = new ArrayList<ProductCategoryClassification>();
 
 	/**
 	 * Descriptions and/or notes about the product.
 	 * 
 	 */
-	private String								comment;
+	@Lob
+	private String comment;
 
-	private List<ProductComplement>				complimentedWith	= new ArrayList<ProductComplement>();
+	@OneToMany
+	private List<ProductComplement> complimentedWith = new ArrayList<ProductComplement>();
 
-	private List<ProductComplement>				complimentFor		= new ArrayList<ProductComplement>();
+	@OneToMany
+	private List<ProductComplement> complimentFor = new ArrayList<ProductComplement>();
 
-	private List<EstimatedProductCost>			costedBy			= new ArrayList<EstimatedProductCost>();
+	@OneToMany(mappedBy = "calculatedForProduct")
+	private List<EstimatedProductCost> costedBy = new ArrayList<EstimatedProductCost>();
 
-	private List<ProductIncompatibility>		incompatibleWith	= new ArrayList<ProductIncompatibility>();
+	@OneToMany
+	private List<ProductIncompatibility> incompatibleWith = new ArrayList<ProductIncompatibility>();
 
 	/**
 	 * The date the product was first available to be sold.
 	 * 
 	 */
-	private Date								introductionDate;
+	@Temporal(TemporalType.DATE)
+	private Date introductionDate;
 
-	private List<ProductComponent>				madeUpOf			= new ArrayList<ProductComponent>();
+	@OneToMany(mappedBy = "in")
+	private List<ProductComponent> madeUpOf = new ArrayList<ProductComponent>();
 
-	private UnitOfMeasure						measuredUsing;
+	@ManyToOne
+	private UnitOfMeasure measuredUsing;
 
-	private String								name;
+	@Column(nullable = false, unique = true)
+	@NotEmpty
+	private String name;
 
-	private List<PriceComponent>				pricedBy			= new ArrayList<PriceComponent>();
+	@OneToMany(mappedBy = "priceDefinedForProduct")
+	private List<PriceComponent> pricedBy = new ArrayList<PriceComponent>();
 
 	/**
 	 * When the product will not be sold any more.
 	 * 
 	 */
-	private Date								salesDiscontinuationDate;
+	@Temporal(TemporalType.DATE)
+	private Date salesDiscontinuationDate;
 
-	private List<ProductSubstitute>				substitutedBy		= new ArrayList<ProductSubstitute>();
+	@OneToMany(mappedBy = "substituteFor")
+	private List<ProductSubstitute> substitutedBy = new ArrayList<ProductSubstitute>();
 
-	private List<ProductObsolescence>			supercededBy		= new ArrayList<ProductObsolescence>();
+	@OneToMany(mappedBy = "obsolescenceFor")
+	private List<ProductObsolescence> supercededBy = new ArrayList<ProductObsolescence>();
 
 	/**
 	 * The date on which the product will no longer be supported by the
 	 * enterprise.
 	 * 
 	 */
-	private Date								supportDiscontinuationDate;
-
-	private List<ProductSubstitute>				usedAs				= new ArrayList<ProductSubstitute>();
-
-	private List<ProductComponent>				usedIn				= new ArrayList<ProductComponent>();
-
-	private List<ProductFeatureInteraction>		usedToDefine		= new ArrayList<ProductFeatureInteraction>();
+	@Temporal(TemporalType.DATE)
+	private Date supportDiscontinuationDate;
 
 	@OneToMany
+	private List<ProductSubstitute> usedAs = new ArrayList<ProductSubstitute>();
+
+	@OneToMany(mappedBy = "productFor")
+	private List<ProductComponent> usedIn = new ArrayList<ProductComponent>();
+
+	@OneToMany
+	private List<ProductFeatureInteraction> usedToDefine = new ArrayList<ProductFeatureInteraction>();
+
 	public List<ProductObsolescence> getAReplacement() {
 		return aReplacement;
 	}
 
-	@OneToMany(mappedBy = "categoryFor")
 	public List<ProductCategoryClassification> getCategorizedBy() {
 		return categorizedBy;
 	}
 
-	@Lob
 	public String getComment() {
 		return comment;
 	}
 
-	@OneToMany
 	public List<ProductComplement> getComplimentedWith() {
 		return complimentedWith;
 	}
 
-	@OneToMany
 	public List<ProductComplement> getComplimentFor() {
 		return complimentFor;
 	}
 
-	@OneToMany(mappedBy = "calculatedForProduct")
 	public List<EstimatedProductCost> getCostedBy() {
 		return costedBy;
 	}
 
-	@OneToMany
 	public List<ProductIncompatibility> getIncompatibleWith() {
 		return incompatibleWith;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getIntroductionDate() {
 		return introductionDate;
 	}
 
-	@OneToMany(mappedBy = "in")
 	public List<ProductComponent> getMadeUpOf() {
 		return madeUpOf;
 	}
 
-	@ManyToOne
 	public UnitOfMeasure getMeasuredUsing() {
 		return measuredUsing;
 	}
 
-	@Column(nullable = false, unique = true)
-	@NotNull
 	public String getName() {
 		return name;
 	}
 
-	@OneToMany(mappedBy = "priceDefinedForProduct")
 	public List<PriceComponent> getPricedBy() {
 		return pricedBy;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getSalesDiscontinuationDate() {
 		return salesDiscontinuationDate;
 	}
 
-	@OneToMany(mappedBy = "substituteFor")
 	public List<ProductSubstitute> getSubstitutedBy() {
 		return substitutedBy;
 	}
 
-	@OneToMany(mappedBy = "obsolescenceFor")
 	public List<ProductObsolescence> getSupercededBy() {
 		return supercededBy;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getSupportDiscontinuationDate() {
 		return supportDiscontinuationDate;
 	}
 
-	@OneToMany
 	public List<ProductSubstitute> getUsedAs() {
 		return usedAs;
 	}
 
-	@OneToMany(mappedBy = "productFor")
 	public List<ProductComponent> getUsedIn() {
 		return usedIn;
 	}
 
-	@OneToMany
 	public List<ProductFeatureInteraction> getUsedToDefine() {
 		return usedToDefine;
 	}
@@ -201,7 +202,8 @@ public class Product extends BasePersistentModel {
 		aReplacement = replacement;
 	}
 
-	public void setCategorizedBy(List<ProductCategoryClassification> categorizedBy) {
+	public void setCategorizedBy(
+			List<ProductCategoryClassification> categorizedBy) {
 		this.categorizedBy = categorizedBy;
 	}
 
@@ -221,7 +223,8 @@ public class Product extends BasePersistentModel {
 		this.costedBy = costedBy;
 	}
 
-	public void setIncompatibleWith(List<ProductIncompatibility> incompatibleWith) {
+	public void setIncompatibleWith(
+			List<ProductIncompatibility> incompatibleWith) {
 		this.incompatibleWith = incompatibleWith;
 	}
 

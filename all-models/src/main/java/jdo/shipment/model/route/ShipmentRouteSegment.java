@@ -8,6 +8,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+import jdo.accounting.model.asset.Vehicle;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.PartyRole;
@@ -20,40 +21,46 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private Date				actualArrival;
-
-	private Date				actualStart;
-
-	private long				endMileage;
-
-	private Date				estimatedArrival;
-
-	private Date				estimatedStart;
-
-	private Money				fuelUsed;
-
-	private Shipment			shipmentOf;
-
-	private Facility			shippedFrom;
-
-	private Facility			shippedTo;
-
-	// private Vehicle vehicle;
-
-	private ShipmentMethodType	shippedVia;
-
-	private PartyRole			shipppedBy;
-
-	private long				startMileage;
-
+	private static final long serialVersionUID = 1L;
 	@Temporal(TemporalType.TIMESTAMP)
+	private Date actualArrival;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date actualStart;
+
+	private long endMileage;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date estimatedArrival;
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date estimatedStart;
+	@Embedded
+	private Money fuelUsed;
+	@ManyToOne
+	private Shipment shipmentOf;
+	@ManyToOne
+	private Facility shippedFrom;
+	@ManyToOne
+	private Facility shippedTo;
+
+	private Vehicle vehicle;
+	public Vehicle getVehicle() {
+		return vehicle;
+	}
+
+	public void setVehicle(Vehicle vehicle) {
+		this.vehicle = vehicle;
+	}
+
+	@ManyToOne
+	private ShipmentMethodType shippedVia;
+	@ManyToOne
+	private PartyRole shipppedBy;
+
+	private long startMileage;
+
 	public Date getActualArrival() {
 		return actualArrival;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getActualStart() {
 		return actualStart;
 	}
@@ -62,42 +69,34 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 		return endMileage;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getEstimatedArrival() {
 		return estimatedArrival;
 	}
 
-	@Temporal(TemporalType.TIMESTAMP)
 	public Date getEstimatedStart() {
 		return estimatedStart;
 	}
 
-	@Embedded
 	public Money getFuelUsed() {
 		return fuelUsed;
 	}
 
-	@ManyToOne
 	public Shipment getShipmentOf() {
 		return shipmentOf;
 	}
 
-	@ManyToOne
 	public Facility getShippedFrom() {
 		return shippedFrom;
 	}
 
-	@ManyToOne
 	public Facility getShippedTo() {
 		return shippedTo;
 	}
 
-	@ManyToOne
 	public ShipmentMethodType getShippedVia() {
 		return shippedVia;
 	}
 
-	@ManyToOne
 	public PartyRole getShipppedBy() {
 		return shipppedBy;
 	}

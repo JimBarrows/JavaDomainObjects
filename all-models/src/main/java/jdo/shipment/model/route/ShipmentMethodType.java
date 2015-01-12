@@ -15,10 +15,10 @@ public class ShipmentMethodType extends BaseType {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	@ManyToMany(mappedBy = "ableToShipVia")
 	private List<PartyRole>		transportationUsed;
 
-	@ManyToMany(mappedBy = "ableToShipVia")
+	
 	public List<PartyRole> getTransportationUsed() {
 		return transportationUsed;
 	}

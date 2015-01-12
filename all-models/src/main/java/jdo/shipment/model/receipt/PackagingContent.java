@@ -14,17 +14,17 @@ public class PackagingContent extends BasePersistentModel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	@ManyToOne
 	private ShipmentItem		item;
-
+	@Min(1)
 	private int					quantity;
 
-	@ManyToOne
+	
 	public ShipmentItem getItem() {
 		return item;
 	}
 
-	@Min(1)
+	
 	public int getQuantity() {
 		return quantity;
 	}

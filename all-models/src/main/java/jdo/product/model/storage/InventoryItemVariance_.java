@@ -6,7 +6,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.877-0700")
+@Generated(value="Dali", date="2015-01-11T23:32:50.146-0700")
 @StaticMetamodel(InventoryItemVariance.class)
 public class InventoryItemVariance_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<InventoryItemVariance, InventoryItem> adjustmentFor;

@@ -17,31 +17,28 @@ public class WorkEffortType extends BaseType {
 	/**
 	 * 
 	 */
-	private static final long				serialVersionUID	= 1L;
-
-	private List<WorkEffortType>			breaksDownInto;
-
-	private List<WorkEffortType>			dependsOn;
-
-	private List<WorkEffortGoodStandard>	goodStandardNeeds;
-
-	private int								standardWorkHours;
-
-	private DeliverableType					usedToProduceDeliverable;
-
-	private Product							usedToProduceProduct;
-
+	private static final long serialVersionUID = 1L;
 	@OneToMany
+	private List<WorkEffortType> breaksDownInto;
+	@OneToMany
+	private List<WorkEffortType> dependsOn;
+	@OneToMany
+	private List<WorkEffortGoodStandard> goodStandardNeeds;
+
+	private int standardWorkHours;
+	@ManyToOne
+	private DeliverableType usedToProduceDeliverable;
+	@ManyToOne
+	private Product usedToProduceProduct;
+
 	public List<WorkEffortType> getBreaksDownInto() {
 		return breaksDownInto;
 	}
 
-	@OneToMany
 	public List<WorkEffortType> getDependsOn() {
 		return dependsOn;
 	}
 
-	@OneToMany
 	public List<WorkEffortGoodStandard> getGoodStandardNeeds() {
 		return goodStandardNeeds;
 	}
@@ -50,19 +47,18 @@ public class WorkEffortType extends BaseType {
 		return standardWorkHours;
 	}
 
-	@ManyToOne
 	public DeliverableType getUsedToProduceDeliverable() {
 		return usedToProduceDeliverable;
 	}
 
-	@ManyToOne
 	public Product getUsedToProduceProduct() {
 		return usedToProduceProduct;
 	}
 
 	@AssertTrue
 	public boolean producesOnlyOneThing() {
-		return (usedToProduceDeliverable != null) ^ (usedToProduceProduct != null);
+		return (usedToProduceDeliverable != null)
+				^ (usedToProduceProduct != null);
 	}
 
 	public void setBreaksDownInto(List<WorkEffortType> breaksDownInto) {
@@ -73,7 +69,8 @@ public class WorkEffortType extends BaseType {
 		this.dependsOn = dependsOn;
 	}
 
-	public void setGoodStandardNeeds(List<WorkEffortGoodStandard> goodStandardNeeds) {
+	public void setGoodStandardNeeds(
+			List<WorkEffortGoodStandard> goodStandardNeeds) {
 		this.goodStandardNeeds = goodStandardNeeds;
 	}
 
@@ -81,7 +78,8 @@ public class WorkEffortType extends BaseType {
 		this.standardWorkHours = standardWorkHours;
 	}
 
-	public void setUsedToProduceDeliverable(DeliverableType usedToProduceDeliverable) {
+	public void setUsedToProduceDeliverable(
+			DeliverableType usedToProduceDeliverable) {
 		this.usedToProduceDeliverable = usedToProduceDeliverable;
 	}
 

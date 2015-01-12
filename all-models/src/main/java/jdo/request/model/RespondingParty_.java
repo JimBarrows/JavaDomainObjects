@@ -8,7 +8,7 @@ import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 import jdo.party.model.contactmechanism.ContactMechanism;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.636-0700")
+@Generated(value="Dali", date="2015-01-12T07:12:33.486-0700")
 @StaticMetamodel(RespondingParty.class)
 public class RespondingParty_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<RespondingParty, ContactMechanism> contactMechanism;

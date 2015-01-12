@@ -8,9 +8,6 @@ import javax.validation.constraints.NotNull;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.Party;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
-import org.apache.commons.lang.builder.HashCodeBuilder;
-
 /**
  * @author Jim
  * @version 1.0
@@ -21,34 +18,26 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 @Entity
 public class CommunicationEventRole extends BasePersistentModel {
 
+	@ManyToOne
 	private CommunicationEventRoleType describedBy;
 	
+	@ManyToOne
 	private Party forParty;
 	
+	@ManyToOne
+	@JoinColumn(name="communicationEventOf")
 	private CommunicationEvent of;
 
+	@NotNull
+	@ManyToOne
 	private CommunicationEventRoleType type;
 
-	/**
-	 * @see java.lang.Object#equals(Object)
-	 */
-	public boolean equals(Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (!(object instanceof CommunicationEventRole)) {
-			return false;
-		}
-		CommunicationEventRole rhs = (CommunicationEventRole) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(
-				this.of, rhs.of).append(this.describedBy, rhs.describedBy)
-				.append(this.forParty, rhs.forParty).isEquals();
-	}
+	
 
 	/**
 	 * @return the describedBy
 	 */
-	@ManyToOne
+	
 	public CommunicationEventRoleType getDescribedBy() {
 		return describedBy;
 	}
@@ -56,7 +45,7 @@ public class CommunicationEventRole extends BasePersistentModel {
 	/**
 	 * @return the forParty
 	 */
-	@ManyToOne
+	
 	public Party getForParty() {
 		return forParty;
 	}
@@ -64,26 +53,15 @@ public class CommunicationEventRole extends BasePersistentModel {
 	/**
 	 * @return the of
 	 */
-	@ManyToOne
-	@JoinColumn(name="communicationEventOf")
+	
 	public CommunicationEvent getOf() {
 		return of;
 	}
 
-	@NotNull
-	@ManyToOne
+	
 	public CommunicationEventRoleType getType() {
 		return type;
-	}
-
-	/**
-	 * @see java.lang.Object#hashCode()
-	 */
-	public int hashCode() {
-		return new HashCodeBuilder(-2037152775, -1282799171).appendSuper(
-				super.hashCode()).append(this.of).append(this.describedBy)
-				.append(this.forParty).toHashCode();
-	}
+	}	
 
 	/**
 	 * @param describedBy

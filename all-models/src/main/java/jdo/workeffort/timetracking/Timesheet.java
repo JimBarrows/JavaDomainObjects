@@ -19,15 +19,19 @@ public class Timesheet extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<TimeEntry>		entries;
 
+	@ManyToOne
 	private PartyRole			hoursFor;
 
+	@OneToMany
 	private List<TimesheetRole>	involving;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -36,17 +40,16 @@ public class Timesheet extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@OneToMany
+	
 	public List<TimeEntry> getEntries() {
 		return entries;
 	}
 
-	@ManyToOne
+	
 	public PartyRole getHoursFor() {
 		return hoursFor;
 	}
-
-	@OneToMany
+	
 	public List<TimesheetRole> getInvolving() {
 		return involving;
 	}

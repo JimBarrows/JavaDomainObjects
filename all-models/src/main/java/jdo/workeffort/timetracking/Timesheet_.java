@@ -8,11 +8,11 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.867-0700")
+@Generated(value="Dali", date="2015-01-11T23:13:28.584-0700")
 @StaticMetamodel(Timesheet.class)
 public class Timesheet_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<Timesheet, DateTimeRange> dateTimeRange;
 	public static volatile ListAttribute<Timesheet, TimeEntry> entries;
 	public static volatile SingularAttribute<Timesheet, PartyRole> hoursFor;
 	public static volatile ListAttribute<Timesheet, TimesheetRole> involving;
+	public static volatile SingularAttribute<Timesheet, DateTimeRange> dateTimeRange;
 }

@@ -15,44 +15,49 @@ import jdo.party.model.contactmechanism.ContactMechanism;
 @Entity
 public class PurchaseOrder extends Order {
 
+	@ManyToOne
 	private ContactMechanism	billedTo;
 
+	@ManyToOne
 	private PartyRole			placedBy;
 
+	@ManyToOne
 	private ContactMechanism	placedUsing;
 
+	@ManyToOne
 	private PartyRole			requestedBillTo;
 
+	@ManyToOne
 	private PartyRole			takenBy;
 
+	@ManyToOne
 	private ContactMechanism	takenVia;
 
-	@ManyToOne
+	
 	public ContactMechanism getBilledTo() {
 		return billedTo;
 	}
 
-	@ManyToOne
+	
 	public PartyRole getPlacedBy() {
 		return placedBy;
 	}
 
-	@ManyToOne
+	
 	public ContactMechanism getPlacedUsing() {
 		return placedUsing;
 	}
-
-	@ManyToOne
+	
 	public PartyRole getRequestedBillTo() {
 		return requestedBillTo;
 	}
 
-	@ManyToOne
+
 	public PartyRole getTakenBy() {
 		return takenBy;
 	}
 
-	@ManyToOne
+
 	public ContactMechanism getTakenVia() {
 		return takenVia;
 	}

@@ -25,24 +25,27 @@ public class GoodIdentification extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private IdentificationType	definedAs;
 
+	@ManyToOne
 	private Good				identifierFor;
 
+	@NotNull
+	@Column(nullable = false, unique = true)
 	private String				idValue;
 
-	@ManyToOne
+	
 	public IdentificationType getDefinedAs() {
 		return definedAs;
 	}
 
-	@ManyToOne
+	
 	public Good getIdentifierFor() {
 		return identifierFor;
 	}
 
-	@NotNull
-	@Column(nullable = false, unique = true)
+	
 	public String getIdValue() {
 		return idValue;
 	}

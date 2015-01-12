@@ -7,10 +7,10 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.workeffort.WorkEffort;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.861-0700")
+@Generated(value="Dali", date="2015-01-11T23:12:48.967-0700")
 @StaticMetamodel(TimeEntry.class)
 public class TimeEntry_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<TimeEntry, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<TimeEntry, String> comment;
 	public static volatile SingularAttribute<TimeEntry, WorkEffort> timeSpendOn;
+	public static volatile SingularAttribute<TimeEntry, DateTimeRange> dateTimeRange;
 }

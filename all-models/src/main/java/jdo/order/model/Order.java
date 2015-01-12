@@ -32,60 +32,61 @@ public class Order extends BasePersistentModel {
 	 * 
 	 */
 	private static final long			serialVersionUID	= 1L;
-
+	@OneToMany
 	private List<OrderAdjustment>		affectedBy			= new ArrayList<OrderAdjustment>();
-
+	@OneToMany
+	@OrderBy("orderItemSeqId")
 	private List<OrderItem>				composedOf			= new ArrayList<OrderItem>();
-
+	@OneToMany
 	private List<OrderContactMechanism>	contactMechanisms	= new ArrayList<OrderContactMechanism>();
-
+	@Temporal(TemporalType.DATE)
 	private Date						entryDate;
-
+	@OneToMany
 	private List<OrderRole>				involving			= new ArrayList<OrderRole>();
-
+	@Temporal(TemporalType.DATE)
 	private Date						orderDate;
-
+	@OneToMany
 	private List<OrderStatus>			stateOf				= new ArrayList<OrderStatus>();
-
+	@OneToMany
 	private List<OrderTerm>				subjectTo			= new ArrayList<OrderTerm>();
 
-	@OneToMany
+	
 	public List<OrderAdjustment> getAffectedBy() {
 		return affectedBy;
 	}
 
-	@OneToMany
-	@OrderBy("orderItemSeqId")
+	
+	
 	public List<OrderItem> getComposedOf() {
 		return composedOf;
 	}
 
-	@OneToMany
+	
 	public List<OrderContactMechanism> getContactMechanisms() {
 		return contactMechanisms;
 	}
 
-	@Temporal(TemporalType.DATE)
+	
 	public Date getEntryDate() {
 		return entryDate;
 	}
 
-	@OneToMany
+	
 	public List<OrderRole> getInvolving() {
 		return involving;
 	}
 
-	@Temporal(TemporalType.DATE)
+	
 	public Date getOrderDate() {
 		return orderDate;
 	}
 
-	@OneToMany
+	
 	public List<OrderStatus> getStateOf() {
 		return stateOf;
 	}
 
-	@OneToMany
+	
 	public List<OrderTerm> getSubjectTo() {
 		return subjectTo;
 	}

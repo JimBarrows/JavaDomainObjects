@@ -8,7 +8,7 @@ import jdo.model.BasePersistentModel_;
 import jdo.party.model.facility.Facility;
 import jdo.product.model.Good;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.867-0700")
+@Generated(value="Dali", date="2015-01-11T23:31:56.461-0700")
 @StaticMetamodel(InventoryItem.class)
 public class InventoryItem_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<InventoryItem, InventoryItemVariance> adjustedThru;

@@ -16,17 +16,17 @@ public class ShipmentStatus extends BasePersistentModel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				statusDate;
-
+	@ManyToOne
 	private ShipmentStatusType	type;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	public Date getStatusDate() {
 		return statusDate;
 	}
 
-	@ManyToOne
+	
 	public ShipmentStatusType getType() {
 		return type;
 	}

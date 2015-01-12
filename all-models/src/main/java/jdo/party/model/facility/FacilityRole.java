@@ -24,15 +24,21 @@ public class FacilityRole extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
+	@NotNull
 	private FacilityRoleType	describedBy;
 
+	@ManyToOne
 	private Party				forParty;
 
+	@ManyToOne
+	@JoinColumn(name = "ofFacility")
 	private Facility			of;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -44,8 +50,7 @@ public class FacilityRole extends BasePersistentModel {
 	/**
 	 * @return the describedBy
 	 */
-	@ManyToOne
-	@NotNull
+	
 	public FacilityRoleType getDescribedBy() {
 		return describedBy;
 	}
@@ -53,7 +58,7 @@ public class FacilityRole extends BasePersistentModel {
 	/**
 	 * @return the forParty
 	 */
-	@ManyToOne
+	
 	public Party getForParty() {
 		return forParty;
 	}
@@ -61,8 +66,7 @@ public class FacilityRole extends BasePersistentModel {
 	/**
 	 * @return the of
 	 */
-	@ManyToOne
-	@JoinColumn(name = "ofFacility")
+	
 	public Facility getOf() {
 		return of;
 	}

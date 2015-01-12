@@ -7,10 +7,10 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Party;
 
-@Generated(value="Dali", date="2014-12-24T17:30:46.808-0700")
+@Generated(value="Dali", date="2015-01-11T23:49:12.512-0700")
 @StaticMetamodel(OrderItemRole.class)
 public class OrderItemRole_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<OrderItemRole, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<OrderItemRole, Party> assignedTo;
 	public static volatile SingularAttribute<OrderItemRole, OrderItemRoleType> type;
+	public static volatile SingularAttribute<OrderItemRole, DateTimeRange> dateTimeRange;
 }

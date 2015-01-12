@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.product.model.price.PriceComponent;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.711-0700")
+@Generated(value="Dali", date="2015-01-12T07:01:06.669-0700")
 @StaticMetamodel(ProductCategory.class)
 public class ProductCategory_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<ProductCategory, String> description;

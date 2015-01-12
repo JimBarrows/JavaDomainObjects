@@ -3,7 +3,6 @@ package jdo.product.model.supplier;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.Min;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
@@ -24,17 +23,20 @@ public class ReorderGuideline extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-	private Facility			basedOnFacility;
-	private GeographicBoundary	basedOnGeographicBoundary;
-	private PartyRole			basedOnInternalOrganization;
-	private Good				guidelineFor;
-	private long				reorderLevel;
-	private long				reorderQuantity;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
+	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	private Facility basedOnFacility;
+	@ManyToOne
+	private GeographicBoundary basedOnGeographicBoundary;
+	@ManyToOne
+	private PartyRole basedOnInternalOrganization;
+	@ManyToOne
+	private Good guidelineFor;
+	private long reorderLevel;
+	private long reorderQuantity;
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -43,22 +45,18 @@ public class ReorderGuideline extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public Facility getBasedOnFacility() {
 		return basedOnFacility;
 	}
 
-	@ManyToOne
 	public GeographicBoundary getBasedOnGeographicBoundary() {
 		return basedOnGeographicBoundary;
 	}
 
-	@ManyToOne
 	public PartyRole getBasedOnInternalOrganization() {
 		return basedOnInternalOrganization;
 	}
 
-	@ManyToOne
 	public Good getGuidelineFor() {
 		return guidelineFor;
 	}
@@ -67,7 +65,6 @@ public class ReorderGuideline extends BasePersistentModel {
 		return reorderLevel;
 	}
 
-	@Min(0)
 	public long getReorderQuantity() {
 		return reorderQuantity;
 	}
@@ -76,11 +73,13 @@ public class ReorderGuideline extends BasePersistentModel {
 		this.basedOnFacility = basedOnFacility;
 	}
 
-	public void setBasedOnGeographicBoundary(GeographicBoundary basedOnGeographicBoundary) {
+	public void setBasedOnGeographicBoundary(
+			GeographicBoundary basedOnGeographicBoundary) {
 		this.basedOnGeographicBoundary = basedOnGeographicBoundary;
 	}
 
-	public void setBasedOnInternalOrganization(PartyRole basedOnInternalOrganization) {
+	public void setBasedOnInternalOrganization(
+			PartyRole basedOnInternalOrganization) {
 		this.basedOnInternalOrganization = basedOnInternalOrganization;
 	}
 

@@ -9,8 +9,9 @@ import jdo.fields.Money;
 import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 import jdo.party.model.contactmechanism.ContactMechanism;
+import jdo.party.model.contactmechanism.PostalAddress;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.781-0700")
+@Generated(value="Dali", date="2015-01-12T07:21:26.515-0700")
 @StaticMetamodel(Shipment.class)
 public class Shipment_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Shipment, Money> actualShipCost;
@@ -23,9 +24,9 @@ public class Shipment_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<Shipment, ShipmentItem> items;
 	public static volatile SingularAttribute<Shipment, Date> lastUpdated;
 	public static volatile SingularAttribute<Shipment, Date> latestCancelDate;
-	public static volatile SingularAttribute<Shipment, ContactMechanism> shippedFromContactMechanism;
+	public static volatile SingularAttribute<Shipment, PostalAddress> shippedFromContactMechanism;
 	public static volatile SingularAttribute<Shipment, Party> shippedFromParty;
-	public static volatile SingularAttribute<Shipment, ContactMechanism> shippedToContactMechanism;
+	public static volatile SingularAttribute<Shipment, PostalAddress> shippedToContactMechanism;
 	public static volatile SingularAttribute<Shipment, Party> shippedToParty;
 	public static volatile ListAttribute<Shipment, ShipmentStatus> statuses;
 }

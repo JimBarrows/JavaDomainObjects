@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.872-0700")
+@Generated(value="Dali", date="2015-01-11T23:14:25.850-0700")
 @StaticMetamodel(TimesheetRole.class)
 public class TimesheetRole_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<TimesheetRole, Party> involving;

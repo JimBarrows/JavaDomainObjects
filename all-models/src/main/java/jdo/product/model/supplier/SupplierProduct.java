@@ -2,8 +2,8 @@ package jdo.product.model.supplier;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
@@ -23,23 +23,23 @@ public class SupplierProduct extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private String				comment;
+	@Lob
+	private String comment;
+	@ManyToOne
+	private PreferenceType furtherDescribedBy;
+	@ManyToOne
+	private RatingType ratedBy;
 
-	private PreferenceType		furtherDescribedBy;
-
-	private RatingType			ratedBy;
-
-	private long				standardLeadTime;
-
-	private Organization		suppliedBy;
-
-	private Good				validSupplierFor;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
+	private long standardLeadTime;
+	@ManyToOne
+	private Organization suppliedBy;
+	@ManyToOne
+	private Good validSupplierFor;
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -48,17 +48,14 @@ public class SupplierProduct extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@NotNull
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
 	public PreferenceType getFurtherDescribedBy() {
 		return furtherDescribedBy;
 	}
 
-	@ManyToOne
 	public RatingType getRatedBy() {
 		return ratedBy;
 	}
@@ -67,12 +64,10 @@ public class SupplierProduct extends BasePersistentModel {
 		return standardLeadTime;
 	}
 
-	@ManyToOne
 	public Organization getSuppliedBy() {
 		return suppliedBy;
 	}
 
-	@ManyToOne
 	public Good getValidSupplierFor() {
 		return validSupplierFor;
 	}

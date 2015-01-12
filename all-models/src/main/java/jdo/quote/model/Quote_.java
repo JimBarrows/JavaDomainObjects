@@ -8,7 +8,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.919-0700")
+@Generated(value="Dali", date="2015-01-12T07:04:25.283-0700")
 @StaticMetamodel(Quote.class)
 public class Quote_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Quote, String> description;

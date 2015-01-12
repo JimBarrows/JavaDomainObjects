@@ -9,7 +9,7 @@ import jdo.product.model.cost.EstimatedProductCost;
 import jdo.product.model.feature.interaction.ProductFeatureInteraction;
 import jdo.product.model.price.PriceComponent;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.741-0700")
+@Generated(value="Dali", date="2015-01-11T23:20:29.747-0700")
 @StaticMetamodel(ProductFeature.class)
 public class ProductFeature_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<ProductFeature, ProductFeatureCategory> categorizedBy;

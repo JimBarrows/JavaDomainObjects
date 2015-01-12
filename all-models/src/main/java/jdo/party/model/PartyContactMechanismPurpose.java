@@ -16,13 +16,16 @@ public class PartyContactMechanismPurpose extends BasePersistentModel {
 	 */
 	private static final long			serialVersionUID	= 1L;
 
+	@ManyToOne
 	private ContactMechanismPurposeType	definedVia;
 
+	@ManyToOne
 	private PartyContactMechanism		usedWithin;
 
+	@Embedded
 	private DateTimeRange				dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -31,12 +34,12 @@ public class PartyContactMechanismPurpose extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
+	
 	public ContactMechanismPurposeType getDefinedVia() {
 		return definedVia;
 	}
 
-	@ManyToOne
+	
 	public PartyContactMechanism getUsedWithin() {
 		return usedWithin;
 	}

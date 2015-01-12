@@ -29,119 +29,103 @@ public class Shipment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
-
-	private Money					actualShipCost;
-
-	private Date					estimatedArrivalDate;
-
-	private Date					estimatedReadyDate;
-
-	private Money					estimatedShipCost;
-
-	private Date					estimatedShipDate;
-
-	private String					handlingInstructions;
-
-	private ContactMechanism		inquiredAboutVia;
-
-	private List<ShipmentItem>		items;
-
-	private Date					lastUpdated;
-
-	private Date					latestCancelDate;
-
-	private PostalAddress			shippedFromContactMechanism;
-
-	private Party					shippedFromParty;
-
-	private PostalAddress			shippedToContactMechanism;
-
-	private Party					shippedToParty;
-
-	private List<ShipmentStatus>	statuses;
-
+	private static final long serialVersionUID = 1L;
 	@Embedded
-	@AttributeOverrides(value={
-			@AttributeOverride(column=@Column(name="actualShipCostCurrency"), name="currency"),
-			@AttributeOverride(column=@Column(name="actualShipCostAmount"), name="amount")
-	})
+	@AttributeOverrides(value = {
+			@AttributeOverride(column = @Column(name = "actualShipCostCurrency"), name = "currency"),
+			@AttributeOverride(column = @Column(name = "actualShipCostAmount"), name = "amount") })
+	private Money actualShipCost;
+	@Temporal(TemporalType.DATE)
+	private Date estimatedArrivalDate;
+	@Temporal(TemporalType.DATE)
+	private Date estimatedReadyDate;
+	@Embedded
+	@AttributeOverrides(value = {
+			@AttributeOverride(column = @Column(name = "estiamtedShipCostCurrency"), name = "currency"),
+			@AttributeOverride(column = @Column(name = "estiamtedShipCostAmount"), name = "amount") })
+	private Money estimatedShipCost;
+	@Temporal(TemporalType.DATE)
+	private Date estimatedShipDate;
+	@Lob
+	private String handlingInstructions;
+	@ManyToOne
+	private ContactMechanism inquiredAboutVia;
+	@OneToMany
+	@OrderBy(value = "sequenceNumber")
+	private List<ShipmentItem> items;
+	@Temporal(TemporalType.DATE)
+	private Date lastUpdated;
+	@Temporal(TemporalType.DATE)
+	private Date latestCancelDate;
+	@ManyToOne
+	private PostalAddress shippedFromContactMechanism;
+	@ManyToOne
+	private Party shippedFromParty;
+	@ManyToOne
+	private PostalAddress shippedToContactMechanism;
+
+	@ManyToOne
+	private Party shippedToParty;
+	@OneToMany
+	@OrderBy(value = "statusDate")
+	private List<ShipmentStatus> statuses;
+
 	public Money getActualShipCost() {
 		return actualShipCost;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getEstimatedArrivalDate() {
 		return estimatedArrivalDate;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getEstimatedReadyDate() {
 		return estimatedReadyDate;
 	}
 
-	@Embedded
-	@AttributeOverrides(value={
-			@AttributeOverride(column=@Column(name="estiamtedShipCostCurrency"), name="currency"),
-			@AttributeOverride(column=@Column(name="estiamtedShipCostAmount"), name="amount")
-	})
 	public Money getEstimatedShipCost() {
 		return estimatedShipCost;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getEstimatedShipDate() {
 		return estimatedShipDate;
 	}
 
-	@Lob
 	public String getHandlingInstructions() {
 		return handlingInstructions;
 	}
 
-	@ManyToOne
 	public ContactMechanism getInquiredAboutVia() {
 		return inquiredAboutVia;
 	}
 
-	@OneToMany
-	@OrderBy(value = "sequenceNumber")
 	public List<ShipmentItem> getItems() {
 		return items;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getLastUpdated() {
 		return lastUpdated;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getLatestCancelDate() {
 		return latestCancelDate;
 	}
 
-	@ManyToOne
 	public ContactMechanism getShippedFromContactMechanism() {
 		return shippedFromContactMechanism;
 	}
 
-	@ManyToOne
 	public Party getShippedFromParty() {
 		return shippedFromParty;
 	}
 
-	@ManyToOne
 	public ContactMechanism getShippedToContactMechanism() {
 		return shippedToContactMechanism;
 	}
 
-	@ManyToOne
 	public Party getShippedToParty() {
 		return shippedToParty;
 	}
 
-	@OneToMany
-	@OrderBy(value = "statusDate")
 	public List<ShipmentStatus> getStatuses() {
 		return statuses;
 	}
@@ -186,7 +170,8 @@ public class Shipment extends BasePersistentModel {
 		this.latestCancelDate = latestCancelDate;
 	}
 
-	public void setShippedFromContactMechanism(PostalAddress shippedFromContactMechanism) {
+	public void setShippedFromContactMechanism(
+			PostalAddress shippedFromContactMechanism) {
 		this.shippedFromContactMechanism = shippedFromContactMechanism;
 	}
 
@@ -194,7 +179,8 @@ public class Shipment extends BasePersistentModel {
 		this.shippedFromParty = shippedFromParty;
 	}
 
-	public void setShippedToContactMechanism(PostalAddress shippedToContactMechanism) {
+	public void setShippedToContactMechanism(
+			PostalAddress shippedToContactMechanism) {
 		this.shippedToContactMechanism = shippedToContactMechanism;
 	}
 

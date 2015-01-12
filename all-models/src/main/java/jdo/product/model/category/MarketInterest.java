@@ -24,15 +24,16 @@ public class MarketInterest extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	private PartyClassification interestFor;
 
-	private PartyClassification	interestFor;
-
-	private ProductCategory		of;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
+	@ManyToOne
+	@JoinColumn(name = "productCategoryOf")
+	private ProductCategory of;
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -41,13 +42,10 @@ public class MarketInterest extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public PartyClassification getInterestFor() {
 		return interestFor;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "productCategoryOf")
 	public ProductCategory getOf() {
 		return of;
 	}

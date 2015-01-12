@@ -23,23 +23,26 @@ public class QuantityBreak extends BasePersistentModel {
 	 */
 	private static final long		serialVersionUID		= 1L;
 
+	@OneToMany
 	private List<PriceComponent>	discountLevelDefinedFor	= new ArrayList<PriceComponent>();
 
+	@Min(0)
 	private int						fromQuantity;
 
+	@Min(1)
 	private int						thruQuantity;
 
-	@OneToMany
+	
 	public List<PriceComponent> getDiscountLevelDefinedFor() {
 		return discountLevelDefinedFor;
 	}
 
-	@Min(0)
+	
 	public int getFromQuantity() {
 		return fromQuantity;
 	}
 
-	@Min(1)
+	
 	public int getThruQuantity() {
 		return thruQuantity;
 	}

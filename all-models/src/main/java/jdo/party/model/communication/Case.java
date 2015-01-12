@@ -17,9 +17,7 @@ import javax.validation.constraints.NotNull;
 
 import jdo.model.BasePersistentModel;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * A Case may be set up for a series of related communication events, regarding
@@ -36,24 +34,30 @@ import org.hibernate.validator.constraints.NotEmpty;
 @Table(name = "Kase")
 public class Case extends BasePersistentModel {
 
+	@Lob
 	private String description;
 
+	@ManyToMany(mappedBy = "asPartOf")
 	private List<CommunicationEvent> encompassing = new ArrayList<CommunicationEvent>();
-	
+
+	@ManyToOne
 	private CaseStatusType inTheStateOf;
 
 	/**
 	 * Party(s) responsible for the Case.
 	 * 
-	 */	
+	 */
+	@OneToMany(mappedBy = "roleFor", cascade = CascadeType.ALL)
 	private List<CaseRole> involving = new ArrayList<CaseRole>();
-	
+
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date start;
 
 	public void addCaseRole(CaseRole caseRole) {
 		getInvolving().add(caseRole);
 		caseRole.setRoleFor(this);
-		
+
 	}
 
 	public void addCommunicationEvent(CommunicationEvent communicationEvent) {
@@ -62,29 +66,9 @@ public class Case extends BasePersistentModel {
 	}
 
 	/**
-	 * @see java.lang.Object#equals(Object)
-	 */
-	public boolean equals(Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (!(object instanceof Case)) {
-			return false;
-		}
-		Case rhs = (Case) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(
-				this.start, rhs.start)
-				.append(this.description, rhs.description).append(
-						this.involving, rhs.involving).append(
-						this.inTheStateOf, rhs.inTheStateOf).append(
-						this.encompassing, rhs.encompassing).isEquals();
-	}
-
-	/**
 	 * @return the description
 	 */
-	@NotEmpty
-	@Lob
+
 	public String getDescription() {
 		return description;
 	}
@@ -92,7 +76,7 @@ public class Case extends BasePersistentModel {
 	/**
 	 * @return the encompassing
 	 */
-	@ManyToMany(mappedBy = "asPartOf")
+
 	public List<CommunicationEvent> getEncompassing() {
 		return encompassing;
 	}
@@ -100,7 +84,7 @@ public class Case extends BasePersistentModel {
 	/**
 	 * @return the inTheStateOf
 	 */
-	@ManyToOne
+
 	public CaseStatusType getInTheStateOf() {
 		return inTheStateOf;
 	}
@@ -108,7 +92,7 @@ public class Case extends BasePersistentModel {
 	/**
 	 * @return the involving
 	 */
-	@OneToMany(mappedBy = "roleFor", cascade = CascadeType.ALL)
+
 	public List<CaseRole> getInvolving() {
 		return involving;
 	}
@@ -116,8 +100,7 @@ public class Case extends BasePersistentModel {
 	/**
 	 * @return the start
 	 */
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
+
 	public Date getStart() {
 		return start;
 	}
@@ -126,16 +109,17 @@ public class Case extends BasePersistentModel {
 	 * @see java.lang.Object#hashCode()
 	 */
 	public int hashCode() {
-		return new HashCodeBuilder(-1330069149, 407741471).appendSuper(
-				super.hashCode()).append(this.start).append(this.description)
-				.append(this.involving).append(this.inTheStateOf).append(
-						this.encompassing).toHashCode();
+		return new HashCodeBuilder(-1330069149, 407741471)
+				.appendSuper(super.hashCode()).append(this.start)
+				.append(this.description).append(this.involving)
+				.append(this.inTheStateOf).append(this.encompassing)
+				.toHashCode();
 	}
 
 	public void removeCaseRole(CaseRole caseRole) {
 		getInvolving().remove(caseRole);
 		caseRole.setRoleFor(null);
-		
+
 	}
 
 	/**

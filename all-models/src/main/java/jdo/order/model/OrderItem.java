@@ -35,103 +35,94 @@ public class OrderItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long				serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private String							comment;
+	@Lob
+	private String comment;
 
-	private Date							estimatedDeliveryDate;
+	@Temporal(TemporalType.DATE)
+	private Date estimatedDeliveryDate;
 
-	private ProductFeature					forFeature;
+	@ManyToOne
+	private ProductFeature forFeature;
+	@ManyToOne
+	private Product forProduct;
+	@OneToMany
+	private List<OrderItemContactMechanism> having;
+	@OneToMany
+	private List<OrderItemRole> involving;
+	@Lob
+	private String itemDescription;
+	@ManyToOne
+	private OrderItem orderedWith;
 
-	private Product							forProduct;
+	private long orderItemSeqId;
 
-	private List<OrderItemContactMechanism>	having;
+	private int quantity;
 
-	private List<OrderItemRole>				involving;
+	@Lob
+	private String shippingInstructions;
 
-	private String							itemDescription;
+	@OneToMany(mappedBy = "statusForItem")
+	private List<OrderStatus> stateOf = new ArrayList<OrderStatus>();
 
-	private OrderItem						orderedWith;
-
-	private long							orderItemSeqId;
-
-	private int								quantity;
-
-	private String							shippingInstructions;
-
-	private List<OrderStatus>				stateOf				= new ArrayList<OrderStatus>();
-
-	private List<OrderTerm>					subjectTo			= new ArrayList<OrderTerm>();
-
-	private Money							unitPrice;
+	@OneToMany(mappedBy = "conditionForItem")
+	private List<OrderTerm> subjectTo = new ArrayList<OrderTerm>();
+	@Embedded
+	private Money unitPrice;
 
 	public String getComment() {
 		return comment;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getEstimatedDeliveryDate() {
 		return estimatedDeliveryDate;
 	}
 
-	@ManyToOne
 	public ProductFeature getForFeature() {
 		return forFeature;
 	}
 
-	@ManyToOne
 	public Product getForProduct() {
 		return forProduct;
 	}
 
-	@OneToMany
 	public List<OrderItemContactMechanism> getHaving() {
 		return having;
 	}
 
-	@OneToMany
 	public List<OrderItemRole> getInvolving() {
 		return involving;
 	}
 
-	@Lob
 	public String getItemDescription() {
 		return itemDescription;
 	}
 
-	@ManyToOne
 	public OrderItem getOrderedWith() {
 		return orderedWith;
 	}
 
-	@NotNull
-	@Min(0)
 	public long getOrderItemSeqId() {
 		return orderItemSeqId;
 	}
 
-	@NotNull
-	@Min(1)
 	public int getQuantity() {
 		return quantity;
 	}
 
-	@Lob
 	public String getShippingInstructions() {
 		return shippingInstructions;
 	}
 
-	@OneToMany(mappedBy = "statusForItem")
 	public List<OrderStatus> getStateOf() {
 		return stateOf;
 	}
 
-	@OneToMany(mappedBy = "conditionForItem")
 	public List<OrderTerm> getSubjectTo() {
 		return subjectTo;
 	}
 
-	@Embedded
 	public Money getUnitPrice() {
 		return unitPrice;
 	}

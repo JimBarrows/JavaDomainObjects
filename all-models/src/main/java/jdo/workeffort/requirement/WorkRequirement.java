@@ -16,16 +16,18 @@ public class WorkRequirement extends Requirement {
 
 	// private FixedAsset workedOn;
 
+	@ManyToOne
 	private Product				producedBy;
 
+	@ManyToOne
 	private Deliverable			toProduce;
 
-	@ManyToOne
+	
 	public Product getProducedBy() {
 		return producedBy;
 	}
 
-	@ManyToOne
+	
 	public Deliverable getToProduce() {
 		return toProduce;
 	}

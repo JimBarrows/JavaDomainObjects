@@ -1,9 +1,10 @@
 package jdo.party.model;
 
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.crypto.Data;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * An organization, such as a family, company, government agency etc.
@@ -22,7 +23,7 @@ public class Organization extends Party {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@NotNull
+	@NotEmpty
 	private String				name;
 
 	/**

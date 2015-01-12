@@ -6,9 +6,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.order.model.OrderItem;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.652-0700")
+@Generated(value="Dali", date="2015-01-12T07:14:53.834-0700")
 @StaticMetamodel(OrderRequirementCommitment.class)
 public class OrderRequirementCommitment_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<OrderRequirementCommitment, OrderItem> usageOf;
 	public static volatile SingularAttribute<OrderRequirementCommitment, Integer> quantity;
+	public static volatile SingularAttribute<OrderRequirementCommitment, OrderItem> usageOf;
 }

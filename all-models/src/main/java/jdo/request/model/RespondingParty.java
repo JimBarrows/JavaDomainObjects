@@ -15,24 +15,24 @@ import jdo.party.model.contactmechanism.ContactMechanism;
 public class RespondingParty extends BasePersistentModel {
 
 	private static final long	serialVersionUID	= 1L;
-
+	@ManyToOne
 	private ContactMechanism	contactMechanism;
-
+	@Temporal(TemporalType.DATE)
 	private Date				dateSent;
-
+	@ManyToOne
 	private Party				party;
 
-	@ManyToOne
+	
 	public ContactMechanism getContactMechanism() {
 		return contactMechanism;
 	}
 
-	@Temporal(TemporalType.DATE)
+	
 	public Date getDateSent() {
 		return dateSent;
 	}
 
-	@ManyToOne
+	
 	public Party getParty() {
 		return party;
 	}

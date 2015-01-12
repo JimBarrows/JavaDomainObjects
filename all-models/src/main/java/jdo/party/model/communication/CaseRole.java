@@ -23,33 +23,23 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
 @Entity
 public class CaseRole extends BasePersistentModel {
 	
+	@ManyToOne
+	@NotNull
 	private CaseRoleType describedBy;
 
+	@ManyToOne
+	@JoinColumn(name="ofParty")
 	private Party of;
 
+	@ManyToOne
 	private Case roleFor;
 
-	/**
-	 * @see java.lang.Object#equals(Object)
-	 */
-	public boolean equals(Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (!(object instanceof CaseRole)) {
-			return false;
-		}
-		CaseRole rhs = (CaseRole) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(
-				this.of, rhs.of).append(this.describedBy, rhs.describedBy)
-				.append(this.roleFor, rhs.roleFor).isEquals();
-	}
+	
 
 	/**
 	 * @return the describedBy
 	 */
-	@ManyToOne
-	@NotNull
+	
 	public CaseRoleType getDescribedBy() {
 		return describedBy;
 	}
@@ -57,8 +47,7 @@ public class CaseRole extends BasePersistentModel {
 	/**
 	 * @return the of
 	 */
-	@ManyToOne
-	@JoinColumn(name="ofParty")
+	
 	public Party getOf() {
 		return of;
 	}
@@ -66,7 +55,7 @@ public class CaseRole extends BasePersistentModel {
 	/**
 	 * @return the roleFor
 	 */
-	@ManyToOne
+	
 	public Case getRoleFor() {
 		return roleFor;
 	}

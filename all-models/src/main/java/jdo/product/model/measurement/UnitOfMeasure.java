@@ -7,11 +7,12 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.product.model.Product;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Jim
@@ -29,36 +30,36 @@ public class UnitOfMeasure extends BasePersistentModel {
 	private static final long				serialVersionUID	= 1L;
 
 	private String							abbreviation;
-
+	@OneToMany
 	private List<UnitOfMeasureConversion>	convertedFrom;
-
+	@OneToMany
 	private List<UnitOfMeasureConversion>	convertedTo;
-
+	@NotEmpty
+	@Lob
 	private String							description;
-
+	@OneToMany(mappedBy = "measuredUsing")
 	private List<Product>					usedIn;
 
 	public String getAbbreviation() {
 		return abbreviation;
 	}
 
-	@OneToMany
+	
 	public List<UnitOfMeasureConversion> getConvertedFrom() {
 		return convertedFrom;
 	}
 
-	@OneToMany
+	
 	public List<UnitOfMeasureConversion> getConvertedTo() {
 		return convertedTo;
 	}
 
-	@NotNull
-	@Lob
+	
 	public String getDescription() {
 		return description;
 	}
 
-	@OneToMany(mappedBy = "measuredUsing")
+	
 	public List<Product> getUsedIn() {
 		return usedIn;
 	}

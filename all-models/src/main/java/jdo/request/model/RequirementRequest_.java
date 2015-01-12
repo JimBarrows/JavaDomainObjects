@@ -6,7 +6,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.requirement.model.Requirement;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.629-0700")
+@Generated(value="Dali", date="2015-01-12T07:12:15.691-0700")
 @StaticMetamodel(RequirementRequest.class)
 public class RequirementRequest_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<RequirementRequest, Requirement> associatedTo;

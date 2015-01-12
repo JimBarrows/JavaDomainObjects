@@ -13,9 +13,10 @@ public class Receipt extends Payment {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Deposit				depositedVia;
 
-	@ManyToOne
+	
 	public Deposit getDepositedVia() {
 		return depositedVia;
 	}

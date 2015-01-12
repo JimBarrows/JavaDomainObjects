@@ -5,12 +5,13 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.product.model.Product;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * The actual category a product is in, as well as the time it was in it. Since
@@ -30,18 +31,23 @@ public class ProductCategoryClassification extends BasePersistentModel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	@ManyToOne
 	private Product				categoryFor;
 
+	@Lob
+	@NotEmpty
 	private String				comment;
 
+	@ManyToOne
 	private ProductCategory		definedBy;
 
+	@Column(name = "primaryProductCategoryClassification")
 	private boolean				primary				= false;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -50,23 +56,22 @@ public class ProductCategoryClassification extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
+	
 	public Product getCategoryFor() {
 		return categoryFor;
 	}
 
-	@Lob
-	@NotNull
+	
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
+	
 	public ProductCategory getDefinedBy() {
 		return definedBy;
 	}
 
-	@Column(name = "primaryProductCategoryClassification")
+	
 	public boolean isPrimary() {
 		return primary;
 	}

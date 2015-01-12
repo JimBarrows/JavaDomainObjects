@@ -4,13 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
- 
-
+import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Jim
@@ -27,13 +27,17 @@ public class Facility extends BasePersistentModel{
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@OneToMany
 	private List<FacilityContactMechanism> contactedVia = new ArrayList<FacilityContactMechanism>();
 	
+	@NotEmpty
+	@Lob
 	private String description;
 		
+	@OneToMany
 	private List<FacilityRole> involving = new ArrayList<FacilityRole>();
 	
-	
+	@OneToMany
 	private List<Facility> madeUpOf = new ArrayList<Facility>();
 	
 	
@@ -42,7 +46,7 @@ public class Facility extends BasePersistentModel{
 	/**
 	 * @return the contactedVia
 	 */
-	@OneToMany
+	
 	public List<FacilityContactMechanism> getContactedVia() {
 		return contactedVia;
 	}
@@ -50,7 +54,7 @@ public class Facility extends BasePersistentModel{
 	/**
 	 * @return the description
 	 */
-	@NotNull
+	
 	public String getDescription() {
 		return description;
 	}
@@ -58,7 +62,7 @@ public class Facility extends BasePersistentModel{
 	/**
 	 * @return the involving
 	 */
-	@OneToMany
+	
 	public List<FacilityRole> getInvolving() {
 		return involving;
 	}
@@ -66,7 +70,7 @@ public class Facility extends BasePersistentModel{
 	/**
 	 * @return the madeUpOf
 	 */
-	@OneToMany
+	
 	public List<Facility> getMadeUpOf() {
 		return madeUpOf;
 	}
@@ -74,7 +78,7 @@ public class Facility extends BasePersistentModel{
 	/**
 	 * @return the partOf
 	 */
-	@ManyToOne
+	
 	public Facility getPartOf() {
 		return partOf;
 	}

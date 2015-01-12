@@ -30,21 +30,30 @@ public class EstimatedProductCost extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private ProductFeature		calculatedForFeature;
 
+	@ManyToOne
 	private Product				calculatedForProduct;
 
+	@ManyToOne
 	private CostComponentType	categorizedBy;
 
+	@NotNull
+	@Min(0)
+	@Embedded
 	private Money				cost;
 
+	@ManyToOne
 	private GeographicBoundary	specifiedForGeographicBoundary;
 
+	@ManyToOne
 	private Organization		specifiedForOrganization;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -53,34 +62,32 @@ public class EstimatedProductCost extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
+	
 	public ProductFeature getCalculatedForFeature() {
 		return calculatedForFeature;
 	}
 
-	@ManyToOne
+	
 	public Product getCalculatedForProduct() {
 		return calculatedForProduct;
 	}
 
-	@ManyToOne
+	
 	public CostComponentType getCategorizedBy() {
 		return categorizedBy;
 	}
 
-	@NotNull
-	@Min(0)
-	@Embedded
+	
 	public Money getCost() {
 		return cost;
 	}
 
-	@ManyToOne
+	
 	public GeographicBoundary getSpecifiedForGeographicBoundary() {
 		return specifiedForGeographicBoundary;
 	}
 
-	@ManyToOne
+	
 	public Organization getSpecifiedForOrganization() {
 		return specifiedForOrganization;
 	}

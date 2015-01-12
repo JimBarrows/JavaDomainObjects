@@ -13,9 +13,10 @@ public class UtilizationCharge extends PriceComponent {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private CurrencyMeasure		inTheCurrencyOf;
 
-	@ManyToOne
+	
 	public CurrencyMeasure getInTheCurrencyOf() {
 		return inTheCurrencyOf;
 	}

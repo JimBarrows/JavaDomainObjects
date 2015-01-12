@@ -19,13 +19,18 @@ import jdo.party.model.contactmechanism.ContactMechanism;
 @Entity
 public class FacilityContactMechanism extends BasePersistentModel {
 
+	@NotNull
+	@ManyToOne
 	private Facility			mechansimToContact;
 
+	@NotNull
+	@ManyToOne
 	private ContactMechanism	specifiedVia;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange	= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -34,14 +39,12 @@ public class FacilityContactMechanism extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@NotNull
-	@ManyToOne
+	
 	public Facility getMechansimToContact() {
 		return mechansimToContact;
 	}
 
-	@NotNull
-	@ManyToOne
+	
 	public ContactMechanism getSpecifiedVia() {
 		return specifiedVia;
 	}

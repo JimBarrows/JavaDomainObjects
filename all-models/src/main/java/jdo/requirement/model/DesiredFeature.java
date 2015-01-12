@@ -10,12 +10,12 @@ import jdo.product.model.feature.ProductFeature;
 public class DesiredFeature extends BasePersistentModel {
 
 	private static final long	serialVersionUID	= 1L;
-
+	@ManyToOne
 	private ProductFeature		describedBy;
 
 	private boolean				optional;
 
-	@ManyToOne
+	
 	public ProductFeature getDescribedBy() {
 		return describedBy;
 	}

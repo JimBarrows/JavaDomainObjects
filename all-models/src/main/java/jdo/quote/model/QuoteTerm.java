@@ -2,6 +2,7 @@ package jdo.quote.model;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.AssertTrue;
 
 import jdo.fields.Money;
@@ -12,12 +13,15 @@ public class QuoteTerm extends BasePersistentModel {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private QuoteItem			conditionForItem;
 
+	@ManyToOne
 	private Quote				conditionForQuote;
 
+	@ManyToOne
 	private TermType			termType;
-
+	@Embedded
 	private Money				termValue;
 
 	public QuoteItem getConditionForItem() {
@@ -32,7 +36,7 @@ public class QuoteTerm extends BasePersistentModel {
 		return termType;
 	}
 
-	@Embedded
+	
 	public Money getTermValue() {
 		return termValue;
 	}

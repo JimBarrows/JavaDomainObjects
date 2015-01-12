@@ -7,9 +7,10 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 
 import jdo.model.BasePersistentModel;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Shows which products are about to be or have already been superseded by other
@@ -27,31 +28,35 @@ public class ProductObsolescence extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Product				aUseOf;
 
+	@ManyToOne
 	private Product				obsolescenceFor;
 
+	@Lob
+	@NotEmpty
 	private String				reason;
 
+	@Temporal(TemporalType.DATE)
 	private Date				supercessionDate;
 
-	@ManyToOne
+	
 	public Product getAUseOf() {
 		return aUseOf;
 	}
 
-	@ManyToOne
+	
 	public Product getObsolescenceFor() {
 		return obsolescenceFor;
 	}
 
-	@Lob
-	@NotNull
+	
 	public String getReason() {
 		return reason;
 	}
 
-	@Temporal(TemporalType.DATE)
+	
 	public Date getSupercessionDate() {
 		return supercessionDate;
 	}

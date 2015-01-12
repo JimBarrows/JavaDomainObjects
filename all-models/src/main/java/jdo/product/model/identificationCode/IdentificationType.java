@@ -23,9 +23,10 @@ public class IdentificationType extends BaseType {
 	 */
 	private static final long			serialVersionUID	= 1L;
 
+	@OneToMany
 	private List<GoodIdentification>	usedToDefine		= new ArrayList<GoodIdentification>();
 
-	@OneToMany
+	
 	public List<GoodIdentification> getUsedToDefine() {
 		return usedToDefine;
 	}

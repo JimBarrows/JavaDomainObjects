@@ -7,11 +7,12 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.product.model.price.PriceComponent;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * All the different categories a product can be a part of. A Category can be a
@@ -30,45 +31,50 @@ public class ProductCategory extends BasePersistentModel {
 	 */
 	private static final long					serialVersionUID	= 1L;
 
+	@NotEmpty
+	@Column(nullable = false, unique = true)
 	private String								description;
 
+	@OneToMany(mappedBy = "partOf")
 	private List<ProductCategory>				madeUpOf			= new ArrayList<ProductCategory>();
-
+	@OneToMany(mappedBy = "of")
 	private List<MarketInterest>				ofInterestTo		= new ArrayList<MarketInterest>();
 
+	@ManyToOne
 	private ProductCategory						partOf;
 
+	@OneToMany(mappedBy = "definedBy")
 	private List<ProductCategoryClassification>	usedToDefine		= new ArrayList<ProductCategoryClassification>();
 
+	@OneToMany(mappedBy = "basedOnProductCategory")
 	private List<PriceComponent>				usedToDefinePrice	= new ArrayList<PriceComponent>();
 
-	@NotNull
-	@Column(nullable = false, unique = true)
+	
 	public String getDescription() {
 		return description;
 	}
 
-	@OneToMany(mappedBy = "partOf")
+	
 	public List<ProductCategory> getMadeUpOf() {
 		return madeUpOf;
 	}
 
-	@OneToMany(mappedBy = "of")
+	
 	public List<MarketInterest> getOfInterestTo() {
 		return ofInterestTo;
 	}
 
-	@ManyToOne
+	
 	public ProductCategory getPartOf() {
 		return partOf;
 	}
 
-	@OneToMany(mappedBy = "definedBy")
+	
 	public List<ProductCategoryClassification> getUsedToDefine() {
 		return usedToDefine;
 	}
 
-	@OneToMany(mappedBy = "basedOnProductCategory")
+	
 	public List<PriceComponent> getUsedToDefinePrice() {
 		return usedToDefinePrice;
 	}

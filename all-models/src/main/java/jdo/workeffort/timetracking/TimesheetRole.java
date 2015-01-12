@@ -14,16 +14,17 @@ public class TimesheetRole extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Party				involving;
 
+	@ManyToOne
 	private TimeSheetRoleType	type;
 
-	@ManyToOne
+	
 	public Party getInvolving() {
 		return involving;
 	}
 
-	@ManyToOne
 	public TimeSheetRoleType getType() {
 		return type;
 	}

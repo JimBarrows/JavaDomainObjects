@@ -13,10 +13,10 @@ import jdo.product.model.measurement.UnitOfMeasure;
 import jdo.product.model.part.ProductComponent;
 import jdo.product.model.price.PriceComponent;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.816-0700")
+@Generated(value="Dali", date="2015-01-12T06:57:25.044-0700")
 @StaticMetamodel(Product.class)
 public class Product_ extends BasePersistentModel_ {
-	public static volatile ListAttribute<Product, ProductObsolescence> AReplacement;
+	public static volatile ListAttribute<Product, ProductObsolescence> aReplacement;
 	public static volatile ListAttribute<Product, ProductCategoryClassification> categorizedBy;
 	public static volatile SingularAttribute<Product, String> comment;
 	public static volatile ListAttribute<Product, ProductComplement> complimentedWith;

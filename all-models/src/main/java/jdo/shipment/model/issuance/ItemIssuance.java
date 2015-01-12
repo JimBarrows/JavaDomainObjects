@@ -18,39 +18,39 @@ public class ItemIssuance extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private PicklistItem		issuedAccordingTo;
-
-	private ShipmentItem		issuedFor;
-
-	private InventoryItem		issuedFrom;
-
-	private Date				issuedOn;
-
-	private int					quantity;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
+	private PicklistItem issuedAccordingTo;
+
+	@ManyToOne
+	private ShipmentItem issuedFor;
+
+	@ManyToOne
+	private InventoryItem issuedFrom;
+
+	@Temporal(TemporalType.DATE)
+	private Date issuedOn;
+
+	@Min(1)
+	private int quantity;
+
 	public PicklistItem getIssuedAccordingTo() {
 		return issuedAccordingTo;
 	}
 
-	@ManyToOne
 	public ShipmentItem getIssuedFor() {
 		return issuedFor;
 	}
 
-	@ManyToOne
 	public InventoryItem getIssuedFrom() {
 		return issuedFrom;
 	}
 
-	@Temporal(TemporalType.DATE)
 	public Date getIssuedOn() {
 		return issuedOn;
 	}
 
-	@Min(1)
 	public int getQuantity() {
 		return quantity;
 	}

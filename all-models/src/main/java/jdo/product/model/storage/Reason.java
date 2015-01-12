@@ -6,9 +6,10 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
 
 import jdo.model.BasePersistentModel;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Jim
@@ -23,17 +24,19 @@ public class Reason extends BasePersistentModel {
 	 */
 	private static final long			serialVersionUID	= 1L;
 
+	@NotEmpty
+	@Lob
 	private String						description;
 
+	@OneToMany
 	private List<InventoryItemVariance>	explanationFor		= new ArrayList<InventoryItemVariance>();
 
-	@NotNull
-	@Lob
+	
 	public String getDescription() {
 		return description;
 	}
 
-	@OneToMany
+	
 	public List<InventoryItemVariance> getExplanationFor() {
 		return explanationFor;
 	}

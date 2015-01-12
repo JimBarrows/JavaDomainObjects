@@ -33,53 +33,60 @@ public class ProductFeature extends BasePersistentModel {
 	 */
 	private static final long					serialVersionUID	= 1L;
 
-	private ProductFeatureCategory				categorizedBy;
-
-	private List<EstimatedProductCost>			costedBy			= new ArrayList<EstimatedProductCost>();
-
-	private List<ProductFeatureInteraction>		dependentOnSelectionOf;
-
-	private String								description;
-
-	private List<PriceComponent>				pricedBy			= new ArrayList<PriceComponent>();
-
-	private List<ProductFeatureInteraction>		selectedIn			= new ArrayList<ProductFeatureInteraction>();
-
-	private List<ProductFeatureApplicability>	usedToDefine		= new ArrayList<ProductFeatureApplicability>();
-
 	@ManyToOne
 	@NotNull
+	private ProductFeatureCategory				categorizedBy;
+
+	@OneToMany(mappedBy = "calculatedForFeature")
+	private List<EstimatedProductCost>			costedBy			= new ArrayList<EstimatedProductCost>();
+
+	@OneToMany
+	private List<ProductFeatureInteraction>		dependentOnSelectionOf;
+
+	@NotEmpty
+	@Column(unique = true, nullable = false)
+	private String								description;
+
+	@OneToMany(mappedBy = "priceDefinedForProductFeature")
+	private List<PriceComponent>				pricedBy			= new ArrayList<PriceComponent>();
+
+	@OneToMany(mappedBy = "of")
+	private List<ProductFeatureInteraction>		selectedIn			= new ArrayList<ProductFeatureInteraction>();
+
+	@OneToMany
+	private List<ProductFeatureApplicability>	usedToDefine		= new ArrayList<ProductFeatureApplicability>();
+
+	
 	public ProductFeatureCategory getCategorizedBy() {
 		return categorizedBy;
 	}
 
-	@OneToMany(mappedBy = "calculatedForFeature")
+	
 	public List<EstimatedProductCost> getCostedBy() {
 		return costedBy;
 	}
 
-	@OneToMany
+	
 	public List<ProductFeatureInteraction> getDependentOnSelectionOf() {
 		return dependentOnSelectionOf;
 	}
 
-	@NotEmpty
-	@Column(unique = true, nullable = false)
+	
 	public String getDescription() {
 		return description;
 	}
 
-	@OneToMany(mappedBy = "priceDefinedForProductFeature")
+	
 	public List<PriceComponent> getPricedBy() {
 		return pricedBy;
 	}
 
-	@OneToMany(mappedBy = "of")
+	
 	public List<ProductFeatureInteraction> getSelectedIn() {
 		return selectedIn;
 	}
 
-	@OneToMany
+	
 	public List<ProductFeatureApplicability> getUsedToDefine() {
 		return usedToDefine;
 	}

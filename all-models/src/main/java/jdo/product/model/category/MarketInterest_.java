@@ -7,10 +7,10 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyClassification;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.705-0700")
+@Generated(value="Dali", date="2015-01-12T07:01:37.323-0700")
 @StaticMetamodel(MarketInterest.class)
 public class MarketInterest_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<MarketInterest, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<MarketInterest, PartyClassification> interestFor;
 	public static volatile SingularAttribute<MarketInterest, ProductCategory> of;
+	public static volatile SingularAttribute<MarketInterest, DateTimeRange> dateTimeRange;
 }

@@ -20,32 +20,36 @@ public class InventoryItemVariance extends BasePersistentModel {
 
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private InventoryItem		adjustmentFor;
 
+	@Lob
 	private String				comment;
 
+	@ManyToOne
 	private Reason				explainedWith;
 
+	@Temporal(TemporalType.DATE)
 	private Date				physicalInventoryDate;
 
 	private long				quantity;
 
-	@ManyToOne
+	
 	public InventoryItem getAdjustmentFor() {
 		return adjustmentFor;
 	}
 
-	@Lob
+	
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
+	
 	public Reason getExplainedWith() {
 		return explainedWith;
 	}
 
-	@Temporal(TemporalType.DATE)
+	
 	public Date getPhysicalInventoryDate() {
 		return physicalInventoryDate;
 	}

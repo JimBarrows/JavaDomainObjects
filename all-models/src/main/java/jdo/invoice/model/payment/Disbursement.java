@@ -13,9 +13,10 @@ public class Disbursement extends Payment {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@OneToOne
 	private Withdrawal			affecting;
 
-	@OneToOne
+	
 	public Withdrawal getAffecting() {
 		return affecting;
 	}

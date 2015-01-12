@@ -11,17 +11,17 @@ import jdo.order.model.OrderItem;
 public class OrderRequirementCommitment extends BasePersistentModel {
 
 	private static final long	serialVersionUID	= 1L;
-
+	@Min(1)
 	private int					quantity			= 1;
-
+	@ManyToOne
 	private OrderItem			usageOf;
 
-	@Min(1)
+	
 	public int getQuantity() {
 		return quantity;
 	}
 
-	@ManyToOne
+	
 	public OrderItem getUsageOf() {
 		return usageOf;
 	}

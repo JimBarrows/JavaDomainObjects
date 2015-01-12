@@ -12,15 +12,19 @@ import jdo.party.model.Party;
 @Entity
 public class OrderItemRole extends BasePersistentModel {
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private Party				assignedTo;
+	@ManyToOne
+	@NotNull
+	private Party assignedTo;
 
-	private OrderItemRoleType	type;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@NotNull
+	@ManyToOne
+	private OrderItemRoleType type;
 
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -29,14 +33,10 @@ public class OrderItemRole extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
-	@NotNull
 	public Party getAssignedTo() {
 		return assignedTo;
 	}
 
-	@NotNull
-	@ManyToOne
 	public OrderItemRoleType getType() {
 		return type;
 	}

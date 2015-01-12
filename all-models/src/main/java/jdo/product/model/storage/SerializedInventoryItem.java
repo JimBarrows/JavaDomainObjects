@@ -2,7 +2,8 @@ package jdo.product.model.storage;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Jim
@@ -17,7 +18,7 @@ public class SerializedInventoryItem extends InventoryItem {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@NotNull
+	@NotEmpty
 	@Column(nullable = false, unique = true)
 	private String				serialNumber;
 

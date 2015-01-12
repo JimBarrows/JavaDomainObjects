@@ -15,11 +15,12 @@ public class RecurringCharge extends PriceComponent {
 	 */
 	private static final long		serialVersionUID	= 1L;
 
-	private TimeFrequencyMeasure	per;
-
 	@ManyToOne
 	@JoinColumn(name = "perTimeFrequencyMeasure")
 	@NotNull
+	private TimeFrequencyMeasure	per;
+
+	
 	public TimeFrequencyMeasure getPer() {
 		return per;
 	}

@@ -12,11 +12,13 @@ public class CommunicationEventPurpose extends BasePersistentModel {
 
 	private static final long				serialVersionUID	= 1L;
 
+	@NotNull
 	private CommunicationEventPurposeType	type;
 
+	@Embedded
 	private DateTimeRange					dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -25,7 +27,7 @@ public class CommunicationEventPurpose extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@NotNull
+	
 	public CommunicationEventPurposeType getType() {
 		return type;
 	}

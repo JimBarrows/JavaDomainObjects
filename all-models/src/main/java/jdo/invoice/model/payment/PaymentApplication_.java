@@ -8,7 +8,7 @@ import jdo.invoice.model.InvoiceItem;
 import jdo.invoice.model.billingaccount.BillingAccount;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:46.706-0700")
+@Generated(value="Dali", date="2015-01-12T06:50:22.244-0700")
 @StaticMetamodel(PaymentApplication.class)
 public class PaymentApplication_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PaymentApplication, Money> amountApplied;

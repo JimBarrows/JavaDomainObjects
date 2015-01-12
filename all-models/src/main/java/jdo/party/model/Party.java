@@ -49,24 +49,31 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * The roles this party plays, or has played, or will play
 	 * 
 	 */
+	@OneToMany(mappedBy = "roleFor", cascade = ALL)
+	@OrderBy("dateTimeRange.from")
+	@XmlList
 	private List<PartyRole>					actingAs				= new ArrayList<PartyRole>();
 
 	/**
 	 * The cases this party is , has been, or will be part of.
 	 * 
 	 */
+	@OneToMany(mappedBy = "of", cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	private List<CaseRole>					caseRolesInvolvedIn		= new ArrayList<CaseRole>();
 
 	/**
 	 * The different classifications the party fits into, or has been part of.
 	 * 
 	 */
+	@OneToMany(cascade = ALL, mappedBy = "classificationFor")
 	private List<PartyClassification>		classifiedInto			= new ArrayList<PartyClassification>();
 
 	/**
 	 * The ways to contact this party, now, in the past and in the future.
 	 * 
 	 */
+	@OneToMany(mappedBy = "mechanismToContact", cascade = CascadeType.ALL)
+	@OrderBy("dateTimeRange.from")
 	private List<PartyContactMechanism>		contactedVia			= new ArrayList<PartyContactMechanism>();
 
 	/**
@@ -74,12 +81,14 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * in.
 	 * 
 	 */
+	@OneToMany(mappedBy = "forParty", cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
 	private List<CommunicationEventRole>	eventRolesInvolvedIn	= new ArrayList<CommunicationEventRole>();
 
 	/**
 	 * Roles the party plays in a facility.
 	 * 
 	 */
+	@OneToMany
 	private List<FacilityRole>				involvedInFacilityRole	= new ArrayList<FacilityRole>();
 
 	/**
@@ -87,6 +96,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * at
 	 * 
 	 */
+	@OneToMany
 	private List<PartyPostalAddress>		residingAt				= new ArrayList<PartyPostalAddress>();
 
 	public void addAddress(PartyPostalAddress address) {
@@ -123,9 +133,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the actingAs
 	 */
-	@OneToMany(mappedBy = "roleFor", cascade = ALL)
-	@OrderBy("dateTimeRange.from")
-	@XmlList
+	
 	public List<PartyRole> getActingAs() {
 		return actingAs;
 	}
@@ -133,7 +141,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the caseRolesInvolvedIn
 	 */
-	@OneToMany(mappedBy = "of", cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	
 	public List<CaseRole> getCaseRolesInvolvedIn() {
 		return caseRolesInvolvedIn;
 	}
@@ -141,13 +149,12 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the classifiedInto
 	 */
-	@OneToMany(cascade = ALL, mappedBy = "classificationFor")
+	
 	public List<PartyClassification> getClassifiedInto() {
 		return classifiedInto;
 	}
 
-	@OneToMany(mappedBy = "mechanismToContact", cascade = CascadeType.ALL)
-	@OrderBy("dateTimeRange.from")
+	
 	public List<PartyContactMechanism> getContactedVia() {
 		return contactedVia;
 	}
@@ -155,7 +162,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	/**
 	 * @return the eventRolesInvolvedIn
 	 */
-	@OneToMany(mappedBy = "forParty", cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	
 	public List<CommunicationEventRole> getEventRolesInvolvedIn() {
 		return eventRolesInvolvedIn;
 	}

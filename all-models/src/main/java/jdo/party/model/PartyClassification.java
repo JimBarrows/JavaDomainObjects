@@ -32,11 +32,14 @@ public class PartyClassification extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@NotNull
+	@ManyToOne
 	private Party				classificationFor;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -48,8 +51,7 @@ public class PartyClassification extends BasePersistentModel {
 	/**
 	 * @return the classificationFor
 	 */
-	@NotNull
-	@ManyToOne
+	
 	public Party getClassificationFor() {
 		return classificationFor;
 	}

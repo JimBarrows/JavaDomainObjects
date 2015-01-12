@@ -20,6 +20,7 @@ public class WorkEffortSkill extends BasePersistentModel {
 
 	private int					estimatedNumberOfPeople;
 
+	@ManyToOne
 	private SkillType			skillType;
 
 	public int getEstimatedCost() {
@@ -34,7 +35,7 @@ public class WorkEffortSkill extends BasePersistentModel {
 		return estimatedNumberOfPeople;
 	}
 
-	@ManyToOne
+	
 	public SkillType getSkillType() {
 		return skillType;
 	}

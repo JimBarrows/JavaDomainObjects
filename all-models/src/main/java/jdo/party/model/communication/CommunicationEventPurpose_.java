@@ -6,9 +6,9 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.557-0700")
+@Generated(value="Dali", date="2015-01-11T23:41:07.976-0700")
 @StaticMetamodel(CommunicationEventPurpose.class)
 public class CommunicationEventPurpose_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<CommunicationEventPurpose, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<CommunicationEventPurpose, CommunicationEventPurposeType> type;
+	public static volatile SingularAttribute<CommunicationEventPurpose, DateTimeRange> dateTimeRange;
 }

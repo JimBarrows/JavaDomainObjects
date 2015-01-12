@@ -15,28 +15,28 @@ import jdo.party.model.Party;
 @Entity
 public class OrderRole extends BasePersistentModel {
 
-	private static final long	serialVersionUID	= 1L;
-
-	private Party				involving;
-
-	private Order				partOf;
-
-	private OrderRoleType		type;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
 	@NotNull
+	private Party involving;
+
+	@ManyToOne
+	@NotNull
+	private Order partOf;
+
+	@ManyToOne
+	@NotNull
+	private OrderRoleType type;
+
 	public Party getInvolving() {
 		return involving;
 	}
 
-	@ManyToOne
-	@NotNull
 	public Order getPartOf() {
 		return partOf;
 	}
 
-	@ManyToOne
-	@NotNull
 	public OrderRoleType getType() {
 		return type;
 	}

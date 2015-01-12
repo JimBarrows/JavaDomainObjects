@@ -9,8 +9,6 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import javax.validation.constraints.NotNull;
-import javax.xml.bind.annotation.XmlTransient;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
@@ -31,13 +29,16 @@ import org.joda.time.DateTime;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartyRole extends BasePersistentModel {
 
+	@ManyToOne
 	private Party						roleFor;
 
+	@ManyToMany
 	private List<ShipmentMethodType>	ableToShipVia	= new ArrayList<ShipmentMethodType>();
 
+	@Embedded
 	private DateTimeRange				dateTimeRange	= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -54,10 +55,7 @@ public class PartyRole extends BasePersistentModel {
 		dateTimeRange.setFrom(from);
 		dateTimeRange.setThru(thru);
 	}
-
-	@NotNull
-	@ManyToOne
-	@XmlTransient
+	
 	public Party getRoleFor() {
 		return roleFor;
 	}
@@ -66,7 +64,7 @@ public class PartyRole extends BasePersistentModel {
 		this.roleFor = roleFor;
 	}	
 
-	@ManyToMany
+
 	public List<ShipmentMethodType> getAbleToShipVia() {
 		return ableToShipVia;
 	}

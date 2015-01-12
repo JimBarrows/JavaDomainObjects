@@ -28,16 +28,8 @@ public class OrderValue extends BasePersistentModel {
 	 */
 	private static final long		serialVersionUID		= 1L;
 
-	private List<PriceComponent>	discountLevelDefinedFor	= new ArrayList<PriceComponent>();
-
-	private Money					fromAmount;
-
-	private Money					thruAmount;
-
 	@OneToMany(mappedBy = "basedOnOrderValue")
-	public List<PriceComponent> getDiscountLevelDefinedFor() {
-		return discountLevelDefinedFor;
-	}
+	private List<PriceComponent>	discountLevelDefinedFor	= new ArrayList<PriceComponent>();
 
 	@Min(0)
 	@Embedded
@@ -45,15 +37,26 @@ public class OrderValue extends BasePersistentModel {
 			@AttributeOverride(column=@Column(name="fromAmountCurrency"), name="currency"),
 			@AttributeOverride(column=@Column(name="fromAmountAmount"), name="amount")
 	})
-	public Money getFromAmount() {
-		return fromAmount;
-	}
+	private Money					fromAmount;
 
 	@Embedded
 	@AttributeOverrides(value={
 			@AttributeOverride(column=@Column(name="thruAmountCurrency"), name="currency"),
 			@AttributeOverride(column=@Column(name="thruAmountAmount"), name="amount")
 	})
+	private Money					thruAmount;
+
+	
+	public List<PriceComponent> getDiscountLevelDefinedFor() {
+		return discountLevelDefinedFor;
+	}
+
+	
+	public Money getFromAmount() {
+		return fromAmount;
+	}
+
+	
 	public Money getThruAmount() {
 		return thruAmount;
 	}

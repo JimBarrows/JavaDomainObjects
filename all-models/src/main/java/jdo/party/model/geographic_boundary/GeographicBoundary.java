@@ -4,24 +4,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Version;
-import javax.validation.constraints.NotNull;
- 
+import javax.xml.crypto.Data;
 
-
+import jdo.model.BasePersistentModel;
 import jdo.party.model.contactmechanism.PostalAddress;
 import jdo.product.model.supplier.ReorderGuideline;
 import jdo.salestax.model.SalesTaxLookup;
 
 import org.hibernate.validator.constraints.NotEmpty;
-
 
 /**
  * 
@@ -33,16 +27,23 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class GeographicBoundary {
+public class GeographicBoundary extends BasePersistentModel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private String abbreviation;
+	@ManyToMany
 	private List<PostalAddress> boundaryFor = new ArrayList<PostalAddress>();
 	private String code;
 	/**
 	 * The list of Geographic Boundaries that are contained inside this one.
 	 * 
 	 */
+	@OneToMany
 	private List<GeographicBoundary> contains = new ArrayList<GeographicBoundary>();
+	@NotEmpty
 	private String name;
 	private GeographicBoundaryType type;
 
@@ -50,10 +51,12 @@ public class GeographicBoundary {
 	 * The list of Geographic Boundaries that contain this one.
 	 * 
 	 */
+	@OneToMany
 	private List<GeographicBoundary> within = new ArrayList<GeographicBoundary>();
-
+	@OneToMany
 	private List<ReorderGuideline> reorderGuideline = new ArrayList<ReorderGuideline>();
-	
+
+	@OneToMany
 	private List<SalesTaxLookup> salesTaxLookup = new ArrayList<SalesTaxLookup>();
 
 	@OneToMany
@@ -84,7 +87,6 @@ public class GeographicBoundary {
 		return abbreviation;
 	}
 
-	@ManyToMany
 	public List<PostalAddress> getBoundaryFor() {
 		return boundaryFor;
 	}
@@ -93,23 +95,18 @@ public class GeographicBoundary {
 		return code;
 	}
 
-	@OneToMany
 	public List<GeographicBoundary> getContains() {
 		return contains;
 	}
 
-	@NotEmpty
 	public String getName() {
 		return name;
 	}
 
-	@ManyToOne
-	@NotNull
 	public GeographicBoundaryType getType() {
 		return type;
 	}
 
-	@OneToMany
 	public List<GeographicBoundary> getWithin() {
 		return within;
 	}
@@ -118,11 +115,10 @@ public class GeographicBoundary {
 		this.abbreviation = abbreviation;
 	}
 
-	@OneToMany
 	public List<ReorderGuideline> getReorderGuideline() {
 		return reorderGuideline;
 	}
-	
+
 	public void setBoundaryFor(List<PostalAddress> boundaryFor) {
 		this.boundaryFor = boundaryFor;
 	}
@@ -147,26 +143,4 @@ public class GeographicBoundary {
 		this.within = within;
 	}
 
-	protected Long id;
-
-	protected Long version = 0l;
-
-	@Id
-	@GeneratedValue
-	public Long getId() {
-		return id;
-	}
-
-	public void setId(Long id) {
-		this.id = id;
-	}
-
-	@Version
-	public Long getVersion() {
-		return version;
-	}
-
-	public void setVersion(Long version) {
-		this.version = version;
-	}
 }

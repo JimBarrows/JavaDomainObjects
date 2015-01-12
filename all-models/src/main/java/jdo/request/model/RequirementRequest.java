@@ -9,18 +9,16 @@ import jdo.requirement.model.Requirement;
 @Entity
 public class RequirementRequest extends BasePersistentModel {
 
-	private static final long	serialVersionUID	= 1L;
-
-	private Requirement			associatedTo;
-
-	private RequestItem			communicatedVia;
-
+	private static final long serialVersionUID = 1L;
 	@ManyToOne
+	private Requirement associatedTo;
+	@ManyToOne
+	private RequestItem communicatedVia;
+
 	public Requirement getAssociatedTo() {
 		return associatedTo;
 	}
 
-	@ManyToOne
 	public RequestItem getCommunicatedVia() {
 		return communicatedVia;
 	}

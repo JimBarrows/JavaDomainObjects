@@ -22,19 +22,23 @@ public class ProductSubstitute extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private Product				aUseOf;
+	@ManyToOne
+	private Product aUseOf;
 
-	private String				comment;
+	@Lob
+	private String comment;
 
-	private long				quantity;
+	@Min(0)
+	private long quantity;
 
-	private Product				substituteFor;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	@ManyToOne
+	private Product substituteFor;
 
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -43,22 +47,18 @@ public class ProductSubstitute extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public Product getAUseOf() {
 		return aUseOf;
 	}
 
-	@Lob
 	public String getComment() {
 		return comment;
 	}
 
-	@Min(0)
 	public long getQuantity() {
 		return quantity;
 	}
 
-	@ManyToOne
 	public Product getSubstituteFor() {
 		return substituteFor;
 	}

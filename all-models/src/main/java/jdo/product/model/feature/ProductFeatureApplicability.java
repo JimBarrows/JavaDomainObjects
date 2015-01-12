@@ -25,13 +25,16 @@ public class ProductFeatureApplicability extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Product				availableWith;
 
+	@ManyToOne
 	private ProductFeature		usedToDefine;
 
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -40,12 +43,12 @@ public class ProductFeatureApplicability extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
+	
 	public Product getAvailableWith() {
 		return availableWith;
 	}
 
-	@ManyToOne
+	
 	public ProductFeature getUsedToDefine() {
 		return usedToDefine;
 	}

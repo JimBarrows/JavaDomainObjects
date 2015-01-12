@@ -7,7 +7,7 @@ import javax.persistence.metamodel.StaticMetamodel;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.788-0700")
+@Generated(value="Dali", date="2015-01-11T23:55:25.544-0700")
 @StaticMetamodel(OrderValue.class)
 public class OrderValue_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<OrderValue, PriceComponent> discountLevelDefinedFor;

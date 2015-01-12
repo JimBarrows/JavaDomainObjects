@@ -3,6 +3,7 @@ package jdo.invoice.model.payment;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.humanresoures.model.payroll.Deduction;
@@ -14,15 +15,17 @@ public class Paycheck extends Disbursement {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private List<Deduction>		deductions;
-
-	private PartyRole			issuedFrom;
-
-	private PartyRole			issuedTo;
+	private static final long serialVersionUID = 1L;
 
 	@OneToMany
+	private List<Deduction> deductions;
+
+	@ManyToOne
+	private PartyRole issuedFrom;
+
+	@ManyToOne
+	private PartyRole issuedTo;
+
 	public List<Deduction> getDeductions() {
 		return deductions;
 	}

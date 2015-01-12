@@ -7,7 +7,7 @@ import jdo.product.model.identificationCode.GoodIdentification;
 import jdo.product.model.storage.InventoryItem;
 import jdo.product.model.supplier.SupplierProduct;
 
-@Generated(value="Dali", date="2014-12-02T21:45:38.207-0700")
+@Generated(value="Dali", date="2015-01-12T06:58:09.487-0700")
 @StaticMetamodel(Good.class)
 public class Good_ extends Product_ {
 	public static volatile ListAttribute<Good, InventoryItem> genericDescriptionFor;
