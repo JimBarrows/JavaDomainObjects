@@ -9,10 +9,9 @@ import jdo.party.model.contactmechanism.PostalAddress;
 import jdo.product.model.supplier.ReorderGuideline;
 import jdo.salestax.model.SalesTaxLookup;
 
-@Generated(value="Dali", date="2015-01-12T07:18:38.637-0700")
+@Generated(value="Dali", date="2015-01-12T16:01:03.283-0700")
 @StaticMetamodel(GeographicBoundary.class)
 public class GeographicBoundary_ extends BasePersistentModel_ {
-	public static volatile ListAttribute<GeographicBoundary, SalesTaxLookup> salesTaxLookup;
 	public static volatile SingularAttribute<GeographicBoundary, String> abbreviation;
 	public static volatile ListAttribute<GeographicBoundary, PostalAddress> boundaryFor;
 	public static volatile SingularAttribute<GeographicBoundary, String> code;

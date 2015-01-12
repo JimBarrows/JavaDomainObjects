@@ -11,7 +11,7 @@ import jdo.party.model.PartyRole;
 import jdo.party.model.facility.Facility;
 import jdo.shipment.model.Shipment;
 
-@Generated(value="Dali", date="2015-01-12T07:25:38.709-0700")
+@Generated(value="Dali", date="2015-01-12T15:57:17.142-0700")
 @StaticMetamodel(ShipmentRouteSegment.class)
 public class ShipmentRouteSegment_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<ShipmentRouteSegment, Date> actualArrival;
@@ -23,8 +23,8 @@ public class ShipmentRouteSegment_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<ShipmentRouteSegment, Shipment> shipmentOf;
 	public static volatile SingularAttribute<ShipmentRouteSegment, Facility> shippedFrom;
 	public static volatile SingularAttribute<ShipmentRouteSegment, Facility> shippedTo;
+	public static volatile SingularAttribute<ShipmentRouteSegment, Vehicle> vehicle;
 	public static volatile SingularAttribute<ShipmentRouteSegment, ShipmentMethodType> shippedVia;
 	public static volatile SingularAttribute<ShipmentRouteSegment, PartyRole> shipppedBy;
 	public static volatile SingularAttribute<ShipmentRouteSegment, Long> startMileage;
-	public static volatile SingularAttribute<ShipmentRouteSegment, Vehicle> vehicle;
 }

@@ -36,8 +36,7 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 
 	@OneToMany
 	private List<ShipmentItem>	billingForShipmentItem;
-
-	@OneToMany
+	
 	public List<ShipmentItem> getBillingForShipmentItem() {
 		return billingForShipmentItem;
 	}

@@ -8,7 +8,7 @@ import jdo.party.model.communication.CaseRole;
 import jdo.party.model.communication.CommunicationEventRole;
 import jdo.party.model.facility.FacilityRole;
 
-@Generated(value="Dali", date="2015-01-12T06:42:40.936-0700")
+@Generated(value="Dali", date="2015-01-12T16:01:59.459-0700")
 @StaticMetamodel(Party.class)
 public class Party_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<Party, PartyRole> actingAs;
@@ -16,8 +16,6 @@ public class Party_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<Party, PartyClassification> classifiedInto;
 	public static volatile ListAttribute<Party, PartyContactMechanism> contactedVia;
 	public static volatile ListAttribute<Party, CommunicationEventRole> eventRolesInvolvedIn;
-	public static volatile ListAttribute<Party, FacilityRole> involvedInFacilityRole;
-	public static volatile ListAttribute<Party, PartyPostalAddress> residingAt;
 	public static volatile ListAttribute<Party, FacilityRole> involvedInFacilityRole;
 	public static volatile ListAttribute<Party, PartyPostalAddress> residingAt;
 }

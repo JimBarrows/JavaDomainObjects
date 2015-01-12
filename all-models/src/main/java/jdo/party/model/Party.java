@@ -169,17 +169,14 @@ public class Party extends BasePersistentModel implements Serializable {
 
 	/**
 	 * @return the involvedInFacilityRole
-	 */
-	@OneToMany(mappedBy = "forParty", cascade = { CascadeType.MERGE, CascadeType.PERSIST, CascadeType.REFRESH })
+	 */	
 	public List<FacilityRole> getInvolvedInFacilityRole() {
 		return involvedInFacilityRole;
 	}
 
 	/**
 	 * @return the residingAt
-	 */
-	@OneToMany(mappedBy = "specifiedFor", cascade = CascadeType.ALL)
-	@OrderBy("dateTimeRange.from")
+	 */	
 	public List<PartyPostalAddress> getResidingAt() {
 		return residingAt;
 	}

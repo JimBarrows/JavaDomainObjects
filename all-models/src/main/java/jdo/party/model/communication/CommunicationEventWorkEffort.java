@@ -32,7 +32,6 @@ public class CommunicationEventWorkEffort extends BasePersistentModel {
 		return effortFor;
 	}
 
-	@ManyToOne
 	public CommunicationEvent getEventFrom() {
 		return eventFrom;
 	}
