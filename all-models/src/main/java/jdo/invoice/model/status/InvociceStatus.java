@@ -18,23 +18,25 @@ public class InvociceStatus extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date				statusDate;
 
+	@ManyToOne
 	private Invoice				statusFor;
 
+	@ManyToOne
 	private InvoiceStatusType	type;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	public Date getStatusDate() {
 		return statusDate;
 	}
 
-	@ManyToOne
+	
 	public Invoice getStatusFor() {
 		return statusFor;
 	}
-
-	@ManyToOne
+	
 	public InvoiceStatusType getType() {
 		return type;
 	}

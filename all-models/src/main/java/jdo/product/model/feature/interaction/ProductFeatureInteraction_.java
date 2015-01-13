@@ -7,10 +7,10 @@ import jdo.model.BasePersistentModel_;
 import jdo.product.model.Product;
 import jdo.product.model.feature.ProductFeature;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.735-0700")
+@Generated(value="Dali", date="2015-01-13T00:07:01.027-0700")
 @StaticMetamodel(ProductFeatureInteraction.class)
 public class ProductFeatureInteraction_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<ProductFeatureInteraction, ProductFeature> AFactorIn;
+	public static volatile SingularAttribute<ProductFeatureInteraction, ProductFeature> aFactorIn;
 	public static volatile SingularAttribute<ProductFeatureInteraction, Product> applicableWithinTheContextOf;
 	public static volatile SingularAttribute<ProductFeatureInteraction, ProductFeature> of;
 }

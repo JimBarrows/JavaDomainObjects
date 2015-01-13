@@ -21,6 +21,7 @@ public class PositionTypeRate extends BasePersistentModel {
 	@ManyToOne
 	private SalaryStep				associatedWith;
 
+	@ManyToOne
 	private PeriodType				forPeriodType;
 
 	@ManyToOne

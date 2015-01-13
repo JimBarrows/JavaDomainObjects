@@ -17,7 +17,6 @@ import jdo.product.model.Good;
  * @see Data Model Resource Book Volume 1 Figure 3.3, page 75
  */
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class GoodIdentification extends BasePersistentModel {
 
 	/**

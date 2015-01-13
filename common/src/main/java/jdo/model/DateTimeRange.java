@@ -2,7 +2,6 @@ package jdo.model;
 
 import java.io.Serializable;
 
-import javax.persistence.Column;
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
@@ -15,9 +14,12 @@ import org.joda.time.DateTime;
 @Embeddable
 public class DateTimeRange implements Serializable {
 
-	private DateTime	from	= new DateTime();
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	@NotNull
+	private DateTime	fromDate	= new DateTime();
 
-	private DateTime	thru;
+	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
+	private DateTime	thruDate;
 
 	/**
 	 * Determines if a model is active. A model is active if now is after or
@@ -26,7 +28,23 @@ public class DateTimeRange implements Serializable {
 	@XmlTransient
 	@Transient
 	public boolean isActive() {
-		return (from.isBeforeNow() || from.isEqualNow()) && (thru == null ? true : (thru.isAfterNow() || thru.isEqualNow()));
+		return (fromDate.isBeforeNow() || fromDate.isEqualNow()) && (thruDate == null ? true : (thruDate.isAfterNow() || thruDate.isEqualNow()));
+	}
+
+	public DateTime getFromDate() {
+		return fromDate;
+	}
+
+	public void setFromDate(DateTime fromDate) {
+		this.fromDate = fromDate;
+	}
+
+	public DateTime getThruDate() {
+		return thruDate;
+	}
+
+	public void setThruDate(DateTime thruDate) {
+		this.thruDate = thruDate;
 	}
 
 	@XmlTransient
@@ -34,44 +52,23 @@ public class DateTimeRange implements Serializable {
 	@AssertTrue(message = "Dates are not valid the thru date must be empty, or after the from date.")
 	public boolean isDateRangeValid() {
 		boolean valid = false;
-		if (from == null) {
+		if (fromDate == null) {
 			valid = false;
-		} else if (thru == null) {
+		} else if (thruDate == null) {
 			valid = true;
 		} else {
-			valid = thru.isAfter(from);
+			valid = thruDate.isAfter(fromDate);
 		}
 		return valid;
 	}
 
-	@Column(name = "fromDate")
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-	@NotNull
-	public DateTime getFrom() {
-		return from;
-	}
-
-	public void setFrom(DateTime from) {
-		this.from = from;
-	}
-
-	@Column(name = "thruDate")
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-	public DateTime getThru() {
-		return thru;
-	}
-
-	public void setThru(DateTime thru) {
-		this.thru = thru;
-	}
+	
+	
 
 	/**
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@Override
-	public String toString() {
-		return "DateTimeRange [from=" + from + ", thru=" + thru + "]";
-	}
+	
 }

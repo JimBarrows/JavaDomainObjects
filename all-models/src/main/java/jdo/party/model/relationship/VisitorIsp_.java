@@ -1,13 +1,9 @@
 package jdo.party.model.relationship;
 
 import javax.annotation.Generated;
-import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
-import jdo.party.model.PartyRole;
 
-@Generated(value="Dali", date="2014-12-02T21:46:51.454-0700")
+@Generated(value="Dali", date="2015-01-13T06:52:46.205-0700")
 @StaticMetamodel(VisitorIsp.class)
 public class VisitorIsp_ extends PartyRelationship_ {
-	public static volatile SingularAttribute<VisitorIsp, PartyRole> relationshipFrom;
-	public static volatile SingularAttribute<VisitorIsp, PartyRole> relationshipTo;
 }

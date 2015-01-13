@@ -5,7 +5,7 @@ import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 import jdo.model.BasePersistentModel_;
 
-@Generated(value="Dali", date="2014-12-24T17:30:45.607-0700")
+@Generated(value="Dali", date="2015-01-13T06:28:38.054-0700")
 @StaticMetamodel(WebUserPreference.class)
 public class WebUserPreference_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<WebUserPreference, WebPreferenceType> describedBy;

@@ -16,6 +16,7 @@ public class PartyQualification extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Party							heldBy;
 
 	@ManyToOne

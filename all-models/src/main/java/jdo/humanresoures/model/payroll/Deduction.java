@@ -22,6 +22,7 @@ public class Deduction extends BasePersistentModel {
 	@ManyToOne
 	private DeductionType			type;
 
+	@ManyToOne
 	private Paycheck					reductionOf;
 
 	public Paycheck getReductionOf() {

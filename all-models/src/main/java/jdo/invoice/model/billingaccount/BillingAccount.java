@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.invoice.model.Invoice;
@@ -19,11 +21,13 @@ public class BillingAccount extends BasePersistentModel {
 	 */
 	private static final long			serialVersionUID	= 1L;
 
+	@ManyToOne
 	private ContactMechanism			billedAt;
 
 	@OneToMany
 	private List<Invoice>				billedFor;
 
+	@Lob
 	private String						description;
 
 	@OneToMany

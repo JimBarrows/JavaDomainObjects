@@ -15,7 +15,6 @@ import jdo.budget.model.GlBudgetXref;
 import jdo.model.BasePersistentModel;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class GeneralLedgerAccount extends BasePersistentModel {
 
 	/**

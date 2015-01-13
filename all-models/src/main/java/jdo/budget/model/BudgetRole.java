@@ -14,6 +14,7 @@ public class BudgetRole extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Party				forParty;
 
 	@ManyToOne

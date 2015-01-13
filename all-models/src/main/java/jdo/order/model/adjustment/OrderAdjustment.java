@@ -18,40 +18,40 @@ public class OrderAdjustment extends jdo.model.BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private OrderItem			affectingItem;
-
-	private Order				affectingOrder;
-
-	private Money				amount;
-
-	private int					percentage;
-
-	private OrderAdjustmentType	type;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
+	private OrderItem affectingItem;
+
+	@ManyToOne
+	private Order affectingOrder;
+
+	@Embedded
+	private Money amount;
+
+	@Min(0)
+	@Max(100)
+	private int percentage;
+
+	@ManyToOne
+	private OrderAdjustmentType type;
+
 	public OrderItem getAffectingItem() {
 		return affectingItem;
 	}
 
-	@ManyToOne
 	public Order getAffectingOrder() {
 		return affectingOrder;
 	}
 
-	@Embedded
 	public Money getAmount() {
 		return amount;
 	}
 
-	@Min(0)
-	@Max(100)
 	public int getPercentage() {
 		return percentage;
 	}
 
-	@NotNull
 	public OrderAdjustmentType getType() {
 		return type;
 	}

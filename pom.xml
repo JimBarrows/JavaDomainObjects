@@ -37,10 +37,10 @@
 	</issueManagement>
 
 	<scm>
-		<connection>https://github.com/JimBarrows/JavaDomainObjects</connection>
-		<developerConnection>https://github.com/JimBarrows/JavaDomainObjects</developerConnection>
+		<connection>scm:git:https://github.com/JimBarrows/JavaDomainObjects</connection>
+		<developerConnection>scm:git:https://github.com/JimBarrows/JavaDomainObjects</developerConnection>
 		<tag>HEAD</tag>
-		<url>https://github.com/JimBarrows/JavaDomainObjects</url>
+		<url>scm:git:https://github.com/JimBarrows/JavaDomainObjects</url>
 	</scm>
 
 	<properties>
@@ -349,5 +349,31 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
+	<reporting>
+		<plugins>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-pmd-plugin</artifactId>
+				<version>3.3</version>
+				<configuration>
+					<targetJdk>1.8</targetJdk>
+					<excludes>
+						<exclude>**/*_.java</exclude>						
+					</excludes>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>2.13</version>
+				<reportSets>
+					<reportSet>
+						<reports>
+							<report>checkstyle</report>
+						</reports>
+					</reportSet>
+				</reportSets>
+			</plugin>
+		</plugins>
+	</reporting>
 </project>

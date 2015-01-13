@@ -11,15 +11,16 @@ import jdo.party.model.contactmechanism.ContactMechanismPurposeType;
 public class OrderContactMechanism extends BasePersistentModel {
 
 	private static final long			serialVersionUID	= 1L;
+	@ManyToOne
 	private ContactMechanism			contactMechanism;
+	@ManyToOne
 	private ContactMechanismPurposeType	usedFor;
 
-	@ManyToOne
+	
 	public ContactMechanism getContactMechanism() {
 		return contactMechanism;
 	}
-
-	@ManyToOne
+	
 	public ContactMechanismPurposeType getUsedFor() {
 		return usedFor;
 	}

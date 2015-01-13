@@ -1,6 +1,7 @@
 package jdo.accounting.model.transaction;
 
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import jdo.party.model.Party;
 
@@ -12,8 +13,10 @@ public class ExternalAccountingTransaction extends AccountingTransaction {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Party				partyFrom;
 
+	@ManyToOne
 	private Party				partyTo;
 
 	public Party getPartyFrom() {

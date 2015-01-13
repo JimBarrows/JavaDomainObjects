@@ -15,6 +15,7 @@ public class PaymentBudgetAllocation extends jdo.model.BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Payment						allocationOf;
 
 	@Embedded

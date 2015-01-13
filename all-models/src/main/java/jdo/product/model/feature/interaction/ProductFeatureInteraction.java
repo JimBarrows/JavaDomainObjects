@@ -26,24 +26,26 @@ public class ProductFeatureInteraction extends jdo.model.BasePersistentModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@ManyToOne
 	private ProductFeature aFactorIn;
 
+	@ManyToOne
 	private Product applicableWithinTheContextOf;
 
+	@ManyToOne
+	@JoinColumn(name = "productFeatureOf")
 	private ProductFeature of;
 
-	@ManyToOne
+	
 	public ProductFeature getAFactorIn() {
 		return aFactorIn;
 	}
 
-	@ManyToOne
+	
 	public Product getApplicableWithinTheContextOf() {
 		return applicableWithinTheContextOf;
 	}
-
-	@ManyToOne
-	@JoinColumn(name = "productFeatureOf")
+	
 	public ProductFeature getOf() {
 		return of;
 	}

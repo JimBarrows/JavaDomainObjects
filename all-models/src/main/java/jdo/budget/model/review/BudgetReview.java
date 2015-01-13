@@ -22,6 +22,7 @@ public class BudgetReview extends BasePersistentModel {
 	@ManyToOne
 	private Budget									forBudget;
 
+	@ManyToOne
 	private Party										ofParty;
 
 	@ManyToOne

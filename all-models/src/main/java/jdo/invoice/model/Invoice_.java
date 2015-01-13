@@ -5,13 +5,14 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.ListAttribute;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.accounting.model.transaction.SalesAccountingTransaction;
 import jdo.invoice.model.billingaccount.BillingAccount;
 import jdo.invoice.model.term.InvoiceTerm;
 import jdo.model.BasePersistentModel_;
 import jdo.party.model.Party;
 import jdo.party.model.contactmechanism.ContactMechanism;
 
-@Generated(value="Dali", date="2014-12-29T22:42:32.367-0700")
+@Generated(value="Dali", date="2015-01-13T06:37:08.145-0700")
 @StaticMetamodel(Invoice.class)
 public class Invoice_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Invoice, ContactMechanism> addressedTo;
@@ -25,4 +26,5 @@ public class Invoice_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Invoice, String> message;
 	public static volatile SingularAttribute<Invoice, ContactMechanism> sentFrom;
 	public static volatile ListAttribute<Invoice, InvoiceTerm> terms;
+	public static volatile SingularAttribute<Invoice, SalesAccountingTransaction> postedVia;
 }

@@ -43,6 +43,7 @@ public class InvoiceItem extends BasePersistentModel {
 	@OneToMany
 	private List<WorkEffortBilling>	billingForWorkEffort;
 
+	@ManyToOne
 	private ProductFeature					chargeforFeature;
 
 	@ManyToOne
@@ -54,6 +55,7 @@ public class InvoiceItem extends BasePersistentModel {
 	@Lob
 	private String									description;
 
+	@Min(0)
 	private int											quantity;
 
 	@Min(0)
@@ -67,6 +69,7 @@ public class InvoiceItem extends BasePersistentModel {
 	@OneToMany
 	private List<InvoiceTerm>				terms;
 
+	@ManyToOne
 	private InvoiceItemType					type;
 
 	@OneToMany

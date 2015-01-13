@@ -27,47 +27,49 @@ public class Position extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long									serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private BudgetItem												approvedThru;
-
-	@OneToMany
-	private List<PositionResponsibility>			assigendTo;
-
-	@Temporal(TemporalType.DATE)
-	private Date															estimatedFromDate;
-
-	@Temporal(TemporalType.DATE)
-	private Date															estimatedThruDate;
-
-	private boolean														exempt;
+	@ManyToOne
+	private BudgetItem approvedThru;
 
 	@OneToMany
-	private List<PositionFulfillment>					filledBy;
+	private List<PositionResponsibility> assigendTo;
 
-	private boolean														fulltime;
+	@Temporal(TemporalType.DATE)
+	private Date estimatedFromDate;
+
+	@Temporal(TemporalType.DATE)
+	private Date estimatedThruDate;
+
+	private boolean exempt;
+
+	@OneToMany
+	private List<PositionFulfillment> filledBy;
+
+	private boolean fulltime;
 
 	@OneToMany(mappedBy = "subordinate")
-	private List<PositionReportingStructure>	manages;
+	private List<PositionReportingStructure> manages;
 
 	@OneToMany(mappedBy = "manager")
-	private List<PositionReportingStructure>	reportsTo;
+	private List<PositionReportingStructure> reportsTo;
 
-	private boolean														salary;
+	private boolean salary;
 
 	@ManyToOne
-	private PositionStatus										status;
+	private PositionStatus status;
 
 	@Column(name = "isATemp")
-	private boolean														temporary;
+	private boolean temporary;
 
 	@ManyToOne
-	private PositionType											type;
+	private PositionType type;
 
-	private Organization											within;
+	@ManyToOne
+	private Organization within;
 
 	@Embedded
-	private DateTimeRange											dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;

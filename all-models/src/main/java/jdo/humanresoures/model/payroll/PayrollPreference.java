@@ -26,12 +26,15 @@ public class PayrollPreference extends BasePersistentModel {
 	@Embedded
 	private Money							flatAmount;
 
+	@ManyToOne
 	private PartyRole					forEmployee;
 
+	@ManyToOne
 	private PartyRole					forInternalOrganization;
 
 	private int								percentage;
 
+	@ManyToOne
 	private PeriodType				period;
 
 	private String						routingNumber;

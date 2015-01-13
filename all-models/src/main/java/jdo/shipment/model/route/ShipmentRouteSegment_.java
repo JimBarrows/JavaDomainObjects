@@ -11,7 +11,7 @@ import jdo.party.model.PartyRole;
 import jdo.party.model.facility.Facility;
 import jdo.shipment.model.Shipment;
 
-@Generated(value="Dali", date="2015-01-12T15:57:17.142-0700")
+@Generated(value="Dali", date="2015-01-12T22:54:59.684-0700")
 @StaticMetamodel(ShipmentRouteSegment.class)
 public class ShipmentRouteSegment_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<ShipmentRouteSegment, Date> actualArrival;

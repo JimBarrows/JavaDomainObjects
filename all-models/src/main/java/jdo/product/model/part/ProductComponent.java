@@ -2,7 +2,6 @@ package jdo.product.model.part;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
@@ -22,21 +21,25 @@ public class ProductComponent extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private String				comment;
+	@Lob
+	private String comment;
 
-	private Product				in;
+	@ManyToOne
+	private Product in;
 
-	private String				instruction;
+	@Lob
+	private String instruction;
 
-	private Product				productFor;
+	@ManyToOne
+	private Product productFor;
 
-	private long				quantityUsed;
-
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
-
+	@Min(1)
+	private long quantityUsed;
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -45,28 +48,22 @@ public class ProductComponent extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@Lob
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
-	@JoinColumn(name = "productComponentIn")
 	public Product getIn() {
 		return in;
 	}
 
-	@Lob
 	public String getInstruction() {
 		return instruction;
 	}
 
-	@ManyToOne
 	public Product getProductFor() {
 		return productFor;
 	}
 
-	@Min(0)
 	public long getQuantityUsed() {
 		return quantityUsed;
 	}

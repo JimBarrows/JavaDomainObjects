@@ -4,6 +4,8 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import jdo.humanresoures.model.position.Position;
 import jdo.model.BasePersistentModel;
@@ -17,6 +19,7 @@ public class EmploymentApplication extends BasePersistentModel {
 	 */
 	private static final long								serialVersionUID	= 1L;
 
+	@Temporal(TemporalType.DATE)
 	private Date														applicationDate;
 
 	@ManyToOne
@@ -28,8 +31,10 @@ public class EmploymentApplication extends BasePersistentModel {
 	@ManyToOne
 	private Person													referredBy;
 
+	@ManyToOne
 	private EmploymnetApplicationSourceType	source;
 
+	@ManyToOne
 	private EmploymentApplicationStatusType	status;
 
 	public Date getApplicationDate() {

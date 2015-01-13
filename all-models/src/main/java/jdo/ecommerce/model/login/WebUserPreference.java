@@ -1,14 +1,14 @@
 package jdo.ecommerce.model.login;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class WebUserPreference extends BasePersistentModel {
 
 	/**
@@ -16,10 +16,14 @@ public class WebUserPreference extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private WebPreferenceType	describedBy;
 
+	@ManyToOne
 	private UserLogin			preferenceFor;
 
+	@NotEmpty
+	@Column(name="preferenceValue")
 	private String				value				= "default";
 
 	public void setValue(String newValue) {
@@ -33,12 +37,12 @@ public class WebUserPreference extends BasePersistentModel {
 	/**
 	 * @return the describedBy
 	 */
-	@ManyToOne
+	
 	public WebPreferenceType getDescribedBy() {
 		return describedBy;
 	}
 
-	@ManyToOne
+	
 	public UserLogin getPreferenceFor() {
 		return preferenceFor;
 	}

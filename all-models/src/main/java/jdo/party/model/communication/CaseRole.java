@@ -8,7 +8,6 @@ import javax.validation.constraints.NotNull;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.Party;
 
-import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;
 
 /**

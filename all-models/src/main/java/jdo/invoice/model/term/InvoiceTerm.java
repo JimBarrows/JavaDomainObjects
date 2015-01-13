@@ -14,27 +14,27 @@ public class InvoiceTerm extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-
-	private Invoice				conditionForInvoice;
-
-	private InvoiceItem			conditionForInvoiceItem;
-
-	private int					termValue;
-
-	private InvoiceTermType		type;
-
-	@AssertTrue
-	public boolean forItemOrInvoiceOnly() {
-		return (conditionForInvoiceItem != null) ^ (conditionForInvoice != null);
-	}
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
+	private Invoice conditionForInvoice;
+	@ManyToOne
+	private InvoiceItem conditionForInvoiceItem;
+
+	private int termValue;
+	@ManyToOne
+	private InvoiceTermType type;
+
+	@AssertTrue
+	public boolean forItemXorInvoiceOnly() {
+		return (conditionForInvoiceItem != null)
+				^ (conditionForInvoice != null);
+	}
+
 	public Invoice getConditionForInvoice() {
 		return conditionForInvoice;
 	}
 
-	@ManyToOne
 	public InvoiceItem getConditionForInvoiceItem() {
 		return conditionForInvoiceItem;
 	}
@@ -43,7 +43,6 @@ public class InvoiceTerm extends BasePersistentModel {
 		return termValue;
 	}
 
-	@ManyToOne
 	public InvoiceTermType getType() {
 		return type;
 	}

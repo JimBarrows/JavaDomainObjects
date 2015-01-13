@@ -28,24 +28,28 @@ import org.joda.time.DateTime;
  * @see The Data Model Resource Book Volume 1 Figure 2.7, Page 48
  * @see Data Model Resource Book Volume 1 Figure 2.12, page 60
  */
-@SuppressWarnings("serial")
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class PartyRelationship extends BasePersistentModel {	
+public class PartyRelationship extends BasePersistentModel {
 
-	private String				comment;
+	@Lob
+	private String comment;
 
-	private PriorityType		priority;
+	@ManyToOne
+	private PriorityType priority;
 
-	private PartyRole			relationshipFrom;
-
-	private PartyRole			relationshipTo;
-
-	private StatusType			status;
-
-	private DateTimeRange		dateTimeRange	= new DateTimeRange();
+	@ManyToOne(optional = false, targetEntity = PartyRole.class)
+	@NotNull
+	private PartyRole relationshipFrom;
+	@ManyToOne(optional = false, targetEntity = PartyRole.class)
+	@NotNull
+	private PartyRole relationshipTo;
+	@ManyToOne(targetEntity = StatusType.class)
+	private StatusType status;
 
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -58,33 +62,35 @@ public class PartyRelationship extends BasePersistentModel {
 		super();
 	}
 
-	public PartyRelationship(PartyRole relationshipFrom, PartyRole relationshipTo) {
+	public PartyRelationship(PartyRole relationshipFrom,
+			PartyRole relationshipTo) {
 		super();
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
 	}
-		
 
-	public PartyRelationship( String comment, PartyRole from, PartyRole to) {
+	public PartyRelationship(String comment, PartyRole from, PartyRole to) {
 		super();
 		this.comment = comment;
 		relationshipFrom = from;
 		relationshipTo = to;
 	}
 
-	public PartyRelationship(Long id, Long version, DateTime from, DateTime thru, String comment, PartyRole relationshipFrom,
+	public PartyRelationship(Long id, Long version, DateTime from,
+			DateTime thru, String comment, PartyRole relationshipFrom,
 			PartyRole relationshipTo) {
 		super(id, version);
-		this.dateTimeRange.setFrom(from);
-		this.dateTimeRange.setThru(thru);		
+		this.dateTimeRange.setFromDate(from);
+		this.dateTimeRange.setThruDate(thru);
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
 	}
 
-	public PartyRelationship(DateTime from, DateTime thru, String comment, PartyRole relationshipFrom, PartyRole relationshipTo) {
-		this.dateTimeRange.setFrom(from);
-		this.dateTimeRange.setThru(thru);
+	public PartyRelationship(DateTime from, DateTime thru, String comment,
+			PartyRole relationshipFrom, PartyRole relationshipTo) {
+		this.dateTimeRange.setFromDate(from);
+		this.dateTimeRange.setThruDate(thru);
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
@@ -94,31 +100,24 @@ public class PartyRelationship extends BasePersistentModel {
 	@AssertFalse
 	public boolean isRelationshipRolesNull() {
 		return relationshipFrom == null || relationshipTo == null;
-	}	
+	}
 
-	@Lob	
 	public String getComment() {
 		return comment;
 	}
 
-	@ManyToOne
 	public PriorityType getPriority() {
 		return priority;
 	}
 
-	@ManyToOne(optional = false, targetEntity = PartyRole.class)
-	@NotNull
 	protected PartyRole getRelationshipFrom() {
 		return relationshipFrom;
 	}
 
-	@ManyToOne(optional = false, targetEntity = PartyRole.class)
-	@NotNull
 	protected PartyRole getRelationshipTo() {
 		return relationshipTo;
 	}
 
-	@ManyToOne(targetEntity = StatusType.class)
 	public StatusType getStatus() {
 		return status;
 	}
@@ -145,8 +144,11 @@ public class PartyRelationship extends BasePersistentModel {
 
 	@Override
 	public String toString() {
-		return "PartyRelationship [comment=" + comment + ", priority=" + priority + ", relationshipFrom=" + relationshipFrom + ", relationshipTo="
-				+ relationshipTo + ", status=" + status + ", dateTimeRange=" + dateTimeRange + ", id=" + getId() + ", version=" + getVersion() + "]";
+		return "PartyRelationship [comment=" + comment + ", priority="
+				+ priority + ", relationshipFrom=" + relationshipFrom
+				+ ", relationshipTo=" + relationshipTo + ", status=" + status
+				+ ", dateTimeRange=" + dateTimeRange + ", id=" + getId()
+				+ ", version=" + getVersion() + "]";
 	}
 
 }

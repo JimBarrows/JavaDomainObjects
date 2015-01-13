@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
@@ -25,10 +26,13 @@ public class PerformanceReview extends BasePersistentModel {
 	@ManyToOne
 	private PayHistory									affecting;
 
+	@Lob
 	private String											comments;
 
+	@ManyToOne
 	private PartyRole										forEmployee;
 
+	@ManyToOne
 	private PartyRole										fromManager;
 
 	@OneToMany
@@ -37,6 +41,7 @@ public class PerformanceReview extends BasePersistentModel {
 	@ManyToOne
 	private Position										newPosition;
 
+	@ManyToOne
 	private Paycheck										bonus;
 
 	@Embedded

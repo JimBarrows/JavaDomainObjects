@@ -26,7 +26,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @see Data Model Resource Book Volume 1 Figure 3.5, page 82
  */
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class GeographicBoundary extends BasePersistentModel {
 
 	/**

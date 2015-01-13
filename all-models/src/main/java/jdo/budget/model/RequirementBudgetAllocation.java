@@ -2,6 +2,7 @@ package jdo.budget.model;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.ManyToOne;
 
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
@@ -20,8 +21,10 @@ public class RequirementBudgetAllocation extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private BudgetItem			allocatedTo;
 
+	@ManyToOne
 	private Requirement			allocationOf;
 
 	@Embedded

@@ -4,6 +4,9 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 
 import jdo.model.BasePersistentModel;
 import jdo.party.model.Party;
@@ -16,15 +19,19 @@ public class PartySkill extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Party							heldBy;
 
+	@Min(0)
 	private int								skillLevel;
 
+	@Temporal(TemporalType.DATE)
 	private Date							startedUsing;
 
 	@ManyToOne
 	private SkillType					type;
 
+	@Min(0)
 	private int								yearsOfExperience;
 
 	public Party getHeldBy() {

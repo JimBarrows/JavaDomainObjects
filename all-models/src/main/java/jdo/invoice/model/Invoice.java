@@ -7,9 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
+import jdo.accounting.model.transaction.SalesAccountingTransaction;
 import jdo.invoice.model.billingaccount.BillingAccount;
 import jdo.invoice.model.term.InvoiceTerm;
 import jdo.model.BasePersistentModel;
@@ -25,15 +29,18 @@ public class Invoice extends BasePersistentModel {
 	private static final long	serialVersionUID	= 1L;
 
 	@NotNull
+	@ManyToOne
 	private ContactMechanism	addressedTo;
 
 	@NotNull
+	@ManyToOne
 	private Party				billedFrom;
 
 	@ManyToOne
 	private BillingAccount		billedToAccount;
 
 	@NotNull
+	@ManyToOne
 	private Party				billedToParty;
 
 	@OneToMany
@@ -43,6 +50,7 @@ public class Invoice extends BasePersistentModel {
 	private String				description;
 
 	@NotNull
+	@Temporal(TemporalType.DATE)
 	private Date				invoiceDate;
 	
 	@OneToMany
@@ -52,13 +60,14 @@ public class Invoice extends BasePersistentModel {
 	private String				message;
 
 	@NotNull
+	@ManyToOne
 	private ContactMechanism	sentFrom;
 
 	@OneToMany
 	private List<InvoiceTerm>	terms;
 
-	// @OneToOne
-	// private SalesAccountingTransaction postedVia;
+	 @OneToOne
+	 private SalesAccountingTransaction postedVia;
 
 	@AssertTrue
 	public boolean billedToPartyXorAccount() {
@@ -154,11 +163,11 @@ public class Invoice extends BasePersistentModel {
 		this.terms = terms;
 	}
 
-	// public SalesAccountingTransaction getPostedVia() {
-	// return postedVia;
-	// }
-	//
-	// public void setPostedVia(SalesAccountingTransaction postedVia) {
-	// this.postedVia = postedVia;
-	// }
+	 public SalesAccountingTransaction getPostedVia() {
+	 return postedVia;
+	 }
+	
+	 public void setPostedVia(SalesAccountingTransaction postedVia) {
+	 this.postedVia = postedVia;
+	 }
 }

@@ -21,30 +21,32 @@ public class OrganizationGlAccount extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long						serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
-	private GeneralLedgerAccount				accountFor;
+	private GeneralLedgerAccount accountFor;
 
 	@OneToMany(mappedBy = "subsidiaryOf")
-	private List<OrganizationGlAccount>	comprisedOf				= new ArrayList<OrganizationGlAccount>();
+	private List<OrganizationGlAccount> comprisedOf = new ArrayList<OrganizationGlAccount>();
 
 	@OneToMany
-	private List<TransactionDetail>			consistingOf			= new ArrayList<TransactionDetail>();
-
-	private PartyRole										internalOrganizationFor;
-
-	private PartyRole										referencingBillToCustomer;
-
-	private PartyRole										referencingSupplier;
+	private List<TransactionDetail> consistingOf = new ArrayList<TransactionDetail>();
 
 	@ManyToOne
-	private OrganizationGlAccount				subsidiaryOf;
+	private PartyRole internalOrganizationFor;
+	@ManyToOne
+	private PartyRole referencingBillToCustomer;
+	@ManyToOne
+	private PartyRole referencingSupplier;
 
-	private Product											referencingProduct;
+	@ManyToOne
+	private OrganizationGlAccount subsidiaryOf;
+
+	@ManyToOne
+	private Product referencingProduct;
 
 	@Embedded
-	private DateTimeRange								dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -62,13 +64,14 @@ public class OrganizationGlAccount extends BasePersistentModel {
 		return referencingProductCategory;
 	}
 
-	private ProductCategory	referencingProductCategory;
+	private ProductCategory referencingProductCategory;
 
 	public void setReferencingProduct(Product referencingProduct) {
 		this.referencingProduct = referencingProduct;
 	}
 
-	public void setReferencingProductCategory(ProductCategory referencingProductCategory) {
+	public void setReferencingProductCategory(
+			ProductCategory referencingProductCategory) {
 		this.referencingProductCategory = referencingProductCategory;
 	}
 

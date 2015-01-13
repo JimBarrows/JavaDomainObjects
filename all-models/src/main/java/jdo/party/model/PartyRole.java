@@ -52,8 +52,8 @@ public class PartyRole extends BasePersistentModel {
 	}	
 
 	public PartyRole(DateTime from, DateTime thru) {
-		dateTimeRange.setFrom(from);
-		dateTimeRange.setThru(thru);
+		dateTimeRange.setFromDate(from);
+		dateTimeRange.setThruDate(thru);
 	}
 	
 	public Party getRoleFor() {

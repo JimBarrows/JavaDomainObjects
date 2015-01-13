@@ -4,7 +4,10 @@ import java.util.Date;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
@@ -16,21 +19,25 @@ public class PerformanceNote extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private String							comment;
+	@Lob
+	private String comment;
 
-	private Date								communicationDate;
-
-	private PartyRole						forEmployee;
-
-	private PartyRole						fromManger;
+	@Temporal(TemporalType.DATE)
+	private Date communicationDate;
 
 	@ManyToOne
-	private PerformanceNoteType	type;
+	private PartyRole forEmployee;
+
+	@ManyToOne
+	private PartyRole fromManger;
+
+	@ManyToOne
+	private PerformanceNoteType type;
 
 	@Embedded
-	private DateTimeRange				dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;

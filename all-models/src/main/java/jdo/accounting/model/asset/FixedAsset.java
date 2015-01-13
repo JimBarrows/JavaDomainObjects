@@ -6,12 +6,14 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
+import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
 import jdo.model.BasePersistentModel;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class FixedAsset extends BasePersistentModel {
 
 	/**
@@ -26,8 +28,10 @@ public class FixedAsset extends BasePersistentModel {
 	@OneToMany
 	private List<FixedAssetDepreciationMethod>	depreciatedVia;
 
+	@Lob
 	private String								description;
 
+	@NotEmpty
 	private String								name;
 
 	private Date								nextService;
