@@ -23,7 +23,7 @@ public class WebAddress extends ElectronicAddress {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@OneToMany
+	@OneToMany(mappedBy="hostedVia")
 	private List<Visit>				hostOf;
 
 	@AssertTrue

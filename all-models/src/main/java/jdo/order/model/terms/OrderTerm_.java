@@ -8,7 +8,7 @@ import jdo.model.BasePersistentModel_;
 import jdo.order.model.Order;
 import jdo.order.model.OrderItem;
 
-@Generated(value="Dali", date="2014-12-24T17:30:47.511-0700")
+@Generated(value="Dali", date="2015-01-13T23:23:50.355-0700")
 @StaticMetamodel(OrderTerm.class)
 public class OrderTerm_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<OrderTerm, OrderItem> conditionForItem;

@@ -23,7 +23,6 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @SuppressWarnings("serial")
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PostalAddress extends ContactMechanism {
 
 	@NotEmpty
@@ -33,7 +32,7 @@ public class PostalAddress extends ContactMechanism {
 	@Lob
 	private String										directions;
 
-	@OneToMany
+	@OneToMany(mappedBy="locatedAt")
 	private List<PartyPostalAddress>	locationFor	= new ArrayList<PartyPostalAddress>();
 
 	@ManyToMany(mappedBy = "boundaryFor")

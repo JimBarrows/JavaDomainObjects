@@ -18,24 +18,24 @@ public class Document extends BasePersistentModel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	@ManyToOne
 	private ShipmentItem		forItem;
-
+	@ManyToOne
 	private ShipmentPackage		forPackage;
-
+	@ManyToOne
 	private Shipment			forShipment;
 
-	@ManyToOne
+	
 	public ShipmentItem getForItem() {
 		return forItem;
 	}
 
-	@ManyToOne
+	
 	public ShipmentPackage getForPackage() {
 		return forPackage;
 	}
 
-	@ManyToOne
+	
 	public Shipment getForShipment() {
 		return forShipment;
 	}

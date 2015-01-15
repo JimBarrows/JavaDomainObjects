@@ -17,16 +17,16 @@ public class SalesTaxLookup extends BasePersistentModel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	@ManyToOne
 	private GeographicBoundary	salesTaxLookupFor;
-
+	@Embedded
 	private Money				salesTaxPercentage;
-
+	@ManyToOne
 	private ProductCategory		specifiedFor;
-
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -35,17 +35,17 @@ public class SalesTaxLookup extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
+	
 	public GeographicBoundary getSalesTaxLookupFor() {
 		return salesTaxLookupFor;
 	}
 
-	@Embedded
+	
 	public Money getSalesTaxPercentage() {
 		return salesTaxPercentage;
 	}
 
-	@ManyToOne
+	
 	public ProductCategory getSpecifiedFor() {
 		return specifiedFor;
 	}

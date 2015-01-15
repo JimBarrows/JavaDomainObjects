@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.crypto.Data;
 
@@ -40,7 +41,7 @@ public class Facility extends BasePersistentModel{
 	@OneToMany
 	private List<Facility> madeUpOf = new ArrayList<Facility>();
 	
-	
+	@ManyToOne
 	private Facility partOf;
 	
 	/**

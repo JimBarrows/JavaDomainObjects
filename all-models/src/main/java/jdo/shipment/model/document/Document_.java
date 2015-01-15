@@ -8,7 +8,7 @@ import jdo.shipment.model.Shipment;
 import jdo.shipment.model.ShipmentItem;
 import jdo.shipment.model.receipt.ShipmentPackage;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.694-0700")
+@Generated(value="Dali", date="2015-01-13T23:30:19.953-0700")
 @StaticMetamodel(Document.class)
 public class Document_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<Document, ShipmentItem> forItem;

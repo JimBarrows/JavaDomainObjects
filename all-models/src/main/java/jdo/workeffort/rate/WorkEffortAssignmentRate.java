@@ -15,15 +15,14 @@ public class WorkEffortAssignmentRate extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
-
-	private WorkEffortPartyAssignment	rateOf;
-
-	private RateType					rateType;
-
-	private DateTimeRange				dateTimeRange		= new DateTimeRange();
-
+	private static final long serialVersionUID = 1L;
+	@ManyToOne
+	private WorkEffortPartyAssignment rateOf;
+	@ManyToOne
+	private RateType rateType;
 	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
+
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -32,12 +31,10 @@ public class WorkEffortAssignmentRate extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
 	public WorkEffortPartyAssignment getRateOf() {
 		return rateOf;
 	}
 
-	@ManyToOne
 	public RateType getRateType() {
 		return rateType;
 	}

@@ -20,7 +20,6 @@ import jdo.model.BasePersistentModel;
 import jdo.party.model.facility.Facility;
 
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class Requirement extends BasePersistentModel {
 
 	/**

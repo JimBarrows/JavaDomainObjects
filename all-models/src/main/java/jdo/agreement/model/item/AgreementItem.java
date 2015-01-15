@@ -2,7 +2,10 @@ package jdo.agreement.model.item;
 
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.Inheritance;
+import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -16,6 +19,7 @@ import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.product.model.Product;
 
 @Entity
+@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class AgreementItem extends BasePersistentModel {
 
 	/**
@@ -47,6 +51,7 @@ public class AgreementItem extends BasePersistentModel {
 	private int							sequenceId;
 
 	@Lob
+	@Column(name="agreementtext")
 	private String						text;
 	
 	public List<Addendum> getAddendums() {

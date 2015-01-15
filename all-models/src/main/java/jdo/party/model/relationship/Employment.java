@@ -3,6 +3,7 @@ package jdo.party.model.relationship;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.humanresoures.model.termination.TerminationType;
 import jdo.party.model.PartyRole;
 
 
@@ -14,11 +15,12 @@ public class Employment extends PartyRelationship {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	@ManyToOne
 	private TerminationReason dueTo;
 	
-//	private TerminationType terminationType;
-
 	@ManyToOne
+	private TerminationType terminationType;
+
 	public TerminationReason getDueTo() {
 		return dueTo;
 	}
@@ -32,11 +34,11 @@ public class Employment extends PartyRelationship {
 		return (PartyRole)super.getRelationshipTo();
 	}
 
-/*	@ManyToOne
+
 	public TerminationType getTerminationType() {
 		return terminationType;
 	}
-*/
+
 
 	public void setDueTo(TerminationReason dueTo) {
 		this.dueTo = dueTo;

@@ -29,7 +29,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @SuppressWarnings("serial")
 @Entity
-@NamedQueries(@NamedQuery(name = "findByUserId", query = "select userLogin from UserLogin userLogin where userLogin.userId = :userId"))
+@NamedQueries(@NamedQuery(name = "findByUserId", query = "select ul from UserLogin ul where ul.userId = :userId"))
 public class UserLogin extends BasePersistentModel {
 
 	public static final String				FIND_BY_USER_ID_QUERY	= "findByUserId";

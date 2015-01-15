@@ -11,6 +11,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 
 import jdo.accounting.model.transaction.PaymentAccountingTransaction;
 import jdo.budget.model.PaymentBudgetAllocation;
@@ -32,6 +34,7 @@ public class Payment extends BasePersistentModel {
 	@Lob
 	private String comment;
 
+	@Temporal(TemporalType.DATE)
 	private Date effectiveDate;
 
 	@ManyToOne

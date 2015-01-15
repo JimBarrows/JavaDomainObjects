@@ -12,9 +12,11 @@ import jdo.product.model.Product;
 public class ProductRequirement extends Requirement {
 
 	private static final long serialVersionUID = 1L;
+	
 	@ManyToOne
 	private Product requesting;
-	@OneToMany
+	
+	@OneToMany(mappedBy="productRequirement")
 	private List<DesiredFeature> specifying;
 
 	public Product getRequesting() {

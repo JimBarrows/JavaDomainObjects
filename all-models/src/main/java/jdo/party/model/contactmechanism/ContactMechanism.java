@@ -5,11 +5,8 @@ import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
- 
-
+import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.party.model.PartyContactMechanism;
@@ -25,10 +22,13 @@ import org.apache.commons.lang.builder.HashCodeBuilder;
  * @see Data Model Resource Book Volume 1 Figure 2.10, page 55
  * @see Data Model Resource Book Volume 1 Figure 2.11, page 59
  */
-@SuppressWarnings("serial")
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class ContactMechanism extends BasePersistentModel {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 
 	@OneToMany(mappedBy = "specifiedVia", cascade = CascadeType.ALL)
 	private List<FacilityContactMechanism> usedByFacilities = new ArrayList<FacilityContactMechanism>();

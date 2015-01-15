@@ -17,7 +17,7 @@ public class Paycheck extends Disbursement {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany
+	@OneToMany(mappedBy="reductionOf")
 	private List<Deduction> deductions;
 
 	@ManyToOne

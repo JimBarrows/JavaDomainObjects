@@ -17,16 +17,16 @@ public class PartyRate extends BasePersistentModel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	@Embedded
 	private Money				rate;
-
+	@ManyToOne
 	private Party				rateFor;
-
+	@ManyToOne
 	private RateType			rateType;
-
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -35,17 +35,17 @@ public class PartyRate extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@Embedded
+	
 	public Money getRate() {
 		return rate;
 	}
 
-	@ManyToOne
+	
 	public Party getRateFor() {
 		return rateFor;
 	}
 
-	@ManyToOne
+	
 	public RateType getRateType() {
 		return rateType;
 	}

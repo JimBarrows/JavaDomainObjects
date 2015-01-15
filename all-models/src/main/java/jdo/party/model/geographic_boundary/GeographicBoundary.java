@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.crypto.Data;
 
@@ -31,32 +32,33 @@ public class GeographicBoundary extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long					serialVersionUID	= 1L;
-	private String										abbreviation;
+	private static final long serialVersionUID = 1L;
+	private String abbreviation;
 	@ManyToMany
-	private List<PostalAddress>				boundaryFor				= new ArrayList<PostalAddress>();
-	private String										code;
+	private List<PostalAddress> boundaryFor = new ArrayList<PostalAddress>();
+	private String code;
 	/**
 	 * The list of Geographic Boundaries that are contained inside this one.
 	 * 
 	 */
 	@OneToMany
-	private List<GeographicBoundary>	contains					= new ArrayList<GeographicBoundary>();
+	private List<GeographicBoundary> contains = new ArrayList<GeographicBoundary>();
 	@NotEmpty
-	private String										name;
-	private GeographicBoundaryType		type;
+	private String name;
+	@ManyToOne
+	private GeographicBoundaryType type;
 
 	/**
 	 * The list of Geographic Boundaries that contain this one.
 	 * 
 	 */
 	@OneToMany
-	private List<GeographicBoundary>	within						= new ArrayList<GeographicBoundary>();
+	private List<GeographicBoundary> within = new ArrayList<GeographicBoundary>();
 	@OneToMany
-	private List<ReorderGuideline>		reorderGuideline	= new ArrayList<ReorderGuideline>();
+	private List<ReorderGuideline> reorderGuideline = new ArrayList<ReorderGuideline>();
 
 	@OneToMany
-	private List<SalesTaxLookup>			salesTaxLookup		= new ArrayList<SalesTaxLookup>();
+	private List<SalesTaxLookup> salesTaxLookup = new ArrayList<SalesTaxLookup>();
 
 	public List<SalesTaxLookup> getSalesTaxLookup() {
 		return salesTaxLookup;

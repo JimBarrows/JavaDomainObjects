@@ -12,6 +12,17 @@ public class DesiredFeature extends BasePersistentModel {
 	private static final long	serialVersionUID	= 1L;
 	@ManyToOne
 	private ProductFeature		describedBy;
+	
+	@ManyToOne
+	private ProductRequirement productRequirement;
+
+	public ProductRequirement getProductRequirement() {
+		return productRequirement;
+	}
+
+	public void setProductRequirement(ProductRequirement productRequirement) {
+		this.productRequirement = productRequirement;
+	}
 
 	private boolean				optional;
 

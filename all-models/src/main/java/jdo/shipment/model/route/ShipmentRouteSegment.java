@@ -40,8 +40,9 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 	private Facility shippedFrom;
 	@ManyToOne
 	private Facility shippedTo;
-
+	@ManyToOne
 	private Vehicle vehicle;
+
 	public Vehicle getVehicle() {
 		return vehicle;
 	}

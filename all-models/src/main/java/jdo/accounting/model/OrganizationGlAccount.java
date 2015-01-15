@@ -32,10 +32,12 @@ public class OrganizationGlAccount extends BasePersistentModel {
 	@OneToMany
 	private List<TransactionDetail> consistingOf = new ArrayList<TransactionDetail>();
 
-	@ManyToOne
+	@ManyToOne	
 	private PartyRole internalOrganizationFor;
+	
 	@ManyToOne
 	private PartyRole referencingBillToCustomer;
+	
 	@ManyToOne
 	private PartyRole referencingSupplier;
 
@@ -47,6 +49,9 @@ public class OrganizationGlAccount extends BasePersistentModel {
 
 	@Embedded
 	private DateTimeRange dateTimeRange = new DateTimeRange();
+	
+	@ManyToOne
+	private ProductCategory referencingProductCategory;
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -63,8 +68,7 @@ public class OrganizationGlAccount extends BasePersistentModel {
 	public ProductCategory getReferencingProductCategory() {
 		return referencingProductCategory;
 	}
-
-	private ProductCategory referencingProductCategory;
+	
 
 	public void setReferencingProduct(Product referencingProduct) {
 		this.referencingProduct = referencingProduct;

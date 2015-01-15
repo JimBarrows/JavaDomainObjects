@@ -2,6 +2,7 @@ package jdo.humanresoures.model.position.fulfillment;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import jdo.humanresoures.model.position.Position;
@@ -17,8 +18,10 @@ public class PositionFulfillment extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
+	@ManyToOne
 	private Person						acceptedBy;
 
+	@Lob
 	private String						comment;
 
 	@ManyToOne

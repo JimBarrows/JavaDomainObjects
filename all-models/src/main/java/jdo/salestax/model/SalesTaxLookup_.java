@@ -9,11 +9,11 @@ import jdo.model.DateTimeRange;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.product.model.category.ProductCategory;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.686-0700")
+@Generated(value="Dali", date="2015-01-13T23:29:29.136-0700")
 @StaticMetamodel(SalesTaxLookup.class)
 public class SalesTaxLookup_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<SalesTaxLookup, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<SalesTaxLookup, GeographicBoundary> salesTaxLookupFor;
 	public static volatile SingularAttribute<SalesTaxLookup, Money> salesTaxPercentage;
 	public static volatile SingularAttribute<SalesTaxLookup, ProductCategory> specifiedFor;
+	public static volatile SingularAttribute<SalesTaxLookup, DateTimeRange> dateTimeRange;
 }

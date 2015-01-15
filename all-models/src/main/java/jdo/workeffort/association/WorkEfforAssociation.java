@@ -15,14 +15,14 @@ public class WorkEfforAssociation extends BasePersistentModel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	@ManyToOne
 	private WorkEffort			associatedFrom;
-
+	@ManyToOne
 	private WorkEffort			associatedTo;
-
+	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
 
-	@Embedded
+	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -31,12 +31,12 @@ public class WorkEfforAssociation extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	@ManyToOne
+	
 	public WorkEffort getAssociatedFrom() {
 		return associatedFrom;
 	}
 
-	@ManyToOne
+	
 	public WorkEffort getAssociatedTo() {
 		return associatedTo;
 	}

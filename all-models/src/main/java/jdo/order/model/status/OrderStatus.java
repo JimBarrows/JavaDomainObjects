@@ -20,33 +20,33 @@ public class OrderStatus extends BasePersistentModel {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
-	private OrderStatusType		describedBy;
-
-	private OrderItem			statusForItem;
-
-	private Order				statusForOrder;
-
-	private Date				statusOn;
-
 	@NotNull
 	@ManyToOne
+	private OrderStatusType		describedBy;
+	@ManyToOne
+	private OrderItem			statusForItem;
+	@ManyToOne
+	private Order				statusForOrder;
+	@NotNull
+	@Temporal(TemporalType.TIMESTAMP)
+	private Date				statusOn;
+
+	
 	public OrderStatusType getDescribedBy() {
 		return describedBy;
 	}
 
-	@ManyToOne
+	
 	public OrderItem getStatusForItem() {
 		return statusForItem;
 	}
 
-	@ManyToOne
+	
 	public Order getStatusForOrder() {
 		return statusForOrder;
 	}
 
-	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	public Date getStatusOn() {
 		return statusOn;
 	}

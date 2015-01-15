@@ -11,7 +11,7 @@ import jdo.party.model.PartyRole;
 import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 
-@Generated(value="Dali", date="2014-12-29T22:51:01.320-0700")
+@Generated(value="Dali", date="2015-01-13T22:33:26.729-0700")
 @StaticMetamodel(OrganizationGlAccount.class)
 public class OrganizationGlAccount_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<OrganizationGlAccount, GeneralLedgerAccount> accountFor;

@@ -3,6 +3,7 @@ package jdo.product.model.price;
 import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
+import jdo.agreement.model.item.AgreementPricingProgram;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
@@ -13,7 +14,7 @@ import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 import jdo.product.model.feature.ProductFeature;
 
-@Generated(value="Dali", date="2015-01-11T23:58:43.916-0700")
+@Generated(value="Dali", date="2015-01-14T08:21:12.838-0700")
 @StaticMetamodel(PriceComponent.class)
 public class PriceComponent_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PriceComponent, GeographicBoundary> basedOnGeographicBoundary;
@@ -29,4 +30,5 @@ public class PriceComponent_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<PriceComponent, ProductFeature> priceDefinedForProductFeature;
 	public static volatile SingularAttribute<PriceComponent, Organization> specifiedFor;
 	public static volatile SingularAttribute<PriceComponent, DateTimeRange> dateTimeRange;
+	public static volatile SingularAttribute<PriceComponent, AgreementPricingProgram> basedOnAgreementPricingProgram;
 }

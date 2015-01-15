@@ -16,17 +16,17 @@ public class WorkEffortStatus extends BasePersistentModel {
 	 * 
 	 */
 	private static final long		serialVersionUID	= 1L;
-
+	@Temporal(TemporalType.TIMESTAMP)
 	private Date					changedon;
-
+	@ManyToOne
 	private WorkEffortStatusType	type;
 
-	@Temporal(TemporalType.TIMESTAMP)
+	
 	public Date getChangedon() {
 		return changedon;
 	}
 
-	@ManyToOne
+	
 	public WorkEffortStatusType getType() {
 		return type;
 	}

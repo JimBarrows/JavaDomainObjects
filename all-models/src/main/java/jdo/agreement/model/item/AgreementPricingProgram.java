@@ -12,7 +12,7 @@ public class AgreementPricingProgram extends AgreementItem {
 
 	private static final long		serialVersionUID	= 1L;
 
-	@OneToMany
+	@OneToMany(mappedBy="basedOnAgreementPricingProgram")
 	private List<PriceComponent>	priceComponents;
 	
 	public List<PriceComponent> getPriceComponents() {

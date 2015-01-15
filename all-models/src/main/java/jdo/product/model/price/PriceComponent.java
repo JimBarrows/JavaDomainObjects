@@ -7,6 +7,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import jdo.agreement.model.item.AgreementPricingProgram;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
@@ -48,6 +49,11 @@ public class PriceComponent extends BasePersistentModel {
 
 	@ManyToOne
 	private SaleType			basedOnSaleType;
+	
+	@ManyToOne
+	private AgreementPricingProgram basedOnAgreementPricingProgram;
+
+	
 
 	@Lob
 	private String				comment;
@@ -184,5 +190,13 @@ public class PriceComponent extends BasePersistentModel {
 
 	public void setSpecifiedFor(Organization specifiedFor) {
 		this.specifiedFor = specifiedFor;
+	}
+	public AgreementPricingProgram getBasedOnAgreementPricingProgram() {
+		return basedOnAgreementPricingProgram;
+	}
+
+	public void setBasedOnAgreementPricingProgram(
+			AgreementPricingProgram basedOnAgreementPricingProgram) {
+		this.basedOnAgreementPricingProgram = basedOnAgreementPricingProgram;
 	}
 }

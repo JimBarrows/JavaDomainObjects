@@ -14,40 +14,36 @@ import jdo.order.model.OrderItem;
 @Entity
 public class OrderTerm extends BasePersistentModel {
 
-	private static final long	serialVersionUID	= 1L;
-
-	private OrderItem			conditionForItem;
-
-	private Order				conditionForOrder;
-
-	private OrderTermType		describedBy;
-
-	private Money				value;
-
+	private static final long serialVersionUID = 1L;
 	@ManyToOne
-	public OrderItem getConditionForItem() {
-		return conditionForItem;
-	}
-
+	private OrderItem conditionForItem;
 	@ManyToOne
-	public Order getConditionForOrder() {
-		return conditionForOrder;
-	}
-
+	private Order conditionForOrder;
 	@NotNull
 	@ManyToOne
-	public OrderTermType getDescribedBy() {
-		return describedBy;
-	}
-
+	private OrderTermType describedBy;
 	@Embedded
-	public Money getValue() {
-		return value;
-	}
+	private Money value;
 
 	@AssertTrue
 	public boolean onlyOrderOrItemSet() {
 		return (((conditionForItem == null) && (conditionForOrder != null)) || ((conditionForItem != null) && (conditionForOrder == null)));
+	}
+
+	public OrderItem getConditionForItem() {
+		return conditionForItem;
+	}
+
+	public Order getConditionForOrder() {
+		return conditionForOrder;
+	}
+
+	public OrderTermType getDescribedBy() {
+		return describedBy;
+	}
+
+	public Money getValue() {
+		return value;
 	}
 
 	public void setConditionForItem(OrderItem conditionForItem) {

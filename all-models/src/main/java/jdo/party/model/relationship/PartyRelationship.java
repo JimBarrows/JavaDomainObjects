@@ -32,6 +32,11 @@ import org.joda.time.DateTime;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartyRelationship extends BasePersistentModel {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	@Lob
 	private String comment;
 

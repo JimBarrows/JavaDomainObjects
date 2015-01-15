@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
+import javax.validation.constraints.Min;
 
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
@@ -39,7 +40,7 @@ public class OrderItem extends BasePersistentModel {
 	private String comment;
 
 	@Temporal(TemporalType.DATE)
-	private Date estimatedDeliveryDate;
+	private Date estimatedDeliveryDate;	
 
 	@ManyToOne
 	private ProductFeature forFeature;
@@ -54,6 +55,7 @@ public class OrderItem extends BasePersistentModel {
 	@ManyToOne
 	private OrderItem orderedWith;
 
+	@Min(1)
 	private long orderItemSeqId;
 
 	private int quantity;

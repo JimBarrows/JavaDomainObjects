@@ -9,11 +9,11 @@ import jdo.model.BasePersistentModel_;
 import jdo.model.DateTimeRange;
 import jdo.party.model.Party;
 
-@Generated(value="Dali", date="2014-12-24T17:30:48.839-0700")
+@Generated(value="Dali", date="2015-01-13T23:32:46.270-0700")
 @StaticMetamodel(PartyRate.class)
 public class PartyRate_ extends BasePersistentModel_ {
-	public static volatile SingularAttribute<PartyRate, DateTimeRange> dateTimeRange;
 	public static volatile SingularAttribute<PartyRate, Money> rate;
 	public static volatile SingularAttribute<PartyRate, Party> rateFor;
 	public static volatile SingularAttribute<PartyRate, RateType> rateType;
+	public static volatile SingularAttribute<PartyRate, DateTimeRange> dateTimeRange;
 }

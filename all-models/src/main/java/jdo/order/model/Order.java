@@ -24,69 +24,59 @@ import jdo.order.model.terms.OrderTerm;
  * @created 25-Dec-2007 9:54:32 AM
  */
 @Entity
-@Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-@Table(name = "Orders")
+@Table(name="PurchaseSalesOrders")
 public class Order extends BasePersistentModel {
 
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
-	@OneToMany
-	private List<OrderAdjustment>		affectedBy			= new ArrayList<OrderAdjustment>();
+	private static final long serialVersionUID = 1L;
+	@OneToMany(mappedBy = "affectingOrder")
+	private List<OrderAdjustment> affectedBy = new ArrayList<OrderAdjustment>();
 	@OneToMany
 	@OrderBy("orderItemSeqId")
-	private List<OrderItem>				composedOf			= new ArrayList<OrderItem>();
+	private List<OrderItem> composedOf = new ArrayList<OrderItem>();
 	@OneToMany
-	private List<OrderContactMechanism>	contactMechanisms	= new ArrayList<OrderContactMechanism>();
+	private List<OrderContactMechanism> contactMechanisms = new ArrayList<OrderContactMechanism>();
 	@Temporal(TemporalType.DATE)
-	private Date						entryDate;
+	private Date entryDate;
 	@OneToMany
-	private List<OrderRole>				involving			= new ArrayList<OrderRole>();
+	private List<OrderRole> involving = new ArrayList<OrderRole>();
 	@Temporal(TemporalType.DATE)
-	private Date						orderDate;
+	private Date orderDate;
 	@OneToMany
-	private List<OrderStatus>			stateOf				= new ArrayList<OrderStatus>();
+	private List<OrderStatus> stateOf = new ArrayList<OrderStatus>();
 	@OneToMany
-	private List<OrderTerm>				subjectTo			= new ArrayList<OrderTerm>();
+	private List<OrderTerm> subjectTo = new ArrayList<OrderTerm>();
 
-	
 	public List<OrderAdjustment> getAffectedBy() {
 		return affectedBy;
 	}
 
-	
-	
 	public List<OrderItem> getComposedOf() {
 		return composedOf;
 	}
 
-	
 	public List<OrderContactMechanism> getContactMechanisms() {
 		return contactMechanisms;
 	}
 
-	
 	public Date getEntryDate() {
 		return entryDate;
 	}
 
-	
 	public List<OrderRole> getInvolving() {
 		return involving;
 	}
 
-	
 	public Date getOrderDate() {
 		return orderDate;
 	}
 
-	
 	public List<OrderStatus> getStateOf() {
 		return stateOf;
 	}
 
-	
 	public List<OrderTerm> getSubjectTo() {
 		return subjectTo;
 	}
@@ -99,7 +89,8 @@ public class Order extends BasePersistentModel {
 		this.composedOf = composedOf;
 	}
 
-	public void setContactMechanisms(List<OrderContactMechanism> contactMechanisms) {
+	public void setContactMechanisms(
+			List<OrderContactMechanism> contactMechanisms) {
 		this.contactMechanisms = contactMechanisms;
 	}
 
