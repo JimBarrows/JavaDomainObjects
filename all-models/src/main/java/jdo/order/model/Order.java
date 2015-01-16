@@ -22,7 +22,7 @@ import jdo.order.model.terms.OrderTerm;
  * @created 25-Dec-2007 9:54:32 AM
  */
 @Entity
-@Table(name="PurchaseSalesOrders")
+@Table(name = "PurchaseSalesOrders")
 public class Order extends BasePersistentModel {
 
 	/**
@@ -31,20 +31,20 @@ public class Order extends BasePersistentModel {
 	private static final long serialVersionUID = 1L;
 	@OneToMany(mappedBy = "affectingOrder")
 	private List<OrderAdjustment> affectedBy = new ArrayList<OrderAdjustment>();
-	@OneToMany(mappedBy="order")
+	@OneToMany(mappedBy = "order")
 	@OrderBy("orderItemSeqId")
 	private List<OrderItem> composedOf = new ArrayList<OrderItem>();
-	@OneToMany(mappedBy="order")
+	@OneToMany(mappedBy = "order")
 	private List<OrderContactMechanism> contactMechanisms = new ArrayList<OrderContactMechanism>();
 	@Temporal(TemporalType.DATE)
 	private Date entryDate;
-	@OneToMany(mappedBy="partOf")
+	@OneToMany(mappedBy = "partOf")
 	private List<OrderRole> involving = new ArrayList<OrderRole>();
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
-	@OneToMany(mappedBy="statusForOrder")
+	@OneToMany(mappedBy = "statusForOrder")
 	private List<OrderStatus> stateOf = new ArrayList<OrderStatus>();
-	@OneToMany
+	@OneToMany(mappedBy = "conditionForOrder")
 	private List<OrderTerm> subjectTo = new ArrayList<OrderTerm>();
 
 	public List<OrderAdjustment> getAffectedBy() {
