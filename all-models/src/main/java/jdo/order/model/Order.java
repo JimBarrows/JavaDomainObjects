@@ -5,8 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Table;
@@ -33,18 +31,18 @@ public class Order extends BasePersistentModel {
 	private static final long serialVersionUID = 1L;
 	@OneToMany(mappedBy = "affectingOrder")
 	private List<OrderAdjustment> affectedBy = new ArrayList<OrderAdjustment>();
-	@OneToMany
+	@OneToMany(mappedBy="order")
 	@OrderBy("orderItemSeqId")
 	private List<OrderItem> composedOf = new ArrayList<OrderItem>();
-	@OneToMany
+	@OneToMany(mappedBy="order")
 	private List<OrderContactMechanism> contactMechanisms = new ArrayList<OrderContactMechanism>();
 	@Temporal(TemporalType.DATE)
 	private Date entryDate;
-	@OneToMany
+	@OneToMany(mappedBy="partOf")
 	private List<OrderRole> involving = new ArrayList<OrderRole>();
 	@Temporal(TemporalType.DATE)
 	private Date orderDate;
-	@OneToMany
+	@OneToMany(mappedBy="statusForOrder")
 	private List<OrderStatus> stateOf = new ArrayList<OrderStatus>();
 	@OneToMany
 	private List<OrderTerm> subjectTo = new ArrayList<OrderTerm>();

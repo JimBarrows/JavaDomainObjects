@@ -12,7 +12,7 @@ import jdo.order.model.terms.OrderTerm;
 import jdo.product.model.Product;
 import jdo.product.model.feature.ProductFeature;
 
-@Generated(value="Dali", date="2015-01-11T23:47:56.976-0700")
+@Generated(value="Dali", date="2015-01-15T23:09:53.752-0700")
 @StaticMetamodel(OrderItem.class)
 public class OrderItem_ extends BasePersistentModel_ {
 	public static volatile SingularAttribute<OrderItem, String> comment;
@@ -23,6 +23,7 @@ public class OrderItem_ extends BasePersistentModel_ {
 	public static volatile ListAttribute<OrderItem, OrderItemRole> involving;
 	public static volatile SingularAttribute<OrderItem, String> itemDescription;
 	public static volatile SingularAttribute<OrderItem, OrderItem> orderedWith;
+	public static volatile SingularAttribute<OrderItem, Order> order;
 	public static volatile SingularAttribute<OrderItem, Long> orderItemSeqId;
 	public static volatile SingularAttribute<OrderItem, Integer> quantity;
 	public static volatile SingularAttribute<OrderItem, String> shippingInstructions;

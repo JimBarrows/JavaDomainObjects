@@ -54,6 +54,17 @@ public class OrderItem extends BasePersistentModel {
 	private String itemDescription;
 	@ManyToOne
 	private OrderItem orderedWith;
+	
+	@ManyToOne
+	private Order order;
+
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
 
 	@Min(1)
 	private long orderItemSeqId;

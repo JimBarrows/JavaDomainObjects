@@ -12,11 +12,22 @@ public class OrderContactMechanism extends BasePersistentModel {
 
 	private static final long			serialVersionUID	= 1L;
 	@ManyToOne
+	private Order order;
+	
+	@ManyToOne
 	private ContactMechanism			contactMechanism;
 	@ManyToOne
 	private ContactMechanismPurposeType	usedFor;
 
 	
+	public Order getOrder() {
+		return order;
+	}
+
+	public void setOrder(Order order) {
+		this.order = order;
+	}
+
 	public ContactMechanism getContactMechanism() {
 		return contactMechanism;
 	}
