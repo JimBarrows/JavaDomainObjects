@@ -20,7 +20,7 @@
 					<plugin>
 						<groupId>de.juplo</groupId>
 						<artifactId>hibernate4-maven-plugin</artifactId>
-						<version>1.0.3</version>
+						<version>1.0.5</version>
 						<executions>
 							<execution>
 								<goals>
@@ -35,7 +35,7 @@
 							<username>jdodev</username>
 							<password>jdodev</password>
 							<url>jdbc:postgresql://localhost:5432/jdodev</url>
-							<target>BOTH</target>
+							<target>SCRIPT</target>
 						</configuration>
 						<dependencies>
 							<dependency>
@@ -61,19 +61,16 @@
 			<groupId>jdo</groupId>
 			<artifactId>validations</artifactId>
 			<version>1.0-SNAPSHOT</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>jdo</groupId>
 			<artifactId>utils</artifactId>
 			<version>1.0-SNAPSHOT</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>jdo</groupId>
 			<artifactId>common</artifactId>
 			<version>1.0-SNAPSHOT</version>
-			<scope>provided</scope>
 		</dependency>
 		<dependency>
 			<groupId>joda-time</groupId>
