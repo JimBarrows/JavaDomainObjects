@@ -19,6 +19,12 @@
 		</dependency>
 		<dependency>
 			<groupId>jdo</groupId>
+			<artifactId>application</artifactId>
+			<version>1.0-SNAPSHOT</version>
+			<type>ejb</type>
+		</dependency>
+		<dependency>
+			<groupId>jdo</groupId>
 			<artifactId>party-services</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>ejb</type>
@@ -64,6 +70,10 @@
 				<configuration>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
+						<ejbModule>
+							<groupId>jdo</groupId>
+							<artifactId>application</artifactId>
+						</ejbModule>
 						<jarModule>
 							<groupId>jdo</groupId>
 							<artifactId>all-models</artifactId>

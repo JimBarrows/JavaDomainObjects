@@ -41,9 +41,9 @@ import jdo.party.model.roles.InternalOrganization;
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
-@Path("/customers")
-@Api(value = "/customers", description = "Operations about customers")
+//@Api(value = "/customers", description = "Operations about customers")
 @RequestScoped
+@Path("/customers")
 public class Customer {
 
 	@PersistenceContext(name = "all-models")
@@ -54,7 +54,7 @@ public class Customer {
 
 	@POST
 	@Consumes(MediaType.APPLICATION_JSON)
-	@ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)
+//	@ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)
 	@Transactional
 	public CustomerDto create(CustomerDto customer) {
 
@@ -107,7 +107,7 @@ public class Customer {
 	@PUT
 	@Path("/{id}")
 	@Consumes(MediaType.APPLICATION_JSON)
-	@ApiOperation(value = "Update Customer", notes = "Updates a customer, using the id in the path, and customer data.", response = CustomerDto.class)
+//	@ApiOperation(value = "Update Customer", notes = "Updates a customer, using the id in the path, and customer data.", response = CustomerDto.class)
 	@Transactional
 	public CustomerDto update(@PathParam("id") Long id, CustomerDto customer) {
 		if ((id == null) || (id < 0)) {
@@ -155,7 +155,7 @@ public class Customer {
 		return customer;
 	}
 
-	@ApiOperation(value = "List all customers", notes = "Returns a list of all customers.  The parameters startPosition and maxResult do not need to be present, but control how much data is returned.", response = CustomerDto.class)
+//	@ApiOperation(value = "List all customers", notes = "Returns a list of all customers.  The parameters startPosition and maxResult do not need to be present, but control how much data is returned.", response = CustomerDto.class)
 	@GET
 	@Produces(MediaType.APPLICATION_JSON)
 	public CustomerDtoList listAll(@QueryParam("start") Integer startPosition,
@@ -182,7 +182,7 @@ public class Customer {
 		return new CustomerDtoList(customers);
 	}
 
-	@ApiOperation(value = "Find a customer by the id.", notes = "Returns one customer, or NotFound.", response = CustomerDto.class)
+//	@ApiOperation(value = "Find a customer by the id.", notes = "Returns one customer, or NotFound.", response = CustomerDto.class)
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_JSON)

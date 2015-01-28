@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -34,7 +32,7 @@ public class Requirement extends BasePersistentModel {
 	private String description;
 	@Embedded
 	private Money estimatedBudget;
-	@ManyToOne
+	@ManyToOne(targetEntity=Facility.class)
 	private Facility neededAt;
 
 	private int quantity;
