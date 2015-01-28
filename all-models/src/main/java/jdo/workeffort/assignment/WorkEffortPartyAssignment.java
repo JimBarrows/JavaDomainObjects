@@ -8,9 +8,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
+import jdo.facility.model.Facility;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.Party;
-import jdo.party.model.facility.Facility;
 import jdo.shipment.model.ShipmentItem;
 
 @Entity

@@ -9,8 +9,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import jdo.facility.model.Facility;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.facility.Facility;
 import jdo.product.model.Good;
 
 /**

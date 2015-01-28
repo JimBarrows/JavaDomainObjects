@@ -46,3 +46,4 @@ target/
 test-output
 tmp*
 /bin/
+all\-models/src/main/metamodel/*

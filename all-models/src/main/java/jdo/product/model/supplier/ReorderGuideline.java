@@ -4,10 +4,10 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.facility.model.Facility;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
-import jdo.party.model.facility.Facility;
 import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.product.model.Good;
 

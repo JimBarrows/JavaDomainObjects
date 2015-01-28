@@ -73,6 +73,7 @@
 		<module>ember-tags</module>
 		<module>common</module>
 		<module>application</module>
+		<module>persistence-config</module>
 	</modules>
 
 	<profiles>

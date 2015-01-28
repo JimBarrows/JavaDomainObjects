@@ -16,10 +16,10 @@ import javax.validation.constraints.Min;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import jdo.facility.model.Facility;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.order.model.WorkOrderItem;
-import jdo.party.model.facility.Facility;
 import jdo.product.model.storage.InventoryItem;
 import jdo.requirement.model.Requirement;
 import jdo.workeffort.assignment.WorkEffortPartyAssignment;
@@ -82,8 +82,8 @@ public class WorkEffort extends BasePersistentModel {
 	@NotEmpty
 	private String name;
 
-	@ManyToOne
-	private Facility performedAt;
+//	@ManyToOne
+//	private Facility performedAt;
 
 	@OneToMany(mappedBy = "versionOf")
 	private List<WorkEffort> redoneVia;
@@ -176,9 +176,9 @@ public class WorkEffort extends BasePersistentModel {
 		return name;
 	}
 
-	public Facility getPerformedAt() {
-		return performedAt;
-	}
+//	public Facility getPerformedAt() {
+//		return performedAt;
+//	}
 
 	public List<WorkEffort> getRedoneVia() {
 		return redoneVia;
@@ -296,9 +296,9 @@ public class WorkEffort extends BasePersistentModel {
 		this.name = name;
 	}
 
-	public void setPerformedAt(Facility performedAt) {
-		this.performedAt = performedAt;
-	}
+//	public void setPerformedAt(Facility performedAt) {
+//		this.performedAt = performedAt;
+//	}
 
 	public void setRedoneVia(List<WorkEffort> redoneVia) {
 		this.redoneVia = redoneVia;

@@ -16,10 +16,10 @@ import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.crypto.Data;
 
+import jdo.facility.model.FacilityRole;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.communication.CaseRole;
 import jdo.party.model.communication.CommunicationEventRole;
-import jdo.party.model.facility.FacilityRole;
 
 /**
  * Represents information on either an organization, or a single person.

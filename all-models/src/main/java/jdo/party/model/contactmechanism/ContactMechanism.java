@@ -8,9 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.xml.crypto.Data;
 
+import jdo.facility.model.FacilityContactMechanism;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.PartyContactMechanism;
-import jdo.party.model.facility.FacilityContactMechanism;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
 import org.apache.commons.lang.builder.HashCodeBuilder;

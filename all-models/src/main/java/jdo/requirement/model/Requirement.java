@@ -13,9 +13,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import jdo.budget.model.RequirementBudgetAllocation;
+import jdo.facility.model.Facility;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.facility.Facility;
 
 @Entity
 public class Requirement extends BasePersistentModel {
@@ -26,24 +26,33 @@ public class Requirement extends BasePersistentModel {
 	private static final long serialVersionUID = 1L;
 	@OneToMany
 	private List<OrderRequirementCommitment> commitmentOf;
+	
 	@Temporal(TemporalType.DATE)
 	private Date creationDate;
+	
 	@Lob
 	private String description;
+	
 	@Embedded
 	private Money estimatedBudget;
-	@ManyToOne(targetEntity=Facility.class)
-	private Facility neededAt;
+	
+//	@ManyToOne
+//	private Facility neededAt;
 
 	private int quantity;
+	
 	@Lob
 	private String reason;
+	
 	@Temporal(TemporalType.DATE)
 	private Date requiredBy;
+	
 	@OneToMany
 	private List<RequirementStatus> status = new ArrayList<RequirementStatus>();
+	
 	@OneToMany
 	private List<Requirement> subRequirements = new ArrayList<Requirement>();
+	
 	@OneToMany
 	private List<RequirementBudgetAllocation> allocatedVia = new ArrayList<RequirementBudgetAllocation>();
 
@@ -71,9 +80,9 @@ public class Requirement extends BasePersistentModel {
 		return estimatedBudget;
 	}
 
-	public Facility getNeededAt() {
-		return neededAt;
-	}
+//	public Facility getNeededAt() {
+//		return neededAt;
+//	}
 
 	public int getQuantity() {
 		return quantity;
@@ -112,9 +121,9 @@ public class Requirement extends BasePersistentModel {
 		this.estimatedBudget = estimatedBudget;
 	}
 
-	public void setNeededAt(final Facility neededAt) {
-		this.neededAt = neededAt;
-	}
+//	public void setNeededAt(final Facility neededAt) {
+//		this.neededAt = neededAt;
+//	}
 
 	public void setQuantity(final int quantity) {
 		this.quantity = quantity;

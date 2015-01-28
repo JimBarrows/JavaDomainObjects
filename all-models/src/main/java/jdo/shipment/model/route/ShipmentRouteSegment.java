@@ -9,10 +9,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import jdo.accounting.model.asset.Vehicle;
+import jdo.facility.model.Facility;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.PartyRole;
-import jdo.party.model.facility.Facility;
 import jdo.shipment.model.Shipment;
 
 @Entity
