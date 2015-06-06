@@ -2,6 +2,7 @@ package jdo.party.specifications;
 
 import jdo.core.repository.specification.Specification;
 import jdo.party.model.Party;
+import jdo.party.model.roles.Customer;
 
 public class CustomerSpecification implements Specification<Party> {
 

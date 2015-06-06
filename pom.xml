@@ -301,6 +301,14 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.5</version>
+				<configuration>
+					<ejbVersion>3.2</ejbVersion>
+				</configuration>
+			</plugin>
 		</plugins>
 		<pluginManagement>
 			<plugins>
@@ -359,7 +367,7 @@
 				<configuration>
 					<targetJdk>1.8</targetJdk>
 					<excludes>
-						<exclude>**/*_.java</exclude>						
+						<exclude>**/*_.java</exclude>
 					</excludes>
 				</configuration>
 			</plugin>
