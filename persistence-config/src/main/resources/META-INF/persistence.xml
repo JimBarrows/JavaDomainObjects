@@ -232,7 +232,6 @@
 		<class>jdo.party.model.communication.CommunicationEventPurposeType</class>
 		<class>jdo.party.model.communication.CommunicationEventRole</class>
 		<class>jdo.party.model.communication.CommunicationEventRoleType</class>
-		<class>jdo.party.model.communication.CommunicationEventStatusType</class>
 		<class>jdo.party.model.communication.CommunicationEventWorkEffort</class>
 		<class>jdo.party.model.contactmechanism.ContactMechanism</class>
 		<class>jdo.party.model.contactmechanism.ContactMechanismPurposeType</class>

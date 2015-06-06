@@ -8,4 +8,11 @@
   <groupId>org.jdo</groupId>
   <artifactId>persistence-config</artifactId>
   <name>Persistence Config</name>
+  <dependencies>
+  	<dependency>
+  		<groupId>jdo</groupId>
+  		<artifactId>all-models</artifactId>
+  		<version>1.0-SNAPSHOT</version>
+  	</dependency>
+  </dependencies>
 </project>
