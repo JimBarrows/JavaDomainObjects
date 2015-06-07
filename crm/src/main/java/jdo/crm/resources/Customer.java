@@ -1,20 +1,15 @@
 package jdo.crm.resources;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static jdo.application.ApplicationConfiguration.*;
+import static jdo.application.ApplicationConfiguration.internalOrganizationPredicate;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
-import java.util.function.Supplier;
 
 import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
-import javax.persistence.TypedQuery;
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Root;
 import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.Consumes;
@@ -26,6 +21,9 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
 
 import jdo.application.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
@@ -41,7 +39,7 @@ import jdo.party.model.roles.InternalOrganization;
 import jdo.party.repositories.PartyRepository;
 import jdo.party.repositories.RelationshipRepository;
 
-//@Api(value = "/customers", description = "Operations about customers")
+@Api(value = "/customers", description = "Operations about customers")
 @RequestScoped
 @Path("/customers")
 public class Customer {
@@ -51,28 +49,29 @@ public class Customer {
 
 	@EJB
 	private RelationshipRepository relationshipRepo;
-	
+
 	@EJB
 	private ApplicationConfiguration config;
 
 	@POST
 	@Consumes(APPLICATION_JSON)
-	// @ApiOperation(value = "Create Customer", notes =
-	// "Create a customer from the customer dto.", response = CustomerDto.class)
+	@ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)
 	@Transactional
 	public CustomerDto create(CustomerDto customer) {
 
 		Party party = null;
 
-		if( customer.getPartyType().equals(  Company.class.getCanonicalName())) {
+		if (customer.getPartyType().equals(Company.class.getCanonicalName())) {
 			party = new Company();
 			((Company) party).setName(customer.getName());
 
-		}else if (customer.getPartyType().equals( Organization.class.getCanonicalName())){
+		} else if (customer.getPartyType().equals(
+				Organization.class.getCanonicalName())) {
 			party = new Organization();
 			((Organization) party).setName(customer.getName());
-			
-		} else if ( customer.getPartyType().equals(Person.class.getCanonicalName())){
+
+		} else if (customer.getPartyType().equals(
+				Person.class.getCanonicalName())) {
 			party = new Person();
 			((Person) party).setFirstName(customer.getFirstName());
 			((Person) party).setLastName(customer.getLastName());
@@ -104,14 +103,13 @@ public class Customer {
 	@PUT
 	@Path("/{id}")
 	@Consumes(APPLICATION_JSON)
-	// @ApiOperation(value = "Update Customer", notes =
-	// "Updates a customer, using the id in the path, and customer data.",
-	// response = CustomerDto.class)
+	@ApiOperation(value = "Update Customer", notes = "Updates a customer, using the id in the path, and customer data.", response = CustomerDto.class)
 	@Transactional
 	public CustomerDto update(@NotNull @PathParam("id") Long id,
-			CustomerDto customer) {		
+			CustomerDto customer) {
 
-		Party entity = partyRepo.findById(id).orElseThrow(() -> new NotFoundException());
+		Party entity = partyRepo.findById(id).orElseThrow(
+				() -> new NotFoundException());
 
 		if (entity.getActingAs().stream().anyMatch(role -> {
 			return (role instanceof jdo.party.model.roles.Customer);
@@ -151,32 +149,32 @@ public class Customer {
 		return customer;
 	}
 
-	// @ApiOperation(value = "List all customers", notes =
-	// "Returns a list of all customers.  The parameters startPosition and maxResult do not need to be present, but control how much data is returned.",
-	// response = CustomerDto.class)
+	@ApiOperation(value = "List all customers", notes = "Returns a list of all customers.  The parameters startPosition and maxResult do not need to be present, but control how much data is returned.", response = CustomerDto.class)
 	@GET
 	@Produces(APPLICATION_JSON)
 	public CustomerDtoList listAll(@QueryParam("start") Integer start,
 			@QueryParam("max") Integer max) {
 		Optional<Integer> startPosition = Optional.ofNullable(start);
-		Optional<Integer> maxResult = Optional.ofNullable( max);
-		
+		Optional<Integer> maxResult = Optional.ofNullable(max);
+
 		List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
 		relationshipRepo
-			.findAllCustomersRelationships(startPosition, maxResult)
-			.forEach(customerRelationship -> {
-					Party party = customerRelationship.getRelationshipTo().getRoleFor();
-					customerDtoList.add(new CustomerDto(party));
-				});
+				.findAllCustomersRelationships(startPosition, maxResult)
+				.forEach(
+						customerRelationship -> {
+							Party party = customerRelationship
+									.getRelationshipTo().getRoleFor();
+							customerDtoList.add(new CustomerDto(party));
+						});
 		return new CustomerDtoList(customerDtoList);
 	}
 
-	// @ApiOperation(value = "Find a customer by the id.", notes =
-	// "Returns one customer, or NotFound.", response = CustomerDto.class)
+	@ApiOperation(value = "Find a customer by the id.", notes = "Returns one customer, or NotFound.", response = CustomerDto.class)
 	@GET
 	@Path("/{id}")
 	@Produces(APPLICATION_JSON)
 	public CustomerDto findById(@PathParam("id") Long id) {
-		return new CustomerDto(partyRepo.findById(id).orElseThrow(() -> new NotFoundException()));
+		return new CustomerDto(partyRepo.findById(id).orElseThrow(
+				() -> new NotFoundException()));
 	}
 }

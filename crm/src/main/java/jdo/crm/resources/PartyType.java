@@ -9,6 +9,7 @@ import javax.annotation.PostConstruct;
 import javax.ejb.Stateless;
 import javax.validation.constraints.NotNull;
 import javax.ws.rs.GET;
+import javax.ws.rs.NotFoundException;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -20,7 +21,11 @@ import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Person;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+
 @Stateless
+@Api(value = "/partyTypes", description = "Operations about party types")
 @Path("/partyTypes")
 public class PartyType {
 
@@ -28,6 +33,7 @@ public class PartyType {
 
 	@GET
 	@Produces(APPLICATION_JSON)
+	@ApiOperation(value = "List All", notes = "Return a list of all party types.", response = PartyTypeDtoList.class)
 	public PartyTypeDtoList listAll(@QueryParam("start") Integer startPosition,
 			@QueryParam("max") Integer maxResult) {
 
@@ -37,9 +43,13 @@ public class PartyType {
 	@GET
 	@Path("/{id}")
 	@Produces(APPLICATION_JSON)
+	@ApiOperation(value = "Find By Id", notes = "The id should be the FQN of the party type class.", response = PartyTypeDto.class)
 	public PartyTypeDto findById(@NotNull @PathParam("id") String id) {
-		return list.stream().filter(f -> f.getId().equals(id)).findFirst()
-				.orElse(null);
+		return list.stream()
+				.filter( f -> 
+						f.getId().equals(id))
+				.findFirst()
+				.orElseThrow(() -> new NotFoundException());
 	}
 
 	@PostConstruct
