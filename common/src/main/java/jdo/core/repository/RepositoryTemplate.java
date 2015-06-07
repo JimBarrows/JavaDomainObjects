@@ -2,6 +2,7 @@ package jdo.core.repository;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.criteria.CriteriaBuilder;
@@ -26,8 +27,8 @@ public abstract class RepositoryTemplate<E, I> implements Repository<E, I> {
 	}
 
 	@Override
-	public E findById(I id) {
-		return em().find(type, id);
+	public Optional<E> findById(I id) {
+		return Optional.ofNullable(em().find(type, id));
 	}
 
 	@Override

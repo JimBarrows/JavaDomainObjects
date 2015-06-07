@@ -7,6 +7,7 @@ import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
+import javax.persistence.MappedSuperclass;
 import javax.persistence.OneToMany;
 
 import org.apache.commons.lang.builder.EqualsBuilder;
@@ -16,8 +17,7 @@ import org.apache.commons.lang.builder.EqualsBuilder;
  * 
  * @author jimbarrows
  */
-@Entity
-@Inheritance(strategy=InheritanceType.TABLE_PER_CLASS)
+@MappedSuperclass
 public class BaseHeirarchicalType extends BaseType {
 
 	@ManyToOne

@@ -9,5 +9,5 @@ public class Company extends LegalOrganization {
 	 * 
 	 */
 	private static final long	serialVersionUID	= 1L;
-
+	
 }

@@ -425,7 +425,8 @@
 		<class>jdo.workeffort.type.WorkEffortGoodStandard</class>
 		<class>jdo.workeffort.type.WorkEffortSkill</class>
 		<class>jdo.workeffort.type.WorkEffortType</class>
-		<class>jdo.model.BaseHeirarchicalType</class>		
+		<class>jdo.model.BaseHeirarchicalType</class>
+		<class>jdo.party.model.communication.CommunicationEventStatusType</class>		
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="validate" />

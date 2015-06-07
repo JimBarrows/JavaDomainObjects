@@ -37,41 +37,42 @@ import org.hibernate.validator.constraints.NotEmpty;
 public class CommunicationEvent extends BasePersistentModel {
 
 	@ManyToMany
-	private List<Case>											asPartOf			= new ArrayList<Case>();
+	private List<Case> asPartOf = new ArrayList<Case>();
 
 	@OneToMany
-	private List<CommunicationEventPurpose>	categorizedBy	= new ArrayList<CommunicationEventPurpose>();
+	private List<CommunicationEventPurpose> categorizedBy = new ArrayList<CommunicationEventPurpose>();
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date														dateTimeEnded;
+	private Date dateTimeEnded;
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date														dateTimeStarted;
+	private Date dateTimeStarted;
 
 	@ManyToOne
-	private PartyRelationship								inTheContextOf;
+	private PartyRelationship inTheContextOf;
 
 	@OneToMany(mappedBy = "of", cascade = CascadeType.ALL)
-	private List<CommunicationEventRole>		involving			= new ArrayList<CommunicationEventRole>();
+	private List<CommunicationEventRole> involving = new ArrayList<CommunicationEventRole>();
 
 	@ManyToOne
-	private CommunicationEventStatusType		monitoredBy;
+	private CommunicationEventStatusType monitoredBy;
 
 	@NotEmpty
 	@Lob
-	private String													note;
+	private String note;
 
 	@ManyToOne
-	private PartyContactMechanism						occursVia;
+	private PartyContactMechanism occursVia;
 
-	public void addCommunicationEventRole(CommunicationEventRole communicationEventRole) {
+	public void addCommunicationEventRole(
+			CommunicationEventRole communicationEventRole) {
 		if (!getInvolving().contains(communicationEventRole)) {
 			getInvolving().add(communicationEventRole);
 			communicationEventRole.setOf(this);
 		}
 
-	}	
+	}
 
 	/**
 	 * @return the asPartOf
@@ -136,7 +137,6 @@ public class CommunicationEvent extends BasePersistentModel {
 	public PartyContactMechanism getOccursVia() {
 		return occursVia;
 	}
-	
 
 	@Transient
 	@AssertTrue
@@ -150,7 +150,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param asPartOf
-	 *          the asPartOf to set
+	 *            the asPartOf to set
 	 */
 	public void setAsPartOf(List<Case> asPartOf) {
 		this.asPartOf = asPartOf;
@@ -158,7 +158,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param categorizedBy
-	 *          the categorizedBy to set
+	 *            the categorizedBy to set
 	 */
 	public void setCategorizedBy(List<CommunicationEventPurpose> categorizedBy) {
 		this.categorizedBy = categorizedBy;
@@ -166,7 +166,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param dateTimeEnded
-	 *          the dateTimeEnded to set
+	 *            the dateTimeEnded to set
 	 */
 	public void setDateTimeEnded(Date dateTimeEnded) {
 		this.dateTimeEnded = dateTimeEnded;
@@ -174,7 +174,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param dateTimeStarted
-	 *          the dateTimeStarted to set
+	 *            the dateTimeStarted to set
 	 */
 	public void setDateTimeStarted(Date dateTimeStarted) {
 		this.dateTimeStarted = dateTimeStarted;
@@ -182,7 +182,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param inTheContextOf
-	 *          the inTheContextOf to set
+	 *            the inTheContextOf to set
 	 */
 	public void setInTheContextOf(PartyRelationship inTheContextOf) {
 		this.inTheContextOf = inTheContextOf;
@@ -190,7 +190,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param involving
-	 *          the involving to set
+	 *            the involving to set
 	 */
 	public void setInvolving(List<CommunicationEventRole> involving) {
 		this.involving = involving;
@@ -198,7 +198,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param monitoredBy
-	 *          the monitoredBy to set
+	 *            the monitoredBy to set
 	 */
 	public void setMonitoredBy(CommunicationEventStatusType monitoredBy) {
 		this.monitoredBy = monitoredBy;
@@ -211,7 +211,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param note
-	 *          the note to set
+	 *            the note to set
 	 */
 	public void setNote(String note) {
 		this.note = note;
@@ -219,7 +219,7 @@ public class CommunicationEvent extends BasePersistentModel {
 
 	/**
 	 * @param occursVia
-	 *          the occursVia to set
+	 *            the occursVia to set
 	 */
 	public void setOccursVia(PartyContactMechanism occursVia) {
 		this.occursVia = occursVia;
