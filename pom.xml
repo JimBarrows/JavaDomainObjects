@@ -61,8 +61,7 @@
 	</properties>
 
 	<modules>
-		<module>all-models</module>
-		<module>party-ui-web</module>
+		<module>all-models</module>		
 		<module>party-services</module>
 		<module>test-utils</module>
 		<module>jdo-ear</module>
