@@ -20,6 +20,7 @@ import jdo.facility.model.FacilityRole;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.communication.CaseRole;
 import jdo.party.model.communication.CommunicationEventRole;
+import jdo.party.model.contactmechanism.ContactMechanism;
 
 /**
  * Represents information on either an organization, or a single person.
@@ -112,6 +113,12 @@ public class Party extends BasePersistentModel implements Serializable {
 	public void addPartyContactMechanism(PartyContactMechanism contactMechanism) {
 		contactedVia.add(contactMechanism);
 		contactMechanism.setMechanismToContact(this);
+	}
+	
+	public void addContactMechanism( ContactMechanism mechanism) {
+		PartyContactMechanism partyContactMechanism = new PartyContactMechanism();
+		partyContactMechanism.setMechanismToContact(this);
+		partyContactMechanism.setSpecifiedVia(mechanism);
 	}
 
 	public void addPartyRole(PartyRole role) {

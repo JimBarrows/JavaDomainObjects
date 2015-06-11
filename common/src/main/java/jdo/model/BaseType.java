@@ -14,6 +14,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 @MappedSuperclass
 public class BaseType extends BasePersistentModel {
 
+	@NotEmpty
+	@Column(nullable = false)
 	protected String	description;
 
 	public BaseType(Long id, Long version, String description) {
@@ -29,9 +31,7 @@ public class BaseType extends BasePersistentModel {
 	public BaseType() {
 		super();
 	}
-
-	@NotEmpty
-	@Column(nullable = false)
+	
 	public String getDescription() {
 		return description;
 	}

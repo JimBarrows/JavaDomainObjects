@@ -108,32 +108,32 @@ public class Customer {
 	public CustomerDto update(@NotNull @PathParam("id") Long id,
 			CustomerDto customer) {
 
-		Party entity = partyRepo.findById(id).orElseThrow(
+		Party party = partyRepo.findById(id).orElseThrow(
 				() -> new NotFoundException());
 
-		if (entity.getActingAs().stream().anyMatch(role -> {
+		if (party.getActingAs().stream().anyMatch(role -> {
 			return (role instanceof jdo.party.model.roles.Customer);
 		})) {
 
 			switch (customer.getPartyType()) {
 			case "jdo.party.model.Company":
-				if (entity instanceof Company) {
-					((Company) entity).setName(customer.getName());
+				if (party instanceof Company) {
+					((Company) party).setName(customer.getName());
 				} else {
 					throw new NotFoundException();
 				}
 				break;
 			case "jdo.party.model.Organization":
-				if (entity instanceof Company) {
-					((Organization) entity).setName(customer.getName());
+				if (party instanceof Company) {
+					((Organization) party).setName(customer.getName());
 				} else {
 					throw new NotFoundException();
 				}
 				break;
 			case "jdo.party.model.Person":
-				if (entity instanceof Person) {
-					((Person) entity).setFirstName(customer.getFirstName());
-					((Person) entity).setLastName(customer.getLastName());
+				if (party instanceof Person) {
+					((Person) party).setFirstName(customer.getFirstName());
+					((Person) party).setLastName(customer.getLastName());
 				} else {
 					throw new NotFoundException();
 				}
