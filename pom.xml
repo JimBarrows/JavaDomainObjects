@@ -49,9 +49,10 @@
 		<mockito.version>1.10.8</mockito.version>
 		<postgres-driver.version>9.3-1100-jdbc41</postgres-driver.version>
 		<log4j2.version>2.1</log4j2.version>
-		<jbehave-core.version>4.0-beta-11</jbehave-core.version>
-		<jbehave-web-selenium.version>4.0-beta-11</jbehave-web-selenium.version>
-		<jbehave-site.version>3.1.1</jbehave-site.version>
+		<fluent.selenium.version>1.14.5</fluent.selenium.version>
+		<jbehave.core.version>4.0</jbehave.core.version>
+		<jbehave.web.version>3.6-beta-2</jbehave.web.version>
+		<jbehave.site.version>3.3</jbehave.site.version>
 		<selenium-java.version>2.44.0</selenium-java.version>
 		<selenium-support.version>2.44.0</selenium-support.version>
 		<org.richfaces.bom.version>4.5.0.Final</org.richfaces.bom.version>
@@ -61,7 +62,7 @@
 	</properties>
 
 	<modules>
-		<module>all-models</module>		
+		<module>all-models</module>
 		<module>party-services</module>
 		<module>test-utils</module>
 		<module>jdo-ear</module>
@@ -73,6 +74,7 @@
 		<module>common</module>
 		<module>application</module>
 		<module>persistence-config</module>
+		<module>specification</module>
 	</modules>
 
 	<profiles>
@@ -163,19 +165,50 @@
 			</dependency>
 
 			<dependency>
-				<groupId>org.jbehave.web</groupId>
-				<artifactId>jbehave-web-selenium</artifactId>
-				<version>${jbehave-web-selenium.version}</version>
-				<scope>test</scope>
+				<groupId>org.jbehave</groupId>
+				<artifactId>jbehave-core</artifactId>
+				<version>${jbehave.core.version}</version>
 			</dependency>
-
 			<dependency>
 				<groupId>org.jbehave</groupId>
 				<artifactId>jbehave-core</artifactId>
-				<version>${jbehave-core.version}</version>
-				<scope>test</scope>
+				<version>${jbehave.core.version}</version>
+				<classifier>resources</classifier>
+				<type>zip</type>
 			</dependency>
-
+			<dependency>
+				<groupId>org.jbehave.site</groupId>
+				<artifactId>jbehave-site-resources</artifactId>
+				<version>${jbehave.site.version}</version>
+				<type>zip</type>
+			</dependency>
+			<dependency>
+				<groupId>org.jbehave.web</groupId>
+				<artifactId>jbehave-web-selenium</artifactId>
+				<version>${jbehave.web.version}</version>
+				<exclusions>
+					<exclusion>
+						<groupId>org.jbehave</groupId>
+						<artifactId>jbehave-core</artifactId>
+					</exclusion>
+					<exclusion>
+						<groupId>org.seleniumhq.selenium</groupId>
+						<artifactId>selenium-java</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
+			<dependency>
+				<groupId>org.seleniumhq.selenium.fluent</groupId>
+				<artifactId>fluent-selenium</artifactId>
+				<version>${fluent.selenium.version}</version>
+				<optional>true</optional>
+				<exclusions>
+					<exclusion>
+						<groupId>org.seleniumhq.selenium</groupId>
+						<artifactId>selenium-java</artifactId>
+					</exclusion>
+				</exclusions>
+			</dependency>
 			<dependency>
 				<groupId>org.seleniumhq.selenium</groupId>
 				<artifactId>selenium-java</artifactId>
@@ -188,12 +221,7 @@
 				<version>${selenium-support.version}</version>
 				<scope>test</scope>
 			</dependency>
-			<dependency>
-				<groupId>org.jbehave.site</groupId>
-				<artifactId>jbehave-site-resources</artifactId>
-				<version>${jbehave-site.version}</version>
-				<scope>test</scope>
-			</dependency>
+
 			<dependency>
 				<groupId>org.powermock</groupId>
 				<artifactId>powermock-module-junit4</artifactId>
@@ -214,12 +242,6 @@
 				<scope>test</scope>
 			</dependency>
 
-			<dependency>
-				<groupId>org.richfaces</groupId>
-				<artifactId>richfaces</artifactId>
-				<version>${org.richfaces.bom.version}</version>
-
-			</dependency>
 			<dependency>
 				<groupId>com.fasterxml.jackson.jaxrs</groupId>
 				<artifactId>jackson-jaxrs-json-provider</artifactId>
