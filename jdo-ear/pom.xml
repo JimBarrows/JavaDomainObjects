@@ -13,12 +13,6 @@
 	<dependencies>
 		<dependency>
 			<groupId>jdo</groupId>
-			<artifactId>party-ui-web</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<type>war</type>
-		</dependency>
-		<dependency>
-			<groupId>jdo</groupId>
 			<artifactId>application</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>ejb</type>
@@ -81,11 +75,7 @@
 						<ejbModule>
 							<groupId>jdo</groupId>
 							<artifactId>party-services</artifactId>
-						</ejbModule>
-						<webModule>
-							<groupId>jdo</groupId>
-							<artifactId>party-ui-web</artifactId>
-						</webModule>
+						</ejbModule>						
 						<webModule>
 							<groupId>jdo</groupId>
 							<artifactId>crm</artifactId>

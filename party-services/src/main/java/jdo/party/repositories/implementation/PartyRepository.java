@@ -11,7 +11,7 @@ import jdo.party.model.Party;
 @Stateful
 public class PartyRepository extends RepositoryTemplate<Party, Long> implements jdo.party.repositories.PartyRepository {
 
-	@PersistenceContext(name = "JavaDomainObjects", type = PersistenceContextType.EXTENDED)
+	@PersistenceContext(name = "JavaDomainObjects")
 	protected EntityManager em;
 	
 	public PartyRepository() {

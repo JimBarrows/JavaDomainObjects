@@ -35,7 +35,8 @@
 							<username>jdodev</username>
 							<password>jdodev</password>
 							<url>jdbc:postgresql://localhost:5432/jdodev</url>
-							<target>SCRIPT</target>
+							<target>NONE</target>
+							<type>BOTH</type>							
 						</configuration>
 						<dependencies>
 							<dependency>
@@ -47,11 +48,45 @@
 								<groupId>jdo</groupId>
 								<artifactId>common</artifactId>
 								<version>1.0-SNAPSHOT</version>
-
 							</dependency>
 						</dependencies>
-
 					</plugin>
+<!-- 
+					<plugin>
+						<groupId>de.juplo</groupId>
+						<artifactId>hibernate4-maven-plugin</artifactId>
+						<version>1.0.5</version>
+						<executions>
+							<execution>
+								<goals>
+									<goal>export</goal>
+								</goals>
+							</execution>
+						</executions>
+						<configuration>
+							<driverClassName>org.postgresql.Driver</driverClassName>
+							<hibernateDialect>org.hibernate.dialect.PostgresPlusDialect</hibernateDialect>
+							<username>jdodev</username>
+							<password>jdodev</password>
+							<url>jdbc:postgresql://localhost:5432/jdodev</url>
+							<target>NONE</target>
+							<type>CREATE</type>
+							<outputFile>create.sql</outputFile>
+						</configuration>
+						<dependencies>
+							<dependency>
+								<groupId>org.postgresql</groupId>
+								<artifactId>postgresql</artifactId>
+								<version>${postgres-driver.version}</version>
+							</dependency>
+							<dependency>
+								<groupId>jdo</groupId>
+								<artifactId>common</artifactId>
+								<version>1.0-SNAPSHOT</version>
+							</dependency>
+						</dependencies>
+					</plugin>
+ -->
 				</plugins>
 			</build>
 		</profile>
@@ -104,5 +139,9 @@
 
 		</dependency>
 
+		<dependency>
+			<groupId>org.apache.commons</groupId>
+			<artifactId>commons-lang3</artifactId>
+		</dependency>
 	</dependencies>
 </project>

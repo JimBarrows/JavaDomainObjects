@@ -1,6 +1,6 @@
 package de.jayefem.log4e;
 
-import org.apache.commons.lang.builder.ToStringStyle;
+import org.apache.commons.lang3.builder.ToStringStyle;
 
 /**
  * The method parameter style for logging with Log4E.

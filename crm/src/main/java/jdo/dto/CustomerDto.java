@@ -1,18 +1,19 @@
 package jdo.dto;
 
-import static org.apache.commons.lang.StringUtils.*;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
+
 import java.io.Serializable;
 
 import javax.validation.constraints.AssertTrue;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import com.fasterxml.jackson.annotation.JsonRootName;
-
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
 import jdo.party.model.Person;
+
+import org.hibernate.validator.constraints.NotEmpty;
+
+import com.fasterxml.jackson.annotation.JsonRootName;
 
 @XmlRootElement(name = "customer")
 @JsonRootName("customer")

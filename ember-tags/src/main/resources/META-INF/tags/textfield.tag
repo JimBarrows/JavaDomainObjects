@@ -5,9 +5,9 @@
 <%@ attribute name="placeHolder" required="true" %>
 
 <div {{bind-attr class=":form-group model.errors.${field}:has-error"}}>
-	<label for="${name}" class="col-sm-2 control-label">${label}</label>
+	<label for="${field}" class="col-sm-2 control-label">${label}</label>
 	<div class="col-sm-10">
-		{{input type="text" name="${name}" value=model.${field} class="form-control" placeholder="${placeHolder}"}} 
+		{{input type="text" name="${field}" value=model.${field} class="form-control" placeholder="${placeHolder}"}} 
 		{{#if model.errors.${field} }} 
 			<span class="glyphicon glyphicon-remove form-control-feedback"></span> 
 			<span class="help-block">

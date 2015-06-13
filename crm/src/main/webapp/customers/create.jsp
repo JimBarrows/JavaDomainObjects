@@ -3,13 +3,14 @@
  
 <div class="container">
 	<div class="page-header">
-		<h1>Add Customer</h1>
+		<h2>Add Customer</h2>
 	</div>
 	<form class="form-horizontal" role="form">		
 		<div {{bind-attr class=":form-group model.errors.partyType:has-error" }}>
-			<label for="name" class="col-sm-2 control-label">Type</label>
+			<label for="type" class="col-sm-2 control-label">Type</label>
 			<div class="col-sm-10">
 				{{view "select" 
+				name="type"
 					content=partyTypeList 
 					optionValuePath="content.id"  
 					optionLabelPath="content.name" 
@@ -32,6 +33,6 @@
 		{{else}}
 		<ember:TextField label="Name" field="name" placeHolder="Thingmaker"/>		
 		{{/if}}
-		<button {{action 'save'}} class="btn btn-sm btn-primary" role="button">Save</button>
+		<button id="saveCustomer" {{action 'save'}} class="btn btn-sm btn-primary" role="button">Save</button>
 	</form>
 </div>

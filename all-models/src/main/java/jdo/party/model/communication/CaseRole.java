@@ -8,7 +8,7 @@ import javax.validation.constraints.NotNull;
 import jdo.model.BasePersistentModel;
 import jdo.party.model.Party;
 
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * This class associates a party, and the role they are playing in a case.

@@ -22,7 +22,7 @@ import jdo.party.model.roles.ParentOrganization;
 @Singleton
 public class ApplicationConfiguration {
 
-	@PersistenceContext(name = "all-models")
+	@PersistenceContext(name = "JavaDomainObjects")
 	private EntityManager	em;
 
 	private Company			company;

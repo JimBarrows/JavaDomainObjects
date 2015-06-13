@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
 
 import jdo.model.BasePersistentModel;
 
-import org.apache.commons.lang.builder.HashCodeBuilder;
+import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 /**
  * A Case may be set up for a series of related communication events, regarding

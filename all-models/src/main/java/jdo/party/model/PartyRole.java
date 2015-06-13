@@ -3,6 +3,9 @@ package jdo.party.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.AttributeOverride;
+import javax.persistence.AttributeOverrides;
+import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -30,15 +33,17 @@ import org.joda.time.DateTime;
 public class PartyRole extends BasePersistentModel {
 
 	@ManyToOne
-	private Party						roleFor;
+	private Party roleFor;
 
 	@ManyToMany
-	private List<ShipmentMethodType>	ableToShipVia	= new ArrayList<ShipmentMethodType>();
+	private List<ShipmentMethodType> ableToShipVia = new ArrayList<ShipmentMethodType>();
 
 	@Embedded
-	private DateTimeRange				dateTimeRange	= new DateTimeRange();
+	@AttributeOverrides({
+			@AttributeOverride(name = "fromDate", column = @Column(name = "roleStarted")),
+			@AttributeOverride(name = "thruDate", column = @Column(name = "roleEnded")) })
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
-	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -49,21 +54,20 @@ public class PartyRole extends BasePersistentModel {
 
 	public PartyRole() {
 
-	}	
+	}
 
 	public PartyRole(DateTime from, DateTime thru) {
 		dateTimeRange.setFromDate(from);
 		dateTimeRange.setThruDate(thru);
 	}
-	
+
 	public Party getRoleFor() {
 		return roleFor;
 	}
 
 	public void setRoleFor(Party roleFor) {
 		this.roleFor = roleFor;
-	}	
-
+	}
 
 	public List<ShipmentMethodType> getAbleToShipVia() {
 		return ableToShipVia;
@@ -73,5 +77,5 @@ public class PartyRole extends BasePersistentModel {
 		this.ableToShipVia = ableToShipvia;
 	}
 
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 }
