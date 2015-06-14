@@ -22,7 +22,6 @@ public class CrmIndex extends CrmTemplate {
 	}
 
 	public void clickAddButton() {
-		link(By.cssSelector("#ember365")).click();
-		
+		link(By.linkText("Add")).click();
 	}
 }
