@@ -6,7 +6,6 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
 
 import jdo.fields.Money;
 import jdo.order.model.Order;

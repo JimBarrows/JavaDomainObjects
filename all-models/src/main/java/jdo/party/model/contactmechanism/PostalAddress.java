@@ -4,11 +4,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
+import javax.xml.crypto.Data;
 
 import jdo.party.model.PartyPostalAddress;
 import jdo.party.model.geographic_boundary.GeographicBoundary;

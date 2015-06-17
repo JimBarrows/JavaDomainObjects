@@ -3,7 +3,6 @@ package jdo.party.repositories.implementation;
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
-import javax.persistence.PersistenceContextType;
 
 import jdo.core.repository.RepositoryTemplate;
 import jdo.party.model.Party;

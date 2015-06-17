@@ -33,10 +33,7 @@ import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 public class JdoStories extends JUnitStories {
 
 	PendingStepStrategy pendingStepStrategy = new FailingUponPendingStep();
-	CrossReference crossReference = new CrossReference().withJsonOnly()
-			.withPendingStepStrategy(pendingStepStrategy)
-			.withOutputAfterEachStory(true)
-			.excludingStoriesWithNoExecutedScenarios(true);
+	CrossReference crossReference = new CrossReference().withJsonOnly();
 	ContextView contextView = new LocalFrameContextView().sized(640, 120);
 	SeleniumContext seleniumContext = new SeleniumContext();
 	SeleniumStepMonitor stepMonitor = new SeleniumStepMonitor(contextView,

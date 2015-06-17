@@ -14,9 +14,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
-import jdo.facility.model.Facility;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.order.model.WorkOrderItem;
@@ -27,6 +24,8 @@ import jdo.workeffort.association.WorkEfforAssociation;
 import jdo.workeffort.inventory.WorkEffortInvenotryAssignment;
 import jdo.workeffort.timetracking.TimeEntry;
 import jdo.workeffort.type.WorkEffortType;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Jim

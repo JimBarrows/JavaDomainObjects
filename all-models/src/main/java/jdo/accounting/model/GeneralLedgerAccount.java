@@ -4,15 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
-import org.hibernate.validator.constraints.NotEmpty;
-
 import jdo.budget.model.GlBudgetXref;
 import jdo.model.BasePersistentModel;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 public class GeneralLedgerAccount extends BasePersistentModel {
