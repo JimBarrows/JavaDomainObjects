@@ -36,9 +36,4 @@ public class CustomersNew extends CrmTemplate{
 		button(By.id("saveCustomer")).click();
 		
 	}
-
-	public TestableString flashMessage() {
-		return within(secs(2)).div(By.id("flash")).span().getText();
-	}
-	
 }
