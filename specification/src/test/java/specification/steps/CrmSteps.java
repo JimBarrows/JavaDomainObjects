@@ -3,9 +3,9 @@ package specification.steps;
 import jdo.party.model.Person;
 
 import org.jbehave.core.annotations.Given;
-import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
+import org.seleniumhq.selenium.fluent.TestableString;
 
 import specification.pages.CrmIndex;
 import specification.pages.CustomersNew;
@@ -26,8 +26,7 @@ public class CrmSteps {
 	@Given("I am on the crm site")
 	public void givenIAmOnTheCrmSite() {
 		index.go();
-		index.onCorrectPage();
-		index.url().baseShouldBe("http://localhost:8080/crm/");
+		index.onCorrectPage();		
 		index.title().shouldBe("Customer Relationship Management");
 		index.pageHeader().shouldBe("Customer Relationship Management");
 	}
@@ -57,22 +56,20 @@ public class CrmSteps {
 		customerNew.clickSaveButton();
 	}
 
-	@Then("I get a message indicating the successful save")
-	@Pending
+	@Then("I get a message indicating the successful save")	
 	public void thenIGetAMessageIndicatingTheSuccessfulSave() {
-		// PENDING
+		TestableString flashMessage = customerNew.flashMessage();
+		flashMessage.shouldBe("New customer added.");
 	}
 
-	@Then("I get shown the list of customers")
-	@Pending
+	@Then("I get shown the list of customers")	
 	public void thenIGetShownTheListOfCustomers() {
-		// PENDING
+		index.onCorrectPage();
 	}
 
-	@Then("the new customer in the list.")
-	@Pending
+	@Then("the new customer in the list.")	
 	public void thenTheNewCustomerInTheList() {
-		// PENDING
+		index.customerList().contains(person.getFirstName() + " " + person.getLastName());
 	}
 
 }

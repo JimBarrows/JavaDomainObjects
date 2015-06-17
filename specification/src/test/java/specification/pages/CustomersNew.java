@@ -9,7 +9,7 @@ import org.seleniumhq.selenium.fluent.TestableString;
 public class CustomersNew extends CrmTemplate{
 
 	public CustomersNew(WebDriverProvider driverProvider) {
-		super(driverProvider, "#/customers/new");		
+		super(driverProvider, "/#/customers/new");		
 	}	
 	
 	public TestableString pageHeader() {
@@ -35,6 +35,10 @@ public class CustomersNew extends CrmTemplate{
 	public void clickSaveButton() {
 		button(By.id("saveCustomer")).click();
 		
+	}
+
+	public TestableString flashMessage() {
+		return within(secs(2)).div(By.id("flash")).span().getText();
 	}
 	
 }

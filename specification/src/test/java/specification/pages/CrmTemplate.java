@@ -1,5 +1,6 @@
 package specification.pages;
 
+import static org.seleniumhq.selenium.fluent.Period.secs;
 import org.jbehave.web.selenium.FluentWebDriverPage;
 import org.jbehave.web.selenium.WebDriverProvider;
 
@@ -12,7 +13,7 @@ public class CrmTemplate extends FluentWebDriverPage {
 		super(driverProvider);
 		this.pageUrl = pageUrl;
 
-		baseUrl = "http://localhost:8080/crm/";
+		baseUrl = "http://localhost:8080/crm";
 
 	}
 
@@ -25,6 +26,6 @@ public class CrmTemplate extends FluentWebDriverPage {
 	}
 
 	public void onCorrectPage() {
-		this.url().shouldBe(expectedUrl());
+		within(secs(2)).url().shouldBe(expectedUrl());
 	}
 }

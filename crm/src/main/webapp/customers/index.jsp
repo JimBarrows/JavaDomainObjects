@@ -1,5 +1,5 @@
 {{#link-to "customers.create" class="btn btn-default"}}Add{{/link-to}}
-<ul>
+<ul id="customerList">
 	{{#each customer in model}}
 	<li>{{#if customer.name}} 
 		{{#link-to 'customers.edit' customer}}{{customer.name}}{{/link-to}}  

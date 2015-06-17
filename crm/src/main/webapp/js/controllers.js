@@ -26,7 +26,9 @@ App.CustomersCreateController = Ember.Controller.extend({
 		save : function() {
 			controller = this;
 			return this.model.save().then(function(){
-				  route.transitionTo('customers');
+				controller.set('alertType', 'success');
+				controller.set('alertMessage', "New customer added.");
+				controller.transitionToRoute('index');
 			}, function(reason) {
 				controller.set('alertType', 'danger');
 				controller.set('alertMessage', reason.statusText);
