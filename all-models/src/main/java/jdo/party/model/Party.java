@@ -51,7 +51,7 @@ public class Party extends BasePersistentModel implements Serializable {
 	 * 
 	 */
 	@OneToMany(mappedBy = "roleFor", cascade = ALL)
-	@OrderBy("dateTimeRange.from")
+	@OrderBy("roleStarted")
 	@XmlList
 	private List<PartyRole>					actingAs				= new ArrayList<PartyRole>();
 

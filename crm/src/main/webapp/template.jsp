@@ -29,12 +29,10 @@
 <div class="container theme-showcase" role="main">
 	<div class="page-header">
 		<h1>Customer Relationship Management</h1>
-	</div>
-	{{#if alertController.alert}}
+	</div>	
 	<div id="flash">
-		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 		<span></span>
+		<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
 	</div>
-	{{/if}}
 	{{outlet}}
 </div>

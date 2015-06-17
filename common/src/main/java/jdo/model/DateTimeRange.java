@@ -31,6 +31,21 @@ public class DateTimeRange implements Serializable {
 		return (fromDate.isBeforeNow() || fromDate.isEqualNow()) && (thruDate == null ? true : (thruDate.isAfterNow() || thruDate.isEqualNow()));
 	}
 
+	@XmlTransient
+	@Transient
+	@AssertTrue(message = "Dates are not valid the thru date must be empty, or after the from date.")
+	public boolean isDateRangeValid() {
+		boolean valid = false;
+		if (fromDate == null) {
+			valid = false;
+		} else if (thruDate == null) {
+			valid = true;
+		} else {
+			valid = thruDate.isAfter(fromDate);
+		}
+		return valid;
+	}
+	
 	public DateTime getFromDate() {
 		return fromDate;
 	}
@@ -46,24 +61,6 @@ public class DateTimeRange implements Serializable {
 	public void setThruDate(DateTime thruDate) {
 		this.thruDate = thruDate;
 	}
-
-	@XmlTransient
-	@Transient
-	@AssertTrue(message = "Dates are not valid the thru date must be empty, or after the from date.")
-	public boolean isDateRangeValid() {
-		boolean valid = false;
-		if (fromDate == null) {
-			valid = false;
-		} else if (thruDate == null) {
-			valid = true;
-		} else {
-			valid = thruDate.isAfter(fromDate);
-		}
-		return valid;
-	}
-
-	
-	
 
 	/**
 	 * 

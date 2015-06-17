@@ -41,6 +41,7 @@
 	<script src="js/libs/handlebars-v2.0.0.js"></script>
 	<script src="js/libs/ember-1.9.0.js"></script>
 	<script src="js/libs/ember-data-1.0.0-beta.11.js"></script>
+	<script src="http://builds.emberjs.com/release/ember.min.js"></script>
 	<script src="js/app.js"></script>
 	<script src="js/models.js"></script>
 	<script src="js/controllers.js"></script>

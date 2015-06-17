@@ -3,28 +3,33 @@
  */
 
 App.AlertController = Ember.Controller.extend({
-	alert : false,
+	alertMessage : false,
+	alertType: 'info',
 	observeAlert : function() {
-		if (this.alert != false) {
-			$('#flash').addClass(
-					'alert alert-' + this.alert[0] + ' alert-dismissable');
-			$('#flash span').text(this.alert[1]);
-			$('#flash').fadeIn();
+		if (this.alertMessage == false) {
+			$('#flash').hide();			
 		} else {
-			$('#flash').hide();
+			$('#flash').addClass(
+					'alert alert-' + this.get('alertType') + ' alert-dismissable');
+			$('#flash span').text(this.get('alertMessage'));
+			$('#flash').fadeIn();
 		}
-	}.observes('alert')
+	}.observes('alertMessage')
 });
 
 App.CustomersCreateController = Ember.Controller.extend({
 	needs : [ 'alert' ],
 	partyTypeList : [],
+	alertMessage: Ember.computed.alias('controllers.alert.alertMessage'),
+	alertType:Ember.computed.alias('controllers.alert.alertType'),
 	actions : {
 		save : function() {
+			controller = this;
 			return this.model.save().then(function(){
 				  route.transitionTo('customers');
-			}, function() {
-			  // Couldn't save, do nothing about it.
+			}, function(reason) {
+				controller.set('alertType', 'danger');
+				controller.set('alertMessage', reason.statusText);
 			});
 		}
 	}
