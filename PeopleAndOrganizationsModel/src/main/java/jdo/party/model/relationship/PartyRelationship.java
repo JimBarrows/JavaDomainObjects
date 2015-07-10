@@ -1,5 +1,7 @@
 package jdo.party.model.relationship;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -11,11 +13,11 @@ import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
+import org.joda.time.DateTime;
+
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
-
-import org.joda.time.DateTime;
 
 /**
  * A relationship is defined by the two parties and their respective roles.
@@ -81,7 +83,7 @@ public class PartyRelationship extends BasePersistentModel {
 		relationshipTo = to;
 	}
 
-	public PartyRelationship(Long id, Long version, DateTime from,
+	public PartyRelationship(UUID id, Long version, DateTime from,
 			DateTime thru, String comment, PartyRole relationshipFrom,
 			PartyRole relationshipTo) {
 		super(id, version);

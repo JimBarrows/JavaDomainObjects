@@ -1,9 +1,10 @@
 package jdo.party.model.relationship;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.humanresoures.model.termination.TerminationType;
 import jdo.party.model.PartyRole;
 
 
@@ -18,8 +19,11 @@ public class Employment extends PartyRelationship {
 	@ManyToOne
 	private TerminationReason dueTo;
 	
+	/** UUID to the TerminationType of this employment relationshipo.
+	 * 
+	 */
 	@ManyToOne
-	private TerminationType terminationType;
+	private UUID terminationType;
 
 	public TerminationReason getDueTo() {
 		return dueTo;
@@ -35,7 +39,7 @@ public class Employment extends PartyRelationship {
 	}
 
 
-	public TerminationType getTerminationType() {
+	public UUID getTerminationType() {
 		return terminationType;
 	}
 

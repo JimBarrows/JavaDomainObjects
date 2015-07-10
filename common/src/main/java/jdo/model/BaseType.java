@@ -1,5 +1,7 @@
 package jdo.model;
 
+import java.util.UUID;
+
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
 
@@ -18,7 +20,7 @@ public class BaseType extends BasePersistentModel {
 	@Column(nullable = false)
 	protected String	description;
 
-	public BaseType(Long id, Long version, String description) {
+	public BaseType(UUID id, Long version, String description) {
 		super(id, version);
 		this.description = description;
 	}

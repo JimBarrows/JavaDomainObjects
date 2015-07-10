@@ -2,6 +2,7 @@ package jdo.party.model.geographic_boundary;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -9,12 +10,10 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.crypto.Data;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import jdo.model.BasePersistentModel;
 import jdo.party.model.contactmechanism.PostalAddress;
-import jdo.product.model.supplier.ReorderGuideline;
-import jdo.salestax.model.SalesTaxLookup;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * 
@@ -52,21 +51,27 @@ public class GeographicBoundary extends BasePersistentModel {
 	 */
 	@OneToMany
 	private List<GeographicBoundary> within = new ArrayList<GeographicBoundary>();
+	/**The list of UUIDs for ReorderGuideline.
+	 * 
+	 */
 	@OneToMany
-	private List<ReorderGuideline> reorderGuideline = new ArrayList<ReorderGuideline>();
+	private List<UUID> reorderGuideline = new ArrayList<UUID>();
 
+	/**The list of UUIDs for salesTaxLookup.
+	 * 
+	 */
 	@OneToMany
-	private List<SalesTaxLookup> salesTaxLookup = new ArrayList<SalesTaxLookup>();
+	private List<UUID> salesTaxLookup = new ArrayList<UUID>();
 
-	public List<SalesTaxLookup> getSalesTaxLookup() {
+	public List<UUID> getSalesTaxLookup() {
 		return salesTaxLookup;
 	}
 
-	public void setSalesTaxLookup(List<SalesTaxLookup> salesTaxLookup) {
+	public void setSalesTaxLookup(List<UUID> salesTaxLookup) {
 		this.salesTaxLookup = salesTaxLookup;
 	}
 
-	public void setReorderGuideline(List<ReorderGuideline> reorderGuideline) {
+	public void setReorderGuideline(List<UUID> reorderGuideline) {
 		this.reorderGuideline = reorderGuideline;
 	}
 
@@ -113,7 +118,7 @@ public class GeographicBoundary extends BasePersistentModel {
 		this.abbreviation = abbreviation;
 	}
 
-	public List<ReorderGuideline> getReorderGuideline() {
+	public List<UUID> getReorderGuideline() {
 		return reorderGuideline;
 	}
 

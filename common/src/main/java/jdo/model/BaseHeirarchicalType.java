@@ -2,6 +2,7 @@ package jdo.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.ManyToOne;
 import javax.persistence.MappedSuperclass;
@@ -27,11 +28,11 @@ public class BaseHeirarchicalType extends BaseType {
 		super();
 	}
 
-	public BaseHeirarchicalType(Long id, Long version, String description) {
+	public BaseHeirarchicalType(UUID id, Long version, String description) {
 		super(id, version, description);
 	}
 
-	public BaseHeirarchicalType(Long id, Long version, String description, BaseHeirarchicalType parent, List<BaseHeirarchicalType> children) {
+	public BaseHeirarchicalType(UUID id, Long version, String description, BaseHeirarchicalType parent, List<BaseHeirarchicalType> children) {
 		super(id, version, description);
 		this.parent = parent;
 		this.children = children;

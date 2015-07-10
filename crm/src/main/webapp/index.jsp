@@ -1,53 +1,37 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1"%>
-<%@ taglib uri="http://javadomainobjects.org/tags/ember" prefix="ember"%>
 <!DOCTYPE html>
-<html lang="en">
+<!--[if lt IE 7]>      <html lang="en" ng-app="crmApp" class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html lang="en" ng-app="crmApp" class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html lang="en" ng-app="crmApp" class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en" ng-app="crmApp" class="no-js">
+<!--<![endif]-->
 <head>
 <meta charset="utf-8">
-<title>Customer Relationship Management</title>
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>My AngularJS App</title>
 <meta name="description" content="">
-<meta name="author" content="">
-<link rel="icon" href="../../favicon.ico">
-<link rel="stylesheet" href="css/normalize.css">
-<link rel="stylesheet" href="css/style.css">
-<!-- Latest compiled and minified CSS -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css">
-
-<!-- Optional theme -->
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap-theme.min.css">
-
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="js/libs/html5-boilerplate/dist/css/normalize.css">
+<link rel="stylesheet"
+	href="js/libs/html5-boilerplate/dist/css/main.css">
+<link rel="stylesheet" href="app.css">
+<script
+	src="js/libs/html5-boilerplate/dist/js/vendor/modernizr-2.8.3.min.js"></script>
 </head>
-<body role="document">
-	<script type="text/x-handlebars">
-		<%@ include file="template.jsp"%>		
-	</script>
+<body>
 
-	<script type="text/x-handlebars" id="index">
-		<%@ include file="customers/index.jsp"%>
-	</script>
+	<!--[if lt IE 7]>
+      <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+  <![endif]-->
 
-	<script type="text/x-handlebars" id="customers/create">
-		<%@ include file="customers/create.jsp" %> 
-	</script>
-	
-	<script type="text/x-handlebars" id="customers/edit">
-		<%@ include file="customers/edit.jsp" %> 
-	</script>
+	<div ng-view></div>
 
-
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-	<script src="js/libs/handlebars-v2.0.0.js"></script>
-	<script src="js/libs/ember-1.9.0.js"></script>
-	<script src="js/libs/ember-data-1.0.0-beta.11.js"></script>
-	<script src="http://builds.emberjs.com/release/ember.min.js"></script>
-	<script src="js/app.js"></script>
-	<script src="js/models.js"></script>
-	<script src="js/controllers.js"></script>
-	<script src="js/routes.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
-	<!-- to activate the test runner, add the "?test" query string parameter -->
-	<script src="tests/runner.js"></script>
+	<!-- In production use:
+  <script src="//ajax.googleapis.com/ajax/libs/angularjs/x.x.x/angular.min.js"></script>
+  -->
+	<script src="js/libs/angular/angular.js"></script>
+	<script src="js/libs/angular-route/angular-route.js"></script>
+	<script src="app.js"></script>		
 </body>
 </html>

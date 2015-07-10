@@ -1,11 +1,12 @@
 package jdo.party.model.communication;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
-import jdo.workeffort.WorkEffort;
 
 @Entity
 public class CommunicationEventWorkEffort extends BasePersistentModel {
@@ -18,8 +19,10 @@ public class CommunicationEventWorkEffort extends BasePersistentModel {
 	@Lob
 	private String description;
 
-	@ManyToOne
-	private WorkEffort effortFor;
+	/**The UUID for the work effort for this communication event.
+	 * 
+	 */	
+	private UUID effortFor;
 
 	@ManyToOne
 	private CommunicationEvent eventFrom;
@@ -28,7 +31,7 @@ public class CommunicationEventWorkEffort extends BasePersistentModel {
 		return description;
 	}
 
-	public WorkEffort getEffortFor() {
+	public UUID getEffortFor() {
 		return effortFor;
 	}
 
@@ -40,7 +43,7 @@ public class CommunicationEventWorkEffort extends BasePersistentModel {
 		this.description = description;
 	}
 
-	public void setEffortFor(WorkEffort effortFor) {
+	public void setEffortFor(UUID effortFor) {
 		this.effortFor = effortFor;
 	}
 

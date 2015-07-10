@@ -3,13 +3,12 @@ package jdo.party.model.contactmechanism;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
-
-import jdo.ecommerce.model.webvisit.Visit;
 
 /**
  * @author Jim.Barrows@gmail.com
@@ -23,8 +22,11 @@ public class WebAddress extends ElectronicAddress {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@OneToMany(mappedBy="hostedVia")
-	private List<Visit>				hostOf;
+	/** A list of visit uuids.
+	 * 
+	 */
+	@OneToMany
+	private List<UUID>				hostOf;
 
 	@AssertTrue
 	public boolean addressIsUrl() {
@@ -45,11 +47,11 @@ public class WebAddress extends ElectronicAddress {
 		}
 	}
 
-	public List<Visit> getHostOf() {
+	public List<UUID> getHostOf() {
 		return hostOf;
 	}
 
-	public void setHostOf(List<Visit> hostOf) {
+	public void setHostOf(List<UUID> hostOf) {
 		this.hostOf = hostOf;
 	}
 

@@ -48,3 +48,4 @@ tmp*
 /bin/
 all\-models/src/main/metamodel/*
 generated/swagger-ui/swagger.json
+node_modules/

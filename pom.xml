@@ -72,6 +72,7 @@
 		<module>application</module>
 		<module>persistence-config</module>
 		<module>specification</module>
+		<module>PeopleAndOrganizationsModel</module>
 	</modules>
 
 	<profiles>

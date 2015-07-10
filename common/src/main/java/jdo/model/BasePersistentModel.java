@@ -1,6 +1,7 @@
 package jdo.model;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -25,12 +26,12 @@ public class BasePersistentModel implements Serializable {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private Long				id;
+	private UUID				id;
 
 	@Version
 	private Long				version				= 0l;
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -38,13 +39,13 @@ public class BasePersistentModel implements Serializable {
 		super();
 	}
 
-	public BasePersistentModel(Long id, Long version) {
+	public BasePersistentModel(UUID id, Long version) {
 		super();
 		this.id = id;
 		this.version = version;
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 

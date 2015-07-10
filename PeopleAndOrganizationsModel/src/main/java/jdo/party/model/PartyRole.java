@@ -2,6 +2,7 @@ package jdo.party.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -13,11 +14,10 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
+import org.joda.time.DateTime;
+
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.shipment.model.route.ShipmentMethodType;
-
-import org.joda.time.DateTime;
 
 /**
  * A person or organization may play any number of roles such as a customer,
@@ -35,8 +35,11 @@ public class PartyRole extends BasePersistentModel {
 	@ManyToOne
 	private Party roleFor;
 
+	/**A list of UUID's for ShipmentMethodType objects.
+	 * 
+	 */
 	@ManyToMany
-	private List<ShipmentMethodType> ableToShipVia = new ArrayList<ShipmentMethodType>();
+	private List<UUID> ableToShipVia = new ArrayList<UUID>();
 
 	@Embedded
 	@AttributeOverrides({
@@ -69,11 +72,11 @@ public class PartyRole extends BasePersistentModel {
 		this.roleFor = roleFor;
 	}
 
-	public List<ShipmentMethodType> getAbleToShipVia() {
+	public List<UUID> getAbleToShipVia() {
 		return ableToShipVia;
 	}
 
-	public void setAbleToShipVia(List<ShipmentMethodType> ableToShipvia) {
+	public void setAbleToShipVia(List<UUID> ableToShipvia) {
 		this.ableToShipVia = ableToShipvia;
 	}
 

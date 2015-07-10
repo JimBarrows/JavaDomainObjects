@@ -98,15 +98,7 @@ public class Facility extends BasePersistentModel{
 	 */
 	public void setDescription(String description) {
 		this.description = description;
-	}
-
-	/**
-	 * @param facilityId
-	 *            the facilityId to set
-	 */
-	public void setFacilityId(Long facilityId) {
-		this.setId( facilityId);
-	}
+	}	
 
 	/**
 	 * @param involving
