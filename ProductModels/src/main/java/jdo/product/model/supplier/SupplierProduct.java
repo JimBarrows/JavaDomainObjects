@@ -1,5 +1,7 @@
 package jdo.product.model.supplier;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -8,7 +10,6 @@ import javax.xml.crypto.Data;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Organization;
 import jdo.product.model.Good;
 
 /**
@@ -33,8 +34,10 @@ public class SupplierProduct extends BasePersistentModel {
 	private RatingType ratedBy;
 
 	private long standardLeadTime;
-	@ManyToOne
-	private Organization suppliedBy;
+	/**UUID this Organization is for.
+	 * 
+	 */
+	private UUID suppliedBy;
 	@ManyToOne
 	private Good validSupplierFor;
 	@Embedded
@@ -64,7 +67,7 @@ public class SupplierProduct extends BasePersistentModel {
 		return standardLeadTime;
 	}
 
-	public Organization getSuppliedBy() {
+	public UUID getSuppliedBy() {
 		return suppliedBy;
 	}
 
@@ -88,7 +91,7 @@ public class SupplierProduct extends BasePersistentModel {
 		this.standardLeadTime = standardLeadTime;
 	}
 
-	public void setSuppliedBy(Organization suppliedBy) {
+	public void setSuppliedBy(UUID suppliedBy) {
 		this.suppliedBy = suppliedBy;
 	}
 

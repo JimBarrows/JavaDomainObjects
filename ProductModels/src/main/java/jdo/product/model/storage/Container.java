@@ -2,12 +2,12 @@ package jdo.product.model.storage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import jdo.facility.model.Facility;
 import jdo.model.BasePersistentModel;
 
 /**
@@ -26,8 +26,10 @@ public class Container extends BasePersistentModel {
 	@ManyToOne
 	private ContainerType				describedBy;
 
-	@ManyToOne
-	private Facility						locatedAt;
+	/**UUID to the Facility this container is in.
+	 * 
+	 */
+	private UUID						locatedAt;
 
 	@OneToMany(mappedBy = "locatedWithin")
 	private List<InventoryItem>	storageContainerFor	= new ArrayList<InventoryItem>();
@@ -36,7 +38,7 @@ public class Container extends BasePersistentModel {
 		return describedBy;
 	}
 
-	public Facility getLocatedAt() {
+	public UUID getLocatedAt() {
 		return locatedAt;
 	}
 
@@ -48,7 +50,7 @@ public class Container extends BasePersistentModel {
 		this.describedBy = describedBy;
 	}
 
-	public void setLocatedAt(Facility locatedAt) {
+	public void setLocatedAt(UUID locatedAt) {
 		this.locatedAt = locatedAt;
 	}
 

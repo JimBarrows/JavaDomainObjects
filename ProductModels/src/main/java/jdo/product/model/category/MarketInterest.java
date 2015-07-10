@@ -1,5 +1,7 @@
 package jdo.product.model.category;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
@@ -7,7 +9,6 @@ import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.PartyClassification;
 
 /**
  * This maps the interest certain categories of parties have in a particular
@@ -25,8 +26,10 @@ public class MarketInterest extends BasePersistentModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@ManyToOne
-	private PartyClassification interestFor;
+	/**UUID for the party classification that this an interest for.
+	 * 
+	 */
+	private UUID interestFor;
 
 	@ManyToOne
 	@JoinColumn(name = "productCategoryOf")
@@ -42,7 +45,7 @@ public class MarketInterest extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public PartyClassification getInterestFor() {
+	public UUID getInterestFor() {
 		return interestFor;
 	}
 
@@ -50,7 +53,7 @@ public class MarketInterest extends BasePersistentModel {
 		return of;
 	}
 
-	public void setInterestFor(PartyClassification interestFor) {
+	public void setInterestFor(UUID interestFor) {
 		this.interestFor = interestFor;
 	}
 

@@ -1,5 +1,7 @@
 package jdo.product.model.cost;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -11,8 +13,6 @@ import javax.validation.constraints.NotNull;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Organization;
-import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.product.model.Product;
 import jdo.product.model.feature.ProductFeature;
 
@@ -44,11 +44,15 @@ public class EstimatedProductCost extends BasePersistentModel {
 	@Embedded
 	private Money				cost;
 
-	@ManyToOne
-	private GeographicBoundary	specifiedForGeographicBoundary;
+	/**UUID for a GeographicBoundary this is for.
+	 * 
+	 */
+	private UUID	specifiedForGeographicBoundary;
 
-	@ManyToOne
-	private Organization		specifiedForOrganization;
+	/** UUID for the Organization this is for.
+	 * 
+	 */
+	private UUID		specifiedForOrganization;
 
 	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
@@ -83,12 +87,12 @@ public class EstimatedProductCost extends BasePersistentModel {
 	}
 
 	
-	public GeographicBoundary getSpecifiedForGeographicBoundary() {
+	public UUID getSpecifiedForGeographicBoundary() {
 		return specifiedForGeographicBoundary;
 	}
 
 	
-	public Organization getSpecifiedForOrganization() {
+	public UUID getSpecifiedForOrganization() {
 		return specifiedForOrganization;
 	}
 
@@ -108,11 +112,11 @@ public class EstimatedProductCost extends BasePersistentModel {
 		this.cost = cost;
 	}
 
-	public void setSpecifiedForGeographicBoundary(GeographicBoundary specifiedForGeographicBoundary) {
+	public void setSpecifiedForGeographicBoundary(UUID specifiedForGeographicBoundary) {
 		this.specifiedForGeographicBoundary = specifiedForGeographicBoundary;
 	}
 
-	public void setSpecifiedForOrganization(Organization specifiedForOrganization) {
+	public void setSpecifiedForOrganization(UUID specifiedForOrganization) {
 		this.specifiedForOrganization = specifiedForOrganization;
 	}
 

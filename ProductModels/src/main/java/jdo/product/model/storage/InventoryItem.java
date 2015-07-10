@@ -2,6 +2,7 @@ package jdo.product.model.storage;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -9,7 +10,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import jdo.facility.model.Facility;
+import org.apache.logging.log4j.core.net.Facility;
+
 import jdo.model.BasePersistentModel;
 import jdo.product.model.Good;
 
@@ -33,8 +35,10 @@ public class InventoryItem extends BasePersistentModel {
 	@ManyToOne
 	private InventoryItemStatusType		inTheStateOf;
 
-	@ManyToOne
-	private Facility					locatedAt;
+	/**UUID for the facility this item is located in.
+	 * 
+	 */	
+	private UUID					locatedAt;
 
 	@ManyToOne
 	private Container					locatedWithin;
@@ -56,7 +60,7 @@ public class InventoryItem extends BasePersistentModel {
 	}
 
 	
-	public Facility getLocatedAt() {
+	public UUID getLocatedAt() {
 		return locatedAt;
 	}
 
@@ -83,7 +87,7 @@ public class InventoryItem extends BasePersistentModel {
 		this.inTheStateOf = inTheStateOf;
 	}
 
-	public void setLocatedAt(Facility locatedAt) {
+	public void setLocatedAt(UUID locatedAt) {
 		this.locatedAt = locatedAt;
 	}
 

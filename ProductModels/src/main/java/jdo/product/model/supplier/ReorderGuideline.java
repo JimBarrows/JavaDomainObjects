@@ -1,14 +1,15 @@
 package jdo.product.model.supplier;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.facility.model.Facility;
+import org.apache.logging.log4j.core.net.Facility;
+
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.PartyRole;
-import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.product.model.Good;
 
 /**
@@ -24,12 +25,18 @@ public class ReorderGuideline extends BasePersistentModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@ManyToOne
-	private Facility basedOnFacility;
-	@ManyToOne
-	private GeographicBoundary basedOnGeographicBoundary;
-	@ManyToOne
-	private PartyRole basedOnInternalOrganization;
+	/** UUID for the Facility this is for.
+	 * 
+	 */
+	private UUID basedOnFacility;
+	/**UUID for the GeographicBoundary this is for.
+	 * 
+	 */
+	private UUID basedOnGeographicBoundary;
+	/**
+	 * UUID for the PartyRole this is for.
+	 */
+	private UUID basedOnInternalOrganization;
 	@ManyToOne
 	private Good guidelineFor;
 	private long reorderLevel;
@@ -45,15 +52,15 @@ public class ReorderGuideline extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public Facility getBasedOnFacility() {
+	public UUID getBasedOnFacility() {
 		return basedOnFacility;
 	}
 
-	public GeographicBoundary getBasedOnGeographicBoundary() {
+	public UUID getBasedOnGeographicBoundary() {
 		return basedOnGeographicBoundary;
 	}
 
-	public PartyRole getBasedOnInternalOrganization() {
+	public UUID getBasedOnInternalOrganization() {
 		return basedOnInternalOrganization;
 	}
 
@@ -69,17 +76,17 @@ public class ReorderGuideline extends BasePersistentModel {
 		return reorderQuantity;
 	}
 
-	public void setBasedOnFacility(Facility basedOnFacility) {
+	public void setBasedOnFacility(UUID basedOnFacility) {
 		this.basedOnFacility = basedOnFacility;
 	}
 
 	public void setBasedOnGeographicBoundary(
-			GeographicBoundary basedOnGeographicBoundary) {
+			UUID basedOnGeographicBoundary) {
 		this.basedOnGeographicBoundary = basedOnGeographicBoundary;
 	}
 
 	public void setBasedOnInternalOrganization(
-			PartyRole basedOnInternalOrganization) {
+			UUID basedOnInternalOrganization) {
 		this.basedOnInternalOrganization = basedOnInternalOrganization;
 	}
 

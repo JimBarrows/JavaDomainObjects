@@ -1,5 +1,7 @@
 package jdo.product.model.price;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -7,13 +9,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-import jdo.agreement.model.item.AgreementPricingProgram;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Organization;
-import jdo.party.model.PartyClassification;
-import jdo.party.model.geographic_boundary.GeographicBoundary;
 import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 import jdo.product.model.feature.ProductFeature;
@@ -32,14 +30,18 @@ public class PriceComponent extends BasePersistentModel {
 	 */
 	private static final long	serialVersionUID	= 1L;
 
-	@ManyToOne
-	private GeographicBoundary	basedOnGeographicBoundary;
+	/** UUID to the GeographicBoundary.
+	 * 
+	 */
+	private UUID	basedOnGeographicBoundary;
 
 	@ManyToOne
 	private OrderValue			basedOnOrderValue;
 
-	@ManyToOne
-	private PartyClassification	basedOnPartyType;
+	/** UUID to the PartyClassification
+	 * 
+	 */
+	private UUID	basedOnPartyType;
 
 	@ManyToOne
 	private ProductCategory		basedOnProductCategory;
@@ -50,8 +52,10 @@ public class PriceComponent extends BasePersistentModel {
 	@ManyToOne
 	private SaleType			basedOnSaleType;
 	
-	@ManyToOne
-	private AgreementPricingProgram basedOnAgreementPricingProgram;
+	/** UUID to the AgreementPricingProgram.
+	 * 
+	 */
+	private UUID basedOnAgreementPricingProgram;
 
 	
 
@@ -69,8 +73,11 @@ public class PriceComponent extends BasePersistentModel {
 	@ManyToOne
 	private ProductFeature		priceDefinedForProductFeature;
 
+	/**UUID for the Organization.
+	 * 
+	 */
 	@ManyToOne
-	private Organization		specifiedFor;
+	private UUID		specifiedFor;
 
 	@Embedded
 	private DateTimeRange		dateTimeRange		= new DateTimeRange();
@@ -85,7 +92,7 @@ public class PriceComponent extends BasePersistentModel {
 	}
 
 	
-	public GeographicBoundary getBasedOnGeographicBoundary() {
+	public UUID getBasedOnGeographicBoundary() {
 		return basedOnGeographicBoundary;
 	}
 
@@ -95,7 +102,7 @@ public class PriceComponent extends BasePersistentModel {
 	}
 
 	
-	public PartyClassification getBasedOnPartyType() {
+	public UUID getBasedOnPartyType() {
 		return basedOnPartyType;
 	}
 
@@ -140,11 +147,11 @@ public class PriceComponent extends BasePersistentModel {
 	}
 
 	
-	public Organization getSpecifiedFor() {
+	public UUID getSpecifiedFor() {
 		return specifiedFor;
 	}
 
-	public void setBasedOnGeographicBoundary(GeographicBoundary basedOnGeographicBoundary) {
+	public void setBasedOnGeographicBoundary(UUID basedOnGeographicBoundary) {
 		this.basedOnGeographicBoundary = basedOnGeographicBoundary;
 	}
 
@@ -152,7 +159,7 @@ public class PriceComponent extends BasePersistentModel {
 		this.basedOnOrderValue = basedOnOrderValue;
 	}
 
-	public void setBasedOnPartyType(PartyClassification basedOnPartyType) {
+	public void setBasedOnPartyType(UUID basedOnPartyType) {
 		this.basedOnPartyType = basedOnPartyType;
 	}
 
@@ -188,15 +195,15 @@ public class PriceComponent extends BasePersistentModel {
 		this.priceDefinedForProductFeature = priceDefinedForProductFeature;
 	}
 
-	public void setSpecifiedFor(Organization specifiedFor) {
+	public void setSpecifiedFor(UUID specifiedFor) {
 		this.specifiedFor = specifiedFor;
 	}
-	public AgreementPricingProgram getBasedOnAgreementPricingProgram() {
+	public UUID getBasedOnAgreementPricingProgram() {
 		return basedOnAgreementPricingProgram;
 	}
 
 	public void setBasedOnAgreementPricingProgram(
-			AgreementPricingProgram basedOnAgreementPricingProgram) {
+			UUID basedOnAgreementPricingProgram) {
 		this.basedOnAgreementPricingProgram = basedOnAgreementPricingProgram;
 	}
 }
