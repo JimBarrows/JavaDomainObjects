@@ -1,10 +1,11 @@
 package jdo.shipment.model.issuance;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
 
 @Entity
 public class ItemIssuanceRole extends BasePersistentModel {
@@ -14,13 +15,16 @@ public class ItemIssuanceRole extends BasePersistentModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	private Party roleFor;
+	/**
+	 * UUID of the Party.
+	 * 
+	 */
+	private UUID roleFor;
 
 	@ManyToOne
 	private ItemIssuanceRoleType type;
 
-	public Party getRoleFor() {
+	public UUID getRoleFor() {
 		return roleFor;
 	}
 
@@ -28,7 +32,7 @@ public class ItemIssuanceRole extends BasePersistentModel {
 		return type;
 	}
 
-	public void setRoleFor(Party roleFor) {
+	public void setRoleFor(UUID roleFor) {
 		this.roleFor = roleFor;
 	}
 

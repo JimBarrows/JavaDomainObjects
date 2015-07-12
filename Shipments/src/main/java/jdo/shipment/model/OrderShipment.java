@@ -1,11 +1,12 @@
 package jdo.shipment.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
 import jdo.model.BasePersistentModel;
-import jdo.order.model.OrderItem;
 
 @Entity
 public class OrderShipment extends BasePersistentModel {
@@ -13,26 +14,26 @@ public class OrderShipment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 	@Min(1)
-	private int					quantity;
+	private int quantity;
 	@ManyToOne
-	private ShipmentItem		shipmentOf;
-	@ManyToOne
-	private OrderItem			shippedVia;
+	private ShipmentItem shipmentOf;
+	/**
+	 * UUID of the OrderItem.
+	 * 
+	 */
+	private UUID shippedVia;
 
-	
 	public int getQuantity() {
 		return quantity;
 	}
 
-	
 	public ShipmentItem getShipmentOf() {
 		return shipmentOf;
 	}
 
-	
-	public OrderItem getShippedVia() {
+	public UUID getShippedVia() {
 		return shippedVia;
 	}
 
@@ -44,7 +45,7 @@ public class OrderShipment extends BasePersistentModel {
 		this.shipmentOf = shipmentOf;
 	}
 
-	public void setShippedVia(OrderItem shippedVia) {
+	public void setShippedVia(UUID shippedVia) {
 		this.shippedVia = shippedVia;
 	}
 }

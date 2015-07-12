@@ -2,6 +2,7 @@ package jdo.shipment.model.receipt;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -12,9 +13,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 
 import jdo.model.BasePersistentModel;
-import jdo.order.model.OrderItem;
-import jdo.product.model.Good;
-import jdo.product.model.storage.InventoryItem;
 
 @Entity
 public class ShipmentReceipt extends BasePersistentModel {
@@ -23,14 +21,23 @@ public class ShipmentReceipt extends BasePersistentModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	@ManyToOne
-	private Good good;
-	@ManyToOne
-	private InventoryItem inventoryItem;
+	/**
+	 * UUID of the Good.
+	 * 
+	 */
+	private UUID good;
+	/**
+	 * UUID of the InventoryItem.
+	 * 
+	 */
+	private UUID inventoryItem;
 	@Lob
 	private String itemDescription;
-	@ManyToOne
-	private OrderItem orderItem;
+	/**
+	 * UUID of the OrderItem.
+	 * 
+	 */
+	private UUID orderItem;
 	@Min(0)
 	private int quantityAccepted;
 	@Min(0)
@@ -44,11 +51,11 @@ public class ShipmentReceipt extends BasePersistentModel {
 	@ManyToOne
 	private ShipmentPackage shipmentPackage;
 
-	public Good getGood() {
+	public UUID getGood() {
 		return good;
 	}
 
-	public InventoryItem getInventoryItem() {
+	public UUID getInventoryItem() {
 		return inventoryItem;
 	}
 
@@ -56,7 +63,7 @@ public class ShipmentReceipt extends BasePersistentModel {
 		return itemDescription;
 	}
 
-	public OrderItem getOrderItem() {
+	public UUID getOrderItem() {
 		return orderItem;
 	}
 
@@ -84,11 +91,11 @@ public class ShipmentReceipt extends BasePersistentModel {
 		return shipmentPackage;
 	}
 
-	public void setGood(Good good) {
+	public void setGood(UUID good) {
 		this.good = good;
 	}
 
-	public void setInventoryItem(InventoryItem inventoryItem) {
+	public void setInventoryItem(UUID inventoryItem) {
 		this.inventoryItem = inventoryItem;
 	}
 
@@ -96,7 +103,7 @@ public class ShipmentReceipt extends BasePersistentModel {
 		this.itemDescription = itemDescription;
 	}
 
-	public void setOrderItem(OrderItem orderItem) {
+	public void setOrderItem(UUID orderItem) {
 		this.orderItem = orderItem;
 	}
 

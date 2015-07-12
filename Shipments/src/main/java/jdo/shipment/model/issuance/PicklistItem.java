@@ -1,6 +1,7 @@
 package jdo.shipment.model.issuance;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,7 +9,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
 import jdo.model.BasePersistentModel;
-import jdo.product.model.storage.InventoryItem;
 
 @Entity
 public class PicklistItem extends BasePersistentModel {
@@ -22,8 +22,12 @@ public class PicklistItem extends BasePersistentModel {
 	private List<ItemIssuance> issueList;
 	@ManyToOne
 	private PickList partOf;
-	@ManyToOne
-	private InventoryItem pickedFrom;
+	/**
+	 * UUID of the InventoryItem.
+	 * 
+	 */
+	private UUID pickedFrom;
+
 	@Min(1)
 	private int quantity;
 
@@ -35,7 +39,7 @@ public class PicklistItem extends BasePersistentModel {
 		return partOf;
 	}
 
-	public InventoryItem getPickedFrom() {
+	public UUID getPickedFrom() {
 		return pickedFrom;
 	}
 
@@ -51,7 +55,7 @@ public class PicklistItem extends BasePersistentModel {
 		this.partOf = partOf;
 	}
 
-	public void setPickedFrom(InventoryItem pickedFrom) {
+	public void setPickedFrom(UUID pickedFrom) {
 		this.pickedFrom = pickedFrom;
 	}
 

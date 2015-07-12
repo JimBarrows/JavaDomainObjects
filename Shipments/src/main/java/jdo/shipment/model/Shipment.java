@@ -2,6 +2,7 @@ package jdo.shipment.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.AttributeOverride;
 import javax.persistence.AttributeOverrides;
@@ -10,7 +11,6 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Temporal;
@@ -18,9 +18,6 @@ import javax.persistence.TemporalType;
 
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
-import jdo.party.model.contactmechanism.ContactMechanism;
-import jdo.party.model.contactmechanism.PostalAddress;
 
 @Entity
 @Inheritance
@@ -32,8 +29,8 @@ public class Shipment extends BasePersistentModel {
 	private static final long serialVersionUID = 1L;
 	@Embedded
 	@AttributeOverrides(value = {
-			@AttributeOverride(column = @Column(name = "actualShipCostCurrency"), name = "currency"),
-			@AttributeOverride(column = @Column(name = "actualShipCostAmount"), name = "amount") })
+			@AttributeOverride(column = @Column(name = "actualShipCostCurrency") , name = "currency"),
+			@AttributeOverride(column = @Column(name = "actualShipCostAmount") , name = "amount") })
 	private Money actualShipCost;
 	@Temporal(TemporalType.DATE)
 	private Date estimatedArrivalDate;
@@ -41,15 +38,18 @@ public class Shipment extends BasePersistentModel {
 	private Date estimatedReadyDate;
 	@Embedded
 	@AttributeOverrides(value = {
-			@AttributeOverride(column = @Column(name = "estiamtedShipCostCurrency"), name = "currency"),
-			@AttributeOverride(column = @Column(name = "estiamtedShipCostAmount"), name = "amount") })
+			@AttributeOverride(column = @Column(name = "estiamtedShipCostCurrency") , name = "currency"),
+			@AttributeOverride(column = @Column(name = "estiamtedShipCostAmount") , name = "amount") })
 	private Money estimatedShipCost;
 	@Temporal(TemporalType.DATE)
 	private Date estimatedShipDate;
 	@Lob
 	private String handlingInstructions;
-	@ManyToOne
-	private ContactMechanism inquiredAboutVia;
+	/**
+	 * UUID for the ContactMechanism.
+	 * 
+	 */
+	private UUID inquiredAboutVia;
 	@OneToMany
 	@OrderBy(value = "sequenceNumber")
 	private List<ShipmentItem> items;
@@ -57,15 +57,27 @@ public class Shipment extends BasePersistentModel {
 	private Date lastUpdated;
 	@Temporal(TemporalType.DATE)
 	private Date latestCancelDate;
-	@ManyToOne
-	private PostalAddress shippedFromContactMechanism;
-	@ManyToOne
-	private Party shippedFromParty;
-	@ManyToOne
-	private PostalAddress shippedToContactMechanism;
+	/**
+	 * UUID for the PostalAddress.
+	 * 
+	 */
+	private UUID shippedFromContactMechanism;
+	/**
+	 * UUID of the Party.
+	 * 
+	 */
+	private UUID shippedFromParty;
+	/**
+	 * UUID of the PostalAddress.
+	 * 
+	 */
+	private UUID shippedToContactMechanism;
 
-	@ManyToOne
-	private Party shippedToParty;
+	/**
+	 * UUID of the Party.
+	 * 
+	 */
+	private UUID shippedToParty;
 	@OneToMany
 	@OrderBy(value = "statusDate")
 	private List<ShipmentStatus> statuses;
@@ -94,7 +106,7 @@ public class Shipment extends BasePersistentModel {
 		return handlingInstructions;
 	}
 
-	public ContactMechanism getInquiredAboutVia() {
+	public UUID getInquiredAboutVia() {
 		return inquiredAboutVia;
 	}
 
@@ -110,19 +122,19 @@ public class Shipment extends BasePersistentModel {
 		return latestCancelDate;
 	}
 
-	public ContactMechanism getShippedFromContactMechanism() {
+	public UUID getShippedFromContactMechanism() {
 		return shippedFromContactMechanism;
 	}
 
-	public Party getShippedFromParty() {
+	public UUID getShippedFromParty() {
 		return shippedFromParty;
 	}
 
-	public ContactMechanism getShippedToContactMechanism() {
+	public UUID getShippedToContactMechanism() {
 		return shippedToContactMechanism;
 	}
 
-	public Party getShippedToParty() {
+	public UUID getShippedToParty() {
 		return shippedToParty;
 	}
 
@@ -154,7 +166,7 @@ public class Shipment extends BasePersistentModel {
 		this.handlingInstructions = handlingInstructions;
 	}
 
-	public void setInquiredAboutVia(ContactMechanism inquiredAboutVia) {
+	public void setInquiredAboutVia(UUID inquiredAboutVia) {
 		this.inquiredAboutVia = inquiredAboutVia;
 	}
 
@@ -170,21 +182,19 @@ public class Shipment extends BasePersistentModel {
 		this.latestCancelDate = latestCancelDate;
 	}
 
-	public void setShippedFromContactMechanism(
-			PostalAddress shippedFromContactMechanism) {
+	public void setShippedFromContactMechanism(UUID shippedFromContactMechanism) {
 		this.shippedFromContactMechanism = shippedFromContactMechanism;
 	}
 
-	public void setShippedFromParty(Party shippedFromParty) {
+	public void setShippedFromParty(UUID shippedFromParty) {
 		this.shippedFromParty = shippedFromParty;
 	}
 
-	public void setShippedToContactMechanism(
-			PostalAddress shippedToContactMechanism) {
+	public void setShippedToContactMechanism(UUID shippedToContactMechanism) {
 		this.shippedToContactMechanism = shippedToContactMechanism;
 	}
 
-	public void setShippedToParty(Party shippedToParty) {
+	public void setShippedToParty(UUID shippedToParty) {
 		this.shippedToParty = shippedToParty;
 	}
 

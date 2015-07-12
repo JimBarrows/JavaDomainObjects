@@ -1,6 +1,7 @@
 package jdo.shipment.model.issuance;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -9,7 +10,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 
 import jdo.model.BasePersistentModel;
-import jdo.product.model.storage.InventoryItem;
 import jdo.shipment.model.ShipmentItem;
 
 @Entity
@@ -26,8 +26,11 @@ public class ItemIssuance extends BasePersistentModel {
 	@ManyToOne
 	private ShipmentItem issuedFor;
 
-	@ManyToOne
-	private InventoryItem issuedFrom;
+	/**
+	 * UUID of the InventoryItem.
+	 * 
+	 */
+	private UUID issuedFrom;
 
 	@Temporal(TemporalType.DATE)
 	private Date issuedOn;
@@ -43,7 +46,7 @@ public class ItemIssuance extends BasePersistentModel {
 		return issuedFor;
 	}
 
-	public InventoryItem getIssuedFrom() {
+	public UUID getIssuedFrom() {
 		return issuedFrom;
 	}
 
@@ -63,7 +66,7 @@ public class ItemIssuance extends BasePersistentModel {
 		this.issuedFor = issuedFor;
 	}
 
-	public void setIssuedFrom(InventoryItem issuedFrom) {
+	public void setIssuedFrom(UUID issuedFrom) {
 		this.issuedFrom = issuedFrom;
 	}
 

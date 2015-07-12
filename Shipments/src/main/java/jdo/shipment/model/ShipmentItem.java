@@ -1,16 +1,14 @@
 package jdo.shipment.model;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Min;
 
 import jdo.model.BasePersistentModel;
-import jdo.product.model.Good;
-import jdo.product.model.feature.ProductFeature;
 
 @Entity
 public class ShipmentItem extends BasePersistentModel {
@@ -27,12 +25,18 @@ public class ShipmentItem extends BasePersistentModel {
 	private int sequenceNumber;
 	@OneToMany
 	private List<ShipmentItem> shipmentItems;
-	@ManyToOne
-	private Good shipmentOf;
+	/**
+	 * UUID of the Good.
+	 * 
+	 */
+	private UUID shipmentOf;
 	@OneToMany
 	private List<OrderShipment> shipmentsOf;
-	@OneToMany
-	private List<ProductFeature> shippedWith;
+	/**
+	 * UUID of the ProductFeature.
+	 * 
+	 */
+	private List<UUID> shippedWith;
 
 	public String getContentsDescription() {
 		return contentsDescription;
@@ -50,7 +54,7 @@ public class ShipmentItem extends BasePersistentModel {
 		return shipmentItems;
 	}
 
-	public Good getShipmentOf() {
+	public UUID getShipmentOf() {
 		return shipmentOf;
 	}
 
@@ -58,7 +62,7 @@ public class ShipmentItem extends BasePersistentModel {
 		return shipmentsOf;
 	}
 
-	public List<ProductFeature> getShippedWith() {
+	public List<UUID> getShippedWith() {
 		return shippedWith;
 	}
 
@@ -78,7 +82,7 @@ public class ShipmentItem extends BasePersistentModel {
 		this.shipmentItems = shipmentItems;
 	}
 
-	public void setShipmentOf(Good shipmentOf) {
+	public void setShipmentOf(UUID shipmentOf) {
 		this.shipmentOf = shipmentOf;
 	}
 
@@ -86,7 +90,7 @@ public class ShipmentItem extends BasePersistentModel {
 		this.shipmentsOf = shipmentsOf;
 	}
 
-	public void setShippedWith(List<ProductFeature> shippedWith) {
+	public void setShippedWith(List<UUID> shippedWith) {
 		this.shippedWith = shippedWith;
 	}
 }

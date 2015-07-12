@@ -75,6 +75,7 @@
 		<module>PeopleAndOrganizationsModel</module>
 		<module>ProductModels</module>
 		<module>OrderingProducts</module>
+		<module>Shipments</module>
 	</modules>
 
 	<profiles>

@@ -1,6 +1,7 @@
 package jdo.shipment.model.route;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -8,11 +9,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import jdo.accounting.model.asset.Vehicle;
-import jdo.facility.model.Facility;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.PartyRole;
 import jdo.shipment.model.Shipment;
 
 @Entity
@@ -36,25 +34,37 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 	private Money fuelUsed;
 	@ManyToOne
 	private Shipment shipmentOf;
-	@ManyToOne
-	private Facility shippedFrom;
-	@ManyToOne
-	private Facility shippedTo;
-	@ManyToOne
-	private Vehicle vehicle;
+	/**
+	 * UUID of the Facility.
+	 * 
+	 */
+	private UUID shippedFrom;
+	/**
+	 * UUID of the Facility.
+	 * 
+	 */
+	private UUID shippedTo;
+	/**
+	 * UUID of the Vehicle.
+	 * 
+	 */
+	private UUID vehicle;
 
-	public Vehicle getVehicle() {
+	public UUID getVehicle() {
 		return vehicle;
 	}
 
-	public void setVehicle(Vehicle vehicle) {
+	public void setVehicle(UUID vehicle) {
 		this.vehicle = vehicle;
 	}
 
 	@ManyToOne
 	private ShipmentMethodType shippedVia;
-	@ManyToOne
-	private PartyRole shipppedBy;
+	/**
+	 * UUID of the PartyRole.
+	 * 
+	 */
+	private UUID shipppedBy;
 
 	private long startMileage;
 
@@ -86,11 +96,11 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 		return shipmentOf;
 	}
 
-	public Facility getShippedFrom() {
+	public UUID getShippedFrom() {
 		return shippedFrom;
 	}
 
-	public Facility getShippedTo() {
+	public UUID getShippedTo() {
 		return shippedTo;
 	}
 
@@ -98,7 +108,7 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 		return shippedVia;
 	}
 
-	public PartyRole getShipppedBy() {
+	public UUID getShipppedBy() {
 		return shipppedBy;
 	}
 
@@ -134,11 +144,11 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 		this.shipmentOf = shipmentOf;
 	}
 
-	public void setShippedFrom(Facility shippedFrom) {
+	public void setShippedFrom(UUID shippedFrom) {
 		this.shippedFrom = shippedFrom;
 	}
 
-	public void setShippedTo(Facility shippedTo) {
+	public void setShippedTo(UUID shippedTo) {
 		this.shippedTo = shippedTo;
 	}
 
@@ -146,7 +156,7 @@ public class ShipmentRouteSegment extends BasePersistentModel {
 		this.shippedVia = shippedVia;
 	}
 
-	public void setShipppedBy(PartyRole shipppedBy) {
+	public void setShipppedBy(UUID shipppedBy) {
 		this.shipppedBy = shipppedBy;
 	}
 
