@@ -1,10 +1,11 @@
 package jdo.workeffort.rate;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.humanresoures.model.position.salary.RateType;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
 import jdo.workeffort.assignment.WorkEffortPartyAssignment;
@@ -18,8 +19,11 @@ public class WorkEffortAssignmentRate extends BasePersistentModel {
 	private static final long serialVersionUID = 1L;
 	@ManyToOne
 	private WorkEffortPartyAssignment rateOf;
-	@ManyToOne
-	private RateType rateType;
+	/**
+	 * UUID for the RateType.
+	 * 
+	 */
+	private UUID rateType;
 	@Embedded
 	private DateTimeRange dateTimeRange = new DateTimeRange();
 
@@ -35,7 +39,7 @@ public class WorkEffortAssignmentRate extends BasePersistentModel {
 		return rateOf;
 	}
 
-	public RateType getRateType() {
+	public UUID getRateType() {
 		return rateType;
 	}
 
@@ -43,7 +47,7 @@ public class WorkEffortAssignmentRate extends BasePersistentModel {
 		this.rateOf = rateOf;
 	}
 
-	public void setRateType(RateType rateType) {
+	public void setRateType(UUID rateType) {
 		this.rateType = rateType;
 	}
 

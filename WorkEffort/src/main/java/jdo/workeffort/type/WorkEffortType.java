@@ -1,6 +1,7 @@
 package jdo.workeffort.type;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,7 +9,6 @@ import javax.persistence.OneToMany;
 import javax.validation.constraints.AssertTrue;
 
 import jdo.model.BaseType;
-import jdo.product.model.Product;
 import jdo.workeffort.requirement.DeliverableType;
 
 @Entity
@@ -28,8 +28,10 @@ public class WorkEffortType extends BaseType {
 	private int standardWorkHours;
 	@ManyToOne
 	private DeliverableType usedToProduceDeliverable;
-	@ManyToOne
-	private Product usedToProduceProduct;
+	/**UUID of the Product.
+	 * 
+	 */
+	private UUID usedToProduceProduct;
 
 	public List<WorkEffortType> getBreaksDownInto() {
 		return breaksDownInto;
@@ -51,7 +53,7 @@ public class WorkEffortType extends BaseType {
 		return usedToProduceDeliverable;
 	}
 
-	public Product getUsedToProduceProduct() {
+	public UUID getUsedToProduceProduct() {
 		return usedToProduceProduct;
 	}
 
@@ -83,7 +85,7 @@ public class WorkEffortType extends BaseType {
 		this.usedToProduceDeliverable = usedToProduceDeliverable;
 	}
 
-	public void setUsedToProduceProduct(Product usedToProduceProduct) {
+	public void setUsedToProduceProduct(UUID usedToProduceProduct) {
 		this.usedToProduceProduct = usedToProduceProduct;
 	}
 }

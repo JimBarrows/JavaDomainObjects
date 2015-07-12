@@ -1,10 +1,11 @@
 package jdo.workeffort.timetracking;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
 
 @Entity
 public class TimesheetRole extends BasePersistentModel {
@@ -12,16 +13,18 @@ public class TimesheetRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * UUID of the Party.
+	 * 
+	 */
+	private UUID involving;
 
 	@ManyToOne
-	private Party				involving;
+	private TimeSheetRoleType type;
 
-	@ManyToOne
-	private TimeSheetRoleType	type;
-
-	
-	public Party getInvolving() {
+	public UUID getInvolving() {
 		return involving;
 	}
 
@@ -29,7 +32,7 @@ public class TimesheetRole extends BasePersistentModel {
 		return type;
 	}
 
-	public void setInvolving(Party involving) {
+	public void setInvolving(UUID involving) {
 		this.involving = involving;
 	}
 

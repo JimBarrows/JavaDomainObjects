@@ -1,17 +1,14 @@
 package jdo.workeffort.assignment;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotNull;
 
-import jdo.facility.model.Facility;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
-import jdo.shipment.model.ShipmentItem;
 
 @Entity
 public class WorkEffortPartyAssignment extends BasePersistentModel {
@@ -19,37 +16,46 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
+	/**
+	 * UUID of the Party.
+	 * 
+	 */
 	@NotNull
-	@ManyToOne
-	private Party				assigned;
+	private UUID assigned;
 
-	@ManyToOne
-	private Facility			assignedAt;
+	/**
+	 * UUID of the Facility.
+	 * 
+	 */
+	private UUID assignedAt;
 
 	@Lob
-	private String				comment;
+	private String comment;
 
 	@ManyToOne
-	private WorkEffortRoleType	describedBy;
+	private WorkEffortRoleType describedBy;
 
-	@OneToMany
-	private List<ShipmentItem>	billingForShipmentItem;
-	
-	public List<ShipmentItem> getBillingForShipmentItem() {
+	/**
+	 * UUID of the ShipmentItem.
+	 * 
+	 */
+	private List<UUID> billingForShipmentItem;
+
+	public List<UUID> getBillingForShipmentItem() {
 		return billingForShipmentItem;
 	}
 
-	public void setBillingForShipmentItem(List<ShipmentItem> billingFor) {
+	public void setBillingForShipmentItem(List<UUID> billingFor) {
 		this.billingForShipmentItem = billingFor;
 	}
 
-	public Party getAssigned() {
+	public UUID getAssigned() {
 		return assigned;
 	}
 
-	public Facility getAssignedAt() {
+	public UUID getAssignedAt() {
 		return assignedAt;
 	}
 
@@ -61,11 +67,11 @@ public class WorkEffortPartyAssignment extends BasePersistentModel {
 		return describedBy;
 	}
 
-	public void setAssigned(Party assigned) {
+	public void setAssigned(UUID assigned) {
 		this.assigned = assigned;
 	}
 
-	public void setAssignedAt(Facility assignedAt) {
+	public void setAssignedAt(UUID assignedAt) {
 		this.assignedAt = assignedAt;
 	}
 

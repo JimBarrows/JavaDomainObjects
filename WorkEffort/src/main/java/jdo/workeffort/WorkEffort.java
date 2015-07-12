@@ -2,6 +2,7 @@ package jdo.workeffort;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -14,18 +15,15 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.order.model.WorkOrderItem;
-import jdo.product.model.storage.InventoryItem;
-import jdo.requirement.model.Requirement;
 import jdo.workeffort.assignment.WorkEffortPartyAssignment;
 import jdo.workeffort.association.WorkEfforAssociation;
-import jdo.workeffort.inventory.WorkEffortInvenotryAssignment;
+import jdo.workeffort.inventory.WorkEffortInventoryAssignment;
 import jdo.workeffort.timetracking.TimeEntry;
 import jdo.workeffort.type.WorkEffortType;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * @author Jim
@@ -54,8 +52,11 @@ public class WorkEffort extends BasePersistentModel {
 	@OneToMany
 	private List<WorkEffortPartyAssignment> assignedVia;
 
-	@OneToMany
-	private List<InventoryItem> deliverableProduced;
+	/**
+	 * UUID of the InventoryItem.
+	 * 
+	 */
+	private List<UUID> deliverableProduced;
 
 	@Lob
 	private String description;
@@ -66,23 +67,35 @@ public class WorkEffort extends BasePersistentModel {
 	@OneToMany(mappedBy = "associatedTo")
 	private List<WorkEfforAssociation> fromAssociatedWith;
 
-	@OneToMany
-	private List<Requirement> fulfillsRequirement;
+	/**
+	 * UUID of the Requirement.
+	 * 
+	 */
+	private List<UUID> fulfillsRequirement;
+
+	/**
+	 * UUID of the WorkOrderItem.
+	 * 
+	 */
+	private List<UUID> fullfillsWorkOderItems;
 
 	@OneToMany
-	private List<WorkOrderItem> fullfillsWorkOderItems;
+	private List<WorkEffortInventoryAssignment> inNeedOf;
 
-	@OneToMany
-	private List<WorkEffortInvenotryAssignment> inNeedOf;
-
-	@OneToMany
-	private List<InventoryItem> inventoryProduced;
+	/**
+	 * UUID of the InventoryItem.
+	 * 
+	 */
+	private List<UUID> inventoryProduced;
 
 	@NotEmpty
 	private String name;
 
-//	@ManyToOne
-//	private Facility performedAt;
+	/**
+	 * UUID of the Facility.
+	 * 
+	 */
+	private UUID performedAt;
 
 	@OneToMany(mappedBy = "versionOf")
 	private List<WorkEffort> redoneVia;
@@ -130,7 +143,7 @@ public class WorkEffort extends BasePersistentModel {
 		return assignedVia;
 	}
 
-	public List<InventoryItem> getDeliverableProduced() {
+	public List<UUID> getDeliverableProduced() {
 		return deliverableProduced;
 	}
 
@@ -152,19 +165,19 @@ public class WorkEffort extends BasePersistentModel {
 		return fromAssociatedWith;
 	}
 
-	public List<Requirement> getFulfillsRequirement() {
+	public List<UUID> getFulfillsRequirement() {
 		return fulfillsRequirement;
 	}
 
-	public List<WorkOrderItem> getFullfillsWorkOderItems() {
+	public List<UUID> getFullfillsWorkOderItems() {
 		return fullfillsWorkOderItems;
 	}
 
-	public List<WorkEffortInvenotryAssignment> getInNeedOf() {
+	public List<WorkEffortInventoryAssignment> getInNeedOf() {
 		return inNeedOf;
 	}
 
-	public List<InventoryItem> getInventoryProduced() {
+	public List<UUID> getInventoryProduced() {
 		return inventoryProduced;
 	}
 
@@ -175,9 +188,9 @@ public class WorkEffort extends BasePersistentModel {
 		return name;
 	}
 
-//	public Facility getPerformedAt() {
-//		return performedAt;
-//	}
+	public UUID getPerformedAt() {
+		return performedAt;
+	}
 
 	public List<WorkEffort> getRedoneVia() {
 		return redoneVia;
@@ -247,7 +260,7 @@ public class WorkEffort extends BasePersistentModel {
 		this.assignedVia = assignedVia;
 	}
 
-	public void setDeliverableProduced(List<InventoryItem> deliverableProduced) {
+	public void setDeliverableProduced(List<UUID> deliverableProduced) {
 		this.deliverableProduced = deliverableProduced;
 	}
 
@@ -271,19 +284,19 @@ public class WorkEffort extends BasePersistentModel {
 		this.fromAssociatedWith = fromAssociatedWith;
 	}
 
-	public void setFulfillsRequirement(List<Requirement> fulfillsRequirement) {
+	public void setFulfillsRequirement(List<UUID> fulfillsRequirement) {
 		this.fulfillsRequirement = fulfillsRequirement;
 	}
 
-	public void setFullfillsWorkOderItems(List<WorkOrderItem> fullfillsWorkOderItems) {
+	public void setFullfillsWorkOderItems(List<UUID> fullfillsWorkOderItems) {
 		this.fullfillsWorkOderItems = fullfillsWorkOderItems;
 	}
 
-	public void setInNeedOf(List<WorkEffortInvenotryAssignment> inNeedOf) {
+	public void setInNeedOf(List<WorkEffortInventoryAssignment> inNeedOf) {
 		this.inNeedOf = inNeedOf;
 	}
 
-	public void setInventoryProduced(List<InventoryItem> inventoryProduced) {
+	public void setInventoryProduced(List<UUID> inventoryProduced) {
 		this.inventoryProduced = inventoryProduced;
 	}
 
@@ -295,9 +308,9 @@ public class WorkEffort extends BasePersistentModel {
 		this.name = name;
 	}
 
-//	public void setPerformedAt(Facility performedAt) {
-//		this.performedAt = performedAt;
-//	}
+	// public void setPerformedAt(Facility performedAt) {
+	// this.performedAt = performedAt;
+	// }
 
 	public void setRedoneVia(List<WorkEffort> redoneVia) {
 		this.redoneVia = redoneVia;

@@ -22,6 +22,12 @@ public class Requirement extends BasePersistentModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	/**
+	 * UUID of the RequirementBudgetAllocation.
+	 * 
+	 */
+	private List<UUID> allocatedVia = new ArrayList<UUID>();
+
 	@OneToMany
 	private List<OrderRequirementCommitment> commitmentOf;
 
@@ -32,21 +38,13 @@ public class Requirement extends BasePersistentModel {
 	private String description;
 
 	@Embedded
-	private Money estimatedBudget;
+	private Money estimatedBudget;	
 
 	/**
 	 * UUID of the Facility.
 	 * 
 	 */
 	private UUID neededAt;
-
-	public UUID getNeededAt() {
-		return neededAt;
-	}
-
-	public void setNeededAt(UUID neededAt) {
-		this.neededAt = neededAt;
-	}
 
 	private int quantity;
 
@@ -62,20 +60,9 @@ public class Requirement extends BasePersistentModel {
 	@OneToMany
 	private List<Requirement> subRequirements = new ArrayList<Requirement>();
 
-	/**
-	 * UUID of the RequirementBudgetAllocation.
-	 * 
-	 */
-	private List<UUID> allocatedVia = new ArrayList<UUID>();
-
 	public List<UUID> getAllocatedVia() {
 		return allocatedVia;
 	}
-
-	public void setAllocatedVia(List<UUID> allocatedVia) {
-		this.allocatedVia = allocatedVia;
-	}
-
 	public List<OrderRequirementCommitment> getCommitmentOf() {
 		return commitmentOf;
 	}
@@ -92,9 +79,9 @@ public class Requirement extends BasePersistentModel {
 		return estimatedBudget;
 	}
 
-	// public Facility getNeededAt() {
-	// return neededAt;
-	// }
+	public UUID getNeededAt() {
+		return neededAt;
+	}
 
 	public int getQuantity() {
 		return quantity;
@@ -102,7 +89,7 @@ public class Requirement extends BasePersistentModel {
 
 	public String getReason() {
 		return reason;
-	}
+	}	 
 
 	public Date getRequiredBy() {
 		return requiredBy;
@@ -114,6 +101,10 @@ public class Requirement extends BasePersistentModel {
 
 	public List<Requirement> getSubRequirements() {
 		return subRequirements;
+	}
+
+	public void setAllocatedVia(List<UUID> allocatedVia) {
+		this.allocatedVia = allocatedVia;
 	}
 
 	public void setCommitmentOf(final List<OrderRequirementCommitment> commitmentOf) {
@@ -132,9 +123,9 @@ public class Requirement extends BasePersistentModel {
 		this.estimatedBudget = estimatedBudget;
 	}
 
-	// public void setNeededAt(final Facility neededAt) {
-	// this.neededAt = neededAt;
-	// }
+	public void setNeededAt(UUID neededAt) {
+		this.neededAt = neededAt;
+	}
 
 	public void setQuantity(final int quantity) {
 		this.quantity = quantity;

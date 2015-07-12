@@ -1,15 +1,14 @@
 package jdo.workeffort.timetracking;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.PartyRole;
 
 @Entity
 public class Timesheet extends BasePersistentModel {
@@ -17,21 +16,23 @@ public class Timesheet extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@OneToMany
-	private List<TimeEntry>		entries;
+	private List<TimeEntry> entries;
 
-	@ManyToOne
-	private PartyRole			hoursFor;
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID hoursFor;
 
 	@OneToMany
-	private List<TimesheetRole>	involving;
+	private List<TimesheetRole> involving;
 
 	@Embedded
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
-	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -40,16 +41,14 @@ public class Timesheet extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	
 	public List<TimeEntry> getEntries() {
 		return entries;
 	}
 
-	
-	public PartyRole getHoursFor() {
+	public UUID getHoursFor() {
 		return hoursFor;
 	}
-	
+
 	public List<TimesheetRole> getInvolving() {
 		return involving;
 	}
@@ -58,7 +57,7 @@ public class Timesheet extends BasePersistentModel {
 		this.entries = entries;
 	}
 
-	public void setHoursFor(PartyRole hoursFor) {
+	public void setHoursFor(UUID hoursFor) {
 		this.hoursFor = hoursFor;
 	}
 
