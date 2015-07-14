@@ -3,6 +3,7 @@ package jdo.dto;
 import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 import javax.validation.constraints.AssertTrue;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -19,7 +20,7 @@ import com.fasterxml.jackson.annotation.JsonRootName;
 @JsonRootName("customer")
 public class CustomerDto implements Serializable {
 
-	private Long	id;
+	private UUID	id;
 	@NotEmpty
 	private String	partyType;
 	private String	name;
@@ -120,7 +121,7 @@ public class CustomerDto implements Serializable {
 		this.lastName = lastName;
 	}
 
-	public Long getId() {
+	public UUID getId() {
 		return id;
 	}
 
@@ -133,7 +134,7 @@ public class CustomerDto implements Serializable {
 		super();		
 	}
 
-	public void setId(Long id) {
+	public void setId(UUID id) {
 		this.id = id;
 	}
 
