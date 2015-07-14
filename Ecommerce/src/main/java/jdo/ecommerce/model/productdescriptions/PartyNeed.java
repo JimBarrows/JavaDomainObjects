@@ -1,6 +1,7 @@
 package jdo.ecommerce.model.productdescriptions;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -10,10 +11,6 @@ import javax.persistence.TemporalType;
 
 import jdo.ecommerce.model.webvisit.ServerHit;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.PartyRole;
-import jdo.party.model.communication.CommunicationEvent;
-import jdo.product.model.Product;
-import jdo.product.model.category.ProductCategory;
 
 @Entity
 public class PartyNeed extends BasePersistentModel {
@@ -21,37 +18,49 @@ public class PartyNeed extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Lob
-	private String							description;
+	private String description;
+
+	/**
+	 * UUID for CommunicationEvent.
+	 * 
+	 */
+	private UUID discoverdViaCommunicationEvent;
 
 	@ManyToOne
-	private CommunicationEvent	discoverdViaCommunicationEvent;
+	private ServerHit discoveredViaServerHit;
 
-	@ManyToOne
-	private ServerHit						discoveredViaServerHit;
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID forConsumer;
 
-	@ManyToOne
-	private PartyRole						forConsumer;
+	/**
+	 * UUID for Product.
+	 * 
+	 */
+	private UUID forProduct;
 
-	@ManyToOne
-	private Product							forProduct;
-
-	@ManyToOne
-	private ProductCategory			forProductCategory;
+	/**
+	 * UUID for ProductCategory.
+	 * 
+	 */
+	private UUID forProductCategory;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date								identifiedOn;
+	private Date identifiedOn;
 
 	@ManyToOne
-	private NeedType						type;
+	private NeedType type;
 
 	public String getDescription() {
 		return description;
 	}
 
-	public CommunicationEvent getDiscoverdViaCommunicationEvent() {
+	public UUID getDiscoverdViaCommunicationEvent() {
 		return discoverdViaCommunicationEvent;
 	}
 
@@ -59,15 +68,15 @@ public class PartyNeed extends BasePersistentModel {
 		return discoveredViaServerHit;
 	}
 
-	public PartyRole getForConsumer() {
+	public UUID getForConsumer() {
 		return forConsumer;
 	}
 
-	public Product getForProduct() {
+	public UUID getForProduct() {
 		return forProduct;
 	}
 
-	public ProductCategory getForProductCategory() {
+	public UUID getForProductCategory() {
 		return forProductCategory;
 	}
 
@@ -83,7 +92,7 @@ public class PartyNeed extends BasePersistentModel {
 		this.description = description;
 	}
 
-	public void setDiscoverdViaCommunicationEvent(CommunicationEvent discoverdViaCommunicationEvent) {
+	public void setDiscoverdViaCommunicationEvent(UUID discoverdViaCommunicationEvent) {
 		this.discoverdViaCommunicationEvent = discoverdViaCommunicationEvent;
 	}
 
@@ -91,15 +100,15 @@ public class PartyNeed extends BasePersistentModel {
 		this.discoveredViaServerHit = discoveredViaServerHit;
 	}
 
-	public void setForConsumer(PartyRole forConsumer) {
+	public void setForConsumer(UUID forConsumer) {
 		this.forConsumer = forConsumer;
 	}
 
-	public void setForProduct(Product forProduct) {
+	public void setForProduct(UUID forProduct) {
 		this.forProduct = forProduct;
 	}
 
-	public void setForProductCategory(ProductCategory forProductCategory) {
+	public void setForProductCategory(UUID forProductCategory) {
 		this.forProductCategory = forProductCategory;
 	}
 

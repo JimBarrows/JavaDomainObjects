@@ -2,17 +2,14 @@ package jdo.ecommerce.model.webvisit;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import jdo.model.BasePersistentModel;
-import jdo.order.model.Order;
-import jdo.party.model.PartyRole;
-import jdo.party.model.contactmechanism.WebAddress;
 
 @Entity
 public class Visit extends BasePersistentModel {
@@ -20,27 +17,36 @@ public class Visit extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@OneToMany
-	private List<ServerHit>		composedOf;
+	private List<ServerHit> composedOf;
 
-	private String						cookie;
+	private String cookie;
 
-	@ManyToOne
-	private WebAddress				hostedVia;
+	/**
+	 * UUID of WebAddress.
+	 * 
+	 */
+	private UUID hostedVia;
 
-	@ManyToOne
-	private Order							resultingIn;
+	/**
+	 * UUID of Order.
+	 * 
+	 */
+	private UUID resultingIn;
 
-	@ManyToOne
-	private PartyRole					visitedBy;
+	/**
+	 * UUId of PartyRole.
+	 * 
+	 */
+	private UUID visitedBy;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date							visitEnd;
+	private Date visitEnd;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date							visitStart;
+	private Date visitStart;
 
 	public List<ServerHit> getComposedOf() {
 		return composedOf;
@@ -50,23 +56,22 @@ public class Visit extends BasePersistentModel {
 		return cookie;
 	}
 
-	public WebAddress getHostedVia() {
+	public UUID getHostedVia() {
 		return hostedVia;
 	}
 
-	public Order getResultingIn() {
+	public UUID getResultingIn() {
 		return resultingIn;
 	}
 
-	public PartyRole getVisitedBy() {
+	public UUID getVisitedBy() {
 		return visitedBy;
 	}
 
-	
 	public Date getVisitEnd() {
 		return visitEnd;
 	}
-	
+
 	public Date getVisitStart() {
 		return visitStart;
 	}
@@ -79,15 +84,15 @@ public class Visit extends BasePersistentModel {
 		this.cookie = cookie;
 	}
 
-	public void setHostedVia(WebAddress hostedVia) {
+	public void setHostedVia(UUID hostedVia) {
 		this.hostedVia = hostedVia;
 	}
 
-	public void setResultingIn(Order resultingIn) {
+	public void setResultingIn(UUID resultingIn) {
 		this.resultingIn = resultingIn;
 	}
 
-	public void setVisitedBy(PartyRole visitedBy) {
+	public void setVisitedBy(UUID visitedBy) {
 		this.visitedBy = visitedBy;
 	}
 

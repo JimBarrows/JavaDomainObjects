@@ -1,6 +1,7 @@
 package jdo.ecommerce.model.webcontent;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -8,7 +9,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.contactmechanism.WebAddress;
 
 @Entity
 public class WebContent extends BasePersistentModel {
@@ -16,27 +16,30 @@ public class WebContent extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long						serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Lob
-	private String											content;
+	private String content;
 
-	private String											description;
+	private String description;
 
 	@OneToMany
-	private List<WebContentRole>				involving;
+	private List<WebContentRole> involving;
 
-	@ManyToOne
-	private WebAddress									locationOf;
+	/**
+	 * UUID for WebAddress.
+	 * 
+	 */
+	private UUID locationOf;
 
 	@OneToMany(mappedBy = "forWebContent")
-	private List<WebContentAssociation>	relatedTo;
+	private List<WebContentAssociation> relatedTo;
 
 	@ManyToOne
-	private WebContentStatusType				status;
+	private WebContentStatusType status;
 
 	@ManyToOne
-	private WebContentType							type;
+	private WebContentType type;
 
 	public String getContent() {
 		return content;
@@ -50,7 +53,7 @@ public class WebContent extends BasePersistentModel {
 		return involving;
 	}
 
-	public WebAddress getLocationOf() {
+	public UUID getLocationOf() {
 		return locationOf;
 	}
 
@@ -78,7 +81,7 @@ public class WebContent extends BasePersistentModel {
 		this.involving = involving;
 	}
 
-	public void setLocationOf(WebAddress locationOf) {
+	public void setLocationOf(UUID locationOf) {
 		this.locationOf = locationOf;
 	}
 

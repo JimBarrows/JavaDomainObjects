@@ -4,21 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
-import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
-import jdo.party.model.contactmechanism.WebAddress;
-
 import org.hibernate.validator.constraints.NotEmpty;
+
+import jdo.model.BasePersistentModel;
 
 /**
  * The login for a user also specifies which pages, or web addresses that login
@@ -32,27 +30,33 @@ import org.hibernate.validator.constraints.NotEmpty;
 @NamedQueries(@NamedQuery(name = "findByUserId", query = "select ul from UserLogin ul where ul.userId = :userId"))
 public class UserLogin extends BasePersistentModel {
 
-	public static final String				FIND_BY_USER_ID_QUERY	= "findByUserId";
-	public static final String				USER_ID_PARAM			= "userId";
+	public static final String FIND_BY_USER_ID_QUERY = "findByUserId";
+	public static final String USER_ID_PARAM = "userId";
 
-	private boolean							active					= false;
+	private boolean active = false;
 
 	@OneToMany(mappedBy = "preferenceFor")
-	private Map<String, WebUserPreference>	governedBy				= new HashMap<String, WebUserPreference>();
+	private Map<String, WebUserPreference> governedBy = new HashMap<String, WebUserPreference>();
 
 	@OneToMany(cascade = CascadeType.ALL)
 	@OrderBy(value = "loggedInFrom")
-	private List<LoginAccountHistory>		having					= new ArrayList<LoginAccountHistory>();
+	private List<LoginAccountHistory> having = new ArrayList<LoginAccountHistory>();
 
-	@ManyToOne
-	private Party							loginFor;
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID loginFor;
 
-	@ManyToOne
-	private WebAddress						loginTo;
+	/**
+	 * UUID for WebAddress.
+	 * 
+	 */
+	private UUID loginTo;
 
-	private String							password;
+	private String password;
 
-	private String							userId;
+	private String userId;
 
 	public void addLoginAccountHistory(LoginAccountHistory loginAccountHistory) {
 		having.add(loginAccountHistory);
@@ -60,14 +64,14 @@ public class UserLogin extends BasePersistentModel {
 
 	/**
 	 * @return the governedBy
-	 */	
+	 */
 	public Map<String, WebUserPreference> getGovernedBy() {
 		return governedBy;
 	}
 
 	/**
 	 * @return the having
-	 */	
+	 */
 	public List<LoginAccountHistory> getHaving() {
 		return having;
 	}
@@ -79,15 +83,15 @@ public class UserLogin extends BasePersistentModel {
 
 	/**
 	 * @return the loginFor
-	 */	
-	public Party getLoginFor() {
+	 */
+	public UUID getLoginFor() {
 		return loginFor;
 	}
 
 	/**
 	 * @return the loginTo
-	 */	
-	public WebAddress getLoginTo() {
+	 */
+	public UUID getLoginTo() {
 		return loginTo;
 	}
 
@@ -136,14 +140,14 @@ public class UserLogin extends BasePersistentModel {
 	 *            the id to set
 	 */
 	public void setId(Long id) {
-		this.setId( id);
+		this.setId(id);
 	}
 
 	/**
 	 * @param loginFor
 	 *            the loginFor to set
 	 */
-	public void setLoginFor(Party loginFor) {
+	public void setLoginFor(UUID loginFor) {
 		this.loginFor = loginFor;
 	}
 
@@ -151,7 +155,7 @@ public class UserLogin extends BasePersistentModel {
 	 * @param loginTo
 	 *            the loginTo to set
 	 */
-	public void setLoginTo(WebAddress loginTo) {
+	public void setLoginTo(UUID loginTo) {
 		this.loginTo = loginTo;
 	}
 
@@ -169,6 +173,6 @@ public class UserLogin extends BasePersistentModel {
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
-	}	
+	}
 
 }

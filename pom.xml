@@ -80,6 +80,7 @@
 		<module>Invoicing</module>
 		<module>AccountingAndBudgeting</module>
 		<module>HumanResources</module>
+		<module>Ecommerce</module>
 	</modules>
 
 	<profiles>

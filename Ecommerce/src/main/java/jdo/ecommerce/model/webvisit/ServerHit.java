@@ -1,6 +1,7 @@
 package jdo.ecommerce.model.webvisit;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -10,8 +11,6 @@ import javax.persistence.TemporalType;
 import jdo.ecommerce.model.login.UserLogin;
 import jdo.ecommerce.model.webcontent.WebContent;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.contactmechanism.IpAddress;
-import jdo.party.model.contactmechanism.WebAddress;
 
 @Entity
 public class ServerHit extends BasePersistentModel {
@@ -19,33 +18,39 @@ public class ServerHit extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private long								bytes;
-
-	@ManyToOne
-	private UserLogin						fromUserLogin;
+	private long bytes;
 
 	@ManyToOne
-	private WebContent					hitOn;
+	private UserLogin fromUserLogin;
 
 	@ManyToOne
-	private IpAddress						identifiedBy;
+	private WebContent hitOn;
+
+	/**
+	 * UUID of IpAddress.
+	 * 
+	 */
+	private UUID identifiedBy;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date								occuredOn;
+	private Date occuredOn;
 
 	@ManyToOne
-	private Visit								partOf;
+	private Visit partOf;
+
+	/**
+	 * UUId of WebAddress.
+	 * 
+	 */
+	private UUID referredVia;
 
 	@ManyToOne
-	private WebAddress					referredVia;
+	private ServerHitStatusType status;
 
 	@ManyToOne
-	private ServerHitStatusType	status;
-
-	@ManyToOne
-	private UserAgent						userAgent;
+	private UserAgent userAgent;
 
 	public long getBytes() {
 		return bytes;
@@ -59,7 +64,7 @@ public class ServerHit extends BasePersistentModel {
 		return hitOn;
 	}
 
-	public IpAddress getIdentifiedBy() {
+	public UUID getIdentifiedBy() {
 		return identifiedBy;
 	}
 
@@ -71,7 +76,7 @@ public class ServerHit extends BasePersistentModel {
 		return partOf;
 	}
 
-	public WebAddress getReferredVia() {
+	public UUID getReferredVia() {
 		return referredVia;
 	}
 
@@ -95,7 +100,7 @@ public class ServerHit extends BasePersistentModel {
 		this.hitOn = hitOn;
 	}
 
-	public void setIdentifiedBy(IpAddress identifiedBy) {
+	public void setIdentifiedBy(UUID identifiedBy) {
 		this.identifiedBy = identifiedBy;
 	}
 
@@ -107,7 +112,7 @@ public class ServerHit extends BasePersistentModel {
 		this.partOf = partOf;
 	}
 
-	public void setReferredVia(WebAddress referredVia) {
+	public void setReferredVia(UUID referredVia) {
 		this.referredVia = referredVia;
 	}
 

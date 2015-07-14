@@ -2,15 +2,13 @@ package jdo.ecommerce.model.productdescriptions;
 
 import java.io.File;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
-import jdo.product.model.Product;
-import jdo.product.model.feature.ProductFeature;
 
 @Entity
 public class DescriptionObject extends BasePersistentModel {
@@ -18,33 +16,45 @@ public class DescriptionObject extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
+	/**
+	 * UUID of ProductFeature.
+	 * 
+	 */
 	@OneToMany
-	private List<ProductFeature>	describes;
+	private List<UUID> describes;
 
-	private String					description;
+	private String description;
 
+	/**
+	 * UUID for Product.
+	 * 
+	 */
 	@OneToMany
-	private List<Product>			forProduct;
+	private List<UUID> forProduct;
 
-	private File					location;
+	private File location;
 
-	private String					name;
+	private String name;
 
+	/**
+	 * UUID of Party.
+	 * 
+	 */
 	@OneToMany
-	private List<Party>				ofParty;
+	private List<UUID> ofParty;
 
 	@ManyToOne
-	private ObjectType				type;
+	private ObjectType type;
 
 	@OneToMany
-	private List<ObjectPurpose>		usedFor;
+	private List<ObjectPurpose> usedFor;
 
 	@OneToMany
-	private List<ObjectUsage>		usedWithin;
-	
-	public List<ProductFeature> getDescribes() {
+	private List<ObjectUsage> usedWithin;
+
+	public List<UUID> getDescribes() {
 		return describes;
 	}
 
@@ -52,8 +62,7 @@ public class DescriptionObject extends BasePersistentModel {
 		return description;
 	}
 
-	
-	public List<Product> getForProduct() {
+	public List<UUID> getForProduct() {
 		return forProduct;
 	}
 
@@ -65,8 +74,7 @@ public class DescriptionObject extends BasePersistentModel {
 		return name;
 	}
 
-	
-	public List<Party> getOfParty() {
+	public List<UUID> getOfParty() {
 		return ofParty;
 	}
 
@@ -74,16 +82,15 @@ public class DescriptionObject extends BasePersistentModel {
 		return type;
 	}
 
-	
 	public List<ObjectPurpose> getUsedFor() {
 		return usedFor;
 	}
-	
+
 	public List<ObjectUsage> getUsedWithin() {
 		return usedWithin;
 	}
 
-	public void setDescribes(List<ProductFeature> describes) {
+	public void setDescribes(List<UUID> describes) {
 		this.describes = describes;
 	}
 
@@ -91,7 +98,7 @@ public class DescriptionObject extends BasePersistentModel {
 		this.description = description;
 	}
 
-	public void setForProduct(List<Product> forProduct) {
+	public void setForProduct(List<UUID> forProduct) {
 		this.forProduct = forProduct;
 	}
 
@@ -103,7 +110,7 @@ public class DescriptionObject extends BasePersistentModel {
 		this.name = name;
 	}
 
-	public void setOfParty(List<Party> ofParty) {
+	public void setOfParty(List<UUID> ofParty) {
 		this.ofParty = ofParty;
 	}
 

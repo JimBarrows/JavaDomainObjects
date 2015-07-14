@@ -2,6 +2,7 @@ package jdo.ecommerce.model.subscription;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -13,15 +14,10 @@ import javax.persistence.TemporalType;
 import jdo.ecommerce.model.productdescriptions.NeedType;
 import jdo.ecommerce.model.productdescriptions.PartyNeed;
 import jdo.model.BasePersistentModel;
-import jdo.order.model.OrderItem;
-import jdo.party.model.PartyRole;
-import jdo.party.model.communication.CommunicationEvent;
-import jdo.party.model.contactmechanism.ContactMechanism;
-import jdo.product.model.Product;
-import jdo.product.model.category.ProductCategory;
 
 /**
- * Represents all the data needed for a subscription to Newsgroups, product information, user groups, or other things that can be subscribed to.
+ * Represents all the data needed for a subscription to Newsgroups, product
+ * information, user groups, or other things that can be subscribed to.
  * 
  * @author jim
  */
@@ -31,48 +27,68 @@ public class Subscription extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long						serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Temporal(TemporalType.TIMESTAMP)
-	private Date												endDate;
+	private Date endDate;
 
 	@ManyToMany(mappedBy = "subscriptionsInvolved")
-	private List<SubscriptionActivity>	fullfilledVia;
+	private List<SubscriptionActivity> fullfilledVia;
 
 	@ManyToOne
-	private NeedType										needType;
+	private NeedType needType;
 
-	@OneToMany
-	private List<OrderItem>							orderedVia;
-
-	@ManyToOne
-	private CommunicationEvent					originatingFrom;
-
-	@ManyToOne
-	private PartyNeed										partyNeed;
-
-	@ManyToOne
-	private Product											product;
-
-	@ManyToOne
-	private ProductCategory							productCategory;
-
-	/**UUID for ContactMechanism.
+	/**
+	 * UUID of OrderItem.
 	 * 
 	 */
-	private UUID						sendTo;
+	@OneToMany
+	private List<UUID> orderedVia;
+
+	/**
+	 * UUId of CommunicationEvent.
+	 * 
+	 */
+	private UUID originatingFrom;
+
+	@ManyToOne
+	private PartyNeed partyNeed;
+
+	/**
+	 * UUID for Product.
+	 * 
+	 */
+	private UUID product;
+
+	/**
+	 * UUId for ProductCategory.
+	 * 
+	 */
+	private UUID productCategory;
+
+	/**
+	 * UUID for ContactMechanism.
+	 * 
+	 */
+	private UUID sendTo;
 
 	@Temporal(TemporalType.DATE)
-	private Date												startDate;
+	private Date startDate;
+
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID subscriber;
+
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID subscriptionFor;
 
 	@ManyToOne
-	private PartyRole										subscriber;
-
-	@ManyToOne
-	private PartyRole										subscriptionFor;
-
-	@ManyToOne
-	private SubscriptionType						type;
+	private SubscriptionType type;
 
 	public Date getEndDate() {
 		return endDate;
@@ -86,11 +102,11 @@ public class Subscription extends BasePersistentModel {
 		return needType;
 	}
 
-	public List<OrderItem> getOrderedVia() {
+	public List<UUID> getOrderedVia() {
 		return orderedVia;
 	}
 
-	public CommunicationEvent getOriginatingFrom() {
+	public UUID getOriginatingFrom() {
 		return originatingFrom;
 	}
 
@@ -98,15 +114,15 @@ public class Subscription extends BasePersistentModel {
 		return partyNeed;
 	}
 
-	public Product getProduct() {
+	public UUID getProduct() {
 		return product;
 	}
 
-	public ProductCategory getProductCategory() {
+	public UUID getProductCategory() {
 		return productCategory;
 	}
 
-	public ContactMechanism getSendTo() {
+	public UUID getSendTo() {
 		return sendTo;
 	}
 
@@ -114,11 +130,11 @@ public class Subscription extends BasePersistentModel {
 		return startDate;
 	}
 
-	public PartyRole getSubscriber() {
+	public UUID getSubscriber() {
 		return subscriber;
 	}
 
-	public PartyRole getSubscriptionFor() {
+	public UUID getSubscriptionFor() {
 		return subscriptionFor;
 	}
 
@@ -138,11 +154,11 @@ public class Subscription extends BasePersistentModel {
 		this.needType = needType;
 	}
 
-	public void setOrderedVia(List<OrderItem> orderedVia) {
+	public void setOrderedVia(List<UUID> orderedVia) {
 		this.orderedVia = orderedVia;
 	}
 
-	public void setOriginatingFrom(CommunicationEvent originatingFrom) {
+	public void setOriginatingFrom(UUID originatingFrom) {
 		this.originatingFrom = originatingFrom;
 	}
 
@@ -150,15 +166,15 @@ public class Subscription extends BasePersistentModel {
 		this.partyNeed = partyNeed;
 	}
 
-	public void setProduct(Product product) {
+	public void setProduct(UUID product) {
 		this.product = product;
 	}
 
-	public void setProductCategory(ProductCategory productCategory) {
+	public void setProductCategory(UUID productCategory) {
 		this.productCategory = productCategory;
 	}
 
-	public void setSendTo(ContactMechanism sendTo) {
+	public void setSendTo(UUID sendTo) {
 		this.sendTo = sendTo;
 	}
 
@@ -166,11 +182,11 @@ public class Subscription extends BasePersistentModel {
 		this.startDate = startDate;
 	}
 
-	public void setSubscriber(PartyRole subscriber) {
+	public void setSubscriber(UUID subscriber) {
 		this.subscriber = subscriber;
 	}
 
-	public void setSubscriptionFor(PartyRole subscriptionFor) {
+	public void setSubscriptionFor(UUID subscriptionFor) {
 		this.subscriptionFor = subscriptionFor;
 	}
 
