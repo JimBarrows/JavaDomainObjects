@@ -2,6 +2,7 @@ package jdo.accounting.model;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -11,9 +12,6 @@ import javax.persistence.OneToMany;
 import jdo.accounting.model.transaction.detail.TransactionDetail;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.PartyRole;
-import jdo.product.model.Product;
-import jdo.product.model.category.ProductCategory;
 
 @Entity
 public class OrganizationGlAccount extends BasePersistentModel {
@@ -32,26 +30,41 @@ public class OrganizationGlAccount extends BasePersistentModel {
 	@OneToMany
 	private List<TransactionDetail> consistingOf = new ArrayList<TransactionDetail>();
 
-	@ManyToOne	
-	private PartyRole internalOrganizationFor;
-	
-	@ManyToOne
-	private PartyRole referencingBillToCustomer;
-	
-	@ManyToOne
-	private PartyRole referencingSupplier;
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID internalOrganizationFor;
+
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID referencingBillToCustomer;
+
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID referencingSupplier;
 
 	@ManyToOne
 	private OrganizationGlAccount subsidiaryOf;
 
-	@ManyToOne
-	private Product referencingProduct;
+	/**
+	 * UUID for Product.
+	 * 
+	 */
+	private UUID referencingProduct;
 
 	@Embedded
 	private DateTimeRange dateTimeRange = new DateTimeRange();
-	
-	@ManyToOne
-	private ProductCategory referencingProductCategory;
+
+	/**
+	 * UUID for ProductCategory.
+	 * 
+	 */
+	private UUID referencingProductCategory;
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -61,21 +74,19 @@ public class OrganizationGlAccount extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public Product getReferencingProduct() {
+	public UUID getReferencingProduct() {
 		return referencingProduct;
 	}
 
-	public ProductCategory getReferencingProductCategory() {
+	public UUID getReferencingProductCategory() {
 		return referencingProductCategory;
 	}
-	
 
-	public void setReferencingProduct(Product referencingProduct) {
+	public void setReferencingProduct(UUID referencingProduct) {
 		this.referencingProduct = referencingProduct;
 	}
 
-	public void setReferencingProductCategory(
-			ProductCategory referencingProductCategory) {
+	public void setReferencingProductCategory(UUID referencingProductCategory) {
 		this.referencingProductCategory = referencingProductCategory;
 	}
 
@@ -91,15 +102,15 @@ public class OrganizationGlAccount extends BasePersistentModel {
 		return consistingOf;
 	}
 
-	public PartyRole getInternalOrganizationFor() {
+	public UUID getInternalOrganizationFor() {
 		return internalOrganizationFor;
 	}
 
-	public PartyRole getReferencingBillToCustomer() {
+	public UUID getReferencingBillToCustomer() {
 		return referencingBillToCustomer;
 	}
 
-	public PartyRole getReferencingSupplier() {
+	public UUID getReferencingSupplier() {
 		return referencingSupplier;
 	}
 
@@ -119,15 +130,15 @@ public class OrganizationGlAccount extends BasePersistentModel {
 		this.consistingOf = consistingOf;
 	}
 
-	public void setInternalOrganizationFor(PartyRole internalOrganizationFor) {
+	public void setInternalOrganizationFor(UUID internalOrganizationFor) {
 		this.internalOrganizationFor = internalOrganizationFor;
 	}
 
-	public void setReferencingBillToCustomer(PartyRole referencingBillToCustomer) {
+	public void setReferencingBillToCustomer(UUID referencingBillToCustomer) {
 		this.referencingBillToCustomer = referencingBillToCustomer;
 	}
 
-	public void setReferencingSupplier(PartyRole referencingSupplier) {
+	public void setReferencingSupplier(UUID referencingSupplier) {
 		this.referencingSupplier = referencingSupplier;
 	}
 

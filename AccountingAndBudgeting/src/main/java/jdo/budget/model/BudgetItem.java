@@ -1,6 +1,7 @@
 package jdo.budget.model;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -11,7 +12,6 @@ import javax.persistence.OneToMany;
 import jdo.budget.model.revision.BudgetRevisionImpact;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.order.model.OrderItem;
 
 @Entity
 public class BudgetItem extends BasePersistentModel {
@@ -19,34 +19,37 @@ public class BudgetItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long					serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@OneToMany
-	private List<BudgetRevisionImpact>			affectedBy;
+	private List<BudgetRevisionImpact> affectedBy;
 
 	@Embedded
-	private Money								amount;
+	private Money amount;
 
 	@ManyToMany
-	private List<BudgetItem>					composedOf;
+	private List<BudgetItem> composedOf;
 
-	private String								justification;
+	private String justification;
 
-	private String								purpose;
+	private String purpose;
 
 	@ManyToOne
-	private BudgetItemType						type;
+	private BudgetItemType type;
 
 	@OneToMany
-	private List<PaymentBudgetAllocation>		usedToPay;
+	private List<PaymentBudgetAllocation> usedToPay;
+
+	/**
+	 * UUID for OrderItem.
+	 * 
+	 */
+	@OneToMany
+	private List<UUID> usedToBuy;
 
 	@OneToMany
-	private List<OrderItem>						usedToBuy;
+	private List<RequirementBudgetAllocation> providesFundingVia;
 
-	@OneToMany
-	private List<RequirementBudgetAllocation>	providesFundingVia;
-
-	
 	public List<RequirementBudgetAllocation> getProvidesFundingVia() {
 		return providesFundingVia;
 	}
@@ -55,16 +58,14 @@ public class BudgetItem extends BasePersistentModel {
 		this.providesFundingVia = providesFundingVia;
 	}
 
-	
-	public List<OrderItem> getUsedToBuy() {
+	public List<UUID> getUsedToBuy() {
 		return usedToBuy;
 	}
 
-	public void setUsedToBuy(List<OrderItem> usedToBuy) {
+	public void setUsedToBuy(List<UUID> usedToBuy) {
 		this.usedToBuy = usedToBuy;
 	}
 
-	
 	public List<PaymentBudgetAllocation> getUsedToPay() {
 		return usedToPay;
 	}
@@ -73,16 +74,14 @@ public class BudgetItem extends BasePersistentModel {
 		this.usedToPay = usedToPay;
 	}
 
-	
 	public List<BudgetRevisionImpact> getAffectedBy() {
 		return affectedBy;
 	}
 
-	
 	public Money getAmount() {
 		return amount;
 	}
-	
+
 	public List<BudgetItem> getComposedOf() {
 		return composedOf;
 	}
@@ -94,7 +93,7 @@ public class BudgetItem extends BasePersistentModel {
 	public String getPurpose() {
 		return purpose;
 	}
-	
+
 	public BudgetItemType getType() {
 		return type;
 	}

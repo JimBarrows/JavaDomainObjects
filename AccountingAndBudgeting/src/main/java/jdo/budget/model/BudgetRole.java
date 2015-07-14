@@ -1,10 +1,11 @@
 package jdo.budget.model;
 
+import java.util.UUID;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
 
 @Entity
 public class BudgetRole extends BasePersistentModel {
@@ -12,15 +13,18 @@ public class BudgetRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID forParty;
 
 	@ManyToOne
-	private Party				forParty;
+	private BudgetRoleType type;
 
-	@ManyToOne
-	private BudgetRoleType		type;
-
-	public Party getForParty() {
+	public UUID getForParty() {
 		return forParty;
 	}
 
@@ -28,7 +32,7 @@ public class BudgetRole extends BasePersistentModel {
 		return type;
 	}
 
-	public void setForParty(Party forParty) {
+	public void setForParty(UUID forParty) {
 		this.forParty = forParty;
 	}
 

@@ -1,11 +1,12 @@
 package jdo.budget.model;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.fields.Money;
-import jdo.invoice.model.payment.Payment;
 
 @Entity
 public class PaymentBudgetAllocation extends jdo.model.BasePersistentModel {
@@ -13,18 +14,21 @@ public class PaymentBudgetAllocation extends jdo.model.BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	private Payment						allocationOf;
+	/**
+	 * UUID for Payment.
+	 * 
+	 */
+	private UUID allocationOf;
 
 	@Embedded
-	private Money							amount;
+	private Money amount;
 
 	@ManyToOne
-	private BudgetItem				usageOf;
+	private BudgetItem usageOf;
 
-	public Payment getAllocationOf() {
+	public UUID getAllocationOf() {
 		return allocationOf;
 	}
 
@@ -36,7 +40,7 @@ public class PaymentBudgetAllocation extends jdo.model.BasePersistentModel {
 		return usageOf;
 	}
 
-	public void setAllocationOf(Payment allocationOf) {
+	public void setAllocationOf(UUID allocationOf) {
 		this.allocationOf = allocationOf;
 	}
 

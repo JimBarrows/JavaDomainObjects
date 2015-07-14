@@ -78,6 +78,7 @@
 		<module>Shipments</module>
 		<module>WorkEffort</module>
 		<module>Invoicing</module>
+		<module>AccountingAndBudgeting</module>
 	</modules>
 
 	<profiles>

@@ -1,12 +1,13 @@
 package jdo.budget.model;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.requirement.model.Requirement;
 
 /**
  * @author jimbarrows
@@ -19,25 +20,28 @@ public class RequirementBudgetAllocation extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
-	private BudgetItem			allocatedTo;
+	private BudgetItem allocatedTo;
 
-	@ManyToOne
-	private Requirement			allocationOf;
+	/**
+	 * UUID for Requirement.
+	 * 
+	 */
+	private UUID allocationOf;
 
 	@Embedded
-	private Money				amount;
+	private Money amount;
 
-	public Requirement getAllocationOf() {
+	public UUID getAllocationOf() {
 		return allocationOf;
 	}
 
-	public void setAllocationOf(Requirement allocationOf) {
+	public void setAllocationOf(UUID allocationOf) {
 		this.allocationOf = allocationOf;
 	}
-	
+
 	public Money getAmount() {
 		return amount;
 	}

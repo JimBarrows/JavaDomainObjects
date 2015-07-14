@@ -1,5 +1,7 @@
 package jdo.accounting.model;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,7 +10,6 @@ import javax.validation.constraints.Min;
 import jdo.accounting.model.asset.PeriodType;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.PartyRole;
 
 @Entity
 public class AccountingPeriod extends BasePersistentModel {
@@ -21,8 +22,10 @@ public class AccountingPeriod extends BasePersistentModel {
 	@Min(0)
 	private int					accountingPeriodNumber;
 
-	@ManyToOne
-	private PartyRole			accountPeriodFor;
+	/**UUID of PartyRole.
+	 * 
+	 */
+	private UUID			accountPeriodFor;
 
 	@ManyToOne
 	private PeriodType			definedBy;
@@ -44,7 +47,7 @@ public class AccountingPeriod extends BasePersistentModel {
 	}
 
 
-	public PartyRole getAccountPeriodFor() {
+	public UUID getAccountPeriodFor() {
 		return accountPeriodFor;
 	}
 	
@@ -56,7 +59,7 @@ public class AccountingPeriod extends BasePersistentModel {
 		this.accountingPeriodNumber = accountingPeriodNumber;
 	}
 
-	public void setAccountPeriodFor(PartyRole accountPeriodFor) {
+	public void setAccountPeriodFor(UUID accountPeriodFor) {
 		this.accountPeriodFor = accountPeriodFor;
 	}
 

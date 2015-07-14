@@ -1,13 +1,13 @@
 package jdo.budget.model.review;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.budget.model.Budget;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
 
 @Entity
 public class BudgetReview extends BasePersistentModel {
@@ -15,20 +15,23 @@ public class BudgetReview extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long				serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private String									comment;
-
-	@ManyToOne
-	private Budget									forBudget;
+	private String comment;
 
 	@ManyToOne
-	private Party										ofParty;
+	private Budget forBudget;
+
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID ofParty;
 
 	@ManyToOne
-	private BudgetReviewResultType	result;
+	private BudgetReviewResultType result;
 
-	private Date										reviewDate;
+	private Date reviewDate;
 
 	public String getComment() {
 		return comment;
@@ -38,7 +41,7 @@ public class BudgetReview extends BasePersistentModel {
 		return forBudget;
 	}
 
-	public Party getOfParty() {
+	public UUID getOfParty() {
 		return ofParty;
 	}
 
@@ -58,7 +61,7 @@ public class BudgetReview extends BasePersistentModel {
 		this.forBudget = forBudget;
 	}
 
-	public void setOfParty(Party ofParty) {
+	public void setOfParty(UUID ofParty) {
 		this.ofParty = ofParty;
 	}
 
