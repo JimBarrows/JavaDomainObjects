@@ -1,12 +1,13 @@
 package jdo.humanresoures.model.skills;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Party;
 
 @Entity
 public class PartyQualification extends BasePersistentModel {
@@ -14,16 +15,19 @@ public class PartyQualification extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID heldBy;
 
 	@ManyToOne
-	private Party							heldBy;
-
-	@ManyToOne
-	private QualificationType	type;
+	private QualificationType type;
 
 	@Embedded
-	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -33,7 +37,7 @@ public class PartyQualification extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public Party getHeldBy() {
+	public UUID getHeldBy() {
 		return heldBy;
 	}
 
@@ -41,7 +45,7 @@ public class PartyQualification extends BasePersistentModel {
 		return type;
 	}
 
-	public void setHeldBy(Party heldBy) {
+	public void setHeldBy(UUID heldBy) {
 		this.heldBy = heldBy;
 	}
 

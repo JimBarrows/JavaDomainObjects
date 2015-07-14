@@ -1,12 +1,13 @@
 package jdo.humanresoures.model.skills;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Person;
 
 @Entity
 public class PersonTraining extends BasePersistentModel {
@@ -14,16 +15,19 @@ public class PersonTraining extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * UUID for Person.
+	 * 
+	 */
+	private UUID receivedBy;
 
 	@ManyToOne
-	private Person						receivedBy;
-
-	@ManyToOne
-	private TrainingClassType	type;
+	private TrainingClassType type;
 
 	@Embedded
-	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -33,7 +37,7 @@ public class PersonTraining extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public Person getReceivedBy() {
+	public UUID getReceivedBy() {
 		return receivedBy;
 	}
 
@@ -41,7 +45,7 @@ public class PersonTraining extends BasePersistentModel {
 		return type;
 	}
 
-	public void setReceivedBy(Person receivedBy) {
+	public void setReceivedBy(UUID receivedBy) {
 		this.receivedBy = receivedBy;
 	}
 

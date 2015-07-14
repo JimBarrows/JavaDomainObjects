@@ -1,6 +1,7 @@
 package jdo.humanresoures.model.performance;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -10,10 +11,8 @@ import javax.persistence.OneToMany;
 
 import jdo.humanresoures.model.position.Position;
 import jdo.humanresoures.model.position.salary.PayHistory;
-import jdo.invoice.model.payment.Paycheck;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.PartyRole;
 
 @Entity
 public class PerformanceReview extends BasePersistentModel {
@@ -21,31 +20,40 @@ public class PerformanceReview extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long						serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
-	private PayHistory									affecting;
+	private PayHistory affecting;
 
 	@Lob
-	private String											comments;
+	private String comments;
 
-	@ManyToOne
-	private PartyRole										forEmployee;
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID forEmployee;
 
-	@ManyToOne
-	private PartyRole										fromManager;
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID fromManager;
 
 	@OneToMany
-	private List<PerformanceReviewItem>	items;
+	private List<PerformanceReviewItem> items;
 
 	@ManyToOne
-	private Position										newPosition;
+	private Position newPosition;
 
-	@ManyToOne
-	private Paycheck										bonus;
+	/**
+	 * UUID for Paycheck.
+	 * 
+	 */
+	private UUID bonus;
 
 	@Embedded
-	private DateTimeRange								dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -55,11 +63,11 @@ public class PerformanceReview extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public Paycheck getBonus() {
+	public UUID getBonus() {
 		return bonus;
 	}
 
-	public void setBonus(Paycheck bonus) {
+	public void setBonus(UUID bonus) {
 		this.bonus = bonus;
 	}
 
@@ -71,11 +79,11 @@ public class PerformanceReview extends BasePersistentModel {
 		return comments;
 	}
 
-	public PartyRole getForEmployee() {
+	public UUID getForEmployee() {
 		return forEmployee;
 	}
 
-	public PartyRole getFromManager() {
+	public UUID getFromManager() {
 		return fromManager;
 	}
 
@@ -95,11 +103,11 @@ public class PerformanceReview extends BasePersistentModel {
 		this.comments = comments;
 	}
 
-	public void setForEmployee(PartyRole forEmployee) {
+	public void setForEmployee(UUID forEmployee) {
 		this.forEmployee = forEmployee;
 	}
 
-	public void setFromManager(PartyRole fromManager) {
+	public void setFromManager(UUID fromManager) {
 		this.fromManager = fromManager;
 	}
 

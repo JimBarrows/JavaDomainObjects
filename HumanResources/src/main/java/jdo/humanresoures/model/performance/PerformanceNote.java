@@ -1,6 +1,7 @@
 package jdo.humanresoures.model.performance;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -11,7 +12,6 @@ import javax.persistence.TemporalType;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.PartyRole;
 
 @Entity
 public class PerformanceNote extends BasePersistentModel {
@@ -27,11 +27,17 @@ public class PerformanceNote extends BasePersistentModel {
 	@Temporal(TemporalType.DATE)
 	private Date communicationDate;
 
-	@ManyToOne
-	private PartyRole forEmployee;
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID forEmployee;
 
-	@ManyToOne
-	private PartyRole fromManger;
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID fromManger;
 
 	@ManyToOne
 	private PerformanceNoteType type;
@@ -55,11 +61,11 @@ public class PerformanceNote extends BasePersistentModel {
 		return communicationDate;
 	}
 
-	public PartyRole getForEmployee() {
+	public UUID getForEmployee() {
 		return forEmployee;
 	}
 
-	public PartyRole getFromManger() {
+	public UUID getFromManger() {
 		return fromManger;
 	}
 
@@ -75,11 +81,11 @@ public class PerformanceNote extends BasePersistentModel {
 		this.communicationDate = communicationDate;
 	}
 
-	public void setForEmployee(PartyRole forEmployee) {
+	public void setForEmployee(UUID forEmployee) {
 		this.forEmployee = forEmployee;
 	}
 
-	public void setFromManger(PartyRole fromManger) {
+	public void setFromManger(UUID fromManger) {
 		this.fromManger = fromManger;
 	}
 

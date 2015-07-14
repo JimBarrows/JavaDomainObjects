@@ -1,15 +1,14 @@
 package jdo.humanresoures.model.payroll;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.accounting.model.asset.PeriodType;
 import jdo.fields.Money;
-import jdo.invoice.model.payment.PaymentMethodType;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.PartyRole;
 
 @Entity
 public class PayrollPreference extends BasePersistentModel {
@@ -17,36 +16,48 @@ public class PayrollPreference extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private String						accountNumber;
+	private String accountNumber;
 
-	private String						bankName;
-
-	@Embedded
-	private Money							flatAmount;
-
-	@ManyToOne
-	private PartyRole					forEmployee;
-
-	@ManyToOne
-	private PartyRole					forInternalOrganization;
-
-	private int								percentage;
-
-	@ManyToOne
-	private PeriodType				period;
-
-	private String						routingNumber;
-
-	@ManyToOne
-	private DeductionType			type;
-
-	@ManyToOne
-	private PaymentMethodType	paymentMethodType;
+	private String bankName;
 
 	@Embedded
-	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+	private Money flatAmount;
+
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID forEmployee;
+
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID forInternalOrganization;
+
+	private int percentage;
+
+	/**
+	 * UUID for PeriodType.
+	 * 
+	 */
+	private UUID period;
+
+	private String routingNumber;
+
+	@ManyToOne
+	private DeductionType type;
+
+	/**
+	 * UUID for PaymentMethodType.
+	 * 
+	 */
+	private UUID paymentMethodType;
+
+	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -56,11 +67,11 @@ public class PayrollPreference extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public PaymentMethodType getPaymentMethodType() {
+	public UUID getPaymentMethodType() {
 		return paymentMethodType;
 	}
 
-	public void setPaymentMethodType(PaymentMethodType paymentMethodType) {
+	public void setPaymentMethodType(UUID paymentMethodType) {
 		this.paymentMethodType = paymentMethodType;
 	}
 
@@ -76,11 +87,11 @@ public class PayrollPreference extends BasePersistentModel {
 		return flatAmount;
 	}
 
-	public PartyRole getForEmployee() {
+	public UUID getForEmployee() {
 		return forEmployee;
 	}
 
-	public PartyRole getForInternalOrganization() {
+	public UUID getForInternalOrganization() {
 		return forInternalOrganization;
 	}
 
@@ -88,7 +99,7 @@ public class PayrollPreference extends BasePersistentModel {
 		return percentage;
 	}
 
-	public PeriodType getPeriod() {
+	public UUID getPeriod() {
 		return period;
 	}
 
@@ -112,11 +123,11 @@ public class PayrollPreference extends BasePersistentModel {
 		this.flatAmount = flatAmount;
 	}
 
-	public void setForEmployee(PartyRole forEmployee) {
+	public void setForEmployee(UUID forEmployee) {
 		this.forEmployee = forEmployee;
 	}
 
-	public void setForInternalOrganization(PartyRole forInternalOrganization) {
+	public void setForInternalOrganization(UUID forInternalOrganization) {
 		this.forInternalOrganization = forInternalOrganization;
 	}
 
@@ -124,7 +135,7 @@ public class PayrollPreference extends BasePersistentModel {
 		this.percentage = percentage;
 	}
 
-	public void setPeriod(PeriodType period) {
+	public void setPeriod(UUID period) {
 		this.period = period;
 	}
 

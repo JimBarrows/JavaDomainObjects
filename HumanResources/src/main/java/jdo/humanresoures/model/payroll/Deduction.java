@@ -1,11 +1,12 @@
 package jdo.humanresoures.model.payroll;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.fields.Money;
-import jdo.invoice.model.payment.Paycheck;
 import jdo.model.BasePersistentModel;
 
 @Entity
@@ -14,22 +15,25 @@ public class Deduction extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Embedded
-	private Money							amount;
+	private Money amount;
 
 	@ManyToOne
-	private DeductionType			type;
+	private DeductionType type;
 
-	@ManyToOne
-	private Paycheck					reductionOf;
+	/**
+	 * UUID for Paycheck.
+	 * 
+	 */
+	private UUID reductionOf;
 
-	public Paycheck getReductionOf() {
+	public UUID getReductionOf() {
 		return reductionOf;
 	}
 
-	public void setReductionOf(Paycheck reductionOf) {
+	public void setReductionOf(UUID reductionOf) {
 		this.reductionOf = reductionOf;
 	}
 

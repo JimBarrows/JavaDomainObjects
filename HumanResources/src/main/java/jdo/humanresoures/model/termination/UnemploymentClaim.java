@@ -1,12 +1,12 @@
 package jdo.humanresoures.model.termination;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.relationship.Employment;
 
 @Entity
 public class UnemploymentClaim extends BasePersistentModel {
@@ -14,17 +14,20 @@ public class UnemploymentClaim extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long						serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private Date												claimDate;
+	private Date claimDate;
 
-	private String											description;
+	private String description;
+
+	/**
+	 * UUID for Employment.
+	 * 
+	 */
+	private UUID resultingFrom;
 
 	@ManyToOne
-	private Employment									resultingFrom;
-
-	@ManyToOne
-	private UnemploymentClaimStatusType	status;
+	private UnemploymentClaimStatusType status;
 
 	public Date getClaimDate() {
 		return claimDate;
@@ -34,7 +37,7 @@ public class UnemploymentClaim extends BasePersistentModel {
 		return description;
 	}
 
-	public Employment getResultingFrom() {
+	public UUID getResultingFrom() {
 		return resultingFrom;
 	}
 
@@ -50,7 +53,7 @@ public class UnemploymentClaim extends BasePersistentModel {
 		this.description = description;
 	}
 
-	public void setResultingFrom(Employment resultingFrom) {
+	public void setResultingFrom(UUID resultingFrom) {
 		this.resultingFrom = resultingFrom;
 	}
 

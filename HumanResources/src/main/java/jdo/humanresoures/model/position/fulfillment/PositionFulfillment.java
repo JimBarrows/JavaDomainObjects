@@ -1,14 +1,14 @@
 package jdo.humanresoures.model.position.fulfillment;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 
 import jdo.humanresoures.model.position.Position;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Person;
 
 @Entity
 public class PositionFulfillment extends BasePersistentModel {
@@ -16,19 +16,21 @@ public class PositionFulfillment extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	private Person						acceptedBy;
+	/**
+	 * UUID for Person.
+	 * 
+	 */
+	private UUID acceptedBy;
 
 	@Lob
-	private String						comment;
+	private String comment;
 
-	@ManyToOne
-	private Position					fullfillmentOf;
+	private Position fullfillmentOf;
 
 	@Embedded
-	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -38,7 +40,7 @@ public class PositionFulfillment extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public Person getAcceptedBy() {
+	public UUID getAcceptedBy() {
 		return acceptedBy;
 	}
 
@@ -50,7 +52,7 @@ public class PositionFulfillment extends BasePersistentModel {
 		return fullfillmentOf;
 	}
 
-	public void setAcceptedBy(Person acceptedBy) {
+	public void setAcceptedBy(UUID acceptedBy) {
 		this.acceptedBy = acceptedBy;
 	}
 

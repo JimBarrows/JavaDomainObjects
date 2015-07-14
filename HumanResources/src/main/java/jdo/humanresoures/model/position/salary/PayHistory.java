@@ -1,14 +1,14 @@
 package jdo.humanresoures.model.position.salary;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.accounting.model.asset.PeriodType;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.relationship.Employment;
 
 @Entity
 public class PayHistory extends BasePersistentModel {
@@ -23,11 +23,17 @@ public class PayHistory extends BasePersistentModel {
 
 	private String comment;
 
-	@ManyToOne
-	private PeriodType forPeriodType;
+	/**
+	 * UUID for PeriodType.
+	 * 
+	 */
+	private UUID forPeriodType;
 
-	@ManyToOne
-	private Employment recordFor;
+	/**
+	 * UUID for Employment.
+	 * 
+	 */
+	private UUID recordFor;
 
 	@ManyToOne
 	private SalaryStep step;
@@ -51,11 +57,11 @@ public class PayHistory extends BasePersistentModel {
 		return comment;
 	}
 
-	public PeriodType getForPeriodType() {
+	public UUID getForPeriodType() {
 		return forPeriodType;
 	}
 
-	public Employment getRecordFor() {
+	public UUID getRecordFor() {
 		return recordFor;
 	}
 
@@ -71,11 +77,11 @@ public class PayHistory extends BasePersistentModel {
 		this.comment = comment;
 	}
 
-	public void setForPeriodType(PeriodType forPeriodType) {
+	public void setForPeriodType(UUID forPeriodType) {
 		this.forPeriodType = forPeriodType;
 	}
 
-	public void setRecordFor(Employment recordFor) {
+	public void setRecordFor(UUID recordFor) {
 		this.recordFor = recordFor;
 	}
 

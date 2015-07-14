@@ -79,6 +79,7 @@
 		<module>WorkEffort</module>
 		<module>Invoicing</module>
 		<module>AccountingAndBudgeting</module>
+		<module>HumanResources</module>
 	</modules>
 
 	<profiles>

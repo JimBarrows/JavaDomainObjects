@@ -1,10 +1,11 @@
 package jdo.humanresoures.model.position.salary;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.accounting.model.asset.PeriodType;
 import jdo.fields.Money;
 import jdo.humanresoures.model.position.type.PositionType;
 import jdo.model.BasePersistentModel;
@@ -16,25 +17,28 @@ public class PositionTypeRate extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@ManyToOne
-	private SalaryStep				associatedWith;
+	private SalaryStep associatedWith;
+
+	/**
+	 * UUID for PeriodType.
+	 * 
+	 */
+	private UUID forPeriodType;
 
 	@ManyToOne
-	private PeriodType				forPeriodType;
+	private PositionType forPositionType;
 
 	@ManyToOne
-	private PositionType			forPositionType;
-
-	@ManyToOne
-	private RateType					forRateType;
+	private RateType forRateType;
 
 	@Embedded
-	private Money							rate;
+	private Money rate;
 
 	@Embedded
-	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -48,7 +52,7 @@ public class PositionTypeRate extends BasePersistentModel {
 		return associatedWith;
 	}
 
-	public PeriodType getForPeriodType() {
+	public UUID getForPeriodType() {
 		return forPeriodType;
 	}
 
@@ -68,7 +72,7 @@ public class PositionTypeRate extends BasePersistentModel {
 		this.associatedWith = associatedWith;
 	}
 
-	public void setForPeriodType(PeriodType forPeriodType) {
+	public void setForPeriodType(UUID forPeriodType) {
 		this.forPeriodType = forPeriodType;
 	}
 

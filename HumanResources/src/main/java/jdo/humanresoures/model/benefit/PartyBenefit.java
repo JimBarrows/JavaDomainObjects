@@ -1,14 +1,14 @@
 package jdo.humanresoures.model.benefit;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.accounting.model.asset.PeriodType;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.relationship.Employment;
 
 @Entity
 public class PartyBenefit extends BasePersistentModel {
@@ -16,26 +16,32 @@ public class PartyBenefit extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private int								actualEmployerPaidPercent;
+	private int actualEmployerPaidPercent;
 
-	private int								availableTime;
+	private int availableTime;
 
-	@ManyToOne
-	private Employment				benefitFor;
-
-	@Embedded
-	private Money							cost;
-
-	@ManyToOne
-	private PeriodType				period;
-
-	@ManyToOne
-	private BenefitType				type;
+	/**
+	 * UUID for Employment.
+	 * 
+	 */
+	private UUID benefitFor;
 
 	@Embedded
-	private DateTimeRange			dateTimeRange			= new DateTimeRange();
+	private Money cost;
+
+	/**
+	 * UUID for PeriodType.
+	 * 
+	 */
+	private UUID period;
+
+	@ManyToOne
+	private BenefitType type;
+
+	@Embedded
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -53,7 +59,7 @@ public class PartyBenefit extends BasePersistentModel {
 		return availableTime;
 	}
 
-	public Employment getBenefitFor() {
+	public UUID getBenefitFor() {
 		return benefitFor;
 	}
 
@@ -61,7 +67,7 @@ public class PartyBenefit extends BasePersistentModel {
 		return cost;
 	}
 
-	public PeriodType getPeriod() {
+	public UUID getPeriod() {
 		return period;
 	}
 
@@ -77,7 +83,7 @@ public class PartyBenefit extends BasePersistentModel {
 		this.availableTime = availableTime;
 	}
 
-	public void setBenefitFor(Employment benefitFor) {
+	public void setBenefitFor(UUID benefitFor) {
 		this.benefitFor = benefitFor;
 	}
 
@@ -85,7 +91,7 @@ public class PartyBenefit extends BasePersistentModel {
 		this.cost = cost;
 	}
 
-	public void setPeriod(PeriodType period) {
+	public void setPeriod(UUID period) {
 		this.period = period;
 	}
 

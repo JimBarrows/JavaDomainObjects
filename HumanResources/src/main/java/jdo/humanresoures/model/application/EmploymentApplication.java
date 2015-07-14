@@ -1,6 +1,7 @@
 package jdo.humanresoures.model.application;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -9,7 +10,6 @@ import javax.persistence.TemporalType;
 
 import jdo.humanresoures.model.position.Position;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Person;
 
 @Entity
 public class EmploymentApplication extends BasePersistentModel {
@@ -17,25 +17,31 @@ public class EmploymentApplication extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long								serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Temporal(TemporalType.DATE)
-	private Date														applicationDate;
+	private Date applicationDate;
 
 	@ManyToOne
-	private Position												forPosition;
+	private Position forPosition;
+
+	/**
+	 * UUID of Person.
+	 * 
+	 */
+	private UUID fromPerson;
+
+	/**
+	 * UUID of Person.
+	 * 
+	 */
+	private UUID referredBy;
 
 	@ManyToOne
-	private Person													fromPerson;
+	private EmploymnetApplicationSourceType source;
 
 	@ManyToOne
-	private Person													referredBy;
-
-	@ManyToOne
-	private EmploymnetApplicationSourceType	source;
-
-	@ManyToOne
-	private EmploymentApplicationStatusType	status;
+	private EmploymentApplicationStatusType status;
 
 	public Date getApplicationDate() {
 		return applicationDate;
@@ -45,11 +51,11 @@ public class EmploymentApplication extends BasePersistentModel {
 		return forPosition;
 	}
 
-	public Person getFromPerson() {
+	public UUID getFromPerson() {
 		return fromPerson;
 	}
 
-	public Person getReferredBy() {
+	public UUID getReferredBy() {
 		return referredBy;
 	}
 
@@ -69,11 +75,11 @@ public class EmploymentApplication extends BasePersistentModel {
 		this.forPosition = forPosition;
 	}
 
-	public void setFromPerson(Person fromPerson) {
+	public void setFromPerson(UUID fromPerson) {
 		this.fromPerson = fromPerson;
 	}
 
-	public void setReferredBy(Person referredBy) {
+	public void setReferredBy(UUID referredBy) {
 		this.referredBy = referredBy;
 	}
 

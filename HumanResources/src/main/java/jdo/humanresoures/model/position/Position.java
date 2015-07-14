@@ -2,6 +2,7 @@ package jdo.humanresoures.model.position;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -12,14 +13,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
-import jdo.budget.model.BudgetItem;
 import jdo.humanresoures.model.position.fulfillment.PositionFulfillment;
 import jdo.humanresoures.model.position.fulfillment.PositionStatus;
 import jdo.humanresoures.model.position.structure.PositionReportingStructure;
 import jdo.humanresoures.model.position.type.PositionType;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Organization;
 
 @Entity
 public class Position extends BasePersistentModel {
@@ -29,8 +28,11 @@ public class Position extends BasePersistentModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	private BudgetItem approvedThru;
+	/**
+	 * UUID for BudgetItem.
+	 * 
+	 */
+	private UUID approvedThru;
 
 	@OneToMany
 	private List<PositionResponsibility> assigendTo;
@@ -65,8 +67,11 @@ public class Position extends BasePersistentModel {
 	@ManyToOne
 	private PositionType type;
 
-	@ManyToOne
-	private Organization within;
+	/**
+	 * UUID for Organization.
+	 * 
+	 */
+	private UUID within;
 
 	@Embedded
 	private DateTimeRange dateTimeRange = new DateTimeRange();
@@ -79,7 +84,7 @@ public class Position extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public BudgetItem getApprovedThru() {
+	public UUID getApprovedThru() {
 		return approvedThru;
 	}
 
@@ -115,7 +120,7 @@ public class Position extends BasePersistentModel {
 		return type;
 	}
 
-	public Organization getWithin() {
+	public UUID getWithin() {
 		return within;
 	}
 
@@ -140,7 +145,7 @@ public class Position extends BasePersistentModel {
 		return temporary;
 	}
 
-	public void setApprovedThru(BudgetItem approvedThru) {
+	public void setApprovedThru(UUID approvedThru) {
 		this.approvedThru = approvedThru;
 	}
 
@@ -192,7 +197,7 @@ public class Position extends BasePersistentModel {
 		this.type = type;
 	}
 
-	public void setWithin(Organization within) {
+	public void setWithin(UUID within) {
 		this.within = within;
 	}
 

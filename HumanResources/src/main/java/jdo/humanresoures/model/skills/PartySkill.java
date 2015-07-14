@@ -1,6 +1,7 @@
 package jdo.humanresoures.model.skills;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -9,7 +10,6 @@ import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
 
 @Entity
 public class PartySkill extends BasePersistentModel {
@@ -17,24 +17,27 @@ public class PartySkill extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	private Party							heldBy;
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID heldBy;
 
 	@Min(0)
-	private int								skillLevel;
+	private int skillLevel;
 
 	@Temporal(TemporalType.DATE)
-	private Date							startedUsing;
+	private Date startedUsing;
 
 	@ManyToOne
-	private SkillType					type;
+	private SkillType type;
 
 	@Min(0)
-	private int								yearsOfExperience;
+	private int yearsOfExperience;
 
-	public Party getHeldBy() {
+	public UUID getHeldBy() {
 		return heldBy;
 	}
 
@@ -54,7 +57,7 @@ public class PartySkill extends BasePersistentModel {
 		return yearsOfExperience;
 	}
 
-	public void setHeldBy(Party heldBy) {
+	public void setHeldBy(UUID heldBy) {
 		this.heldBy = heldBy;
 	}
 

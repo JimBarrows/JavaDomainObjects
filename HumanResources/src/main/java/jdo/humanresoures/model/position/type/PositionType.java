@@ -1,17 +1,16 @@
 package jdo.humanresoures.model.position.type;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+import org.hibernate.validator.constraints.Range;
 
 import jdo.humanresoures.model.position.ValidResponsibility;
 import jdo.humanresoures.model.position.salary.PositionTypeRate;
 import jdo.model.BaseType;
-import jdo.party.model.PartyRole;
-
-import org.hibernate.validator.constraints.Range;
 
 @Entity
 public class PositionType extends BaseType {
@@ -19,24 +18,27 @@ public class PositionType extends BaseType {
 	/**
 	 * 
 	 */
-	private static final long					serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Range(min = 0, max = 100)
-	private int												benefitPercent;
+	private int benefitPercent;
 
 	@OneToMany
-	private List<PositionTypeRate>		rates;
+	private List<PositionTypeRate> rates;
 
-	private String										title;
-
-	@OneToMany
-	private List<PositionTypeClass>		typeClasses;
-
-	@ManyToOne
-	private PartyRole									union;
+	private String title;
 
 	@OneToMany
-	private List<ValidResponsibility>	validResponsibilities;
+	private List<PositionTypeClass> typeClasses;
+
+	/**
+	 * UUID for PartyRole.
+	 * 
+	 */
+	private UUID union;
+
+	@OneToMany
+	private List<ValidResponsibility> validResponsibilities;
 
 	public int getBenefitPercent() {
 		return benefitPercent;
@@ -54,7 +56,7 @@ public class PositionType extends BaseType {
 		return typeClasses;
 	}
 
-	public PartyRole getUnion() {
+	public UUID getUnion() {
 		return union;
 	}
 
@@ -78,7 +80,7 @@ public class PositionType extends BaseType {
 		this.typeClasses = typeClasses;
 	}
 
-	public void setUnion(PartyRole union) {
+	public void setUnion(UUID union) {
 		this.union = union;
 	}
 
