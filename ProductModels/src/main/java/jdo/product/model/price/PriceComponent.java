@@ -9,9 +9,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.DateTimeRange;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 import jdo.product.model.feature.ProductFeature;

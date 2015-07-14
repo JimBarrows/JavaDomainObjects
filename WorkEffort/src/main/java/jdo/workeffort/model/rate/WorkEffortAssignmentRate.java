@@ -6,8 +6,8 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 import jdo.workeffort.model.assignment.WorkEffortPartyAssignment;
 
 @Entity

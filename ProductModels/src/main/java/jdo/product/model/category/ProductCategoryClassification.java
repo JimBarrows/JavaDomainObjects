@@ -7,8 +7,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.xml.crypto.Data;
 
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 import jdo.product.model.Product;
 
 import org.hibernate.validator.constraints.NotEmpty;

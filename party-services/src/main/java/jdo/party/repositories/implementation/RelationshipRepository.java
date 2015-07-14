@@ -26,7 +26,7 @@ public class RelationshipRepository extends RepositoryTemplate<PartyRelationship
 	}
 
 	@Override
-	protected EntityManager em() {
+	protected EntityManager entityManager() {
 		return em;
 	}
 

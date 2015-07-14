@@ -10,9 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 
+import jdo.fields.DateTimeRange;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 import jdo.product.model.Product;
 import jdo.product.model.feature.ProductFeature;
 

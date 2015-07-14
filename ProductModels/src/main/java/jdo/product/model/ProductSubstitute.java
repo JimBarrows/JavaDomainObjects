@@ -6,8 +6,8 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 /**
  * Shows which products can be substituted by other products.

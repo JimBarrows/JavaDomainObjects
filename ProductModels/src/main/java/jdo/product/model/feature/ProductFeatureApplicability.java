@@ -6,8 +6,8 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 import jdo.product.model.Product;
 
 /**

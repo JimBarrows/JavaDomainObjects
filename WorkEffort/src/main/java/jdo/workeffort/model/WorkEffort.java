@@ -1,6 +1,7 @@
 package jdo.workeffort.model;
 
-import java.util.Date;
+import java.time.Duration;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
@@ -13,9 +14,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.Min;
 
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
@@ -39,15 +39,12 @@ public class WorkEffort extends BasePersistentModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
+	private LocalDate actualCompletionLocalDate;
 
-	@Temporal(TemporalType.DATE)
-	private Date actualCompletionDate;
+	private Duration actualHours;
 
-	@Min(0)
-	private long actualHours;
-
-	@Temporal(TemporalType.DATE)
-	private Date actualStartDate;
+	private LocalDate actualStartLocalDate;
 
 	@OneToMany
 	private List<WorkEffortPartyAssignment> assignedVia;
@@ -56,13 +53,13 @@ public class WorkEffort extends BasePersistentModel {
 	 * UUID of the InventoryItem.
 	 * 
 	 */
+	@OneToMany
 	private List<UUID> deliverableProduced;
 
 	@Lob
 	private String description;
 
-	@Min(0)
-	private long estimatedHours;
+	private Duration estimatedHours;
 
 	@OneToMany(mappedBy = "associatedTo")
 	private List<WorkEfforAssociation> fromAssociatedWith;
@@ -71,12 +68,14 @@ public class WorkEffort extends BasePersistentModel {
 	 * UUID of the Requirement.
 	 * 
 	 */
+	@OneToMany
 	private List<UUID> fulfillsRequirement;
 
 	/**
 	 * UUID of the WorkOrderItem.
 	 * 
 	 */
+	@OneToMany
 	private List<UUID> fullfillsWorkOderItems;
 
 	@OneToMany
@@ -86,9 +85,10 @@ public class WorkEffort extends BasePersistentModel {
 	 * UUID of the InventoryItem.
 	 * 
 	 */
+	@OneToMany
 	private List<UUID> inventoryProduced;
 
-	@NotEmpty
+	@NotBlank
 	private String name;
 
 	/**
@@ -99,12 +99,11 @@ public class WorkEffort extends BasePersistentModel {
 
 	@OneToMany(mappedBy = "versionOf")
 	private List<WorkEffort> redoneVia;
+	
+	private LocalDate scheduledCompletionLocalDate;
 
 	@Temporal(TemporalType.DATE)
-	private Date scheduledCompletionDate;
-
-	@Temporal(TemporalType.DATE)
-	private Date scheduledStartDate;
+	private LocalDate scheduledStartLocalDate;
 
 	@Lob
 	private String specialTerms;
@@ -115,8 +114,7 @@ public class WorkEffort extends BasePersistentModel {
 	@Embedded
 	private Money totalDollarsAllowed;
 
-	@Min(0)
-	private long totalHoursAllowed;
+	private Duration totalHoursAllowed;
 
 	@OneToMany
 	private List<TimeEntry> trackedVia;
@@ -127,16 +125,16 @@ public class WorkEffort extends BasePersistentModel {
 	@ManyToOne
 	private WorkEffort versionOf;
 
-	public Date getActualCompletionDate() {
-		return actualCompletionDate;
+	public LocalDate getActualCompletionLocalDate() {
+		return actualCompletionLocalDate;
 	}
 
-	public long getActualHours() {
+	public Duration getActualHours() {
 		return actualHours;
 	}
 
-	public Date getActualStartDate() {
-		return actualStartDate;
+	public LocalDate getActualStartLocalDate() {
+		return actualStartLocalDate;
 	}
 
 	public List<WorkEffortPartyAssignment> getAssignedVia() {
@@ -157,7 +155,7 @@ public class WorkEffort extends BasePersistentModel {
 	/**
 	 * @return the estimatedHours
 	 */
-	public long getEstimatedHours() {
+	public Duration getEstimatedHours() {
 		return estimatedHours;
 	}
 
@@ -197,17 +195,17 @@ public class WorkEffort extends BasePersistentModel {
 	}
 
 	/**
-	 * @return the scheduledCompletionDate
+	 * @return the scheduledCompletionLocalDate
 	 */
-	public Date getScheduledCompletionDate() {
-		return scheduledCompletionDate;
+	public LocalDate getScheduledCompletionLocalDate() {
+		return scheduledCompletionLocalDate;
 	}
 
 	/**
-	 * @return the scheduledStartDate
+	 * @return the scheduledStartLocalDate
 	 */
-	public Date getScheduledStartDate() {
-		return scheduledStartDate;
+	public LocalDate getScheduledStartLocalDate() {
+		return scheduledStartLocalDate;
 	}
 
 	public String getSpecialTerms() {
@@ -228,7 +226,7 @@ public class WorkEffort extends BasePersistentModel {
 	/**
 	 * @return the totalHoursAllowed
 	 */
-	public long getTotalHoursAllowed() {
+	public Duration getTotalHoursAllowed() {
 		return totalHoursAllowed;
 	}
 
@@ -244,16 +242,16 @@ public class WorkEffort extends BasePersistentModel {
 		return versionOf;
 	}
 
-	public void setActualCompletionDate(Date actualCompletionDate) {
-		this.actualCompletionDate = actualCompletionDate;
+	public void setActualCompletionLocalDate(LocalDate actualCompletionLocalDate) {
+		this.actualCompletionLocalDate = actualCompletionLocalDate;
 	}
 
-	public void setActualHours(long actualHours) {
+	public void setActualHours(Duration actualHours) {
 		this.actualHours = actualHours;
 	}
 
-	public void setActualStartDate(Date actualStartDate) {
-		this.actualStartDate = actualStartDate;
+	public void setActualStartLocalDate(LocalDate actualStartLocalDate) {
+		this.actualStartLocalDate = actualStartLocalDate;
 	}
 
 	public void setAssignedVia(List<WorkEffortPartyAssignment> assignedVia) {
@@ -276,7 +274,7 @@ public class WorkEffort extends BasePersistentModel {
 	 * @param estimatedHours
 	 *            the estimatedHours to set
 	 */
-	public void setEstimatedHours(long estimatedHours) {
+	public void setEstimatedHours(Duration estimatedHours) {
 		this.estimatedHours = estimatedHours;
 	}
 
@@ -306,30 +304,26 @@ public class WorkEffort extends BasePersistentModel {
 	 */
 	public void setName(String name) {
 		this.name = name;
-	}
-
-	// public void setPerformedAt(Facility performedAt) {
-	// this.performedAt = performedAt;
-	// }
+	}	
 
 	public void setRedoneVia(List<WorkEffort> redoneVia) {
 		this.redoneVia = redoneVia;
 	}
 
 	/**
-	 * @param scheduledCompletionDate
-	 *            the scheduledCompletionDate to set
+	 * @param scheduledCompletionLocalDate
+	 *            the scheduledCompletionLocalDate to set
 	 */
-	public void setScheduledCompletionDate(Date scheduledCompletionDate) {
-		this.scheduledCompletionDate = scheduledCompletionDate;
+	public void setScheduledCompletionLocalDate(LocalDate scheduledCompletionLocalDate) {
+		this.scheduledCompletionLocalDate = scheduledCompletionLocalDate;
 	}
 
 	/**
-	 * @param scheduledStartDate
-	 *            the scheduledStartDate to set
+	 * @param scheduledStartLocalDate
+	 *            the scheduledStartLocalDate to set
 	 */
-	public void setScheduledStartDate(Date scheduledStartDate) {
-		this.scheduledStartDate = scheduledStartDate;
+	public void setScheduledStartLocalDate(LocalDate scheduledStartLocalDate) {
+		this.scheduledStartLocalDate = scheduledStartLocalDate;
 	}
 
 	public void setSpecialTerms(String specialTerms) {
@@ -352,7 +346,7 @@ public class WorkEffort extends BasePersistentModel {
 	 * @param totalHoursAllowed
 	 *            the totalHoursAllowed to set
 	 */
-	public void setTotalHoursAllowed(long totalHoursAllowed) {
+	public void setTotalHoursAllowed(Duration totalHoursAllowed) {
 		this.totalHoursAllowed = totalHoursAllowed;
 	}
 

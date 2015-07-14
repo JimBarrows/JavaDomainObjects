@@ -6,10 +6,10 @@ import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
+import jdo.fields.DateTimeRange;
 import jdo.fields.Money;
 import jdo.humanresoures.model.position.type.PositionType;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 public class PositionTypeRate extends BasePersistentModel {

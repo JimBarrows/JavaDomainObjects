@@ -5,8 +5,8 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 /**
  * Provides a capability to maintain which product may not be used with other

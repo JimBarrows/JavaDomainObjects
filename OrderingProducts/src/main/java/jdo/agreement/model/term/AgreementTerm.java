@@ -9,9 +9,9 @@ import javax.validation.constraints.AssertTrue;
 
 import jdo.agreement.model.Agreement;
 import jdo.agreement.model.item.AgreementItem;
+import jdo.fields.DateTimeRange;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

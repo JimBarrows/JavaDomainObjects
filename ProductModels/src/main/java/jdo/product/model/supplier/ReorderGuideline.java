@@ -8,8 +8,8 @@ import javax.persistence.ManyToOne;
 
 import org.apache.logging.log4j.core.net.Facility;
 
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 import jdo.product.model.Good;
 
 /**

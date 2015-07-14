@@ -3,8 +3,8 @@ package jdo.ecommerce.model.productdescriptions;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 public class ObjectUsage extends BasePersistentModel {

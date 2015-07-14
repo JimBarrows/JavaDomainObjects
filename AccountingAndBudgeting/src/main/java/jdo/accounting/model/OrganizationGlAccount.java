@@ -10,8 +10,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.accounting.model.transaction.detail.TransactionDetail;
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 public class OrganizationGlAccount extends BasePersistentModel {

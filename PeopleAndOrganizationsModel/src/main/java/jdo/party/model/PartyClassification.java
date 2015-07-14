@@ -8,8 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 /**
  * Represents 1 or more classification to which a party may belong. The actual

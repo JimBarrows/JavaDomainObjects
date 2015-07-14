@@ -142,16 +142,6 @@
 				<type>jar</type>
 				<scope>compile</scope>
 			</dependency>
-			<dependency>
-				<groupId>joda-time</groupId>
-				<artifactId>joda-time</artifactId>
-				<version>2.3</version>
-			</dependency>
-			<dependency>
-				<groupId>org.jadira.usertype</groupId>
-				<artifactId>usertype.core</artifactId>
-				<version>3.2.0.GA</version>
-			</dependency>
 
 			<dependency>
 				<groupId>org.slf4j</groupId>

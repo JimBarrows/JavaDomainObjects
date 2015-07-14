@@ -1,17 +1,18 @@
 package jdo.xml.adapters;
 
+import java.time.ZonedDateTime;
+import java.time.format.DateTimeFormatter;
+
 import javax.xml.bind.annotation.adapters.XmlAdapter;
 
-import org.joda.time.DateTime;
+public class DateTimeAdapter extends XmlAdapter<String, ZonedDateTime> {
 
-public class DateTimeAdapter extends XmlAdapter<String, DateTime> {
-
-	public DateTime unmarshal(String v) throws Exception {
-        return new DateTime(v);
+	public ZonedDateTime unmarshal(String v) throws Exception {
+       return ZonedDateTime.from( DateTimeFormatter.ISO_DATE_TIME.parse(v));
     }
  
-    public String marshal(DateTime v) throws Exception {
-        return v.toString();
+    public String marshal(ZonedDateTime v) throws Exception {
+        return DateTimeFormatter.ISO_DATE_TIME.format(v);
     }
 
 }

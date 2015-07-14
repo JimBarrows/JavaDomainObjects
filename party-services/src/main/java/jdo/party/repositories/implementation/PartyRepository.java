@@ -18,7 +18,7 @@ public class PartyRepository extends RepositoryTemplate<Party, Long> implements 
 	}
 
 	@Override
-	protected EntityManager em() {
+	protected EntityManager entityManager() {
 		return em;
 	}
 	

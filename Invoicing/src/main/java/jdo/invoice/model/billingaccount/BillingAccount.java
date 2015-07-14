@@ -8,9 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
 
+import jdo.fields.DateTimeRange;
 import jdo.invoice.model.Invoice;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 public class BillingAccount extends BasePersistentModel {

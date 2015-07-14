@@ -8,8 +8,8 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
 import jdo.accounting.model.asset.PeriodType;
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 public class AccountingPeriod extends BasePersistentModel {

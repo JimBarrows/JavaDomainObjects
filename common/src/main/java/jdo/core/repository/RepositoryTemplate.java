@@ -18,17 +18,17 @@ public abstract class RepositoryTemplate<E, I> implements Repository<E, I> {
 	 */
 	private Class<E> type;
 
-	abstract protected EntityManager em() ;
+	abstract protected EntityManager entityManager() ;
 	
 	@Override
 	public E create(E entity) {
-		em().persist(entity);
+		entityManager().persist(entity);
 		return entity;
 	}
 
 	@Override
 	public Optional<E> findById(I id) {
-		return Optional.ofNullable(em().find(type, id));
+		return Optional.ofNullable(entityManager().find(type, id));
 	}
 
 	@Override
@@ -44,23 +44,23 @@ public abstract class RepositoryTemplate<E, I> implements Repository<E, I> {
 
 	@Override
 	public List<E> findAll() {
-		CriteriaBuilder builder = em().getCriteriaBuilder();
+		CriteriaBuilder builder = entityManager().getCriteriaBuilder();
 		CriteriaQuery<E> criteria = builder.createQuery( type );
 		Root<E> entityRoot = criteria.from( type );
 		criteria.select( entityRoot );		
-		List<E> entities = em().createQuery( criteria ).getResultList();
+		List<E> entities = entityManager().createQuery( criteria ).getResultList();
 		return entities;
 	}
 
 	@Override
 	public E update(E entity) {		
-		return em().merge(entity);
+		return entityManager().merge(entity);
 	}
 
 	@Override
 	public void delete(I id) {
-		E found = em().find(type, id);
-		em().remove(found);
+		E found = entityManager().find(type, id);
+		entityManager().remove(found);
 
 	}
 

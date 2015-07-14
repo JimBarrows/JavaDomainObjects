@@ -13,12 +13,12 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 
+import jdo.fields.DateTimeRange;
 import jdo.humanresoures.model.position.fulfillment.PositionFulfillment;
 import jdo.humanresoures.model.position.fulfillment.PositionStatus;
 import jdo.humanresoures.model.position.structure.PositionReportingStructure;
 import jdo.humanresoures.model.position.type.PositionType;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 public class Position extends BasePersistentModel {

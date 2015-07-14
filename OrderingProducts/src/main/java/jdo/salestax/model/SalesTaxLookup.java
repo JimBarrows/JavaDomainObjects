@@ -5,9 +5,9 @@ import java.util.UUID;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 
+import jdo.fields.DateTimeRange;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 public class SalesTaxLookup extends BasePersistentModel {

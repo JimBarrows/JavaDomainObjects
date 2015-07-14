@@ -1,5 +1,7 @@
 package jdo.party.model.relationship;
 
+import java.time.ZonedDateTime;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.persistence.Embedded;
@@ -13,10 +15,8 @@ import javax.validation.constraints.AssertFalse;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
-import org.joda.time.DateTime;
-
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 import jdo.party.model.PartyRole;
 
 /**
@@ -69,8 +69,7 @@ public class PartyRelationship extends BasePersistentModel {
 		super();
 	}
 
-	public PartyRelationship(PartyRole relationshipFrom,
-			PartyRole relationshipTo) {
+	public PartyRelationship(PartyRole relationshipFrom, PartyRole relationshipTo) {
 		super();
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
@@ -83,9 +82,8 @@ public class PartyRelationship extends BasePersistentModel {
 		relationshipTo = to;
 	}
 
-	public PartyRelationship(UUID id, Long version, DateTime from,
-			DateTime thru, String comment, PartyRole relationshipFrom,
-			PartyRole relationshipTo) {
+	public PartyRelationship(UUID id, Long version, ZonedDateTime from, Optional<ZonedDateTime> thru, String comment,
+			PartyRole relationshipFrom, PartyRole relationshipTo) {
 		super(id, version);
 		this.dateTimeRange.setFromDate(from);
 		this.dateTimeRange.setThruDate(thru);
@@ -94,7 +92,7 @@ public class PartyRelationship extends BasePersistentModel {
 		this.relationshipTo = relationshipTo;
 	}
 
-	public PartyRelationship(DateTime from, DateTime thru, String comment,
+	public PartyRelationship(ZonedDateTime from, Optional<ZonedDateTime> thru, String comment,
 			PartyRole relationshipFrom, PartyRole relationshipTo) {
 		this.dateTimeRange.setFromDate(from);
 		this.dateTimeRange.setThruDate(thru);
@@ -151,11 +149,9 @@ public class PartyRelationship extends BasePersistentModel {
 
 	@Override
 	public String toString() {
-		return "PartyRelationship [comment=" + comment + ", priority="
-				+ priority + ", relationshipFrom=" + relationshipFrom
-				+ ", relationshipTo=" + relationshipTo + ", status=" + status
-				+ ", dateTimeRange=" + dateTimeRange + ", id=" + getId()
-				+ ", version=" + getVersion() + "]";
+		return "PartyRelationship [comment=" + comment + ", priority=" + priority + ", relationshipFrom="
+				+ relationshipFrom + ", relationshipTo=" + relationshipTo + ", status=" + status + ", dateTimeRange="
+				+ dateTimeRange + ", id=" + getId() + ", version=" + getVersion() + "]";
 	}
 
 }

@@ -17,8 +17,8 @@ import org.hibernate.validator.constraints.NotEmpty;
 
 import jdo.agreement.model.item.AgreementItem;
 import jdo.agreement.model.term.AgreementTerm;
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)

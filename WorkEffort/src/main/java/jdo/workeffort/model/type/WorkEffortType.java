@@ -1,5 +1,6 @@
 package jdo.workeffort.model.type;
 
+import java.time.Duration;
 import java.util.List;
 import java.util.UUID;
 
@@ -25,7 +26,8 @@ public class WorkEffortType extends BaseType {
 	@OneToMany
 	private List<WorkEffortGoodStandard> goodStandardNeeds;
 
-	private int standardWorkHours;
+	private Duration standardWorkHours;
+	
 	@ManyToOne
 	private DeliverableType usedToProduceDeliverable;
 	/**UUID of the Product.
@@ -45,7 +47,7 @@ public class WorkEffortType extends BaseType {
 		return goodStandardNeeds;
 	}
 
-	public int getStandardWorkHours() {
+	public Duration getStandardWorkHours() {
 		return standardWorkHours;
 	}
 
@@ -76,7 +78,7 @@ public class WorkEffortType extends BaseType {
 		this.goodStandardNeeds = goodStandardNeeds;
 	}
 
-	public void setStandardWorkHours(int standardWorkHours) {
+	public void setStandardWorkHours(Duration standardWorkHours) {
 		this.standardWorkHours = standardWorkHours;
 	}
 

@@ -1,7 +1,9 @@
 package jdo.party.model;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
 import javax.persistence.AttributeOverride;
@@ -14,10 +16,8 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 
-import org.joda.time.DateTime;
-
+import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
-import jdo.model.DateTimeRange;
 
 /**
  * A person or organization may play any number of roles such as a customer,
@@ -59,9 +59,12 @@ public class PartyRole extends BasePersistentModel {
 
 	}
 
-	public PartyRole(DateTime from, DateTime thru) {
+	public PartyRole(ZonedDateTime from, Optional<ZonedDateTime> thru) {
 		dateTimeRange.setFromDate(from);
 		dateTimeRange.setThruDate(thru);
+	}
+	public PartyRole(ZonedDateTime from) {
+		dateTimeRange.setFromDate(from);
 	}
 
 	public Party getRoleFor() {

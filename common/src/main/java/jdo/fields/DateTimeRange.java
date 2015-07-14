@@ -1,6 +1,10 @@
-package jdo.model;
+package jdo.fields;
+
+import static java.time.ZonedDateTime.now;
 
 import java.io.Serializable;
+import java.time.ZonedDateTime;
+import java.util.Optional;
 
 import javax.persistence.Embeddable;
 import javax.persistence.Transient;
@@ -8,18 +12,13 @@ import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
-import org.hibernate.annotations.Type;
-import org.joda.time.DateTime;
-
 @Embeddable
 public class DateTimeRange implements Serializable {
 
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
 	@NotNull
-	private DateTime	fromDate	= new DateTime();
+	private ZonedDateTime fromDate = now();
 
-	@Type(type = "org.jadira.usertype.dateandtime.joda.PersistentDateTime")
-	private DateTime	thruDate;
+	private Optional<ZonedDateTime> thruDate = Optional.empty();
 
 	/**
 	 * Determines if a model is active. A model is active if now is after or
@@ -28,7 +27,9 @@ public class DateTimeRange implements Serializable {
 	@XmlTransient
 	@Transient
 	public boolean isActive() {
-		return (fromDate.isBeforeNow() || fromDate.isEqualNow()) && (thruDate == null ? true : (thruDate.isAfterNow() || thruDate.isEqualNow()));
+		ZonedDateTime now = now();
+		return (fromDate.isBefore(now) || fromDate.isEqual(now))
+				&& thruDate.map(thru -> thru.isAfter(now) || thru.isEqual(now)).orElse(true);
 	}
 
 	@XmlTransient
@@ -39,33 +40,32 @@ public class DateTimeRange implements Serializable {
 		if (fromDate == null) {
 			valid = false;
 		} else if (thruDate == null) {
-			valid = true;
+			valid = false;
 		} else {
-			valid = thruDate.isAfter(fromDate);
+			valid = thruDate.map(thru -> fromDate.isBefore(thru)).orElse(true);
 		}
 		return valid;
 	}
-	
-	public DateTime getFromDate() {
+
+	public ZonedDateTime getFromDate() {
 		return fromDate;
 	}
 
-	public void setFromDate(DateTime fromDate) {
+	public void setFromDate(ZonedDateTime fromDate) {
 		this.fromDate = fromDate;
 	}
 
-	public DateTime getThruDate() {
+	public Optional<ZonedDateTime> getThruDate() {
 		return thruDate;
 	}
 
-	public void setThruDate(DateTime thruDate) {
+	public void setThruDate(Optional<ZonedDateTime> thruDate) {
 		this.thruDate = thruDate;
 	}
 
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	
 }
