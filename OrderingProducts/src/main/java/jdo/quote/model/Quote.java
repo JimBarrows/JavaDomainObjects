@@ -2,16 +2,15 @@ package jdo.quote.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
 
 @Entity
 public class Quote extends BasePersistentModel {
@@ -24,13 +23,19 @@ public class Quote extends BasePersistentModel {
 	@Lob
 	private String description;
 
-	@ManyToOne
-	private Party givenTo;
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID givenTo;
 
 	@Temporal(TemporalType.DATE)
 	private Date issueDate;
-	@ManyToOne
-	private Party issuedBy;
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID issuedBy;
 	@OneToMany
 	private List<QuoteItem> items;
 	@OneToMany
@@ -46,7 +51,7 @@ public class Quote extends BasePersistentModel {
 		return description;
 	}
 
-	public Party getGivenTo() {
+	public UUID getGivenTo() {
 		return givenTo;
 	}
 
@@ -54,7 +59,7 @@ public class Quote extends BasePersistentModel {
 		return issueDate;
 	}
 
-	public Party getIssuedBy() {
+	public UUID getIssuedBy() {
 		return issuedBy;
 	}
 
@@ -82,7 +87,7 @@ public class Quote extends BasePersistentModel {
 		this.description = description;
 	}
 
-	public void setGivenTo(Party givenTo) {
+	public void setGivenTo(UUID givenTo) {
 		this.givenTo = givenTo;
 	}
 
@@ -90,7 +95,7 @@ public class Quote extends BasePersistentModel {
 		this.issueDate = issueDate;
 	}
 
-	public void setIssuedBy(Party issuedTo) {
+	public void setIssuedBy(UUID issuedTo) {
 		this.issuedBy = issuedTo;
 	}
 

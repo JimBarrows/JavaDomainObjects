@@ -1,14 +1,13 @@
 package jdo.salestax.model;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
 
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.geographic_boundary.GeographicBoundary;
-import jdo.product.model.category.ProductCategory;
 
 @Entity
 public class SalesTaxLookup extends BasePersistentModel {
@@ -16,17 +15,22 @@ public class SalesTaxLookup extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
-	@ManyToOne
-	private GeographicBoundary	salesTaxLookupFor;
+	private static final long serialVersionUID = 1L;
+	/**
+	 * UUID for GeographicBoundary.
+	 * 
+	 */
+	private UUID salesTaxLookupFor;
 	@Embedded
-	private Money				salesTaxPercentage;
-	@ManyToOne
-	private ProductCategory		specifiedFor;
+	private Money salesTaxPercentage;
+	/**
+	 * UUId for ProductCategory.
+	 * 
+	 */
+	private UUID specifiedFor;
 	@Embedded
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
-	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -35,22 +39,19 @@ public class SalesTaxLookup extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	
-	public GeographicBoundary getSalesTaxLookupFor() {
+	public UUID getSalesTaxLookupFor() {
 		return salesTaxLookupFor;
 	}
 
-	
 	public Money getSalesTaxPercentage() {
 		return salesTaxPercentage;
 	}
 
-	
-	public ProductCategory getSpecifiedFor() {
+	public UUID getSpecifiedFor() {
 		return specifiedFor;
 	}
 
-	public void setSalesTaxLookupFor(GeographicBoundary salesTaxLookupFor) {
+	public void setSalesTaxLookupFor(UUID salesTaxLookupFor) {
 		this.salesTaxLookupFor = salesTaxLookupFor;
 	}
 
@@ -58,7 +59,7 @@ public class SalesTaxLookup extends BasePersistentModel {
 		this.salesTaxPercentage = salesTaxPercentage;
 	}
 
-	public void setSpecifiedFor(ProductCategory specifiedFor) {
+	public void setSpecifiedFor(UUID specifiedFor) {
 		this.specifiedFor = specifiedFor;
 	}
 }

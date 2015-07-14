@@ -2,6 +2,7 @@ package jdo.quote.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -15,7 +16,6 @@ import javax.validation.constraints.Min;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 import jdo.order.model.OrderItem;
-import jdo.product.model.Product;
 import jdo.request.model.RequestItem;
 
 @Entity
@@ -33,8 +33,11 @@ public class QuoteItem extends BasePersistentModel {
 	private List<OrderItem> orderItems;
 	@ManyToOne
 	private Quote partOf;
-	@ManyToOne
-	private Product product;
+	/**
+	 * UUID for Product.
+	 * 
+	 */
+	private UUID product;
 	@Min(1)
 	private int quantity;
 	@ManyToOne
@@ -62,7 +65,7 @@ public class QuoteItem extends BasePersistentModel {
 		return partOf;
 	}
 
-	public Product getProduct() {
+	public UUID getProduct() {
 		return product;
 	}
 
@@ -102,7 +105,7 @@ public class QuoteItem extends BasePersistentModel {
 		this.partOf = partOf;
 	}
 
-	public void setProduct(Product product) {
+	public void setProduct(UUID product) {
 		this.product = product;
 	}
 
