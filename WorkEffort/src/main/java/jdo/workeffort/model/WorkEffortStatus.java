@@ -1,5 +1,6 @@
 package jdo.workeffort.model;
 
+import java.time.ZonedDateTime;
 import java.util.Date;
 
 import javax.persistence.Entity;
@@ -15,24 +16,23 @@ public class WorkEffortStatus extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long		serialVersionUID	= 1L;
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date					changedon;
-	@ManyToOne
-	private WorkEffortStatusType	type;
+	private static final long serialVersionUID = 1L;
 
-	
-	public Date getChangedon() {
-		return changedon;
+	private ZonedDateTime changedOn;
+
+	@ManyToOne
+	private WorkEffortStatusType type;
+
+	public ZonedDateTime getChangedOn() {
+		return changedOn;
 	}
 
-	
 	public WorkEffortStatusType getType() {
 		return type;
 	}
 
-	public void setChangedon(Date changedon) {
-		this.changedon = changedon;
+	public void setChangedOn(ZonedDateTime changedon) {
+		this.changedOn = changedOn;
 	}
 
 	public void setType(WorkEffortStatusType type) {

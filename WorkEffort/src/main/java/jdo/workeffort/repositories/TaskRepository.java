@@ -2,26 +2,24 @@ package jdo.workeffort.repositories;
 
 import java.util.UUID;
 
-import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import jdo.core.repository.RepositoryTemplate;
-import jdo.workeffort.model.WorkEffort;
+import jdo.workeffort.model.Task;
 
-@Stateful
-public class WorkEffortRepository extends RepositoryTemplate<WorkEffort, UUID> {
+public class TaskRepository extends RepositoryTemplate<Task, UUID> {
 
 	@PersistenceContext(name = "WorkEffort")
 	protected EntityManager entityManager;
 	
-	public WorkEffortRepository() {
-		super(WorkEffort.class); 
+	public TaskRepository() {
+		super(Task.class); 
 	}
 
 	@Override
 	protected EntityManager entityManager() {
 		return entityManager;
 	}
-		
+
 }

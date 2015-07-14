@@ -14,10 +14,7 @@ import jdo.workeffort.model.requirement.DeliverableType;
 
 @Entity
 public class WorkEffortType extends BaseType {
-
-	/**
-	 * 
-	 */
+	
 	private static final long serialVersionUID = 1L;
 	@OneToMany
 	private List<WorkEffortType> breaksDownInto;
@@ -30,6 +27,7 @@ public class WorkEffortType extends BaseType {
 	
 	@ManyToOne
 	private DeliverableType usedToProduceDeliverable;
+	
 	/**UUID of the Product.
 	 * 
 	 */

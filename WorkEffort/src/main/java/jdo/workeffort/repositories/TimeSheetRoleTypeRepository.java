@@ -2,26 +2,22 @@ package jdo.workeffort.repositories;
 
 import java.util.UUID;
 
-import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 import jdo.core.repository.RepositoryTemplate;
-import jdo.workeffort.model.WorkEffort;
+import jdo.workeffort.model.timetracking.TimeSheetRoleType;
 
-@Stateful
-public class WorkEffortRepository extends RepositoryTemplate<WorkEffort, UUID> {
-
+public class TimeSheetRoleTypeRepository extends RepositoryTemplate<TimeSheetRoleType, UUID> {
 	@PersistenceContext(name = "WorkEffort")
 	protected EntityManager entityManager;
-	
-	public WorkEffortRepository() {
-		super(WorkEffort.class); 
+
+	public TimeSheetRoleTypeRepository() {
+		super(TimeSheetRoleType.class);
 	}
 
 	@Override
 	protected EntityManager entityManager() {
 		return entityManager;
 	}
-		
 }

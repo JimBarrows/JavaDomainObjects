@@ -17,6 +17,7 @@ public class WorkEffortAssignmentRate extends BasePersistentModel {
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
+	
 	@ManyToOne
 	private WorkEffortPartyAssignment rateOf;
 	/**

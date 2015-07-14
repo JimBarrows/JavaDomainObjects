@@ -1,6 +1,7 @@
 package jdo.workeffort.model;
 
 import javax.persistence.Entity;
+import javax.validation.constraints.Min;
 
 @Entity
 public class ProductionRun extends Purpose {
@@ -8,13 +9,16 @@ public class ProductionRun extends Purpose {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private long				quantityProduced;
+	@Min(0)
+	private long quantityProduced;
 
-	private long				quantityRejected;
+	@Min(0)
+	private long quantityRejected;
 
-	private long				quantityToProduce;
+	@Min(1)
+	private long quantityToProduce;
 
 	public long getQuantityProduced() {
 		return quantityProduced;

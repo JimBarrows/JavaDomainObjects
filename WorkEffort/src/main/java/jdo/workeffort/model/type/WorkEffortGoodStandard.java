@@ -2,6 +2,7 @@ package jdo.workeffort.model.type;
 
 import javax.persistence.Entity;
 
+import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 
 @Entity
@@ -10,22 +11,22 @@ public class WorkEffortGoodStandard extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private int					estiamtedCost;
+	private Money estimatedCost;
 
-	private int					estimatedQuantity;
+	private int estimatedQuantity;
 
-	public int getEstiamtedCost() {
-		return estiamtedCost;
+	public Money getEstimatedCost() {
+		return estimatedCost;
 	}
 
 	public int getEstimatedQuantity() {
 		return estimatedQuantity;
 	}
 
-	public void setEstiamtedCost(int estiamtedCost) {
-		this.estiamtedCost = estiamtedCost;
+	public void setEstimatedCost(Money estimatedCost) {
+		this.estimatedCost = estimatedCost;
 	}
 
 	public void setEstimatedQuantity(int estimatedQuantity) {
