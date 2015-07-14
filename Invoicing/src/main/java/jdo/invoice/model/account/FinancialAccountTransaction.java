@@ -1,6 +1,7 @@
 package jdo.invoice.model.account;
 
 import java.util.Date;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,7 +9,6 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
 
 @Entity
 public class FinancialAccountTransaction extends BasePersistentModel {
@@ -24,8 +24,11 @@ public class FinancialAccountTransaction extends BasePersistentModel {
 	@Temporal(TemporalType.DATE)
 	private Date entryDate;
 
-	@ManyToOne
-	private Party executedBy;
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID executedBy;
 
 	@Temporal(TemporalType.DATE)
 	private Date transactionDate;
@@ -38,7 +41,7 @@ public class FinancialAccountTransaction extends BasePersistentModel {
 		return entryDate;
 	}
 
-	public Party getExecutedBy() {
+	public UUID getExecutedBy() {
 		return executedBy;
 	}
 
@@ -54,7 +57,7 @@ public class FinancialAccountTransaction extends BasePersistentModel {
 		this.entryDate = entryDate;
 	}
 
-	public void setExecutedBy(Party executedBy) {
+	public void setExecutedBy(UUID executedBy) {
 		this.executedBy = executedBy;
 	}
 

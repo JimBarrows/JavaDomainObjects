@@ -1,12 +1,13 @@
 package jdo.invoice.model.billingaccount;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Party;
 
 @Entity
 public class BillingAccountRole extends BasePersistentModel {
@@ -14,19 +15,22 @@ public class BillingAccountRole extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long				serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * UUID of Party.
+	 * 
+	 */
+	private UUID accountFor;
 
 	@ManyToOne
-	private Party										accountFor;
+	private BillingAccount roleFor;
 
 	@ManyToOne
-	private BillingAccount					roleFor;
-
-	@ManyToOne
-	private BillingAccountRoleType	type;
+	private BillingAccountRoleType type;
 
 	@Embedded
-	private DateTimeRange						dateTimeRange			= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
@@ -36,7 +40,7 @@ public class BillingAccountRole extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public Party getAccountFor() {
+	public UUID getAccountFor() {
 		return accountFor;
 	}
 
@@ -48,7 +52,7 @@ public class BillingAccountRole extends BasePersistentModel {
 		return type;
 	}
 
-	public void setAccountFor(Party accountFor) {
+	public void setAccountFor(UUID accountFor) {
 		this.accountFor = accountFor;
 	}
 

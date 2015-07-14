@@ -2,23 +2,20 @@ package jdo.invoice.model;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
-import jdo.accounting.model.transaction.SalesAccountingTransaction;
 import jdo.invoice.model.billingaccount.BillingAccount;
 import jdo.invoice.model.term.InvoiceTerm;
 import jdo.model.BasePersistentModel;
-import jdo.party.model.Party;
-import jdo.party.model.contactmechanism.ContactMechanism;
 
 @Entity
 public class Invoice extends BasePersistentModel {
@@ -26,68 +23,82 @@ public class Invoice extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
+	/**
+	 * UUID of ContactMechanism.
+	 * 
+	 */
 	@NotNull
-	@ManyToOne
-	private ContactMechanism	addressedTo;
+	private UUID addressedTo;
 
+	/**
+	 * UUID of Party.
+	 * 
+	 */
 	@NotNull
-	@ManyToOne
-	private Party				billedFrom;
+	private UUID billedFrom;
 
 	@ManyToOne
-	private BillingAccount		billedToAccount;
+	private BillingAccount billedToAccount;
 
+	/**
+	 * UUID of Party.
+	 * 
+	 */
 	@NotNull
-	@ManyToOne
-	private Party				billedToParty;
+	private UUID billedToParty;
 
 	@OneToMany
-	private List<InvoiceItem>	composedOf;
+	private List<InvoiceItem> composedOf;
 
 	@Lob
-	private String				description;
+	private String description;
 
 	@NotNull
 	@Temporal(TemporalType.DATE)
-	private Date				invoiceDate;
-	
+	private Date invoiceDate;
+
 	@OneToMany
-	private List<InvoiceRole>	involving;
+	private List<InvoiceRole> involving;
 
 	@Lob
-	private String				message;
+	private String message;
 
+	/**
+	 * UUID of ContactMechanism.
+	 * 
+	 */
 	@NotNull
-	@ManyToOne
-	private ContactMechanism	sentFrom;
+	private UUID sentFrom;
 
 	@OneToMany
-	private List<InvoiceTerm>	terms;
+	private List<InvoiceTerm> terms;
 
-	 @OneToOne
-	 private SalesAccountingTransaction postedVia;
+	/**
+	 * UUID of the SalesAccountingTransaction.
+	 * 
+	 */
+	private UUID postedVia;
 
 	@AssertTrue
 	public boolean billedToPartyXorAccount() {
 		return (billedToParty != null) ^ (billedToAccount != null);
 	}
 
-
-	public ContactMechanism getAddressedTo() {
+	public UUID getAddressedTo() {
 		return addressedTo;
 	}
-	
-	public Party getBilledFrom() {
+
+	public UUID getBilledFrom() {
 		return billedFrom;
 	}
-	
+
 	public BillingAccount getBilledToAccount() {
 		return billedToAccount;
 	}
-	
-	public Party getBilledToParty() {
+
+	public UUID getBilledToParty() {
 		return billedToParty;
 	}
 
@@ -98,11 +109,11 @@ public class Invoice extends BasePersistentModel {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public Date getInvoiceDate() {
 		return invoiceDate;
 	}
-	
+
 	public List<InvoiceRole> getInvolving() {
 		return involving;
 	}
@@ -110,8 +121,8 @@ public class Invoice extends BasePersistentModel {
 	public String getMessage() {
 		return message;
 	}
-	
-	public ContactMechanism getSentFrom() {
+
+	public UUID getSentFrom() {
 		return sentFrom;
 	}
 
@@ -119,11 +130,11 @@ public class Invoice extends BasePersistentModel {
 		return terms;
 	}
 
-	public void setAddressedTo(ContactMechanism addressedTo) {
+	public void setAddressedTo(UUID addressedTo) {
 		this.addressedTo = addressedTo;
 	}
 
-	public void setBilledFrom(Party billedFrom) {
+	public void setBilledFrom(UUID billedFrom) {
 		this.billedFrom = billedFrom;
 	}
 
@@ -131,7 +142,7 @@ public class Invoice extends BasePersistentModel {
 		this.billedToAccount = billedToAccount;
 	}
 
-	public void setBilledToParty(Party billedTo) {
+	public void setBilledToParty(UUID billedTo) {
 		this.billedToParty = billedTo;
 	}
 
@@ -155,7 +166,7 @@ public class Invoice extends BasePersistentModel {
 		this.message = message;
 	}
 
-	public void setSentFrom(ContactMechanism sentFrom) {
+	public void setSentFrom(UUID sentFrom) {
 		this.sentFrom = sentFrom;
 	}
 
@@ -163,11 +174,11 @@ public class Invoice extends BasePersistentModel {
 		this.terms = terms;
 	}
 
-	 public SalesAccountingTransaction getPostedVia() {
-	 return postedVia;
-	 }
-	
-	 public void setPostedVia(SalesAccountingTransaction postedVia) {
-	 this.postedVia = postedVia;
-	 }
+	public UUID getPostedVia() {
+		return postedVia;
+	}
+
+	public void setPostedVia(UUID postedVia) {
+		this.postedVia = postedVia;
+	}
 }

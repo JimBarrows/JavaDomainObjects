@@ -1,12 +1,13 @@
 package jdo.invoice.model.account;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.Party;
 
 @Entity
 public class FinancialAccountRole extends BasePersistentModel {
@@ -16,8 +17,11 @@ public class FinancialAccountRole extends BasePersistentModel {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	private Party accountFor;
+	/**
+	 * UUID for Party.
+	 * 
+	 */
+	private UUID accountFor;
 
 	@ManyToOne
 	private FinancialAccountRoleType type;
@@ -33,7 +37,7 @@ public class FinancialAccountRole extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public Party getAccountFor() {
+	public UUID getAccountFor() {
 		return accountFor;
 	}
 
@@ -41,7 +45,7 @@ public class FinancialAccountRole extends BasePersistentModel {
 		return type;
 	}
 
-	public void setAccountFor(Party accountFor) {
+	public void setAccountFor(UUID accountFor) {
 		this.accountFor = accountFor;
 	}
 

@@ -1,12 +1,12 @@
 package jdo.invoice.model.billing;
 
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
+import java.util.UUID;
 
-import jdo.model.BasePersistentModel;
-import jdo.workeffort.WorkEffort;
+import javax.persistence.Entity;
 
 import org.hibernate.validator.constraints.Range;
+
+import jdo.model.BasePersistentModel;
 
 @Entity
 public class WorkEffortBilling extends BasePersistentModel {
@@ -14,19 +14,22 @@ public class WorkEffortBilling extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Range(min = 1, max = 100)
-	private int								percentage;
+	private int percentage;
 
-	@ManyToOne
-	private WorkEffort				percentageOf;
+	/**
+	 * UUID of WorkEffort.
+	 * 
+	 */
+	private UUID percentageOf;
 
 	public int getPercentage() {
 		return percentage;
 	}
 
-	public WorkEffort getPercentageOf() {
+	public UUID getPercentageOf() {
 		return percentageOf;
 	}
 
@@ -34,7 +37,7 @@ public class WorkEffortBilling extends BasePersistentModel {
 		this.percentage = percentage;
 	}
 
-	public void setPercentageOf(WorkEffort percentageOf) {
+	public void setPercentageOf(UUID percentageOf) {
 		this.percentageOf = percentageOf;
 	}
 

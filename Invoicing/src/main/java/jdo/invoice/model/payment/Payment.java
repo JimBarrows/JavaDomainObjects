@@ -2,6 +2,7 @@ package jdo.invoice.model.payment;
 
 import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -10,12 +11,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
-import jdo.accounting.model.transaction.PaymentAccountingTransaction;
-import jdo.budget.model.PaymentBudgetAllocation;
 import jdo.fields.Money;
 import jdo.model.BasePersistentModel;
 
@@ -24,8 +22,8 @@ import jdo.model.BasePersistentModel;
 public class Payment extends BasePersistentModel {
 
 	/**
-     *
-     */
+	 *
+	 */
 	private static final long serialVersionUID = 1L;
 
 	@Embedded
@@ -40,30 +38,36 @@ public class Payment extends BasePersistentModel {
 	@ManyToOne
 	private PaymentMethodType paidVia;
 
-	private String paymentRefNum;
+	private String paymentReferenceNumber;
 
 	@OneToMany
 	private List<PaymentApplication> usedToPay;
 
-	@OneToMany
-	private List<PaymentBudgetAllocation> bookedAgainst;
+	/**
+	 * UUID of PaymentBudgetAllocation.
+	 * 
+	 */
+	private List<UUID> bookedAgainst;
 
-	@OneToOne
-	private PaymentAccountingTransaction postedVia;
+	/**
+	 * UUID of PaymentAccountingTransaction.
+	 * 
+	 */
+	private UUID postedVia;
 
-	public List<PaymentBudgetAllocation> getBookedAgainst() {
+	public List<UUID> getBookedAgainst() {
 		return bookedAgainst;
 	}
 
-	public void setBookedAgainst(List<PaymentBudgetAllocation> bookedAgainst) {
+	public void setBookedAgainst(List<UUID> bookedAgainst) {
 		this.bookedAgainst = bookedAgainst;
 	}
 
-	public PaymentAccountingTransaction getPostedVia() {
+	public UUID getPostedVia() {
 		return postedVia;
 	}
 
-	public void setPostedVia(PaymentAccountingTransaction postedVia) {
+	public void setPostedVia(UUID postedVia) {
 		this.postedVia = postedVia;
 	}
 
@@ -83,8 +87,8 @@ public class Payment extends BasePersistentModel {
 		return paidVia;
 	}
 
-	public String getPaymentRefNum() {
-		return paymentRefNum;
+	public String getPaymentReferenceNumber() {
+		return paymentReferenceNumber;
 	}
 
 	public List<PaymentApplication> getUsedToPay() {
@@ -107,8 +111,8 @@ public class Payment extends BasePersistentModel {
 		this.paidVia = paidVia;
 	}
 
-	public void setPaymentRefNum(String paymentRefNum) {
-		this.paymentRefNum = paymentRefNum;
+	public void setPaymentReferenceNumber(String paymentReferenceNumber) {
+		this.paymentReferenceNumber = paymentReferenceNumber;
 	}
 
 	public void setUsedToPay(List<PaymentApplication> usedToPay) {

@@ -1,5 +1,7 @@
 package jdo.invoice.model.billing;
 
+import java.util.UUID;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -9,7 +11,6 @@ import javax.validation.constraints.NotNull;
 import jdo.fields.Money;
 import jdo.invoice.model.InvoiceItem;
 import jdo.model.BasePersistentModel;
-import jdo.order.model.OrderItem;
 
 @Entity
 public class OrderItemBilling extends BasePersistentModel {
@@ -17,21 +18,24 @@ public class OrderItemBilling extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Embedded
-	private Money							amount;
+	private Money amount;
 
 	@ManyToOne
 	@NotNull
-	private InvoiceItem				billingFor;
+	private InvoiceItem billingFor;
 
 	@Min(0)
-	private int								quantity;
+	private int quantity;
 
+	/**
+	 * UUID of OrderItem.
+	 * 
+	 */
 	@NotNull
-	@ManyToOne
-	private OrderItem					quantityOf;
+	private UUID quantityOf;
 
 	public Money getAmount() {
 		return amount;
@@ -45,7 +49,7 @@ public class OrderItemBilling extends BasePersistentModel {
 		return quantity;
 	}
 
-	public OrderItem getQuantityOf() {
+	public UUID getQuantityOf() {
 		return quantityOf;
 	}
 
@@ -61,7 +65,7 @@ public class OrderItemBilling extends BasePersistentModel {
 		this.quantity = quantity;
 	}
 
-	public void setQuantityOf(OrderItem quantityOf) {
+	public void setQuantityOf(UUID quantityOf) {
 		this.quantityOf = quantityOf;
 	}
 

@@ -57,8 +57,10 @@ public class Subscription extends BasePersistentModel {
 	@ManyToOne
 	private ProductCategory							productCategory;
 
-	@ManyToOne
-	private ContactMechanism						sendTo;
+	/**UUID for ContactMechanism.
+	 * 
+	 */
+	private UUID						sendTo;
 
 	@Temporal(TemporalType.DATE)
 	private Date												startDate;

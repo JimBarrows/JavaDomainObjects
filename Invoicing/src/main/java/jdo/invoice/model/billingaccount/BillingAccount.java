@@ -1,17 +1,16 @@
 package jdo.invoice.model.billingaccount;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import jdo.invoice.model.Invoice;
 import jdo.model.BasePersistentModel;
 import jdo.model.DateTimeRange;
-import jdo.party.model.contactmechanism.ContactMechanism;
 
 @Entity
 public class BillingAccount extends BasePersistentModel {
@@ -19,24 +18,26 @@ public class BillingAccount extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	@ManyToOne
-	private ContactMechanism			billedAt;
+	/**
+	 * UUID of ContactMechanism.
+	 * 
+	 */
+	private UUID billedAt;
 
 	@OneToMany
-	private List<Invoice>				billedFor;
+	private List<Invoice> billedFor;
 
 	@Lob
-	private String						description;
+	private String description;
 
 	@OneToMany
-	private List<BillingAccountRole>	usedBy;
+	private List<BillingAccountRole> usedBy;
 
 	@Embedded
-	private DateTimeRange				dateTimeRange		= new DateTimeRange();
+	private DateTimeRange dateTimeRange = new DateTimeRange();
 
-	
 	public DateTimeRange getDateTimeRange() {
 		return dateTimeRange;
 	}
@@ -45,11 +46,10 @@ public class BillingAccount extends BasePersistentModel {
 		this.dateTimeRange = dateTimeRange;
 	}
 
-	public ContactMechanism getBilledAt() {
+	public UUID getBilledAt() {
 		return billedAt;
 	}
 
-	
 	public List<Invoice> getBilledFor() {
 		return billedFor;
 	}
@@ -57,12 +57,12 @@ public class BillingAccount extends BasePersistentModel {
 	public String getDescription() {
 		return description;
 	}
-	
+
 	public List<BillingAccountRole> getUsedBy() {
 		return usedBy;
 	}
 
-	public void setBilledAt(ContactMechanism billedAt) {
+	public void setBilledAt(UUID billedAt) {
 		this.billedAt = billedAt;
 	}
 

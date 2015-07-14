@@ -1,6 +1,7 @@
 package jdo.invoice.model;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -14,11 +15,6 @@ import jdo.invoice.model.billing.OrderItemBilling;
 import jdo.invoice.model.billing.WorkEffortBilling;
 import jdo.invoice.model.term.InvoiceTerm;
 import jdo.model.BasePersistentModel;
-import jdo.product.model.Product;
-import jdo.product.model.feature.ProductFeature;
-import jdo.product.model.storage.SerializedInventoryItem;
-import jdo.shipment.model.ShipmentItem;
-import jdo.workeffort.timetracking.TimeEntry;
 
 @Entity
 public class InvoiceItem extends BasePersistentModel {
@@ -26,60 +22,76 @@ public class InvoiceItem extends BasePersistentModel {
 	/**
 	 * 
 	 */
-	private static final long				serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@OneToMany
-	private List<InvoiceItem>				adjustments;
+	private List<InvoiceItem> adjustments;
 
 	@Embedded
-	private Money										amount;
+	private Money amount;
 
 	@OneToMany
-	private List<OrderItemBilling>	billingForOrderItem;
+	private List<OrderItemBilling> billingForOrderItem;
+
+	/**
+	 * UUID for TimeEntry.
+	 * 
+	 */
+	@OneToMany
+	private List<UUID> billingForTimeEntry;
 
 	@OneToMany
-	private List<TimeEntry>					billingForTimeEntry;
+	private List<WorkEffortBilling> billingForWorkEffort;
 
-	@OneToMany
-	private List<WorkEffortBilling>	billingForWorkEffort;
+	/**
+	 * UUID for ProductFeature.
+	 * 
+	 */
+	private UUID chargeforFeature;
 
-	@ManyToOne
-	private ProductFeature					chargeforFeature;
+	/**
+	 * UUID for SerializedInventoryItem.
+	 * 
+	 */
+	private UUID chargeForItem;
 
-	@ManyToOne
-	private SerializedInventoryItem	chargeForItem;
-
-	@ManyToOne
-	private Product									chargeForProduct;
+	/**
+	 * UUID for Product.
+	 * 
+	 */
+	private UUID chargeForProduct;
 
 	@Lob
-	private String									description;
+	private String description;
 
 	@Min(0)
-	private int											quantity;
+	private int quantity;
 
 	@Min(0)
-	private int											sequence;
+	private int sequence;
 
 	@OneToMany
-	private List<InvoiceItem>				soldWith;
+	private List<InvoiceItem> soldWith;
 
-	private boolean									taxable;
+	private boolean taxable;
 
 	@OneToMany
-	private List<InvoiceTerm>				terms;
+	private List<InvoiceTerm> terms;
 
 	@ManyToOne
-	private InvoiceItemType					type;
+	private InvoiceItemType type;
 
-	@OneToMany
-	private List<ShipmentItem>			billingForShipmentItem;
+	/**
+	 * UUID for ShipmentItem.
+	 * 
+	 */
+	private List<UUID> billingForShipmentItem;
 
-	public List<ShipmentItem> getBillingForShipmentItem() {
+	public List<UUID> getBillingForShipmentItem() {
 		return billingForShipmentItem;
 	}
 
-	public void setBillingForShipmentItem(List<ShipmentItem> billingFor) {
+	public void setBillingForShipmentItem(List<UUID> billingFor) {
 		this.billingForShipmentItem = billingFor;
 	}
 
@@ -95,7 +107,7 @@ public class InvoiceItem extends BasePersistentModel {
 		return billingForOrderItem;
 	}
 
-	public List<TimeEntry> getBillingForTimeEntry() {
+	public List<UUID> getBillingForTimeEntry() {
 		return billingForTimeEntry;
 	}
 
@@ -103,15 +115,15 @@ public class InvoiceItem extends BasePersistentModel {
 		return billingForWorkEffort;
 	}
 
-	public ProductFeature getChargeforFeature() {
+	public UUID getChargeforFeature() {
 		return chargeforFeature;
 	}
 
-	public SerializedInventoryItem getChargeForItem() {
+	public UUID getChargeForItem() {
 		return chargeForItem;
 	}
 
-	public Product getChargeForProduct() {
+	public UUID getChargeForProduct() {
 		return chargeForProduct;
 	}
 
@@ -155,7 +167,7 @@ public class InvoiceItem extends BasePersistentModel {
 		this.billingForOrderItem = billingForOrderItem;
 	}
 
-	public void setBillingForTimeEntry(List<TimeEntry> billingForTimeEntry) {
+	public void setBillingForTimeEntry(List<UUID> billingForTimeEntry) {
 		this.billingForTimeEntry = billingForTimeEntry;
 	}
 
@@ -163,15 +175,15 @@ public class InvoiceItem extends BasePersistentModel {
 		this.billingForWorkEffort = billingForWorkEffort;
 	}
 
-	public void setChargeforFeature(ProductFeature chargeforFeature) {
+	public void setChargeforFeature(UUID chargeforFeature) {
 		this.chargeforFeature = chargeforFeature;
 	}
 
-	public void setChargeForItem(SerializedInventoryItem chargeForItem) {
+	public void setChargeForItem(UUID chargeForItem) {
 		this.chargeForItem = chargeForItem;
 	}
 
-	public void setChargeForProduct(Product chageForProduct) {
+	public void setChargeForProduct(UUID chageForProduct) {
 		this.chargeForProduct = chageForProduct;
 	}
 
