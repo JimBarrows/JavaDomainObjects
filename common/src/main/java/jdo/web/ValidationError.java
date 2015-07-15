@@ -1,4 +1,4 @@
-package jdo.ember.dto;
+package jdo.web;
 
 import javax.ws.rs.WebApplicationException;
 import javax.ws.rs.core.MediaType;

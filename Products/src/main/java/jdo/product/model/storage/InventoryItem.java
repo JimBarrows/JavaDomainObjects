@@ -10,8 +10,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.apache.logging.log4j.core.net.Facility;
-
 import jdo.model.BasePersistentModel;
 import jdo.product.model.Good;
 
@@ -47,7 +45,7 @@ public class InventoryItem extends BasePersistentModel {
 	private Lot							partOf;
 
 	@ManyToOne
-	private Good						physicalOccurenceOf;
+	private Good						physicalOccurrenceOf;
 
 	
 	public List<InventoryItemVariance> getAdjustedThru() {
@@ -75,8 +73,8 @@ public class InventoryItem extends BasePersistentModel {
 	}
 
 	
-	public Good getPhysicalOccurenceOf() {
-		return physicalOccurenceOf;
+	public Good getPhysicalOccurrenceOf() {
+		return physicalOccurrenceOf;
 	}
 
 	public void setAdjustedThru(List<InventoryItemVariance> adjustedThru) {
@@ -99,7 +97,7 @@ public class InventoryItem extends BasePersistentModel {
 		this.partOf = partOf;
 	}
 
-	public void setPhysicalOccurenceOf(Good physicalOccurenceOf) {
-		this.physicalOccurenceOf = physicalOccurenceOf;
+	public void setPhysicalOccurrenceOf(Good physicalOccurrenceOf) {
+		this.physicalOccurrenceOf = physicalOccurrenceOf;
 	}
 }

@@ -1,4 +1,4 @@
-package jdo.product.model.identificationCode;
+package jdo.product.model.identificationcode;
 
 public class SKU extends GoodIdentification {
 

@@ -28,8 +28,6 @@ import com.wordnik.swagger.annotations.ApiOperation;
 import jdo.application.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
 import jdo.dto.CustomerDtoList;
-import jdo.ember.dto.Errors;
-import jdo.ember.dto.ValidationError;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
@@ -38,6 +36,8 @@ import jdo.party.model.relationship.CustomerRelationship;
 import jdo.party.model.roles.InternalOrganization;
 import jdo.party.repositories.PartyRepository;
 import jdo.party.repositories.RelationshipRepository;
+import jdo.web.Errors;
+import jdo.web.ValidationError;
 
 @Api(value = "/customers", description = "Operations about customers")
 @RequestScoped

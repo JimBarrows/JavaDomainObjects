@@ -64,8 +64,8 @@
 		<module>common</module>
 		<module>crm</module>
 		<module>Ecommerce</module>
-		<module>ember-tags</module>
-		<module>ember-utils</module>
+		
+		
 		<module>HumanResources</module>
 		<module>Invoicing</module>
 		<module>jdo-ear</module>

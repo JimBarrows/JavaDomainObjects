@@ -1,4 +1,4 @@
-package jdo.product.model.identificationCode;
+package jdo.product.model.identificationcode;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -10,7 +10,7 @@ import javax.xml.crypto.Data;
 import jdo.model.BaseType;
 
 /**
- * TODO This class isn't strictly necessary, it's handled by subclassing.
+ * 
  * 
  * @author jim
  * @see Data Model Resource Book Volume 1 Figure 3.3, page 75

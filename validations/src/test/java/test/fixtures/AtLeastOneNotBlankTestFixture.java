@@ -5,8 +5,8 @@ import jdo.validations.annotations.AtLeastOneNotBlank;
 @AtLeastOneNotBlank(fieldNames = { "field1", "field2" })
 public class AtLeastOneNotBlankTestFixture {
 
-	private String	field1;
-	private String	field2;
+	private String field1;
+	private String field2;
 
 	public AtLeastOneNotBlankTestFixture(String field1, String field2) {
 		super();
@@ -15,7 +15,6 @@ public class AtLeastOneNotBlankTestFixture {
 	}
 
 	public AtLeastOneNotBlankTestFixture() {
-		// TODO Auto-generated constructor stub
 	}
 
 	public String getField1() {

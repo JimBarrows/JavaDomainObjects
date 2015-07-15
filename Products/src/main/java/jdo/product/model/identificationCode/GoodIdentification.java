@@ -1,4 +1,4 @@
-package jdo.product.model.identificationCode;
+package jdo.product.model.identificationcode;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

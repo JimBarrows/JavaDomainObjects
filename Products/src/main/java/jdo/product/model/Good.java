@@ -9,7 +9,7 @@ import javax.persistence.InheritanceType;
 import javax.persistence.OneToMany;
 import javax.xml.crypto.Data;
 
-import jdo.product.model.identificationCode.GoodIdentification;
+import jdo.product.model.identificationcode.GoodIdentification;
 import jdo.product.model.storage.InventoryItem;
 import jdo.product.model.supplier.SupplierProduct;
 
@@ -31,7 +31,7 @@ public class Good extends Product {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	@OneToMany(mappedBy = "physicalOccurenceOf")
+	@OneToMany(mappedBy = "physicalOccurrenceOf")
 	private List<InventoryItem> genericDescriptionFor = new ArrayList<InventoryItem>();
 
 	/**

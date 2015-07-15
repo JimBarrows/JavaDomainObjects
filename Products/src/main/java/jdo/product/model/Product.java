@@ -1,7 +1,7 @@
 package jdo.product.model;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -11,9 +11,9 @@ import javax.persistence.InheritanceType;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.xml.crypto.Data;
+
+import org.hibernate.validator.constraints.NotEmpty;
 
 import jdo.model.BasePersistentModel;
 import jdo.product.model.category.ProductCategoryClassification;
@@ -22,8 +22,6 @@ import jdo.product.model.feature.interaction.ProductFeatureInteraction;
 import jdo.product.model.measurement.UnitOfMeasure;
 import jdo.product.model.part.ProductComponent;
 import jdo.product.model.price.PriceComponent;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Models all products the enterprise sells, products from suppliers, and
@@ -76,8 +74,7 @@ public class Product extends BasePersistentModel {
 	 * The date the product was first available to be sold.
 	 * 
 	 */
-	@Temporal(TemporalType.DATE)
-	private Date introductionDate;
+	private LocalDate introductionDate;
 
 	@OneToMany(mappedBy = "in")
 	private List<ProductComponent> madeUpOf = new ArrayList<ProductComponent>();
@@ -96,8 +93,7 @@ public class Product extends BasePersistentModel {
 	 * When the product will not be sold any more.
 	 * 
 	 */
-	@Temporal(TemporalType.DATE)
-	private Date salesDiscontinuationDate;
+	private LocalDate salesDiscontinuationDate;
 
 	@OneToMany(mappedBy = "substituteFor")
 	private List<ProductSubstitute> substitutedBy = new ArrayList<ProductSubstitute>();
@@ -110,8 +106,7 @@ public class Product extends BasePersistentModel {
 	 * enterprise.
 	 * 
 	 */
-	@Temporal(TemporalType.DATE)
-	private Date supportDiscontinuationDate;
+	private LocalDate supportDiscontinuationDate;
 
 	@OneToMany
 	private List<ProductSubstitute> usedAs = new ArrayList<ProductSubstitute>();
@@ -121,6 +116,18 @@ public class Product extends BasePersistentModel {
 
 	@OneToMany
 	private List<ProductFeatureInteraction> usedToDefine = new ArrayList<ProductFeatureInteraction>();
+
+	public boolean isAvailable() {
+		return isIntroduced() && !isDiscontinued();
+	}
+
+	public boolean isIntroduced() {
+		return (introductionDate != null) && introductionDate.isBefore(LocalDate.now());
+	}
+
+	public boolean isDiscontinued() {
+		return (salesDiscontinuationDate != null) && salesDiscontinuationDate.isBefore(LocalDate.now());
+	}
 
 	public List<ProductObsolescence> getAReplacement() {
 		return aReplacement;
@@ -150,7 +157,7 @@ public class Product extends BasePersistentModel {
 		return incompatibleWith;
 	}
 
-	public Date getIntroductionDate() {
+	public LocalDate getIntroductionDate() {
 		return introductionDate;
 	}
 
@@ -170,7 +177,7 @@ public class Product extends BasePersistentModel {
 		return pricedBy;
 	}
 
-	public Date getSalesDiscontinuationDate() {
+	public LocalDate getSalesDiscontinuationDate() {
 		return salesDiscontinuationDate;
 	}
 
@@ -182,7 +189,7 @@ public class Product extends BasePersistentModel {
 		return supercededBy;
 	}
 
-	public Date getSupportDiscontinuationDate() {
+	public LocalDate getSupportDiscontinuationDate() {
 		return supportDiscontinuationDate;
 	}
 
@@ -202,8 +209,7 @@ public class Product extends BasePersistentModel {
 		aReplacement = replacement;
 	}
 
-	public void setCategorizedBy(
-			List<ProductCategoryClassification> categorizedBy) {
+	public void setCategorizedBy(List<ProductCategoryClassification> categorizedBy) {
 		this.categorizedBy = categorizedBy;
 	}
 
@@ -223,12 +229,11 @@ public class Product extends BasePersistentModel {
 		this.costedBy = costedBy;
 	}
 
-	public void setIncompatibleWith(
-			List<ProductIncompatibility> incompatibleWith) {
+	public void setIncompatibleWith(List<ProductIncompatibility> incompatibleWith) {
 		this.incompatibleWith = incompatibleWith;
 	}
 
-	public void setIntroductionDate(Date introductionDate) {
+	public void setIntroductionDate(LocalDate introductionDate) {
 		this.introductionDate = introductionDate;
 	}
 
@@ -248,7 +253,7 @@ public class Product extends BasePersistentModel {
 		this.pricedBy = pricedBy;
 	}
 
-	public void setSalesDiscontinuationDate(Date salesDiscontinuationDate) {
+	public void setSalesDiscontinuationDate(LocalDate salesDiscontinuationDate) {
 		this.salesDiscontinuationDate = salesDiscontinuationDate;
 	}
 
@@ -260,7 +265,7 @@ public class Product extends BasePersistentModel {
 		this.supercededBy = supercededBy;
 	}
 
-	public void setSupportDiscontinuationDate(Date supportDiscontinuationDate) {
+	public void setSupportDiscontinuationDate(LocalDate supportDiscontinuationDate) {
 		this.supportDiscontinuationDate = supportDiscontinuationDate;
 	}
 

@@ -23,7 +23,7 @@ import jdo.party.model.roles.ParentOrganization;
 public class ApplicationConfiguration {
 
 	@PersistenceContext(name = "JavaDomainObjects")
-	private EntityManager	em;
+	private EntityManager	entityManager;
 
 	private Company			company;
 
@@ -41,17 +41,17 @@ public class ApplicationConfiguration {
 		company.setName("The company in question");
 		company.addPartyRole(new InternalOrganization());
 		company.addPartyRole(new ParentOrganization());
-		em.persist(company);
+		entityManager.persist(company);
 		return company;
 	}
 
 	public Optional<Company> findCompany() {
-		CriteriaBuilder builder = em.getCriteriaBuilder();
+		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
 		CriteriaQuery<Company> criteria = builder.createQuery(Company.class);
 		Root<Company> entityRoot = criteria.from(Company.class);
 		criteria.select(entityRoot);
 
-		TypedQuery<Company> query = em.createQuery(criteria);
+		TypedQuery<Company> query = entityManager.createQuery(criteria);
 		List<Company> list = query.getResultList();
 		//I couldn't figure out the freaking JPA criteria.. this was easier :) 
 		//TODO Figure out how to do this in a criteria		

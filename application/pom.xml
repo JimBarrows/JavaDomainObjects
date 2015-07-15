@@ -8,12 +8,12 @@
 	</parent>
 	<artifactId>application</artifactId>
 	<name>Application</name>
+	<packaging>ejb</packaging>
 	<dependencies>
 		<dependency>
 			<groupId>jdo</groupId>
-			<artifactId>all-models</artifactId>
-			<version>1.0-SNAPSHOT</version>
+			<artifactId>PeopleAndOrganizations</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
 		</dependency>
 	</dependencies>
-	<packaging>ejb</packaging>
 </project>

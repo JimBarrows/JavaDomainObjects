@@ -19,24 +19,15 @@
 		</dependency>
 		<dependency>
 			<groupId>jdo</groupId>
-			<artifactId>all-models</artifactId>
-			<version>1.0-SNAPSHOT</version>
-			<exclusions>
-				<exclusion>
-					<artifactId>hibernate-core</artifactId>
-					<groupId>org.hibernate</groupId>
-				</exclusion>
-				<exclusion>
-					<artifactId>hibernate-validator</artifactId>
-					<groupId>org.hibernate</groupId>
-				</exclusion>
-			</exclusions>
-		</dependency>
-		<dependency>
-			<groupId>jdo</groupId>
 			<artifactId>crm</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>war</type>
+		</dependency>
+		<dependency>
+			<groupId>jdo</groupId>
+			<artifactId>PeopleAndOrganizations</artifactId>
+			<version>1.0.0-SNAPSHOT</version>
+			<type>ejb</type>
 		</dependency>
 	</dependencies>
 	<build>
@@ -52,13 +43,9 @@
 							<groupId>jdo</groupId>
 							<artifactId>application</artifactId>
 						</ejbModule>
-						<jarModule>
-							<groupId>jdo</groupId>
-							<artifactId>all-models</artifactId>
-						</jarModule>
 						<ejbModule>
 							<groupId>jdo</groupId>
-							<artifactId>party-services</artifactId>
+							<artifactId>PeopleAndOrganizations</artifactId>
 						</ejbModule>
 						<webModule>
 							<groupId>jdo</groupId>

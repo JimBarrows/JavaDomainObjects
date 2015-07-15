@@ -1,4 +1,4 @@
-package jdo.ember.providers;
+package jdo.web;
 
 import javax.ws.rs.ext.ContextResolver;
 import javax.ws.rs.ext.Provider;
@@ -9,7 +9,7 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 @Provider
 public class ObjectMapperProvider implements ContextResolver<ObjectMapper> {
-	private ObjectMapper	objectMapper;
+	private ObjectMapper objectMapper;
 
 	public ObjectMapperProvider() {
 		objectMapper = new ObjectMapper();

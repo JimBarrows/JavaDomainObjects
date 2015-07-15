@@ -1,4 +1,4 @@
-package jdo.ember.providers;
+package jdo.web;
 
 import java.util.List;
 import java.util.Locale;
@@ -12,14 +12,12 @@ import javax.ws.rs.core.Response;
 import javax.ws.rs.ext.ExceptionMapper;
 import javax.ws.rs.ext.Provider;
 
-import jdo.ember.dto.Errors;
-
 import org.apache.commons.collections.IteratorUtils;
 
 @Provider
 public class ConstraintViolationExceptionMapper implements ExceptionMapper<ConstraintViolationException> {
 	@Context
-	private HttpHeaders	headers;
+	private HttpHeaders headers;
 
 	public Response toResponse(ConstraintViolationException ex) {
 		MediaType type = headers.getMediaType();
@@ -37,15 +35,15 @@ public class ConstraintViolationExceptionMapper implements ExceptionMapper<Const
 	public static Errors getConstraintViolationErrors(ConstraintViolationException ex) {
 		Errors errors = new Errors();
 
-		ex.getConstraintViolations().forEach(violation -> { 
+		ex.getConstraintViolations().forEach(violation -> {
 			List<Node> list = IteratorUtils.toList(violation.getPropertyPath().iterator());
 			Node node = list.get(list.size() - 1);
-			if(errors.containsKey(node.getName())) {
+			if (errors.containsKey(node.getName())) {
 				errors.get(node.getName()).add(violation.getMessage());
 			} else {
-				errors.put(node.getName(),  violation.getMessage());
+				errors.put(node.getName(), violation.getMessage());
 			}
-			
+
 		});
 
 		return errors;

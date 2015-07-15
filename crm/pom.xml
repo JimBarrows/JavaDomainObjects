@@ -191,16 +191,6 @@
 		</dependency>
 
 		<dependency>
-			<groupId>jdo</groupId>
-			<artifactId>ember-utils</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
-			<groupId>jdo</groupId>
-			<artifactId>ember-tags</artifactId>
-			<version>1.0-SNAPSHOT</version>
-		</dependency>
-		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
 		</dependency>

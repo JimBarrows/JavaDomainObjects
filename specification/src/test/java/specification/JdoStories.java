@@ -36,6 +36,7 @@ public class JdoStories extends JUnitStories {
 	CrossReference crossReference = new CrossReference().withJsonOnly();
 	ContextView contextView = new LocalFrameContextView().sized(640, 120);
 	SeleniumContext seleniumContext = new SeleniumContext();
+	@SuppressWarnings("deprecation")
 	SeleniumStepMonitor stepMonitor = new SeleniumStepMonitor(contextView,
 			seleniumContext, crossReference.getStepMonitor());
 	Format[] formats = new Format[] {

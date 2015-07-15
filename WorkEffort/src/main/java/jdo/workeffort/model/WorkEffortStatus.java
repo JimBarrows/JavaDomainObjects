@@ -28,7 +28,7 @@ public class WorkEffortStatus extends BasePersistentModel {
 		return type;
 	}
 
-	public void setChangedOn(ZonedDateTime changedon) {
+	public void setChangedOn(ZonedDateTime changedOn) {
 		this.changedOn = changedOn;
 	}
 
