@@ -26,7 +26,7 @@
 		<dependency>
 			<groupId>jdo</groupId>
 			<artifactId>PeopleAndOrganizations</artifactId>
-			<version>1.0.0-SNAPSHOT</version>
+			<version>1.0-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
 	</dependencies>
@@ -50,12 +50,7 @@
 						<webModule>
 							<groupId>jdo</groupId>
 							<artifactId>crm</artifactId>
-						</webModule>
-						<jarModule>
-							<groupId>jdo</groupId>
-							<artifactId>common</artifactId>
-							<includeInApplicationXml>true</includeInApplicationXml>	
-						</jarModule>
+						</webModule>						
 					</modules>
 					<archive>
 						<manifestEntries>
