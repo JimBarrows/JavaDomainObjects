@@ -27,11 +27,11 @@ public class BasePersistentModel implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@GeneratedValue(generator = "uuid2")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")	
+	@Column(columnDefinition="uuid", unique = true, nullable = false)
+	@Type(type="pg-uuid")
 	@Id
-	@Type(type = "uuid-binary")
-	@GeneratedValue(generator = "system-uuid")
-	@GenericGenerator(name = "system-uuid", strategy = "uuid")
-	@Column(length = 32, unique = true, nullable = false)
 	private UUID id;
 
 	@Version

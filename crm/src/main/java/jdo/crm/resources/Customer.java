@@ -160,6 +160,9 @@ public class Customer {
 
 		List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
 		partyRepo.findBy( new CustomerOfSpecification(config.getCompany()), startPosition, maxResult).forEach( party ->	customerDtoList.add(new CustomerDto(party)));
+		CustomerDto dto = new CustomerDto();
+		dto.setName("This is a test!");
+		customerDtoList.add(dto);
 		return new CustomerDtoList(customerDtoList);
 	}
 
