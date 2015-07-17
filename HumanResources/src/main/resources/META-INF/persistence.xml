@@ -5,7 +5,13 @@
 	<persistence-unit name="HumanResources">
 		<provider>org.hibernate.ejb.HibernatePersistence</provider>
 		<jta-data-source>JdoHumanResources</jta-data-source>
-
+		<class>jdo.model.BaseHeirarchicalType</class>
+		<class>jdo.model.BasePersistentModel</class>
+		<class>jdo.model.BaseType</class>
+		<class>jdo.fields.Money</class>
+		<class>jdo.jpa.converters.DurationToSecondsInteger</class>
+		<class>jdo.jpa.converters.LocalDatePersistenceConverter</class>
+		<class>jdo.fields.DateTimeRange</class>
 		<properties>
 			<property name="hibernate.hbm2ddl.auto" value="validate" />
 			<property name="hibernate.show_sql" value="true" />

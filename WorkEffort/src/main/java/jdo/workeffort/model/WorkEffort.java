@@ -103,7 +103,6 @@ public class WorkEffort extends BasePersistentModel {
 	
 	private LocalDate scheduledCompletionLocalDate;
 
-	@Temporal(TemporalType.DATE)
 	private LocalDate scheduledStartLocalDate;
 
 	@Lob

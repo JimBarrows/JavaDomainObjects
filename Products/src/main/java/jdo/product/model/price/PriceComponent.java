@@ -75,8 +75,7 @@ public class PriceComponent extends BasePersistentModel {
 
 	/**UUID for the Organization.
 	 * 
-	 */
-	@ManyToOne
+	 */	
 	private UUID		specifiedFor;
 
 	@Embedded
