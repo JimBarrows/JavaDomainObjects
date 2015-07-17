@@ -3,6 +3,7 @@ package jdo.agreement.model.item;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 
@@ -14,7 +15,7 @@ public class AgreementPricingProgram extends AgreementItem {
 	/**List of PriceComponent UUID's.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID>	priceComponents;
 	
 	public List<UUID> getPriceComponents() {

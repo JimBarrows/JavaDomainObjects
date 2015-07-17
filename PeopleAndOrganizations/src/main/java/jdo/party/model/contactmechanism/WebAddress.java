@@ -5,6 +5,7 @@ import java.net.URL;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
@@ -25,7 +26,7 @@ public class WebAddress extends ElectronicAddress {
 	/** A list of visit uuids.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID>				hostOf;
 
 	@AssertTrue

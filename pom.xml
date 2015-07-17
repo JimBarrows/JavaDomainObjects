@@ -54,7 +54,7 @@
 		<selenium-java.version>2.46.0</selenium-java.version>
 		<selenium-support.version>2.46.0</selenium-support.version>
 		<hibernate.validator.version>5.2.0.Alpha1</hibernate.validator.version>
-		<hibernate.core.version>4.3.7.Final</hibernate.core.version>
+		<hibernate.core.version>4.3.10.Final</hibernate.core.version>
 		<org.slf4j.version>1.7.7</org.slf4j.version>
 	</properties>
 

@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -26,6 +27,7 @@ public class Requirement extends BasePersistentModel {
 	 * UUID of the RequirementBudgetAllocation.
 	 * 
 	 */
+	@ElementCollection
 	private List<UUID> allocatedVia = new ArrayList<UUID>();
 
 	@OneToMany

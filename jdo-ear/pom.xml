@@ -9,7 +9,7 @@
 	</parent>
 	<artifactId>jdo-ear</artifactId>
 	<packaging>ear</packaging>
-	<name>EAR File</name>
+	<name>JDO EAR File</name>
 	<dependencies>
 		<dependency>
 			<groupId>jdo</groupId>

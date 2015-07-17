@@ -4,6 +4,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
@@ -35,7 +36,7 @@ public class AgreementItem extends BasePersistentModel {
 	 * List of GeographicBoundary UUIDs.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> geographicBoundaries;
 
 	private String image;
@@ -44,14 +45,14 @@ public class AgreementItem extends BasePersistentModel {
 	 * List of Organization UUIDs.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> organizations;
 
 	@ManyToOne
 	private Agreement partOf;
 
 	/** List of Product UUIDs. */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> products;
 
 	@Min(1)

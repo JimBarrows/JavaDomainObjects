@@ -35,22 +35,7 @@ public class ContactMechanism extends BasePersistentModel {
 
 	@OneToMany(mappedBy = "specifiedVia", cascade = CascadeType.ALL)
 	private List<PartyContactMechanism> usedByParties = new ArrayList<PartyContactMechanism>();
-
-	/**
-	 * @see java.lang.Object#equals(Object)
-	 */
-	public boolean equals(Object object) {
-		if (object == this) {
-			return true;
-		}
-		if (!(object instanceof ContactMechanism)) {
-			return false;
-		}
-		ContactMechanism rhs = (ContactMechanism) object;
-		return new EqualsBuilder().appendSuper(super.equals(object)).append(
-				this.usedByParties, rhs.usedByParties).append(
-				this.usedByFacilities, rhs.usedByFacilities).isEquals();
-	}
+	
 
 	/**
 	 * @return the usedByFacilities
@@ -61,15 +46,6 @@ public class ContactMechanism extends BasePersistentModel {
 	
 	public List<PartyContactMechanism> getUsedByParties() {
 		return usedByParties;
-	}
-
-	/**
-	 * @see java.lang.Object#hashCode()
-	 */
-	public int hashCode() {
-		return new HashCodeBuilder(1581071507, -125000905).appendSuper(
-				super.hashCode()).append(this.usedByParties).append(
-				this.usedByFacilities).toHashCode();
 	}
 
 	/**

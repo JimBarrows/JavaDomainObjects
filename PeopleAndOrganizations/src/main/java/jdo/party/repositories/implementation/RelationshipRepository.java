@@ -18,7 +18,7 @@ import jdo.party.model.relationship.PartyRelationship;
 @Stateful
 public class RelationshipRepository extends RepositoryTemplate<PartyRelationship, Long> implements jdo.party.repositories.RelationshipRepository{
 
-	@PersistenceContext(name = "JavaDomainObjects")
+	@PersistenceContext(name = "PeopleAndOrganizations")
 	protected EntityManager em;
 	
 	public RelationshipRepository() {

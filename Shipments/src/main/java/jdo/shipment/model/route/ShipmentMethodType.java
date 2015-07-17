@@ -3,6 +3,7 @@ package jdo.shipment.model.route;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 
 import jdo.model.BaseType;
@@ -18,6 +19,7 @@ public class ShipmentMethodType extends BaseType {
 	 * UUID of the PartyRole.
 	 * 
 	 */
+	@ElementCollection
 	private List<UUID> transportationUsed;
 
 	public List<UUID> getTransportationUsed() {

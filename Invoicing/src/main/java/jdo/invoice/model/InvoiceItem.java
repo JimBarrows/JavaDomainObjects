@@ -3,6 +3,7 @@ package jdo.invoice.model;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -37,7 +38,7 @@ public class InvoiceItem extends BasePersistentModel {
 	 * UUID for TimeEntry.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> billingForTimeEntry;
 
 	@OneToMany
@@ -85,6 +86,7 @@ public class InvoiceItem extends BasePersistentModel {
 	 * UUID for ShipmentItem.
 	 * 
 	 */
+	@ElementCollection
 	private List<UUID> billingForShipmentItem;
 
 	public List<UUID> getBillingForShipmentItem() {

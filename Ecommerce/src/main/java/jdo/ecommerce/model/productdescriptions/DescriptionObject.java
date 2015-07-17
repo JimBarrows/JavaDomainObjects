@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
@@ -22,7 +23,7 @@ public class DescriptionObject extends BasePersistentModel {
 	 * UUID of ProductFeature.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> describes;
 
 	private String description;
@@ -31,7 +32,7 @@ public class DescriptionObject extends BasePersistentModel {
 	 * UUID for Product.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> forProduct;
 
 	private File location;
@@ -42,7 +43,7 @@ public class DescriptionObject extends BasePersistentModel {
 	 * UUID of Party.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> ofParty;
 
 	@ManyToOne

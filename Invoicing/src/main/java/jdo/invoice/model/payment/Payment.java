@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -47,6 +48,7 @@ public class Payment extends BasePersistentModel {
 	 * UUID of PaymentBudgetAllocation.
 	 * 
 	 */
+	@ElementCollection
 	private List<UUID> bookedAgainst;
 
 	/**

@@ -3,11 +3,14 @@ package jdo.model;
 import java.io.Serializable;
 import java.util.UUID;
 
+import javax.persistence.Column;
 import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.MappedSuperclass;
 import javax.persistence.Version;
+
+import org.hibernate.annotations.GenericGenerator;
+import org.hibernate.annotations.Type;
 
 /**
  * Every persistent model needs to have an id and version field, this just keeps
@@ -22,14 +25,17 @@ public class BasePersistentModel implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	private UUID				id;
+	@Type(type = "uuid-binary")
+	@GeneratedValue(generator = "system-uuid")
+	@GenericGenerator(name = "system-uuid", strategy = "uuid")
+	@Column(length = 32, unique = true, nullable = false)
+	private UUID id;
 
 	@Version
-	private Long				version				= 0l;
+	private Long version = 0l;
 
 	public UUID getId() {
 		return id;

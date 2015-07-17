@@ -22,7 +22,7 @@ import jdo.party.model.roles.ParentOrganization;
 @Singleton
 public class ApplicationConfiguration {
 
-	@PersistenceContext(name = "JavaDomainObjects")
+	@PersistenceContext(name = "PeopleAndOrganizations")
 	private EntityManager	entityManager;
 
 	private Company			company;
@@ -63,7 +63,7 @@ public class ApplicationConfiguration {
 	}
 
 	public static final Predicate<PartyRole> internalOrganizationPredicate() {
-		Predicate<PartyRole> isInternalOrganization = a -> (a instanceof InternalOrganization);
+		Predicate<PartyRole> isInternalOrganization = a -> (a instanceof InternalOrganization) & a.getDateTimeRange().isActive();
 		return isInternalOrganization;
 	}
 	

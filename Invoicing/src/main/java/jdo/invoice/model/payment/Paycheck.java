@@ -3,6 +3,7 @@ package jdo.invoice.model.payment;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 
 @Entity
@@ -17,6 +18,7 @@ public class Paycheck extends Disbursement {
 	 * UUID of Deduction.
 	 * 
 	 */
+	@ElementCollection
 	private List<UUID> deductions;
 
 	/**

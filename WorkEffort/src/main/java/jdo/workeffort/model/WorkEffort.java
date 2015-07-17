@@ -5,6 +5,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -53,7 +54,7 @@ public class WorkEffort extends BasePersistentModel {
 	 * UUID of the InventoryItem.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> deliverableProduced;
 
 	@Lob
@@ -68,14 +69,14 @@ public class WorkEffort extends BasePersistentModel {
 	 * UUID of the Requirement.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> fulfillsRequirement;
 
 	/**
 	 * UUID of the WorkOrderItem.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> fullfillsWorkOderItems;
 
 	@OneToMany
@@ -85,7 +86,7 @@ public class WorkEffort extends BasePersistentModel {
 	 * UUID of the InventoryItem.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> inventoryProduced;
 
 	@NotBlank

@@ -36,6 +36,7 @@ import jdo.party.model.relationship.CustomerRelationship;
 import jdo.party.model.roles.InternalOrganization;
 import jdo.party.repositories.PartyRepository;
 import jdo.party.repositories.RelationshipRepository;
+import jdo.party.specifications.CustomerOfSpecification;
 import jdo.web.Errors;
 import jdo.web.ValidationError;
 
@@ -158,14 +159,7 @@ public class Customer {
 		Optional<Integer> maxResult = Optional.ofNullable(max);
 
 		List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
-		relationshipRepo
-				.findAllCustomersRelationships(startPosition, maxResult)
-				.forEach(
-						customerRelationship -> {
-							Party party = customerRelationship
-									.getRelationshipTo().getRoleFor();
-							customerDtoList.add(new CustomerDto(party));
-						});
+		partyRepo.findBy( new CustomerOfSpecification(config.getCompany()), startPosition, maxResult).forEach( party ->	customerDtoList.add(new CustomerDto(party)));
 		return new CustomerDtoList(customerDtoList);
 	}
 

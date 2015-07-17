@@ -7,7 +7,7 @@ public abstract class Not<E> implements Specification<E>{
 	public Not( Specification<E> spec) {
 		this.spec = spec;
 	}
-	public boolean isSatisifiedBy( E entity) {
-		return ! spec.isSatisifiedBy(entity);
+	public boolean isSatisfiedBy( E entity) {
+		return ! spec.isSatisfiedBy(entity);
 	}
 }

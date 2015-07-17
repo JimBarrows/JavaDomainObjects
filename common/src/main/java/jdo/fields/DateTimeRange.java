@@ -18,7 +18,19 @@ public class DateTimeRange implements Serializable {
 	@NotNull
 	private ZonedDateTime fromDate = now();
 
-	private Optional<ZonedDateTime> thruDate = Optional.empty();
+	/**TODO When hibernate can handle a converter of type Option<ZonedDatetime> use this.
+	 * private Optional<ZonedDateTime> thruDate = Optional.empty();
+	*/
+	
+	private ZonedDateTime thruDate = null;
+
+	public ZonedDateTime getThruDate() {
+		return thruDate;
+	}
+
+	public void setThruDate(ZonedDateTime thruDate) {
+		this.thruDate = thruDate;
+	}
 
 	/**
 	 * Determines if a model is active. A model is active if now is after or
@@ -29,7 +41,8 @@ public class DateTimeRange implements Serializable {
 	public boolean isActive() {
 		ZonedDateTime now = now();
 		return (fromDate.isBefore(now) || fromDate.isEqual(now))
-				&& thruDate.map(thru -> thru.isAfter(now) || thru.isEqual(now)).orElse(true);
+				&& (thruDate == null) ? true : ( thruDate.isAfter(now) || thruDate.isEqual(now)); 
+				//thruDate.map(thru -> thru.isAfter(now) || thru.isEqual(now)).orElse(true);
 	}
 
 	@XmlTransient
@@ -42,7 +55,8 @@ public class DateTimeRange implements Serializable {
 		} else if (thruDate == null) {
 			valid = false;
 		} else {
-			valid = thruDate.map(thru -> fromDate.isBefore(thru)).orElse(true);
+			//valid = thruDate.map(thru -> fromDate.isBefore(thru)).orElse(true);
+			valid = fromDate.isBefore(thruDate);
 		}
 		return valid;
 	}
@@ -55,13 +69,13 @@ public class DateTimeRange implements Serializable {
 		this.fromDate = fromDate;
 	}
 
-	public Optional<ZonedDateTime> getThruDate() {
-		return thruDate;
-	}
-
-	public void setThruDate(Optional<ZonedDateTime> thruDate) {
-		this.thruDate = thruDate;
-	}
+//	public Optional<ZonedDateTime> getThruDate() {
+//		return thruDate;
+//	}
+//
+//	public void setThruDate(Optional<ZonedDateTime> thruDate) {
+//		this.thruDate = thruDate;
+//	}
 
 	/**
 	 * 

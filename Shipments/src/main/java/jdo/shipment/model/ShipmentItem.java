@@ -3,6 +3,7 @@ package jdo.shipment.model;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
@@ -36,6 +37,7 @@ public class ShipmentItem extends BasePersistentModel {
 	 * UUID of the ProductFeature.
 	 * 
 	 */
+	@ElementCollection
 	private List<UUID> shippedWith;
 
 	public String getContentsDescription() {

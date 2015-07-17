@@ -3,6 +3,7 @@ package jdo.budget.model;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
@@ -44,7 +45,7 @@ public class BudgetItem extends BasePersistentModel {
 	 * UUID for OrderItem.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> usedToBuy;
 
 	@OneToMany

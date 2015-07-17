@@ -10,7 +10,7 @@ import jdo.party.model.Party;
 @Stateful
 public class PartyRepository extends RepositoryTemplate<Party, Long> implements jdo.party.repositories.PartyRepository {
 
-	@PersistenceContext(name = "JavaDomainObjects")
+	@PersistenceContext(name = "PeopleAndOrganizations")
 	protected EntityManager em;
 	
 	public PartyRepository() {

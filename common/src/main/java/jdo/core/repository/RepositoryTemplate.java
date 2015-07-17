@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Optional;
 
 import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
@@ -32,10 +33,10 @@ public abstract class RepositoryTemplate<E, I> implements Repository<E, I> {
 	}
 
 	@Override
-	public List<E> findBy(Specification<E> specification) {
+	public List<E> findBy(Specification<E> specification, Optional<Integer> startAt, Optional<Integer> maxNumberToReturn) {
 		List<E> found = new ArrayList<E>(); 
-		findAll().forEach(p -> {
-			if( specification.isSatisifiedBy( p)) {
+		findAll(startAt, maxNumberToReturn).forEach(p -> {
+			if( specification.isSatisfiedBy( p)) {
 				found.add(p);
 			}
 		});
@@ -43,12 +44,25 @@ public abstract class RepositoryTemplate<E, I> implements Repository<E, I> {
 	}
 
 	@Override
-	public List<E> findAll() {
+	public List<E> findBy(Specification<E> specification) {		
+		return findBy( specification, Optional.empty(), Optional.empty());
+	}
+
+	@Override
+	public List<E> findAll() { 
+		return findAll( Optional.empty(), Optional.empty());
+	}
+
+	@Override
+	public List<E> findAll(Optional<Integer> startAt, Optional<Integer> maxNumbertoReturn) {
 		CriteriaBuilder builder = entityManager().getCriteriaBuilder();
 		CriteriaQuery<E> criteria = builder.createQuery( type );
 		Root<E> entityRoot = criteria.from( type );
-		criteria.select( entityRoot );		
-		List<E> entities = entityManager().createQuery( criteria ).getResultList();
+		criteria.select( entityRoot );
+		TypedQuery<E> query = entityManager().createQuery( criteria );
+		startAt.map(s -> query.setFirstResult(s));
+		maxNumbertoReturn.map( m -> query.setMaxResults(m));
+		List<E> entities = query.getResultList();
 		return entities;
 	}
 

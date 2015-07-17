@@ -21,8 +21,7 @@ public class Employment extends PartyRelationship {
 	
 	/** UUID to the TerminationType of this employment relationshipo.
 	 * 
-	 */
-	@ManyToOne
+	 */	
 	private UUID terminationType;
 
 	public TerminationReason getDueTo() {

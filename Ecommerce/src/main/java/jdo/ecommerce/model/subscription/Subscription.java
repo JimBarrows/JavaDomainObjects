@@ -4,6 +4,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -42,7 +43,7 @@ public class Subscription extends BasePersistentModel {
 	 * UUID of OrderItem.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> orderedVia;
 
 	/**

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
@@ -54,13 +55,13 @@ public class GeographicBoundary extends BasePersistentModel {
 	/**The list of UUIDs for ReorderGuideline.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> reorderGuideline = new ArrayList<UUID>();
 
 	/**The list of UUIDs for salesTaxLookup.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> salesTaxLookup = new ArrayList<UUID>();
 
 	public List<UUID> getSalesTaxLookup() {

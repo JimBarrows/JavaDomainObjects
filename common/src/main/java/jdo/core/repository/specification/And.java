@@ -7,8 +7,8 @@ public abstract class And<E> extends Composite<E>{
 	}
 	
 	@Override
-	public boolean isSatisifiedBy(E entity) {	
-		return left.isSatisifiedBy(entity) && right.isSatisifiedBy(entity);
+	public boolean isSatisfiedBy(E entity) {	
+		return left.isSatisfiedBy(entity) && right.isSatisfiedBy(entity);
 	}
 
 }

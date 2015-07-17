@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
@@ -45,7 +46,7 @@ public class Agreement extends BasePersistentModel {
 	 * List of GeographicBoundary UUIDs this agreement is applicable to.
 	 * 
 	 */
-	@OneToMany
+	@ElementCollection
 	private List<UUID> geographicalApplicability;
 
 	@OneToMany

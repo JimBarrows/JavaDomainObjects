@@ -198,6 +198,7 @@
 			<groupId>jdo</groupId>
 			<artifactId>PeopleAndOrganizations</artifactId>
 			<version>1.0.0-SNAPSHOT</version>
+			<type>ejb</type>
 		</dependency>
 	</dependencies>
 </project>

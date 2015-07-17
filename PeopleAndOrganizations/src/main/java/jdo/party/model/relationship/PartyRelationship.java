@@ -48,9 +48,11 @@ public class PartyRelationship extends BasePersistentModel {
 	@ManyToOne(optional = false, targetEntity = PartyRole.class)
 	@NotNull
 	private PartyRole relationshipFrom;
+	
 	@ManyToOne(optional = false, targetEntity = PartyRole.class)
 	@NotNull
 	private PartyRole relationshipTo;
+	
 	@ManyToOne(targetEntity = StatusType.class)
 	private StatusType status;
 
@@ -86,7 +88,8 @@ public class PartyRelationship extends BasePersistentModel {
 			PartyRole relationshipFrom, PartyRole relationshipTo) {
 		super(id, version);
 		this.dateTimeRange.setFromDate(from);
-		this.dateTimeRange.setThruDate(thru);
+		//TODO When hibernate fixes itself so that it can handle converters, get rid of the orElse.
+		this.dateTimeRange.setThruDate(thru.orElse(null));
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
@@ -95,7 +98,8 @@ public class PartyRelationship extends BasePersistentModel {
 	public PartyRelationship(ZonedDateTime from, Optional<ZonedDateTime> thru, String comment,
 			PartyRole relationshipFrom, PartyRole relationshipTo) {
 		this.dateTimeRange.setFromDate(from);
-		this.dateTimeRange.setThruDate(thru);
+		//TODO When hibernate fixes itself so that it can handle converters, get rid of the orElse.
+		this.dateTimeRange.setThruDate(thru.orElse(null));
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
 		this.relationshipTo = relationshipTo;
