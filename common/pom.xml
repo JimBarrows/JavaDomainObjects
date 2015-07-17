@@ -8,6 +8,7 @@
 	</parent>
 	<artifactId>common</artifactId>
 	<name>Common</name>
+	<packaging>jar</packaging>
 	<description>Common classes and templates.</description>
 	<dependencies>
 		<dependency>
