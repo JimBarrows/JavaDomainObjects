@@ -27,25 +27,27 @@
     <![endif]-->
 </head>
 
-<body role="document" ng-controller="CustomerListCtrl">
+<body role="document">
 
-	<ul>
-		<li ng-repeat="customer in customers"><span>{{customer.name}}</span></li>
-	</ul>
-	<p>Total number of phones: 2</p>
+	<div ng-view></div>
+
 	<!-- Bootstrap core JavaScript
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+		src="//ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<!-- Latest compiled and minified JavaScript -->
 	<script
-		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script src="js/libs/holder.js"></script>
+		src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
 	<script src="js/libs/ie10-viewport-bug-workaround.js"></script>
 	<script
-		src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-route.min.js"></script>
+	<script
+		src="//ajax.googleapis.com/ajax/libs/angularjs/1.4.3/angular-resource.min.js"></script>
+	<script src="js/app.js"></script>
 	<script src="js/controllers.js"></script>
 </body>
 </html>

@@ -1,5 +1,7 @@
 package jdo.party.repositories.implementation;
 
+import java.util.UUID;
+
 import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -8,7 +10,7 @@ import jdo.core.repository.RepositoryTemplate;
 import jdo.party.model.Party;
 
 @Stateful
-public class PartyRepository extends RepositoryTemplate<Party, Long> implements jdo.party.repositories.PartyRepository {
+public class PartyRepository extends RepositoryTemplate<Party, UUID> implements jdo.party.repositories.PartyRepository {
 
 	@PersistenceContext(name = "PeopleAndOrganizations")
 	protected EntityManager em;
