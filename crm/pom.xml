@@ -43,7 +43,7 @@
 							<info>
 								<title>Java Domain Objects - CRM API</title>
 								<version>${project.version}</version>
-								<description>The Customer Relationship Management API</description>								
+								<description>The Customer Relationship Management API</description>
 								<contact>
 									<email>Jim.Barrows@gmail.com</email>
 									<name>Jim Barrows</name>
@@ -71,6 +71,17 @@
 						</goals>
 					</execution>
 				</executions>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-failsafe-plugin</artifactId>
+				<version>2.18.1</version>
+				<configuration>
+					<testSourceDirectory>${project}/src/integrationTest/java</testSourceDirectory>
+					<additionalClasspathElements>
+						<additionalClasspathElement>${project}/src/integrationTest/resources</additionalClasspathElement>
+					</additionalClasspathElements>
+				</configuration>
 			</plugin>
 		</plugins>
 		<pluginManagement>
@@ -191,15 +202,72 @@
 		</dependency>
 
 		<dependency>
-			<groupId>org.apache.commons</groupId>
-			<artifactId>commons-lang3</artifactId>
-		</dependency>
-		<dependency>
 			<groupId>jdo</groupId>
 			<artifactId>PeopleAndOrganizations</artifactId>
 			<version>1.0-SNAPSHOT</version>
 			<type>ejb</type>
 			<scope>provided</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave</groupId>
+			<artifactId>jbehave-core</artifactId>
+			<classifier>resources</classifier>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.site</groupId>
+			<artifactId>jbehave-site-resources</artifactId>
+			<type>zip</type>
+		</dependency>
+		<dependency>
+			<groupId>org.jbehave.web</groupId>
+			<artifactId>jbehave-web-selenium</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.jbehave</groupId>
+					<artifactId>jbehave-core</artifactId>
+				</exclusion>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium.fluent</groupId>
+			<artifactId>fluent-selenium</artifactId>
+			<optional>true</optional>
+			<exclusions>
+				<exclusion>
+					<groupId>org.seleniumhq.selenium</groupId>
+					<artifactId>selenium-java</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-support</artifactId>
+			<scope>test</scope>
+		</dependency>
+
+		<dependency>
+			<groupId>org.seleniumhq.selenium</groupId>
+			<artifactId>selenium-java</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.hamcrest</groupId>
+					<artifactId>hamcrest-core</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 	</dependencies>
 </project>
