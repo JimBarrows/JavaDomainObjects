@@ -14,6 +14,9 @@ import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.Transient;
+import javax.xml.bind.annotation.XmlList;
+import javax.xml.bind.annotation.XmlTransient;
 
 import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
@@ -35,8 +38,13 @@ public class PartyRole extends BasePersistentModel {
 	@ManyToOne
 	private Party roleFor;
 
-	@OneToMany
-	private List<PartyRelationship> relationshipsInvolvedIn = new ArrayList<PartyRelationship>();
+	@OneToMany(mappedBy = "relationshipFrom")
+	@XmlList
+	private List<PartyRelationship> relationshipsInvolvedInFrom = new ArrayList<PartyRelationship>();
+
+	@OneToMany(mappedBy = "relationshipTo")
+	@XmlList
+	private List<PartyRelationship> relationshipsInvolvedInTo = new ArrayList<PartyRelationship>();
 
 	@Embedded
 	@AttributeOverrides({ @AttributeOverride(name = "fromDate", column = @Column(name = "roleStarted") ),
@@ -57,7 +65,8 @@ public class PartyRole extends BasePersistentModel {
 
 	public PartyRole(ZonedDateTime from, Optional<ZonedDateTime> thru) {
 		dateTimeRange.setFromDate(from);
-		//TODO When hibernate fixes itself so that it can handle converters, get rid of the orElse.
+		// TODO When hibernate fixes itself so that it can handle converters
+		// with templates, get rid of the orElse.
 		dateTimeRange.setThruDate(thru.orElse(null));
 	}
 
@@ -73,12 +82,26 @@ public class PartyRole extends BasePersistentModel {
 		this.roleFor = roleFor;
 	}
 
+	@Transient
+	@XmlTransient
 	public List<PartyRelationship> getRelationshipsInvolvedIn() {
-		return relationshipsInvolvedIn;
+		List<PartyRelationship> list = new ArrayList<>();
+		list.addAll(relationshipsInvolvedInFrom);
+		list.addAll(relationshipsInvolvedInTo);
+		return list;
 	}
 
-	public void setRelationshipsInvolvedIn(List<PartyRelationship> relationshipsInvolvedIn) {
-		this.relationshipsInvolvedIn = relationshipsInvolvedIn;
+	@Override
+	public String toString() {
+		final int maxLen = 10;
+		return String
+				.format("PartyRole [roleFor=%s, relationshipsInvolvedInFrom=%s, relationshipsInvolvedInTo=%s, dateTimeRange=%s]",
+						roleFor,
+						relationshipsInvolvedInFrom != null ? relationshipsInvolvedInFrom.subList(0,
+								Math.min(relationshipsInvolvedInFrom.size(), maxLen)) : null,
+				relationshipsInvolvedInTo != null
+						? relationshipsInvolvedInTo.subList(0, Math.min(relationshipsInvolvedInTo.size(), maxLen))
+						: null, dateTimeRange);
 	}
 
 	private static final long serialVersionUID = 1L;

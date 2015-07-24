@@ -2,10 +2,13 @@ var crmApp = angular.module('CrmApp', [ 'ngRoute', 'customerControllers' ]);
 
 crmApp.config([ '$routeProvider', function($routeProvider) {
 	$routeProvider.when('/customers', {
-		templateUrl : 'partials/customerList.html',
+		templateUrl : 'customers/index.html',
 		controller : 'CustomerListCtrl'
+	}).when('/customers/new', {
+		templateUrl : 'customers/form.html',
+		controller : 'CustomerFormCtrl'
 	}).when('/customers/:customerId', {
-		templateUrl : 'partials/customerDetail.html',
+		templateUrl : 'customers/view.html',
 		controller : 'CustgomerDetailCtrl'
 	}).otherwise({
 		redirectTo : '/customers'

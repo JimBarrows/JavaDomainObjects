@@ -240,4 +240,31 @@ public class Party extends BasePersistentModel implements Serializable {
 		this.residingAt = residingAt;
 	}
 
+	@Override
+	public String toString() {
+		final int maxLen = 10;
+		return String
+				.format("Party [actingAs=%s, caseRolesInvolvedIn=%s, classifiedInto=%s, contactedVia=%s, eventRolesInvolvedIn=%s, involvedInFacilityRole=%s, residingAt=%s, getId()=%s, getVersion()=%s]",
+						actingAs != null ? actingAs.subList(0,
+								Math.min(actingAs.size(),
+										maxLen))
+								: null,
+						caseRolesInvolvedIn != null ? caseRolesInvolvedIn.subList(0,
+								Math.min(caseRolesInvolvedIn.size(),
+										maxLen))
+								: null,
+						classifiedInto != null
+								? classifiedInto.subList(0,
+										Math.min(classifiedInto.size(), maxLen))
+								: null,
+						contactedVia != null ? contactedVia.subList(0, Math.min(contactedVia.size(), maxLen)) : null,
+						eventRolesInvolvedIn != null
+								? eventRolesInvolvedIn.subList(0, Math.min(eventRolesInvolvedIn.size(), maxLen)) : null,
+						involvedInFacilityRole != null
+								? involvedInFacilityRole.subList(0, Math.min(involvedInFacilityRole.size(), maxLen))
+								: null,
+						residingAt != null ? residingAt.subList(0, Math.min(residingAt.size(), maxLen)) : null, getId(),
+						getVersion());
+	}
+
 }

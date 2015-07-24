@@ -48,11 +48,11 @@ public class PartyRelationship extends BasePersistentModel {
 	@ManyToOne(optional = false, targetEntity = PartyRole.class)
 	@NotNull
 	private PartyRole relationshipFrom;
-	
+
 	@ManyToOne(optional = false, targetEntity = PartyRole.class)
 	@NotNull
 	private PartyRole relationshipTo;
-	
+
 	@ManyToOne(targetEntity = StatusType.class)
 	private StatusType status;
 
@@ -88,7 +88,8 @@ public class PartyRelationship extends BasePersistentModel {
 			PartyRole relationshipFrom, PartyRole relationshipTo) {
 		super(id, version);
 		this.dateTimeRange.setFromDate(from);
-		//TODO When hibernate fixes itself so that it can handle converters, get rid of the orElse.
+		// TODO When hibernate fixes itself so that it can handle converters,
+		// get rid of the orElse.
 		this.dateTimeRange.setThruDate(thru.orElse(null));
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
@@ -98,7 +99,8 @@ public class PartyRelationship extends BasePersistentModel {
 	public PartyRelationship(ZonedDateTime from, Optional<ZonedDateTime> thru, String comment,
 			PartyRole relationshipFrom, PartyRole relationshipTo) {
 		this.dateTimeRange.setFromDate(from);
-		//TODO When hibernate fixes itself so that it can handle converters, get rid of the orElse.
+		// TODO When hibernate fixes itself so that it can handle converters,
+		// get rid of the orElse.
 		this.dateTimeRange.setThruDate(thru.orElse(null));
 		this.comment = comment;
 		this.relationshipFrom = relationshipFrom;
@@ -153,9 +155,9 @@ public class PartyRelationship extends BasePersistentModel {
 
 	@Override
 	public String toString() {
-		return "PartyRelationship [comment=" + comment + ", priority=" + priority + ", relationshipFrom="
-				+ relationshipFrom + ", relationshipTo=" + relationshipTo + ", status=" + status + ", dateTimeRange="
-				+ dateTimeRange + ", id=" + getId() + ", version=" + getVersion() + "]";
+		return String.format(
+				"PartyRelationship [comment=%s, priority=%s, relationshipFrom=%s, relationshipTo=%s, status=%s, dateTimeRange=%s, getId()=%s, getVersion()=%s]",
+				comment, priority, relationshipFrom, relationshipTo, status, dateTimeRange, getId(), getVersion());
 	}
 
 }

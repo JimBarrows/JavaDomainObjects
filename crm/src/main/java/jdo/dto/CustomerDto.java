@@ -8,13 +8,13 @@ import java.util.UUID;
 import javax.validation.constraints.AssertTrue;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import jdo.party.model.Organization;
-import jdo.party.model.Party;
-import jdo.party.model.Person;
-
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+
+import jdo.party.model.Organization;
+import jdo.party.model.Party;
+import jdo.party.model.Person;
 
 @XmlRootElement(name = "customer")
 @JsonRootName("customer")
@@ -26,6 +26,7 @@ public class CustomerDto implements Serializable {
 	private String	name;
 	private String	firstName;
 	private String	lastName;
+	
 
 	public CustomerDto(Party party) {
 		if (party instanceof Person) {
@@ -132,21 +133,6 @@ public class CustomerDto implements Serializable {
 
 	public CustomerDto() {
 		super();		
-	}
-
-	public void setId(UUID id) {
-		this.id = id;
-	}
-
-	public void setPartyType(String partyType) {
-		this.partyType = partyType;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+	}	
+	
 }

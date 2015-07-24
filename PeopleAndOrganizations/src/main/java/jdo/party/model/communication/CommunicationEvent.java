@@ -1,7 +1,7 @@
 package jdo.party.model.communication;
 
+import java.time.ZonedDateTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,17 +10,15 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 import jdo.model.BasePersistentModel;
 import jdo.party.model.PartyContactMechanism;
 import jdo.party.model.relationship.PartyRelationship;
-
-import org.hibernate.validator.constraints.NotEmpty;
 
 /**
  * Represents a communication between two or more parties.
@@ -42,12 +40,10 @@ public class CommunicationEvent extends BasePersistentModel {
 	@OneToMany
 	private List<CommunicationEventPurpose> categorizedBy = new ArrayList<CommunicationEventPurpose>();
 
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateTimeEnded;
+	private ZonedDateTime dateTimeEnded;
 
 	@NotNull
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date dateTimeStarted;
+	private ZonedDateTime dateTimeStarted;
 
 	@ManyToOne
 	private PartyRelationship inTheContextOf;
@@ -65,8 +61,7 @@ public class CommunicationEvent extends BasePersistentModel {
 	@ManyToOne
 	private PartyContactMechanism occursVia;
 
-	public void addCommunicationEventRole(
-			CommunicationEventRole communicationEventRole) {
+	public void addCommunicationEventRole(CommunicationEventRole communicationEventRole) {
 		if (!getInvolving().contains(communicationEventRole)) {
 			getInvolving().add(communicationEventRole);
 			communicationEventRole.setOf(this);
@@ -92,14 +87,14 @@ public class CommunicationEvent extends BasePersistentModel {
 	 * @return the dateTimeEnded
 	 */
 
-	public Date getDateTimeEnded() {
+	public ZonedDateTime getDateTimeEnded() {
 		return dateTimeEnded;
 	}
 
 	/**
 	 * @return the dateTimeStarted
 	 */
-	public Date getDateTimeStarted() {
+	public ZonedDateTime getDateTimeStarted() {
 		return dateTimeStarted;
 	}
 
@@ -144,7 +139,7 @@ public class CommunicationEvent extends BasePersistentModel {
 		if (dateTimeEnded != null) {
 			return true;
 		} else {
-			return dateTimeEnded.after(dateTimeStarted);
+			return dateTimeEnded.isAfter(dateTimeStarted);
 		}
 	}
 
@@ -168,7 +163,7 @@ public class CommunicationEvent extends BasePersistentModel {
 	 * @param dateTimeEnded
 	 *            the dateTimeEnded to set
 	 */
-	public void setDateTimeEnded(Date dateTimeEnded) {
+	public void setDateTimeEnded(ZonedDateTime dateTimeEnded) {
 		this.dateTimeEnded = dateTimeEnded;
 	}
 
@@ -176,7 +171,7 @@ public class CommunicationEvent extends BasePersistentModel {
 	 * @param dateTimeStarted
 	 *            the dateTimeStarted to set
 	 */
-	public void setDateTimeStarted(Date dateTimeStarted) {
+	public void setDateTimeStarted(ZonedDateTime dateTimeStarted) {
 		this.dateTimeStarted = dateTimeStarted;
 	}
 

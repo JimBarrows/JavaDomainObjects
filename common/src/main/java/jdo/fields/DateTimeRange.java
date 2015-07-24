@@ -6,22 +6,30 @@ import java.io.Serializable;
 import java.time.ZonedDateTime;
 import java.util.Optional;
 
+import javax.persistence.Convert;
 import javax.persistence.Embeddable;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
 
+import jdo.jpa.converters.ZonedDateTimeToTimestampConverter;
+
 @Embeddable
 public class DateTimeRange implements Serializable {
 
 	@NotNull
+	@Convert(converter = ZonedDateTimeToTimestampConverter.class)
 	private ZonedDateTime fromDate = now();
 
-	/**TODO When hibernate can handle a converter of type Option<ZonedDatetime> use this.
-	 * private Optional<ZonedDateTime> thruDate = Optional.empty();
-	*/
-	
+	/**
+	 * TODO When hibernate can handle a converter of type Option
+	 * <ZonedDatetime> use this. private Optional<ZonedDateTime> thruDate =
+	 * Optional.empty();
+	 */
+	@Convert(converter = ZonedDateTimeToTimestampConverter.class)
 	private ZonedDateTime thruDate = null;
 
 	public ZonedDateTime getThruDate() {
@@ -40,9 +48,10 @@ public class DateTimeRange implements Serializable {
 	@Transient
 	public boolean isActive() {
 		ZonedDateTime now = now();
-		return (fromDate.isBefore(now) || fromDate.isEqual(now))
-				&& (thruDate == null) ? true : ( thruDate.isAfter(now) || thruDate.isEqual(now)); 
-				//thruDate.map(thru -> thru.isAfter(now) || thru.isEqual(now)).orElse(true);
+		return (fromDate.isBefore(now) || fromDate.isEqual(now)) && (thruDate == null) ? true
+				: (thruDate.isAfter(now) || thruDate.isEqual(now));
+		// thruDate.map(thru -> thru.isAfter(now) ||
+		// thru.isEqual(now)).orElse(true);
 	}
 
 	@XmlTransient
@@ -55,7 +64,8 @@ public class DateTimeRange implements Serializable {
 		} else if (thruDate == null) {
 			valid = false;
 		} else {
-			//valid = thruDate.map(thru -> fromDate.isBefore(thru)).orElse(true);
+			// valid = thruDate.map(thru ->
+			// fromDate.isBefore(thru)).orElse(true);
 			valid = fromDate.isBefore(thruDate);
 		}
 		return valid;
@@ -69,13 +79,13 @@ public class DateTimeRange implements Serializable {
 		this.fromDate = fromDate;
 	}
 
-//	public Optional<ZonedDateTime> getThruDate() {
-//		return thruDate;
-//	}
-//
-//	public void setThruDate(Optional<ZonedDateTime> thruDate) {
-//		this.thruDate = thruDate;
-//	}
+	// public Optional<ZonedDateTime> getThruDate() {
+	// return thruDate;
+	// }
+	//
+	// public void setThruDate(Optional<ZonedDateTime> thruDate) {
+	// this.thruDate = thruDate;
+	// }
 
 	/**
 	 * 

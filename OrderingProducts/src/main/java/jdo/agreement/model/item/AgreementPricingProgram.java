@@ -5,19 +5,19 @@ import java.util.UUID;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.OneToMany;
 
 @Entity
 public class AgreementPricingProgram extends AgreementItem {
 
-	private static final long		serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	/**List of PriceComponent UUID's.
+	/**
+	 * List of PriceComponent UUID's.
 	 * 
 	 */
 	@ElementCollection
-	private List<UUID>	priceComponents;
-	
+	private List<UUID> priceComponents;
+
 	public List<UUID> getPriceComponents() {
 		return priceComponents;
 	}
