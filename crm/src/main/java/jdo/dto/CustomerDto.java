@@ -6,6 +6,9 @@ import java.io.Serializable;
 import java.util.UUID;
 
 import javax.validation.constraints.AssertTrue;
+import javax.xml.bind.annotation.XmlAccessType;
+import javax.xml.bind.annotation.XmlAccessorType;
+import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
 
 import org.hibernate.validator.constraints.NotEmpty;
@@ -16,17 +19,22 @@ import jdo.party.model.Organization;
 import jdo.party.model.Party;
 import jdo.party.model.Person;
 
+@XmlAccessorType(XmlAccessType.NONE)
 @XmlRootElement(name = "customer")
 @JsonRootName("customer")
 public class CustomerDto implements Serializable {
 
-	private UUID	id;
+	@XmlAttribute
+	private UUID id;
+	@XmlAttribute
 	@NotEmpty
-	private String	partyType;
-	private String	name;
-	private String	firstName;
-	private String	lastName;
-	
+	private String partyType;
+	@XmlAttribute
+	private String name;
+	@XmlAttribute
+	private String firstName;
+	@XmlAttribute
+	private String lastName;
 
 	public CustomerDto(Party party) {
 		if (party instanceof Person) {
@@ -37,17 +45,18 @@ public class CustomerDto implements Serializable {
 			partyType = ((Organization) party).getClass().getCanonicalName();
 			name = ((Organization) party).getName();
 		} else {
-			throw new IllegalArgumentException(String.format("Customer must be person or Organization.  %s was passed instead.", party.getClass()
-					.getCanonicalName()));
+			throw new IllegalArgumentException(
+					String.format("Customer must be person or Organization.  %s was passed instead.",
+							party.getClass().getCanonicalName()));
 		}
 		id = party.getId();
 	}
 
 	@AssertTrue
 	public boolean hasName() {
-		return isNotBlank( name) || isNotBlank( lastName);
+		return isNotBlank(name) || isNotBlank(lastName);
 	}
-	
+
 	public String getPartyType() {
 		return partyType;
 	}
@@ -107,7 +116,8 @@ public class CustomerDto implements Serializable {
 
 	@Override
 	public String toString() {
-		return "CustomerDto [id=" + id + ", partyType=" + partyType + ", name=" + name + ", firstName=" + firstName + ", lastName=" + lastName + "]";
+		return "CustomerDto [id=" + id + ", partyType=" + partyType + ", name=" + name + ", firstName=" + firstName
+				+ ", lastName=" + lastName + "]";
 	}
 
 	public String getFirstName() {
@@ -118,10 +128,6 @@ public class CustomerDto implements Serializable {
 		return lastName;
 	}
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
 	public UUID getId() {
 		return id;
 	}
@@ -129,10 +135,19 @@ public class CustomerDto implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long	serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	public CustomerDto() {
-		super();		
-	}	
-	
+		super();
+	}
+
+	public CustomerDto(UUID id, String partyType, String name, String firstName, String lastName) {
+		super();
+		this.id = id;
+		this.partyType = partyType;
+		this.name = name;
+		this.firstName = firstName;
+		this.lastName = lastName;
+	}
+
 }

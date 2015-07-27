@@ -3,6 +3,8 @@ package jdo.party.model;
 import javax.persistence.Entity;
 import javax.xml.bind.annotation.XmlRootElement;
 
+import jdo.validations.annotations.AtLeastOneNotBlank;
+
 /**
  * A single person the system keeps track of.
  * 
@@ -12,7 +14,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @XmlRootElement
-@jdo.validations.annotations.AtLeastOneNotBlank(fieldNames = { "firstName", "lastName" })
+@AtLeastOneNotBlank(fieldNames = { "firstName", "lastName" })
 public class Person extends Party {
 
 	private String	firstName;

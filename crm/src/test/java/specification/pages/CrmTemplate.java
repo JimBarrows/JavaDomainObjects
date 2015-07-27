@@ -16,7 +16,7 @@ public class CrmTemplate extends FluentWebDriverPage {
 		super(driverProvider);
 		this.pageUrl = pageUrl;
 
-		baseUrl = "http://localhost:8080/crm";
+		baseUrl = "http://localhost:8090/crm";
 
 	}
 

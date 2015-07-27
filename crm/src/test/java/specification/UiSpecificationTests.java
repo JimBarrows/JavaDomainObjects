@@ -24,13 +24,14 @@ import org.jbehave.web.selenium.SeleniumContextOutput;
 import org.jbehave.web.selenium.SeleniumStepMonitor;
 
 import specification.pages.PageFactory;
-import specification.steps.CrmSteps;
+import specification.steps.ui.CrmSteps;
+
 import static java.util.Arrays.asList;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.web.selenium.WebDriverHtmlOutput.WEB_DRIVER_HTML;
 
-public class JdoStories extends JUnitStories {
+public class UiSpecificationTests extends JUnitStories {
 
 	PendingStepStrategy pendingStepStrategy = new FailingUponPendingStep();
 	CrossReference crossReference = new CrossReference().withJsonOnly();
@@ -43,7 +44,7 @@ public class JdoStories extends JUnitStories {
 			new SeleniumContextOutput(seleniumContext), CONSOLE,
 			WEB_DRIVER_HTML };
 	StoryReporterBuilder reporterBuilder = new StoryReporterBuilder()
-			.withCodeLocation(codeLocationFromClass(JdoStories.class))
+			.withCodeLocation(codeLocationFromClass(UiSpecificationTests.class))
 			.withFailureTrace(true).withFailureTraceCompression(true)
 			.withDefaultFormats().withFormats(formats)
 			.withCrossReference(crossReference);
@@ -56,7 +57,7 @@ public class JdoStories extends JUnitStories {
 				.useStoryControls(
 						new StoryControls().doResetStateBeforeScenario(false))
 				.useStepMonitor(stepMonitor)
-				.useStoryLoader(new LoadFromClasspath(JdoStories.class))
+				.useStoryLoader(new LoadFromClasspath(UiSpecificationTests.class))
 				.useStoryReporterBuilder(reporterBuilder);
 	}
 

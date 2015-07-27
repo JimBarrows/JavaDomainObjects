@@ -29,6 +29,11 @@
 			<version>1.0-SNAPSHOT</version>
 			<type>ejb</type>
 		</dependency>
+		<dependency>
+			<groupId>jdo</groupId>
+			<artifactId>common</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -39,6 +44,10 @@
 				<configuration>
 					<defaultLibBundleDir>lib</defaultLibBundleDir>
 					<modules>
+						<jarModule>
+							<groupId>jdo</groupId>
+							<artifactId>common</artifactId>
+						</jarModule>
 						<ejbModule>
 							<groupId>jdo</groupId>
 							<artifactId>application</artifactId>
@@ -50,7 +59,8 @@
 						<webModule>
 							<groupId>jdo</groupId>
 							<artifactId>crm</artifactId>
-						</webModule>						
+							<context-root>crm</context-root>
+						</webModule>
 					</modules>
 					<archive>
 						<manifestEntries>

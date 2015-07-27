@@ -1,4 +1,4 @@
-package specification.steps;
+package specification.steps.ui;
 
 import jdo.party.model.Person;
 

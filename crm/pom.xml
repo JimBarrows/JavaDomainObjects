@@ -77,10 +77,9 @@
 				<artifactId>maven-failsafe-plugin</artifactId>
 				<version>2.18.1</version>
 				<configuration>
-					<testSourceDirectory>${project}/src/integrationTest/java</testSourceDirectory>
-					<additionalClasspathElements>
-						<additionalClasspathElement>${project}/src/integrationTest/resources</additionalClasspathElement>
-					</additionalClasspathElements>
+					<includes>
+						<include>**/*SpecificationTests.java</include>
+					</includes>
 				</configuration>
 			</plugin>
 		</plugins>
@@ -121,35 +120,6 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-	<dependencyManagement>
-		<dependencies>
-			<dependency>
-				<groupId>org.jboss.spec</groupId>
-				<artifactId>jboss-javaee-6.0</artifactId>
-				<version>3.0.2.Final</version>
-				<type>pom</type>
-				<scope>import</scope>
-			</dependency>
-			<dependency>
-				<groupId>javax.ws.rs</groupId>
-				<artifactId>javax.ws.rs-api</artifactId>
-				<version>2.0</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>javax.ejb</groupId>
-				<artifactId>javax.ejb-api</artifactId>
-				<version>3.2</version>
-				<scope>provided</scope>
-			</dependency>
-			<dependency>
-				<groupId>javax.enterprise</groupId>
-				<artifactId>cdi-api</artifactId>
-				<version>1.1</version>
-				<scope>provided</scope>
-			</dependency>
-		</dependencies>
-	</dependencyManagement>
 	<dependencies>
 		<dependency>
 			<groupId>jdo</groupId>
@@ -171,36 +141,10 @@
 			</exclusions>
 		</dependency>
 		<dependency>
-			<groupId>javax.validation</groupId>
-			<artifactId>validation-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.jboss.spec.javax.servlet</groupId>
-			<artifactId>jboss-servlet-api_3.0_spec</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
 			<groupId>com.fasterxml.jackson.jaxrs</groupId>
 			<artifactId>jackson-jaxrs-json-provider</artifactId>
 			<scope>provided</scope>
 		</dependency>
-		<dependency>
-			<groupId>javax.ws.rs</groupId>
-			<artifactId>javax.ws.rs-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.ejb</groupId>
-			<artifactId>javax.ejb-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<scope>provided</scope>
-		</dependency>
-
 		<dependency>
 			<groupId>jdo</groupId>
 			<artifactId>PeopleAndOrganizations</artifactId>
@@ -250,11 +194,6 @@
 		</dependency>
 		<dependency>
 			<groupId>org.seleniumhq.selenium</groupId>
-			<artifactId>selenium-java</artifactId>
-			<scope>test</scope>
-		</dependency>
-		<dependency>
-			<groupId>org.seleniumhq.selenium</groupId>
 			<artifactId>selenium-support</artifactId>
 			<scope>test</scope>
 		</dependency>
@@ -268,6 +207,17 @@
 					<artifactId>hamcrest-core</artifactId>
 				</exclusion>
 			</exclusions>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.core</groupId>
+			<artifactId>jersey-client</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.glassfish.jersey.media</groupId>
+			<artifactId>jersey-media-json-jackson</artifactId>
+			<version>2.19</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 </project>

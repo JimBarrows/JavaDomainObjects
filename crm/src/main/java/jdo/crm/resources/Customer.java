@@ -56,6 +56,7 @@ public class Customer {
 
 	@POST
 	@Consumes(APPLICATION_JSON)
+	@Produces(APPLICATION_JSON)
 	@ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)	
 	public CustomerDto create(CustomerDto customer) {
 
