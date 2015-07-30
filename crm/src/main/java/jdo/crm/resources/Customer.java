@@ -2,6 +2,7 @@ package jdo.crm.resources;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
 import static jdo.application.ApplicationConfiguration.internalOrganizationPredicate;
+import static jdo.party.specifications.HasActiveCustomerRelationshipWith.hasActiveCustomerRelationshipWith;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -57,7 +58,7 @@ public class Customer {
 	@POST
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
-	@ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)	
+	@ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)
 	public CustomerDto create(CustomerDto customer) {
 
 		Party party = null;
@@ -85,13 +86,13 @@ public class Customer {
 
 		party = partyRepo.create(party);
 
-		InternalOrganization companyInternalRole = (InternalOrganization) configuration.company().getActingAs()
-				.stream().filter(internalOrganizationPredicate()).findFirst().get();
+		InternalOrganization companyInternalRole = (InternalOrganization) configuration.company().getActingAs().stream()
+				.filter(internalOrganizationPredicate()).findFirst().get();
 
 		CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
 
 		customerRelationship = (CustomerRelationship) relationshipRepo.create(customerRelationship);
-		
+
 		return new CustomerDto(party);
 	}
 
@@ -151,17 +152,8 @@ public class Customer {
 		Optional<Integer> maxResult = Optional.ofNullable(max);
 
 		List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
-		/**/
-		configuration.company().getActingAs().stream()
-			.filter( r -> {System.out.println("is role customer and active: " + r.getId());return (r instanceof jdo.party.model.roles.InternalOrganization) && r.getDateTimeRange().isActive();})
-			.forEach(customerRole -> {
-				System.out.println("Customer role: " + customerRole.getId());
-				customerRole.getRelationshipsInvolvedIn().stream()
-				.filter(relationship -> ((relationship instanceof CustomerRelationship) && relationship.getDateTimeRange().isActive()))
-				.forEach(cr -> customerDtoList.add( new CustomerDto( ((CustomerRelationship)cr).getRelationshipTo().getRoleFor())));
-			});
-					
-
+		partyRepo.findBy(hasActiveCustomerRelationshipWith(configuration.company()), startPosition, maxResult)
+				.forEach(party -> customerDtoList.add(new CustomerDto(party)));
 
 		return new CustomerDtoList(customerDtoList);
 	}

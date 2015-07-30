@@ -1,8 +1,10 @@
 package specification.steps.api;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static junit.framework.Assert.*;
-import static org.apache.commons.lang3.StringUtils.*;
+import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNotNull;
+import static junit.framework.Assert.assertNull;
+
 import java.util.logging.Logger;
 
 import javax.ws.rs.client.Client;
@@ -14,7 +16,6 @@ import javax.ws.rs.core.Response;
 import org.glassfish.jersey.filter.LoggingFilter;
 import org.jbehave.core.annotations.Given;
 import org.jbehave.core.annotations.Named;
-import org.jbehave.core.annotations.Pending;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
@@ -85,14 +86,5 @@ public class CrmSteps {
 		}
 		assertEquals(fqnType(), response.getPartyType());
 	}
-
-	@Then("I get shown the list of customers")
-	public void thenIGetShownTheListOfCustomers() {
-		// Not applicable to a json response.
-	}
-
-	@Then("the new customer is in the list.")
-	public void thenTheNewCustomerIsInTheList() {
-		// Not applicable to a json response.
-	}
+	
 }

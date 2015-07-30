@@ -1,6 +1,6 @@
 package jdo.core.repository.specification;
 
-public abstract class Composite<E> implements Specification<E>{
+public abstract class Composite<E> extends AbstractSpecification<E>{
 
 	protected Specification<E> left;
 	protected Specification<E> right;
@@ -9,4 +9,5 @@ public abstract class Composite<E> implements Specification<E>{
 		this.left = left;
 		this.right = right;
 	}
+
 }

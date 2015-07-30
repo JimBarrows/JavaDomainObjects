@@ -1,6 +1,6 @@
 package jdo.core.repository.specification;
 
-public abstract class Or<E> extends Composite<E> {
+public class Or<E> extends Composite<E> {
 
 	public Or(Specification<E> left, Specification<E> right) {
 		super(left, right);
