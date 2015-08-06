@@ -13,20 +13,36 @@ import jdo.party.model.PartyRole;
  */
 public class PartyHasActiveRoleOf extends AbstractSpecification<Party> {
 
-	private Class<? extends PartyRole> expectedRole;
+    /**
+     * The role this specification expects.
+     */
+    private Class<? extends PartyRole> expectedRole;
 
-	public PartyHasActiveRoleOf(Class<? extends PartyRole> expectedRole) {
-		super();
-		this.expectedRole = expectedRole;
-	}
+    /**
+     * Create it.
+     * 
+     * @param newExpectedRole
+     *            Required.
+     */
+    public PartyHasActiveRoleOf(final Class<? extends PartyRole> newExpectedRole) {
+	super();
+	this.expectedRole = newExpectedRole;
+    }
 
-	@Override
-	public boolean isSatisfiedBy(Party entity) {
-		return entity.getActingAs().stream().anyMatch(
-				partyRole -> partyRole.getClass().isInstance(expectedRole) && partyRole.getDateTimeRange().isActive());
-	}
+    @Override
+    public final boolean isSatisfiedBy(final Party entity) {
+	return entity.getActingAs().stream().anyMatch(
+		partyRole -> partyRole.getClass().isInstance(expectedRole) && partyRole.getDateTimeRange().isActive());
+    }
 
-	public static final PartyHasActiveRoleOf partyHasActiveRoleOf(Class<? extends PartyRole> role) {
-		return new PartyHasActiveRoleOf(role);
-	}
+    /**
+     * Convenience method to avoid the clutter of a new statement.
+     * 
+     * @param role
+     *            the role the party needs to have
+     * @return A new PartyHasActiveRoleOf class.
+     */
+    public static final PartyHasActiveRoleOf partyHasActiveRoleOf(final Class<? extends PartyRole> role) {
+	return new PartyHasActiveRoleOf(role);
+    }
 }

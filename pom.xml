@@ -80,6 +80,7 @@
 		<module>utils</module>
 		<module>validations</module>
 		<module>WorkEffort</module>
+		<module>build-tools</module>
 	</modules>
 
 	<profiles>
@@ -377,7 +378,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>2.13</version>
+				<version>2.16</version>
 				<reportSets>
 					<reportSet>
 						<reports>

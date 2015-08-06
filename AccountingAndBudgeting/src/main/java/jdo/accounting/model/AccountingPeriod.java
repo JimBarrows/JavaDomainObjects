@@ -8,63 +8,111 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
 import jdo.accounting.model.asset.PeriodType;
+
 import jdo.fields.DateTimeRange;
+
 import jdo.model.BasePersistentModel;
 
+/**
+ * Represents a single accounting period, it's length defined by the
+ * dateTimeRange.
+ * 
+ * @author Jim
+ *
+ */
 @Entity
 public class AccountingPeriod extends BasePersistentModel {
 
-	/**
-	 * 
-	 */
-	private static final long	serialVersionUID	= 1L;
+    /**The period number within the cycle (ie monthly would be 1-12).
+     * 
+     */
+    @Min(0)
+    private int accountingPeriodNumber;
 
-	@Min(0)
-	private int					accountingPeriodNumber;
+    /**
+     * UUID of PartyRole.
+     * 
+     */
+    private UUID accountPeriodFor;
 
-	/**UUID of PartyRole.
-	 * 
-	 */
-	private UUID			accountPeriodFor;
+    /**
+     * What type of period.
+     */
+    @ManyToOne
+    private PeriodType definedBy;
 
-	@ManyToOne
-	private PeriodType			definedBy;
+    /**
+     * The date range for the period.
+     */
+    @Embedded
+    private DateTimeRange dateTimeRange = new DateTimeRange();
 
-	@Embedded
-	private DateTimeRange		dateTimeRange		= new DateTimeRange();
+    /**
+     * 
+     * @return dateTimeRange
+     */
+   public final DateTimeRange getDateTimeRange() {
+	return dateTimeRange;
+    }
 
-	
-	public DateTimeRange getDateTimeRange() {
-		return dateTimeRange;
-	}
+   /**
+    * 
+    * @param newDateTimeRange The new datetime range
+    */
+   public final void setDateTimeRange(final DateTimeRange newDateTimeRange) {
+	this.dateTimeRange = newDateTimeRange;
+    }
 
-	public void setDateTimeRange(DateTimeRange dateTimeRange) {
-		this.dateTimeRange = dateTimeRange;
-	}
+   /**
+    * 
+    * @return accountingPeriodNumber
+    */
+   public final int getAccountingPeriodNumber() {
+	return accountingPeriodNumber;
+    }
 
-	public int getAccountingPeriodNumber() {
-		return accountingPeriodNumber;
-	}
+   /**
+    * 
+    * @return UUID
+    */
+   public final UUID getAccountPeriodFor() {
+	return accountPeriodFor;
+    }
 
+   /**
+    * 
+    * @return definedBy
+    */
+   public final PeriodType getDefinedBy() {
+	return definedBy;
+    }
 
-	public UUID getAccountPeriodFor() {
-		return accountPeriodFor;
-	}
-	
-	public PeriodType getDefinedBy() {
-		return definedBy;
-	}
+   /**
+    * 
+    * @param newAccountingPeriodNumber The accounting period number
+    */
+   public final void setAccountingPeriodNumber(final int newAccountingPeriodNumber) {
+	this.accountingPeriodNumber = newAccountingPeriodNumber;
+    }
 
-	public void setAccountingPeriodNumber(int accountingPeriodNumber) {
-		this.accountingPeriodNumber = accountingPeriodNumber;
-	}
+   /**
+    * 
+    * @param newAccountPeriodFor uuid
+    */
+   public final void setAccountPeriodFor(final UUID newAccountPeriodFor) {
+	this.accountPeriodFor = newAccountPeriodFor;
+    }
 
-	public void setAccountPeriodFor(UUID accountPeriodFor) {
-		this.accountPeriodFor = accountPeriodFor;
-	}
+   /**
+    * 
+    * @param newDefinedBy PeriodType
+    */
+   public final void setDefinedBy(final PeriodType newDefinedBy) {
+	this.definedBy = newDefinedBy;
+    }
 
-	public void setDefinedBy(PeriodType definedBy) {
-		this.definedBy = definedBy;
-	}
-
+   /**
+    * 
+    */
+    private static final long serialVersionUID = 1L;
 }
