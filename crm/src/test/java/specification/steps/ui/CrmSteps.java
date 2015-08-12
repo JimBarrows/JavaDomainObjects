@@ -12,84 +12,143 @@ import specification.pages.CrmIndex;
 import specification.pages.CustomersNew;
 import specification.pages.PageFactory;
 
+/**
+ * Crm steps for the UI portion.
+ * 
+ * @author Jim
+ *
+ */
 public class CrmSteps {
 
-	private CrmIndex index;
-	private CustomersNew customerNew;
+    /**
+     * The index page.
+     */
+    private CrmIndex index;
+    /**
+     * The /customers/new page.
+     */
+    private CustomersNew customerNew;
 
-	private Person person;
+    /**
+     * The person who is a customer.
+     */
+    private Person person;
 
-	public CrmSteps(PageFactory pageFactory) {
-		index = pageFactory.crmIndex();
-		customerNew = pageFactory.customerNew();
-	}
+    /**
+     * Construct the object by getting the pages that will be used in the steps.
+     * 
+     * @param pageFactory
+     *            The factory for the page.
+     */
+    public CrmSteps(final PageFactory pageFactory) {
+	index = pageFactory.crmIndex();
+	customerNew = pageFactory.customerNew();
+    }
 
-	@Given("I am on the crm site")
-	public void givenIAmOnTheCrmSite() {
-		index.go();
-		index.onCorrectPage();
-		index.title().shouldBe("Customer Relationship Management");
-		index.pageHeader().shouldBe("Customer Relationship Management");
-	}
+    /**
+     * Map the step to the function.
+     */
+    @Given("I am on the crm site")
+    public final void givenIAmOnTheCrmSite() {
+	index.go();
+	index.onCorrectPage();
+	index.title().shouldBe("Customer Relationship Management");
+	index.pageHeader().shouldBe("Customer Relationship Management");
+    }
 
-	@Given("I've chosen to add a person as a customer")
-	public void addPersonAsCustomer() {
-		index.clickAddButton();
-		customerNew.onCorrectPage();
-		customerNew.selectCustomerType("Person");
-		person = new Person();
-	}
+    /**
+     * Map the step to the function.
+     */
+    @Given("I've chosen to add a person as a customer")
+    public final void addPersonAsCustomer() {
+	index.clickAddButton();
+	customerNew.onCorrectPage();
+	customerNew.selectCustomerType("Person");
+	person = new Person();
+    }
 
-	@Given("I enter the first name as $firstName")
-	public void entgerFirstNameAs(String firstName) {
-		customerNew.setFirstName(firstName);
-		person.setFirstName(firstName);
-	}
+    /**
+     * Map the step to the function.
+     * 
+     * @param firstName
+     *            of the customer
+     */
+    @Given("I enter the first name as $firstName")
+    public final void enterFirstNameAs(final String firstName) {
+	customerNew.setFirstName(firstName);
+	person.setFirstName(firstName);
+    }
 
-	@Given("I enter the last name as $lastName")
-	public void enterLastNameAs(String lastName) {
-		customerNew.setLastName(lastName);
-		person.setLastName(lastName);
-	}
+    /**
+     * Map the step to the function.
+     * 
+     * @param lastName
+     *            of the customer
+     */
+    @Given("I enter the last name as $lastName")
+    public final void enterLastNameAs(final String lastName) {
+	customerNew.setLastName(lastName);
+	person.setLastName(lastName);
+    }
 
-	@When("I save the customer")
-	public void whenISaveTheCustomer() {
-		customerNew.clickSaveButton();
-	}
+    /**
+     * Map the step to the function.
+     */
+    @When("I save the customer")
+    public final void whenISaveTheCustomer() {
+	customerNew.clickSaveButton();
+    }
 
-	@Then("I get a message indicating the successful save")
-	public void thenIGetAMessageIndicatingTheSuccessfulSave() {
-		TestableString flashMessage = customerNew.flashMessage();
-		flashMessage.shouldBe("New customer added.");
-	}
+    /**
+     * Map the step.
+     */
+    @Then("I get a message indicating the successful save")
+    public final void thenIGetAMessageIndicatingTheSuccessfulSave() {
+	TestableString flashMessage = customerNew.flashMessage();
+	flashMessage.shouldBe("New customer added.");
+    }
 
-	@Then("I get shown the list of customers")
-	public void thenIGetShownTheListOfCustomers() {
-		index.onCorrectPage();
-	}
+    /**
+     * Map the step.
+     */
+    @Then("I get shown the list of customers")
+    public final void thenIGetShownTheListOfCustomers() {
+	index.onCorrectPage();
+    }
 
-	@Then("the new customer in the list.")
-	public void thenTheNewCustomerInTheList() {
-		index.customerList().contains(
-				person.getFirstName() + " " + person.getLastName());
-	}
+    /**
+     * Map the step.
+     */
+    @Then("the new customer in the list.")
+    public final void thenTheNewCustomerInTheList() {
+	index.customerList().contains(person.getFirstName() + " " + person.getLastName());
+    }
 
-	@Given("I've chosen to add a customer")
-	@Pending
-	public void givenIveChosenToAddACustomer() {
-		// PENDING
-	}
+    /**
+     * Map the step.
+     */
+    @Given("I've chosen to add a customer")
+    @Pending
+    public final void givenIHaveChosenToAddACustomer() {
+	// PENDING
+    }
 
-	@Given("I enter the organization name")
-	@Pending
-	public void givenIEnterTheOrganizationName() {
-		// PENDING
-	}
+    /**
+     * Map the step.
+     */
+    @Given("I enter the organization name")
+    @Pending
+    public final void givenIEnterTheOrganizationName() {
+	// PENDING
+    }
 
-	@Then("I get shown the list of customers with the new customer in the list.")
-	@Pending
-	public void thenIGetShownTheListOfCustomersWithTheNewCustomerInTheList() {
-		// PENDING
-	}
+    /**
+     * Map the step.
+     */
+    @Then("I get shown the list of customers with the new customer in the list.")
+    @Pending
+    public final void thenIGetShownTheListOfCustomersWithTheNewCustomerInTheList() {
+	// PENDING
+    }
 
 }

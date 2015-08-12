@@ -9,4 +9,4 @@
  * @author Jim
  *
  */
-package specification.pages;
+package specification;

@@ -5,4 +5,4 @@
  * @author Jim
  *
  */
-package specification.steps.api;
+package specification.steps.ui;

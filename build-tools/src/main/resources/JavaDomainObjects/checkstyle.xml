@@ -11,6 +11,7 @@
 <module name="Checker">
   <property name="severity" value="warning"/>
   <module name="TreeWalker">
+    <module name="SuppressWarningsHolder"/>
     <module name="JavadocMethod">
       <property name="scope" value="public"/>
       <property name="suppressLoadErrors" value="true"/>
@@ -41,7 +42,9 @@
     <module name="EmptyForIteratorPad"/>
     <module name="GenericWhitespace"/>
     <module name="MethodParamPad"/>
-    <module name="NoWhitespaceAfter"/>
+    <module name="NoWhitespaceAfter">
+      <property name="tokens" value="BNOT,DEC,DOT,INC,LNOT,UNARY_MINUS,UNARY_PLUS,TYPECAST"/>
+    </module>
     <module name="NoWhitespaceBefore"/>
     <module name="OperatorWrap"/>
     <module name="ParenPad"/>
@@ -80,9 +83,11 @@
     <module name="JavaNCSS"/>
     <module name="NPathComplexity"/>
     <module name="JavadocStyle"/>
+    <module name="SuppressWarnings"/>
   </module>
   <module name="JavadocPackage"/>
   <module name="NewlineAtEndOfFile"/>
   <module name="Translation"/>
   <module name="FileLength"/>
+  <module name="SuppressWarningsFilter"/>
 </module>
