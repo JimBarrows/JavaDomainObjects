@@ -2,67 +2,89 @@ package jdo.dto;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
 
+/**
+ * Represent the type that inherit from party.
+ *
+ * @author Jim
+ *
+ */
 @JsonRootName("partyType")
 public class PartyTypeDto {
 
-	private String	id;
-	private String	name;
+	/**
+	 * The fully qualified, canonical name of the class.
+	 *
+	 */
+	private final String	id;
+	/**
+	 * The name the user sees.
+	 */
+	private final String	name;
 
-	public PartyTypeDto(Class<?> type, String name) {
+	/**
+	 * Create the read only class.
+	 *
+	 * @param type
+	 *            of the class.
+	 * @param name
+	 *            of the class.
+	 */
+	public PartyTypeDto(final Class<?> type, final String name) {
 		super();
-		this.id = type.getCanonicalName();
+		id = type.getCanonicalName();
 		this.name = name;
 	}
-	
-	public String getId() {
+
+	/**
+	 *
+	 * @return id
+	 */
+	public final String getId() {
 		return id;
 	}
 
-	public void setId(String id) {
-		this.id = id;
-	}
-
-	public String getName() {
+	/**
+	 *
+	 * @return name
+	 */
+	public final String getName() {
 		return name;
 	}
 
-	public void setName(String name) {
-		this.name = name;
-	}
-
 	@Override
-	public int hashCode() {
+	public final int hashCode() {
 		final int prime = 31;
 		int result = 1;
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
+		result = (prime * result) + ((id == null) ? 0 : id.hashCode());
 		return result;
 	}
 
 	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
+	public final boolean equals(final Object obj) {
+		if (this == obj) {
 			return true;
-		if (obj == null)
+		}
+		if (obj == null) {
 			return false;
-		if (getClass() != obj.getClass())
+		}
+		if (getClass() != obj.getClass()) {
 			return false;
-		PartyTypeDto other = (PartyTypeDto) obj;
+		}
+		final PartyTypeDto other = ( PartyTypeDto ) obj;
 		if (id == null) {
-			if (other.id != null)
+			if (other.id != null) {
 				return false;
-		} else if (!id.equals(other.id))
+			}
+		} else if (!id.equals(other.id)) {
 			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
+		}
 		return true;
 	}
 
 	@Override
-	public String toString() {
+	public final String
+
+	toString() {
 		return "PartyTypeDto [id=" + id + ", name=" + name + "]";
-	}	
+	}
 }

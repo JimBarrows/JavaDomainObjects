@@ -41,134 +41,176 @@ import jdo.party.repositories.RelationshipRepository;
 import jdo.web.Errors;
 import jdo.web.ValidationError;
 
+/**
+ * Functionality behind the customers resource.
+ * 
+ * @author Jim
+ *
+ */
 @Api(value = "/customers", description = "Operations about customers")
 @RequestScoped
 @Path("/customers")
 public class Customer {
 
-    /**
-     * The repository keeping all the people & organizaiton information in it.
-     */
-    @EJB
-    private PartyRepository partyRepo;
+	/**
+	 * The repository keeping all the people & organizaiton information in it.
+	 */
+	@EJB
+	private PartyRepository partyRepo;
 
-    /**
-     * 
-     */
-    @EJB
-    private RelationshipRepository relationshipRepo;
+	/**
+	 * The repo for the relationships.
+	 */
+	@EJB
+	private RelationshipRepository relationshipRepo;
 
-    @EJB
-    private ApplicationConfiguration configuration;
+	/**
+	 * The configuration of the application.
+	 * 
+	 */
+	@EJB
+	private ApplicationConfiguration configuration;
 
-    @POST
-    @Consumes(APPLICATION_JSON)
-    @Produces(APPLICATION_JSON)
-    @ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)
-    public CustomerDto create(CustomerDto customer) {
+	/**
+	 * Create a customer, this gets mapped to the post.
+	 * 
+	 * @param customer
+	 *            being created.
+	 * @return the created customer.
+	 */
+	@POST
+	@Consumes(APPLICATION_JSON)
+	@Produces(APPLICATION_JSON)
+	@ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)
+	public final CustomerDto create(final CustomerDto customer) {
 
-	Party party = null;
+		Party party = null;
 
-	if (customer.getPartyType().equals(Company.class.getCanonicalName())) {
-	    party = new Company();
-	    ((Company) party).setName(customer.getName());
+		if (customer.getPartyType().equals(Company.class.getCanonicalName())) {
+			party = new Company();
+			(( Company ) party).setName(customer.getName());
 
-	} else if (customer.getPartyType().equals(Organization.class.getCanonicalName())) {
-	    party = new Organization();
-	    ((Organization) party).setName(customer.getName());
+		} else if (customer.getPartyType().equals(Organization.class.getCanonicalName())) {
+			party = new Organization();
+			(( Organization ) party).setName(customer.getName());
 
-	} else if (customer.getPartyType().equals(Person.class.getCanonicalName())) {
-	    party = new Person();
-	    ((Person) party).setFirstName(customer.getFirstName());
-	    ((Person) party).setLastName(customer.getLastName());
-	} else {
-	    Errors error = new Errors();
-	    error.put("partyType", Arrays.asList("Invalid type " + customer.getPartyType()));
-	    throw new ValidationError(error);
+		} else if (customer.getPartyType().equals(Person.class.getCanonicalName())) {
+			party = new Person();
+			(( Person ) party).setFirstName(customer.getFirstName());
+			(( Person ) party).setLastName(customer.getLastName());
+		} else {
+			Errors error = new Errors();
+			error.put("partyType", Arrays.asList("Invalid type " + customer.getPartyType()));
+			throw new ValidationError(error);
+		}
+
+		jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
+		party.addPartyRole(customerRole);
+
+		party = partyRepo.create(party);
+
+		InternalOrganization companyInternalRole = ( InternalOrganization ) configuration.company().getActingAs()
+				.stream().filter(internalOrganizationPredicate()).findFirst().get();
+
+		CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
+
+		customerRelationship = ( CustomerRelationship ) relationshipRepo.create(customerRelationship);
+
+		return new CustomerDto(party);
 	}
 
-	jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
-	party.addPartyRole(customerRole);
+	/**
+	 * Update a customer.
+	 * 
+	 * @param id
+	 *            of the customer.
+	 * @param customer
+	 *            The new customer information
+	 * @return the updated customer
+	 */
+	@PUT
+	@Path("/{id}")
+	@Consumes(APPLICATION_JSON)
+	@ApiOperation(value = "Update Customer", notes = "Updates a customer, using the id in the path, and customer data.", response = CustomerDto.class)
+	@Transactional
+	public final CustomerDto update(@NotNull @PathParam("id") final UUID id, final CustomerDto customer) {
 
-	party = partyRepo.create(party);
+		Party party = partyRepo.findById(id).orElseThrow(() -> new NotFoundException());
 
-	InternalOrganization companyInternalRole = (InternalOrganization) configuration.company().getActingAs().stream()
-		.filter(internalOrganizationPredicate()).findFirst().get();
+		if (party.getActingAs().stream().anyMatch(role -> {
+			return (role instanceof jdo.party.model.roles.Customer);
+		})) {
 
-	CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
+			switch (customer.getPartyType()) {
+			case "jdo.party.model.Company":
+				if (party instanceof Company) {
+					(( Company ) party).setName(customer.getName());
+				} else {
+					throw new NotFoundException();
+				}
+				break;
+			case "jdo.party.model.Organization":
+				if (party instanceof Company) {
+					(( Organization ) party).setName(customer.getName());
+				} else {
+					throw new NotFoundException();
+				}
+				break;
+			case "jdo.party.model.Person":
+				if (party instanceof Person) {
+					(( Person ) party).setFirstName(customer.getFirstName());
+					(( Person ) party).setLastName(customer.getLastName());
+				} else {
+					throw new NotFoundException();
+				}
+				break;
 
-	customerRelationship = (CustomerRelationship) relationshipRepo.create(customerRelationship);
-
-	return new CustomerDto(party);
-    }
-
-    @PUT
-    @Path("/{id}")
-    @Consumes(APPLICATION_JSON)
-    @ApiOperation(value = "Update Customer", notes = "Updates a customer, using the id in the path, and customer data.", response = CustomerDto.class)
-    @Transactional
-    public CustomerDto update(@NotNull @PathParam("id") UUID id, CustomerDto customer) {
-
-	Party party = partyRepo.findById(id).orElseThrow(() -> new NotFoundException());
-
-	if (party.getActingAs().stream().anyMatch(role -> {
-	    return (role instanceof jdo.party.model.roles.Customer);
-	})) {
-
-	    switch (customer.getPartyType()) {
-	    case "jdo.party.model.Company":
-		if (party instanceof Company) {
-		    ((Company) party).setName(customer.getName());
+			default:
+				throw new NotFoundException();
+			}
 		} else {
-		    throw new NotFoundException();
-		}
-		break;
-	    case "jdo.party.model.Organization":
-		if (party instanceof Company) {
-		    ((Organization) party).setName(customer.getName());
-		} else {
-		    throw new NotFoundException();
-		}
-		break;
-	    case "jdo.party.model.Person":
-		if (party instanceof Person) {
-		    ((Person) party).setFirstName(customer.getFirstName());
-		    ((Person) party).setLastName(customer.getLastName());
-		} else {
-		    throw new NotFoundException();
-		}
-		break;
 
-	    default:
-		throw new NotFoundException();
-	    }
-	} else {
-
-	    throw new NotFoundException();
+			throw new NotFoundException();
+		}
+		return customer;
 	}
-	return customer;
-    }
 
-    @ApiOperation(value = "List all customers", notes = "Returns a list of all customers.  The parameters startPosition and maxResult do not need to be present, but control how much data is returned.", response = CustomerDto.class)
-    @GET
-    @Produces(APPLICATION_JSON)
-    public CustomerDtoList listAll(@QueryParam("start") Integer start, @QueryParam("max") Integer max) {
+	/**
+	 * List all customers.
+	 * 
+	 * @param offset
+	 *            An optional offset into the returning array of customers.
+	 * @param limit
+	 *            The maximum number of customers to return.
+	 * @return All the customers, if offset limit are provided then it's all the
+	 *         customers starting at offset * limit to (offset * limit) + limit
+	 */
+	@ApiOperation(value = "List all customers", notes = "Returns a list of all customers.  "
+			+ "The parameters offsetPosition and maxResult do not need to be present, but control how much data is returned.", response = CustomerDto.class)
+	@GET
+	@Produces(APPLICATION_JSON)
+	public final CustomerDtoList listAll(@QueryParam("offset") final Integer offset,
+			@QueryParam("APPLICATION_JSON") final Integer limit) {
 
-	Optional<Integer> startPosition = Optional.ofNullable(start);
-	Optional<Integer> maxResult = Optional.ofNullable(max);
+		List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
+		partyRepo.findBy(hasActiveCustomerRelationshipWith(configuration.company()), Optional.ofNullable(offset),
+				Optional.ofNullable(limit)).forEach(party -> customerDtoList.add(new CustomerDto(party)));
 
-	List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
-	partyRepo.findBy(hasActiveCustomerRelationshipWith(configuration.company()), startPosition, maxResult)
-		.forEach(party -> customerDtoList.add(new CustomerDto(party)));
+		return new CustomerDtoList(customerDtoList);
+	}
 
-	return new CustomerDtoList(customerDtoList);
-    }
-
-    @ApiOperation(value = "Find a customer by the id.", notes = "Returns one customer, or NotFound.", response = CustomerDto.class)
-    @GET
-    @Path("/{id}")
-    @Produces(APPLICATION_JSON)
-    public CustomerDto findById(@PathParam("id") UUID id) {
-	return new CustomerDto(partyRepo.findById(id).orElseThrow(() -> new NotFoundException()));
-    }
+	/**
+	 * Find a single customer by the customer id.
+	 * 
+	 * @param id
+	 *            of the customer.
+	 * @return the customer or thrown a notfound exception.
+	 */
+	@ApiOperation(value = "Find a customer by the id.", notes = "Returns one customer, or NotFound.", response = CustomerDto.class)
+	@GET
+	@Path("/{id}")
+	@Produces(APPLICATION_JSON)
+	public final CustomerDto findById(@PathParam("id") final UUID id) {
+		return new CustomerDto(partyRepo.findById(id).orElseThrow(() -> new NotFoundException()));
+	}
 }
