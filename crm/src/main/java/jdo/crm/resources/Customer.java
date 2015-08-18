@@ -43,7 +43,7 @@ import jdo.web.ValidationError;
 
 /**
  * Functionality behind the customers resource.
- * 
+ *
  * @author Jim
  *
  */
@@ -66,14 +66,14 @@ public class Customer {
 
 	/**
 	 * The configuration of the application.
-	 * 
+	 *
 	 */
 	@EJB
 	private ApplicationConfiguration configuration;
 
 	/**
 	 * Create a customer, this gets mapped to the post.
-	 * 
+	 *
 	 * @param customer
 	 *            being created.
 	 * @return the created customer.
@@ -82,7 +82,7 @@ public class Customer {
 	@Consumes(APPLICATION_JSON)
 	@Produces(APPLICATION_JSON)
 	@ApiOperation(value = "Create Customer", notes = "Create a customer from the customer dto.", response = CustomerDto.class)
-	public final CustomerDto create(final CustomerDto customer) {
+	public CustomerDto create(final CustomerDto customer) {
 
 		Party party = null;
 
@@ -99,17 +99,17 @@ public class Customer {
 			(( Person ) party).setFirstName(customer.getFirstName());
 			(( Person ) party).setLastName(customer.getLastName());
 		} else {
-			Errors error = new Errors();
+			final Errors error = new Errors();
 			error.put("partyType", Arrays.asList("Invalid type " + customer.getPartyType()));
 			throw new ValidationError(error);
 		}
 
-		jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
+		final jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
 		party.addPartyRole(customerRole);
 
 		party = partyRepo.create(party);
 
-		InternalOrganization companyInternalRole = ( InternalOrganization ) configuration.company().getActingAs()
+		final InternalOrganization companyInternalRole = ( InternalOrganization ) configuration.company().getActingAs()
 				.stream().filter(internalOrganizationPredicate()).findFirst().get();
 
 		CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
@@ -121,7 +121,7 @@ public class Customer {
 
 	/**
 	 * Update a customer.
-	 * 
+	 *
 	 * @param id
 	 *            of the customer.
 	 * @param customer
@@ -133,9 +133,9 @@ public class Customer {
 	@Consumes(APPLICATION_JSON)
 	@ApiOperation(value = "Update Customer", notes = "Updates a customer, using the id in the path, and customer data.", response = CustomerDto.class)
 	@Transactional
-	public final CustomerDto update(@NotNull @PathParam("id") final UUID id, final CustomerDto customer) {
+	public CustomerDto update(@NotNull @PathParam("id") final UUID id, final CustomerDto customer) {
 
-		Party party = partyRepo.findById(id).orElseThrow(() -> new NotFoundException());
+		final Party party = partyRepo.findById(id).orElseThrow(() -> new NotFoundException());
 
 		if (party.getActingAs().stream().anyMatch(role -> {
 			return (role instanceof jdo.party.model.roles.Customer);
@@ -177,7 +177,7 @@ public class Customer {
 
 	/**
 	 * List all customers.
-	 * 
+	 *
 	 * @param offset
 	 *            An optional offset into the returning array of customers.
 	 * @param limit
@@ -189,10 +189,10 @@ public class Customer {
 			+ "The parameters offsetPosition and maxResult do not need to be present, but control how much data is returned.", response = CustomerDto.class)
 	@GET
 	@Produces(APPLICATION_JSON)
-	public final CustomerDtoList listAll(@QueryParam("offset") final Integer offset,
+	public CustomerDtoList listAll(@QueryParam("offset") final Integer offset,
 			@QueryParam("APPLICATION_JSON") final Integer limit) {
 
-		List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
+		final List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
 		partyRepo.findBy(hasActiveCustomerRelationshipWith(configuration.company()), Optional.ofNullable(offset),
 				Optional.ofNullable(limit)).forEach(party -> customerDtoList.add(new CustomerDto(party)));
 
@@ -201,7 +201,7 @@ public class Customer {
 
 	/**
 	 * Find a single customer by the customer id.
-	 * 
+	 *
 	 * @param id
 	 *            of the customer.
 	 * @return the customer or thrown a notfound exception.
@@ -210,7 +210,7 @@ public class Customer {
 	@GET
 	@Path("/{id}")
 	@Produces(APPLICATION_JSON)
-	public final CustomerDto findById(@PathParam("id") final UUID id) {
+	public CustomerDto findById(@PathParam("id") final UUID id) {
 		return new CustomerDto(partyRepo.findById(id).orElseThrow(() -> new NotFoundException()));
 	}
 }

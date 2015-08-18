@@ -7,10 +7,25 @@ import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 
+/**
+ * Provides a configured object mapper for the jackson json serializer.
+ *
+ * @author Jim
+ *
+ */
 @Provider
 public class ObjectMapperProvider implements ContextResolver<ObjectMapper> {
-	private ObjectMapper objectMapper;
 
+	/**
+	 * The object mapper being provided.
+	 *
+	 */
+	private final ObjectMapper objectMapper;
+
+	/**
+	 * Construct the object mapper.
+	 *
+	 */
 	public ObjectMapperProvider() {
 		objectMapper = new ObjectMapper();
 		objectMapper.configure(DeserializationFeature.UNWRAP_ROOT_VALUE, true);
@@ -19,8 +34,11 @@ public class ObjectMapperProvider implements ContextResolver<ObjectMapper> {
 		objectMapper.configure(SerializationFeature.ORDER_MAP_ENTRIES_BY_KEYS, true);
 	}
 
+	/**
+	 * Actually provide it.
+	 */
 	@Override
-	public ObjectMapper getContext(@SuppressWarnings("rawtypes") Class type) {
+	public ObjectMapper getContext(@SuppressWarnings("rawtypes") final Class type) {
 		return objectMapper;
 	}
 }

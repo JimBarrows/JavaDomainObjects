@@ -25,9 +25,10 @@ Examples:
 
 Scenario: Reading a customer
 
-Given a <Type> customer is in the database 
+Given a <Type> customer 
 And the name is <Name>
-When I view the customer
+And the customer is in the database 
+When I view the customer by id
 Then I see the <Type>
 And I see the <Name>
 

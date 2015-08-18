@@ -15,18 +15,18 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 
+import com.wordnik.swagger.annotations.Api;
+import com.wordnik.swagger.annotations.ApiOperation;
+
 import jdo.dto.PartyTypeDto;
 import jdo.dto.PartyTypeDtoList;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Person;
 
-import com.wordnik.swagger.annotations.Api;
-import com.wordnik.swagger.annotations.ApiOperation;
-
 /**
  * This is so the client can get a list of the classes that inherit from Party.
- * 
+ *
  * @author Jim
  *
  */
@@ -38,11 +38,11 @@ public class PartyType {
 	/**
 	 * The list of subclasses.
 	 */
-	private List<PartyTypeDto> list = new ArrayList<PartyTypeDto>();
+	private final List<PartyTypeDto> list = new ArrayList<PartyTypeDto>();
 
 	/**
 	 * Get the list.
-	 * 
+	 *
 	 * @param offset
 	 *            The beginning of the sub set of the list.
 	 * @param limit
@@ -52,7 +52,7 @@ public class PartyType {
 	@GET
 	@Produces(APPLICATION_JSON)
 	@ApiOperation(value = "List All", notes = "Return a list of all party types.", response = PartyTypeDtoList.class)
-	public final PartyTypeDtoList listAll(@QueryParam("offset") final Integer offset,
+	public PartyTypeDtoList listAll(@QueryParam("offset") final Integer offset,
 			@QueryParam("limit") final Integer limit) {
 
 		return new PartyTypeDtoList(list);
@@ -60,7 +60,7 @@ public class PartyType {
 
 	/**
 	 * Get one class type.
-	 * 
+	 *
 	 * @param id
 	 *            of the class type to get.
 	 * @return The class type, or throw a NotFoundException.
@@ -69,16 +69,16 @@ public class PartyType {
 	@Path("/{id}")
 	@Produces(APPLICATION_JSON)
 	@ApiOperation(value = "Find By Id", notes = "The id should be the FQN of the party type class.", response = PartyTypeDto.class)
-	public final PartyTypeDto findById(@NotNull @PathParam("id") final String id) {
+	public PartyTypeDto findById(@NotNull @PathParam("id") final String id) {
 		return list.stream().filter(f -> f.getId().equals(id)).findFirst().orElseThrow(() -> new NotFoundException());
 	}
 
 	/**
 	 * Initialize by adding the classes to the list.
-	 * 
+	 *
 	 */
 	@PostConstruct
-	public final void init() {
+	public void init() {
 		list.add(new PartyTypeDto(Company.class, "Company"));
 		list.add(new PartyTypeDto(Organization.class, "Organization"));
 		list.add(new PartyTypeDto(Person.class, "Person"));
