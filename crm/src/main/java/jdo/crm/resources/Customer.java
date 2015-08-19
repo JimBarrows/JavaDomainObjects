@@ -29,7 +29,6 @@ import com.wordnik.swagger.annotations.ApiOperation;
 
 import jdo.application.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
-import jdo.dto.CustomerDtoList;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
@@ -188,15 +187,16 @@ public class Customer {
 	@ApiOperation(value = "List all customers", notes = "Returns a list of all customers.  "
 			+ "The parameters offsetPosition and maxResult do not need to be present, but control how much data is returned.", response = CustomerDto.class)
 	@GET
+	@Path("/")
 	@Produces(APPLICATION_JSON)
-	public CustomerDtoList listAll(@QueryParam("offset") final Integer offset,
+	public List<CustomerDto> listAll(@QueryParam("offset") final Integer offset,
 			@QueryParam("APPLICATION_JSON") final Integer limit) {
 
 		final List<CustomerDto> customerDtoList = new ArrayList<CustomerDto>();
 		partyRepo.findBy(hasActiveCustomerRelationshipWith(configuration.company()), Optional.ofNullable(offset),
 				Optional.ofNullable(limit)).forEach(party -> customerDtoList.add(new CustomerDto(party)));
 
-		return new CustomerDtoList(customerDtoList);
+		return customerDtoList;
 	}
 
 	/**

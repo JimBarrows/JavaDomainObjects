@@ -1,7 +1,10 @@
 <div class="container-fluid">
- 	<a href="#/customers/new" class="btn btn-default">Add Customer</a>
+	<a href="#/customers/new" class="btn btn-default">Add Customer</a>
 	<ul>
-		<li ng-repeat="customer in customers"><a
-			href="#/custgomers/{{customer.id}}"></a><span>{{customer.name}}</span></a></li>
+		<li ng-repeat="customer in customers">
+			<a href="#/customers/{{customer.id}}">
+				<span>{{customer.name}}</span>
+			</a>
+		</li>
 	</ul>
 </div>

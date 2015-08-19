@@ -9,7 +9,7 @@ crmApp.config([ '$routeProvider', function($routeProvider) {
 		controller : 'CustomerFormCtrl'
 	}).when('/customers/:customerId', {
 		templateUrl : 'customers/view.html',
-		controller : 'CustgomerDetailCtrl'
+		controller : 'CustomerDetailCtrl'
 	}).otherwise({
 		redirectTo : '/customers'
 	});
