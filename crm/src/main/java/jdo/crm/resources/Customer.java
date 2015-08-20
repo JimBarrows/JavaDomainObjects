@@ -14,6 +14,7 @@ import javax.ejb.EJB;
 import javax.enterprise.context.RequestScoped;
 import javax.transaction.Transactional;
 import javax.validation.constraints.NotNull;
+import javax.ws.rs.ClientErrorException;
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.NotFoundException;
@@ -23,6 +24,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
+import javax.ws.rs.core.Response.Status;
 
 import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
@@ -130,13 +132,19 @@ public class Customer {
 	@PUT
 	@Path("/{id}")
 	@Consumes(APPLICATION_JSON)
+	@Produces(APPLICATION_JSON)
 	@ApiOperation(value = "Update Customer", notes = "Updates a customer, using the id in the path, and customer data.", response = CustomerDto.class)
 	@Transactional
 	public CustomerDto update(@NotNull @PathParam("id") final UUID id, final CustomerDto customer) {
 
 		final Party party = partyRepo.findById(id).orElseThrow(() -> new NotFoundException());
 
+		if (!party.getClass().getCanonicalName().equals(customer.getPartyType())) {
+			throw new ClientErrorException(Status.CONFLICT);
+		}
+
 		if (party.getActingAs().stream().anyMatch(role -> {
+			System.out.println("##### role type: " + role.getClass().getCanonicalName());
 			return (role instanceof jdo.party.model.roles.Customer);
 		})) {
 
