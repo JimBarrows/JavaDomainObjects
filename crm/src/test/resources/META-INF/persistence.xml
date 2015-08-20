@@ -2,9 +2,10 @@
 <persistence version="2.1"
 	xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
-	<persistence-unit name="PeopleAndOrganizations">
+	<persistence-unit name="crmBddTest" transaction-type="RESOURCE_LOCAL">
+
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
-		<jta-data-source>JdoPnO</jta-data-source>
+
 		<class>jdo.facility.model.Building</class>
 		<class>jdo.facility.model.Facility</class>
 		<class>jdo.facility.model.FacilityContactMechanism</class>
@@ -72,11 +73,21 @@
 		<class>jdo.party.model.roles.OrganizationRole</class>
 		<class>jdo.party.model.roles.ParentOrganization</class>
 		<class>jdo.party.model.roles.PersonRole</class>
-		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
+
+		<class>jdo.jpa.converters.DurationToSecondsInteger</class>
+		<class>jdo.jpa.converters.LocalDatePersistenceConverter</class>
+		<class>jdo.jpa.converters.ZonedDateTimeToTimestampConverter</class>
 
 		<properties>
-			<!--  <property name="hibernate.hbm2ddl.auto" value="create" /> -->
+			<property name="javax.persistence.jdbc.driver" value="org.postgresql.Driver" />
+			<property name="javax.persistence.jdbc.user" value="jdodev" />
+			<property name="javax.persistence.jdbc.password" value="jdodev" />
+			<property name="javax.persistence.jdbc.url"
+				value="jdbc:postgresql://localhost/PeopleAndOrganizations" />
+			<property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
+
+			<!-- <property name="hibernate.hbm2ddl.auto" value="create" /> -->
 			<property name="hibernate.show_sql" value="true" />
 			<property name="hibernate.format_sql" value="true" />
 			<property name="hibernate.transaction.flush_before_completion"
