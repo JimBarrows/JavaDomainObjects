@@ -66,6 +66,8 @@ public class Resource<T> {
 	/**
 	 * Put to the resource.
 	 *
+	 * @param id
+	 *            The id of the resource being retrieved.
 	 * @param dto
 	 *            The object that gets converted to json, and then put in the
 	 *            resource.
@@ -86,5 +88,16 @@ public class Resource<T> {
 	 */
 	public Response getById(final UUID id) {
 		return resource.path(id.toString()).request().accept(APPLICATION_JSON).get();
+	}
+
+	/**
+	 * Delete the resource by it's id.
+	 *
+	 * @param id
+	 *            of the resource being deleted.
+	 * @return The response from the server.
+	 */
+	public Response delete(final UUID id) {
+		return resource.path(id.toString()).request().delete();
 	}
 }

@@ -20,48 +20,89 @@ import jdo.party.model.PartyRole;
 import jdo.party.model.roles.InternalOrganization;
 import jdo.party.model.roles.ParentOrganization;
 
+/**
+ * Single place to get all configuration information, without having to worry
+ * about where it comes from.
+ *
+ * @author Jim
+ *
+ */
 @Stateful
 public class ApplicationConfiguration {
 
-	@PersistenceContext(name = "PeopleAndOrganizations", type=PersistenceContextType.EXTENDED)
+	/**
+	 * Entity manager for jpa2 access.
+	 */
+	@PersistenceContext(name = "PeopleAndOrganizations", type = PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
 
+	/**
+	 * Represents the company whose customer we're managing.
+	 *
+	 * @return The actual company, or a default company.
+	 */
 	public Company company() {
 		return findCompany().orElseGet(defaultCompany);
 	}
 
-	private Supplier<Company> defaultCompany=new Supplier<Company>(){
+	/**
+	 * The default company, if none is provided.
+	 */
+	private final Supplier<Company> defaultCompany = () -> {
+		final Company company = new Company();
+		company.setName("The company in question");
+		company.addPartyRole(new InternalOrganization());
+		company.addPartyRole(new ParentOrganization());
+		entityManager.persist(company);
+		return company;
+	};
 
-	@Override public Company get(){Company company=new Company();company.setName("The company in question");company.addPartyRole(new InternalOrganization());company.addPartyRole(new ParentOrganization());entityManager.persist(company);return company;}};
-
+	/**
+	 * Find the company that we're managing customers for.
+	 *
+	 * @return The company, or empty if we can't find it.
+	 */
 	public Optional<Company> findCompany() {
-		CriteriaBuilder builder = entityManager.getCriteriaBuilder();
-		CriteriaQuery<Company> criteria = builder.createQuery(Company.class);
-		Root<Company> entityRoot = criteria.from(Company.class);
+		final CriteriaBuilder builder = entityManager.getCriteriaBuilder();
+		final CriteriaQuery<Company> criteria = builder.createQuery(Company.class);
+		final Root<Company> entityRoot = criteria.from(Company.class);
 		criteria.select(entityRoot);
 
-		TypedQuery<Company> query = entityManager.createQuery(criteria);
-		List<Company> list = query.getResultList();
+		final TypedQuery<Company> query = entityManager.createQuery(criteria);
+		final List<Company> list = query.getResultList();
 		// I couldn't figure out the freaking JPA criteria.. this was easier :)
 		// TODO Figure out how to do this in a criteria
 
-		List<Company> filteredList = list.stream().filter(c -> {
-			boolean hasParentOrganization = c.getActingAs().stream().anyMatch(parentOrganizationPredicate());
-			boolean hasInternalOrganization = c.getActingAs().stream().anyMatch(internalOrganizationPredicate());
+		final List<Company> filteredList = list.stream().filter(c -> {
+			final boolean hasParentOrganization = c.getActingAs().stream().anyMatch(parentOrganizationPredicate());
+			final boolean hasInternalOrganization = c.getActingAs().stream().anyMatch(internalOrganizationPredicate());
 			return hasParentOrganization && hasInternalOrganization;
 		}).collect(Collectors.toList());
 		return filteredList.isEmpty() ? Optional.empty() : Optional.ofNullable(filteredList.get(0));
 
 	}
 
+	/**
+	 * Convenience method for an anonymous function to filter for the
+	 * internalOrganization role.
+	 *
+	 * @return an anonymous function that filters for the internal organization
+	 *         role.
+	 */
 	public static final Predicate<PartyRole> internalOrganizationPredicate() {
-		Predicate<PartyRole> isInternalOrganization = a -> (a instanceof InternalOrganization)
+		final Predicate<PartyRole> isInternalOrganization = a -> (a instanceof InternalOrganization)
 				& a.getDateTimeRange().isActive();
 		return isInternalOrganization;
 	}
 
+	/**
+	 * Convenience method for an anonymous function to filter for the parent
+	 * organization role.
+	 *
+	 * @return and anonymous function that filters for parent organization role.
+	 */
 	public static final Predicate<PartyRole> parentOrganizationPredicate() {
-		Predicate<PartyRole> isParent = a -> (a instanceof ParentOrganization);
+		final Predicate<PartyRole> isParent = a -> (a instanceof ParentOrganization);
 		return isParent;
 	}
 }
