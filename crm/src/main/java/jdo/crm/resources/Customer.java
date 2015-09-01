@@ -144,7 +144,6 @@ public class Customer {
 		}
 
 		if (party.getActingAs().stream().anyMatch(role -> {
-			System.out.println("##### role type: " + role.getClass().getCanonicalName());
 			return (role instanceof jdo.party.model.roles.Customer);
 		})) {
 
@@ -157,7 +156,7 @@ public class Customer {
 				}
 				break;
 			case "jdo.party.model.Organization":
-				if (party instanceof Company) {
+				if (party instanceof Organization) {
 					(( Organization ) party).setName(customer.getName());
 				} else {
 					throw new NotFoundException();
@@ -173,10 +172,11 @@ public class Customer {
 				break;
 
 			default:
+				System.out.println("##### Customer is not company, organization or person.");
 				throw new NotFoundException();
 			}
 		} else {
-
+			System.out.println("##### customer does not have a role of customer.");
 			throw new NotFoundException();
 		}
 		return customer;

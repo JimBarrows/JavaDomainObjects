@@ -36,6 +36,15 @@ public class ApplicationConfiguration {
 	@PersistenceContext(name = "PeopleAndOrganizations", type = PersistenceContextType.EXTENDED)
 	private EntityManager entityManager;
 
+	public ApplicationConfiguration(final EntityManager entityManager) {
+		super();
+		this.entityManager = entityManager;
+	}
+
+	public ApplicationConfiguration() {
+		super();
+	}
+
 	/**
 	 * Represents the company whose customer we're managing.
 	 *

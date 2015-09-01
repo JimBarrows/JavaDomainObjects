@@ -1,6 +1,9 @@
 package specification.steps.api;
 
+import static jdo.application.ApplicationConfiguration.internalOrganizationPredicate;
 import static junit.framework.Assert.assertEquals;
+import static junit.framework.Assert.assertNull;
+import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 
 import java.util.UUID;
@@ -18,11 +21,14 @@ import org.jbehave.core.annotations.Named;
 import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
+import jdo.application.ApplicationConfiguration;
 import jdo.dto.CustomerDto;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
 import jdo.party.model.Person;
+import jdo.party.model.relationship.CustomerRelationship;
+import jdo.party.model.roles.InternalOrganization;
 import specification.steps.api.resources.CustomerDtoResource;
 
 /**
@@ -82,6 +88,9 @@ public class CrmSteps {
 	 * The JPA entity manager factory.
 	 */
 	private EntityManagerFactory	emf;
+
+	private ApplicationConfiguration	applicationConfiguration;
+	private Company						findCompany;
 
 	/**
 	 * Construct the object by creating the objectMapper, creating the client
@@ -247,6 +256,14 @@ public class CrmSteps {
 		em.getTransaction().begin();
 		em.persist(customerAsParty);
 		customerDtoFromDb = new CustomerDto(customerAsParty);
+		final jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
+		customerAsParty.addPartyRole(customerRole);
+
+		final InternalOrganization companyInternalRole = ( InternalOrganization ) applicationConfiguration.company()
+				.getActingAs().stream().filter(internalOrganizationPredicate()).findFirst().get();
+
+		final CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
+		em.persist(customerRelationship);
 		id = customerAsParty.getId();
 		em.getTransaction().commit();
 
@@ -293,9 +310,50 @@ public class CrmSteps {
 		type = newType;
 	}
 
+	/**
+	 * Verify that the response status is correct.
+	 *
+	 */
 	@Then("I get an error message saying I can't change the type.")
 	public void thenIGetAnErrorMessageSayingICantChangeTheType() {
 		assertEquals(HttpStatus.SC_CONFLICT, responseStatus);
+	}
+
+	/**
+	 * Delete the customer via the API.
+	 */
+	@When("I delete the customer")
+	public void whenIDeleteTheCustomer() {
+		final Response response = resource.delete(id);
+		responseStatus = response.getStatus();
+		customerDtoFromApi = null;
+	}
+
+	/**
+	 * Verify the response status is either OK, or No Content.
+	 */
+	@Then("I get a successful delete message")
+	public void successfulDeleteMessage() {
+		assertTrue((responseStatus == HttpStatus.SC_OK) || (responseStatus == HttpStatus.SC_NO_CONTENT));
+	}
+
+	/**
+	 * Verify the customer is not in the DB.
+	 *
+	 */
+	@Then("the customer is not in the database")
+	public void thenTheCustomerIsNotInTheDatabase() {
+		final Party party = em.find(Party.class, id);
+		assertNull(party);
+	}
+
+	/**
+	 * The API returns the appropriate error.
+	 */
+	@Then("when I get the customer, I get an error")
+	public void thenWhenIGetTheCustomerIGetAnError() {
+		final Response response = resource.getById(id);
+		assertEquals(HttpStatus.SC_NOT_FOUND, response.getStatus());
 	}
 
 	/**
@@ -306,6 +364,8 @@ public class CrmSteps {
 	public void createEntityManager() {
 		emf = Persistence.createEntityManagerFactory("crmBddTest");
 		em = emf.createEntityManager();
+		applicationConfiguration = new ApplicationConfiguration(em);
+		findCompany = applicationConfiguration.company();
 	}
 
 	/**

@@ -74,6 +74,7 @@ Given a <Type> customer
 And the name is <Name>
 And the customer is in the database
 When I delete the customer
+Then I get a successful delete message
 Then the customer is not in the database
 And when I get the customer, I get an error
 
