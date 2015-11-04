@@ -8,6 +8,7 @@ import static junit.framework.Assert.fail;
 
 import java.util.UUID;
 
+import javax.jms.IllegalStateException;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -22,14 +23,23 @@ import org.jbehave.core.annotations.Then;
 import org.jbehave.core.annotations.When;
 
 import jdo.application.ApplicationConfiguration;
+import jdo.crm.model.Aggregate;
+import jdo.crm.model.CompanyCustomer;
+import jdo.crm.model.OrganizationCustomer;
+import jdo.crm.model.PersonCustomer;
+import jdo.crm.util.CustomerConverter;
+import jdo.dto.CompanyDto;
+import jdo.dto.CompanyDto;
 import jdo.dto.CustomerDto;
+import jdo.dto.OrganizationDto;
+import jdo.dto.PersonDto;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
 import jdo.party.model.Person;
 import jdo.party.model.relationship.CustomerRelationship;
 import jdo.party.model.roles.InternalOrganization;
-import specification.steps.api.resources.CustomerDtoResource;
+import specification.steps.api.resources.CustomerDtoResourceClient;
 
 /**
  * The steps for the crm functionality in the API.
@@ -62,7 +72,7 @@ public class CrmSteps {
 	 * The api resource.
 	 *
 	 */
-	private final CustomerDtoResource resource;
+	private final CustomerDtoResourceClient resource;
 
 	/**
 	 * ID of the customer.
@@ -89,8 +99,15 @@ public class CrmSteps {
 	 */
 	private EntityManagerFactory	emf;
 
-	private ApplicationConfiguration	applicationConfiguration;
-	private Company						findCompany;
+	/**
+	 * Configuration for any JDO application.
+	 */
+	private ApplicationConfiguration applicationConfiguration;
+
+	/**
+	 * The owning company.
+	 */
+	private Company findCompany;
 
 	/**
 	 * Construct the object by creating the objectMapper, creating the client
@@ -99,9 +116,34 @@ public class CrmSteps {
 	 * @param resourceToUse
 	 *            for accessing the resource on the server.
 	 */
-	public CrmSteps(final CustomerDtoResource resourceToUse) {
+	public CrmSteps(final CustomerDtoResourceClient resourceToUse) {
 		super();
 		resource = resourceToUse;
+	}
+
+	/**
+	 * Close the entityManagerFactory and the entity Manager.
+	 */
+	@AfterStories
+	public void closeEntityManager() {
+		em.close();
+		emf.close(); // close at application end
+	}
+
+	/**
+	 * Create the entityManagerFactory, and the entity manager.
+	 *
+	 */
+	@BeforeStories
+	public void createEntityManager() {
+		emf = Persistence.createEntityManagerFactory("crmBddTest");
+		em = emf.createEntityManager();
+		applicationConfiguration = new ApplicationConfiguration(em);
+		findCompany = applicationConfiguration.company();
+	}
+
+	private String fqnType() {
+		return "jdo.party.model." + type;
 	}
 
 	/**
@@ -134,43 +176,51 @@ public class CrmSteps {
 	}
 
 	/**
-	 * Save the customer by posting to the API.
+	 * Add the customer to the database.
 	 */
-	@When("I save the customer")
-	public final void whenISaveTheCustomer() {
-		final CustomerDto dto = new CustomerDto(id, fqnType(), name, firstName, lastName);
-		Response response = null;
-		if (id == null) {
-			response = resource.post(dto);
-
-		} else {
-			response = resource.put(id, dto);
+	@Given("the customer is in the database")
+	public void givenTheCustomerIsInTheDatabase() {
+		// Use persistence.xml configuration
+		Party customerAsParty = null;
+		Aggregate customer = null;
+		switch (type) {
+		case "Person":
+			final Person person = new Person();
+			person.setFirstName(firstName);
+			person.setLastName(lastName);
+			customerAsParty = person;
+			customer = new PersonCustomer(person);
+			break;
+		case "Organization":
+			final Organization org = new Organization();
+			org.setName(name);
+			customerAsParty = org;
+			customer = new OrganizationCustomer(org);
+			break;
+		case "Company":
+			final Company company = new Company();
+			company.setName(name);
+			customerAsParty = company;
+			customer = new CompanyCustomer(company);
+			break;
+		default:
+			fail("Unknown type: " + type);
 		}
-		responseStatus = response.getStatus();
-		customerDtoFromApi = response.readEntity(CustomerDto.class);
-	}
 
-	private String fqnType() {
-		return "jdo.party.model." + type;
-	}
+		em.getTransaction().begin();
+		em.persist(customerAsParty);
+		customerDtoFromDb = CustomerConverter.convert(customer);
+		final jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
+		customerAsParty.addPartyRole(customerRole);
 
-	/**
-	 * Map this then statement to this function, and the function will then
-	 * execute the statement against the system under test.
-	 */
-	@Then("I get a message indicating a successful save")
-	public final void thenIGetAMessageIndicatingASuccessfulSave() {
-		assertEquals(HttpStatus.SC_OK, responseStatus);
-	}
+		final InternalOrganization companyInternalRole = ( InternalOrganization ) applicationConfiguration.company()
+				.getActingAs().stream().filter(internalOrganizationPredicate()).findFirst().get();
 
-	/**
-	 *
-	 * @param type
-	 *            of the customer.
-	 */
-	@Given("a <Type> customer")
-	public final void setType(@Named("Type") final String type) {
-		this.type = type;
+		final CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
+		em.persist(customerRelationship);
+		id = customerAsParty.getId();
+		em.getTransaction().commit();
+
 	}
 
 	/**
@@ -191,25 +241,21 @@ public class CrmSteps {
 	}
 
 	/**
-	 * View the customer by id, which should be set in a given.
 	 *
+	 * @param type
+	 *            of the customer.
 	 */
-	@When("I view the customer")
-	public void whenIViewTheCustomer() {
-		final Response response = resource.getById(id);
-		responseStatus = response.getStatus();
-		if (responseStatus == HttpStatus.SC_OK) {
-			customerDtoFromApi = response.readEntity(CustomerDto.class);
-		}
+	@Given("a <Type> customer")
+	public final void setType(@Named("Type") final String type) {
+		this.type = type;
 	}
 
 	/**
-	 * Verify the customer type is correct.
-	 *
+	 * Verify the response status is either OK, or No Content.
 	 */
-	@Then("the type is correct")
-	public void thenISeeTheType() {
-		assertEquals(fqnType(), customerDtoFromApi.getPartyType());
+	@Then("I get a successful delete message")
+	public void successfulDeleteMessage() {
+		assertTrue((responseStatus == HttpStatus.SC_OK) || (responseStatus == HttpStatus.SC_NO_CONTENT));
 	}
 
 	/**
@@ -217,97 +263,21 @@ public class CrmSteps {
 	 */
 	@Then("the name is correct")
 	public void theNameIsCorrect() {
-		if (customerDtoFromApi.getPartyType().equals("jdo.party.model.Person")) {
-			assertEquals(firstName, customerDtoFromApi.getFirstName());
-			assertEquals(lastName, customerDtoFromApi.getLastName());
+		if (customerDtoFromApi instanceof PersonDto) {
+			assertEquals(firstName, (( PersonDto ) customerDtoFromApi).getFirstName());
+			assertEquals(lastName, (( PersonDto ) customerDtoFromApi).getLastName());
 		} else {
-			assertEquals(name, customerDtoFromApi.getName());
+			assertEquals(name, (( OrganizationDto ) customerDtoFromApi).getName());
 		}
 	}
 
 	/**
-	 * Add the customer to the database.
+	 * Map this then statement to this function, and the function will then
+	 * execute the statement against the system under test.
 	 */
-	@Given("the customer is in the database")
-	public void givenTheCustomerIsInTheDatabase() {
-		// Use persistence.xml configuration
-		Party customerAsParty = null;
-		switch (type) {
-		case "Person":
-			final Person person = new Person();
-			person.setFirstName(firstName);
-			person.setLastName(lastName);
-			customerAsParty = person;
-			break;
-		case "Organization":
-			final Organization org = new Organization();
-			org.setName(name);
-			customerAsParty = org;
-			break;
-		case "Company":
-			final Company company = new Company();
-			company.setName(name);
-			customerAsParty = company;
-			break;
-		default:
-			fail("Unknown type: " + type);
-		}
-
-		em.getTransaction().begin();
-		em.persist(customerAsParty);
-		customerDtoFromDb = new CustomerDto(customerAsParty);
-		final jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
-		customerAsParty.addPartyRole(customerRole);
-
-		final InternalOrganization companyInternalRole = ( InternalOrganization ) applicationConfiguration.company()
-				.getActingAs().stream().filter(internalOrganizationPredicate()).findFirst().get();
-
-		final CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
-		em.persist(customerRelationship);
-		id = customerAsParty.getId();
-		em.getTransaction().commit();
-
-	}
-
-	/**
-	 * Change the name.
-	 *
-	 * @param newName
-	 *            The new name.
-	 */
-	@When("I change the name to <New Name>")
-	public void whenIChangeTheNameToNewName(@Named("New Name") final String newName) {
-		if (type.equals("Customer")) {
-			final String[] split = newName.split(",");
-			firstName = split[0];
-			lastName = split[1];
-		} else {
-			name = newName;
-		}
-	}
-
-	/**
-	 * Assert the name has been changed.
-	 */
-	@Then("the customer has the <New Name>")
-	public void thenTheCustomerHasTheNewName() {
-		if (customerDtoFromApi.getPartyType().equals("jdo.party.model.Person")) {
-			assertEquals(firstName, customerDtoFromApi.getFirstName());
-			assertEquals(lastName, customerDtoFromApi.getLastName());
-		} else {
-			assertEquals(name, customerDtoFromApi.getName());
-		}
-	}
-
-	/**
-	 * Change the type.
-	 *
-	 * @param newType
-	 *            The type too change to.
-	 */
-	@When("I change the type to <New Type>")
-	public void whenIChangeTheTypeToNewType(@Named("New Type") final String newType) {
-		type = newType;
+	@Then("I get a message indicating a successful save")
+	public final void thenIGetAMessageIndicatingASuccessfulSave() {
+		assertEquals(HttpStatus.SC_OK, responseStatus);
 	}
 
 	/**
@@ -320,21 +290,25 @@ public class CrmSteps {
 	}
 
 	/**
-	 * Delete the customer via the API.
+	 * Verify the customer type is correct.
+	 *
 	 */
-	@When("I delete the customer")
-	public void whenIDeleteTheCustomer() {
-		final Response response = resource.delete(id);
-		responseStatus = response.getStatus();
-		customerDtoFromApi = null;
+	@Then("the type is correct")
+	public void thenISeeTheType() {
+		assertEquals(fqnType(), customerDtoFromApi.getClass().getCanonicalName());
 	}
 
 	/**
-	 * Verify the response status is either OK, or No Content.
+	 * Assert the name has been changed.
 	 */
-	@Then("I get a successful delete message")
-	public void successfulDeleteMessage() {
-		assertTrue((responseStatus == HttpStatus.SC_OK) || (responseStatus == HttpStatus.SC_NO_CONTENT));
+	@Then("the customer has the <New Name>")
+	public void thenTheCustomerHasTheNewName() {
+		if (customerDtoFromApi instanceof PersonDto) {
+			assertEquals(firstName, (( PersonDto ) customerDtoFromApi).getFirstName());
+			assertEquals(lastName, (( PersonDto ) customerDtoFromApi).getLastName());
+		} else {
+			assertEquals(name, (( OrganizationDto ) customerDtoFromApi).getName());
+		}
 	}
 
 	/**
@@ -357,23 +331,83 @@ public class CrmSteps {
 	}
 
 	/**
-	 * Create the entityManagerFactory, and the entity manager.
+	 * Change the name.
 	 *
+	 * @param newName
+	 *            The new name.
 	 */
-	@BeforeStories
-	public void createEntityManager() {
-		emf = Persistence.createEntityManagerFactory("crmBddTest");
-		em = emf.createEntityManager();
-		applicationConfiguration = new ApplicationConfiguration(em);
-		findCompany = applicationConfiguration.company();
+	@When("I change the name to <New Name>")
+	public void whenIChangeTheNameToNewName(@Named("New Name") final String newName) {
+		if (type.equals("Customer")) {
+			final String[] split = newName.split(",");
+			firstName = split[0];
+			lastName = split[1];
+		} else {
+			name = newName;
+		}
 	}
 
 	/**
-	 * Close the entityManagerFactory and the entity Manager.
+	 * Change the type.
+	 *
+	 * @param newType
+	 *            The type too change to.
 	 */
-	@AfterStories
-	public void closeEntityManager() {
-		em.close();
-		emf.close(); // close at application end
+	@When("I change the type to <New Type>")
+	public void whenIChangeTheTypeToNewType(@Named("New Type") final String newType) {
+		type = newType;
+	}
+
+	/**
+	 * Delete the customer via the API.
+	 */
+	@When("I delete the customer")
+	public void whenIDeleteTheCustomer() {
+		final Response response = resource.delete(id);
+		responseStatus = response.getStatus();
+		customerDtoFromApi = null;
+	}
+
+	/**
+	 * Save the customer by posting to the API.
+	 *
+	 * @throws IllegalStateException
+	 *             If there is a type we haven't set up for.
+	 */
+	@When("I save the customer")
+	public final void whenISaveTheCustomer() throws IllegalStateException {
+		CustomerDto dto = null;
+		if (fqnType().endsWith("Person")) {
+			dto = new PersonDto(id, firstName, lastName);
+		} else if (fqnType().endsWith("Organization")) {
+			dto = new OrganizationDto(id, name);
+		} else if (fqnType().endsWith("Company")) {
+			dto = new CompanyDto(id, name);
+		} else {
+			throw new IllegalStateException(
+					"FQN type " + fqnType() + " is not handled in the tests, CrmSteps.whenISaveTheCustomer");
+		}
+		Response response = null;
+		if (id == null) {
+			response = resource.post(dto);
+
+		} else {
+			response = resource.put(id, dto);
+		}
+		responseStatus = response.getStatus();
+		customerDtoFromApi = response.readEntity(CustomerDto.class);
+	}
+
+	/**
+	 * View the customer by id, which should be set in a given.
+	 *
+	 */
+	@When("I view the customer")
+	public void whenIViewTheCustomer() {
+		final Response response = resource.getById(id);
+		responseStatus = response.getStatus();
+		if (responseStatus == HttpStatus.SC_OK) {
+			customerDtoFromApi = response.readEntity(CustomerDto.class);
+		}
 	}
 }

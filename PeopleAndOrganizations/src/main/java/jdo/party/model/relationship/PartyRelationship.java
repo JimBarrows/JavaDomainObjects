@@ -12,6 +12,7 @@ import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertFalse;
+import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
 
@@ -21,7 +22,7 @@ import jdo.party.model.PartyRole;
 
 /**
  * A relationship is defined by the two parties and their respective roles.
- * 
+ *
  * @author Jim
  * @version 1.0
  * @created 25-Dec-2007 9:54:33 AM
@@ -35,7 +36,7 @@ import jdo.party.model.PartyRole;
 public class PartyRelationship extends BasePersistentModel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -63,7 +64,7 @@ public class PartyRelationship extends BasePersistentModel {
 		return dateTimeRange;
 	}
 
-	public void setDateTimeRange(DateTimeRange dateTimeRange) {
+	public void setDateTimeRange(final DateTimeRange dateTimeRange) {
 		this.dateTimeRange = dateTimeRange;
 	}
 
@@ -71,46 +72,61 @@ public class PartyRelationship extends BasePersistentModel {
 		super();
 	}
 
-	public PartyRelationship(PartyRole relationshipFrom, PartyRole relationshipTo) {
+	public PartyRelationship(final PartyRole relationshipFrom, final PartyRole relationshipTo) {
 		super();
-		this.relationshipFrom = relationshipFrom;
-		this.relationshipTo = relationshipTo;
+		setRelationshipFrom(relationshipFrom);
+		setRelationshipTo(relationshipTo);
 	}
 
-	public PartyRelationship(String comment, PartyRole from, PartyRole to) {
+	public PartyRelationship(final String comment, final PartyRole relationshipFrom, final PartyRole relationshipTo) {
 		super();
 		this.comment = comment;
-		relationshipFrom = from;
-		relationshipTo = to;
+		setRelationshipFrom(relationshipFrom);
+		setRelationshipTo(relationshipTo);
 	}
 
-	public PartyRelationship(UUID id, Long version, ZonedDateTime from, Optional<ZonedDateTime> thru, String comment,
-			PartyRole relationshipFrom, PartyRole relationshipTo) {
+	public PartyRelationship(final UUID id, final Long version, final ZonedDateTime from,
+			final Optional<ZonedDateTime> thru, final String comment, final PartyRole relationshipFrom,
+			final PartyRole relationshipTo) {
 		super(id, version);
-		this.dateTimeRange.setFromDate(from);
+		dateTimeRange.setFromDate(from);
 		// TODO When hibernate fixes itself so that it can handle converters,
 		// get rid of the orElse.
-		this.dateTimeRange.setThruDate(thru.orElse(null));
+		dateTimeRange.setThruDate(thru.orElse(null));
 		this.comment = comment;
-		this.relationshipFrom = relationshipFrom;
-		this.relationshipTo = relationshipTo;
+		setRelationshipFrom(relationshipFrom);
+		setRelationshipTo(relationshipTo);
 	}
 
-	public PartyRelationship(ZonedDateTime from, Optional<ZonedDateTime> thru, String comment,
-			PartyRole relationshipFrom, PartyRole relationshipTo) {
-		this.dateTimeRange.setFromDate(from);
+	public PartyRelationship(final ZonedDateTime from, final Optional<ZonedDateTime> thru, final String comment,
+			final PartyRole relationshipFrom, final PartyRole relationshipTo) {
+		dateTimeRange.setFromDate(from);
 		// TODO When hibernate fixes itself so that it can handle converters,
 		// get rid of the orElse.
-		this.dateTimeRange.setThruDate(thru.orElse(null));
+		dateTimeRange.setThruDate(thru.orElse(null));
 		this.comment = comment;
-		this.relationshipFrom = relationshipFrom;
-		this.relationshipTo = relationshipTo;
+		setRelationshipFrom(relationshipFrom);
+		setRelationshipTo(relationshipTo);
 	}
 
 	@Transient
 	@AssertFalse
 	public boolean isRelationshipRolesNull() {
-		return relationshipFrom == null || relationshipTo == null;
+		return (relationshipFrom == null) || (relationshipTo == null);
+	}
+
+	/**
+	 *
+	 * @return true when the relationship end date is after both it's members
+	 *         roles expiration date.
+	 */
+	@Transient
+	@AssertTrue
+	public boolean isRelationshipEndBeforeBothRoleEnds() {
+		return (relationshipFrom.getDateTimeRange().getThruDate().isAfter(dateTimeRange.getThruDate())
+				|| relationshipFrom.getDateTimeRange().getThruDate().isEqual(dateTimeRange.getThruDate()))
+				&& (relationshipTo.getDateTimeRange().getThruDate().isAfter(dateTimeRange.getThruDate())
+						|| relationshipTo.getDateTimeRange().getThruDate().isEqual(dateTimeRange.getThruDate()));
 	}
 
 	public String getComment() {
@@ -133,23 +149,33 @@ public class PartyRelationship extends BasePersistentModel {
 		return status;
 	}
 
-	public void setComment(String comment) {
+	public void setComment(final String comment) {
 		this.comment = comment;
 	}
 
-	public void setPriority(PriorityType priority) {
+	public void setPriority(final PriorityType priority) {
 		this.priority = priority;
 	}
 
-	protected void setRelationshipFrom(PartyRole relationshipFrom) {
+	protected void setRelationshipFrom(final PartyRole relationshipFrom) {
 		this.relationshipFrom = relationshipFrom;
+		if ((((relationshipFrom.getDateTimeRange().getThruDate() != null)
+				&& ((relationshipFrom.getDateTimeRange().getThruDate() == null)))
+				|| (relationshipFrom.getDateTimeRange().getThruDate().isBefore(dateTimeRange.getThruDate())))) {
+			relationshipFrom.getDateTimeRange().setThruDate(relationshipFrom.getDateTimeRange().getThruDate());
+		}
 	}
 
-	protected void setRelationshipTo(PartyRole relationshipTo) {
+	protected void setRelationshipTo(final PartyRole relationshipTo) {
 		this.relationshipTo = relationshipTo;
+		if ((((relationshipTo.getDateTimeRange().getThruDate() != null)
+				&& ((relationshipTo.getDateTimeRange().getThruDate() == null)))
+				|| (relationshipTo.getDateTimeRange().getThruDate().isBefore(dateTimeRange.getThruDate())))) {
+			relationshipTo.getDateTimeRange().setThruDate(relationshipTo.getDateTimeRange().getThruDate());
+		}
 	}
 
-	public void setStatus(StatusType status) {
+	public void setStatus(final StatusType status) {
 		this.status = status;
 	}
 

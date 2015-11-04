@@ -6,8 +6,8 @@ import javax.persistence.Entity;
 public class Company extends LegalOrganization {
 
 	/**
-	 * 
+	 *
 	 */
-	private static final long	serialVersionUID	= 1L;
-	
+	private static final long serialVersionUID = 1L;
+
 }

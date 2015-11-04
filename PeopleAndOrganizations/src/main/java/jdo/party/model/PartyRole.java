@@ -15,7 +15,6 @@ import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Transient;
-import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlTransient;
 
 import jdo.fields.DateTimeRange;
@@ -26,24 +25,36 @@ import jdo.party.model.relationship.PartyRelationship;
  * A person or organization may play any number of roles such as a customer,
  * supplier, employee or internal organization. Because the same party may play
  * different roles over time, we keep track of from and thru dates.
- * 
+ *
  * @author Jim.Barrows@gmail.com
  * @see "Data Model Resource Book Volume 1 Figure 2.4, page 34"
- * 
+ *
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 public class PartyRole extends BasePersistentModel {
 
+	/**
+	 *
+	 */
+	private static final long serialVersionUID = 1L;
+
+	/**
+	 * The party that has the role.
+	 */
 	@ManyToOne
 	private Party roleFor;
 
+	/**
+	 * Relationships the party is involved in, in the from role.
+	 */
 	@OneToMany(mappedBy = "relationshipFrom")
-	@XmlList
 	private List<PartyRelationship> relationshipsInvolvedInFrom = new ArrayList<PartyRelationship>();
 
+	/**
+	 * Relationships the part is involved in in the to role.
+	 */
 	@OneToMany(mappedBy = "relationshipTo")
-	@XmlList
 	private List<PartyRelationship> relationshipsInvolvedInTo = new ArrayList<PartyRelationship>();
 
 	@Embedded
@@ -51,44 +62,74 @@ public class PartyRole extends BasePersistentModel {
 			@AttributeOverride(name = "thruDate", column = @Column(name = "roleEnded") ) })
 	private DateTimeRange dateTimeRange = new DateTimeRange();
 
-	public DateTimeRange getDateTimeRange() {
-		return dateTimeRange;
-	}
-
-	public void setDateTimeRange(DateTimeRange dateTimeRange) {
-		this.dateTimeRange = dateTimeRange;
-	}
-
 	public PartyRole() {
 
 	}
 
-	public PartyRole(ZonedDateTime from, Optional<ZonedDateTime> thru) {
+	public PartyRole(final Party party) {
+		setRoleFor(party);
+	}
+
+	public PartyRole(final Party party, final ZonedDateTime from) {
+		setRoleFor(party);
+		dateTimeRange.setFromDate(from);
+	}
+
+	public PartyRole(final Party party, final ZonedDateTime from, final Optional<ZonedDateTime> thru) {
+		setRoleFor(party);
 		dateTimeRange.setFromDate(from);
 		// TODO When hibernate fixes itself so that it can handle converters
 		// with templates, get rid of the orElse.
 		dateTimeRange.setThruDate(thru.orElse(null));
 	}
 
-	public PartyRole(ZonedDateTime from) {
-		dateTimeRange.setFromDate(from);
+	public DateTimeRange getDateTimeRange() {
+		return dateTimeRange;
+	}
+
+	@Transient
+	@XmlTransient
+	public List<PartyRelationship> getRelationshipsInvolvedIn() {
+		final List<PartyRelationship> list = new ArrayList<>();
+		list.addAll(relationshipsInvolvedInFrom);
+		list.addAll(relationshipsInvolvedInTo);
+		return list;
+	}
+
+	/**
+	 * @return the relationshipsInvolvedInFrom
+	 */
+	public List<PartyRelationship> getRelationshipsInvolvedInFrom() {
+		return relationshipsInvolvedInFrom;
+	}
+
+	/**
+	 * @return the relationshipsInvolvedInTo
+	 */
+	public List<PartyRelationship> getRelationshipsInvolvedInTo() {
+		return relationshipsInvolvedInTo;
 	}
 
 	public Party getRoleFor() {
 		return roleFor;
 	}
 
-	public void setRoleFor(Party roleFor) {
-		this.roleFor = roleFor;
+	/**
+	 * Convenience method to determine if a role is active.
+	 *
+	 * @return true if it is.
+	 */
+	@Transient
+	public boolean isActive() {
+		return dateTimeRange.isActive();
 	}
 
-	@Transient
-	@XmlTransient
-	public List<PartyRelationship> getRelationshipsInvolvedIn() {
-		List<PartyRelationship> list = new ArrayList<>();
-		list.addAll(relationshipsInvolvedInFrom);
-		list.addAll(relationshipsInvolvedInTo);
-		return list;
+	public void setDateTimeRange(final DateTimeRange dateTimeRange) {
+		this.dateTimeRange = dateTimeRange;
+	}
+
+	public void setRoleFor(final Party roleFor) {
+		this.roleFor = roleFor;
 	}
 
 	@Override
@@ -103,6 +144,4 @@ public class PartyRole extends BasePersistentModel {
 						? relationshipsInvolvedInTo.subList(0, Math.min(relationshipsInvolvedInTo.size(), maxLen))
 						: null, dateTimeRange);
 	}
-
-	private static final long serialVersionUID = 1L;
 }

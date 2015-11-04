@@ -19,7 +19,6 @@ import com.wordnik.swagger.annotations.Api;
 import com.wordnik.swagger.annotations.ApiOperation;
 
 import jdo.dto.PartyTypeDto;
-import jdo.dto.PartyTypeDtoList;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
 import jdo.party.model.Person;
@@ -39,24 +38,6 @@ public class PartyType {
 	 * The list of subclasses.
 	 */
 	private final List<PartyTypeDto> list = new ArrayList<PartyTypeDto>();
-
-	/**
-	 * Get the list.
-	 *
-	 * @param offset
-	 *            The beginning of the sub set of the list.
-	 * @param limit
-	 *            THa maximum number to return.
-	 * @return The list, or it's subset.
-	 */
-	@GET
-	@Produces(APPLICATION_JSON)
-	@ApiOperation(value = "List All", notes = "Return a list of all party types.", response = PartyTypeDtoList.class)
-	public PartyTypeDtoList listAll(@QueryParam("offset") final Integer offset,
-			@QueryParam("limit") final Integer limit) {
-
-		return new PartyTypeDtoList(list);
-	}
 
 	/**
 	 * Get one class type.
@@ -82,5 +63,23 @@ public class PartyType {
 		list.add(new PartyTypeDto(Company.class, "Company"));
 		list.add(new PartyTypeDto(Organization.class, "Organization"));
 		list.add(new PartyTypeDto(Person.class, "Person"));
+	}
+
+	/**
+	 * Get the list.
+	 *
+	 * @param offset
+	 *            The beginning of the sub set of the list.
+	 * @param limit
+	 *            THa maximum number to return.
+	 * @return The list, or it's subset.
+	 */
+	@GET
+	@Produces(APPLICATION_JSON)
+	@ApiOperation(value = "List All", notes = "Return a list of all party types.", response = ArrayList.class)
+	public List<PartyTypeDto> listAll(@QueryParam("offset") final Integer offset,
+			@QueryParam("limit") final Integer limit) {
+
+		return new ArrayList<PartyTypeDto>(list);
 	}
 }

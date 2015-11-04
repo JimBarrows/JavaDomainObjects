@@ -26,7 +26,7 @@ import jdo.web.ObjectMapperProvider;
  * @param <T>
  *            The class that represents the resource on the server.
  */
-public class Resource<T> {
+public class ResourceClient<T> {
 	/**
 	 * The JSON client the steps use.
 	 */
@@ -42,7 +42,7 @@ public class Resource<T> {
 	 * @param path
 	 *            The path to the resource, no leading "/" needed.
 	 */
-	public Resource(final String path) {
+	public ResourceClient(final String path) {
 		final ObjectMapper objectMapper = new ObjectMapperProvider().getContext(null);
 
 		client = ClientBuilder.newClient();

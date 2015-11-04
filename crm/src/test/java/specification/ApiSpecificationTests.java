@@ -27,7 +27,7 @@ import org.jbehave.web.selenium.SeleniumContextOutput;
 import org.jbehave.web.selenium.SeleniumStepMonitor;
 
 import specification.steps.api.CrmSteps;
-import specification.steps.api.resources.CustomerDtoResource;
+import specification.steps.api.resources.CustomerDtoResourceClient;
 
 /**
  * Specifications tests for the json api.
@@ -96,7 +96,7 @@ public class ApiSpecificationTests extends JUnitStories {
 	@Override
 	public final InjectableStepsFactory stepsFactory() {
 
-		final CrmSteps crmSteps = new CrmSteps(new CustomerDtoResource());
+		final CrmSteps crmSteps = new CrmSteps(new CustomerDtoResourceClient());
 
 		return new InstanceStepsFactory(configuration(), crmSteps);
 	}

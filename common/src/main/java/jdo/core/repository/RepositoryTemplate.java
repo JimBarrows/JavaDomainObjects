@@ -3,6 +3,7 @@ package jdo.core.repository;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.UUID;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -20,10 +21,8 @@ import jdo.model.BasePersistentModel;
  *
  * @param <E>
  *            The Entity type the Repository is for.
- * @param <I>
- *            The id type the entity uses.
  */
-public abstract class RepositoryTemplate<E extends BasePersistentModel, I> implements Repository<E, I> {
+public abstract class RepositoryTemplate<E extends BasePersistentModel> implements Repository<E> {
 
 	/**
 	 * Type erasure means we can't get the type of a generic, so, we have to do
@@ -33,11 +32,15 @@ public abstract class RepositoryTemplate<E extends BasePersistentModel, I> imple
 	private final Class<E> type;
 
 	/**
-	 * The entity manager used by JPA to access the database.
+	 * Constructor needs the type, because of type erasure. Stupid Java
 	 *
-	 * @return the entity manager.
+	 * @param newType
+	 *            The type of the entity
 	 */
-	protected abstract EntityManager entityManager();
+	public RepositoryTemplate(final Class<E> newType) {
+		super();
+		this.type = newType;
+	}
 
 	@Override
 	public E create(final E entity) {
@@ -46,31 +49,18 @@ public abstract class RepositoryTemplate<E extends BasePersistentModel, I> imple
 	}
 
 	@Override
-	public Optional<E> findById(final I id) {
-		return Optional.ofNullable(entityManager().find(type, id));
+	public void delete(final UUID id) {
+		final E found = entityManager().find(type, id);
+		entityManager().remove(found);
+
 	}
 
-	@Override
-	public List<E> findBy(final Specification<E> specification, final Optional<Integer> startAt,
-			final Optional<Integer> maxNumberToReturn) {
-		final List<E> found = new ArrayList<E>();
-		findAll(startAt, maxNumberToReturn).forEach(p -> {
-			if (specification.isSatisfiedBy(p)) {
-				found.add(p);
-			}
-		});
-		return found;
-	}
-
-	@Override
-	public List<E> findBy(final Specification<E> specification) {
-		return findBy(specification, Optional.empty(), Optional.empty());
-	}
-
-	@Override
-	public List<E> findAll() {
-		return findAll(Optional.empty(), Optional.empty());
-	}
+	/**
+	 * The entity manager used by JPA to access the database.
+	 *
+	 * @return the entity manager.
+	 */
+	protected abstract EntityManager entityManager();
 
 	@Override
 	public List<E> findAll(final Optional<Integer> startAt, final Optional<Integer> maxNumbertoReturn) {
@@ -86,26 +76,25 @@ public abstract class RepositoryTemplate<E extends BasePersistentModel, I> imple
 	}
 
 	@Override
-	public E update(final E entity) {
-		return entityManager().merge(entity);
+	public List<E> findBy(final Specification<E> specification, final Optional<Integer> startAt,
+			final Optional<Integer> maxNumberToReturn) {
+		final List<E> found = new ArrayList<E>();
+		findAll(startAt, maxNumberToReturn).forEach(p -> {
+			if (specification.isSatisfiedBy(p)) {
+				found.add(p);
+			}
+		});
+		return found;
 	}
 
 	@Override
-	public void delete(final I id) {
-		final E found = entityManager().find(type, id);
-		entityManager().remove(found);
-
+	public Optional<E> findById(final UUID id) {
+		return Optional.ofNullable(entityManager().find(type, id));
 	}
 
-	/**
-	 * Constructor needs the type, because of type erasure. Stupid Java
-	 *
-	 * @param newType
-	 *            The type of the entity
-	 */
-	public RepositoryTemplate(final Class<E> newType) {
-		super();
-		this.type = newType;
+	@Override
+	public E update(final E entity) {
+		return entityManager().merge(entity);
 	}
 
 }

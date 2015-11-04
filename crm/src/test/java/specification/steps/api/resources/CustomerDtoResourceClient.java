@@ -8,13 +8,13 @@ import jdo.dto.CustomerDto;
  * @author Jim
  *
  */
-public class CustomerDtoResource extends Resource<CustomerDto> {
+public class CustomerDtoResourceClient extends ResourceClient<CustomerDto> {
 
 	/**
 	 * Create the resource by providing the "customer" path.
 	 *
 	 */
-	public CustomerDtoResource() {
+	public CustomerDtoResourceClient() {
 		super("customers");
 	}
 

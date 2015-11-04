@@ -72,6 +72,8 @@
 		<class>jdo.party.model.roles.OrganizationRole</class>
 		<class>jdo.party.model.roles.ParentOrganization</class>
 		<class>jdo.party.model.roles.PersonRole</class>
+		<class>jdo.model.BasePersistentModel</class>
+		<class>jdo.fields.DateTimeRange</class>
 		<exclude-unlisted-classes>true</exclude-unlisted-classes>
 
 
