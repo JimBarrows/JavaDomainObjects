@@ -1,0 +1,55 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>jdo</groupId>
+		<artifactId>JavaDomainObjects</artifactId>
+		<version>1.0-SNAPSHOT</version>
+	</parent>
+	<artifactId>PeopleAndOrganizations</artifactId>
+	<name>People and Organization Models</name>
+	<build>
+		<plugins>
+			<!-- <plugin> <groupId>de.juplo</groupId> <artifactId>hibernate4-maven-plugin</artifactId> 
+				<version>1.1.0</version> <executions> <execution> <goals> <goal>export</goal> 
+				</goals> </execution> </executions> <configuration> <driverClassName>org.postgresql.Driver</driverClassName> 
+				<hibernateDialect>org.hibernate.dialect.PostgresPlusDialect</hibernateDialect> 
+				<username>jdodev</username> <password>jdodev</password> <url>jdbc:postgresql://localhost:5432/PeopleAndOrganizations</url> 
+				<target>NONE</target> <type>BOTH</type> </configuration> <dependencies> <dependency> 
+				<groupId>org.postgresql</groupId> <artifactId>postgresql</artifactId> <version>${postgres-driver.version}</version> 
+				</dependency> <dependency> <groupId>jdo</groupId> <artifactId>common</artifactId> 
+				<version>1.0-SNAPSHOT</version> </dependency> </dependencies> </plugin> -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-ejb-plugin</artifactId>
+				<version>2.5.1</version>
+				<configuration>
+					<archive>
+						<manifest>
+							<addClasspath>true</addClasspath>
+							<classpathPrefix>/lib/</classpathPrefix>
+						</manifest>
+					</archive>
+				</configuration>
+			</plugin>
+		</plugins>
+	</build>
+	<dependencies>
+		<dependency>
+			<groupId>jdo</groupId>
+			<artifactId>validations</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>jdo</groupId>
+			<artifactId>utils</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+		<dependency>
+			<groupId>jdo</groupId>
+			<artifactId>common</artifactId>
+			<version>1.0-SNAPSHOT</version>
+		</dependency>
+	</dependencies>
+	<packaging>ejb</packaging>
+</project>
