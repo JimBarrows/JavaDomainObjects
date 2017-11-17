@@ -14,14 +14,18 @@ import javax.persistence.OneToMany;
 import javax.persistence.OrderBy;
 import javax.persistence.Transient;
 
+import jdo.encryption.Encrypter;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import jdo.model.BasePersistentModel;
 
+import static jdo.encryption.Encrypter.encryptThis;
+
 /**
  * The login for a user also specifies which pages, or web addresses that login
  * may view.
- * 
+ * The password is encrypted when you use the constructor only.
+ *
  * @author Jim.Barrows@gmail.com
  * @See The Data Model Resource Book, Revised Edition Volume 2 Figure 2.7 pg 421
  */
@@ -44,19 +48,42 @@ public class UserLogin extends BasePersistentModel {
 
 	/**
 	 * UUID for Party.
-	 * 
 	 */
 	private UUID loginFor;
 
 	/**
 	 * UUID for WebAddress.
-	 * 
 	 */
 	private UUID loginTo;
 
 	private String password;
 
+	private String salt;
+
 	private String userId;
+
+	public UserLogin(boolean active, Map<String, WebUserPreference> governedBy, List<LoginAccountHistory> having, UUID loginFor, UUID loginTo, String password, String salt, String userId) {
+		this.active = active;
+		this.governedBy = governedBy;
+		this.having = having;
+		this.loginFor = loginFor;
+		this.loginTo = loginTo;
+		this.password = encryptThis( password + salt);
+		this.salt = salt;
+		this.userId = userId;
+	}
+
+	public UserLogin(UUID id, Long version, boolean active, Map<String, WebUserPreference> governedBy, List<LoginAccountHistory> having, UUID loginFor, UUID loginTo, String password, String salt, String userId) {
+		super(id, version);
+		this.active = active;
+		this.governedBy = governedBy;
+		this.having = having;
+		this.loginFor = loginFor;
+		this.loginTo = loginTo;
+		this.password = password;
+		this.salt = salt;
+		this.userId = userId;
+	}
 
 	public void addLoginAccountHistory(LoginAccountHistory loginAccountHistory) {
 		having.add(loginAccountHistory);
@@ -120,59 +147,59 @@ public class UserLogin extends BasePersistentModel {
 	}
 
 	/**
-	 * @param governedBy
-	 *            the governedBy to set
+	 * @param governedBy the governedBy to set
 	 */
 	public void setGovernedBy(Map<String, WebUserPreference> governedBy) {
 		this.governedBy = governedBy;
 	}
 
 	/**
-	 * @param having
-	 *            the having to set
+	 * @param having the having to set
 	 */
 	public void setHaving(List<LoginAccountHistory> having) {
 		this.having = having;
 	}
 
 	/**
-	 * @param id
-	 *            the id to set
+	 * @param id the id to set
 	 */
 	public void setId(Long id) {
 		this.setId(id);
 	}
 
 	/**
-	 * @param loginFor
-	 *            the loginFor to set
+	 * @param loginFor the loginFor to set
 	 */
 	public void setLoginFor(UUID loginFor) {
 		this.loginFor = loginFor;
 	}
 
 	/**
-	 * @param loginTo
-	 *            the loginTo to set
+	 * @param loginTo the loginTo to set
 	 */
 	public void setLoginTo(UUID loginTo) {
 		this.loginTo = loginTo;
 	}
 
 	/**
-	 * @param password
-	 *            the password to set
+	 * @param password the password to set
 	 */
 	public void setPassword(String password) {
 		this.password = password;
 	}
 
 	/**
-	 * @param userId
-	 *            the userId to set
+	 * @param userId the userId to set
 	 */
 	public void setUserId(String userId) {
 		this.userId = userId;
 	}
 
+	public String getSalt() {
+		return salt;
+	}
+
+	public void setSalt(String salt) {
+		this.salt = salt;
+	}
 }

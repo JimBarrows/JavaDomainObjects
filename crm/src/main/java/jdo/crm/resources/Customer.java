@@ -1,7 +1,7 @@
 package jdo.crm.resources;
 
 import static javax.ws.rs.core.MediaType.APPLICATION_JSON;
-import static jdo.application.ApplicationConfiguration.internalOrganizationPredicate;
+import static jdo.party.FitlerUtils.isInternalOrganization;
 import static jdo.party.specifications.HasActiveCustomerRelationshipWith.hasActiveCustomerRelationshipWith;
 
 import java.util.ArrayList;
@@ -111,7 +111,7 @@ public class Customer {
 		party = partyRepo.create(party);
 
 		final InternalOrganization companyInternalRole = ( InternalOrganization ) configuration.company().getActingAs()
-				.stream().filter(internalOrganizationPredicate()).findFirst().get();
+				.stream().filter(isInternalOrganization()).findFirst().get();
 
 		CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
 

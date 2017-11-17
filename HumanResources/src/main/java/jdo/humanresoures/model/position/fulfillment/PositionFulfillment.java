@@ -5,6 +5,7 @@ import java.util.UUID;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
+import javax.persistence.ManyToOne;
 
 import jdo.fields.DateTimeRange;
 import jdo.humanresoures.model.position.Position;
@@ -27,6 +28,7 @@ public class PositionFulfillment extends BasePersistentModel {
 	@Lob
 	private String comment;
 
+	@ManyToOne
 	private Position fullfillmentOf;
 
 	@Embedded

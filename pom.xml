@@ -79,7 +79,8 @@
 		<module>validations</module>
 		<module>WorkEffort</module>
 		<module>build-tools</module>
-	</modules>
+        <module>iam_services</module>
+    </modules>
 
 	<profiles>
 		<profile>

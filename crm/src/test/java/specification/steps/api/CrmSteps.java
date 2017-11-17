@@ -1,6 +1,6 @@
 package specification.steps.api;
 
-import static jdo.application.ApplicationConfiguration.internalOrganizationPredicate;
+import static jdo.party.FitlerUtils.isInternalOrganization;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNull;
 import static junit.framework.Assert.assertTrue;
@@ -260,7 +260,7 @@ public class CrmSteps {
 		customerAsParty.addPartyRole(customerRole);
 
 		final InternalOrganization companyInternalRole = ( InternalOrganization ) applicationConfiguration.company()
-				.getActingAs().stream().filter(internalOrganizationPredicate()).findFirst().get();
+				.getActingAs().stream().filter(isInternalOrganization()).findFirst().get();
 
 		final CustomerRelationship customerRelationship = new CustomerRelationship(companyInternalRole, customerRole);
 		em.persist(customerRelationship);
@@ -362,9 +362,9 @@ public class CrmSteps {
 	 */
 	@BeforeStories
 	public void createEntityManager() {
-		emf = Persistence.createEntityManagerFactory("crmBddTest");
-		em = emf.createEntityManager();
-		applicationConfiguration = new ApplicationConfiguration(em);
+//		emf = Persistence.createEntityManagerFactory("crmBddTest");
+//		em = emf.createEntityManager();
+//		applicationConfiguration = new ApplicationConfiguration(em);
 		findCompany = applicationConfiguration.company();
 	}
 
