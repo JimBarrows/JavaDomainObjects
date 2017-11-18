@@ -63,10 +63,12 @@
     <modules>
         <module>accounting_and_budgeting</module>
         <module>application</module>
+        <module>build-tools</module>
         <module>common</module>
         <module>customer_relationship_management</module>
-        <module>Ecommerce</module>
+        <module>e_commerce</module>
         <module>HumanResources</module>
+        <module>iam_services</module>
         <module>Invoicing</module>
         <module>jdo-ear</module>
         <module>OrderingProducts</module>
@@ -78,9 +80,6 @@
         <module>utils</module>
         <module>validations</module>
         <module>WorkEffort</module>
-        <module>build-tools</module>
-        <module>iam_services</module>
-
     </modules>
 
     <profiles>
