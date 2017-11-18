@@ -1,6 +1,5 @@
 package jdo.accounting.model;
 
-import jdo.accounting.model.asset.PeriodType;
 import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
 

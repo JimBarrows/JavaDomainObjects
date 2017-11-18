@@ -1,6 +1,6 @@
 package jdo.accounting.model;
 
-import jdo.accounting.model.transaction.detail.TransactionDetail;
+import jdo.accounting.model.transaction.AccountingTransaction;
 import jdo.fields.DateTimeRange;
 import jdo.model.BasePersistentModel;
 
@@ -16,7 +16,7 @@ import java.util.UUID;
 public class OrganizationGlAccount extends BasePersistentModel {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
@@ -27,23 +27,20 @@ public class OrganizationGlAccount extends BasePersistentModel {
 	private List<OrganizationGlAccount> comprisedOf = new ArrayList<OrganizationGlAccount>();
 
 	@OneToMany
-	private List<TransactionDetail> consistingOf = new ArrayList<TransactionDetail>();
+	private List<AccountingTransaction> consistingOf = new ArrayList<AccountingTransaction>();
 
 	/**
 	 * UUID for PartyRole.
-	 * 
 	 */
 	private UUID internalOrganizationFor;
 
 	/**
 	 * UUID for PartyRole.
-	 * 
 	 */
 	private UUID referencingBillToCustomer;
 
 	/**
 	 * UUID for PartyRole.
-	 * 
 	 */
 	private UUID referencingSupplier;
 
@@ -52,7 +49,6 @@ public class OrganizationGlAccount extends BasePersistentModel {
 
 	/**
 	 * UUID for Product.
-	 * 
 	 */
 	private UUID referencingProduct;
 
@@ -61,7 +57,6 @@ public class OrganizationGlAccount extends BasePersistentModel {
 
 	/**
 	 * UUID for ProductCategory.
-	 * 
 	 */
 	private UUID referencingProductCategory;
 
@@ -97,7 +92,7 @@ public class OrganizationGlAccount extends BasePersistentModel {
 		return comprisedOf;
 	}
 
-	public List<TransactionDetail> getConsistingOf() {
+	public List<AccountingTransaction> getConsistingOf() {
 		return consistingOf;
 	}
 
@@ -125,7 +120,7 @@ public class OrganizationGlAccount extends BasePersistentModel {
 		this.comprisedOf = comprisedOf;
 	}
 
-	public void setConsistingOf(List<TransactionDetail> consistingOf) {
+	public void setConsistingOf(List<AccountingTransaction> consistingOf) {
 		this.consistingOf = consistingOf;
 	}
 

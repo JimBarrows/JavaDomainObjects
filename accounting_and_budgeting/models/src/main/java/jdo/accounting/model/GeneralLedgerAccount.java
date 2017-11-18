@@ -14,28 +14,28 @@ import java.util.List;
 public class GeneralLedgerAccount extends BasePersistentModel {
 
 	/**
-	 * 
+	 *
 	 */
-	private static final long			serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
 	@OneToMany
-	private List<OrganizationGlAccount>	associatedWith		= new ArrayList<OrganizationGlAccount>();
+	private List<OrganizationGlAccount> associatedWith = new ArrayList<OrganizationGlAccount>();
 
 	@OneToMany
-	private List<GlBudgetXref>			budgetLineItems;
+	private List<GlBudgetXref> budgetLineItems;
 
 	@Lob
-	private String						description;
+	private String description;
 
 	@NotEmpty
-	private String						name;
+	private String name;
 
-	
+
 	public List<OrganizationGlAccount> getAssociatedWith() {
 		return associatedWith;
 	}
 
-	
+
 	public List<GlBudgetXref> getBudgetLineItems() {
 		return budgetLineItems;
 	}

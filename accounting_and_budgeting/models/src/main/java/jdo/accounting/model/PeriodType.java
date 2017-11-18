@@ -1,4 +1,4 @@
-package jdo.accounting.model.asset;
+package jdo.accounting.model;
 
 import jdo.model.BaseType;
 

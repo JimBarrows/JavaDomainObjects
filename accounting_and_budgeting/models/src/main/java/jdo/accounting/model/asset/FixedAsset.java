@@ -13,26 +13,26 @@ import java.util.List;
 public class FixedAsset extends BasePersistentModel {
 
 	/**
-	 * 
+	 *
 	 */
-	private static final long					serialVersionUID	= 1L;
+	private static final long serialVersionUID = 1L;
 
-	private Date								dateAcquired;
+	private Date dateAcquired;
 
-	private Date								dateLastServiced;
+	private Date dateLastServiced;
 
 	@OneToMany
-	private List<FixedAssetDepreciationMethod>	depreciatedVia;
+	private List<FixedAssetDepreciationMethod> depreciatedVia;
 
 	@Lob
-	private String								description;
+	private String description;
 
 	@NotEmpty
-	private String								name;
+	private String name;
 
-	private Date								nextService;
+	private Date nextService;
 
-	private int									productionCapacity;
+	private int productionCapacity;
 
 	public Date getDateAcquired() {
 		return dateAcquired;
@@ -42,7 +42,7 @@ public class FixedAsset extends BasePersistentModel {
 		return dateLastServiced;
 	}
 
-	
+
 	public List<FixedAssetDepreciationMethod> getDepreciatedVia() {
 		return depreciatedVia;
 	}
