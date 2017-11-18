@@ -12,6 +12,7 @@
     <groupId>jdo.people_people_and_organizations</groupId>
     <artifactId>people_and_organizations_components</artifactId>
     <version>1.0.0-SNAPSHOT</version>
+    <name>People and Organization Components</name>
     <packaging>pom</packaging>
     <modules>
         <module>repositories</module>
