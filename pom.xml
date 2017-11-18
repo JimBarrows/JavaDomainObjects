@@ -61,10 +61,10 @@
     </properties>
 
     <modules>
-        <module>accounting_and_budgeting_models</module>
+        <module>accounting_and_budgeting</module>
         <module>application</module>
         <module>common</module>
-        <module>crm</module>
+        <module>customer_relationship_management</module>
         <module>Ecommerce</module>
         <module>HumanResources</module>
         <module>Invoicing</module>
@@ -80,7 +80,7 @@
         <module>WorkEffort</module>
         <module>build-tools</module>
         <module>iam_services</module>
-        <module>accounting_and_budgeting</module>
+
     </modules>
 
     <profiles>

@@ -24,9 +24,9 @@
                 <configuration>
                     <driverClassName>org.postgresql.Driver</driverClassName>
                     <hibernateDialect>org.hibernate.dialect.PostgresPlusDialect</hibernateDialect>
-                    <username>jdo_user</username>
-                    <password>jdo_user</password>
-                    <url>jdbc:postgresql://localhost:5432/jdo</url>
+                    <username>party_database</username>
+                    <password>party_database</password>
+                    <url>jdbc:postgresql://localhost:5432/party_database</url>
                     <target>NONE</target>
                     <type>BOTH</type>
                 </configuration>
