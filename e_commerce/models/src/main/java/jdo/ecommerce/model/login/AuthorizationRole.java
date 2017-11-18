@@ -1,11 +1,11 @@
 package jdo.ecommerce.model.login;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 
 @Entity
 @SuppressWarnings("serial")
-public class AuthorizationRole extends BasePersistentModel {
+public class AuthorizationRole extends PersistentEntity {
 
 }

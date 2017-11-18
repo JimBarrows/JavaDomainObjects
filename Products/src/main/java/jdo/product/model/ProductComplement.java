@@ -1,12 +1,12 @@
 package jdo.product.model;
 
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
 
 /**
  * Indicates that a product is well suited to function with other products.
@@ -16,7 +16,7 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:35 AM
  */
 @Entity
-public class ProductComplement extends BasePersistentModel {
+public class ProductComplement extends PersistentEntity {
 
 	/**
 	 * 

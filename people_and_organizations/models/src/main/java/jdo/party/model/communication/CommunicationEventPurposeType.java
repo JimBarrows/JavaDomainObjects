@@ -1,6 +1,6 @@
 package jdo.party.model.communication;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
@@ -13,7 +13,7 @@ import javax.persistence.Entity;
  */
 @SuppressWarnings("serial")
 @Entity
-public class CommunicationEventPurposeType extends BaseType{
+public class CommunicationEventPurposeType extends Type {
 
 
 }

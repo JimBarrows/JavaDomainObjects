@@ -1,13 +1,13 @@
 package jdo.product.model;
 
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
 
 /**
  * Shows which products can be substituted by other products.
@@ -17,7 +17,7 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:37 AM
  */
 @Entity
-public class ProductSubstitute extends BasePersistentModel {
+public class ProductSubstitute extends PersistentEntity {
 
 	/**
 	 * 

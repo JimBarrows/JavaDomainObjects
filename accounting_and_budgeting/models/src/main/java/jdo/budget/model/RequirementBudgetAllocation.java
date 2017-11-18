@@ -1,7 +1,7 @@
 package jdo.budget.model;
 
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -14,7 +14,7 @@ import java.util.UUID;
  * @created: Apr 2, 2010 8:48:30 AM
  */
 @Entity
-public class RequirementBudgetAllocation extends BasePersistentModel {
+public class RequirementBudgetAllocation extends PersistentEntity {
 
 	/**
 	 * 

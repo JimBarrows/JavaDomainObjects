@@ -1,8 +1,8 @@
 package jdo.product.model.supplier;
 
-import javax.persistence.Entity;
+import jdo.model.Type;
 
-import jdo.model.BaseType;
+import javax.persistence.Entity;
 
 /**
  * @author Jim
@@ -11,7 +11,7 @@ import jdo.model.BaseType;
  * @see "Data Model Resource Book Volume 1 Figure 3.5, page 82"
  */
 @Entity
-public class RatingType extends BaseType {
+public class RatingType extends Type {
 
 	/**
 	 * 

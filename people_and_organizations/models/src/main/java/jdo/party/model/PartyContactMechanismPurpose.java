@@ -1,7 +1,7 @@
 package jdo.party.model;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.contactmechanism.ContactMechanismPurposeType;
 
 import javax.persistence.Embedded;
@@ -9,7 +9,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class PartyContactMechanismPurpose extends BasePersistentModel {
+public class PartyContactMechanismPurpose extends PersistentEntity {
 
 	/**
 	 * 

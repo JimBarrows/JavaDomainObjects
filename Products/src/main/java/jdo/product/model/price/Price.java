@@ -3,7 +3,7 @@ package jdo.product.model.price;
 import javax.persistence.Entity;
 
 @Entity
-public class BasePrice extends PriceComponent {
+public class Price extends PriceComponent {
 
 	/**
 	 * 

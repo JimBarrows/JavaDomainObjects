@@ -1,6 +1,6 @@
 package jdo.party.model.communication;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.PartyContactMechanism;
 import jdo.party.model.relationship.PartyRelationship;
 import org.hibernate.validator.constraints.NotEmpty;
@@ -24,7 +24,7 @@ import java.util.List;
  */
 @SuppressWarnings("serial")
 @Entity
-public class CommunicationEvent extends BasePersistentModel {
+public class CommunicationEvent extends PersistentEntity {
 
 	@ManyToMany
 	private List<Case> asPartOf = new ArrayList<Case>();

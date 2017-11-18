@@ -3,7 +3,7 @@ package jdo.accounting.model.transaction.detail;
 import jdo.accounting.model.OrganizationGlAccount;
 import jdo.accounting.model.transaction.AccountingTransaction;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class TransactionDetail extends BasePersistentModel {
+public class TransactionDetail extends PersistentEntity {
 
 	public TransactionDetail() {
 		super();

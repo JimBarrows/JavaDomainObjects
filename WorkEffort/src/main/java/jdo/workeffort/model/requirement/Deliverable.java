@@ -1,17 +1,16 @@
 package jdo.workeffort.model.requirement;
 
-import java.util.ArrayList;
-import java.util.List;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import jdo.model.BasePersistentModel;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
-public class Deliverable extends BasePersistentModel {
+public class Deliverable extends PersistentEntity {
 
 	/**
 	 * 

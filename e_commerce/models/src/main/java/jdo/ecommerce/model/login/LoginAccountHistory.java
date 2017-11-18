@@ -1,6 +1,6 @@
 package jdo.ecommerce.model.login;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
@@ -18,7 +18,7 @@ import java.util.Date;
  */
 @SuppressWarnings("serial")
 @Entity
-public class LoginAccountHistory extends BasePersistentModel {
+public class LoginAccountHistory extends PersistentEntity {
 
 	@NotNull
 	@Temporal(TemporalType.TIMESTAMP)

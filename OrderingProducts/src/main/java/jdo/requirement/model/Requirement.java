@@ -1,23 +1,16 @@
 package jdo.requirement.model;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class Requirement extends BasePersistentModel {
+public class Requirement extends PersistentEntity {
 
 	/**
 	 * 

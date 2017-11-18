@@ -1,15 +1,13 @@
 package jdo.product.model.storage;
 
-import java.util.ArrayList;
-import java.util.List;
+import jdo.model.PersistentEntity;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-
-import jdo.model.BasePersistentModel;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jim
@@ -17,7 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @created 25-Dec-2007 9:54:37 AM
  */
 @Entity
-public class Reason extends BasePersistentModel {
+public class Reason extends PersistentEntity {
 
 	/**
 	 * 

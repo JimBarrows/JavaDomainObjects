@@ -1,12 +1,12 @@
 package jdo.product.model.measurement;
 
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
-
-import jdo.model.BasePersistentModel;
 
 /**
  * @author Jim
@@ -15,7 +15,7 @@ import jdo.model.BasePersistentModel;
  * @see Data Model Resource Book Volume 1 Figure 3.4, page 77
  */
 @Entity
-public class UnitOfMeasureConversion extends BasePersistentModel {
+public class UnitOfMeasureConversion extends PersistentEntity {
 
 	/**
 	 * 

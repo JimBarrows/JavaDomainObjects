@@ -1,11 +1,11 @@
 package jdo.humanresoures.model.position.type;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class PositionClassificationType extends BaseType {
+public class PositionClassificationType extends Type {
 
 	/**
 	 * 

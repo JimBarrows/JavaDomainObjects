@@ -1,24 +1,18 @@
 package jdo.invoice.model;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.Min;
-
 import jdo.fields.Money;
 import jdo.invoice.model.billing.OrderItemBilling;
 import jdo.invoice.model.billing.WorkEffortBilling;
 import jdo.invoice.model.term.InvoiceTerm;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class InvoiceItem extends BasePersistentModel {
+public class InvoiceItem extends PersistentEntity {
 
 	/**
 	 * 

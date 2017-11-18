@@ -1,13 +1,13 @@
 package jdo.ecommerce.model.subscription;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
 @Entity
-public class SubscriptionActivity extends BasePersistentModel {
+public class SubscriptionActivity extends PersistentEntity {
 
 	/**
 	 * 

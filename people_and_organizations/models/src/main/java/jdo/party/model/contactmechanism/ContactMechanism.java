@@ -1,7 +1,7 @@
 package jdo.party.model.contactmechanism;
 
 import jdo.facility.model.FacilityContactMechanism;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.PartyContactMechanism;
 
 import javax.persistence.CascadeType;
@@ -19,7 +19,7 @@ import java.util.List;
  * @see Data Model Resource Book Volume 1 Figure 2.11, page 59
  */
 @Entity
-public class ContactMechanism extends BasePersistentModel {
+public class ContactMechanism extends PersistentEntity {
 
 	/**
 	 * 

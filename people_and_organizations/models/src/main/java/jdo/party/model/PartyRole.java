@@ -1,7 +1,7 @@
 package jdo.party.model;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.relationship.PartyRelationship;
 
 import javax.persistence.*;
@@ -23,7 +23,7 @@ import java.util.Optional;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class PartyRole extends BasePersistentModel {
+public class PartyRole extends PersistentEntity {
 
 	@ManyToOne
 	private Party roleFor;

@@ -1,18 +1,17 @@
 package jdo.humanresoures.model.position.salary;
 
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.fields.Money;
+import jdo.humanresoures.model.position.type.PositionType;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import jdo.fields.DateTimeRange;
-import jdo.fields.Money;
-import jdo.humanresoures.model.position.type.PositionType;
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class PositionTypeRate extends BasePersistentModel {
+public class PositionTypeRate extends PersistentEntity {
 
 	/**
 	 * 

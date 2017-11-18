@@ -1,7 +1,7 @@
 package jdo.party.model;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotNull;
@@ -21,7 +21,7 @@ import javax.xml.crypto.Data;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class PartyClassification extends BasePersistentModel {
+public class PartyClassification extends PersistentEntity {
 
 	/**
 	 * 

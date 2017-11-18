@@ -3,7 +3,7 @@ package jdo.budget.model.scenario;
 import jdo.budget.model.Budget;
 import jdo.budget.model.BudgetItem;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Embedded;
@@ -12,7 +12,7 @@ import javax.persistence.ManyToOne;
 import javax.validation.constraints.AssertTrue;
 
 @Entity
-public class BudgetScenarioApplication extends BasePersistentModel {
+public class BudgetScenarioApplication extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,6 +1,8 @@
 package jdo.order.model.status;
 
-import java.util.Date;
+import jdo.model.PersistentEntity;
+import jdo.order.model.Order;
+import jdo.order.model.OrderItem;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -8,13 +10,10 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
-
-import jdo.model.BasePersistentModel;
-import jdo.order.model.Order;
-import jdo.order.model.OrderItem;
+import java.util.Date;
 
 @Entity
-public class OrderStatus extends BasePersistentModel {
+public class OrderStatus extends PersistentEntity {
 
 	/**
 	 * 

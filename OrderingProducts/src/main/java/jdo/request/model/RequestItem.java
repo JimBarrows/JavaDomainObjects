@@ -1,20 +1,13 @@
 package jdo.request.model;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+import jdo.requirement.model.Requirement;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Min;
-
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-import jdo.requirement.model.Requirement;
 
 /**
  * This describes the varioud things they need in the request.
@@ -23,7 +16,7 @@ import jdo.requirement.model.Requirement;
  *
  */
 @Entity
-public class RequestItem extends BasePersistentModel {
+public class RequestItem extends PersistentEntity {
 
 	private static final long serialVersionUID = 1L;
 	@OneToMany

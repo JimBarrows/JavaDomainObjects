@@ -1,6 +1,7 @@
 package specification.steps.api;
 
 import jdo.application.ApplicationConfiguration;
+import jdo.crm.models.Customer;
 import jdo.dto.CustomerDto;
 import jdo.party.model.Company;
 import jdo.party.model.Organization;
@@ -17,7 +18,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.ws.rs.core.Response;
 import java.util.UUID;
 
-import static jdo.party.FitlerUtils.isInternalOrganization;
+import static jdo.party.FilterUtils.isInternalOrganization;
 import static junit.framework.Assert.*;
 
 /**
@@ -170,7 +171,7 @@ public class CrmSteps {
 	 */
 	@Given("the name is <Name>")
 	public final void setName(@Named("Name") final String name) {
-		if (type.equals("Customer")) {
+		if (type.equals("CustomerResource")) {
 			final String[] split = name.split(",");
 			firstName = split[0];
 			lastName = split[1];
@@ -244,7 +245,7 @@ public class CrmSteps {
 
 		em.getTransaction().begin();
 		em.persist(customerAsParty);
-		customerDtoFromDb = new CustomerDto(customerAsParty);
+		customerDtoFromDb = new CustomerDto(new Customer(customerAsParty));
 		final jdo.party.model.roles.Customer customerRole = new jdo.party.model.roles.Customer();
 		customerAsParty.addPartyRole(customerRole);
 
@@ -266,7 +267,7 @@ public class CrmSteps {
 	 */
 	@When("I change the name to <New Name>")
 	public void whenIChangeTheNameToNewName(@Named("New Name") final String newName) {
-		if (type.equals("Customer")) {
+		if (type.equals("CustomerResource")) {
 			final String[] split = newName.split(",");
 			firstName = split[0];
 			lastName = split[1];

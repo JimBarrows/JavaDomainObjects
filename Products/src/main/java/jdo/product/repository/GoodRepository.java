@@ -1,14 +1,13 @@
 package jdo.product.repository;
 
-import java.util.UUID;
+import jdo.core.repository.DatabaseRepositoryTemplate;
+import jdo.product.model.Good;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.UUID;
 
-import jdo.core.repository.RepositoryTemplate;
-import jdo.product.model.Good;
-
-public class GoodRepository extends RepositoryTemplate<Good, UUID> {
+public class GoodRepository extends DatabaseRepositoryTemplate<Good, UUID> {
 
 	@PersistenceContext(name = "JdoProducts")
 	protected EntityManager entityManager;

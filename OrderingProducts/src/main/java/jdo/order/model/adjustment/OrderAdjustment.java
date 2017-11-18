@@ -1,5 +1,10 @@
 package jdo.order.model.adjustment;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+import jdo.order.model.Order;
+import jdo.order.model.OrderItem;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -7,12 +12,8 @@ import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Max;
 import javax.validation.constraints.Min;
 
-import jdo.fields.Money;
-import jdo.order.model.Order;
-import jdo.order.model.OrderItem;
-
 @Entity
-public class OrderAdjustment extends jdo.model.BasePersistentModel {
+public class OrderAdjustment extends PersistentEntity {
 
 	/**
 	 * 

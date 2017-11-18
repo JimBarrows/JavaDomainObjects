@@ -1,11 +1,11 @@
 package jdo.order.model.terms;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class OrderTermType extends BaseType {
+public class OrderTermType extends Type {
 
 	/**
 	 * 

@@ -1,14 +1,13 @@
 package jdo.shipment.model.receipt;
 
+import jdo.model.PersistentEntity;
+import org.hibernate.validator.constraints.NotEmpty;
+
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 
-import jdo.model.BasePersistentModel;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
 @Entity
-public class RejectionReason extends BasePersistentModel {
+public class RejectionReason extends PersistentEntity {
 
 	/**
 	 * 

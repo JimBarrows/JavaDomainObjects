@@ -1,18 +1,18 @@
 package jdo.shipment.model.document;
 
+import jdo.model.PersistentEntity;
+import jdo.shipment.model.Shipment;
+import jdo.shipment.model.ShipmentItem;
+import jdo.shipment.model.receipt.ShipmentPackage;
+
 import javax.persistence.Entity;
 import javax.persistence.Inheritance;
 import javax.persistence.InheritanceType;
 import javax.persistence.ManyToOne;
 
-import jdo.model.BasePersistentModel;
-import jdo.shipment.model.Shipment;
-import jdo.shipment.model.ShipmentItem;
-import jdo.shipment.model.receipt.ShipmentPackage;
-
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Document extends BasePersistentModel {
+public class Document extends PersistentEntity {
 
 	/**
 	 * 

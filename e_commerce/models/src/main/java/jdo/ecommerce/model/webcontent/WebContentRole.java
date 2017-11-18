@@ -1,7 +1,7 @@
 package jdo.ecommerce.model.webcontent;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.ManyToOne;
 import java.util.UUID;
 
 @Entity
-public class WebContentRole extends BasePersistentModel {
+public class WebContentRole extends PersistentEntity {
 
 	/**
 	 * 

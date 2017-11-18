@@ -1,7 +1,7 @@
 package jdo.facility.model;
 
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
@@ -12,7 +12,7 @@ import javax.persistence.Entity;
  * @see "Data Model Resource Book Volume 1 Figure 2.11, page 59"
  */
 @Entity
-public class FacilityRoleType extends BaseType{
+public class FacilityRoleType extends Type {
 
 	/**
 	 * 

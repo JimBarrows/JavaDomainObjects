@@ -1,14 +1,13 @@
 package jdo.humanresoures.model.position;
 
-import java.util.List;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
-import jdo.model.BaseType;
+import java.util.List;
 
 @Entity
-public class ResponsibilityType extends BaseType {
+public class ResponsibilityType extends Type {
 
 	/**
 	 * 

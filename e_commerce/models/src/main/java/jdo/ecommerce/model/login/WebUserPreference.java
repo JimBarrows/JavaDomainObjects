@@ -1,6 +1,6 @@
 package jdo.ecommerce.model.login;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
@@ -8,7 +8,7 @@ import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class WebUserPreference extends BasePersistentModel {
+public class WebUserPreference extends PersistentEntity {
 
 	/**
 	 * 

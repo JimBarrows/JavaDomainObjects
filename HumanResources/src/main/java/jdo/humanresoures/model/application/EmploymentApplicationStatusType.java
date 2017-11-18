@@ -1,11 +1,11 @@
 package jdo.humanresoures.model.application;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class EmploymentApplicationStatusType extends BaseType {
+public class EmploymentApplicationStatusType extends Type {
 
 	/**
 	 * 

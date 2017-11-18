@@ -1,17 +1,16 @@
 package jdo.shipment.model.issuance;
 
-import java.util.Date;
-import java.util.List;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import jdo.model.BasePersistentModel;
+import java.util.Date;
+import java.util.List;
 
 @Entity
-public class PickList extends BasePersistentModel {
+public class PickList extends PersistentEntity {
 
 	/**
 	 * 

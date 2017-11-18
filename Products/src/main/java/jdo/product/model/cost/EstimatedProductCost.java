@@ -1,20 +1,15 @@
 package jdo.product.model.cost;
 
-import java.util.UUID;
-
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.Min;
-import javax.validation.constraints.NotNull;
-
 import jdo.fields.DateTimeRange;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.product.model.Product;
 import jdo.product.model.feature.ProductFeature;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
+import java.util.UUID;
 
 /**
  * @author Jim
@@ -23,7 +18,7 @@ import jdo.product.model.feature.ProductFeature;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class EstimatedProductCost extends BasePersistentModel {
+public class EstimatedProductCost extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,7 +1,7 @@
 package jdo.budget.model.revision;
 
 import jdo.budget.model.Budget;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class BudgetRevision extends BasePersistentModel {
+public class BudgetRevision extends PersistentEntity {
 
 	/**
 	 * 

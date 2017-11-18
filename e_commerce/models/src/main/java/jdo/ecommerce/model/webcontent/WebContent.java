@@ -1,6 +1,6 @@
 package jdo.ecommerce.model.webcontent;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class WebContent extends BasePersistentModel {
+public class WebContent extends PersistentEntity {
 
 	/**
 	 * 

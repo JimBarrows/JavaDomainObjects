@@ -1,11 +1,11 @@
 package jdo.accounting.model;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class PeriodType extends BaseType {
+public class PeriodType extends Type {
 
 	/**
 	 * 

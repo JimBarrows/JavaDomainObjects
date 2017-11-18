@@ -1,11 +1,11 @@
 package jdo.shipment.model.receipt;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class ShipmentReceiptRoleType extends BaseType {
+public class ShipmentReceiptRoleType extends Type {
 
 	/**
 	 * 

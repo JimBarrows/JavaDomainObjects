@@ -1,17 +1,10 @@
 package jdo.request.model;
 
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import jdo.model.BasePersistentModel;
 
 /**
  * A request is inquiry either to or from a PartyRole for a quote.
@@ -21,7 +14,7 @@ import jdo.model.BasePersistentModel;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Request extends BasePersistentModel {
+public class Request extends PersistentEntity {
 
 	private static final long serialVersionUID = 1L;
 	@Lob

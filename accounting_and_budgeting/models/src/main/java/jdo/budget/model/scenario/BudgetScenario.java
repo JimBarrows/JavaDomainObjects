@@ -1,13 +1,13 @@
 package jdo.budget.model.scenario;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
 
 @Entity
-public class BudgetScenario extends BasePersistentModel {
+public class BudgetScenario extends PersistentEntity {
 
 	/**
 	 * 

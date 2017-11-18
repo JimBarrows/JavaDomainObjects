@@ -1,11 +1,11 @@
 package jdo.ecommerce.model.webcontent;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class WebContentRoleType extends BaseType {
+public class WebContentRoleType extends Type {
 
 	/**
 	 * 

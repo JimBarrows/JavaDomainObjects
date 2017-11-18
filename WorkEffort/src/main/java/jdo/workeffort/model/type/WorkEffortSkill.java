@@ -1,15 +1,14 @@
 package jdo.workeffort.model.type;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.Entity;
 import java.time.Duration;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class WorkEffortSkill extends BasePersistentModel {
+public class WorkEffortSkill extends PersistentEntity {
 
 	/**
 	 * 

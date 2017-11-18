@@ -1,8 +1,6 @@
 package jdo.iams_services.models;
 
-import jdo.encryption.Encrypter;
-import jdo.iams_services.models.Authorization;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.Length;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -20,7 +18,7 @@ import static jdo.encryption.Encrypter.encryptThis;
  * instead use the constructor and the password will be encrypted.
  */
 @Entity
-public class Identity extends BasePersistentModel {
+public class Identity extends PersistentEntity {
 	private UUID identityOfParty;
 	private String password;
 	private String salt;

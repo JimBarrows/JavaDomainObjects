@@ -1,14 +1,14 @@
 package jdo.accounting.model.asset;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class FixedAssetDepreciationMethod extends BasePersistentModel {
+public class FixedAssetDepreciationMethod extends PersistentEntity {
 
 	/**
 	 * 

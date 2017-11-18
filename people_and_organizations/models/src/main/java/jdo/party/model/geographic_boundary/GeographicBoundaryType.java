@@ -1,11 +1,11 @@
 package jdo.party.model.geographic_boundary;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class GeographicBoundaryType extends BaseType {
+public class GeographicBoundaryType extends Type {
 
 	/**
 	 * 

@@ -1,11 +1,11 @@
 package jdo.invoice.model.payment;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class PaymentMethodType extends BaseType {
+public class PaymentMethodType extends Type {
 
 	/**
 	 * 

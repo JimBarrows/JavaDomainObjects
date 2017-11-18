@@ -1,11 +1,11 @@
 package jdo.accounting.model.asset;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 
 @Entity
-public class DepreciationMethod extends BasePersistentModel {
+public class DepreciationMethod extends PersistentEntity {
 
 	/**
 	 * 

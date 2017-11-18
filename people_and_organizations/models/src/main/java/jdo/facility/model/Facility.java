@@ -1,6 +1,6 @@
 package jdo.facility.model;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
@@ -19,7 +19,7 @@ import java.util.List;
  * @see Data Model Resource Book Volume 1 Figure 3.5, page 82
  */
 @Entity
-public class Facility extends BasePersistentModel{
+public class Facility extends PersistentEntity {
 
 	/**
 	 * 

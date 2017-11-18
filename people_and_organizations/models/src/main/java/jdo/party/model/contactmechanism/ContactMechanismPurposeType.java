@@ -1,11 +1,11 @@
 package jdo.party.model.contactmechanism;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class ContactMechanismPurposeType extends BaseType {
+public class ContactMechanismPurposeType extends Type {
 
 	/**
 	 * 

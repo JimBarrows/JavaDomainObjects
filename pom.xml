@@ -70,7 +70,6 @@
         <module>HumanResources</module>
         <module>iam_services</module>
         <module>Invoicing</module>
-        <module>jdo-ear</module>
         <module>OrderingProducts</module>
         <module>people_and_organizations</module>
         <module>Products</module>

@@ -1,12 +1,12 @@
 package jdo.ecommerce.model.webvisit;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class UserAgent extends BasePersistentModel {
+public class UserAgent extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,11 +1,11 @@
 package jdo.quote.model;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class TermType extends BaseType {
+public class TermType extends Type {
 
 	/**
 	 * 

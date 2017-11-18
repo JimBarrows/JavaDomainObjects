@@ -1,6 +1,6 @@
 package jdo.ecommerce.model.webvisit;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class Visit extends BasePersistentModel {
+public class Visit extends PersistentEntity {
 
 	/**
 	 * 

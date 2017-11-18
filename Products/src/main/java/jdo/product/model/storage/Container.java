@@ -1,14 +1,13 @@
 package jdo.product.model.storage;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import jdo.model.BasePersistentModel;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * @author Jim
@@ -16,7 +15,7 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:28 AM
  */
 @Entity
-public class Container extends BasePersistentModel {
+public class Container extends PersistentEntity {
 
 	/**
 	 * 

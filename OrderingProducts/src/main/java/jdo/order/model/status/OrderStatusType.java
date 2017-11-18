@@ -1,11 +1,11 @@
 package jdo.order.model.status;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class OrderStatusType extends BaseType {
+public class OrderStatusType extends Type {
 
 	private static final long	serialVersionUID	= 1L;
 

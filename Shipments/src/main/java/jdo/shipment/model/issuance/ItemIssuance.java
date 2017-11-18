@@ -1,19 +1,18 @@
 package jdo.shipment.model.issuance;
 
-import java.util.Date;
-import java.util.UUID;
+import jdo.model.PersistentEntity;
+import jdo.shipment.model.ShipmentItem;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Min;
-
-import jdo.model.BasePersistentModel;
-import jdo.shipment.model.ShipmentItem;
+import java.util.Date;
+import java.util.UUID;
 
 @Entity
-public class ItemIssuance extends BasePersistentModel {
+public class ItemIssuance extends PersistentEntity {
 
 	/**
 	 * 

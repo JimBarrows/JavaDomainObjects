@@ -1,6 +1,6 @@
 package jdo.party.model.communication;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
@@ -8,7 +8,7 @@ import javax.persistence.ManyToOne;
 import java.util.UUID;
 
 @Entity
-public class CommunicationEventWorkEffort extends BasePersistentModel {
+public class CommunicationEventWorkEffort extends PersistentEntity {
 
 	/**
 	 * 

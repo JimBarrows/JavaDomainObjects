@@ -2,7 +2,7 @@ package jdo.accounting.model;
 
 import jdo.accounting.model.transaction.AccountingTransaction;
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class OrganizationGlAccount extends BasePersistentModel {
+public class OrganizationGlAccount extends PersistentEntity {
 
 	/**
 	 *

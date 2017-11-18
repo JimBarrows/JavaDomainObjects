@@ -1,17 +1,16 @@
 package jdo.order.model;
 
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class OrderItemRole extends BasePersistentModel {
+public class OrderItemRole extends PersistentEntity {
 
 	private static final long serialVersionUID = 1L;
 

@@ -1,7 +1,7 @@
 package jdo.accounting.model;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -17,7 +17,7 @@ import java.util.UUID;
  *
  */
 @Entity
-public class AccountingPeriod extends BasePersistentModel {
+public class AccountingPeriod extends PersistentEntity {
 
     /**The period number within the cycle (ie monthly would be 1-12).
      * 

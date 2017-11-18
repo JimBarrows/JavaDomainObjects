@@ -1,7 +1,7 @@
 package jdo.accounting.model.transaction;
 
 import jdo.accounting.model.transaction.detail.TransactionDetail;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -10,7 +10,7 @@ import java.util.List;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class AccountingTransaction extends BasePersistentModel {
+public class AccountingTransaction extends PersistentEntity {
 
 	public AccountingTransaction() {
 		super();

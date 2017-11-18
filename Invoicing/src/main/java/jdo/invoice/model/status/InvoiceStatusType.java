@@ -1,11 +1,11 @@
 package jdo.invoice.model.status;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class InvoiceStatusType extends BaseType {
+public class InvoiceStatusType extends Type {
 
 	/**
 	 * 

@@ -1,11 +1,10 @@
 package jdo.model;
 
-import java.util.UUID;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
 import javax.persistence.MappedSuperclass;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import java.util.UUID;
 
 /**
  * There are a lot of user definable type, this is the base class for them all.
@@ -14,23 +13,23 @@ import org.hibernate.validator.constraints.NotEmpty;
  * 
  */
 @MappedSuperclass
-public class BaseType extends BasePersistentModel {
+public class Type extends PersistentEntity {
 
 	@NotEmpty
 	@Column(nullable = false)
 	protected String	description;
 
-	public BaseType(UUID id, Long version, String description) {
+	public Type(UUID id, Long version, String description) {
 		super(id, version);
 		this.description = description;
 	}
 
-	public BaseType(String description) {
+	public Type(String description) {
 		super();
 		this.description = description;
 	}
 
-	public BaseType() {
+	public Type() {
 		super();
 	}
 	
@@ -44,7 +43,7 @@ public class BaseType extends BasePersistentModel {
 
 	@Override
 	public String toString() {
-		return "BaseType [description=" + description + ", id=" + getId() + ", version=" + getVersion() + "]";
+		return "Type [description=" + description + ", id=" + getId() + ", version=" + getVersion() + "]";
 	}
 
 	/**

@@ -1,15 +1,15 @@
 package jdo.invoice.model.term;
 
+import jdo.invoice.model.Invoice;
+import jdo.invoice.model.InvoiceItem;
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.AssertTrue;
 
-import jdo.invoice.model.Invoice;
-import jdo.invoice.model.InvoiceItem;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class InvoiceTerm extends BasePersistentModel {
+public class InvoiceTerm extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,11 +1,11 @@
 package jdo.ecommerce.model.login;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @SuppressWarnings("serial")
 @Entity
-public class WebPreferenceType extends BaseType {
+public class WebPreferenceType extends Type {
 
 }

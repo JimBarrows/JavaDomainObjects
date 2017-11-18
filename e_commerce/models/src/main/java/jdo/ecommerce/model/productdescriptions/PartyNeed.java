@@ -1,14 +1,14 @@
 package jdo.ecommerce.model.productdescriptions;
 
 import jdo.ecommerce.model.webvisit.ServerHit;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class PartyNeed extends BasePersistentModel {
+public class PartyNeed extends PersistentEntity {
 
 	/**
 	 * 

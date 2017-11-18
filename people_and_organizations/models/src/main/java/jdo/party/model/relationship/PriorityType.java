@@ -1,6 +1,6 @@
 package jdo.party.model.relationship;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
@@ -13,6 +13,6 @@ import javax.persistence.Entity;
  */
 @SuppressWarnings("serial")
 @Entity
-public class PriorityType extends BaseType{
+public class PriorityType extends Type {
 
 }

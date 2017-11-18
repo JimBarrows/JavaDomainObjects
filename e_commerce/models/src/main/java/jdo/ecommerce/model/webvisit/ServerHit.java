@@ -2,7 +2,7 @@ package jdo.ecommerce.model.webvisit;
 
 import jdo.ecommerce.model.login.UserLogin;
 import jdo.ecommerce.model.webcontent.WebContent;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
@@ -12,7 +12,7 @@ import java.util.Date;
 import java.util.UUID;
 
 @Entity
-public class ServerHit extends BasePersistentModel {
+public class ServerHit extends PersistentEntity {
 
 	/**
 	 * 

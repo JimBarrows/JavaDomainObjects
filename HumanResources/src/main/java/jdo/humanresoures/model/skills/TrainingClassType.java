@@ -1,11 +1,11 @@
 package jdo.humanresoures.model.skills;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class TrainingClassType extends BaseType {
+public class TrainingClassType extends Type {
 
 	/**
 	 * 

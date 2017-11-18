@@ -1,21 +1,16 @@
 package jdo.humanresoures.model.performance;
 
-import java.util.List;
-import java.util.UUID;
-
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
 import jdo.fields.DateTimeRange;
 import jdo.humanresoures.model.position.Position;
 import jdo.humanresoures.model.position.salary.PayHistory;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class PerformanceReview extends BasePersistentModel {
+public class PerformanceReview extends PersistentEntity {
 
 	/**
 	 * 

@@ -50,8 +50,8 @@ public class CrmSteps {
     public final void givenIAmOnTheCrmSite() {
 	index.go();
 	index.onCorrectPage();
-	index.title().shouldBe("Customer Relationship Management");
-	index.pageHeader().shouldBe("Customer Relationship Management");
+	    index.title().shouldBe("CustomerResource Relationship Management");
+	    index.pageHeader().shouldBe("CustomerResource Relationship Management");
     }
 
     /**

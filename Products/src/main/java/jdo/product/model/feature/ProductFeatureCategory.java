@@ -1,16 +1,10 @@
 package jdo.product.model.feature;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
-import jdo.model.BasePersistentModel;
-
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import java.util.List;
 
 /**
  * @author Jim
@@ -20,7 +14,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Table(uniqueConstraints = { @UniqueConstraint(columnNames = "name") })
-public class ProductFeatureCategory extends BasePersistentModel {
+public class ProductFeatureCategory extends PersistentEntity {
 
 	/**
 	 * 

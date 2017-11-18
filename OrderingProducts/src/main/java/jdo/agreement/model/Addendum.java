@@ -1,20 +1,14 @@
 package jdo.agreement.model;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-import javax.validation.constraints.NotNull;
-
-import jdo.model.BasePersistentModel;
-
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.Date;
+
 @Entity
-public class Addendum extends BasePersistentModel {
+public class Addendum extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,11 +1,11 @@
 package jdo.accounting.model.transaction;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class AccountingTransactionType extends BaseType {
+public class AccountingTransactionType extends Type {
 
 	/**
 	 * 

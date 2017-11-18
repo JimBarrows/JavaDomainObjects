@@ -1,7 +1,7 @@
 package jdo.facility.model;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.contactmechanism.ContactMechanism;
 
 import javax.persistence.Embedded;
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  */
 @SuppressWarnings("serial")
 @Entity
-public class FacilityContactMechanism extends BasePersistentModel {
+public class FacilityContactMechanism extends PersistentEntity {
 
 	@NotNull
 	@ManyToOne

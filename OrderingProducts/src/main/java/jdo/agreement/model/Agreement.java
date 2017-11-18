@@ -1,29 +1,19 @@
 package jdo.agreement.model;
 
+import jdo.agreement.model.item.AgreementItem;
+import jdo.agreement.model.term.AgreementTerm;
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
-import jdo.agreement.model.item.AgreementItem;
-import jdo.agreement.model.term.AgreementTerm;
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Agreement extends BasePersistentModel {
+public class Agreement extends PersistentEntity {
 
 	private static final long serialVersionUID = 1L;
 

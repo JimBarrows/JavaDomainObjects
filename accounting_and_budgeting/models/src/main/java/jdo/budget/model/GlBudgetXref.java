@@ -2,14 +2,14 @@ package jdo.budget.model;
 
 import jdo.accounting.model.GeneralLedgerAccount;
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class GlBudgetXref extends BasePersistentModel {
+public class GlBudgetXref extends PersistentEntity {
 
 	/**
 	 * 

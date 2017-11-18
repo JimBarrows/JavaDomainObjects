@@ -1,6 +1,7 @@
 package jdo.budget.model;
 
 import jdo.fields.Money;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -8,7 +9,7 @@ import javax.persistence.ManyToOne;
 import java.util.UUID;
 
 @Entity
-public class PaymentBudgetAllocation extends jdo.model.BasePersistentModel {
+public class PaymentBudgetAllocation extends PersistentEntity {
 
 	/**
 	 * 

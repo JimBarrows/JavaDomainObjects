@@ -1,11 +1,11 @@
 package jdo.humanresoures.model.performance;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class PerformanceRatingType extends BaseType {
+public class PerformanceRatingType extends Type {
 
 	/**
 	 * 

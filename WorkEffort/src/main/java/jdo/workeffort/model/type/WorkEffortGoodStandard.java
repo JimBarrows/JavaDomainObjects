@@ -1,12 +1,12 @@
 package jdo.workeffort.model.type;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Entity;
 
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class WorkEffortGoodStandard extends BasePersistentModel {
+public class WorkEffortGoodStandard extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,15 +1,13 @@
 package jdo.invoice.model.billing;
 
-import java.util.UUID;
-
-import javax.persistence.Entity;
-
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.Range;
 
-import jdo.model.BasePersistentModel;
+import javax.persistence.Entity;
+import java.util.UUID;
 
 @Entity
-public class WorkEffortBilling extends BasePersistentModel {
+public class WorkEffortBilling extends PersistentEntity {
 
 	/**
 	 * 

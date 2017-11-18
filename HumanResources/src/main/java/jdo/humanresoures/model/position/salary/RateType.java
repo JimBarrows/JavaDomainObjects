@@ -1,11 +1,11 @@
 package jdo.humanresoures.model.position.salary;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class RateType extends BaseType {
+public class RateType extends Type {
 
 	/**
 	 * 

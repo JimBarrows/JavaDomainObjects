@@ -1,11 +1,11 @@
 package jdo.workeffort.model;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class WorkEffortStatusType extends BaseType {
+public class WorkEffortStatusType extends Type {
 
 	/**
 	 * 

@@ -1,6 +1,6 @@
 package jdo.party.repositories.implementation;
 
-import jdo.core.repository.RepositoryTemplate;
+import jdo.core.repository.DatabaseRepositoryTemplate;
 import jdo.party.model.relationship.CustomerRelationship;
 import jdo.party.model.relationship.PartyRelationship;
 
@@ -16,7 +16,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Stateful
-public class RelationshipRepository extends RepositoryTemplate<PartyRelationship, UUID> implements jdo.party.repositories.RelationshipRepository{
+public class RelationshipRepository extends DatabaseRepositoryTemplate<PartyRelationship, UUID> implements jdo.party.repositories.RelationshipRepository {
 
 	@PersistenceContext(name = "PeopleAndOrganizations")
 	protected EntityManager em;

@@ -1,11 +1,11 @@
 package jdo.ecommerce.model.webvisit;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class PlatformType extends BaseType {
+public class PlatformType extends Type {
 
 	/**
 	 * 

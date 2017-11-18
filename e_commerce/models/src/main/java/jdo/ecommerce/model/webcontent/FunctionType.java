@@ -1,11 +1,11 @@
 package jdo.ecommerce.model.webcontent;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class FunctionType extends BaseType {
+public class FunctionType extends Type {
 
 	/**
 	 * 

@@ -1,34 +1,29 @@
 package jdo.core.repository;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import jdo.core.repository.specification.Specification;
+import jdo.model.Entity;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-
-import jdo.core.repository.specification.Specification;
-import jdo.model.BasePersistentModel;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 /**
  * A template for the basic functionality a repository needs.
  *
+ * @param <E> The Entity type the Repository is for.
+ * @param <I> The id type the entity uses.
  * @author Jim
- *
- * @param <E>
- *            The Entity type the Repository is for.
- * @param <I>
- *            The id type the entity uses.
  */
-public abstract class RepositoryTemplate<E extends BasePersistentModel, I> implements Repository<E, I> {
+public abstract class DatabaseRepositoryTemplate<E extends Entity, I> implements Repository<E, I> {
 
 	/**
 	 * Type erasure means we can't get the type of a generic, so, we have to do
 	 * this tomfoolery.
-	 *
 	 */
 	private final Class<E> type;
 
@@ -50,16 +45,14 @@ public abstract class RepositoryTemplate<E extends BasePersistentModel, I> imple
 		return Optional.ofNullable(entityManager().find(type, id));
 	}
 
-	@Override
-	public List<E> findBy(final Specification<E> specification, final Optional<Integer> startAt,
-			final Optional<Integer> maxNumberToReturn) {
-		final List<E> found = new ArrayList<E>();
-		findAll(startAt, maxNumberToReturn).forEach(p -> {
-			if (specification.isSatisfiedBy(p)) {
-				found.add(p);
-			}
-		});
-		return found;
+	/**
+	 * Constructor needs the type, because of type erasure. Stupid Java
+	 *
+	 * @param newType The type of the entity
+	 */
+	public DatabaseRepositoryTemplate(final Class<E> newType) {
+		super();
+		this.type = newType;
 	}
 
 	@Override
@@ -97,15 +90,16 @@ public abstract class RepositoryTemplate<E extends BasePersistentModel, I> imple
 
 	}
 
-	/**
-	 * Constructor needs the type, because of type erasure. Stupid Java
-	 *
-	 * @param newType
-	 *            The type of the entity
-	 */
-	public RepositoryTemplate(final Class<E> newType) {
-		super();
-		this.type = newType;
+	@Override
+	public List<E> findBy(final Specification<E> specification, final Optional<Integer> startAt,
+	                      final Optional<Integer> maxNumberToReturn) {
+		final List<E> found = new ArrayList<E>();
+		findAll(startAt, maxNumberToReturn).forEach(p -> {
+			if (specification.isSatisfiedBy(p)) {
+				found.add(p);
+			}
+		});
+		return found;
 	}
 
 }

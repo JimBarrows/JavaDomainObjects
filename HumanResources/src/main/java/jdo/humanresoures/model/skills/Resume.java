@@ -1,13 +1,12 @@
 package jdo.humanresoures.model.skills;
 
-import java.util.Date;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
-
-import jdo.model.BasePersistentModel;
+import java.util.Date;
 
 @Entity
-public class Resume extends BasePersistentModel {
+public class Resume extends PersistentEntity {
 
 	/**
 	 * 

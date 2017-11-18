@@ -2,14 +2,14 @@ package jdo.budget.model;
 
 import jdo.budget.model.revision.BudgetRevisionImpact;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.*;
 import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class BudgetItem extends BasePersistentModel {
+public class BudgetItem extends PersistentEntity {
 
 	/**
 	 * 

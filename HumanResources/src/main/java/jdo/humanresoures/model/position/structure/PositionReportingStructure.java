@@ -1,17 +1,13 @@
 package jdo.humanresoures.model.position.structure;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-
 import jdo.fields.DateTimeRange;
 import jdo.humanresoures.model.position.Position;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
 
 @Entity
-public class PositionReportingStructure extends BasePersistentModel {
+public class PositionReportingStructure extends PersistentEntity {
 
 	/**
 	 * 

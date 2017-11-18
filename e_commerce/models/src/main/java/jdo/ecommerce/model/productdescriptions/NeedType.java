@@ -1,11 +1,11 @@
 package jdo.ecommerce.model.productdescriptions;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class NeedType extends BaseType {
+public class NeedType extends Type {
 
 	/**
 	 * 

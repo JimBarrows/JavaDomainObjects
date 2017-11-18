@@ -1,12 +1,12 @@
 package jdo.ecommerce.model.webcontent;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class WebContentAssociation extends BasePersistentModel {
+public class WebContentAssociation extends PersistentEntity {
 
 	/**
 	 * 

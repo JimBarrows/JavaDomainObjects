@@ -1,25 +1,16 @@
 package jdo.order.model;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+import jdo.order.model.status.OrderStatus;
+import jdo.order.model.terms.OrderTerm;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
-
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Min;
-
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-import jdo.order.model.status.OrderStatus;
-import jdo.order.model.terms.OrderTerm;
 
 /**
  * @author Jim
@@ -28,7 +19,7 @@ import jdo.order.model.terms.OrderTerm;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class OrderItem extends BasePersistentModel {
+public class OrderItem extends PersistentEntity {
 
 	/**
 	 * 

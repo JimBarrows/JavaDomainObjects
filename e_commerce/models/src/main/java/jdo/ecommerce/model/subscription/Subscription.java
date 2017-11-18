@@ -2,7 +2,7 @@ package jdo.ecommerce.model.subscription;
 
 import jdo.ecommerce.model.productdescriptions.NeedType;
 import jdo.ecommerce.model.productdescriptions.PartyNeed;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -16,7 +16,7 @@ import java.util.UUID;
  * @author jim
  */
 @Entity
-public class Subscription extends BasePersistentModel {
+public class Subscription extends PersistentEntity {
 
 	/**
 	 * 

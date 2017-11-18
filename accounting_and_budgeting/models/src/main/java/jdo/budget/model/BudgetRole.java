@@ -1,13 +1,13 @@
 package jdo.budget.model;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import java.util.UUID;
 
 @Entity
-public class BudgetRole extends BasePersistentModel {
+public class BudgetRole extends PersistentEntity {
 
 	/**
 	 * 

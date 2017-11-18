@@ -1,11 +1,11 @@
 package jdo.ecommerce.model.subscription;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class SubscriptionType extends BaseType {
+public class SubscriptionType extends Type {
 
 	/**
 	 * 

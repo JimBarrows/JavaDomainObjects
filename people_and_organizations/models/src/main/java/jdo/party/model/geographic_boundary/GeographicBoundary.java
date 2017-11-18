@@ -1,6 +1,6 @@
 package jdo.party.model.geographic_boundary;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.contactmechanism.PostalAddress;
 import org.hibernate.validator.constraints.NotEmpty;
 
@@ -19,7 +19,7 @@ import java.util.UUID;
  * @see Data Model Resource Book Volume 1 Figure 3.5, page 82
  */
 @Entity
-public class GeographicBoundary extends BasePersistentModel {
+public class GeographicBoundary extends PersistentEntity {
 
 	/**
 	 * 

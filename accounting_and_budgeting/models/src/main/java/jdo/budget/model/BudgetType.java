@@ -1,11 +1,11 @@
 package jdo.budget.model;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class BudgetType extends BaseType {
+public class BudgetType extends Type {
 
 	/**
 	 * 

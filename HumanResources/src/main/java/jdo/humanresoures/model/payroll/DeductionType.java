@@ -1,11 +1,11 @@
 package jdo.humanresoures.model.payroll;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class DeductionType extends BaseType {
+public class DeductionType extends Type {
 
 	/**
 	 * 

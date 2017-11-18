@@ -1,13 +1,12 @@
 package jdo.product.model.identificationcode;
 
-import java.util.ArrayList;
-import java.util.List;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.xml.crypto.Data;
-
-import jdo.model.BaseType;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * 
@@ -16,7 +15,7 @@ import jdo.model.BaseType;
  * @see Data Model Resource Book Volume 1 Figure 3.3, page 75
  */
 @Entity
-public class IdentificationType extends BaseType {
+public class IdentificationType extends Type {
 
 	/**
 	 * 

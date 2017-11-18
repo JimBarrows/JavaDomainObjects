@@ -1,7 +1,7 @@
 package jdo.accounting.model;
 
 import jdo.budget.model.GlBudgetXref;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class GeneralLedgerAccount extends BasePersistentModel {
+public class GeneralLedgerAccount extends PersistentEntity {
 
 	/**
 	 *

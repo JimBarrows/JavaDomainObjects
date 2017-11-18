@@ -1,6 +1,6 @@
 package jdo.party.model.communication;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.Party;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -19,7 +19,7 @@ import javax.validation.constraints.NotNull;
  */
 @SuppressWarnings("serial")
 @Entity
-public class CaseRole extends BasePersistentModel {
+public class CaseRole extends PersistentEntity {
 	
 	@ManyToOne
 	@NotNull

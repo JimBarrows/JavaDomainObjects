@@ -1,14 +1,13 @@
 package jdo.request.model;
 
-import java.util.UUID;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class RequestRole extends BasePersistentModel {
+public class RequestRole extends PersistentEntity {
 
 	private static final long serialVersionUID = 1L;
 	/**

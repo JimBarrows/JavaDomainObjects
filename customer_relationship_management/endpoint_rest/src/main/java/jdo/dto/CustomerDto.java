@@ -1,6 +1,7 @@
 package jdo.dto;
 
 import com.fasterxml.jackson.annotation.JsonRootName;
+import jdo.crm.models.Customer;
 import jdo.party.model.Organization;
 import jdo.party.model.Party;
 import jdo.party.model.Person;
@@ -61,11 +62,12 @@ public class CustomerDto implements Serializable {
 
 	/**
 	 * Construct the dto from Party.
-	 * 
-	 * @param party
+	 *
+	 * @param customer
 	 *            The class to get the data from.
 	 */
-	public CustomerDto(final Party party) {
+	public CustomerDto(final Customer customer) {
+		Party party = customer.getParty();
 		if (party instanceof Person) {
 			partyType = (( Person ) party).getClass().getCanonicalName();
 			firstName = (( Person ) party).getFirstName();
@@ -75,7 +77,7 @@ public class CustomerDto implements Serializable {
 			name = (( Organization ) party).getName();
 		} else {
 			throw new IllegalArgumentException(
-					String.format("Customer must be person or Organization.  %s was passed instead.",
+					String.format("CustomerResource must be person or Organization.  %s was passed instead.",
 							party.getClass().getCanonicalName()));
 		}
 		id = party.getId();

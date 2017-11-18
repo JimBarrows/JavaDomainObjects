@@ -1,15 +1,14 @@
 package jdo.shipment.model.receipt;
 
-import java.util.UUID;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class ShipmentReceiptRole extends BasePersistentModel {
+public class ShipmentReceiptRole extends PersistentEntity {
 
 	/**
 	 * 

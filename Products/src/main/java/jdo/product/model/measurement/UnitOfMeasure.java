@@ -1,18 +1,12 @@
 package jdo.product.model.measurement;
 
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.xml.crypto.Data;
-
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.product.model.Product;
-
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.xml.crypto.Data;
+import java.util.List;
 
 /**
  * @author Jim
@@ -22,7 +16,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class UnitOfMeasure extends BasePersistentModel {
+public class UnitOfMeasure extends PersistentEntity {
 
 	/**
 	 * 

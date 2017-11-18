@@ -1,6 +1,6 @@
 package jdo.party.model.communication;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.*;
@@ -22,7 +22,7 @@ import java.util.List;
 @SuppressWarnings("serial")
 @Entity
 @Table(name = "Kase")
-public class Case extends BasePersistentModel {
+public class Case extends PersistentEntity {
 
 	@Lob
 	private String description;

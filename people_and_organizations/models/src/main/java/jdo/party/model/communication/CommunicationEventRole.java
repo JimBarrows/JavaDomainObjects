@@ -1,6 +1,6 @@
 package jdo.party.model.communication;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.Party;
 
 import javax.persistence.Entity;
@@ -16,7 +16,7 @@ import javax.validation.constraints.NotNull;
  */
 @SuppressWarnings("serial")
 @Entity
-public class CommunicationEventRole extends BasePersistentModel {
+public class CommunicationEventRole extends PersistentEntity {
 
 	@ManyToOne
 	private CommunicationEventRoleType describedBy;

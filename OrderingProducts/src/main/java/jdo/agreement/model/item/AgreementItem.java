@@ -1,25 +1,17 @@
 package jdo.agreement.model.item;
 
+import jdo.agreement.model.Addendum;
+import jdo.agreement.model.Agreement;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.Min;
-
-import jdo.agreement.model.Addendum;
-import jdo.agreement.model.Agreement;
-import jdo.model.BasePersistentModel;
-
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class AgreementItem extends BasePersistentModel {
+public class AgreementItem extends PersistentEntity {
 
 	/**
 	 * 

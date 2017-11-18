@@ -1,17 +1,16 @@
 package jdo.invoice.model.status;
 
-import java.util.Date;
+import jdo.invoice.model.Invoice;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import jdo.invoice.model.Invoice;
-import jdo.model.BasePersistentModel;
+import java.util.Date;
 
 @Entity
-public class InvociceStatus extends BasePersistentModel {
+public class InvociceStatus extends PersistentEntity {
 
 	/**
 	 * 

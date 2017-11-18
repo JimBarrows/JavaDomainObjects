@@ -1,6 +1,6 @@
 package jdo.accounting.model.asset;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
@@ -10,7 +10,7 @@ import java.util.Date;
 import java.util.List;
 
 @Entity
-public class FixedAsset extends BasePersistentModel {
+public class FixedAsset extends PersistentEntity {
 
 	/**
 	 *

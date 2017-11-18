@@ -1,22 +1,15 @@
 package jdo.product.model.feature;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.validation.constraints.NotNull;
-
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.product.model.cost.EstimatedProductCost;
 import jdo.product.model.feature.interaction.ProductFeatureInteraction;
 import jdo.product.model.price.PriceComponent;
-
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.validation.constraints.NotNull;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jim
@@ -26,7 +19,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class ProductFeature extends BasePersistentModel {
+public class ProductFeature extends PersistentEntity {
 
 	/**
 	 * 

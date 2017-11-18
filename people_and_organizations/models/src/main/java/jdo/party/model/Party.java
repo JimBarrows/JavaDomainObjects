@@ -1,7 +1,7 @@
 package jdo.party.model;
 
 import jdo.facility.model.FacilityRole;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.communication.CaseRole;
 import jdo.party.model.communication.CommunicationEventRole;
 import jdo.party.model.contactmechanism.ContactMechanism;
@@ -10,7 +10,6 @@ import javax.persistence.*;
 import javax.xml.bind.annotation.XmlList;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.crypto.Data;
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,7 +31,7 @@ import static javax.persistence.CascadeType.ALL;
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @XmlRootElement
-public class Party extends BasePersistentModel implements Serializable {
+public class Party extends PersistentEntity {
 
     /**
      * 

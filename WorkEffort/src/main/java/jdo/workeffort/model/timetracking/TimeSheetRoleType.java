@@ -1,11 +1,11 @@
 package jdo.workeffort.model.timetracking;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class TimeSheetRoleType extends BaseType {
+public class TimeSheetRoleType extends Type {
 
 	/**
 	 * 

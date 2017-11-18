@@ -1,14 +1,14 @@
 package jdo.requirement.model;
 
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class RequirementStatus extends BasePersistentModel {
+public class RequirementStatus extends PersistentEntity {
 
 	private static final long serialVersionUID = 1L;
 	@ManyToOne

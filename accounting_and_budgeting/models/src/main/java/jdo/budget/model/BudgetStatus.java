@@ -1,12 +1,12 @@
 package jdo.budget.model;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class BudgetStatus extends BasePersistentModel {
+public class BudgetStatus extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,15 +1,14 @@
 package jdo.humanresoures.model.termination;
 
-import java.util.Date;
-import java.util.UUID;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import jdo.model.BasePersistentModel;
+import java.util.Date;
+import java.util.UUID;
 
 @Entity
-public class UnemploymentClaim extends BasePersistentModel {
+public class UnemploymentClaim extends PersistentEntity {
 
 	/**
 	 * 

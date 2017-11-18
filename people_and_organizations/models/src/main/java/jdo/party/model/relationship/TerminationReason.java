@@ -1,11 +1,11 @@
 package jdo.party.model.relationship;
 
-import jdo.model.BaseType;
+import jdo.model.Type;
 
 import javax.persistence.Entity;
 
 @Entity
-public class TerminationReason extends BaseType {
+public class TerminationReason extends Type {
 
 	/**
 	 * 

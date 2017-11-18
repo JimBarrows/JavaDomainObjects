@@ -1,6 +1,6 @@
 package jdo.ecommerce.model.productdescriptions;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Entity
-public class DescriptionObject extends BasePersistentModel {
+public class DescriptionObject extends PersistentEntity {
 
 	/**
 	 * 

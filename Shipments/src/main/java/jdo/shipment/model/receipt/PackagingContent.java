@@ -1,14 +1,14 @@
 package jdo.shipment.model.receipt;
 
+import jdo.model.PersistentEntity;
+import jdo.shipment.model.ShipmentItem;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 
-import jdo.model.BasePersistentModel;
-import jdo.shipment.model.ShipmentItem;
-
 @Entity
-public class PackagingContent extends BasePersistentModel {
+public class PackagingContent extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,11 +1,11 @@
 package jdo.humanresoures.model.position.fulfillment;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class PositionStatusType extends BaseType {
+public class PositionStatusType extends Type {
 
 	/**
 	 * 

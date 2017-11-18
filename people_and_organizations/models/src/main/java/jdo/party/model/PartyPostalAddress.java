@@ -1,7 +1,7 @@
 package jdo.party.model;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.contactmechanism.PostalAddress;
 
 import javax.persistence.Embedded;
@@ -22,7 +22,7 @@ import javax.xml.crypto.Data;
  */
 @SuppressWarnings("serial")
 @Entity
-public class PartyPostalAddress extends BasePersistentModel {
+public class PartyPostalAddress extends PersistentEntity {
 
 	@Lob
 	private String			comment;

@@ -1,16 +1,15 @@
 package jdo.requirement.model;
 
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class RequirementRole extends BasePersistentModel {
+public class RequirementRole extends PersistentEntity {
 
 	/**
 	 * 

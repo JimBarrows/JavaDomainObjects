@@ -1,6 +1,6 @@
 package jdo.ecommerce.model.login;
 
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.*;
@@ -19,7 +19,7 @@ import static jdo.encryption.Encrypter.encryptThis;
 @SuppressWarnings("serial")
 @Entity
 @NamedQueries(@NamedQuery(name = "findByUserId", query = "select ul from UserLogin ul where ul.userId = :userId"))
-public class UserLogin extends BasePersistentModel {
+public class UserLogin extends PersistentEntity {
 
 	public static final String FIND_BY_USER_ID_QUERY = "findByUserId";
 	public static final String USER_ID_PARAM = "userId";

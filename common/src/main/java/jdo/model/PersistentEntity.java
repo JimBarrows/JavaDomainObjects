@@ -1,36 +1,29 @@
 package jdo.model;
 
-import java.io.Serializable;
-import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
-import javax.persistence.Version;
-
 import org.hibernate.annotations.GenericGenerator;
 import org.hibernate.annotations.Type;
+
+import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Every persistent model needs to have an id and version field, this just keeps
  * me from typing it all the time. Also provides basic equality and hashcode.
- * 
- * @author jimbarrows
  *
+ * @author jimbarrows
  */
 @MappedSuperclass
-public class BasePersistentModel implements Serializable {
+public class PersistentEntity implements Entity {
 
 	/**
-	 * 
+	 *
 	 */
 	private static final long serialVersionUID = 1L;
 
 	@GeneratedValue(generator = "uuid2")
-	@GenericGenerator(name = "uuid2", strategy = "uuid2")	
-	@Column(columnDefinition="uuid", unique = true, nullable = false)
-	@Type(type="pg-uuid")
+	@GenericGenerator(name = "uuid2", strategy = "uuid2")
+	@Column(columnDefinition = "uuid", unique = true, nullable = false)
+	@Type(type = "pg-uuid")
 	@Id
 	private UUID id;
 
@@ -41,11 +34,11 @@ public class BasePersistentModel implements Serializable {
 		return id;
 	}
 
-	public BasePersistentModel() {
+	public PersistentEntity() {
 		super();
 	}
 
-	public BasePersistentModel(UUID id, Long version) {
+	public PersistentEntity(UUID id, Long version) {
 		super();
 		this.id = id;
 		this.version = version;
@@ -71,7 +64,7 @@ public class BasePersistentModel implements Serializable {
 			return false;
 		if (getClass() != obj.getClass())
 			return false;
-		BasePersistentModel other = (BasePersistentModel) obj;
+		PersistentEntity other = (PersistentEntity) obj;
 		if (id == null) {
 			if (other.id != null)
 				return false;
@@ -91,7 +84,7 @@ public class BasePersistentModel implements Serializable {
 	@Override
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
-		builder.append("BasePersistentModel [id=");
+		builder.append("PersistentEntity [id=");
 		builder.append(id);
 		builder.append(", version=");
 		builder.append(version);

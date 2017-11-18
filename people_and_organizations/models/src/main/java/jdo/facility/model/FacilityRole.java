@@ -1,7 +1,7 @@
 package jdo.facility.model;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.party.model.Party;
 
 import javax.persistence.Embedded;
@@ -17,7 +17,7 @@ import javax.validation.constraints.NotNull;
  * @see "Data Model Resource Book Volume 1 Figure 2.11, page 59"
  */
 @Entity
-public class FacilityRole extends BasePersistentModel {
+public class FacilityRole extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,19 +1,18 @@
 package jdo.workeffort.model.type;
 
-import java.time.Duration;
-import java.util.List;
-import java.util.UUID;
+import jdo.model.Type;
+import jdo.workeffort.model.requirement.DeliverableType;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.AssertTrue;
-
-import jdo.model.BaseType;
-import jdo.workeffort.model.requirement.DeliverableType;
+import java.time.Duration;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class WorkEffortType extends BaseType {
+public class WorkEffortType extends Type {
 	
 	private static final long serialVersionUID = 1L;
 	@OneToMany
