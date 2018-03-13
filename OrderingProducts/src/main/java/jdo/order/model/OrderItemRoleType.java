@@ -1,11 +1,11 @@
 package jdo.order.model;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class OrderItemRoleType extends BaseType {
+public class OrderItemRoleType extends Type {
 
 	/**
 	 * 

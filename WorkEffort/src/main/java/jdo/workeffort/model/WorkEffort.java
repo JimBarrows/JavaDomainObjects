@@ -1,30 +1,19 @@
 package jdo.workeffort.model;
 
-import java.time.Duration;
-import java.time.LocalDate;
-import java.util.List;
-import java.util.UUID;
-
-import javax.persistence.ElementCollection;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import org.hibernate.validator.constraints.NotBlank;
-
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.workeffort.model.assignment.WorkEffortPartyAssignment;
 import jdo.workeffort.model.association.WorkEfforAssociation;
 import jdo.workeffort.model.inventory.WorkEffortInventoryAssignment;
 import jdo.workeffort.model.timetracking.TimeEntry;
 import jdo.workeffort.model.type.WorkEffortType;
+import org.hibernate.validator.constraints.NotBlank;
+
+import javax.persistence.*;
+import java.time.Duration;
+import java.time.LocalDate;
+import java.util.List;
+import java.util.UUID;
 
 /**
  * @author Jim
@@ -34,7 +23,7 @@ import jdo.workeffort.model.type.WorkEffortType;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class WorkEffort extends BasePersistentModel {
+public class WorkEffort extends PersistentEntity {
 
 	/**
 	 * 

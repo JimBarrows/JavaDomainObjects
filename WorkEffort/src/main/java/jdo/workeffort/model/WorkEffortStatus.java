@@ -1,14 +1,13 @@
 package jdo.workeffort.model;
 
-import java.time.ZonedDateTime;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import jdo.model.BasePersistentModel;
+import java.time.ZonedDateTime;
 
 @Entity
-public class WorkEffortStatus extends BasePersistentModel {
+public class WorkEffortStatus extends PersistentEntity {
 
 	/**
 	 * 

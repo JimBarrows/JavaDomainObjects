@@ -1,15 +1,15 @@
 package jdo.quote.model;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.AssertTrue;
 
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class QuoteTerm extends BasePersistentModel {
+public class QuoteTerm extends PersistentEntity {
 
 	private static final long	serialVersionUID	= 1L;
 

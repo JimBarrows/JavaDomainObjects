@@ -1,18 +1,16 @@
 package jdo.product.model.category;
 
-import java.util.ArrayList;
-import java.util.List;
+import jdo.model.PersistentEntity;
+import jdo.product.model.price.PriceComponent;
+import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.xml.crypto.Data;
-
-import jdo.model.BasePersistentModel;
-import jdo.product.model.price.PriceComponent;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * All the different categories a product can be a part of. A Category can be a
@@ -24,7 +22,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @see Data Model Resource Book Volume 1 Figure 3.2, page 73
  */
 @Entity
-public class ProductCategory extends BasePersistentModel {
+public class ProductCategory extends PersistentEntity {
 
 	/**
 	 * 

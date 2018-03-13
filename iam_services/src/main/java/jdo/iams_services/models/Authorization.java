@@ -1,7 +1,7 @@
 package jdo.iams_services.models;
 
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
@@ -9,7 +9,7 @@ import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
 
 @Entity
-public class Authorization extends BasePersistentModel{
+public class Authorization extends PersistentEntity {
 	private String authorization;
 	private DateTimeRange activeTimeRange;
 

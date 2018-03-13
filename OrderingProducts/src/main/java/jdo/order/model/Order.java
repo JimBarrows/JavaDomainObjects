@@ -1,20 +1,14 @@
 package jdo.order.model;
 
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.order.model.adjustment.OrderAdjustment;
 import jdo.order.model.status.OrderStatus;
 import jdo.order.model.terms.OrderTerm;
+
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
 
 /**
  * @author Jim
@@ -23,7 +17,7 @@ import jdo.order.model.terms.OrderTerm;
  */
 @Entity
 @Table(name = "PurchaseSalesOrders")
-public class Order extends BasePersistentModel {
+public class Order extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,20 +1,15 @@
 package jdo.shipment.model.route;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+import jdo.shipment.model.Shipment;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-import jdo.shipment.model.Shipment;
-
 @Entity
-public class ShipmentRouteSegment extends BasePersistentModel {
+public class ShipmentRouteSegment extends PersistentEntity {
 
 	/**
 	 * 

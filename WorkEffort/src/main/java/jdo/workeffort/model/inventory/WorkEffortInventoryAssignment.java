@@ -1,13 +1,12 @@
 package jdo.workeffort.model.inventory;
 
-import java.util.UUID;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
-
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class WorkEffortInventoryAssignment extends BasePersistentModel {
+public class WorkEffortInventoryAssignment extends PersistentEntity {
 
 	/**
 	 * 

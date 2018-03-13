@@ -1,19 +1,13 @@
 package jdo.product.model.price;
 
-import java.util.ArrayList;
-import java.util.List;
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Min;
-
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jim
@@ -21,7 +15,7 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:32 AM
  */
 @Entity
-public class OrderValue extends BasePersistentModel {
+public class OrderValue extends PersistentEntity {
 
 	/**
 	 * 

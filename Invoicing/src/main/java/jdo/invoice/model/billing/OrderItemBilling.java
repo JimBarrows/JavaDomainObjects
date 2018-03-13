@@ -1,19 +1,18 @@
 package jdo.invoice.model.billing;
 
-import java.util.UUID;
+import jdo.fields.Money;
+import jdo.invoice.model.InvoiceItem;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
-
-import jdo.fields.Money;
-import jdo.invoice.model.InvoiceItem;
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class OrderItemBilling extends BasePersistentModel {
+public class OrderItemBilling extends PersistentEntity {
 
 	/**
 	 * 

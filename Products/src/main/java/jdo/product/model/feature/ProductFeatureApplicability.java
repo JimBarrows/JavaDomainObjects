@@ -1,14 +1,10 @@
 package jdo.product.model.feature;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.product.model.Product;
+
+import javax.persistence.*;
 
 /**
  * @author Jim
@@ -18,7 +14,7 @@ import jdo.product.model.Product;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class ProductFeatureApplicability extends BasePersistentModel {
+public class ProductFeatureApplicability extends PersistentEntity {
 
 	/**
 	 * 

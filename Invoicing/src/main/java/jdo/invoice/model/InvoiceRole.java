@@ -1,15 +1,13 @@
 package jdo.invoice.model;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-
-import jdo.model.BasePersistentModel;
-
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.Range;
 
+import javax.persistence.Entity;
+import java.util.Date;
+
 @Entity
-public class InvoiceRole extends BasePersistentModel {
+public class InvoiceRole extends PersistentEntity {
 
 	/**
 	 * 

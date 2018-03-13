@@ -1,11 +1,11 @@
 package jdo.invoice.model.term;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class InvoiceTermType extends BaseType {
+public class InvoiceTermType extends Type {
 
 	/**
 	 * 

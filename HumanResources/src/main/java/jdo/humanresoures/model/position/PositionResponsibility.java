@@ -1,14 +1,14 @@
 package jdo.humanresoures.model.position;
 
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class PositionResponsibility extends BasePersistentModel {
+public class PositionResponsibility extends PersistentEntity {
 
 	/**
 	 * 

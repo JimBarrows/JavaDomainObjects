@@ -1,20 +1,14 @@
 package jdo.humanresoures.model.performance;
 
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.UUID;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class PerformanceNote extends BasePersistentModel {
+public class PerformanceNote extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,18 +1,17 @@
 package jdo.humanresoures.model.application;
 
-import java.util.Date;
-import java.util.UUID;
+import jdo.humanresoures.model.position.Position;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import jdo.humanresoures.model.position.Position;
-import jdo.model.BasePersistentModel;
+import java.util.Date;
+import java.util.UUID;
 
 @Entity
-public class EmploymentApplication extends BasePersistentModel {
+public class EmploymentApplication extends PersistentEntity {
 
 	/**
 	 * 

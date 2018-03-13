@@ -1,15 +1,14 @@
 package jdo.shipment.model.route;
 
-import java.util.List;
-import java.util.UUID;
+import jdo.model.Type;
 
 import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-
-import jdo.model.BaseType;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class ShipmentMethodType extends BaseType {
+public class ShipmentMethodType extends Type {
 
 	/**
 	 * 

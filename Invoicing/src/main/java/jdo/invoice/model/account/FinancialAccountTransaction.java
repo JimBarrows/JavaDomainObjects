@@ -1,17 +1,16 @@
 package jdo.invoice.model.account;
 
-import java.util.Date;
-import java.util.UUID;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import jdo.model.BasePersistentModel;
+import java.util.Date;
+import java.util.UUID;
 
 @Entity
-public class FinancialAccountTransaction extends BasePersistentModel {
+public class FinancialAccountTransaction extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,25 +1,18 @@
 package jdo.quote.model;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+import jdo.order.model.OrderItem;
+import jdo.request.model.RequestItem;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Min;
-
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-import jdo.order.model.OrderItem;
-import jdo.request.model.RequestItem;
-
 @Entity
-public class QuoteItem extends BasePersistentModel {
+public class QuoteItem extends PersistentEntity {
 
 	/**
 	 * 

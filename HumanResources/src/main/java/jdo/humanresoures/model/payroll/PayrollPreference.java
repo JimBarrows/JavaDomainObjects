@@ -1,17 +1,16 @@
 package jdo.humanresoures.model.payroll;
 
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import jdo.fields.DateTimeRange;
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class PayrollPreference extends BasePersistentModel {
+public class PayrollPreference extends PersistentEntity {
 
 	/**
 	 * 

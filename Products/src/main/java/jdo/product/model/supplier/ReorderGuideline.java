@@ -1,14 +1,13 @@
 package jdo.product.model.supplier;
 
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+import jdo.product.model.Good;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-import jdo.product.model.Good;
+import java.util.UUID;
 
 /**
  * @author Jim
@@ -17,7 +16,7 @@ import jdo.product.model.Good;
  * @see "Data Model Resource Book Volume 1 Figure 3.5, page 82"
  */
 @Entity
-public class ReorderGuideline extends BasePersistentModel {
+public class ReorderGuideline extends PersistentEntity {
 
 	/**
 	 * 

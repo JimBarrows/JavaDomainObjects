@@ -1,15 +1,15 @@
 package jdo.workeffort.model.association;
 
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+import jdo.workeffort.model.WorkEffort;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-import jdo.workeffort.model.WorkEffort;
-
 @Entity
-public class WorkEfforAssociation extends BasePersistentModel {
+public class WorkEfforAssociation extends PersistentEntity {
 
 	/**
 	 * 

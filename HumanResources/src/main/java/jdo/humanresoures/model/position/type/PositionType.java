@@ -1,19 +1,17 @@
 package jdo.humanresoures.model.position.type;
 
-import java.util.List;
-import java.util.UUID;
+import jdo.humanresoures.model.position.ValidResponsibility;
+import jdo.humanresoures.model.position.salary.PositionTypeRate;
+import jdo.model.Type;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
-import org.hibernate.validator.constraints.Range;
-
-import jdo.humanresoures.model.position.ValidResponsibility;
-import jdo.humanresoures.model.position.salary.PositionTypeRate;
-import jdo.model.BaseType;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class PositionType extends BaseType {
+public class PositionType extends Type {
 
 	/**
 	 * 

@@ -1,27 +1,19 @@
 package jdo.product.model;
 
-import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.xml.crypto.Data;
-
-import org.hibernate.validator.constraints.NotEmpty;
-
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.product.model.category.ProductCategoryClassification;
 import jdo.product.model.cost.EstimatedProductCost;
 import jdo.product.model.feature.interaction.ProductFeatureInteraction;
 import jdo.product.model.measurement.UnitOfMeasure;
 import jdo.product.model.part.ProductComponent;
 import jdo.product.model.price.PriceComponent;
+import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.xml.crypto.Data;
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Models all products the enterprise sells, products from suppliers, and
@@ -38,7 +30,7 @@ import jdo.product.model.price.PriceComponent;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class Product extends BasePersistentModel {
+public class Product extends PersistentEntity {
 
 	/**
 	 * 

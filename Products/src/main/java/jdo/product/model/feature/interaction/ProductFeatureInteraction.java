@@ -1,15 +1,10 @@
 package jdo.product.model.feature.interaction;
 
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
- 
-
-
+import jdo.model.PersistentEntity;
 import jdo.product.model.Product;
 import jdo.product.model.feature.ProductFeature;
+
+import javax.persistence.*;
 
 /**
  * @author Jim
@@ -19,7 +14,7 @@ import jdo.product.model.feature.ProductFeature;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class ProductFeatureInteraction extends jdo.model.BasePersistentModel {
+public class ProductFeatureInteraction extends PersistentEntity {
 
 	/**
 	 * 

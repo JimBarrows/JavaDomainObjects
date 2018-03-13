@@ -1,27 +1,16 @@
 package jdo.shipment.model;
 
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.AttributeOverride;
-import javax.persistence.AttributeOverrides;
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.Lob;
-import javax.persistence.OneToMany;
-import javax.persistence.OrderBy;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
-
 @Entity
 @Inheritance
-public class Shipment extends BasePersistentModel {
+public class Shipment extends PersistentEntity {
 
 	/**
 	 * 

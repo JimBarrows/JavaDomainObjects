@@ -1,11 +1,11 @@
 package jdo.shipment.model;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class ShipmentStatusType extends BaseType {
+public class ShipmentStatusType extends Type {
 
 	/**
 	 * 

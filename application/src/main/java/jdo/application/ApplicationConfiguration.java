@@ -6,8 +6,6 @@ import jdo.party.model.roles.InternalOrganization;
 import jdo.party.model.roles.ParentOrganization;
 import jdo.party.repositories.PartyRepository;
 
-import javax.ejb.EJB;
-import javax.ejb.Stateful;
 import java.util.List;
 import java.util.Optional;
 import java.util.function.Supplier;
@@ -20,10 +18,9 @@ import static jdo.party.specifications.PartyHasActiveRoleOf.partyHasActiveRoleOf
  *
  * @author Jim
  */
-@Stateful
+
 public class ApplicationConfiguration {
 
-	@EJB
 	private PartyRepository partyRepository;
 
 

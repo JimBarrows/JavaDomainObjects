@@ -1,16 +1,16 @@
 package jdo.workeffort.model.timetracking;
 
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+import jdo.workeffort.model.WorkEffort;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-import jdo.workeffort.model.WorkEffort;
-
 @Entity
-public class TimeEntry extends BasePersistentModel {
+public class TimeEntry extends PersistentEntity {
 
 	/**
 	 * 

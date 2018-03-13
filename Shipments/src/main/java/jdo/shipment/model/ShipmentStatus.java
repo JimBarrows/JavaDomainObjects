@@ -1,16 +1,15 @@
 package jdo.shipment.model;
 
-import java.util.Date;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-
-import jdo.model.BasePersistentModel;
+import java.util.Date;
 
 @Entity
-public class ShipmentStatus extends BasePersistentModel {
+public class ShipmentStatus extends PersistentEntity {
 
 	/**
 	 * 

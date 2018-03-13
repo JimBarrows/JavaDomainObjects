@@ -1,17 +1,16 @@
 package jdo.workeffort.model.assignment;
 
-import java.util.List;
-import java.util.UUID;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-
-import jdo.model.BasePersistentModel;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class WorkEffortPartyAssignment extends BasePersistentModel {
+public class WorkEffortPartyAssignment extends PersistentEntity {
 
 	/**
 	 * 

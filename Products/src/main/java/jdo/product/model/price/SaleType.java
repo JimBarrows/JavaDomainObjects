@@ -1,8 +1,8 @@
 package jdo.product.model.price;
 
-import javax.persistence.Entity;
+import jdo.model.Type;
 
-import jdo.model.BaseType;
+import javax.persistence.Entity;
 
 /**
  * @author Jim
@@ -10,7 +10,7 @@ import jdo.model.BaseType;
  * @created 25-Dec-2007 9:54:38 AM
  */
 @Entity
-public class SaleType extends BaseType {
+public class SaleType extends Type {
 
 	/**
 	 * 

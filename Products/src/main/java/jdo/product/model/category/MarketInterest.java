@@ -1,14 +1,13 @@
 package jdo.product.model.category;
 
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 /**
  * This maps the interest certain categories of parties have in a particular
@@ -20,7 +19,7 @@ import jdo.model.BasePersistentModel;
  * @see "Data Model Resource Book Volume 1 Figure 3.2, page 73"
  */
 @Entity
-public class MarketInterest extends BasePersistentModel {
+public class MarketInterest extends PersistentEntity {
 
 	/**
 	 * 

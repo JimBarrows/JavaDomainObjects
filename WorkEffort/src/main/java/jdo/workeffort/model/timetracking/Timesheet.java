@@ -1,17 +1,16 @@
 package jdo.workeffort.model.timetracking;
 
-import java.util.List;
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class Timesheet extends BasePersistentModel {
+public class Timesheet extends PersistentEntity {
 
 	/**
 	 * 

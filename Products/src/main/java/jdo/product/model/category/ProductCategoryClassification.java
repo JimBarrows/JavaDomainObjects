@@ -1,17 +1,12 @@
 package jdo.product.model.category;
 
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.xml.crypto.Data;
-
 import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.product.model.Product;
-
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import javax.xml.crypto.Data;
 
 /**
  * The actual category a product is in, as well as the time it was in it. Since
@@ -25,7 +20,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  */
 
 @Entity
-public class ProductCategoryClassification extends BasePersistentModel {
+public class ProductCategoryClassification extends PersistentEntity {
 
 	/**
 	 * 

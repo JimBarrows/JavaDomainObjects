@@ -1,17 +1,16 @@
 package jdo.workeffort.model.rate;
 
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+import jdo.workeffort.model.assignment.WorkEffortPartyAssignment;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-import jdo.workeffort.model.assignment.WorkEffortPartyAssignment;
+import java.util.UUID;
 
 @Entity
-public class WorkEffortAssignmentRate extends BasePersistentModel {
+public class WorkEffortAssignmentRate extends PersistentEntity {
 
 	/**
 	 * 

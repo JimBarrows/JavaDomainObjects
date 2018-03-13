@@ -1,13 +1,13 @@
 package jdo.product.model.identificationcode;
 
+import jdo.model.PersistentEntity;
+import jdo.product.model.Good;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import javax.xml.crypto.Data;
-
-import jdo.model.BasePersistentModel;
-import jdo.product.model.Good;
 
 /**
  * 
@@ -15,7 +15,7 @@ import jdo.product.model.Good;
  * @see Data Model Resource Book Volume 1 Figure 3.3, page 75
  */
 @Entity
-public class GoodIdentification extends BasePersistentModel {
+public class GoodIdentification extends PersistentEntity {
 
 	/**
 	 * 

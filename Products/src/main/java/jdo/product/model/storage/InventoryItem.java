@@ -1,17 +1,12 @@
 package jdo.product.model.storage;
 
+import jdo.model.PersistentEntity;
+import jdo.product.model.Good;
+
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-
-import jdo.model.BasePersistentModel;
-import jdo.product.model.Good;
 
 /**
  * @author Jim
@@ -20,7 +15,7 @@ import jdo.product.model.Good;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class InventoryItem extends BasePersistentModel {
+public class InventoryItem extends PersistentEntity {
 
 	/**
 	 * 

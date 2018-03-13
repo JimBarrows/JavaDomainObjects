@@ -1,19 +1,18 @@
 package jdo.invoice.model.billingaccount;
 
-import java.util.List;
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.invoice.model.Invoice;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.OneToMany;
-
-import jdo.fields.DateTimeRange;
-import jdo.invoice.model.Invoice;
-import jdo.model.BasePersistentModel;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class BillingAccount extends BasePersistentModel {
+public class BillingAccount extends PersistentEntity {
 
 	/**
 	 * 

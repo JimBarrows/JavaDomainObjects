@@ -1,11 +1,11 @@
 package jdo.workeffort.model.assignment;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class WorkEffortRoleType extends BaseType {
+public class WorkEffortRoleType extends Type {
 	/**
 	 * 
 	 */

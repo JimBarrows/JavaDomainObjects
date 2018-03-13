@@ -1,11 +1,11 @@
 package jdo.shipment.model.issuance;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class ItemIssuanceRoleType extends BaseType {
+public class ItemIssuanceRoleType extends Type {
 
 	/**
 	 * 

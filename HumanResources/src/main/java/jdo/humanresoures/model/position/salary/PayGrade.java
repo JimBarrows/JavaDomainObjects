@@ -1,14 +1,13 @@
 package jdo.humanresoures.model.position.salary;
 
-import java.util.List;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
-
-import jdo.model.BasePersistentModel;
+import java.util.List;
 
 @Entity
-public class PayGrade extends BasePersistentModel {
+public class PayGrade extends PersistentEntity {
 
 	/**
 	 * 

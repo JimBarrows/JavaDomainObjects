@@ -1,8 +1,8 @@
 package jdo.product.model.storage;
 
-import javax.persistence.Entity;
+import jdo.model.Type;
 
-import jdo.model.BaseType;
+import javax.persistence.Entity;
 
 /**
  * @author Jim
@@ -10,7 +10,7 @@ import jdo.model.BaseType;
  * @created 25-Dec-2007 9:54:28 AM
  */
 @Entity
-public class ContainerType extends BaseType {
+public class ContainerType extends Type {
 
 	/**
 	 * 

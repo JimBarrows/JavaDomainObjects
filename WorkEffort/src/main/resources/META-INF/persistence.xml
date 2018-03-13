@@ -5,9 +5,9 @@
 	<persistence-unit name="WorkEffort">
 		<provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
 		<jta-data-source>WorkEffort</jta-data-source>
-		<class>jdo.model.BaseHeirarchicalType</class>
-		<class>jdo.model.BasePersistentModel</class>
-		<class>jdo.model.BaseType</class>
+        <class>jdo.model.HeirarchicalType</class>
+        <class>jdo.model.PersistentEntity</class>
+        <class>jdo.model.Type</class>
 		<class>jdo.fields.Money</class>
 		<class>jdo.jpa.converters.DurationToSecondsInteger</class>
 		<class>jdo.jpa.converters.LocalDatePersistenceConverter</class>

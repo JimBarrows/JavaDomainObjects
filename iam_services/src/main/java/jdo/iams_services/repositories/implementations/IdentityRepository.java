@@ -1,6 +1,6 @@
 package jdo.iams_services.repositories.implementations;
 
-import jdo.core.repository.RepositoryTemplate;
+import jdo.core.repository.DatabaseRepositoryTemplate;
 import jdo.iams_services.models.Identity;
 
 import javax.ejb.Stateful;
@@ -10,7 +10,7 @@ import javax.persistence.PersistenceContextType;
 import java.util.UUID;
 
 @Stateful
-public class IdentityRepository extends RepositoryTemplate<Identity, UUID> implements jdo.iams_services.repositories.IdentityRepository {
+public class IdentityRepository extends DatabaseRepositoryTemplate<Identity, UUID> implements jdo.iams_services.repositories.IdentityRepository {
 
 	@PersistenceContext(name = "IamServices", type = PersistenceContextType.EXTENDED)
 	protected EntityManager em;

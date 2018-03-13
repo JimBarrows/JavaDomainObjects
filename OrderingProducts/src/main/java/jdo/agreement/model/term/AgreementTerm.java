@@ -1,21 +1,17 @@
 package jdo.agreement.model.term;
 
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.ManyToOne;
-import javax.validation.constraints.AssertTrue;
-
 import jdo.agreement.model.Agreement;
 import jdo.agreement.model.item.AgreementItem;
 import jdo.fields.DateTimeRange;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
+import javax.validation.constraints.AssertTrue;
 
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class AgreementTerm extends BasePersistentModel {
+public class AgreementTerm extends PersistentEntity {
 
 	/**
 	 * 

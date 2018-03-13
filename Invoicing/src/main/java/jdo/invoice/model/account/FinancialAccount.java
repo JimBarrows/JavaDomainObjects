@@ -1,15 +1,14 @@
 package jdo.invoice.model.account;
 
-import java.util.List;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import jdo.model.BasePersistentModel;
+import java.util.List;
 
 @Entity
-public class FinancialAccount extends BasePersistentModel {
+public class FinancialAccount extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,21 +1,15 @@
 package jdo.shipment.model.receipt;
 
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
+import javax.validation.constraints.Min;
 import java.util.Date;
 import java.util.List;
 import java.util.UUID;
 
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.validation.constraints.Min;
-
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class ShipmentReceipt extends BasePersistentModel {
+public class ShipmentReceipt extends PersistentEntity {
 
 	/**
 	 * 

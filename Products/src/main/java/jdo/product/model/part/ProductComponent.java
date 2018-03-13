@@ -1,14 +1,14 @@
 package jdo.product.model.part;
 
+import jdo.fields.DateTimeRange;
+import jdo.model.PersistentEntity;
+import jdo.product.model.Product;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.Min;
-
-import jdo.fields.DateTimeRange;
-import jdo.model.BasePersistentModel;
-import jdo.product.model.Product;
 
 /**
  * @author Jim
@@ -16,7 +16,7 @@ import jdo.product.model.Product;
  * @created 25-Dec-2007 9:54:36 AM
  */
 @Entity
-public class ProductComponent extends BasePersistentModel {
+public class ProductComponent extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,16 +1,15 @@
 package jdo.workeffort.model.rate;
 
-import java.util.UUID;
+import jdo.fields.DateTimeRange;
+import jdo.fields.Money;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
-
-import jdo.fields.DateTimeRange;
-import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import java.util.UUID;
 
 @Entity
-public class PartyRate extends BasePersistentModel {
+public class PartyRate extends PersistentEntity {
 
 	/**
 	 * 

@@ -1,27 +1,19 @@
 package jdo.humanresoures.model.position;
 
-import java.util.Date;
-import java.util.List;
-import java.util.UUID;
-
-import javax.persistence.Column;
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.persistence.Transient;
-
 import jdo.fields.DateTimeRange;
 import jdo.humanresoures.model.position.fulfillment.PositionFulfillment;
 import jdo.humanresoures.model.position.fulfillment.PositionStatus;
 import jdo.humanresoures.model.position.structure.PositionReportingStructure;
 import jdo.humanresoures.model.position.type.PositionType;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
+import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 @Entity
-public class Position extends BasePersistentModel {
+public class Position extends PersistentEntity {
 
 	/**
 	 * 

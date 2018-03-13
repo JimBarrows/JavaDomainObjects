@@ -1,14 +1,13 @@
 package jdo.workeffort.repositories;
 
-import java.util.UUID;
+import jdo.core.repository.DatabaseRepositoryTemplate;
+import jdo.workeffort.model.assignment.WorkEffortRoleType;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import java.util.UUID;
 
-import jdo.core.repository.RepositoryTemplate;
-import jdo.workeffort.model.assignment.WorkEffortRoleType;
-
-public class WorkEffortRoleTypeRepository extends RepositoryTemplate<WorkEffortRoleType, UUID> {
+public class WorkEffortRoleTypeRepository extends DatabaseRepositoryTemplate<WorkEffortRoleType, UUID> {
 	@PersistenceContext(name = "WorkEffort")
 	protected EntityManager entityManager;
 

@@ -1,20 +1,14 @@
 package jdo.product.model.price;
 
-import java.util.UUID;
-
-import javax.persistence.Embedded;
-import javax.persistence.Entity;
-import javax.persistence.Inheritance;
-import javax.persistence.InheritanceType;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-
 import jdo.fields.DateTimeRange;
 import jdo.fields.Money;
-import jdo.model.BasePersistentModel;
+import jdo.model.PersistentEntity;
 import jdo.product.model.Product;
 import jdo.product.model.category.ProductCategory;
 import jdo.product.model.feature.ProductFeature;
+
+import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * @author Jim
@@ -23,7 +17,7 @@ import jdo.product.model.feature.ProductFeature;
  */
 @Entity
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
-public class PriceComponent extends BasePersistentModel {
+public class PriceComponent extends PersistentEntity {
 
 	/**
 	 * 

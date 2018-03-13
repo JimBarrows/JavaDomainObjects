@@ -1,11 +1,11 @@
 package jdo.requirement.model;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class RequirementRoleType extends BaseType {
+public class RequirementRoleType extends Type {
 
 	/**
 	 * 

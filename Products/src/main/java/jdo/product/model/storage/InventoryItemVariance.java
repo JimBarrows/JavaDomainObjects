@@ -1,14 +1,9 @@
 package jdo.product.model.storage;
 
+import jdo.model.PersistentEntity;
+
+import javax.persistence.*;
 import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import jdo.model.BasePersistentModel;
 
 /**
  * @author Jim
@@ -16,7 +11,7 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:31 AM
  */
 @Entity
-public class InventoryItemVariance extends BasePersistentModel {
+public class InventoryItemVariance extends PersistentEntity {
 
 	private static final long	serialVersionUID	= 1L;
 

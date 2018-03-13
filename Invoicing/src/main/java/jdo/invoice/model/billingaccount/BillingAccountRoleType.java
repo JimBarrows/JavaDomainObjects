@@ -1,11 +1,11 @@
 package jdo.invoice.model.billingaccount;
 
+import jdo.model.Type;
+
 import javax.persistence.Entity;
 
-import jdo.model.BaseType;
-
 @Entity
-public class BillingAccountRoleType extends BaseType {
+public class BillingAccountRoleType extends Type {
 
 	/**
 	 * 

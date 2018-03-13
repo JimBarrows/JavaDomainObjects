@@ -1,16 +1,10 @@
 package jdo.product.model;
 
-import java.util.Date;
-
-import javax.persistence.Entity;
-import javax.persistence.Lob;
-import javax.persistence.ManyToOne;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-
-import jdo.model.BasePersistentModel;
-
+import jdo.model.PersistentEntity;
 import org.hibernate.validator.constraints.NotEmpty;
+
+import javax.persistence.*;
+import java.util.Date;
 
 /**
  * Shows which products are about to be or have already been superseded by other
@@ -21,7 +15,7 @@ import org.hibernate.validator.constraints.NotEmpty;
  * @created 25-Dec-2007 9:54:36 AM
  */
 @Entity
-public class ProductObsolescence extends BasePersistentModel {
+public class ProductObsolescence extends PersistentEntity {
 
 	/**
 	 * 

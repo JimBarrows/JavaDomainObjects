@@ -1,16 +1,16 @@
 package jdo.invoice.model.payment;
 
+import jdo.fields.Money;
+import jdo.invoice.model.InvoiceItem;
+import jdo.invoice.model.billingaccount.BillingAccount;
+import jdo.model.PersistentEntity;
+
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.ManyToOne;
 
-import jdo.fields.Money;
-import jdo.invoice.model.InvoiceItem;
-import jdo.invoice.model.billingaccount.BillingAccount;
-import jdo.model.BasePersistentModel;
-
 @Entity
-public class PaymentApplication extends BasePersistentModel {
+public class PaymentApplication extends PersistentEntity {
 
 	/**
 	 * 

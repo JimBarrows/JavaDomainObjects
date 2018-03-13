@@ -1,14 +1,13 @@
 package jdo.product.model.price;
 
-import java.util.ArrayList;
-import java.util.List;
+import jdo.model.PersistentEntity;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.Min;
-
-import jdo.model.BasePersistentModel;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author Jim
@@ -16,7 +15,7 @@ import jdo.model.BasePersistentModel;
  * @created 25-Dec-2007 9:54:37 AM
  */
 @Entity
-public class QuantityBreak extends BasePersistentModel {
+public class QuantityBreak extends PersistentEntity {
 
 	/**
 	 * 
