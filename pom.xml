@@ -44,20 +44,22 @@
     </scm>
 
     <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <postgres-driver.version>9.3-1100-jdbc41</postgres-driver.version>
-        <log4j2.version>2.1</log4j2.version>
         <fluent.selenium.version>1.14.5</fluent.selenium.version>
-        <jbehave.core.version>4.0</jbehave.core.version>
-        <jbehave.web.version>3.6-beta-2</jbehave.web.version>
-        <jbehave.site.version>3.3</jbehave.site.version>
-        <selenium-java.version>2.46.0</selenium-java.version>
-        <selenium-support.version>2.46.0</selenium-support.version>
-        <hibernate.validator.version>5.2.0.Alpha1</hibernate.validator.version>
         <hibernate.core.version>4.3.10.Final</hibernate.core.version>
-        <org.slf4j.version>1.7.7</org.slf4j.version>
+        <hibernate.validator.version>5.2.0.Alpha1</hibernate.validator.version>
+        <jbehave.core.version>4.0</jbehave.core.version>
+        <jbehave.site.version>3.3</jbehave.site.version>
+        <jbehave.web.version>3.6-beta-2</jbehave.web.version>
         <jersey.version>2.19</jersey.version>
         <junit.version>4.7</junit.version>
+        <log4j2.version>2.1</log4j2.version>
+        <maven.compiler.source>1.8</maven.compiler.source>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <org.slf4j.version>1.7.7</org.slf4j.version>
+        <postgres-driver.version>9.3-1100-jdbc41</postgres-driver.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <selenium-java.version>2.46.0</selenium-java.version>
+        <selenium-support.version>2.46.0</selenium-support.version>
     </properties>
 
     <modules>
@@ -361,9 +363,10 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>
-                <version>3.3</version>
+                <version>3.9.0</version>
                 <configuration>
                     <targetJdk>1.8</targetJdk>
+                    <sourceEncoding>utf-8</sourceEncoding>
                     <excludes>
                         <exclude>**/*_.java</exclude>
                     </excludes>
@@ -372,7 +375,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-checkstyle-plugin</artifactId>
-                <version>2.16</version>
+                <version>3.0.0</version>
                 <reportSets>
                     <reportSet>
                         <reports>
