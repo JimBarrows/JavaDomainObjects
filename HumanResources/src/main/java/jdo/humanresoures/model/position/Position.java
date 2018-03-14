@@ -6,6 +6,7 @@ import jdo.humanresoures.model.position.fulfillment.PositionStatus;
 import jdo.humanresoures.model.position.structure.PositionReportingStructure;
 import jdo.humanresoures.model.position.type.PositionType;
 import jdo.model.PersistentEntity;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -27,7 +28,7 @@ public class Position extends PersistentEntity {
 	private UUID approvedThru;
 
 	@OneToMany
-	private List<PositionResponsibility> assigendTo;
+	private List<PositionResponsibility> assignedTo;
 
 	@Temporal(TemporalType.DATE)
 	private Date estimatedFromDate;
@@ -81,7 +82,7 @@ public class Position extends PersistentEntity {
 	}
 
 	public List<PositionResponsibility> getAssigendTo() {
-		return assigendTo;
+		return assignedTo;
 	}
 
 	public Date getEstimatedFromDate() {
@@ -142,7 +143,7 @@ public class Position extends PersistentEntity {
 	}
 
 	public void setAssigendTo(List<PositionResponsibility> assigendTo) {
-		this.assigendTo = assigendTo;
+		this.assignedTo = assigendTo;
 	}
 
 	public void setEstimatedFromDate(Date estimatedFromDate) {
@@ -193,4 +194,24 @@ public class Position extends PersistentEntity {
 		this.within = within;
 	}
 
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("approvedThru", approvedThru)
+				.append("assigendTo", assignedTo)
+				.append("estimatedFromDate", estimatedFromDate)
+				.append("estimatedThruDate", estimatedThruDate)
+				.append("exempt", exempt)
+				.append("filledBy", filledBy)
+				.append("fulltime", fulltime)
+				.append("manages", manages)
+				.append("reportsTo", reportsTo)
+				.append("salary", salary)
+				.append("status", status)
+				.append("temporary", temporary)
+				.append("type", type)
+				.append("within", within)
+				.append("dateTimeRange", dateTimeRange)
+				.toString();
+	}
 }

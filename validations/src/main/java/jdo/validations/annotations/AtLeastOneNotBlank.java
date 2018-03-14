@@ -1,19 +1,17 @@
 package jdo.validations.annotations;
 
-import static java.lang.annotation.ElementType.*;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import jdo.validations.validators.AtLeastOneNotBlankValidator;
 
 import javax.validation.Constraint;
 import javax.validation.Payload;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import java.util.logging.Logger;
 
-import jdo.validations.validators.AtLeastOneNotBlankValidator;
-
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import static java.lang.annotation.ElementType.ANNOTATION_TYPE;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
 @Target({ TYPE, ANNOTATION_TYPE })
 @Retention(RUNTIME)
@@ -28,6 +26,6 @@ public @interface AtLeastOneNotBlank {
 
 	String[] fieldNames();
 
-	public static final Logger	logger	= LogManager.getLogger(AtLeastOneNotBlank.class.getName());
+	Logger logger = Logger.getLogger(AtLeastOneNotBlank.class.getName());
 
 }

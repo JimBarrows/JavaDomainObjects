@@ -1,22 +1,21 @@
 package jdo.validations;
 
-import static java.lang.annotation.ElementType.TYPE;
-import static java.lang.annotation.RetentionPolicy.RUNTIME;
-
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.Target;
+import org.apache.commons.beanutils.PropertyUtils;
 
 import javax.validation.Constraint;
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 import javax.validation.Payload;
+import java.lang.annotation.Documented;
+import java.lang.annotation.Retention;
+import java.lang.annotation.Target;
+import java.util.logging.Logger;
 
-import org.apache.commons.beanutils.PropertyUtils;
-import org.apache.logging.log4j.LogManager;
-import org.apache.logging.log4j.Logger;
+import static java.lang.annotation.ElementType.TYPE;
+import static java.lang.annotation.RetentionPolicy.RUNTIME;
 
-@Target({ TYPE })
+
+@Target({TYPE})
 @Retention(RUNTIME)
 @Constraint(validatedBy = AtLeastOneNotNull.AtLeastOneNotNullValidator.class)
 @Documented
@@ -29,22 +28,18 @@ public @interface AtLeastOneNotNull {
 
 	String[] fieldNames();
 
-	public static final Logger	logger	= LogManager.getLogger(AtLeastOneNotNull.class.getName());
+	class AtLeastOneNotNullValidator implements ConstraintValidator<AtLeastOneNotNull, Object> {
 
-	public static class AtLeastOneNotNullValidator implements ConstraintValidator<AtLeastOneNotNull, Object> {
-
-		private String[]	fieldNames;
+		private final static Logger logger = Logger.getLogger(AtLeastOneNotNullValidator.class.getName());
+		private String[] fieldNames;
 
 		public void initialize(AtLeastOneNotNull constraintAnnotation) {
-			logger.debug("initialize(AtLeastOneNotNull constraintAnnotation) - start");
 
 			this.fieldNames = constraintAnnotation.fieldNames();
 
-			logger.debug("initialize(AtLeastOneNotNull) - end");
 		}
 
 		public boolean isValid(Object object, ConstraintValidatorContext constraintContext) {
-			logger.debug("isValid(Object object, ConstraintValidatorContext constraintContext) - start");
 
 			if (object == null)
 				return true;
@@ -58,15 +53,13 @@ public @interface AtLeastOneNotNull {
 						return true;
 				}
 
-				logger.debug("isValid(Object, ConstraintValidatorContext) - end - return value={}", false);
 				return false;
 
 			} catch (Exception e) {
-				logger.error("isValid(Object object=" + object + ", ConstraintValidatorContext constraintContext=" + constraintContext
+				logger.warning("isValid(Object object=" + object + ", ConstraintValidatorContext constraintContext=" + constraintContext
 						+ ") - String[] fieldNames=" + fieldNames + ", Object object=" + object + ", ConstraintValidatorContext constraintContext="
-						+ constraintContext + ", Exception e=" + e, e);
+						+ constraintContext + ", Exception e=" + e.getMessage());
 
-				logger.debug("isValid(Object, ConstraintValidatorContext) - end - return value={}", false);
 				return false;
 			}
 		}

@@ -60,6 +60,8 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <selenium-java.version>2.46.0</selenium-java.version>
         <selenium-support.version>2.46.0</selenium-support.version>
+        <spring-context.version>5.0.4.RELEASE</spring-context.version>
+        <javaee-api.version>7.0</javaee-api.version>
     </properties>
 
     <modules>
@@ -104,12 +106,22 @@
 
     <dependencyManagement>
         <dependencies>
-
             <dependency>
-                <groupId>org.postgresql</groupId>
-                <artifactId>postgresql</artifactId>
-                <version>${postgres-driver.version}</version>
-                <scope>provided</scope>
+                <groupId>com.fasterxml.jackson.jaxrs</groupId>
+                <artifactId>jackson-jaxrs-json-provider</artifactId>
+                <version>2.4.0</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.core</groupId>
+                <artifactId>jersey-client</artifactId>
+                <version>${jersey.version}</version>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.jersey.media</groupId>
+                <artifactId>jersey-media-moxy</artifactId>
+                <version>${jersey.version}</version>
+                <scope>test</scope>
             </dependency>
             <dependency>
                 <groupId>org.hibernate</groupId>
@@ -117,7 +129,6 @@
                 <version>${hibernate.core.version}</version>
                 <scope>provided</scope>
             </dependency>
-            <!-- for JPA, use hibernate-entitymanager instead of hibernate-core -->
             <dependency>
                 <groupId>org.hibernate</groupId>
                 <artifactId>hibernate-entitymanager</artifactId>
@@ -131,6 +142,7 @@
                 <type>jar</type>
                 <scope>compile</scope>
             </dependency>
+
             <dependency>
                 <groupId>org.jbehave</groupId>
                 <artifactId>jbehave-core</artifactId>
@@ -169,6 +181,12 @@
                 <scope>test</scope>
             </dependency>
             <dependency>
+                <groupId>org.postgresql</groupId>
+                <artifactId>postgresql</artifactId>
+                <version>${postgres-driver.version}</version>
+                <scope>provided</scope>
+            </dependency>
+            <dependency>
                 <groupId>org.seleniumhq.selenium.fluent</groupId>
                 <artifactId>fluent-selenium</artifactId>
                 <version>${fluent.selenium.version}</version>
@@ -193,52 +211,21 @@
                 <version>${selenium-support.version}</version>
                 <scope>test</scope>
             </dependency>
-            <dependency>
-                <groupId>com.fasterxml.jackson.jaxrs</groupId>
-                <artifactId>jackson-jaxrs-json-provider</artifactId>
-                <version>2.4.0</version>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.jersey.core</groupId>
-                <artifactId>jersey-client</artifactId>
-                <version>${jersey.version}</version>
-                <scope>test</scope>
-            </dependency>
-            <dependency>
-                <groupId>org.glassfish.jersey.media</groupId>
-                <artifactId>jersey-media-moxy</artifactId>
-                <version>${jersey.version}</version>
-                <scope>test</scope>
-            </dependency>
+
         </dependencies>
 
     </dependencyManagement>
 
     <dependencies>
         <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-validator</artifactId>
-            <version>${hibernate.validator.version}</version>
-        </dependency>
-        <dependency>
             <groupId>commons-collections</groupId>
             <artifactId>commons-collections</artifactId>
             <version>3.2.2</version>
         </dependency>
         <dependency>
-            <groupId>org.slf4j</groupId>
-            <artifactId>slf4j-api</artifactId>
-            <version>${org.slf4j.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-api</artifactId>
-            <version>${log4j2.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.logging.log4j</groupId>
-            <artifactId>log4j-core</artifactId>
-            <version>${log4j2.version}</version>
+            <groupId>javax</groupId>
+            <artifactId>javaee-api</artifactId>
+            <version>${javaee-api.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -252,39 +239,24 @@
             <version>3.4</version>
         </dependency>
         <dependency>
-            <groupId>org.jboss.spec</groupId>
-            <artifactId>jboss-javaee-7.0</artifactId>
-            <version>1.0.0.Final</version>
-            <type>pom</type>
-            <scope>provided</scope>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate.validator.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>2.15.0</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring-context.version}</version>
         </dependency>
     </dependencies>
     <repositories>
-        <repository>
-            <id>JBoss Repository</id>
-            <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-        </repository>
-        <repository>
-            <id>repository.jboss.org</id>
-            <name>JBoss Repository</name>
-            <url>http://repository.jboss.org/maven2</url>
-        </repository>
-        <repository>
-            <id>JBoss-Release</id>
-            <name>JBoss Release Repository</name>
-            <url>https://repository.jboss.org/nexus/content/repositories/releases/</url>
-        </repository>
-        <repository>
-            <id>maven2-repository.dev.java.net</id>
-            <name>Java.net Repository for Maven</name>
-            <url>http://download.java.net/maven/2/</url>
-            <layout>default</layout>
-        </repository>
-        <repository>
-            <id>maven-repository.dev.java.net</id>
-            <name>Java.net Maven 1 Repository (legacy)</name>
-            <url>http://download.java.net/maven/1</url>
-        </repository>
+
     </repositories>
 
     <pluginRepositories>
@@ -304,7 +276,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ejb-plugin</artifactId>
-                <version>2.5</version>
+                <version>3.0.0</version>
                 <configuration>
                     <ejbVersion>3.2</ejbVersion>
                 </configuration>
@@ -312,54 +284,17 @@
         </plugins>
         <pluginManagement>
             <plugins>
-                <!--This plugin's configuration is used to store Eclipse m2e settings
-                    only. It has no influence on the Maven build itself. -->
-                <plugin>
-                    <groupId>org.eclipse.m2e</groupId>
-                    <artifactId>lifecycle-mapping</artifactId>
-                    <version>1.0.0</version>
-                    <configuration>
-                        <lifecycleMappingMetadata>
-                            <pluginExecutions>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>org.codehaus.mojo</groupId>
-                                        <artifactId>hibernate3-maven-plugin</artifactId>
-                                        <versionRange>[2.2,)</versionRange>
-                                        <goals>
-                                            <goal>hbm2ddl</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore></ignore>
-                                    </action>
-                                </pluginExecution>
-                                <pluginExecution>
-                                    <pluginExecutionFilter>
-                                        <groupId>de.juplo</groupId>
-                                        <artifactId>
-                                            hibernate4-maven-plugin
-                                        </artifactId>
-                                        <versionRange>
-                                            [1.0.3,)
-                                        </versionRange>
-                                        <goals>
-                                            <goal>export</goal>
-                                        </goals>
-                                    </pluginExecutionFilter>
-                                    <action>
-                                        <ignore></ignore>
-                                    </action>
-                                </pluginExecution>
-                            </pluginExecutions>
-                        </lifecycleMappingMetadata>
-                    </configuration>
-                </plugin>
+
             </plugins>
         </pluginManagement>
     </build>
     <reporting>
         <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-project-info-reports-plugin</artifactId>
+                <version>2.9</version>
+            </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-pmd-plugin</artifactId>

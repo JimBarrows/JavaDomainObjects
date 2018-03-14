@@ -1,87 +1,35 @@
 package jdo.encryption;
 
-import sun.misc.BASE64Encoder;
-
-import javax.crypto.*;
+import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
-import java.security.InvalidAlgorithmParameterException;
-import java.security.InvalidKeyException;
-import java.security.NoSuchAlgorithmException;
-import java.security.SecureRandom;
+import javax.crypto.spec.SecretKeySpec;
+
+import static org.apache.commons.lang3.StringUtils.isEmpty;
 
 public class Encrypter {
-	private static Encrypter ourInstance = new Encrypter();
 
-	public static Encrypter getInstance() {
-		return ourInstance;
-	}
+	private static String INITIALIZATION_VECTOR = isEmpty(System.getenv("jdo.encryption.Encrypter.INITIALIZATION_VECTOR")) ? "Handle-Above-Shu" : System.getenv("jdo.encryption.Encrypter.INITIALIZATION_VECTOR");
+	private static String ENCRYPTION_KEY = isEmpty(System.getenv("jdo.encryption.Encrypter.ENCRYPTION_KEY")) ? "Discovery-Scorn-Wife-OarCountry7" : System.getenv("jdo.encryption.Encrypter.ENCRYPTION_KEY");
 
-	public static String encryptThis( String stringToEncrypt) {
-		return Encrypter.getInstance().encryptTheData(stringToEncrypt);
-	}
-
-	private SecretKey secretKey;
-	private SecureRandom prng = new SecureRandom();
-
-	private Cipher aesCipherForEncryption;
-
-
-	/**
-	 * Change this as desired for the security level you want
-	 */
-	private final int AES_KEYLENGTH = 128;
-
-	private byte[] iv = new byte[AES_KEYLENGTH / 8];  // Save the IV bytes or send it in plaintext with the encrypted data so you can decrypt the data later
-
-	private Encrypter() {
+	public static String encrypt(String plainText) {
 		try {
-			generateAnAESKey();
-			generateAnInitializationVector();
-			createACipher();
-			initializeTheCipherForEncryption();
-		} catch (NoSuchAlgorithmException e) {
-			e.printStackTrace();
-		} catch (NoSuchPaddingException e) {
-			e.printStackTrace();
-		} catch (InvalidAlgorithmParameterException e) {
-			e.printStackTrace();
-		} catch (InvalidKeyException e) {
-			e.printStackTrace();
-		}
-	}
-
-	private void initializeTheCipherForEncryption() throws InvalidAlgorithmParameterException, InvalidKeyException {
-		aesCipherForEncryption.init(Cipher.ENCRYPT_MODE, secretKey,
-				new IvParameterSpec(iv));
-	}
-
-	private void createACipher() throws NoSuchPaddingException, NoSuchAlgorithmException {
-		// Must specify the mode explicitly as most JCE providers default to ECB mode!!
-		aesCipherForEncryption = Cipher.getInstance("AES/CBC/PKCS7PADDING");
-	}
-
-	private void generateAnInitializationVector() {
-		prng.nextBytes(iv);
-	}
-
-	private void generateAnAESKey() throws NoSuchAlgorithmException {
-		KeyGenerator keyGen = KeyGenerator.getInstance("AES");
-		keyGen.init(128);
-		secretKey = keyGen.generateKey();
-	}
-
-	public String encryptTheData(String strDataToEncrypt) {
-		byte[] byteDataToEncrypt = strDataToEncrypt.getBytes();
-		byte[] byteCipherText = new byte[0];
-		try {
-			byteCipherText = aesCipherForEncryption.doFinal(byteDataToEncrypt);
-			return new BASE64Encoder().encode(byteCipherText);
-		} catch (IllegalBlockSizeException e) {
-			throw new RuntimeException(e);
-		} catch (BadPaddingException e) {
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding", "SunJCE");
+			SecretKeySpec key = new SecretKeySpec(ENCRYPTION_KEY.getBytes("UTF-8"), "AES");
+			cipher.init(Cipher.ENCRYPT_MODE, key, new IvParameterSpec(INITIALIZATION_VECTOR.getBytes("UTF-8")));
+			return new String(cipher.doFinal(plainText.getBytes("UTF-8")));
+		} catch (Exception e) {
 			throw new RuntimeException(e);
 		}
-
 	}
 
+	public static String decrypt(String cipherText) {
+		try {
+			Cipher cipher = Cipher.getInstance("AES/CBC/PKCS5Padding", "SunJCE");
+			SecretKeySpec key = new SecretKeySpec(ENCRYPTION_KEY.getBytes("UTF-8"), "AES");
+			cipher.init(Cipher.DECRYPT_MODE, key, new IvParameterSpec(INITIALIZATION_VECTOR.getBytes("UTF-8")));
+			return new String(cipher.doFinal(cipherText.getBytes()), "UTF-8");
+		} catch (Exception e) {
+			throw new RuntimeException(e);
+		}
+	}
 }

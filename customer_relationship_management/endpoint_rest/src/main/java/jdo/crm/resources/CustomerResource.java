@@ -154,11 +154,9 @@ public class CustomerResource {
 					break;
 
 				default:
-					System.out.println("##### CustomerResource is not company, organization or person.");
 					throw new NotFoundException();
 			}
 		} else {
-			System.out.println("##### customer does not have a role of customer.");
 			throw new NotFoundException();
 		}
 		return customer;

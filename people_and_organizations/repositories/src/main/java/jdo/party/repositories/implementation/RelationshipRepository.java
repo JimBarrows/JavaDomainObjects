@@ -3,8 +3,8 @@ package jdo.party.repositories.implementation;
 import jdo.core.repository.DatabaseRepositoryTemplate;
 import jdo.party.model.relationship.CustomerRelationship;
 import jdo.party.model.relationship.PartyRelationship;
+import org.springframework.stereotype.Repository;
 
-import javax.ejb.Stateful;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.TypedQuery;
@@ -15,14 +15,14 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-@Stateful
+@Repository
 public class RelationshipRepository extends DatabaseRepositoryTemplate<PartyRelationship, UUID> implements jdo.party.repositories.RelationshipRepository {
 
 	@PersistenceContext(name = "PeopleAndOrganizations")
 	protected EntityManager em;
-	
+
 	public RelationshipRepository() {
-		super(PartyRelationship.class); 
+		super(PartyRelationship.class);
 	}
 
 	@Override
@@ -40,7 +40,7 @@ public class RelationshipRepository extends DatabaseRepositoryTemplate<PartyRela
 		criteria.select(entityRoot);
 		TypedQuery<CustomerRelationship> query = em.createQuery(criteria);
 		startPosition.map(s -> query.setFirstResult(s));
-		maxResult.map( m -> query.setMaxResults(m));
+		maxResult.map(m -> query.setMaxResults(m));
 		return query.getResultList();
 	}
 }

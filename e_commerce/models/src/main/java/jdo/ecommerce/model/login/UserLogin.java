@@ -6,7 +6,7 @@ import org.hibernate.validator.constraints.NotEmpty;
 import javax.persistence.*;
 import java.util.*;
 
-import static jdo.encryption.Encrypter.encryptThis;
+import static jdo.encryption.Encrypter.encrypt;
 
 /**
  * The login for a user also specifies which pages, or web addresses that login
@@ -49,13 +49,16 @@ public class UserLogin extends PersistentEntity {
 
 	private String userId;
 
+	public UserLogin() {
+	}
+
 	public UserLogin(boolean active, Map<String, WebUserPreference> governedBy, List<LoginAccountHistory> having, UUID loginFor, UUID loginTo, String password, String salt, String userId) {
 		this.active = active;
 		this.governedBy = governedBy;
 		this.having = having;
 		this.loginFor = loginFor;
 		this.loginTo = loginTo;
-		this.password = encryptThis( password + salt);
+		this.password = encrypt(password + salt);
 		this.salt = salt;
 		this.userId = userId;
 	}

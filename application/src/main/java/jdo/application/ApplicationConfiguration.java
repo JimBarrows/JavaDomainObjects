@@ -5,6 +5,8 @@ import jdo.party.model.Party;
 import jdo.party.model.roles.InternalOrganization;
 import jdo.party.model.roles.ParentOrganization;
 import jdo.party.repositories.PartyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
 import java.util.List;
 import java.util.Optional;
@@ -18,9 +20,10 @@ import static jdo.party.specifications.PartyHasActiveRoleOf.partyHasActiveRoleOf
  *
  * @author Jim
  */
-
+@Component
 public class ApplicationConfiguration {
 
+	@Autowired
 	private PartyRepository partyRepository;
 
 

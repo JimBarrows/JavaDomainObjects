@@ -1,21 +1,18 @@
 package jdo.fields;
 
-import static java.time.ZonedDateTime.now;
-
-import java.io.Serializable;
-import java.time.ZonedDateTime;
-import java.util.Optional;
+import jdo.jpa.converters.ZonedDateTimeToTimestampConverter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import javax.persistence.Convert;
 import javax.persistence.Embeddable;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.persistence.Transient;
 import javax.validation.constraints.AssertTrue;
 import javax.validation.constraints.NotNull;
 import javax.xml.bind.annotation.XmlTransient;
+import java.io.Serializable;
+import java.time.ZonedDateTime;
 
-import jdo.jpa.converters.ZonedDateTimeToTimestampConverter;
+import static java.time.ZonedDateTime.now;
 
 @Embeddable
 public class DateTimeRange implements Serializable {
@@ -48,8 +45,7 @@ public class DateTimeRange implements Serializable {
 	@Transient
 	public boolean isActive() {
 		ZonedDateTime now = now();
-		return (fromDate.isBefore(now) || fromDate.isEqual(now)) && (thruDate == null) ? true
-				: (thruDate.isAfter(now) || thruDate.isEqual(now));
+		return (fromDate.isBefore(now) || fromDate.isEqual(now)) && (thruDate == null) || (thruDate.isAfter(now) || thruDate.isEqual(now));
 		// thruDate.map(thru -> thru.isAfter(now) ||
 		// thru.isEqual(now)).orElse(true);
 	}
@@ -92,4 +88,11 @@ public class DateTimeRange implements Serializable {
 	 */
 	private static final long serialVersionUID = 1L;
 
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("fromDate", fromDate)
+				.append("thruDate", thruDate)
+				.toString();
+	}
 }

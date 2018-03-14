@@ -5,13 +5,16 @@ import jdo.core.repository.specification.Specification;
 import jdo.crm.models.Customer;
 import jdo.party.model.Party;
 import jdo.party.repositories.PartyRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+@org.springframework.stereotype.Repository
 public class CustomerRepository implements Repository<Customer, UUID> {
 
+	@Autowired
 	private PartyRepository partyRepository;
 
 	/**

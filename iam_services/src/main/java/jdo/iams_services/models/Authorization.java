@@ -2,11 +2,14 @@ package jdo.iams_services.models;
 
 import jdo.fields.DateTimeRange;
 import jdo.model.PersistentEntity;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import javax.persistence.Entity;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotNull;
+
+import static org.apache.commons.lang3.StringUtils.isNotEmpty;
 
 @Entity
 public class Authorization extends PersistentEntity {
@@ -19,6 +22,7 @@ public class Authorization extends PersistentEntity {
 	}
 
 	public Authorization(String authorization) {
+		assert isNotEmpty(authorization) : "authorization cannot be empty";
 		this.authorization = authorization;
 		activeTimeRange = new DateTimeRange();
 	}
@@ -44,5 +48,13 @@ public class Authorization extends PersistentEntity {
 	@Transient
 	public boolean isActive() {
 		return activeTimeRange.isActive();
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("authorization", authorization)
+				.append("activeTimeRange", activeTimeRange)
+				.toString();
 	}
 }

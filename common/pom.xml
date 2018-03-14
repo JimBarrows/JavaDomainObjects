@@ -18,6 +18,11 @@
 		<dependency>
 			<groupId>com.fasterxml.jackson.jaxrs</groupId>
 			<artifactId>jackson-jaxrs-json-provider</artifactId>
-		</dependency>		
-	</dependencies>
+        </dependency>
+        <dependency>
+            <groupId>jdo</groupId>
+            <artifactId>test-utils</artifactId>
+            <version>1.0-SNAPSHOT</version>
+        </dependency>
+    </dependencies>
 </project>

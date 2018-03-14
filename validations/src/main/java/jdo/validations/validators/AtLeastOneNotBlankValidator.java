@@ -1,12 +1,12 @@
 package jdo.validations.validators;
 
-import static org.apache.commons.lang3.StringUtils.isNotBlank;
+import jdo.validations.annotations.AtLeastOneNotBlank;
+import org.apache.commons.beanutils.PropertyUtils;
+
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
 
-import jdo.validations.annotations.AtLeastOneNotBlank;
-
-import org.apache.commons.beanutils.PropertyUtils;
+import static org.apache.commons.lang3.StringUtils.isNotBlank;
 
 public class AtLeastOneNotBlankValidator implements ConstraintValidator<AtLeastOneNotBlank, Object> {
 
@@ -39,9 +39,9 @@ public class AtLeastOneNotBlankValidator implements ConstraintValidator<AtLeastO
 			return valid;
 
 		} catch (Exception e) {
-			AtLeastOneNotBlank.logger.error("isValid(Object object=" + object + ", ConstraintValidatorContext constraintContext=" + constraintContext
+			AtLeastOneNotBlank.logger.severe("isValid(Object object=" + object + ", ConstraintValidatorContext constraintContext=" + constraintContext
 					+ ") - String[] fieldNames=" + fieldNames + ", Object object=" + object + ", ConstraintValidatorContext constraintContext="
-					+ constraintContext + ", Exception e=" + e, e);
+					+ constraintContext + ", Exception e=" + e.getMessage());
 
 			return false;
 		}

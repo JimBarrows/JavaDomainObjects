@@ -3,10 +3,12 @@ package jdo.humanresoures.model.position.type;
 import jdo.humanresoures.model.position.ValidResponsibility;
 import jdo.humanresoures.model.position.salary.PositionTypeRate;
 import jdo.model.Type;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
@@ -22,12 +24,12 @@ public class PositionType extends Type {
 	private int benefitPercent;
 
 	@OneToMany
-	private List<PositionTypeRate> rates;
+	private List<PositionTypeRate> rates = new ArrayList<>();
 
 	private String title;
 
 	@OneToMany
-	private List<PositionTypeClass> typeClasses;
+	private List<PositionTypeClass> typeClasses = new ArrayList<>();
 
 	/**
 	 * UUID for PartyRole.
@@ -36,7 +38,7 @@ public class PositionType extends Type {
 	private UUID union;
 
 	@OneToMany
-	private List<ValidResponsibility> validResponsibilities;
+	private List<ValidResponsibility> validResponsibilities = new ArrayList<>();
 
 	public int getBenefitPercent() {
 		return benefitPercent;
@@ -86,4 +88,15 @@ public class PositionType extends Type {
 		this.validResponsibilities = validResponsibilities;
 	}
 
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this)
+				.append("benefitPercent", benefitPercent)
+				.append("rates", rates)
+				.append("title", title)
+				.append("typeClasses", typeClasses)
+				.append("union", union)
+				.append("validResponsibilities", validResponsibilities)
+				.toString();
+	}
 }
