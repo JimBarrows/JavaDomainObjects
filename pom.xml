@@ -52,7 +52,7 @@
         <jbehave.web.version>3.6-beta-2</jbehave.web.version>
         <jersey.version>2.19</jersey.version>
         <junit.version>4.13.1</junit.version>
-        <log4j2.version>2.17.0</log4j2.version>
+        <log4j2.version>2.17.1</log4j2.version>
         <org.slf4j.version>1.7.7</org.slf4j.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <postgres-driver.version>9.3-1100-jdbc41</postgres-driver.version>
